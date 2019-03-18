@@ -1,0 +1,466 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-08 08:20-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../wmi_tools.php:99
+msgid "Get System Processes"
+msgstr ""
+
+#: ../wmi_tools.php:105
+msgid "Get Computer Information"
+msgstr ""
+
+#: ../wmi_tools.php:111
+msgid "Get Operating System Information"
+msgstr ""
+
+#: ../wmi_tools.php:117
+msgid "Get System Enclosure Information"
+msgstr ""
+
+#: ../wmi_tools.php:123
+msgid "Get System Physical Memory Information"
+msgstr ""
+
+#: ../wmi_tools.php:129
+msgid "Get Memory Device Details"
+msgstr ""
+
+#: ../wmi_tools.php:135
+msgid "Get System BIOS Information"
+msgstr ""
+
+#: ../wmi_tools.php:141
+msgid "Get System Baseboard Information"
+msgstr ""
+
+#: ../wmi_tools.php:147
+msgid "Get Processor Information"
+msgstr ""
+
+#: ../wmi_tools.php:153
+msgid "Ping a Known Address from Computer"
+msgstr ""
+
+#: ../wmi_tools.php:159
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:165
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:171
+msgid "Get Logical Disk Information"
+msgstr ""
+
+#: ../wmi_tools.php:177
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:183
+msgid "Get Raw Logical Disk Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:189
+msgid "Get Formatted CPU Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:195
+msgid "Get Raw CPU Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:201
+msgid "Get Raw Memory Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:207
+msgid "Get Formatted Network Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:213
+msgid "Get Raw Network Performance Data"
+msgstr ""
+
+#: ../wmi_tools.php:219
+msgid "Get Network Adapter Information"
+msgstr ""
+
+#: ../wmi_tools.php:225
+msgid "Get Computer Asset Information"
+msgstr ""
+
+#: ../wmi_tools.php:236 ../wmi_accounts.php:377
+msgid "Description"
+msgstr ""
+
+#: ../wmi_tools.php:236 ../wmi_tools.php:307 ../wmi_queries.php:98
+#: ../wmi_queries.php:417
+msgid "Primary Key"
+msgstr ""
+
+#: ../wmi_tools.php:236
+msgid "Name Space"
+msgstr ""
+
+#: ../wmi_tools.php:236 ../wmi_queries.php:89
+msgid "Query"
+msgstr ""
+
+#: ../wmi_tools.php:252 ../wmi_tools.php:274
+msgid "Close"
+msgstr ""
+
+#: ../wmi_tools.php:268
+msgid "Microsoft Common WBEM Errors"
+msgstr ""
+
+#: ../wmi_tools.php:268
+#, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+
+#: ../wmi_tools.php:269
+msgid "Distributed COM Setup"
+msgstr ""
+
+#: ../wmi_tools.php:269
+#, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+
+#: ../wmi_tools.php:284 ../setup.php:259
+msgid "WMI Query Tool"
+msgstr ""
+
+#: ../wmi_tools.php:292
+msgid "Host"
+msgstr ""
+
+#: ../wmi_tools.php:295 ../wmi_accounts.php:54 ../wmi_accounts.php:377
+msgid "Username"
+msgstr ""
+
+#: ../wmi_tools.php:298 ../wmi_accounts.php:61
+msgid "Password"
+msgstr ""
+
+#: ../wmi_tools.php:301 ../wmi_queries.php:82 ../wmi_queries.php:415
+msgid "Namespace"
+msgstr ""
+
+#: ../wmi_tools.php:304
+msgid "Command"
+msgstr ""
+
+#: ../wmi_tools.php:311
+msgid "Run"
+msgstr ""
+
+#: ../wmi_tools.php:311
+msgid "Run the WMI Query against the Device"
+msgstr ""
+
+#: ../wmi_tools.php:312
+msgid "Clear"
+msgstr ""
+
+#: ../wmi_tools.php:312
+msgid "Clear the results panel."
+msgstr ""
+
+#: ../wmi_tools.php:313 ../wmi_queries.php:287 ../wmi_queries.php:403
+#: ../functions.php:29
+msgid "Queries"
+msgstr ""
+
+#: ../wmi_tools.php:313
+msgid "Pick from a list of common queries."
+msgstr ""
+
+#: ../wmi_tools.php:314
+msgid "Help"
+msgstr ""
+
+#: ../wmi_tools.php:314
+msgid "Get some help on setting up WMI"
+msgstr ""
+
+#: ../wmi_tools.php:326
+msgid "Query Results"
+msgstr ""
+
+#: ../wmi_tools.php:349
+msgid "Common Queries (Click to Select)"
+msgstr ""
+
+#: ../wmi_tools.php:378
+msgid "WMI Setup Assistance"
+msgstr ""
+
+#: ../wmi_tools.php:449
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr ""
+
+#: ../wmi_tools.php:479 ../wmi_tools.php:544
+#, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr ""
+
+#: ../wmi_tools.php:481 ../wmi_tools.php:546
+msgid "Showing columns and first one or two rows of data."
+msgstr ""
+
+#: ../wmi_queries.php:35 ../wmi_accounts.php:32
+msgid "Delete"
+msgstr ""
+
+#: ../wmi_queries.php:49 ../wmi_queries.php:413 ../wmi_accounts.php:47
+msgid "Name"
+msgstr ""
+
+#: ../wmi_queries.php:50
+msgid "Give this query a meaningful name that will be displayed."
+msgstr ""
+
+#: ../wmi_queries.php:56
+msgid "Collection Frequency"
+msgstr ""
+
+#: ../wmi_queries.php:57
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+
+#: ../wmi_queries.php:61
+#, php-format
+msgid "%d Minute"
+msgstr ""
+
+#: ../wmi_queries.php:62 ../wmi_queries.php:63 ../wmi_queries.php:64
+#: ../wmi_queries.php:65 ../wmi_queries.php:66
+#, php-format
+msgid "%d Minutes"
+msgstr ""
+
+#: ../wmi_queries.php:67
+#, php-format
+msgid "%d Hour"
+msgstr ""
+
+#: ../wmi_queries.php:68 ../wmi_queries.php:69
+#, php-format
+msgid "%d Hours"
+msgstr ""
+
+#: ../wmi_queries.php:70
+#, php-format
+msgid "%d Day"
+msgstr ""
+
+#: ../wmi_queries.php:75
+msgid "Enabled"
+msgstr ""
+
+#: ../wmi_queries.php:76
+msgid "Should this Query be enabled on hosts using it"
+msgstr ""
+
+#: ../wmi_queries.php:83
+msgid "The Namespace for this Query."
+msgstr ""
+
+#: ../wmi_queries.php:90
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr ""
+
+#: ../wmi_queries.php:99
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+
+#: ../wmi_queries.php:185
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr ""
+
+#: ../wmi_queries.php:192
+msgid "You must select at least one WMI Query."
+msgstr ""
+
+#: ../wmi_queries.php:193
+msgid "Return"
+msgstr ""
+
+#: ../wmi_queries.php:195 ../wmi_accounts.php:168
+msgid "Cancel"
+msgstr ""
+
+#: ../wmi_queries.php:195 ../wmi_accounts.php:160
+msgid "Continue"
+msgstr ""
+
+#: ../wmi_queries.php:195
+msgid "Delete WMI Query"
+msgstr ""
+
+#: ../wmi_queries.php:249
+#, php-format
+msgid "Query [edit: %s]"
+msgstr ""
+
+#: ../wmi_queries.php:251
+msgid "Query [new]"
+msgstr ""
+
+#: ../wmi_queries.php:273 ../wmi_queries.php:409 ../setup.php:260
+#: ../setup.php:293 ../setup.php:307
+msgid "WMI Queries"
+msgstr ""
+
+#: ../wmi_queries.php:281 ../wmi_accounts.php:250
+msgid "Search"
+msgstr ""
+
+#: ../wmi_queries.php:291 ../wmi_accounts.php:260
+msgid "Default"
+msgstr ""
+
+#: ../wmi_queries.php:305 ../wmi_accounts.php:274
+msgctxt "filter: use"
+msgid "Go"
+msgstr ""
+
+#: ../wmi_queries.php:308 ../wmi_accounts.php:277
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr ""
+
+#: ../wmi_queries.php:414
+msgid "Frequency"
+msgstr ""
+
+#: ../wmi_queries.php:416
+msgid "WQL Query"
+msgstr ""
+
+#: ../functions.php:30
+msgid "Authentication"
+msgstr ""
+
+#: ../setup.php:33
+msgid "WMI Management"
+msgstr ""
+
+#: ../setup.php:253
+msgid "WMI Data"
+msgstr ""
+
+#: ../setup.php:254
+msgid "WMI Data Query"
+msgstr ""
+
+#: ../setup.php:259
+msgid "Utilities"
+msgstr ""
+
+#: ../setup.php:260
+msgid "Data Collection"
+msgstr ""
+
+#: ../setup.php:272 ../setup.php:286
+msgid "WMI Autenication"
+msgstr ""
+
+#: ../setup.php:279
+msgid "WMI Autenication -> Edit"
+msgstr ""
+
+#: ../setup.php:300
+msgid "WMI Queries -> Edit"
+msgstr ""
+
+#: ../setup.php:321
+msgid "WMI Tools"
+msgstr ""
+
+#: ../setup.php:360
+msgid "WMI Account Options"
+msgstr ""
+
+#: ../setup.php:365
+msgid "WMI Authentication Account"
+msgstr ""
+
+#: ../setup.php:366
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr ""
+
+#: ../wmi_accounts.php:48
+msgid "Give this account a meaningful name that will be displayed."
+msgstr ""
+
+#: ../wmi_accounts.php:55
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+
+#: ../wmi_accounts.php:62
+msgid "The password used for authentication."
+msgstr ""
+
+#: ../wmi_accounts.php:150
+msgid "Press 'Continue' to delete the following accounts."
+msgstr ""
+
+#: ../wmi_accounts.php:157
+msgid "You must select at least one account."
+msgstr ""
+
+#: ../wmi_accounts.php:219
+#, php-format
+msgid "Account [edit: %s]"
+msgstr ""
+
+#: ../wmi_accounts.php:221
+msgid "Account [new]"
+msgstr ""
+
+#: ../wmi_accounts.php:242
+msgid "WMI Accounts"
+msgstr ""
+
+#: ../wmi_accounts.php:256 ../wmi_accounts.php:369
+msgid "Accounts"
+msgstr ""
+
+#: ../wmi_accounts.php:377
+msgid "Devices"
+msgstr ""
+
+#: ../wmi_accounts.php:391
+msgid "No Accounts Found"
+msgstr ""
