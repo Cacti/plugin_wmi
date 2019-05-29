@@ -176,14 +176,14 @@ function plugin_wmi_setup_tables() {
 		ENGINE=InnoDB
 		COMMENT='Holds Device WMI Information'");
 
-	$exists = db_fetch_cell('SELECT id FROM data_input_data WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
+	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
 	if (!$exists) {
 		$save = array();
 		$save['hash']         = '4af550dfe8b451579054d038ad62ba3e';
 		$save['name']         = 'Get WMI Data';
 		$save['input_string'] = '';
 		$save['type_id']      = 7;
-		$id = sql_save('data_input', $save);
+		$id = sql_save($save, 'data_input');
 
 		if ($id) {
 			db_execute("INSERT INTO `data_input_fields`
@@ -196,31 +196,31 @@ function plugin_wmi_setup_tables() {
 		}
 	}
 
-	$exists = db_fetch_cell('SELECT id FROM data_input_data WHERE hash="42e584b81075f6ad6556e62afc509179"');
+	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="42e584b81075f6ad6556e62afc509179"');
 	if (!$exists) {
 		$save = array();
 		$save['hash']         = '42e584b81075f6ad6556e62afc509179';
 		$save['name']         = 'Get WMI Data (Indexed)';
 		$save['input_string'] = '';
 		$save['type_id']      = 8;
-		$id = sql_save('data_input', $save);
+		$id = sql_save($save, 'data_input');
 
 		if ($id) {
 			db_execute("INSERT INTO `data_input_fields`
 				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES (96,'fb6317f2c49e494007e968283576d5a8',$id,'The WMI Class Name','class','in','',0,'','','')");
+				VALUES ('fb6317f2c49e494007e968283576d5a8',$id,'The WMI Class Name','class','in','',0,'','','')");
 
 			db_execute("INSERT INTO `data_input_fields`
 				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES (97,'cfebf9aa08f98bc1bfda7de2ebe12d94',$id,'The WMI Column Name','column','in','',0,'','','')");
+				VALUES ('cfebf9aa08f98bc1bfda7de2ebe12d94',$id,'The WMI Column Name','column','in','',0,'','','')");
 
 			db_execute("INSERT INTO `data_input_fields`
 				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES (98,'41798400f48141c25bc2407b5f5b1573',$id,'Output Type ID','output_type','in','',0,'output_type','','')");
+				VALUES ('41798400f48141c25bc2407b5f5b1573',$id,'Output Type ID','output_type','in','',0,'output_type','','')");
 
 			db_execute("INSERT INTO `data_input_fields`
 				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES (99,'02cd18a75a17e0a7d4ca28bc224630e0',$id,'Output Value','output','out','on',0,'','','')");
+				VALUES ('02cd18a75a17e0a7d4ca28bc224630e0',$id,'Output Value','output','out','on',0,'','','')");
 		}
 	}
 

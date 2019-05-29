@@ -1,5 +1,5 @@
 [info]
-name = wmic
+name = wmi
 version = 1.0
 longname = WMI Information Collector
 author = The Cacti Group
