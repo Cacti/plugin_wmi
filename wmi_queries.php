@@ -407,6 +407,7 @@ function show_queries() {
 	html_header_checkbox(
 		array(
 			__('Name'),
+			__('ID'),
 			__('Frequency'),
 			__('Namespace'),
 			__('WQL Query'),
@@ -418,6 +419,7 @@ function show_queries() {
 		foreach ($queries as $row) {
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell('<a class="linkEditMain" href="' . htmlspecialchars('wmi_queries.php?&action=edit&id=' . $row['id']) . '">' . $row['name'] . '</a>', $row['id']);
+			form_selectable_cell($row['id'], $row['id']);
 			form_selectable_cell($row['frequency'], $row['id']);
 			form_selectable_cell($row['namespace'], $row['id']);
 			form_selectable_cell($row['query'], $row['id']);

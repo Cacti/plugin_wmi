@@ -300,9 +300,10 @@ function process_device($host_id) {
 	db_execute('REPLACE INTO wmi_processes (pid, taskid) VALUES (' . getmypid() . ", $seed)");
 	db_execute("DELETE FROM wmi_processes WHERE pid = $key AND taskid = $seed");
 
+	$qstart  = date('Y-m-d H:i:s');
+
 	if (cacti_sizeof($queries_to_run)) {
 		foreach($queries_to_run AS $q) {
-			$qstart  = date('Y-m-d H:i:s');
 			$qmstart = microtime(true);
 
 			cacti_log("NOTE: Executing WMI Query[" . $q['wmi_query_id'] . "] for Device [$host_id].", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
