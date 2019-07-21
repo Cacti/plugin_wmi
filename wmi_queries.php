@@ -29,7 +29,7 @@ include_once($config['base_path'] . '/plugins/wmi/functions.php');
 include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
 
 $ds_actions = array(
-	1 => __('Delete')
+	1 => __('Delete', 'wmi')
 );
 
 if (!isset_request_var('tab')) {
@@ -43,37 +43,37 @@ $ns = array('root\\\\CIMV2', 'root\\\\MSCluster');
 $query_edit = array(
 	'name' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Name'),
-		'description' => __('Give this query a meaningful name that will be displayed.'),
+		'friendly_name' => __('Name', 'wmi'),
+		'description' => __('Give this query a meaningful name that will be displayed.', 'wmi'),
 		'value' => '|arg1:name|',
 		'max_length' => '64',
 	),
 	'frequency' => array(
 		'method' => 'drop_array',
-		'friendly_name' => __('Collection Frequency'),
-		'description' => __('When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used.'),
+		'friendly_name' => __('Collection Frequency', 'wmi'),
+		'description' => __('When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used.', 'wmi'),
 		'value' => '|arg1:frequency|',
 		'default' => '300',
 		'array' => $wmi_frequencies
 	),
 	'enabled' => array(
 		'method' => 'checkbox',
-		'friendly_name' => __('Enabled'),
-		'description' => __('Should this Query be enabled on hosts using it'),
+		'friendly_name' => __('Enabled', 'wmi'),
+		'description' => __('Should this Query be enabled on hosts using it', 'wmi'),
 		'value' => '|arg1:enabled|',
 		'default' => ''
 	),
 	'namespace' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Namespace'),
-		'description' => __('The Namespace for this Query.'),
+		'friendly_name' => __('Namespace', 'wmi'),
+		'description' => __('The Namespace for this Query.', 'wmi'),
 		'value' => '|arg1:namespace|',
 		'max_length' => '64',
 	),
 	'query' => array(
 		'method' => 'textarea',
-		'friendly_name' => __('Query'),
-		'description' => __('The Query to execute for gathering WMI data from the device.'),
+		'friendly_name' => __('Query', 'wmi'),
+		'description' => __('The Query to execute for gathering WMI data from the device.', 'wmi'),
 		'value' => '|arg1:query|',
 		'textarea_rows' => '4',
 		'textarea_cols' => '80',
@@ -81,8 +81,8 @@ $query_edit = array(
 	),
 	'primary_key' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Primary Key'),
-		'description' => __('When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma.'),
+		'friendly_name' => __('Primary Key', 'wmi'),
+		'description' => __('When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma.', 'wmi'),
 		'value' => '|arg1:primary_key|',
 		'max_length' => '128',
 	),
@@ -171,17 +171,17 @@ function actions_queries() {
 	if (get_request_var('drp_action') == '1') { /* Delete */
 		print "<tr>
 			<td colspan='2' class='textArea'>
-				<p>" . __('Click \'Continue\' to Delete the following WMI Queries.') . "</p>
+				<p>" . __('Click \'Continue\' to Delete the following WMI Queries.', 'wmi') . "</p>
 				<ul class='itemlist'>$query_list</ul>
 				</td>
-		</tr>\n";
+		</tr>";
 	}
 
 	if (!isset($query_array)) {
-		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one WMI Query.') . "</span></td></tr>\n";
-		$save_html = "<input type='button' value='" . __('Return') . "' onClick='cactiReturnTo()'>";
+		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one WMI Query.', 'wmi') . "</span></td></tr>";
+		$save_html = "<input type='button' value='" . __('Return', 'wmi') . "' onClick='cactiReturnTo()'>";
 	}else{
-		$save_html = "<input type='button' value='" . __('Cancel') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __('Continue') . "' title='" . __('Delete WMI Query') . "'>";
+		$save_html = "<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __('Continue', 'wmi') . "' title='" . __('Delete WMI Query', 'wmi') . "'>";
 	}
 
 	print "<tr>
@@ -191,7 +191,7 @@ function actions_queries() {
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
 			$save_html
 		</td>
-	</tr>\n";
+	</tr>";
 
 	html_end_box();
 
@@ -235,9 +235,9 @@ function edit_queries() {
 			WHERE id= ?',
 			array(get_filter_request_var('id')));
 
-		$header_label = __('Query [edit: %s]', $query['name']);
+		$header_label = __('Query [edit: %s]', $query['name'], 'wmi');
 	}else{
-		$header_label = __('Query [new]');
+		$header_label = __('Query [new]', 'wmi');
 	}
 
 	form_start('wmi_queries.php', 'query_edit');
@@ -259,7 +259,7 @@ function edit_queries() {
 function query_filter() {
 	global $item_rows;
 
-	html_start_box( __('WMI Queries'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
+	html_start_box( __('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
 	?>
 	<tr class='even'>
 		<td>
@@ -267,21 +267,21 @@ function query_filter() {
 			<table class='filterTable'>
 				<tr>
 					<td>
-						<?php print __('Search');?>
+						<?php print __('Search', 'wmi');?>
 					</td>
 					<td>
 						<input type='text' id='filter' size='25' value='<?php print get_request_var('filter');?>'>
 					</td>
 					<td>
-						<?php print __('Queries');?>
+						<?php print __('Queries', 'wmi');?>
 					</td>
 					<td>
 						<select id='rows' onChange='applyFilter()'>
-							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default');?></option>
+							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default', 'wmi');?></option>
 							<?php
 							if (sizeof($item_rows)) {
 							foreach ($item_rows as $key => $value) {
-								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
+								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
 							}
 							}
 							?>
@@ -396,22 +396,22 @@ function show_queries() {
 
 	$total_rows = sizeof($queries);
 
-	$nav = html_nav_bar('wmi_queries.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Queries'), 'page', 'main');
+	$nav = html_nav_bar('wmi_queries.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Queries', 'wmi'), 'page', 'main');
 
 	form_start('wmi_queries.php', 'chk');
 
 	print $nav;
 
-	html_start_box(__('WMI Queries'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
+	html_start_box(__('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
 
 	html_header_checkbox(
 		array(
-			__('Name'),
-			__('ID'),
-			__('Frequency'),
-			__('Namespace'),
-			__('WQL Query'),
-			__('Primary Key')
+			__('Name', 'wmi'),
+			__('ID', 'wmi'),
+			__('Frequency', 'wmi'),
+			__('Namespace', 'wmi'),
+			__('WQL Query', 'wmi'),
+			__('Primary Key', 'wmi')
 		)
 	);
 

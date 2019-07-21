@@ -36,7 +36,7 @@ function plugin_wmi_install() {
 	api_plugin_register_hook('wmi', 'device_edit_pre_bottom', 'wmi_device_edit_pre_bottom', 'setup.php');
 	api_plugin_register_hook('wmi', 'api_device_new',         'wmi_api_device_new',         'setup.php');
 
-	api_plugin_register_realm('wmi', 'wmi_accounts.php,wmi_queries.php,wmi_tools.php', __('WMI Management'), 1);
+	api_plugin_register_realm('wmi', 'wmi_accounts.php,wmi_queries.php,wmi_tools.php', __('WMI Management', 'wmi'), 1);
 
 	plugin_wmi_setup_tables();
 }
@@ -281,27 +281,27 @@ function wmi_config_arrays() {
 	}
 
 	$input_types += array(
-		DATA_INPUT_TYPE_WMI => __('WMI Data'),
-		DATA_INPUT_TYPE_WMI_QUERY => __('WMI Data Query')
+		DATA_INPUT_TYPE_WMI => __('WMI Data', 'wmi'),
+		DATA_INPUT_TYPE_WMI_QUERY => __('WMI Data Query', 'wmi')
 	);
 
 	$wmi_frequencies = array(
-		'60'    => __('%d Minute',  1),
-		'120'   => __('%d Minutes', 2),
-		'300'   => __('%d Minutes', 5),
-		'600'   => __('%d Minutes', 10),
-		'1200'  => __('%d Minutes', 20),
-		'2400'  => __('%d Minutes', 40),
-		'3600'  => __('%d Hour',   1),
-		'7200'  => __('%d Hours',  2),
-		'14400' => __('%d Hours', 4),
-		'86400' => __('%d Day', 1)
+		'60'    => __('%d Minute',  1, 'wmi'),
+		'120'   => __('%d Minutes', 2, 'wmi'),
+		'300'   => __('%d Minutes', 5, 'wmi'),
+		'600'   => __('%d Minutes', 10, 'wmi'),
+		'1200'  => __('%d Minutes', 20, 'wmi'),
+		'2400'  => __('%d Minutes', 40, 'wmi'),
+		'3600'  => __('%d Hour',   1, 'wmi'),
+		'7200'  => __('%d Hours',  2, 'wmi'),
+		'14400' => __('%d Hours', 4, 'wmi'),
+		'86400' => __('%d Day', 1, 'wmi')
 	);
 
 	$fields_data_query_edit['data_input_id']['sql'] = 'SELECT id,name FROM data_input WHERE type_id IN(3,4,6,8) ORDER BY name';
 
-	$menu[__('Utilities')]['plugins/wmi/wmi_tools.php']      = __('WMI Query Tool');
-	$menu[__('Data Collection')]['plugins/wmi/wmi_queries.php'] = __('WMI Queries');
+	$menu[__('Utilities')]['plugins/wmi/wmi_tools.php']      = __('WMI Query Tool', 'wmi');
+	$menu[__('Data Collection')]['plugins/wmi/wmi_queries.php'] = __('WMI Queries', 'wmi');
 }
 
 function wmi_data_input_sql_where($sql_where) {
@@ -313,42 +313,42 @@ function wmi_data_input_sql_where($sql_where) {
 
 function wmi_draw_navigation_text($nav) {
 	$nav['wmi_accounts.php:']        = array(
-		'title' => __('WMI Autenication'),
+		'title' => __('WMI Autenication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_accounts.php',
 		'level' => '1'
 	);
 
 	$nav['wmi_accounts.php:edit'] = array(
-		'title' => __('WMI Autenication -> Edit'),
+		'title' => __('WMI Autenication -> Edit', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_accounts.php',
 		'level' => '1'
 	);
 
 	$nav['wmi_accounts.php:actions'] = array(
-		'title' => __('WMI Autenication'),
+		'title' => __('WMI Autenication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_accounts.php',
 		'level' => '1'
 	);
 
 	$nav['wmi_queries.php:'] = array(
-		'title' => __('WMI Queries'),
+		'title' => __('WMI Queries', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_queries.php',
 		'level' => '1'
 	);
 
 	$nav['wmi_queries.php:edit'] = array(
-		'title' => __('WMI Queries -> Edit'),
+		'title' => __('WMI Queries -> Edit', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_queries.php',
 		'level' => '2'
 	);
 
 	$nav['wmi_queries.php:actions'] = array(
-		'title' => __('WMI Queries'),
+		'title' => __('WMI Queries', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_queries.php',
 		'level' => '2'
@@ -362,7 +362,7 @@ function wmi_draw_navigation_text($nav) {
 	);
 
 	$nav['wmi_tools.php:query'] = array(
-		'title' => __('WMI Tools'),
+		'title' => __('WMI Tools', 'wmi'),
 		'mapping' => 'index.php:',
 		'url' => 'wmi_tools.php',
 		'level' => '1'
@@ -401,13 +401,13 @@ function wmi_config_form() {
 
 	$fields_host_edit['wmi_spacer'] = array(
 		'method' => 'spacer',
-		'friendly_name' => __('WMI Account Options')
+		'friendly_name' => __('WMI Account Options', 'wmi')
 	);
 
 	$fields_host_edit['wmi_account'] = array(
 		'method' => 'drop_array',
-		'friendly_name' => __('WMI Authentication Account'),
-		'description' => __('Choose an account to use when Authenticating via WMI'),
+		'friendly_name' => __('WMI Authentication Account', 'wmi'),
+		'description' => __('Choose an account to use when Authenticating via WMI', 'wmi'),
 		'value' => '|arg1:wmi_account|',
 		'default' => 0,
 		'array' => $acc,
@@ -421,12 +421,12 @@ function wmi_config_settings () {
 
 	$settings['snmp'] = array_merge($settings['snmp'], array(
 		'wmi_general_header' => array(
-			'friendly_name' => __('WMI Settings'),
+			'friendly_name' => __('WMI Settings', 'wmi'),
 			'method' => 'spacer',
 		),
 		'wmi_autocreate' => array(
-			'friendly_name' => __('Auto Create WMI Queries'),
-			'description' => __('If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created.'),
+			'friendly_name' => __('Auto Create WMI Queries', 'wmi'),
+			'description' => __('If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created.', 'wmi'),
 			'method' => 'checkbox',
 			'default' => 'on'
 		),
@@ -444,7 +444,7 @@ function wmi_api_device_save($save) {
 }
 
 function wmi_device_edit_pre_bottom() {
-	html_start_box(__('Associated WMI Queries'), '100%', '', '3', 'center', '');
+	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
 
 	$host_template_id = db_fetch_cell_prepared('SELECT host_template_id
 		FROM host
@@ -459,7 +459,7 @@ function wmi_device_edit_pre_bottom() {
 		ORDER BY name',
 		array($host_template_id));
 
-	html_header(array(__('Name'), __('Status')));
+	html_header(array(__('Name', 'wmi'), __('Status', 'wmi')));
 
 	$i = 1;
 	if (sizeof($wmi_queries)) {
@@ -471,9 +471,9 @@ function wmi_device_edit_pre_bottom() {
 				array(get_request_var('id'), $item['id']));
 
 			if ($exists) {
-				$exists = __('WMI Query Exists');
+				$exists = __('WMI Query Exists', 'wmi');
 			}else{
-				$exists = __('WMI Query Does Not Exist');
+				$exists = __('WMI Query Does Not Exist', 'wmi');
 			}
 
 			form_alternate_row("wq$i", true);
@@ -490,14 +490,14 @@ function wmi_device_edit_pre_bottom() {
 			$i++;
 		}
 	}else{
-		print '<tr><td colspan="2"><em>' . __('No Associated WMI Queries.') . '</em></td></tr>';
+		print '<tr><td colspan="2"><em>' . __('No Associated WMI Queries.', 'wmi') . '</em></td></tr>';
 	}
 
 	html_end_box();
 }
 
 function wmi_device_template_edit() {
-	html_start_box(__('Associated WMI Queries'), '100%', '', '3', 'center', '');
+	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
 
 	$wmi_queries = db_fetch_assoc_prepared('SELECT wwq.id, wwq.name
 		FROM wmi_wql_queries AS wwq
@@ -514,7 +514,7 @@ function wmi_device_template_edit() {
 					<strong><?php print $i;?>)</strong> <?php print htmlspecialchars($item['name']);?>
 				</td>
 				<td class='right'>
-					<a class='delete deleteMarker fa fa-remove' title='<?php print __('Delete');?>' href='<?php print htmlspecialchars('host_templates.php?action=item_remove_wq_confirm&id=' . $item['id'] . '&host_template_id=' . get_request_var('id'));?>'></a>
+					<a class='delete deleteMarker fa fa-remove' title='<?php print __('Delete', 'wmi');?>' href='<?php print htmlspecialchars('host_templates.php?action=item_remove_wq_confirm&id=' . $item['id'] . '&host_template_id=' . get_request_var('id'));?>'></a>
 				</td>
 			<?php
 			form_end_row();
@@ -522,7 +522,7 @@ function wmi_device_template_edit() {
 			$i++;
 		}
 	}else{
-		print '<tr><td colspan="2"><em>' . __('No Associated WMI Queries.') . '</em></td></tr>';
+		print '<tr><td colspan="2"><em>' . __('No Associated WMI Queries.', 'wmi') . '</em></td></tr>';
 	}
 
 	$unmapped = db_fetch_assoc_prepared('SELECT DISTINCT wwq.id, wwq.name
@@ -539,13 +539,13 @@ function wmi_device_template_edit() {
 				<table>
 					<tr style='line-height:10px;'>
 						<td style='padding-right: 15px;'>
-							<?php print __('Add WMI Query');?>
+							<?php print __('Add WMI Query', 'wmi');?>
 						</td>
 						<td>
 							<?php form_dropdown('wmi_query_id',$unmapped ,'name','id','','','');?>
 						</td>
 						<td>
-							<input type='button' value='<?php print __('Add');?>' id='add_wq' title='<?php print __('Add WMI Query to Device Template');?>'>
+							<input type='button' value='<?php print __('Add', 'wmi');?>' id='add_wq' title='<?php print __('Add WMI Query to Device Template', 'wmi');?>'>
 						</td>
 					</tr>
 				</table>
@@ -586,14 +586,14 @@ function wmi_device_template_top() {
 		?>
 		<tr>
 			<td class='topBoxAlt'>
-				<p><?php print __('Click \'Continue\' to delete the following WMI Queries will be disassociated from the Device Template.');?></p>
-				<p><?php print __('WMI Query Name: %s', htmlspecialchars($query['name']));?>'<br>
+				<p><?php print __('Click \'Continue\' to delete the following WMI Queries will be disassociated from the Device Template.', 'wmi');?></p>
+				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi');?>'<br>
 			</td>
 		</tr>
 		<tr>
 			<td align='right'>
-				<input id='cancel' type='button' value='<?php print __('Cancel');?>' onClick='$("#cdialog").dialog("close")' name='cancel'>
-				<input id='continue' type='button' value='<?php print __('Continue');?>' name='continue' title='<?php print __('Remove WMI Query');?>'>
+				<input id='cancel' type='button' value='<?php print __('Cancel', 'wmi');?>' onClick='$("#cdialog").dialog("close")' name='cancel'>
+				<input id='continue' type='button' value='<?php print __('Continue', 'wmi');?>' name='continue' title='<?php print __('Remove WMI Query', 'wmi');?>'>
 			</td>
 		</tr>
 		<?php

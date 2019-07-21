@@ -104,168 +104,168 @@ function common_queries_panel() {
 	$common = array(
 		array(
 			'key' => 'None',
-			'tip' => __('Get Computer Information'),
+			'tip' => __('Get Computer Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_ComputerSystem'
 		),
 		array(
 			'key' => 'ProcessId',
-			'tip' => __('Get System Processes'),
+			'tip' => __('Get System Processes', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_Process'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Installed Software'),
+			'tip' => __('Get Installed Software', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_Product'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get Operating System Information'),
+			'tip' => __('Get Operating System Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_OperatingSystem'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get OD Service Information'),
+			'tip' => __('Get OD Service Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_Service'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get System Enclosure Information'),
+			'tip' => __('Get System Enclosure Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_SystemEnclosure'
 		),
 		array(
 			'key' => 'InterleavePosition',
-			'tip' => __('Get System Physical Memory Information'),
+			'tip' => __('Get System Physical Memory Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PhysicalMemory'
 		),
 		array(
 			'key' => 'DeviceID',
-			'tip' => __('Get Memory Device Details'),
+			'tip' => __('Get Memory Device Details', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_MemoryDevice'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get System BIOS Information'),
+			'tip' => __('Get System BIOS Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_BIOS'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get System Baseboard Information'),
+			'tip' => __('Get System Baseboard Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_BaseBoard'
 		),
 		array(
 			'key' => 'DeviceID',
-			'tip' => __('Get Processor Information'),
+			'tip' => __('Get Processor Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_Processor'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Ping a Known Address from Computer'),
+			'tip' => __('Ping a Known Address from Computer', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PingStatus where Address = "www.google.com"'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get Row System OS Performance Data'),
+			'tip' => __('Get Row System OS Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_PerfOS_System'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get Formatted System OS Performance Data'),
+			'tip' => __('Get Formatted System OS Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfFormattedData_PerfOS_System'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Formatted Phsycal Disk Performance Data'),
+			'tip' => __('Get Formatted Phsycal Disk Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfFormattedData_PerfDisk_PhysicalDisk'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Raw Phsycal Disk Performance Data'),
+			'tip' => __('Get Raw Phsycal Disk Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_PerfDisk_PhysicalDisk'
 		),
 		array(
 			'key' => 'DeviceID',
-			'tip' => __('Get Logical Disk Information'),
+			'tip' => __('Get Logical Disk Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_LogicalDisk'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Formatted Logical Disk Performance Data'),
+			'tip' => __('Get Formatted Logical Disk Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfFormattedData_PerfDisk_LogicalDisk'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Raw Logical Disk Performance Data'),
+			'tip' => __('Get Raw Logical Disk Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_PerfDisk_LogicalDisk'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Formatted CPU Performance Data'),
+			'tip' => __('Get Formatted CPU Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfFormattedData_PerfOS_Processor'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Raw CPU Performance Data'),
+			'tip' => __('Get Raw CPU Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_PerfOS_Processor'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get Raw Memory Performance Data'),
+			'tip' => __('Get Raw Memory Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_PerfOS_Memory'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Formatted Network Performance Data'),
+			'tip' => __('Get Formatted Network Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfFormattedData_Tcpip_NetworkInterface'
 		),
 		array(
 			'key' => 'Name',
-			'tip' => __('Get Raw Network Performance Data'),
+			'tip' => __('Get Raw Network Performance Data', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PerfRawData_Tcpip_NetworkInterface'
 		),
 		array(
 			'key' => 'DeviceID',
-			'tip' => __('Get Network Adapter Information'),
+			'tip' => __('Get Network Adapter Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_NetworkAdapter'
 		),
 		array(
 			'key' => 'None',
-			'tip' => __('Get Computer Asset Information'),
+			'tip' => __('Get Computer Asset Information', 'wmi'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_ComputerSystemProduct'
 		),
 	);
 
 	// Common Queries Panel
-	print "<div id='common_queries' style='display:none;'>\n";
+	print "<div id='common_queries' style='display:none;'>";
 
 	html_start_box('', '100%', '', '3', 'center', '');
 
-	html_header(array(__('Description'), __('Primary Key'), __('Name Space'), __('Query')));
+	html_header(array(__('Description', 'wmi'), __('Primary Key', 'wmi'), __('Name Space', 'wmi'), __('Query', 'wmi')));
 
 	$i = 0;
 	foreach($common as $query) {
@@ -281,96 +281,96 @@ function common_queries_panel() {
 		$i++;
 	}
 
-	print "<tr><td colspan='4' class='odd'><input type='button' id='close_queries' value='" . __('Close') . "'></td></tr>\n";
+	print "<tr><td colspan='4' class='odd'><input type='button' id='close_queries' value='" . __('Close', 'wmi') . "'></td></tr>";
 
 	html_end_box(false);
 
-	print "</div>\n";
+	print "</div>";
 }
 
 // Assistance Panel
 function assistance_panel() {
-	print "<div id='assistance' style='display:none;'>\n";
+	print "<div id='assistance' style='display:none;'>";
 
 	html_start_box('', '100%', '', '3', 'center', '');
 
 	form_alternate_row();
 	print '<td>';
 
-	print '<p>' . __('If you need assistance on error codes, use google, or here use the following Link %s.', '<a target="_new" class="linkEditMain" href="https://msdn.microsoft.com/en-us/library/aa394559(v=vs.85).aspx">' . __('Microsoft Common WBEM Errors') . '</a>') . '</p>';
-	print '<p>' . __('For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s.', '<a target="_new" class="linkEditMain" href="http://www-01.ibm.com/support/docview.wss?uid=swg21678809">' . __('Distributed COM Setup') . '</a>') . '</p>';
+	print '<p>' . __('If you need assistance on error codes, use google, or here use the following Link %s.', '<a target="_new" class="linkEditMain" href="https://msdn.microsoft.com/en-us/library/aa394559(v=vs.85).aspx">' . __('Microsoft Common WBEM Errors', 'wmi') . '</a>', 'wmi') . '</p>';
+	print '<p>' . __('For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s.', '<a target="_new" class="linkEditMain" href="http://www-01.ibm.com/support/docview.wss?uid=swg21678809">' . __('Distributed COM Setup', 'wmi') . '</a>', 'wmi') . '</p>';
 
 	print '</td>';
 	form_end_row();
 
-	print "<tr><td colspan='4' class='odd'><input type='button' id='close_help' value='" . __('Close') . "'></td></tr>\n";
+	print "<tr><td colspan='4' class='odd'><input type='button' id='close_help' value='" . __('Close', 'wmi') . "'></td></tr>";
 
 	html_end_box(false);
 
-	print "</div>\n";
+	print "</div>";
 }
 
 function show_tools() {
 	global $action, $host, $username, $password, $command, $wmi_frequencies;
 
-	html_start_box(__('WMI Query Tool') , '100%', '', '3', 'center', '');
+	html_start_box(__('WMI Query Tool', 'wmi') , '100%', '', '3', 'center', '');
 
-	print "<tr><td>\n";
+	print "<tr><td>";
 
 	form_start('wmi_tools.php?action=query&header=false', 'form_wmi');
 
-	print "<table width='100%'>\n";
-	print "<tr>\n";
-	print "<td valign='center' width='50'>" . __('Name') . "</td>\n";
-	print "<td><input type='text' size='40' id='name' value='" . html_escape_request_var('name') . "'></td>\n";
-	print "</tr><tr>\n";
-	print "<td valign='center' width='50'>" . __('Frequency') . "</td>\n";
-	print "<td><select id='frequency'>\n";
+	print "<table width='100%'>";
+	print "<tr>";
+	print "<td valign='center' width='50'>" . __('Name', 'wmi') . "</td>";
+	print "<td><input type='text' size='40' id='name' value='" . html_escape_request_var('name') . "'></td>";
+	print "</tr><tr>";
+	print "<td valign='center' width='50'>" . __('Frequency', 'wmi') . "</td>";
+	print "<td><select id='frequency'>";
 	foreach($wmi_frequencies as $key => $name) {
-		print "<option value='$key'" . (get_request_var('frequency') == $key ? ' selected':'') . ">" . $name . "</option>\n";
+		print "<option value='$key'" . (get_request_var('frequency') == $key ? ' selected':'') . ">" . $name . "</option>";
 	}
-	print "</select></td>\n";
-	print "</tr><tr>\n";
-	print "<td valign='center' width='50'>" . __('Host') . "</td>\n";
-	print "<td><input type='text' size='40' id='host' value='" . html_escape_request_var('host') . "'></td>\n";
-	print "</tr><tr>\n";
-	print "<td class='nowrap'>" . __('Username') . "</td>";
+	print "</select></td>";
+	print "</tr><tr>";
+	print "<td valign='center' width='50'>" . __('Host', 'wmi') . "</td>";
+	print "<td><input type='text' size='40' id='host' value='" . html_escape_request_var('host') . "'></td>";
+	print "</tr><tr>";
+	print "<td class='nowrap'>" . __('Username', 'wmi') . "</td>";
 	print "<td><input type='text' size='30' id='username' value='" . html_escape_request_var('username') . "'></td>";
-	print "</tr><tr>\n";
-	print "<td class='nowrap'>" . __('Password') . "</td>\n";
-	print "<td><input type='password' size='30' id='password' value='" . html_escape_request_var('password') . "'></td>\n";
-	print "</tr><tr>\n";
-	print "<td class='nowrap'>" . __('Namespace') . "</td>\n";
-	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>\n";
-	print "</tr><tr>\n";
-	print "<td class='nowrap'>" . __('Command') . "</td>\n";
-	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command' value='" . html_escape_request_var('command') . "'></textarea></td>\n";
-	print "</tr><tr>\n";
-	print "<td class='nowrap'>" . __('Primary Key') . "</td>\n";
-	print "<td><input type='text' size='30' id='keyname' value='" . html_escape_request_var('keyname') . "'></td>\n";
-	print "</tr><tr>\n";
+	print "</tr><tr>";
+	print "<td class='nowrap'>" . __('Password', 'wmi') . "</td>";
+	print "<td><input type='password' size='30' id='password' value='" . html_escape_request_var('password') . "'></td>";
+	print "</tr><tr>";
+	print "<td class='nowrap'>" . __('Namespace', 'wmi') . "</td>";
+	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>";
+	print "</tr><tr>";
+	print "<td class='nowrap'>" . __('Command', 'wmi') . "</td>";
+	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command' value='" . html_escape_request_var('command') . "'></textarea></td>";
+	print "</tr><tr>";
+	print "<td class='nowrap'>" . __('Primary Key', 'wmi') . "</td>";
+	print "<td><input type='text' size='30' id='keyname' value='" . html_escape_request_var('keyname') . "'></td>";
+	print "</tr><tr>";
 	print "<td colspan='2' style='padding:5px 0px;'><a class='hyperLink' target='_new' href='" . html_escape('https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-provider') ."'>" . __('More Class Information @Microsoft', 'wmi') . "</a></td></tr>";
-	print "<tr><td colspan='2'>\n";
-	print "<input type='submit' value='" . __('Run') . "' id='submit' title='" . __('Run the WMI Query against the Device') . "'>\n";
-	print "<input type='button' value='" . __('Clear') . "' id='clear' title='" . __('Clear the results panel.') . "'>\n";
-	print "<input type='button' value='" . __('Queries') . "' id='queries' title='" . __('Pick from a list of common queries.') . "'>\n";
-	print "<input type='button' value='" . __('Help') . "' id='help' title='" . __('Get some help on setting up WMI') . "'>\n";
-	print "<input type='button' value='" . __('Add') . "' id='add' title='" . __('Create a new WMI Query from the existing Query.') . "'>\n";
-	print "</td></tr>\n";
-	print "</table>\n";
+	print "<tr><td colspan='2'>";
+	print "<input type='submit' value='" . __('Run', 'wmi') . "' id='submit' title='" . __('Run the WMI Query against the Device', 'wmi') . "'>";
+	print "<input type='button' value='" . __('Clear', 'wmi') . "' id='clear' title='" . __('Clear the results panel.', 'wmi') . "'>";
+	print "<input type='button' value='" . __('Queries', 'wmi') . "' id='queries' title='" . __('Pick from a list of common queries.', 'wmi') . "'>";
+	print "<input type='button' value='" . __('Help', 'wmi') . "' id='help' title='" . __('Get some help on setting up WMI', 'wmi') . "'>";
+	print "<input type='button' value='" . __('Add', 'wmi') . "' id='add' title='" . __('Create a new WMI Query from the existing Query.', 'wmi') . "'>";
+	print "</td></tr>";
+	print "</table>";
 
 	form_end();
 
-	print "</td></tr>\n";
+	print "</td></tr>";
 
 	html_end_box();
 
 	// Query Results Panel
-	html_start_box(__('Query Results') , '100%', '', '3', 'center', '');
+	html_start_box(__('Query Results', 'wmi') , '100%', '', '3', 'center', '');
 
 	form_alternate_row();
 
-	print "<td><div class='odd' style='min-height:200px;' id='results'></div></td>\n";
+	print "<td><div class='odd' style='min-height:200px;' id='results'></div></td>";
 
 	form_end_row();
 
@@ -395,7 +395,7 @@ function show_tools() {
 			$.get('wmi_tools.php?action=queries', function(data) {
 				$('body').append(data);
 				$('#common_queries').dialog({
-					title: '<?php print __('Common Queries (Click to Select)');?>',
+					title: '<?php print __('Common Queries (Click to Select)', 'wmi');?>',
 					width: '1024',
 				});
 
@@ -424,7 +424,7 @@ function show_tools() {
 			$.get('wmi_tools.php?action=assistance', function(data) {
 				$('body').append(data);
 				$('#assistance').dialog({
-					title: '<?php print __('WMI Setup Assistance');?>',
+					title: '<?php print __('WMI Setup Assistance', 'wmi');?>',
 					width: '1024',
 				});
 
@@ -519,7 +519,7 @@ function walk_host() {
 	$host = strtolower($host);
 
 	if ($username == '' || $password == '' || $host == '') {
-		print __('ERROR: You must provide a host, username, password and query');
+		print __('ERROR: You must provide a host, username, password and query', 'wmi');
 		exit;
 	}
 
@@ -543,18 +543,18 @@ function walk_host() {
 		}
 
 		if ($wmi->fetch() !== false) {;
-			print "<table style='width:100%'><tr><td class='even'>\n";
+			print "<table style='width:100%'><tr><td class='even'>";
 
 			$indexes = $wmi->fetch_indexes();
 			$class   = $wmi->fetch_class();
 			$data    = $wmi->fetch_data();
 
-			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data)) . "</h4>\n";
+			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
 
-			print "<p>" . __('Showing columns and first one or two rows of data.') . "</p>\n";
+			print "<p>" . __('Showing columns and first one or two rows of data.', 'wmi') . "</p>";
 
 			print "</table>";
-			print "<table style='width:100%'>\n";
+			print "<table style='width:100%'>";
 
 			$present = 'columns';
 
@@ -563,10 +563,10 @@ function walk_host() {
 					foreach($data[0] as $index => $r) {
 						form_alternate_row('line' . $index, true);
 
-						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>\n";
+						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>";
 
 						if (isset($data[1][$index])) {
-							print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $data[1][$index] . "</td>\n";
+							print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $data[1][$index] . "</td>";
 						}
 
 						form_end_row();
@@ -576,18 +576,18 @@ function walk_host() {
 				foreach($data as $row) {
 					$indexes = array_keys($row);
 					if (sizeof($indexes)) {
-						print "<tr>\n";
+						print "<tr>";
 						foreach($indexes as $col) {
-							print "<th>" . $col . "</th>\n";
+							print "<th>" . $col . "</th>";
 						}
-						print "</tr>\n";
+						print "</tr>";
 					}
 
-					print "<tr>\n";
+					print "<tr>";
 					foreach($row as $data) {
-						print "<td>" . $data . "</td>\n";
+						print "<td>" . $data . "</td>";
 					}
-					print "</tr>\n";
+					print "</tr>";
 				}
 			}
 
@@ -612,23 +612,23 @@ function walk_host() {
 				$odata1 = array();
 			}
 
-			print "<table style='width:100%'><tr><td>\n";
+			print "<table style='width:100%'><tr><td>";
 
-			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $namespace, sizeof($indexes), sizeof($data)) . "</h4>\n";
+			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $namespace, sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
 
-			print "<p>" . __('Showing columns and first one or two rows of data.') . "</p>\n";
+			print "<p>" . __('Showing columns and first one or two rows of data.', 'wmi') . "</p>";
 
 			print "</table>";
-			print "<table style='width:100%'>\n";
+			print "<table style='width:100%'>";
 
 			if (sizeof($odata)) {
 				foreach($odata as $index => $r) {
 					form_alternate_row('line' . $index, true);
 
-					print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>\n";
+					print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>";
 
 					if (sizeof($odata1)) {
-						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $odata1[$index] . "</td>\n";
+						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $odata1[$index] . "</td>";
 					}
 
 					form_end_row();

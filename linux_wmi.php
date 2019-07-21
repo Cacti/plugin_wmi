@@ -141,7 +141,7 @@ class Linux_WMI {
 			array_shift($results);
 			foreach ($results as $r) {
 				if (str_replace(array(' ','(', ')'), '', $r[$i]) == $index) {
-					print "$keyname!" . $r[$k] . "'\n";
+					print "$keyname!" . $r[$k] . "'" . PHP_EOL;
 				}
 			}
 		}
@@ -156,7 +156,7 @@ class Linux_WMI {
 
 			foreach ($results as $r) {
 				/* Indexes should not have spaces in their name so we remove them */
-				print str_replace(array(' ','(', ')'), '', $r[$k]) . '!' . str_replace(array(' ','(', ')'), '', $r[$k]) . "\n";
+				print str_replace(array(' ','(', ')'), '', $r[$k]) . '!' . str_replace(array(' ','(', ')'), '', $r[$k]) . PHP_EOL;
 			}
 		}
 	}

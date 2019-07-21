@@ -68,7 +68,7 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 			array_shift($results);
 			array_shift($results);
 			foreach ($results as $r) {
-				print str_replace(array(' ','(', ')'), '', $r[$k]) . "\n";
+				print str_replace(array(' ','(', ')'), '', $r[$k]) . PHP_EOL;
 			}
 		}
 	} elseif ($cmd == 'query') {

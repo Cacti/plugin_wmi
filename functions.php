@@ -26,8 +26,8 @@ function display_tabs() {
 	global $config;
 
 	/* present a tabbed interface */
-	$tabs['queries']  = array('url' => 'wmi_queries.php',  'name' => __('Queries'));
-	$tabs['accounts'] = array('url' => 'wmi_accounts.php', 'name' => __('Authentication'));
+	$tabs['queries']  = array('url' => 'wmi_queries.php',  'name' => __('Queries', 'wmi'));
+	$tabs['accounts'] = array('url' => 'wmi_accounts.php', 'name' => __('Authentication', 'wmi'));
 
 	/* if they were redirected to the page, let's set that up */
 	if (!isset_request_var('tab')) {
@@ -37,18 +37,18 @@ function display_tabs() {
 	}
 
 	/* draw the tabs */
-	print "<div class='tabs'><nav><ul>\n";
+	print "<div class='tabs'><nav><ul>";
 
 	if (sizeof($tabs)) {
 		foreach ($tabs as $shortname => $tab) {
 			print '<li><a class="tab ' . (($shortname == $current_tab) ? 'selected"':'"') . " href='" . htmlspecialchars($config['url_path'] .
 				'plugins/wmi/' . $tab['url'] . '?' .
 				'tab=' . $shortname) .
-				"'>" . $tab['name'] . "</a></li>\n";
+				"'>" . $tab['name'] . "</a></li>";
 		}
 	}
 
-	print "</ul></nav></div>\n";
+	print "</ul></nav></div>";
 }
 
 function plugin_wmi_query_exists($query) {

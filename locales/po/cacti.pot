@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-19 09:51+0000\n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: functions.php:29 wmi_queries.php:273 wmi_queries.php:389 wmi_tools.php:332
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
 msgid "Queries"
 msgstr ""
 
@@ -29,159 +29,159 @@ msgstr ""
 msgid "WMI Management"
 msgstr ""
 
-#: setup.php:261
+#: setup.php:284
 msgid "WMI Data"
 msgstr ""
 
-#: setup.php:262
+#: setup.php:285
 msgid "WMI Data Query"
 msgstr ""
 
-#: setup.php:266
+#: setup.php:289
 #, php-format
 msgid "%d Minute"
 msgstr ""
 
-#: setup.php:267 setup.php:268 setup.php:269 setup.php:270 setup.php:271
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
 #, php-format
 msgid "%d Minutes"
 msgstr ""
 
-#: setup.php:272
+#: setup.php:295
 #, php-format
 msgid "%d Hour"
 msgstr ""
 
-#: setup.php:273 setup.php:274
+#: setup.php:296 setup.php:297
 #, php-format
 msgid "%d Hours"
 msgstr ""
 
-#: setup.php:275
+#: setup.php:298
 #, php-format
 msgid "%d Day"
 msgstr ""
 
-#: setup.php:280
+#: setup.php:303
 msgid "Utilities"
 msgstr ""
 
-#: setup.php:280 wmi_tools.php:293
+#: setup.php:303 wmi_tools.php:316
 msgid "WMI Query Tool"
 msgstr ""
 
-#: setup.php:281
+#: setup.php:304
 msgid "Data Collection"
 msgstr ""
 
-#: setup.php:281 setup.php:314 setup.php:328 wmi_queries.php:259
-#: wmi_queries.php:395
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
 msgid "WMI Queries"
 msgstr ""
 
-#: setup.php:293 setup.php:307
+#: setup.php:316 setup.php:330
 msgid "WMI Autenication"
 msgstr ""
 
-#: setup.php:300
+#: setup.php:323
 msgid "WMI Autenication -> Edit"
 msgstr ""
 
-#: setup.php:321
+#: setup.php:344
 msgid "WMI Queries -> Edit"
 msgstr ""
 
-#: setup.php:342
+#: setup.php:365
 msgid "WMI Tools"
 msgstr ""
 
-#: setup.php:381
+#: setup.php:404
 msgid "WMI Account Options"
 msgstr ""
 
-#: setup.php:386
+#: setup.php:409
 msgid "WMI Authentication Account"
 msgstr ""
 
-#: setup.php:387
+#: setup.php:410
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr ""
 
-#: setup.php:401
+#: setup.php:424
 msgid "WMI Settings"
 msgstr ""
 
-#: setup.php:405
+#: setup.php:428
 msgid "Auto Create WMI Queries"
 msgstr ""
 
-#: setup.php:406
+#: setup.php:429
 msgid ""
 "If selected, when running either automation, or when creating/saving a "
 "Device, all WMI Queries associated with the Device Template will be created."
 msgstr ""
 
-#: setup.php:424 setup.php:472
+#: setup.php:447 setup.php:500
 msgid "Associated WMI Queries"
 msgstr ""
 
-#: setup.php:434 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:399
-#: wmi_tools.php:301
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
 msgid "Name"
 msgstr ""
 
-#: setup.php:434
+#: setup.php:462
 msgid "Status"
 msgstr ""
 
-#: setup.php:446
+#: setup.php:474
 msgid "WMI Query Exists"
 msgstr ""
 
-#: setup.php:448
+#: setup.php:476
 msgid "WMI Query Does Not Exist"
 msgstr ""
 
-#: setup.php:465 setup.php:497
+#: setup.php:493 setup.php:525
 msgid "No Associated WMI Queries."
 msgstr ""
 
-#: setup.php:489 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr ""
 
-#: setup.php:514
+#: setup.php:542
 msgid "Add WMI Query"
 msgstr ""
 
-#: setup.php:520 wmi_tools.php:334
+#: setup.php:548 wmi_tools.php:358
 msgid "Add"
 msgstr ""
 
-#: setup.php:520
+#: setup.php:548
 msgid "Add WMI Query to Device Template"
 msgstr ""
 
-#: setup.php:561
+#: setup.php:589
 msgid ""
 "Click 'Continue' to delete the following WMI Queries will be disassociated "
 "from the Device Template."
 msgstr ""
 
-#: setup.php:562
+#: setup.php:590
 #, php-format
 msgid "WMI Query Name: %s"
 msgstr ""
 
-#: setup.php:567 wmi_accounts.php:164 wmi_queries.php:181
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
 msgid "Cancel"
 msgstr ""
 
-#: setup.php:568 wmi_accounts.php:156 wmi_queries.php:181
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
 msgid "Continue"
 msgstr ""
 
-#: setup.php:568
+#: setup.php:596
 msgid "Remove WMI Query"
 msgstr ""
 
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Give this account a meaningful name that will be displayed."
 msgstr ""
 
-#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:314
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
 msgid "Username"
 msgstr ""
 
@@ -199,7 +199,7 @@ msgid ""
 "domain if necessary."
 msgstr ""
 
-#: wmi_accounts.php:61 wmi_tools.php:317
+#: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
 msgstr ""
 
@@ -228,7 +228,7 @@ msgstr ""
 msgid "WMI Accounts"
 msgstr ""
 
-#: wmi_accounts.php:246 wmi_queries.php:267
+#: wmi_accounts.php:246 wmi_queries.php:270
 msgid "Search"
 msgstr ""
 
@@ -236,21 +236,21 @@ msgstr ""
 msgid "Accounts"
 msgstr ""
 
-#: wmi_accounts.php:256 wmi_queries.php:277
+#: wmi_accounts.php:256 wmi_queries.php:280
 msgid "Default"
 msgstr ""
 
-#: wmi_accounts.php:270 wmi_queries.php:291
+#: wmi_accounts.php:270 wmi_queries.php:297
 msgctxt "filter: use"
 msgid "Go"
 msgstr ""
 
-#: wmi_accounts.php:273 wmi_queries.php:294
+#: wmi_accounts.php:273 wmi_queries.php:300
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr ""
 
-#: wmi_accounts.php:373 wmi_tools.php:245
+#: wmi_accounts.php:373 wmi_tools.php:268
 msgid "Description"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 msgid "Should this Query be enabled on hosts using it"
 msgstr ""
 
-#: wmi_queries.php:68 wmi_queries.php:401 wmi_tools.php:320
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
 msgid "Namespace"
 msgstr ""
 
@@ -292,7 +292,7 @@ msgstr ""
 msgid "The Namespace for this Query."
 msgstr ""
 
-#: wmi_queries.php:75 wmi_tools.php:245
+#: wmi_queries.php:75 wmi_tools.php:268
 msgid "Query"
 msgstr ""
 
@@ -300,7 +300,7 @@ msgstr ""
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr ""
 
-#: wmi_queries.php:84 wmi_queries.php:403 wmi_tools.php:245 wmi_tools.php:326
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
 msgstr ""
 
@@ -311,151 +311,175 @@ msgid ""
 "with a comma."
 msgstr ""
 
-#: wmi_queries.php:171
+#: wmi_queries.php:174
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr ""
 
-#: wmi_queries.php:178
+#: wmi_queries.php:181
 msgid "You must select at least one WMI Query."
 msgstr ""
 
-#: wmi_queries.php:179
+#: wmi_queries.php:182
 msgid "Return"
 msgstr ""
 
-#: wmi_queries.php:181
+#: wmi_queries.php:184
 msgid "Delete WMI Query"
 msgstr ""
 
-#: wmi_queries.php:235
+#: wmi_queries.php:238
 #, php-format
 msgid "Query [edit: %s]"
 msgstr ""
 
-#: wmi_queries.php:237
+#: wmi_queries.php:240
 msgid "Query [new]"
 msgstr ""
 
-#: wmi_queries.php:400 wmi_tools.php:304
+#: wmi_queries.php:294
+msgid "Has Graphs"
+msgstr ""
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr ""
+
+#: wmi_queries.php:411 wmi_tools.php:327
 msgid "Frequency"
 msgstr ""
 
-#: wmi_queries.php:402
+#: wmi_queries.php:413
 msgid "WQL Query"
 msgstr ""
 
-#: wmi_tools.php:108
-msgid "Get System Processes"
-msgstr ""
-
-#: wmi_tools.php:114
+#: wmi_tools.php:107
 msgid "Get Computer Information"
 msgstr ""
 
-#: wmi_tools.php:120
+#: wmi_tools.php:113
+msgid "Get System Processes"
+msgstr ""
+
+#: wmi_tools.php:119
+msgid "Get Installed Software"
+msgstr ""
+
+#: wmi_tools.php:125
 msgid "Get Operating System Information"
 msgstr ""
 
-#: wmi_tools.php:126
+#: wmi_tools.php:131
+msgid "Get OD Service Information"
+msgstr ""
+
+#: wmi_tools.php:137
 msgid "Get System Enclosure Information"
 msgstr ""
 
-#: wmi_tools.php:132
+#: wmi_tools.php:143
 msgid "Get System Physical Memory Information"
 msgstr ""
 
-#: wmi_tools.php:138
+#: wmi_tools.php:149
 msgid "Get Memory Device Details"
 msgstr ""
 
-#: wmi_tools.php:144
+#: wmi_tools.php:155
 msgid "Get System BIOS Information"
 msgstr ""
 
-#: wmi_tools.php:150
+#: wmi_tools.php:161
 msgid "Get System Baseboard Information"
 msgstr ""
 
-#: wmi_tools.php:156
+#: wmi_tools.php:167
 msgid "Get Processor Information"
 msgstr ""
 
-#: wmi_tools.php:162
+#: wmi_tools.php:173
 msgid "Ping a Known Address from Computer"
 msgstr ""
 
-#: wmi_tools.php:168
+#: wmi_tools.php:179
+msgid "Get Row System OS Performance Data"
+msgstr ""
+
+#: wmi_tools.php:185
+msgid "Get Formatted System OS Performance Data"
+msgstr ""
+
+#: wmi_tools.php:191
 msgid "Get Formatted Phsycal Disk Performance Data"
 msgstr ""
 
-#: wmi_tools.php:174
+#: wmi_tools.php:197
 msgid "Get Raw Phsycal Disk Performance Data"
 msgstr ""
 
-#: wmi_tools.php:180
+#: wmi_tools.php:203
 msgid "Get Logical Disk Information"
 msgstr ""
 
-#: wmi_tools.php:186
+#: wmi_tools.php:209
 msgid "Get Formatted Logical Disk Performance Data"
 msgstr ""
 
-#: wmi_tools.php:192
+#: wmi_tools.php:215
 msgid "Get Raw Logical Disk Performance Data"
 msgstr ""
 
-#: wmi_tools.php:198
+#: wmi_tools.php:221
 msgid "Get Formatted CPU Performance Data"
 msgstr ""
 
-#: wmi_tools.php:204
+#: wmi_tools.php:227
 msgid "Get Raw CPU Performance Data"
 msgstr ""
 
-#: wmi_tools.php:210
+#: wmi_tools.php:233
 msgid "Get Raw Memory Performance Data"
 msgstr ""
 
-#: wmi_tools.php:216
+#: wmi_tools.php:239
 msgid "Get Formatted Network Performance Data"
 msgstr ""
 
-#: wmi_tools.php:222
+#: wmi_tools.php:245
 msgid "Get Raw Network Performance Data"
 msgstr ""
 
-#: wmi_tools.php:228
+#: wmi_tools.php:251
 msgid "Get Network Adapter Information"
 msgstr ""
 
-#: wmi_tools.php:234
+#: wmi_tools.php:257
 msgid "Get Computer Asset Information"
 msgstr ""
 
-#: wmi_tools.php:245
+#: wmi_tools.php:268
 msgid "Name Space"
 msgstr ""
 
-#: wmi_tools.php:261 wmi_tools.php:283
+#: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
 msgstr ""
 
-#: wmi_tools.php:277
+#: wmi_tools.php:300
 #, php-format
 msgid ""
 "If you need assistance on error codes, use google, or here use the following "
 "Link %s."
 msgstr ""
 
-#: wmi_tools.php:277
+#: wmi_tools.php:300
 msgid "Microsoft Common WBEM Errors"
 msgstr ""
 
-#: wmi_tools.php:278
+#: wmi_tools.php:301
 msgid "Distributed COM Setup"
 msgstr ""
 
-#: wmi_tools.php:278
+#: wmi_tools.php:301
 #, php-format
 msgid ""
 "For WMI to work the user account you are using must be granted Distributed "
@@ -464,67 +488,71 @@ msgid ""
 "procedure at the following Link %s."
 msgstr ""
 
-#: wmi_tools.php:311
+#: wmi_tools.php:334
 msgid "Host"
 msgstr ""
 
-#: wmi_tools.php:323
+#: wmi_tools.php:346
 msgid "Command"
 msgstr ""
 
-#: wmi_tools.php:330
+#: wmi_tools.php:352
+msgid "More Class Information @Microsoft"
+msgstr ""
+
+#: wmi_tools.php:354
 msgid "Run"
 msgstr ""
 
-#: wmi_tools.php:330
+#: wmi_tools.php:354
 msgid "Run the WMI Query against the Device"
 msgstr ""
 
-#: wmi_tools.php:331
+#: wmi_tools.php:355
 msgid "Clear"
 msgstr ""
 
-#: wmi_tools.php:331
+#: wmi_tools.php:355
 msgid "Clear the results panel."
 msgstr ""
 
-#: wmi_tools.php:332
+#: wmi_tools.php:356
 msgid "Pick from a list of common queries."
 msgstr ""
 
-#: wmi_tools.php:333
+#: wmi_tools.php:357
 msgid "Get some help on setting up WMI"
 msgstr ""
 
-#: wmi_tools.php:333
+#: wmi_tools.php:357
 msgid "Help"
 msgstr ""
 
-#: wmi_tools.php:334
+#: wmi_tools.php:358
 msgid "Create a new WMI Query from the existing Query."
 msgstr ""
 
-#: wmi_tools.php:345
+#: wmi_tools.php:369
 msgid "Query Results"
 msgstr ""
 
-#: wmi_tools.php:374
+#: wmi_tools.php:398
 msgid "Common Queries (Click to Select)"
 msgstr ""
 
-#: wmi_tools.php:403
+#: wmi_tools.php:427
 msgid "WMI Setup Assistance"
 msgstr ""
 
-#: wmi_tools.php:498
+#: wmi_tools.php:522
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr ""
 
-#: wmi_tools.php:528 wmi_tools.php:593
+#: wmi_tools.php:552 wmi_tools.php:617
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr ""
 
-#: wmi_tools.php:530 wmi_tools.php:595
+#: wmi_tools.php:554 wmi_tools.php:619
 msgid "Showing columns and first one or two rows of data."
 msgstr ""

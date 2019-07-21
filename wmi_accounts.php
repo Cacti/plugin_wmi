@@ -29,7 +29,7 @@ include_once($config['base_path'] . '/plugins/wmi/functions.php');
 include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
 
 $account_actions = array(
-	1 => __('Delete')
+	1 => __('Delete', 'wmi')
 );
 
 set_default_action();
@@ -44,22 +44,22 @@ if (!isset_request_var('tab')) {
 $account_edit = array(
 	'name' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Name'),
-		'description' => __('Give this account a meaningful name that will be displayed.'),
+		'friendly_name' => __('Name', 'wmi'),
+		'description' => __('Give this account a meaningful name that will be displayed.', 'wmi'),
 		'value' => '|arg1:name|',
 		'max_length' => '64',
 		),
 	'username' => array(
 		'method' => 'textbox',
-		'friendly_name' => __('Username'),
-		'description' => __('The username that will be used for authentication.  Please also include the domain if necessary.'),
+		'friendly_name' => __('Username', 'wmi'),
+		'description' => __('The username that will be used for authentication.  Please also include the domain if necessary.', 'wmi'),
 		'value' => '|arg1:username|',
 		'max_length' => '64',
 		),
 	'password' => array(
 		'method' => 'textbox_password',
-		'friendly_name' => __('Password'),
-		'description' => __('The password used for authentication.'),
+		'friendly_name' => __('Password', 'wmi'),
+		'description' => __('The password used for authentication.', 'wmi'),
 		'value' => '|arg1:password|',
 		'default' => '',
 		'max_length' => '64',
@@ -143,17 +143,17 @@ function actions_accounts() {
 	if (get_nfilter_request_var('drp_action') == '1') { /* Delete */
 		print "<tr>
 			<td colspan='2' class='textArea'>
-				<p>" . __('Press \'Continue\' to delete the following accounts.') . "</p>
+				<p>" . __('Press \'Continue\' to delete the following accounts.', 'wmi') . "</p>
 				<ul>" . $account_list . "</ul>
 			</td>
-		</tr>\n";
+		</tr>";
 	}
 
 	if (!isset($account_array)) {
-		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one account.') . "</span></td></tr>\n";
+		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one account.', 'wmi') . "</span></td></tr>";
 		$save_html = "";
 	}else{
-		$save_html = "<input type='submit' value='" . __('Continue') . "'>";
+		$save_html = "<input type='submit' value='" . __('Continue', 'wmi') . "'>";
 	}
 
 	print "<tr>
@@ -161,10 +161,10 @@ function actions_accounts() {
 			<input type='hidden' name='action' value='actions'>
 			<input type='hidden' name='selected_items' value='" . (isset($account_array) ? serialize($account_array) : '') . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
-			<input type='button' value='" . __('Cancel') . "' onClick='cactiReturnTo()'>
+			<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>
 			$save_html
 		</td>
-	</tr>\n";
+	</tr>";
 
 	html_end_box();
 
@@ -212,9 +212,9 @@ function edit_accounts() {
 		$account = db_fetch_row_prepared('SELECT * FROM wmi_user_accounts WHERE id = ?', array(get_request_var('id')));
 
 		$account['password'] = '';
-		$header_label = __('Account [edit: %s]', $account['name']);
+		$header_label = __('Account [edit: %s]', $account['name'], 'wmi');
 	}else{
-		$header_label = __('Account [new]');
+		$header_label = __('Account [new]', 'wmi');
 	}
 
 	form_start('wmi_accounts.php?tab=accounts', 'chk');
@@ -235,7 +235,7 @@ function edit_accounts() {
 function account_filter() {
 	global $item_rows;
 
-	html_start_box( __('WMI Accounts'), '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
+	html_start_box( __('WMI Accounts', 'wmi'), '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
 	?>
 	<tr class='even'>
 		<td>
@@ -243,21 +243,21 @@ function account_filter() {
 			<table class='filterTable'>
 				<tr>
 					<td>
-						<?php print __('Search');?>
+						<?php print __('Search', 'wmi');?>
 					</td>
 					<td>
-						<input type='text' id='filter' size='25' value='<?php print get_request_var('filter');?>'>
+						<input type='text' id='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
 					</td>
 					<td>
-						<?php print __('Accounts');?>
+						<?php print __('Accounts', 'wmi');?>
 					</td>
 					<td>
 						<select id='rows' onChange='applyFilter()'>
-							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default');?></option>
+							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default', 'wmi');?></option>
 							<?php
 							if (sizeof($item_rows)) {
 							foreach ($item_rows as $key => $value) {
-								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>\n";
+								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
 							}
 							}
 							?>
@@ -267,10 +267,10 @@ function account_filter() {
                         <input type='checkbox' id='has_graphs' <?php print (get_request_var('has_graphs') == 'true' ? 'checked':'');?>>
                     </td>
 					<td>
-						<input type='button' Value='<?php print __x('filter: use', 'Go');?>' id='refresh'>
+						<input type='button' Value='<?php print __x('filter: use', 'Go', 'wmi');?>' id='refresh'>
 					</td>
 					<td>
-						<input type='button' Value='<?php print __x('filter: reset', 'Clear');?>' id='clear'>
+						<input type='button' Value='<?php print __x('filter: reset', 'Clear', 'wmi');?>' id='clear'>
 					</td>
 				</tr>
 			</table>
@@ -362,7 +362,7 @@ function show_accounts() {
 
 	account_filter();
 
-    $nav = html_nav_bar('wmi_accounts.php?tab=accounts', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Accounts'), 'page', 'main');
+    $nav = html_nav_bar('wmi_accounts.php?tab=accounts', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Accounts', 'wmi'), 'page', 'main');
 
     form_start('wmi_accounts.php?tab=accounts', 'chk');
 
@@ -370,7 +370,7 @@ function show_accounts() {
 
     html_start_box('', '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
 
-	html_header_checkbox(array(__('Description'), __('Username'), __('Devices')));
+	html_header_checkbox(array(__('Description', 'wmi'), __('Username', 'wmi'), __('Devices', 'wmi')));
 
 	if (sizeof($accounts)) {
 		foreach ($accounts as $row) {
@@ -386,7 +386,7 @@ function show_accounts() {
 			form_end_row();
 		}
 	}else{
-		print "<tr class='tableRow'><td colspan='4'><em>" . __('No Accounts Found') . "</em></td></tr>";
+		print "<tr class='tableRow'><td colspan='4'><em>" . __('No Accounts Found', 'wmi') . "</em></td></tr>";
 	}
 
 	html_end_box(false);
