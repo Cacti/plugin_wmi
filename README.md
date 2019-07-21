@@ -43,6 +43,11 @@ scalability to Cacti when gathering data from WMI compatible device's.
 
 ## ChangeLog
 
+--- 1.1 ---
+
+* issue#1: PHP and SQL backtrace when deleting stored WMI queries or credentials
+* issue#2: Issues with passwords containing unescaped special chars
+
 --- 1.0 ---
 
 * feature: Initial Support for Cacti 1.0

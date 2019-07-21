@@ -130,6 +130,9 @@ function actions_queries() {
 					input_validate_input_number($selected_items[$i]);
 					/* ==================================================== */
 
+					db_execute_prepared('DELETE FROM host_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
+					db_execute_prepared('DELETE FROM host_wmi_cache WHERE wmi_query_id = ?', array($selected_items[$i]));
+					db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
 					db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', array($selected_items[$i]));
 				}
 			}
@@ -161,15 +164,15 @@ function actions_queries() {
 
 	top_header();
 
-	html_start_box($ds_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
-
 	form_start('wmi_queries.php');
+
+	html_start_box($ds_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
 
 	if (get_request_var('drp_action') == '1') { /* Delete */
 		print "<tr>
 			<td colspan='2' class='textArea'>
 				<p>" . __('Click \'Continue\' to Delete the following WMI Queries.') . "</p>
-				<ul>$query_list</ul>
+				<ul class='itemlist'>$query_list</ul>
 				</td>
 		</tr>\n";
 	}

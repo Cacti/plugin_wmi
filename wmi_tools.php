@@ -61,10 +61,9 @@ function process_request_vars() {
 			'options' => array('options' => 'sanitize_search_string')
 		),
 		'password' => array(
-			'filter' => FILTER_CALLBACK,
+			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
 		),
 		'namespace' => array(
 			'filter' => FILTER_CALLBACK,
@@ -299,7 +298,7 @@ function show_tools() {
 	print "<table width='100%'>\n";
 	print "<tr>\n";
 	print "<td valign='center' width='50'>" . __('Name') . "</td>\n";
-	print "<td><input type='text' size='40' id='name' value='" . get_request_var('name') . "'></td>\n";
+	print "<td><input type='text' size='40' id='name' value='" . html_escape_request_var('name') . "'></td>\n";
 	print "</tr><tr>\n";
 	print "<td valign='center' width='50'>" . __('Frequency') . "</td>\n";
 	print "<td><select id='frequency'>\n";
@@ -309,22 +308,22 @@ function show_tools() {
 	print "</select></td>\n";
 	print "</tr><tr>\n";
 	print "<td valign='center' width='50'>" . __('Host') . "</td>\n";
-	print "<td><input type='text' size='40' id='host' value='" . get_request_var('host') . "'></td>\n";
+	print "<td><input type='text' size='40' id='host' value='" . html_escape_request_var('host') . "'></td>\n";
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Username') . "</td>";
-	print "<td><input type='text' size='30' id='username' value='" . get_request_var('username') . "'></td>";
+	print "<td><input type='text' size='30' id='username' value='" . html_escape_request_var('username') . "'></td>";
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Password') . "</td>\n";
-	print "<td><input type='password' size='30' id='password' value='" . get_request_var('password') . "'></td>\n";
+	print "<td><input type='password' size='30' id='password' value='" . html_escape_request_var('password') . "'></td>\n";
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Namespace') . "</td>\n";
-	print "<td><input type='text' size='30' id='namespace' value='" . get_request_var('namespace') . "'></td>\n";
+	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>\n";
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Command') . "</td>\n";
-	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command' value='" . get_request_var('command') . "'></textarea></td>\n";
+	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command' value='" . html_escape_request_var('command') . "'></textarea></td>\n";
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Primary Key') . "</td>\n";
-	print "<td><input type='text' size='30' id='keyname' value='" . get_request_var('keyname') . "'></td>\n";
+	print "<td><input type='text' size='30' id='keyname' value='" . html_escape_request_var('keyname') . "'></td>\n";
 	print "</tr>\n";
 	print "<tr><td colspan='2'>\n";
 	print "<input type='submit' value='" . __('Run') . "' id='submit' title='" . __('Run the WMI Query against the Device') . "'>\n";
