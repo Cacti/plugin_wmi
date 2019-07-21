@@ -1,4 +1,4 @@
-# wmi
+# Cacti WMI Plugin for Windows Devices
 
 The WMI Plugin provides data collection services for devices that support the
 WMI protocol.  It operates asyncrhonously to the Cacti data collection and
@@ -6,6 +6,10 @@ stores the resulting information into cache tables.  These cache tables can then
 be used to generate graphs, thresholds and alerts.  It relies on the 'wmic'
 command in Linux, and WMI services via Microsofts COM protocol from Windows
 Cacti servers.
+
+### WARNING: 
+This plugin is NOT fully functional.  It should not be used on production
+systems.  Use at your own risk!
 
 ## Installation
 

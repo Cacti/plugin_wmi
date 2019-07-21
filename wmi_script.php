@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2007-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2019 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -22,17 +22,7 @@
  +-------------------------------------------------------------------------+
 */
 
-/* do NOT run this script through a web browser */
-if (!isset($_SERVER['argv'][0]) || isset($_SERVER['REQUEST_METHOD'])) {
-   die('<br><strong>This script is only meant to run at the command line.</strong>');
-}
-
-$no_http_headers = true;
-
-/* display No errors */
-error_reporting(E_ERROR);
-
-include_once(dirname(__FILE__) . '/../global/config.php');
+include_once(dirname(__FILE__) . '/../global/cli_check.php');
 include_once($config['base_path'] . '/lib/snmp.php');
 
 if (!isset($called_by_script_server)) {

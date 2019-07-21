@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2007-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2019 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -49,6 +49,7 @@ function plugin_wmi_uninstall() {
 	include_once($config['base_path'] . '/lib/api_data_source.php');
 	include_once($config['base_path'] . '/lib/api_graph.php');
 
+	db_execute('DROP TABLE IF EXISTS `wmi_processes`');
 	db_execute('DROP TABLE IF EXISTS `wmi_user_accounts`');
 	db_execute('DROP TABLE IF EXISTS `wmi_wql_queries`');
 	db_execute('DROP TABLE IF EXISTS `host_template_wmi_query`');
@@ -110,6 +111,17 @@ function plugin_wmi_upgrade() {
 }
 
 function plugin_wmi_setup_tables() {
+	api_plugin_db_add_column('wmi', 'host',
+		array(
+			'name'     => 'wmi_account',
+			'type'     => 'int(10)',
+			'unsigned' => true,
+			'NULL'     => false,
+			'default'  => '0',
+			'after'    => 'disabled'
+		)
+	);
+
 	db_execute("CREATE TABLE IF NOT EXISTS `wmi_user_accounts` (
 		`id` int(11) UNSIGNED NOT NULL auto_increment,
 		`name` varchar(64) NOT NULL,
@@ -137,6 +149,9 @@ function plugin_wmi_setup_tables() {
 		`wmi_query_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 		`sort_field` varchar(50) NOT NULL DEFAULT '',
 		`title_format` varchar(50) NOT NULL DEFAULT '',
+		`last_started` timestamp NOT NULL DEFAULT '0000-00-00',
+		`last_runtime` double NOT NULL DEFAULT '0.00',
+		`last_failed` timestamp NOT NULL DEFAULT '0000-00-00',
 		PRIMARY KEY (`host_id`,`wmi_query_id`))
 		ENGINE=InnoDB
 		COMMENT='Holds WMI Data Queries'");
@@ -161,7 +176,7 @@ function plugin_wmi_setup_tables() {
 		`host_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 		`wmi_query_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
 		`field_name` varchar(50) NOT NULL DEFAULT '',
-		`field_value` varchar(512) DEFAULT NULL,
+		`field_value` varchar(4096) DEFAULT NULL,
 		`wmi_index` varchar(255) NOT NULL DEFAULT '',
 		`present` tinyint(4) NOT NULL DEFAULT '1',
 		`last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -175,6 +190,14 @@ function plugin_wmi_setup_tables() {
 		KEY `last_updated` (`last_updated`))
 		ENGINE=InnoDB
 		COMMENT='Holds Device WMI Information'");
+
+	db_execute("CREATE TABLE IF NOT EXISTS `wmi_processes` (
+		`pid` int(10) unsigned NOT NULL,
+		`taskid` int(10) unsigned NOT NULL,
+		`started` timestamp NOT NULL default CURRENT_TIMESTAMP,
+		PRIMARY KEY  (`pid`))
+		ENGINE=MEMORY
+		COMMENT='Running wmi collector processes';");
 
 	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
 	if (!$exists) {
@@ -226,8 +249,6 @@ function plugin_wmi_setup_tables() {
 				VALUES ('02cd18a75a17e0a7d4ca28bc224630e0',$id,'Output Value','output','out','on',0,'','','')");
 		}
 	}
-
-	//	db_execute("INSERT INTO `wmi_wql_queries` (`id`, `name`, `queryname`, `indexkey`, `querykeys`, `queryclass`) VALUES (1, 'Exchange Messages', 'exchangemessages', 'Name', 'MessagesDelivered,MessagesSent', 'Win32_PerfRawData_MSExchangeIS_MSExchangeISMailbox')");
 }
 
 function plugin_wmi_version() {
@@ -240,10 +261,9 @@ function plugin_wmi_version() {
 function wmi_poller_bottom() {
 	global $config;
 
-    /* graph export */
 	if ($config['poller_id'] == 1) {
 		$command_string = read_config_option('path_php_binary');
-		$extra_args = '-q "' . $config['base_path'] . '/plugins/wmi/poller_wmi.php"';
+		$extra_args     = '-q ' . cacti_escapeshellcmd($config['base_path'] . '/plugins/wmi/poller_wmi.php') . ' -M';
 		exec_background($command_string, $extra_args);
 	}
 }
@@ -426,13 +446,18 @@ function wmi_api_device_save($save) {
 function wmi_device_edit_pre_bottom() {
 	html_start_box(__('Associated WMI Queries'), '100%', '', '3', 'center', '');
 
-	$host_template_id = db_fetch_cell_prepared('SELECT host_template_id FROM host WHERE id = ?' ,array(get_request_var('id')));
+	$host_template_id = db_fetch_cell_prepared('SELECT host_template_id
+		FROM host
+		WHERE id = ?',
+		array(get_request_var('id')));
 
 	$wmi_queries = db_fetch_assoc_prepared('SELECT wwq.id, wwq.name
 		FROM wmi_wql_queries AS wwq
 		LEFT JOIN host_template_wmi_query AS htwq
 		ON wwq.id=htwq.wmi_query_id
-		WHERE htwq.host_template_id = ? ORDER BY name', array($host_template_id));
+		WHERE htwq.host_template_id = ?
+		ORDER BY name',
+		array($host_template_id));
 
 	html_header(array(__('Name'), __('Status')));
 

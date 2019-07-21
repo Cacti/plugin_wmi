@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2007-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2019 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -219,12 +219,12 @@ class Linux_WMI {
 			return false;
 		}
 
-		return $this->binary . 
-			' --delimiter=' . cacti_escapeshellarg($this->separator) . 
-			' --user=' . $this->username . 
-			' --password=' . $this->password . 
-			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') . 
-			' //' . trim($this->hostname) . 
+		return $this->binary .
+			' --delimiter=' . cacti_escapeshellarg($this->separator) .
+			' --user=' . $this->username .
+			' --password=' . $this->password .
+			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
+			' //' . trim($this->hostname) .
 			' ' . $this->command;
 	}
 
@@ -267,11 +267,11 @@ class Linux_WMI {
 			return false;
 		}
 
-		$info = db_fetch_row_prepared("SELECT pwa.* 
+		$info = db_fetch_row_prepared("SELECT pwa.*
 			FROM wmi_user_accounts AS pwa
 			INNER JOIN host AS h
-			WHERE pwa.id = h.wmi_account 
-			AND h.id = ?", 
+			WHERE pwa.id = h.wmi_account
+			AND h.id = ?",
 			array($this->hostid));
 
 		if (isset($info['username'])) {
@@ -282,7 +282,7 @@ class Linux_WMI {
 
 		$this->error = 'ERROR: WMI Authenication account not found!';
 
-		return false;		
+		return false;
 	}
 
 	function decode($info) {

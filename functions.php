@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2007-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2019 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -320,4 +320,159 @@ function plugin_wmi_create_resource_xml($id) {
 	return $data;
 }
 
+function run_store_wmi_query($host_id, $wmi_query_id) {
+	global $config;
 
+	$host_info = db_fetch_row_prepared('SELECT *
+		FROM host
+		WHERE id = ?',
+		array($host_id));
+
+	// Prepared old entries for removal
+	db_execute_prepared('UPDATE host_wmi_cache
+		SET present = 0
+		WHERE host_id = ?
+		AND wmi_query_id = ?',
+		array($host_id, $wmi_query_id));
+
+	if (cacti_sizeof($host_info)) {
+		$auth_info = db_fetch_row_prepared('SELECT *
+			FROM wmi_user_accounts
+			WHERE id = ?',
+			array($host_info['wmi_account']));
+
+		$wmi_query = db_fetch_row_prepared('SELECT *
+			FROM wmi_wql_queries
+			WHERE id = ?',
+			array($wmi_query_id));
+
+		if (!cacti_sizeof($auth_info)) {
+			return false;
+		}
+
+		if (!cacti_sizeof($wmi_query)) {
+			return false;
+		}
+
+		// Set key variables
+		$host      = $host_info['hostname'];
+		$username  = $auth_info['username'];
+		$password  = $auth_info['password'];
+		$namespace = $wmi_query['namespace'];
+		$command   = $wmi_query['query'];
+
+		// Initialize variables
+		$cur_time  = date('Y-m-d H:i:s');
+		$data      = array();
+		$indexes   = array();
+
+		if ($config['cacti_server_os'] != 'win32') {
+			include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+
+			$wmi = new Linux_WMI();
+			$wmi->hostname    = $host;
+			$wmi->username    = $username;
+			$wmi->password    = $wmi->decode($password);
+			$wmi->querynspace = $namespace;
+			$wmi->command     = $command;
+			$wmi->binary      = read_config_option('path_wmi');
+
+			if ($wmi->binary == '') {
+				$wmi->binary = '/usr/bin/wmic';
+			}
+
+			if ($wmi->querynspace == '') {
+				$wmi->querynspace = 'root\\\\CIMV2';
+			}
+
+			if ($wmi->fetch() !== false) {
+				$indexes = $wmi->fetch_indexes();
+				$data    = $wmi->fetch_data();
+			} else {
+				$indexes = array();
+				$data    = array();
+			}
+		} else {
+			// Windows version
+			$wmi  = new COM('WbemScripting.SWwebLocator');
+			$wmic = $wmi->ConnectServer($host, $namespace, $username, $password);
+			$wmic->Security_->ImpersonationLevel = 3;
+			$data = $wmic->ExecQuery($command);
+
+			if (sizeof($data)) {
+				$indexes = array_keys($data[0]);
+			}
+		}
+
+		if (sizeof($data)) {
+			$sql = array();
+
+			$pk_index = -1;
+			if (sizeof($indexes)) {
+				foreach($indexes as $index => $value) {
+					if ($value == $wmi_query['primary_key']) {
+						$pk_index = $index;
+						break;
+					}
+				}
+			}
+
+			if (sizeof($data)) {
+				foreach($data as $row) {
+					$pk = isset($row[$pk_index]) ? $row[$pk_index]:'N/A';
+
+					foreach($row as $index => $value) {
+						if ($indexes[$index] != 'OEMLogoBitmap') {
+							$sql[] = '(' .
+								$host_id                  . ',' .
+								$wmi_query_id             . ',' .
+								db_qstr($indexes[$index]) . ',' .
+								db_qstr($value)           . ',' .
+								db_qstr($pk)              . ',' .
+								'1'                       . ',' .
+								db_qstr($cur_time)        . ')';
+						} else {
+							$sql[] = '(' .
+								$host_id                  . ',' .
+								$wmi_query_id             . ',' .
+								db_qstr($indexes[$index]) . ',' .
+								db_qstr('Not Stored')     . ',' .
+								db_qstr($pk)              . ',' .
+								'1'                       . ',' .
+								db_qstr($cur_time)        . ')';
+						}
+					}
+				}
+			}
+
+			$parts = array_chunk($sql, 200);
+
+			foreach($parts as $part) {
+				db_execute('INSERT INTO host_wmi_cache
+					(host_id, wmi_query_id, field_name, field_value, wmi_index, present, last_updated)
+					VALUES ' . implode(', ', $part) . '
+					ON DUPLICATE KEY UPDATE
+						field_value=VALUES(field_value),
+						last_updated=VALUES(last_updated),
+						present=1');
+			}
+
+			return true;
+		} else {
+			if ($config['cacti_server_os'] != 'win32') {
+				print $wmi->error;
+			} else {
+				print 'WMI Error';
+			}
+
+			return false;
+		}
+	}
+
+	// Remove old entries
+	db_execute_prepared('DELETE FROM host_wmi_cache
+		WHERE present = 0
+		AND host_id = ?
+		AND wmi_query_id = ?',
+		array($host_id, $wmi_query_id));
+}

@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2007-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2019 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -125,9 +125,9 @@ function actions_accounts() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$account_list .= '<li>' . db_fetch_cell_prepared('SELECT name 
-				FROM wmi_user_accounts 
-				WHERE id = ?', 
+			$account_list .= '<li>' . db_fetch_cell_prepared('SELECT name
+				FROM wmi_user_accounts
+				WHERE id = ?',
 				array($matches[1])) . '</li>';
 
 			$account_array[] = $matches[1];
@@ -179,7 +179,7 @@ function save_accounts() {
 	if (get_nfilter_request_var('password') == get_nfilter_request_var('password_confirm')) {
 		if (get_nfilter_request_var('password') != '') {
 			$wmi = new Linux_WMI();
-			
+
 			$save['password'] = $wmi->encode(get_nfilter_request_var('password'));
 		} else if ($save['id'] < 1) {
 			raise_message(4);
@@ -374,8 +374,8 @@ function show_accounts() {
 
 	if (sizeof($accounts)) {
 		foreach ($accounts as $row) {
-			$count = db_fetch_cell_prepared("SELECT COUNT(wmi_account) 
-				FROM host 
+			$count = db_fetch_cell_prepared("SELECT COUNT(wmi_account)
+				FROM host
 				WHERE wmi_account = ?", array($row['id']));
 
 			form_alternate_row('line' . $row['id'], false);
