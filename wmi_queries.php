@@ -389,7 +389,11 @@ function show_queries() {
 
 	query_filter();
 
-	$queries = db_fetch_assoc('SELECT * FROM wmi_wql_queries LIMIT ' . ($rows*(get_request_var('page')-1)) . ", " . $rows);
+	$queries = db_fetch_assoc('SELECT *
+		FROM wmi_wql_queries
+		ORDER BY name
+		LIMIT ' . ($rows*(get_request_var('page')-1)) . ", " . $rows);
+
 	$total_rows = sizeof($queries);
 
 	$nav = html_nav_bar('wmi_queries.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Queries'), 'page', 'main');
