@@ -103,22 +103,34 @@ function process_request_vars() {
 function common_queries_panel() {
 	$common = array(
 		array(
-			'key' => 'ProcessId',
-			'tip' => __('Get System Processes'),
-			'namespace' => 'root\\\\CIMV2',
-			'query' => 'SELECT * FROM Win32_Process'
-		),
-		array(
 			'key' => 'None',
 			'tip' => __('Get Computer Information'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_ComputerSystem'
 		),
 		array(
+			'key' => 'ProcessId',
+			'tip' => __('Get System Processes'),
+			'namespace' => 'root\\\\CIMV2',
+			'query' => 'SELECT * FROM Win32_Process'
+		),
+		array(
+			'key' => 'Name',
+			'tip' => __('Get Installed Software'),
+			'namespace' => 'root\\\\CIMV2',
+			'query' => 'SELECT * FROM Win32_Product'
+		),
+		array(
 			'key' => 'None',
 			'tip' => __('Get Operating System Information'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_OperatingSystem'
+		),
+		array(
+			'key' => 'Name',
+			'tip' => __('Get OD Service Information'),
+			'namespace' => 'root\\\\CIMV2',
+			'query' => 'SELECT * FROM Win32_Service'
 		),
 		array(
 			'key' => 'None',
@@ -161,6 +173,18 @@ function common_queries_panel() {
 			'tip' => __('Ping a Known Address from Computer'),
 			'namespace' => 'root\\\\CIMV2',
 			'query' => 'SELECT * FROM Win32_PingStatus where Address = "www.google.com"'
+		),
+		array(
+			'key' => 'None',
+			'tip' => __('Get Row System OS Performance Data'),
+			'namespace' => 'root\\\\CIMV2',
+			'query' => 'SELECT * FROM Win32_PerfRawData_PerfOS_System'
+		),
+		array(
+			'key' => 'None',
+			'tip' => __('Get Formatted System OS Performance Data'),
+			'namespace' => 'root\\\\CIMV2',
+			'query' => 'SELECT * FROM Win32_PerfFormattedData_PerfOS_System'
 		),
 		array(
 			'key' => 'Name',
@@ -324,7 +348,8 @@ function show_tools() {
 	print "</tr><tr>\n";
 	print "<td class='nowrap'>" . __('Primary Key') . "</td>\n";
 	print "<td><input type='text' size='30' id='keyname' value='" . html_escape_request_var('keyname') . "'></td>\n";
-	print "</tr>\n";
+	print "</tr><tr>\n";
+	print "<td colspan='2' style='padding:5px 0px;'><a class='hyperLink' target='_new' href='" . html_escape('https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-provider') ."'>" . __('More Class Information @Microsoft', 'wmi') . "</a></td></tr>";
 	print "<tr><td colspan='2'>\n";
 	print "<input type='submit' value='" . __('Run') . "' id='submit' title='" . __('Run the WMI Query against the Device') . "'>\n";
 	print "<input type='button' value='" . __('Clear') . "' id='clear' title='" . __('Clear the results panel.') . "'>\n";
