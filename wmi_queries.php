@@ -291,6 +291,9 @@ function query_filter() {
                         <input type='checkbox' id='has_graphs' <?php print (get_request_var('has_graphs') == 'true' ? 'checked':'');?>>
                     </td>
 					<td>
+						<label for='has_graphs'><?php print __('Has Graphs', 'wmi');?></label>
+					</td>
+					<td>
 						<input type='button' Value='<?php print __x('filter: use', 'Go');?>' id='refresh'>
 					</td>
 					<td>
