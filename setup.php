@@ -187,16 +187,19 @@ function plugin_wmi_setup_tables() {
 
 		if ($id) {
 			db_execute("INSERT INTO `data_input_fields`
-				(hash, name, input_string, type_id)
+				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
 				VALUES ('e45cfa73589b88887725350a728d2ee9',$id,'The WMI Class Name','class','in','',0,'','','')");
 
 			db_execute("INSERT INTO `data_input_fields`
-				(hash, name, input_string, type_id)
+				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
 				VALUES ('c5f782d783edec607f64bea9cccd533c',$id,'The WMI Column Name','column','in','',0,'','','')");
 		}
 	}
 
-	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="42e584b81075f6ad6556e62afc509179"');
+	$exists = db_fetch_cell('SELECT id
+		FROM data_input
+		WHERE hash="42e584b81075f6ad6556e62afc509179"');
+
 	if (!$exists) {
 		$save = array();
 		$save['hash']         = '42e584b81075f6ad6556e62afc509179';
