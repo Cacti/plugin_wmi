@@ -136,15 +136,16 @@ function actions_accounts() {
 
 	top_header();
 
+	form_start('wmi_accounts.php');
+
 	html_start_box($account_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
 
-	form_start('wmi_accounts');
 
 	if (get_nfilter_request_var('drp_action') == '1') { /* Delete */
 		print "<tr>
 			<td colspan='2' class='textArea'>
 				<p>" . __('Press \'Continue\' to delete the following accounts.', 'wmi') . "</p>
-				<ul>" . $account_list . "</ul>
+				<div class='itemlist'><ul>" . $account_list . "</ul></div>
 			</td>
 		</tr>";
 	}

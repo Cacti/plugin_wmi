@@ -172,7 +172,7 @@ function actions_queries() {
 		print "<tr>
 			<td colspan='2' class='textArea'>
 				<p>" . __('Click \'Continue\' to Delete the following WMI Queries.', 'wmi') . "</p>
-				<ul class='itemlist'>$query_list</ul>
+				<div class='itemlist'><ul>$query_list</ul></div>
 				</td>
 		</tr>";
 	}
@@ -280,9 +280,9 @@ function query_filter() {
 							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default', 'wmi');?></option>
 							<?php
 							if (sizeof($item_rows)) {
-							foreach ($item_rows as $key => $value) {
-								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
-							}
+								foreach ($item_rows as $key => $value) {
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
+								}
 							}
 							?>
 						</select>
