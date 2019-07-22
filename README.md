@@ -7,7 +7,8 @@ be used to generate graphs, thresholds and alerts.  It relies on the 'wmic'
 command in Linux, and WMI services via Microsofts COM protocol from Windows
 Cacti servers.
 
-### WARNING: 
+### WARNING: Development in progress
+
 This plugin is NOT fully functional.  It should not be used on production
 systems.  Use at your own risk!
 
