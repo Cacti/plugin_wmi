@@ -1,0 +1,678 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"PO-Revision-Date: 2019-07-21 20:18-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Language: hi_IN\n"
+
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#, fuzzy
+msgid "Queries"
+msgstr "प्रश्नों"
+
+#: functions.php:30
+#, fuzzy
+msgid "Authentication"
+msgstr "प्रमाणीकरण"
+
+#: setup.php:39
+#, fuzzy
+msgid "WMI Management"
+msgstr "WMI प्रबंधन"
+
+#: setup.php:284
+#, fuzzy
+msgid "WMI Data"
+msgstr "WMI डेटा"
+
+#: setup.php:285
+#, fuzzy
+msgid "WMI Data Query"
+msgstr "WMI डेटा क्वेरी"
+
+#: setup.php:289
+#, fuzzy, php-format
+msgid "%d Minute"
+msgstr "% d मिनट"
+
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#, fuzzy, php-format
+msgid "%d Minutes"
+msgstr "% d मिनट"
+
+#: setup.php:295
+#, fuzzy, php-format
+msgid "%d Hour"
+msgstr "% d घंटा"
+
+#: setup.php:296 setup.php:297
+#, fuzzy, php-format
+msgid "%d Hours"
+msgstr "% d घंटे"
+
+#: setup.php:298
+#, fuzzy, php-format
+msgid "%d Day"
+msgstr "% द डे"
+
+#: setup.php:303
+#, fuzzy
+msgid "Utilities"
+msgstr "उपयोगिताएँ"
+
+#: setup.php:303 wmi_tools.php:316
+#, fuzzy
+msgid "WMI Query Tool"
+msgstr "WMI क्वेरी उपकरण"
+
+#: setup.php:304
+#, fuzzy
+msgid "Data Collection"
+msgstr "डेटा संग्रहण"
+
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
+#, fuzzy
+msgid "WMI Queries"
+msgstr "WMI प्रश्न"
+
+#: setup.php:316 setup.php:330
+#, fuzzy
+msgid "WMI Autenication"
+msgstr "डब्ल्यूएमआई ऑटिकेशन"
+
+#: setup.php:323
+#, fuzzy
+msgid "WMI Autenication -> Edit"
+msgstr "डब्लूएमआई स्वैच्छिक -> संपादित करें"
+
+#: setup.php:344
+#, fuzzy
+msgid "WMI Queries -> Edit"
+msgstr "WMI क्वेरीज़ -> संपादित करें"
+
+#: setup.php:365
+#, fuzzy
+msgid "WMI Tools"
+msgstr "WMI उपकरण"
+
+#: setup.php:404
+#, fuzzy
+msgid "WMI Account Options"
+msgstr "WMI खाता विकल्प"
+
+#: setup.php:409
+#, fuzzy
+msgid "WMI Authentication Account"
+msgstr "WMI प्रमाणीकरण खाता"
+
+#: setup.php:410
+#, fuzzy
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr "WMI के माध्यम से प्रमाणीकरण करते समय उपयोग करने के लिए एक खाता चुनें"
+
+#: setup.php:424
+#, fuzzy
+msgid "WMI Settings"
+msgstr "WMI सेटिंग्स"
+
+#: setup.php:428
+#, fuzzy
+msgid "Auto Create WMI Queries"
+msgstr "ऑटो WMI क्वेरी बनाएँ"
+
+#: setup.php:429
+#, fuzzy
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"यदि चयनित है, तो या तो स्वचालन चलाते समय, या उपकरण बनाते / सहेजते समय, डिवाइस "
+"टेम्पलेट से जुड़ी सभी WMI क्वेरीज़ बनाई जाएंगी।"
+
+#: setup.php:447 setup.php:500
+#, fuzzy
+msgid "Associated WMI Queries"
+msgstr "एसोसिएटेड WMI क्वेरीज़"
+
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
+msgid "Name"
+msgstr "नाम"
+
+#: setup.php:462
+msgid "Status"
+msgstr "ऑर्डर स्थिति"
+
+#: setup.php:474
+#, fuzzy
+msgid "WMI Query Exists"
+msgstr "WMI क्वेरी मौजूद है"
+
+#: setup.php:476
+#, fuzzy
+msgid "WMI Query Does Not Exist"
+msgstr "WMI क्वेरी मौजूद नहीं है"
+
+#: setup.php:493 setup.php:525
+#, fuzzy
+msgid "No Associated WMI Queries."
+msgstr "कोई एसोसिएटेड WMI क्वेरी नहीं।"
+
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+#, fuzzy
+msgid "Delete"
+msgstr "हटाना"
+
+#: setup.php:542
+#, fuzzy
+msgid "Add WMI Query"
+msgstr "WMI क्वेरी जोड़ें"
+
+#: setup.php:548 wmi_tools.php:358
+#, fuzzy
+msgid "Add"
+msgstr "जोड़ना"
+
+#: setup.php:548
+#, fuzzy
+msgid "Add WMI Query to Device Template"
+msgstr "डिवाइस टेम्पलेट में WMI क्वेरी जोड़ें"
+
+#: setup.php:589
+#, fuzzy
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr ""
+"निम्नलिखित WMI क्वेरीज़ को हटाने के लिए 'जारी रखें' को डिवाइस टेम्पलेट से अलग कर दिया "
+"जाएगा।"
+
+#: setup.php:590
+#, fuzzy, php-format
+msgid "WMI Query Name: %s"
+msgstr "WMI क्वेरी नाम: %s"
+
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+msgid "Cancel"
+msgstr "कैंसिल करें"
+
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+msgid "Continue"
+msgstr "जारी रखें"
+
+#: setup.php:596
+#, fuzzy
+msgid "Remove WMI Query"
+msgstr "WMI क्वेरी निकालें"
+
+#: wmi_accounts.php:48
+#, fuzzy
+msgid "Give this account a meaningful name that will be displayed."
+msgstr "इस खाते को एक सार्थक नाम दें जिसे प्रदर्शित किया जाएगा।"
+
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+#: wmi_accounts.php:55
+#, fuzzy
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+"उपयोगकर्ता नाम जो प्रमाणीकरण के लिए उपयोग किया जाएगा। यदि आवश्यक हो तो कृपया डोमेन "
+"भी शामिल करें।"
+
+#: wmi_accounts.php:61 wmi_tools.php:340
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: wmi_accounts.php:62
+#, fuzzy
+msgid "The password used for authentication."
+msgstr "प्रमाणीकरण के लिए उपयोग किया जाने वाला पासवर्ड।"
+
+#: wmi_accounts.php:146
+#, fuzzy
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "निम्नलिखित खातों को हटाने के लिए 'जारी रखें' दबाएँ।"
+
+#: wmi_accounts.php:153
+#, fuzzy
+msgid "You must select at least one account."
+msgstr "आपको कम से कम एक खाता चुनना होगा।"
+
+#: wmi_accounts.php:215
+#, fuzzy, php-format
+msgid "Account [edit: %s]"
+msgstr "खाता [संपादित करें: %s]"
+
+#: wmi_accounts.php:217
+#, fuzzy
+msgid "Account [new]"
+msgstr "खाता [नया]"
+
+#: wmi_accounts.php:238
+#, fuzzy
+msgid "WMI Accounts"
+msgstr "WMI खाते"
+
+#: wmi_accounts.php:246 wmi_queries.php:270
+#, fuzzy
+msgid "Search"
+msgstr "खोज"
+
+#: wmi_accounts.php:252 wmi_accounts.php:365
+#, fuzzy
+msgid "Accounts"
+msgstr "हिसाब किताब"
+
+#: wmi_accounts.php:256 wmi_queries.php:280
+#, fuzzy
+msgid "Default"
+msgstr "चूक"
+
+#: wmi_accounts.php:270 wmi_queries.php:297
+#, fuzzy
+msgctxt "filter: use"
+msgid "Go"
+msgstr "चले जाओ"
+
+#: wmi_accounts.php:273 wmi_queries.php:300
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr "明确"
+
+#: wmi_accounts.php:373 wmi_tools.php:268
+msgid "Description"
+msgstr "विवरण"
+
+#: wmi_accounts.php:373
+#, fuzzy
+msgid "Devices"
+msgstr "उपकरण"
+
+#: wmi_accounts.php:389
+#, fuzzy
+msgid "No Accounts Found"
+msgstr "कोई हिसाब नहीं मिला"
+
+#: wmi_queries.php:47
+#, fuzzy
+msgid "Give this query a meaningful name that will be displayed."
+msgstr "इस क्वेरी को एक सार्थक नाम दें जिसे प्रदर्शित किया जाएगा।"
+
+#: wmi_queries.php:53
+#, fuzzy
+msgid "Collection Frequency"
+msgstr "संग्रह की आवृत्ति"
+
+#: wmi_queries.php:54
+#, fuzzy
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+"जब यह WMI क्वेरी डिवाइस में जोड़ी जाती है, तो यह डेटा संग्रह की आवृत्ति है जिसका उपयोग "
+"किया जाएगा।"
+
+#: wmi_queries.php:61
+msgid "Enabled"
+msgstr "सक्षम"
+
+#: wmi_queries.php:62
+#, fuzzy
+msgid "Should this Query be enabled on hosts using it"
+msgstr "क्या इस क्वेरी को इसका उपयोग करते हुए मेजबानों पर सक्षम होना चाहिए"
+
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#, fuzzy
+msgid "Namespace"
+msgstr "नाम स्थान"
+
+#: wmi_queries.php:69
+#, fuzzy
+msgid "The Namespace for this Query."
+msgstr "इस क्वेरी के लिए नामस्थान।"
+
+#: wmi_queries.php:75 wmi_tools.php:268
+#, fuzzy
+msgid "Query"
+msgstr "सवाल"
+
+#: wmi_queries.php:76
+#, fuzzy
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr "डिवाइस से WMI डेटा एकत्र करने के लिए निष्पादित करने की क्वेरी।"
+
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#, fuzzy
+msgid "Primary Key"
+msgstr "प्राथमिक कुंजी"
+
+#: wmi_queries.php:85
+#, fuzzy
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"जब एक WMI क्वेरी कई पंक्तियों को लौटाती है, तो Keyname प्राथमिक कुंजी या सूचकांक कौन सा "
+"होगा? यदि प्राथमिक कुंजी में कई कॉलम शामिल हैं, तो उन्हें अल्पविराम से अलग करें।"
+
+#: wmi_queries.php:174
+#, fuzzy
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr "निम्नलिखित WMI क्वेरी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
+
+#: wmi_queries.php:181
+#, fuzzy
+msgid "You must select at least one WMI Query."
+msgstr "आपको कम से कम एक WMI क्वेरी का चयन करना होगा।"
+
+#: wmi_queries.php:182
+#, fuzzy
+msgid "Return"
+msgstr "वापसी"
+
+#: wmi_queries.php:184
+#, fuzzy
+msgid "Delete WMI Query"
+msgstr "WMI क्वेरी हटाएं"
+
+#: wmi_queries.php:238
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "क्वेरी [संपादित करें: %s]"
+
+#: wmi_queries.php:240
+#, fuzzy
+msgid "Query [new]"
+msgstr "क्वेरी [नया]"
+
+#: wmi_queries.php:294
+#, fuzzy
+msgid "Has Graphs"
+msgstr "रेखांकन है"
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr "ID"
+
+#: wmi_queries.php:411 wmi_tools.php:327
+#, fuzzy
+msgid "Frequency"
+msgstr "आवृत्ति"
+
+#: wmi_queries.php:413
+#, fuzzy
+msgid "WQL Query"
+msgstr "WQL क्वेरी"
+
+#: wmi_tools.php:107
+#, fuzzy
+msgid "Get Computer Information"
+msgstr "कंप्यूटर की जानकारी प्राप्त करें"
+
+#: wmi_tools.php:113
+#, fuzzy
+msgid "Get System Processes"
+msgstr "सिस्टम प्रोसेस प्राप्त करें"
+
+#: wmi_tools.php:119
+#, fuzzy
+msgid "Get Installed Software"
+msgstr "स्थापित सॉफ्टवेयर प्राप्त करें"
+
+#: wmi_tools.php:125
+#, fuzzy
+msgid "Get Operating System Information"
+msgstr "ऑपरेटिंग सिस्टम की जानकारी प्राप्त करें"
+
+#: wmi_tools.php:131
+#, fuzzy
+msgid "Get OD Service Information"
+msgstr "OD सेवा जानकारी प्राप्त करें"
+
+#: wmi_tools.php:137
+#, fuzzy
+msgid "Get System Enclosure Information"
+msgstr "सिस्टम संलग्नक जानकारी प्राप्त करें"
+
+#: wmi_tools.php:143
+#, fuzzy
+msgid "Get System Physical Memory Information"
+msgstr "सिस्टम भौतिक मेमोरी जानकारी प्राप्त करें"
+
+#: wmi_tools.php:149
+#, fuzzy
+msgid "Get Memory Device Details"
+msgstr "मेमोरी डिवाइस विवरण प्राप्त करें"
+
+#: wmi_tools.php:155
+#, fuzzy
+msgid "Get System BIOS Information"
+msgstr "सिस्टम BIOS जानकारी प्राप्त करें"
+
+#: wmi_tools.php:161
+#, fuzzy
+msgid "Get System Baseboard Information"
+msgstr "सिस्टम बेसबोर्ड जानकारी प्राप्त करें"
+
+#: wmi_tools.php:167
+#, fuzzy
+msgid "Get Processor Information"
+msgstr "प्रोसेसर की जानकारी प्राप्त करें"
+
+#: wmi_tools.php:173
+#, fuzzy
+msgid "Ping a Known Address from Computer"
+msgstr "कंप्यूटर से एक ज्ञात पता पिंग करें"
+
+#: wmi_tools.php:179
+#, fuzzy
+msgid "Get Row System OS Performance Data"
+msgstr "रो सिस्टम ओएस प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:185
+#, fuzzy
+msgid "Get Formatted System OS Performance Data"
+msgstr "फ़ॉर्मेट किए गए सिस्टम OS प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:191
+#, fuzzy
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr "फॉर्मैटेड पीएचसी डिस्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:197
+#, fuzzy
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr "रॉ Phsycal डिस्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:203
+#, fuzzy
+msgid "Get Logical Disk Information"
+msgstr "तार्किक डिस्क जानकारी प्राप्त करें"
+
+#: wmi_tools.php:209
+#, fuzzy
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr "फ़ॉर्मेट किए गए लॉजिकल डिस्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:215
+#, fuzzy
+msgid "Get Raw Logical Disk Performance Data"
+msgstr "कच्चे तार्किक डिस्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:221
+#, fuzzy
+msgid "Get Formatted CPU Performance Data"
+msgstr "फॉर्मेटेड सीपीयू प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:227
+#, fuzzy
+msgid "Get Raw CPU Performance Data"
+msgstr "कच्चे सीपीयू प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:233
+#, fuzzy
+msgid "Get Raw Memory Performance Data"
+msgstr "रॉ मेमोरी परफॉर्मेंस डेटा प्राप्त करें"
+
+#: wmi_tools.php:239
+#, fuzzy
+msgid "Get Formatted Network Performance Data"
+msgstr "स्वरूपित नेटवर्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:245
+#, fuzzy
+msgid "Get Raw Network Performance Data"
+msgstr "कच्चे नेटवर्क प्रदर्शन डेटा प्राप्त करें"
+
+#: wmi_tools.php:251
+#, fuzzy
+msgid "Get Network Adapter Information"
+msgstr "नेटवर्क एडाप्टर जानकारी प्राप्त करें"
+
+#: wmi_tools.php:257
+#, fuzzy
+msgid "Get Computer Asset Information"
+msgstr "कंप्यूटर एसेट जानकारी प्राप्त करें"
+
+#: wmi_tools.php:268
+#, fuzzy
+msgid "Name Space"
+msgstr "नाम स्थान"
+
+#: wmi_tools.php:284 wmi_tools.php:306
+msgid "Close"
+msgstr "बंद"
+
+#: wmi_tools.php:300
+#, fuzzy, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+"यदि आपको त्रुटि कोड पर सहायता की आवश्यकता है, तो Google का उपयोग करें, या यहां निम्न "
+"लिंक %s का उपयोग करें।"
+
+#: wmi_tools.php:300
+#, fuzzy
+msgid "Microsoft Common WBEM Errors"
+msgstr "Microsoft सामान्य WBEM त्रुटियाँ"
+
+#: wmi_tools.php:301
+#, fuzzy
+msgid "Distributed COM Setup"
+msgstr "वितरित COM सेटअप"
+
+#: wmi_tools.php:301
+#, fuzzy, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"WMI के लिए आप उपयोग कर रहे उपयोगकर्ता खाते को वितरित करने के लिए COM अनुमतियाँ प्रदान "
+"की जानी चाहिए, और वितरित COM संचार की अनुमति देने के लिए Windows फ़ायरवॉल को "
+"कॉन्फ़िगर किया जाना चाहिए। आप निम्न लिंक %s पर इस प्रक्रिया पर एक वास्तविक अच्छा "
+"दस्तावेज़ पा सकते हैं।"
+
+#: wmi_tools.php:334
+#, fuzzy
+msgid "Host"
+msgstr "मेज़बान"
+
+#: wmi_tools.php:346
+#, fuzzy
+msgid "Command"
+msgstr "आदेश"
+
+#: wmi_tools.php:352
+#, fuzzy
+msgid "More Class Information @Microsoft"
+msgstr "अधिक वर्ग सूचना @Microsoft"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run"
+msgstr "रन"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run the WMI Query against the Device"
+msgstr "डिवाइस के विरुद्ध WMI क्वेरी चलाएँ"
+
+#: wmi_tools.php:355
+msgid "Clear"
+msgstr "明确"
+
+#: wmi_tools.php:355
+#, fuzzy
+msgid "Clear the results panel."
+msgstr "परिणाम पैनल साफ़ करें।"
+
+#: wmi_tools.php:356
+#, fuzzy
+msgid "Pick from a list of common queries."
+msgstr "सामान्य प्रश्नों की सूची से चुनें।"
+
+#: wmi_tools.php:357
+#, fuzzy
+msgid "Get some help on setting up WMI"
+msgstr "WMI की स्थापना पर कुछ सहायता प्राप्त करें"
+
+#: wmi_tools.php:357
+msgid "Help"
+msgstr "मदद"
+
+#: wmi_tools.php:358
+#, fuzzy
+msgid "Create a new WMI Query from the existing Query."
+msgstr "मौजूदा क्वेरी से एक नया WMI क्वेरी बनाएँ।"
+
+#: wmi_tools.php:369
+#, fuzzy
+msgid "Query Results"
+msgstr "क्वेरी परिणाम"
+
+#: wmi_tools.php:398
+#, fuzzy
+msgid "Common Queries (Click to Select)"
+msgstr "सामान्य प्रश्न (चयन करने के लिए क्लिक करें)"
+
+#: wmi_tools.php:427
+#, fuzzy
+msgid "WMI Setup Assistance"
+msgstr "WMI सेटअप सहायता"
+
+#: wmi_tools.php:522
+#, fuzzy
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr "त्रुटि: आपको एक होस्ट, उपयोगकर्ता नाम, पासवर्ड और क्वेरी प्रदान करनी होगी"
+
+#: wmi_tools.php:552 wmi_tools.php:617
+#, fuzzy, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr "डिवाइस के लिए WMI क्वेरी परिणाम: %s, वर्ग: %s, कॉलम: %s, पंक्तियाँ: %s"
+
+#: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
+msgid "Showing columns and first one or two rows of data."
+msgstr "कॉलम और डेटा की पहली या दो पंक्तियों को दिखाना।"

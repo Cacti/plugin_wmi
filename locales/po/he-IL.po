@@ -1,0 +1,659 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"PO-Revision-Date: 2019-07-21 20:16-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"Language: he_IL\n"
+
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#, fuzzy
+msgid "Queries"
+msgstr "שאילתות"
+
+#: functions.php:30
+msgid "Authentication"
+msgstr "שיטת האימות לא חוקי"
+
+#: setup.php:39
+#, fuzzy
+msgid "WMI Management"
+msgstr "ניהול WMI"
+
+#: setup.php:284
+#, fuzzy
+msgid "WMI Data"
+msgstr "WMI נתונים"
+
+#: setup.php:285
+#, fuzzy
+msgid "WMI Data Query"
+msgstr "שאילתת נתונים WMI"
+
+#: setup.php:289
+#, fuzzy, php-format
+msgid "%d Minute"
+msgstr "% d דקות"
+
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#, fuzzy, php-format
+msgid "%d Minutes"
+msgstr "דקות %d"
+
+#: setup.php:295
+#, fuzzy, php-format
+msgid "%d Hour"
+msgstr "% d שעה"
+
+#: setup.php:296 setup.php:297
+#, fuzzy, php-format
+msgid "%d Hours"
+msgstr "% d שעות"
+
+#: setup.php:298
+#, fuzzy, php-format
+msgid "%d Day"
+msgstr "% d יום"
+
+#: setup.php:303
+#, fuzzy
+msgid "Utilities"
+msgstr "כלי עזר"
+
+#: setup.php:303 wmi_tools.php:316
+#, fuzzy
+msgid "WMI Query Tool"
+msgstr "כלי שאילתה WMI"
+
+#: setup.php:304
+#, fuzzy
+msgid "Data Collection"
+msgstr "איסוף נתונים"
+
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
+#, fuzzy
+msgid "WMI Queries"
+msgstr "שאילתות WMI"
+
+#: setup.php:316 setup.php:330
+#, fuzzy
+msgid "WMI Autenication"
+msgstr "WMI"
+
+#: setup.php:323
+#, fuzzy
+msgid "WMI Autenication -> Edit"
+msgstr "WMI הודעה -> ערוך"
+
+#: setup.php:344
+#, fuzzy
+msgid "WMI Queries -> Edit"
+msgstr "WMI שאילתות -> ערוך"
+
+#: setup.php:365
+#, fuzzy
+msgid "WMI Tools"
+msgstr "כלים WMI"
+
+#: setup.php:404
+#, fuzzy
+msgid "WMI Account Options"
+msgstr "אפשרויות חשבון WMI"
+
+#: setup.php:409
+#, fuzzy
+msgid "WMI Authentication Account"
+msgstr "חשבון אימות WMI"
+
+#: setup.php:410
+#, fuzzy
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr "בחר חשבון לשימוש בעת אימות באמצעות WMI"
+
+#: setup.php:424
+#, fuzzy
+msgid "WMI Settings"
+msgstr "הגדרות WMI"
+
+#: setup.php:428
+#, fuzzy
+msgid "Auto Create WMI Queries"
+msgstr "יצירת שאילתות"
+
+#: setup.php:429
+#, fuzzy
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"אם נבחר, בעת הפעלת אוטומציה או בעת יצירת / שמירה של התקן, כל השאילתות של WMI "
+"המשויכות לתבנית ההתקן ייווצרו."
+
+#: setup.php:447 setup.php:500
+#, fuzzy
+msgid "Associated WMI Queries"
+msgstr "שאילתות משויכות"
+
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
+msgid "Name"
+msgstr "שם"
+
+#: setup.php:462
+msgid "Status"
+msgstr "סטטוס"
+
+#: setup.php:474
+#, fuzzy
+msgid "WMI Query Exists"
+msgstr "שאילתת WMI קיימת"
+
+#: setup.php:476
+#, fuzzy
+msgid "WMI Query Does Not Exist"
+msgstr "שאילתת WMI אינה קיימת"
+
+#: setup.php:493 setup.php:525
+#, fuzzy
+msgid "No Associated WMI Queries."
+msgstr "אין שאילתות WMI משויכות."
+
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+msgid "Delete"
+msgstr "מחק"
+
+#: setup.php:542
+#, fuzzy
+msgid "Add WMI Query"
+msgstr "הוסף שאילתת WMI"
+
+#: setup.php:548 wmi_tools.php:358
+msgid "Add"
+msgstr "הוסף"
+
+#: setup.php:548
+#, fuzzy
+msgid "Add WMI Query to Device Template"
+msgstr "הוסף שאילתת WMI לתבנית התקן"
+
+#: setup.php:589
+#, fuzzy
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות ינותקו מתבנית ההתקן."
+
+#: setup.php:590
+#, fuzzy, php-format
+msgid "WMI Query Name: %s"
+msgstr "שם שאילתה של WMI: %s"
+
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+msgid "Cancel"
+msgstr "ביטול"
+
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+msgid "Continue"
+msgstr "המשך"
+
+#: setup.php:596
+#, fuzzy
+msgid "Remove WMI Query"
+msgstr "הסר שאילתת WMI"
+
+#: wmi_accounts.php:48
+#, fuzzy
+msgid "Give this account a meaningful name that will be displayed."
+msgstr "תן לחשבון הזה שם בעל משמעות שיוצג."
+
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+msgid "Username"
+msgstr "שם משתמש"
+
+#: wmi_accounts.php:55
+#, fuzzy
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr "שם המשתמש שישמש לאימות. נא לכלול גם את הדומיין במידת הצורך."
+
+#: wmi_accounts.php:61 wmi_tools.php:340
+msgid "Password"
+msgstr "סיסמה"
+
+#: wmi_accounts.php:62
+#, fuzzy
+msgid "The password used for authentication."
+msgstr "הסיסמה המשמשת לאימות."
+
+#: wmi_accounts.php:146
+#, fuzzy
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "לחץ על 'המשך' כדי למחוק את החשבונות הבאים."
+
+#: wmi_accounts.php:153
+#, fuzzy
+msgid "You must select at least one account."
+msgstr "עליך לבחור לפחות חשבון אחד."
+
+#: wmi_accounts.php:215
+#, fuzzy, php-format
+msgid "Account [edit: %s]"
+msgstr "חשבון [עריכה: %s]"
+
+#: wmi_accounts.php:217
+#, fuzzy
+msgid "Account [new]"
+msgstr "חשבון [חדש]"
+
+#: wmi_accounts.php:238
+#, fuzzy
+msgid "WMI Accounts"
+msgstr "חשבונות"
+
+#: wmi_accounts.php:246 wmi_queries.php:270
+msgid "Search"
+msgstr "חיפוש"
+
+#: wmi_accounts.php:252 wmi_accounts.php:365
+msgid "Accounts"
+msgstr "חשבונות"
+
+#: wmi_accounts.php:256 wmi_queries.php:280
+msgid "Default"
+msgstr "ברירת מחדל"
+
+#: wmi_accounts.php:270 wmi_queries.php:297
+msgctxt "filter: use"
+msgid "Go"
+msgstr "עבור"
+
+#: wmi_accounts.php:273 wmi_queries.php:300
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr "נקה"
+
+#: wmi_accounts.php:373 wmi_tools.php:268
+msgid "Description"
+msgstr "תיאור"
+
+#: wmi_accounts.php:373
+msgid "Devices"
+msgstr ""
+"ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה "
+"על כפתור התנתקות מכל ההתקנים האחרים."
+
+#: wmi_accounts.php:389
+#, fuzzy
+msgid "No Accounts Found"
+msgstr "לא נמצאו חשבונות"
+
+#: wmi_queries.php:47
+#, fuzzy
+msgid "Give this query a meaningful name that will be displayed."
+msgstr "תן לשאילתה שם בעל משמעות שיוצג."
+
+#: wmi_queries.php:53
+#, fuzzy
+msgid "Collection Frequency"
+msgstr "תדירות איסוף"
+
+#: wmi_queries.php:54
+#, fuzzy
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr "כאשר שאילתת WMI זו מתווספת להתקן, זהו תדירות איסוף הנתונים שישמש."
+
+#: wmi_queries.php:61
+msgid "Enabled"
+msgstr "מאופשר"
+
+#: wmi_queries.php:62
+#, fuzzy
+msgid "Should this Query be enabled on hosts using it"
+msgstr "אם שאילתת שאילתה זו מופעלת במארחים המשתמשים בה"
+
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#, fuzzy
+msgid "Namespace"
+msgstr "מרחב שמות"
+
+#: wmi_queries.php:69
+#, fuzzy
+msgid "The Namespace for this Query."
+msgstr "מרחב השם עבור שאילתה זו."
+
+#: wmi_queries.php:75 wmi_tools.php:268
+msgid "Query"
+msgstr "שאילתא"
+
+#: wmi_queries.php:76
+#, fuzzy
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr "שאילתה לבצע עבור איסוף נתונים WMI מהמכשיר."
+
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#, fuzzy
+msgid "Primary Key"
+msgstr "מפתח ראשי"
+
+#: wmi_queries.php:85
+#, fuzzy
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"כאשר שאילתת WMI מחזירה מספר שורות, אילו Keyname יהיה המפתח הראשי או האינדקס? "
+"אם המפתח הראשי כולל עמודות מרובות, הפרד ביניהם בפסיק."
+
+#: wmi_queries.php:174
+#, fuzzy
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות."
+
+#: wmi_queries.php:181
+#, fuzzy
+msgid "You must select at least one WMI Query."
+msgstr "עליך לבחור לפחות שאילתת WMI אחת."
+
+#: wmi_queries.php:182
+msgid "Return"
+msgstr "חזרה אל עריכת פוסט"
+
+#: wmi_queries.php:184
+#, fuzzy
+msgid "Delete WMI Query"
+msgstr "מחק שאילתת WMI"
+
+#: wmi_queries.php:238
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "שאילתה [עריכה: %s]"
+
+#: wmi_queries.php:240
+#, fuzzy
+msgid "Query [new]"
+msgstr "שאילתה [חדש]"
+
+#: wmi_queries.php:294
+#, fuzzy
+msgid "Has Graphs"
+msgstr "יש גרפים"
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr "מזהה"
+
+#: wmi_queries.php:411 wmi_tools.php:327
+msgid "Frequency"
+msgstr "תדירות"
+
+#: wmi_queries.php:413
+#, fuzzy
+msgid "WQL Query"
+msgstr "שאילתת WQL"
+
+#: wmi_tools.php:107
+#, fuzzy
+msgid "Get Computer Information"
+msgstr "קבל מידע על המחשב"
+
+#: wmi_tools.php:113
+#, fuzzy
+msgid "Get System Processes"
+msgstr "קבל תהליכי מערכת"
+
+#: wmi_tools.php:119
+#, fuzzy
+msgid "Get Installed Software"
+msgstr "קבל תוכנה מותקנת"
+
+#: wmi_tools.php:125
+#, fuzzy
+msgid "Get Operating System Information"
+msgstr "קבל מידע על מערכת ההפעלה"
+
+#: wmi_tools.php:131
+#, fuzzy
+msgid "Get OD Service Information"
+msgstr "קבל מידע על שירות OD"
+
+#: wmi_tools.php:137
+#, fuzzy
+msgid "Get System Enclosure Information"
+msgstr "קבל מידע על מארז המערכת"
+
+#: wmi_tools.php:143
+#, fuzzy
+msgid "Get System Physical Memory Information"
+msgstr "קבל מידע על זיכרון פיזי של המערכת"
+
+#: wmi_tools.php:149
+#, fuzzy
+msgid "Get Memory Device Details"
+msgstr "קבל פרטי התקן זיכרון"
+
+#: wmi_tools.php:155
+#, fuzzy
+msgid "Get System BIOS Information"
+msgstr "קבל מידע על BIOS המערכת"
+
+#: wmi_tools.php:161
+#, fuzzy
+msgid "Get System Baseboard Information"
+msgstr "קבל מידע על מערכת בסיס"
+
+#: wmi_tools.php:167
+#, fuzzy
+msgid "Get Processor Information"
+msgstr "קבל מידע על המעבד"
+
+#: wmi_tools.php:173
+#, fuzzy
+msgid "Ping a Known Address from Computer"
+msgstr "Ping כתובת ידועה מהמחשב"
+
+#: wmi_tools.php:179
+#, fuzzy
+msgid "Get Row System OS Performance Data"
+msgstr "קבל נתוני ביצועים של מערכת ההפעלה של שורה"
+
+#: wmi_tools.php:185
+#, fuzzy
+msgid "Get Formatted System OS Performance Data"
+msgstr "קבל נתונים מעוצבים מערכת ההפעלה ביצועי המערכת"
+
+#: wmi_tools.php:191
+#, fuzzy
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr "קבל נתונים מעוצבים Phsycal דיסק ביצועי"
+
+#: wmi_tools.php:197
+#, fuzzy
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr "קבל Raw Phsycal דיסק ביצועים נתונים"
+
+#: wmi_tools.php:203
+#, fuzzy
+msgid "Get Logical Disk Information"
+msgstr "קבל מידע דיסק לוגי"
+
+#: wmi_tools.php:209
+#, fuzzy
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr "קבל נתונים מעוצב ביצועי דיסק לוגי"
+
+#: wmi_tools.php:215
+#, fuzzy
+msgid "Get Raw Logical Disk Performance Data"
+msgstr "קבל נתוני ביצועים לוגיים של דיסק לוגי"
+
+#: wmi_tools.php:221
+#, fuzzy
+msgid "Get Formatted CPU Performance Data"
+msgstr "קבל נתונים מעוצבים של ביצועי CPU"
+
+#: wmi_tools.php:227
+#, fuzzy
+msgid "Get Raw CPU Performance Data"
+msgstr "קבל נתוני ביצועים של CPU CPU"
+
+#: wmi_tools.php:233
+#, fuzzy
+msgid "Get Raw Memory Performance Data"
+msgstr "קבל נתוני ביצועים של זיכרון גולמי"
+
+#: wmi_tools.php:239
+#, fuzzy
+msgid "Get Formatted Network Performance Data"
+msgstr "קבל נתוני ביצועי רשת מעוצבים"
+
+#: wmi_tools.php:245
+#, fuzzy
+msgid "Get Raw Network Performance Data"
+msgstr "קבל נתוני ביצועים של רשת גולמית"
+
+#: wmi_tools.php:251
+#, fuzzy
+msgid "Get Network Adapter Information"
+msgstr "קבל מידע על מתאם הרשת"
+
+#: wmi_tools.php:257
+#, fuzzy
+msgid "Get Computer Asset Information"
+msgstr "קבל מידע על נכסי המחשב"
+
+#: wmi_tools.php:268
+#, fuzzy
+msgid "Name Space"
+msgstr "שם החלל"
+
+#: wmi_tools.php:284 wmi_tools.php:306
+msgid "Close"
+msgstr "סגור"
+
+#: wmi_tools.php:300
+#, fuzzy, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr "אם אתה זקוק לסיוע בקודי שגיאה, השתמש ב- Google, או השתמש בקישור הבא s."
+
+#: wmi_tools.php:300
+#, fuzzy
+msgid "Microsoft Common WBEM Errors"
+msgstr "שגיאות נפוצות של Microsoft WBEM"
+
+#: wmi_tools.php:301
+#, fuzzy
+msgid "Distributed COM Setup"
+msgstr "הגדרת COM מבוזרת"
+
+#: wmi_tools.php:301
+#, fuzzy, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"כדי ש- WMI תעבוד, יש להעניק לחשבון המשתמש שבו אתה משתמש הרשאות COM מבוזרות, "
+"ויש להגדיר את חומת האש של Windows כדי לאפשר תקשורת COM מבוזרת. אתה יכול "
+"למצוא מסמך טוב אמיתי על הליך זה הקישור הבא %s."
+
+#: wmi_tools.php:334
+msgid "Host"
+msgstr "שרת מארח"
+
+#: wmi_tools.php:346
+#, fuzzy
+msgid "Command"
+msgstr "פקודה"
+
+#: wmi_tools.php:352
+#, fuzzy
+msgid "More Class Information @Microsoft"
+msgstr "עוד מידע בכיתה @ Microsoft"
+
+#: wmi_tools.php:354
+msgid "Run"
+msgstr "הפעל"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run the WMI Query against the Device"
+msgstr "הפעל את שאילתת WMI נגד ההתקן"
+
+#: wmi_tools.php:355
+msgid "Clear"
+msgstr "נקה"
+
+#: wmi_tools.php:355
+#, fuzzy
+msgid "Clear the results panel."
+msgstr "נקה את החלונית 'תוצאות'."
+
+#: wmi_tools.php:356
+#, fuzzy
+msgid "Pick from a list of common queries."
+msgstr "בחר מתוך רשימה של שאילתות נפוצות."
+
+#: wmi_tools.php:357
+#, fuzzy
+msgid "Get some help on setting up WMI"
+msgstr "קבל קצת עזרה על הגדרת WMI"
+
+#: wmi_tools.php:357
+msgid "Help"
+msgstr "עזרה"
+
+#: wmi_tools.php:358
+#, fuzzy
+msgid "Create a new WMI Query from the existing Query."
+msgstr "צור שאילתת WMI חדשה משאילתה קיימת."
+
+#: wmi_tools.php:369
+#, fuzzy
+msgid "Query Results"
+msgstr "תוצאות שאילתה"
+
+#: wmi_tools.php:398
+#, fuzzy
+msgid "Common Queries (Click to Select)"
+msgstr "שאילתות נפוצות (לחץ לבחירה)"
+
+#: wmi_tools.php:427
+#, fuzzy
+msgid "WMI Setup Assistance"
+msgstr "סיוע בהגדרת WMI"
+
+#: wmi_tools.php:522
+#, fuzzy
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr "שגיאה: עליך לספק מארח, שם משתמש, סיסמה ושאילתה"
+
+#: wmi_tools.php:552 wmi_tools.php:617
+#, fuzzy, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr "תוצאות שאילתת WMI עבור ההתקן: %s, מחלקה: %s, עמודות: %s, שורות: %s"
+
+#: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
+msgid "Showing columns and first one or two rows of data."
+msgstr "מציג עמודות והשורה הראשונה או שתיים של נתונים."

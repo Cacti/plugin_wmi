@@ -1,0 +1,661 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"PO-Revision-Date: 2019-07-21 20:08-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: vi_VN\n"
+
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+msgid "Queries"
+msgstr "Truy vấn"
+
+#: functions.php:30
+msgid "Authentication"
+msgstr "Xác thực"
+
+#: setup.php:39
+#, fuzzy
+msgid "WMI Management"
+msgstr "Quản lý WMI"
+
+#: setup.php:284
+#, fuzzy
+msgid "WMI Data"
+msgstr "Dữ liệu WMI"
+
+#: setup.php:285
+#, fuzzy
+msgid "WMI Data Query"
+msgstr "Truy vấn dữ liệu WMI"
+
+#: setup.php:289
+#, php-format
+msgid "%d Minute"
+msgstr "%d phút"
+
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#, php-format
+msgid "%d Minutes"
+msgstr "%d phút"
+
+#: setup.php:295
+#, fuzzy, php-format
+msgid "%d Hour"
+msgstr "% d giờ"
+
+#: setup.php:296 setup.php:297
+#, fuzzy, php-format
+msgid "%d Hours"
+msgstr "% d giờ"
+
+#: setup.php:298
+#, fuzzy, php-format
+msgid "%d Day"
+msgstr "% d ngày"
+
+#: setup.php:303
+msgid "Utilities"
+msgstr "Tiện Ích"
+
+#: setup.php:303 wmi_tools.php:316
+#, fuzzy
+msgid "WMI Query Tool"
+msgstr "Công cụ truy vấn WMI"
+
+#: setup.php:304
+msgid "Data Collection"
+msgstr "Thu thập dữ liệu"
+
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
+#, fuzzy
+msgid "WMI Queries"
+msgstr "Truy vấn WMI"
+
+#: setup.php:316 setup.php:330
+#, fuzzy
+msgid "WMI Autenication"
+msgstr "Tự động hóa WMI"
+
+#: setup.php:323
+#, fuzzy
+msgid "WMI Autenication -> Edit"
+msgstr "Tự động WMI -> Chỉnh sửa"
+
+#: setup.php:344
+#, fuzzy
+msgid "WMI Queries -> Edit"
+msgstr "Truy vấn WMI -> Chỉnh sửa"
+
+#: setup.php:365
+#, fuzzy
+msgid "WMI Tools"
+msgstr "Công cụ WMI"
+
+#: setup.php:404
+#, fuzzy
+msgid "WMI Account Options"
+msgstr "Tùy chọn tài khoản WMI"
+
+#: setup.php:409
+#, fuzzy
+msgid "WMI Authentication Account"
+msgstr "Tài khoản xác thực WMI"
+
+#: setup.php:410
+#, fuzzy
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr "Chọn một tài khoản để sử dụng khi Xác thực qua WMI"
+
+#: setup.php:424
+#, fuzzy
+msgid "WMI Settings"
+msgstr "Cài đặt WMI"
+
+#: setup.php:428
+#, fuzzy
+msgid "Auto Create WMI Queries"
+msgstr "Tự động tạo truy vấn WMI"
+
+#: setup.php:429
+#, fuzzy
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"Nếu được chọn, khi chạy tự động hóa hoặc khi tạo / lưu Thiết bị, tất cả các "
+"Truy vấn WMI được liên kết với Mẫu thiết bị sẽ được tạo."
+
+#: setup.php:447 setup.php:500
+#, fuzzy
+msgid "Associated WMI Queries"
+msgstr "Truy vấn WMI liên kết"
+
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
+msgid "Name"
+msgstr "Tên"
+
+#: setup.php:462
+msgid "Status"
+msgstr "Trạng thái"
+
+#: setup.php:474
+#, fuzzy
+msgid "WMI Query Exists"
+msgstr "Truy vấn WMI tồn tại"
+
+#: setup.php:476
+#, fuzzy
+msgid "WMI Query Does Not Exist"
+msgstr "Truy vấn WMI không tồn tại"
+
+#: setup.php:493 setup.php:525
+#, fuzzy
+msgid "No Associated WMI Queries."
+msgstr "Không có truy vấn WMI liên quan."
+
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+msgid "Delete"
+msgstr "Xóa"
+
+#: setup.php:542
+#, fuzzy
+msgid "Add WMI Query"
+msgstr "Thêm truy vấn WMI"
+
+#: setup.php:548 wmi_tools.php:358
+msgid "Add"
+msgstr "Thêm"
+
+#: setup.php:548
+#, fuzzy
+msgid "Add WMI Query to Device Template"
+msgstr "Thêm truy vấn WMI vào mẫu thiết bị"
+
+#: setup.php:589
+#, fuzzy
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr ""
+"Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau sẽ được tách ra khỏi Mẫu "
+"thiết bị."
+
+#: setup.php:590
+#, fuzzy, php-format
+msgid "WMI Query Name: %s"
+msgstr "Tên truy vấn WMI: %s"
+
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+msgid "Cancel"
+msgstr "Hủy"
+
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+msgid "Continue"
+msgstr "Tiếp tục"
+
+#: setup.php:596
+#, fuzzy
+msgid "Remove WMI Query"
+msgstr "Xóa truy vấn WMI"
+
+#: wmi_accounts.php:48
+#, fuzzy
+msgid "Give this account a meaningful name that will be displayed."
+msgstr "Đặt cho tài khoản này một tên có ý nghĩa sẽ được hiển thị."
+
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+#: wmi_accounts.php:55
+#, fuzzy
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+"Tên người dùng sẽ được sử dụng để xác thực. Vui lòng bao gồm tên miền nếu "
+"cần thiết."
+
+#: wmi_accounts.php:61 wmi_tools.php:340
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: wmi_accounts.php:62
+#, fuzzy
+msgid "The password used for authentication."
+msgstr "Mật khẩu được sử dụng để xác thực."
+
+#: wmi_accounts.php:146
+#, fuzzy
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "Nhấn 'Tiếp tục' để xóa các tài khoản sau."
+
+#: wmi_accounts.php:153
+#, fuzzy
+msgid "You must select at least one account."
+msgstr "Bạn phải chọn ít nhất một tài khoản."
+
+#: wmi_accounts.php:215
+#, fuzzy, php-format
+msgid "Account [edit: %s]"
+msgstr "Tài khoản [chỉnh sửa: %s]"
+
+#: wmi_accounts.php:217
+#, fuzzy
+msgid "Account [new]"
+msgstr "Tài khoản [mới]"
+
+#: wmi_accounts.php:238
+#, fuzzy
+msgid "WMI Accounts"
+msgstr "Tài khoản WMI"
+
+#: wmi_accounts.php:246 wmi_queries.php:270
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: wmi_accounts.php:252 wmi_accounts.php:365
+msgid "Accounts"
+msgstr "Tài Khoản"
+
+#: wmi_accounts.php:256 wmi_queries.php:280
+msgid "Default"
+msgstr "Mặc định"
+
+#: wmi_accounts.php:270 wmi_queries.php:297
+msgctxt "filter: use"
+msgid "Go"
+msgstr "Đi"
+
+#: wmi_accounts.php:273 wmi_queries.php:300
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr "Xóa"
+
+#: wmi_accounts.php:373 wmi_tools.php:268
+msgid "Description"
+msgstr "Mô tả"
+
+#: wmi_accounts.php:373
+msgid "Devices"
+msgstr "Thiết bị"
+
+#: wmi_accounts.php:389
+#, fuzzy
+msgid "No Accounts Found"
+msgstr "Không tìm thấy tài khoản"
+
+#: wmi_queries.php:47
+#, fuzzy
+msgid "Give this query a meaningful name that will be displayed."
+msgstr "Đặt cho truy vấn này một tên có ý nghĩa sẽ được hiển thị."
+
+#: wmi_queries.php:53
+#, fuzzy
+msgid "Collection Frequency"
+msgstr "Tần suất thu thập"
+
+#: wmi_queries.php:54
+#, fuzzy
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+"Khi Truy vấn WMI này được thêm vào Thiết bị, đây là Tần suất Thu thập Dữ "
+"liệu sẽ được sử dụng."
+
+#: wmi_queries.php:61
+msgid "Enabled"
+msgstr "Bật"
+
+#: wmi_queries.php:62
+#, fuzzy
+msgid "Should this Query be enabled on hosts using it"
+msgstr "Nếu truy vấn này được kích hoạt trên máy chủ sử dụng nó"
+
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#, fuzzy
+msgid "Namespace"
+msgstr "Không gian tên"
+
+#: wmi_queries.php:69
+#, fuzzy
+msgid "The Namespace for this Query."
+msgstr "Không gian tên cho truy vấn này."
+
+#: wmi_queries.php:75 wmi_tools.php:268
+msgid "Query"
+msgstr "Truy vấn"
+
+#: wmi_queries.php:76
+#, fuzzy
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr "Truy vấn để thực hiện để thu thập dữ liệu WMI từ thiết bị."
+
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#, fuzzy
+msgid "Primary Key"
+msgstr "Khóa chính"
+
+#: wmi_queries.php:85
+#, fuzzy
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"Khi Truy vấn WMI trả về nhiều hàng, Tên khóa nào sẽ là khóa chính hoặc chỉ "
+"mục? Nếu Khóa chính bao gồm nhiều cột, hãy phân tách chúng bằng dấu phẩy."
+
+#: wmi_queries.php:174
+#, fuzzy
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr "Nhấp vào 'Tiếp tục' để xóa các truy vấn WMI sau."
+
+#: wmi_queries.php:181
+#, fuzzy
+msgid "You must select at least one WMI Query."
+msgstr "Bạn phải chọn ít nhất một Truy vấn WMI."
+
+#: wmi_queries.php:182
+msgid "Return"
+msgstr "Trở về trang cài đặt bắt buộc Plugins"
+
+#: wmi_queries.php:184
+#, fuzzy
+msgid "Delete WMI Query"
+msgstr "Xóa truy vấn WMI"
+
+#: wmi_queries.php:238
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "Truy vấn [chỉnh sửa: %s]"
+
+#: wmi_queries.php:240
+#, fuzzy
+msgid "Query [new]"
+msgstr "Truy vấn [mới]"
+
+#: wmi_queries.php:294
+#, fuzzy
+msgid "Has Graphs"
+msgstr "Có đồ thị"
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr "ID"
+
+#: wmi_queries.php:411 wmi_tools.php:327
+msgid "Frequency"
+msgstr "Tần số"
+
+#: wmi_queries.php:413
+#, fuzzy
+msgid "WQL Query"
+msgstr "Truy vấn WQL"
+
+#: wmi_tools.php:107
+#, fuzzy
+msgid "Get Computer Information"
+msgstr "Nhận thông tin máy tính"
+
+#: wmi_tools.php:113
+#, fuzzy
+msgid "Get System Processes"
+msgstr "Nhận quy trình hệ thống"
+
+#: wmi_tools.php:119
+#, fuzzy
+msgid "Get Installed Software"
+msgstr "Nhận cài đặt phần mềm"
+
+#: wmi_tools.php:125
+#, fuzzy
+msgid "Get Operating System Information"
+msgstr "Nhận thông tin hệ điều hành"
+
+#: wmi_tools.php:131
+#, fuzzy
+msgid "Get OD Service Information"
+msgstr "Nhận thông tin dịch vụ OD"
+
+#: wmi_tools.php:137
+#, fuzzy
+msgid "Get System Enclosure Information"
+msgstr "Nhận thông tin bao vây hệ thống"
+
+#: wmi_tools.php:143
+#, fuzzy
+msgid "Get System Physical Memory Information"
+msgstr "Nhận thông tin bộ nhớ vật lý hệ thống"
+
+#: wmi_tools.php:149
+#, fuzzy
+msgid "Get Memory Device Details"
+msgstr "Nhận thông tin chi tiết về thiết bị bộ nhớ"
+
+#: wmi_tools.php:155
+#, fuzzy
+msgid "Get System BIOS Information"
+msgstr "Nhận thông tin BIOS hệ thống"
+
+#: wmi_tools.php:161
+#, fuzzy
+msgid "Get System Baseboard Information"
+msgstr "Nhận thông tin bảng hệ thống"
+
+#: wmi_tools.php:167
+#, fuzzy
+msgid "Get Processor Information"
+msgstr "Nhận thông tin bộ xử lý"
+
+#: wmi_tools.php:173
+#, fuzzy
+msgid "Ping a Known Address from Computer"
+msgstr "Ping một địa chỉ đã biết từ máy tính"
+
+#: wmi_tools.php:179
+#, fuzzy
+msgid "Get Row System OS Performance Data"
+msgstr "Nhận dữ liệu hiệu năng hệ điều hành hàng"
+
+#: wmi_tools.php:185
+#, fuzzy
+msgid "Get Formatted System OS Performance Data"
+msgstr "Nhận định dạng dữ liệu hiệu năng hệ điều hành hệ thống"
+
+#: wmi_tools.php:191
+#, fuzzy
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr "Nhận định dạng dữ liệu hiệu suất đĩa Phsycal"
+
+#: wmi_tools.php:197
+#, fuzzy
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr "Nhận dữ liệu hiệu suất đĩa thô Phsycal"
+
+#: wmi_tools.php:203
+#, fuzzy
+msgid "Get Logical Disk Information"
+msgstr "Nhận thông tin đĩa logic"
+
+#: wmi_tools.php:209
+#, fuzzy
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr "Nhận định dạng dữ liệu hiệu suất đĩa hợp lý"
+
+#: wmi_tools.php:215
+#, fuzzy
+msgid "Get Raw Logical Disk Performance Data"
+msgstr "Nhận dữ liệu hiệu suất đĩa thô"
+
+#: wmi_tools.php:221
+#, fuzzy
+msgid "Get Formatted CPU Performance Data"
+msgstr "Nhận dữ liệu hiệu suất CPU được định dạng"
+
+#: wmi_tools.php:227
+#, fuzzy
+msgid "Get Raw CPU Performance Data"
+msgstr "Nhận dữ liệu hiệu suất CPU thô"
+
+#: wmi_tools.php:233
+#, fuzzy
+msgid "Get Raw Memory Performance Data"
+msgstr "Nhận dữ liệu hiệu suất bộ nhớ thô"
+
+#: wmi_tools.php:239
+#, fuzzy
+msgid "Get Formatted Network Performance Data"
+msgstr "Nhận dữ liệu hiệu suất mạng được định dạng"
+
+#: wmi_tools.php:245
+#, fuzzy
+msgid "Get Raw Network Performance Data"
+msgstr "Nhận dữ liệu hiệu suất mạng thô"
+
+#: wmi_tools.php:251
+#, fuzzy
+msgid "Get Network Adapter Information"
+msgstr "Nhận thông tin bộ điều hợp mạng"
+
+#: wmi_tools.php:257
+#, fuzzy
+msgid "Get Computer Asset Information"
+msgstr "Nhận thông tin tài sản máy tính"
+
+#: wmi_tools.php:268
+#, fuzzy
+msgid "Name Space"
+msgstr "Tên không gian"
+
+#: wmi_tools.php:284 wmi_tools.php:306
+msgid "Close"
+msgstr "Đóng"
+
+#: wmi_tools.php:300
+#, fuzzy, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+"Nếu bạn cần hỗ trợ về mã lỗi, hãy sử dụng google hoặc tại đây, sử dụng Liên "
+"kết %s sau đây."
+
+#: wmi_tools.php:300
+#, fuzzy
+msgid "Microsoft Common WBEM Errors"
+msgstr "Lỗi thường gặp của Microsoft"
+
+#: wmi_tools.php:301
+#, fuzzy
+msgid "Distributed COM Setup"
+msgstr "Cài đặt COM phân tán"
+
+#: wmi_tools.php:301
+#, fuzzy, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"Để WMI hoạt động, tài khoản người dùng bạn đang sử dụng phải được cấp quyền "
+"COM phân tán và Tường lửa Windows phải được cấu hình để cho phép truyền "
+"thông COM phân tán. Bạn có thể tìm thấy một tài liệu thực sự tốt về quy "
+"trình này tại Liên kết %s sau đây."
+
+#: wmi_tools.php:334
+msgid "Host"
+msgstr "Host"
+
+#: wmi_tools.php:346
+msgid "Command"
+msgstr "Lệnh"
+
+#: wmi_tools.php:352
+#, fuzzy
+msgid "More Class Information @Microsoft"
+msgstr "Thông tin thêm về lớp học @Microsoft"
+
+#: wmi_tools.php:354
+msgid "Run"
+msgstr "Chạy"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run the WMI Query against the Device"
+msgstr "Chạy truy vấn WMI đối với thiết bị"
+
+#: wmi_tools.php:355
+msgid "Clear"
+msgstr "Xóa"
+
+#: wmi_tools.php:355
+#, fuzzy
+msgid "Clear the results panel."
+msgstr "Xóa bảng kết quả."
+
+#: wmi_tools.php:356
+#, fuzzy
+msgid "Pick from a list of common queries."
+msgstr "Chọn từ một danh sách các truy vấn phổ biến."
+
+#: wmi_tools.php:357
+#, fuzzy
+msgid "Get some help on setting up WMI"
+msgstr "Nhận một số trợ giúp về việc thiết lập WMI"
+
+#: wmi_tools.php:357
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: wmi_tools.php:358
+#, fuzzy
+msgid "Create a new WMI Query from the existing Query."
+msgstr "Tạo Truy vấn WMI mới từ Truy vấn hiện có."
+
+#: wmi_tools.php:369
+#, fuzzy
+msgid "Query Results"
+msgstr "Kết quả truy vấn"
+
+#: wmi_tools.php:398
+#, fuzzy
+msgid "Common Queries (Click to Select)"
+msgstr "Truy vấn thường gặp (Bấm để chọn)"
+
+#: wmi_tools.php:427
+#, fuzzy
+msgid "WMI Setup Assistance"
+msgstr "Hỗ trợ thiết lập WMI"
+
+#: wmi_tools.php:522
+#, fuzzy
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr "LRI: Bạn phải cung cấp máy chủ, tên người dùng, mật khẩu và truy vấn"
+
+#: wmi_tools.php:552 wmi_tools.php:617
+#, fuzzy, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr "Kết quả truy vấn WMI cho thiết bị: %s, Class: %s, Cột: %s, Hàng: %s"
+
+#: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
+msgid "Showing columns and first one or two rows of data."
+msgstr "Hiển thị các cột và một hoặc hai hàng dữ liệu đầu tiên."

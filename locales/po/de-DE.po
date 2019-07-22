@@ -1,0 +1,673 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"PO-Revision-Date: 2019-07-21 20:11-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#, fuzzy
+msgid "Queries"
+msgstr "Zugeordnete Datenabfragen"
+
+#: functions.php:30
+msgid "Authentication"
+msgstr "LDAP Authentifizierung"
+
+#: setup.php:39
+#, fuzzy
+msgid "WMI Management"
+msgstr "WMI-Management"
+
+#: setup.php:284
+#, fuzzy
+msgid "WMI Data"
+msgstr "WMI-Daten"
+
+#: setup.php:285
+#, fuzzy
+msgid "WMI Data Query"
+msgstr "WMI Datenabfrage"
+
+#: setup.php:289
+#, php-format
+msgid "%d Minute"
+msgstr "%d Minute"
+
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#, php-format
+msgid "%d Minutes"
+msgstr "%d Minuten"
+
+#: setup.php:295
+#, php-format
+msgid "%d Hour"
+msgstr "%d Stunde"
+
+#: setup.php:296 setup.php:297
+#, php-format
+msgid "%d Hours"
+msgstr "%d Stunden"
+
+#: setup.php:298
+#, php-format
+msgid "%d Day"
+msgstr "%d Tag"
+
+#: setup.php:303
+msgid "Utilities"
+msgstr "Werkzeuge"
+
+#: setup.php:303 wmi_tools.php:316
+#, fuzzy
+msgid "WMI Query Tool"
+msgstr "WMI Query Tool"
+
+#: setup.php:304
+msgid "Data Collection"
+msgstr "Datensammlung"
+
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
+#, fuzzy
+msgid "WMI Queries"
+msgstr "WMI Abfragen"
+
+#: setup.php:316 setup.php:330
+#, fuzzy
+msgid "WMI Autenication"
+msgstr "WMI-Authentifizierung"
+
+#: setup.php:323
+#, fuzzy
+msgid "WMI Autenication -> Edit"
+msgstr "WMI-Authentifizierung -> Bearbeiten"
+
+#: setup.php:344
+#, fuzzy
+msgid "WMI Queries -> Edit"
+msgstr "WMI Abfragen -> Bearbeiten"
+
+#: setup.php:365
+#, fuzzy
+msgid "WMI Tools"
+msgstr "WMI Tools"
+
+#: setup.php:404
+#, fuzzy
+msgid "WMI Account Options"
+msgstr "WMI-Kontooptionen"
+
+#: setup.php:409
+#, fuzzy
+msgid "WMI Authentication Account"
+msgstr "WMI Authentifizierungskonto"
+
+#: setup.php:410
+#, fuzzy
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr ""
+"Wählen Sie ein Konto, das bei der Authentifizierung über WMI verwendet "
+"werden soll"
+
+#: setup.php:424
+#, fuzzy
+msgid "WMI Settings"
+msgstr "WMI-Einstellungen"
+
+#: setup.php:428
+#, fuzzy
+msgid "Auto Create WMI Queries"
+msgstr "Automatische Erstellung von WMI-Abfragen"
+
+#: setup.php:429
+#, fuzzy
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"Wenn diese Option ausgewählt ist, werden beim Ausführen einer "
+"Automatisierung oder beim Erstellen/Speichern eines Geräts alle WMI-Abfragen "
+"erstellt, die mit der Gerätevorlage verknüpft sind."
+
+#: setup.php:447 setup.php:500
+#, fuzzy
+msgid "Associated WMI Queries"
+msgstr "Zugehörige WMI-Abfragen"
+
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
+msgid "Name"
+msgstr "Name"
+
+#: setup.php:462
+msgid "Status"
+msgstr "Status"
+
+#: setup.php:474
+#, fuzzy
+msgid "WMI Query Exists"
+msgstr "WMI-Query vorhanden"
+
+#: setup.php:476
+#, fuzzy
+msgid "WMI Query Does Not Exist"
+msgstr "WMI-Query existiert nicht"
+
+#: setup.php:493 setup.php:525
+#, fuzzy
+msgid "No Associated WMI Queries."
+msgstr "Keine zugehörigen WMI-Abfragen."
+
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+msgid "Delete"
+msgstr "Löschen"
+
+#: setup.php:542
+#, fuzzy
+msgid "Add WMI Query"
+msgstr "WMI-Abfrage hinzufügen"
+
+#: setup.php:548 wmi_tools.php:358
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: setup.php:548
+#, fuzzy
+msgid "Add WMI Query to Device Template"
+msgstr "WMI-Abfrage zur Gerätevorlage hinzufügen"
+
+#: setup.php:589
+#, fuzzy
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr ""
+"Klicken Sie auf'Weiter', um die folgenden WMI-Abfragen zu löschen, die von "
+"der Gerätevorlage getrennt werden."
+
+#: setup.php:590
+#, fuzzy, php-format
+msgid "WMI Query Name: %s"
+msgstr "WMI Query Name: %s"
+
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+msgid "Continue"
+msgstr "Fortsetzen"
+
+#: setup.php:596
+#, fuzzy
+msgid "Remove WMI Query"
+msgstr "WMI-Abfrage entfernen"
+
+#: wmi_accounts.php:48
+#, fuzzy
+msgid "Give this account a meaningful name that will be displayed."
+msgstr ""
+"Geben Sie diesem Konto einen aussagekräftigen Namen, der angezeigt wird."
+
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+msgid "Username"
+msgstr "Benutzername"
+
+#: wmi_accounts.php:55
+#, fuzzy
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+"Der Benutzername, der für die Authentifizierung verwendet wird.  Bitte geben "
+"Sie bei Bedarf auch die Domain an."
+
+#: wmi_accounts.php:61 wmi_tools.php:340
+msgid "Password"
+msgstr "Kennwort"
+
+#: wmi_accounts.php:62
+#, fuzzy
+msgid "The password used for authentication."
+msgstr "Das für die Authentifizierung verwendete Passwort."
+
+#: wmi_accounts.php:146
+#, fuzzy
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "Klicken Sie auf \"Weiter\", um die folgenden Konten zu löschen."
+
+#: wmi_accounts.php:153
+#, fuzzy
+msgid "You must select at least one account."
+msgstr "Sie müssen mindestens ein Konto auswählen."
+
+#: wmi_accounts.php:215
+#, fuzzy, php-format
+msgid "Account [edit: %s]"
+msgstr "Konto[bearbeiten: %s]"
+
+#: wmi_accounts.php:217
+#, fuzzy
+msgid "Account [new]"
+msgstr "Konto[neu]"
+
+#: wmi_accounts.php:238
+#, fuzzy
+msgid "WMI Accounts"
+msgstr "WMI-Konten"
+
+#: wmi_accounts.php:246 wmi_queries.php:270
+msgid "Search"
+msgstr "Suche"
+
+#: wmi_accounts.php:252 wmi_accounts.php:365
+msgid "Accounts"
+msgstr "Kundenkonten"
+
+#: wmi_accounts.php:256 wmi_queries.php:280
+msgid "Default"
+msgstr "Voreinstellung"
+
+#: wmi_accounts.php:270 wmi_queries.php:297
+msgctxt "filter: use"
+msgid "Go"
+msgstr "Anwenden"
+
+#: wmi_accounts.php:273 wmi_queries.php:300
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr "Löschen"
+
+#: wmi_accounts.php:373 wmi_tools.php:268
+msgid "Description"
+msgstr "Beschreibung"
+
+#: wmi_accounts.php:373
+msgid "Devices"
+msgstr "Zielsysteme"
+
+#: wmi_accounts.php:389
+#, fuzzy
+msgid "No Accounts Found"
+msgstr "Keine Konten gefunden"
+
+#: wmi_queries.php:47
+#, fuzzy
+msgid "Give this query a meaningful name that will be displayed."
+msgstr ""
+"Geben Sie dieser Abfrage einen aussagekräftigen Namen, der angezeigt wird."
+
+#: wmi_queries.php:53
+#, fuzzy
+msgid "Collection Frequency"
+msgstr "Abholfrequenz"
+
+#: wmi_queries.php:54
+#, fuzzy
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+"Wenn diese WMI-Abfrage zu einem Gerät hinzugefügt wird, ist dies die "
+"Häufigkeit der Datenerfassung, die verwendet wird."
+
+#: wmi_queries.php:61
+msgid "Enabled"
+msgstr "Aktiviert"
+
+#: wmi_queries.php:62
+#, fuzzy
+msgid "Should this Query be enabled on hosts using it"
+msgstr "Soll diese Abfrage auf Hosts, die sie verwenden, aktiviert werden?"
+
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#, fuzzy
+msgid "Namespace"
+msgstr "Namensraum"
+
+#: wmi_queries.php:69
+#, fuzzy
+msgid "The Namespace for this Query."
+msgstr "Der Namensraum für diese Query."
+
+#: wmi_queries.php:75 wmi_tools.php:268
+#, fuzzy
+msgid "Query"
+msgstr "Name von Daten Abfragen"
+
+#: wmi_queries.php:76
+#, fuzzy
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr "Die auszuführende Abfrage zum Sammeln von WMI-Daten vom Gerät."
+
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#, fuzzy
+msgid "Primary Key"
+msgstr "Primärschlüssel"
+
+#: wmi_queries.php:85
+#, fuzzy
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"Wenn eine WMI-Query mehrere Zeilen zurückgibt, welcher Schlüsselname wird "
+"dann der Primärschlüssel oder Index sein?  Wenn der Primärschlüssel mehrere "
+"Spalten enthält, trennen Sie diese durch ein Komma."
+
+#: wmi_queries.php:174
+#, fuzzy
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr "Klicken Sie auf \"Weiter\", um die folgenden WMI-Abfragen zu löschen."
+
+#: wmi_queries.php:181
+#, fuzzy
+msgid "You must select at least one WMI Query."
+msgstr "Sie müssen mindestens eine WMI-Query auswählen."
+
+#: wmi_queries.php:182
+msgid "Return"
+msgstr "Zurück"
+
+#: wmi_queries.php:184
+#, fuzzy
+msgid "Delete WMI Query"
+msgstr "WMI-Abfrage löschen"
+
+#: wmi_queries.php:238
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "Abfrage [bearbeiten: %s]"
+
+#: wmi_queries.php:240
+#, fuzzy
+msgid "Query [new]"
+msgstr "Abfrage[neu]"
+
+#: wmi_queries.php:294
+#, fuzzy
+msgid "Has Graphs"
+msgstr "Hat Diagramme"
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr "ID"
+
+#: wmi_queries.php:411 wmi_tools.php:327
+msgid "Frequency"
+msgstr "Häufigkeit"
+
+#: wmi_queries.php:413
+#, fuzzy
+msgid "WQL Query"
+msgstr "WQL-Abfrage"
+
+#: wmi_tools.php:107
+#, fuzzy
+msgid "Get Computer Information"
+msgstr "Computerinformationen abrufen"
+
+#: wmi_tools.php:113
+#, fuzzy
+msgid "Get System Processes"
+msgstr "Systemprozesse holen"
+
+#: wmi_tools.php:119
+#, fuzzy
+msgid "Get Installed Software"
+msgstr "Installierte Software erhalten"
+
+#: wmi_tools.php:125
+#, fuzzy
+msgid "Get Operating System Information"
+msgstr "Betriebssysteminformationen abrufen"
+
+#: wmi_tools.php:131
+#, fuzzy
+msgid "Get OD Service Information"
+msgstr "OD-Service-Informationen abrufen"
+
+#: wmi_tools.php:137
+#, fuzzy
+msgid "Get System Enclosure Information"
+msgstr "Informationen zum Systemgehäuse abrufen"
+
+#: wmi_tools.php:143
+#, fuzzy
+msgid "Get System Physical Memory Information"
+msgstr "Informationen zum physischen Systemspeicher abrufen"
+
+#: wmi_tools.php:149
+#, fuzzy
+msgid "Get Memory Device Details"
+msgstr "Details zum Speichergerät abrufen"
+
+#: wmi_tools.php:155
+#, fuzzy
+msgid "Get System BIOS Information"
+msgstr "System-BIOS-Informationen abrufen"
+
+#: wmi_tools.php:161
+#, fuzzy
+msgid "Get System Baseboard Information"
+msgstr "Informationen zum System Baseboard abrufen"
+
+#: wmi_tools.php:167
+#, fuzzy
+msgid "Get Processor Information"
+msgstr "Informationen zum Prozessor abrufen"
+
+#: wmi_tools.php:173
+#, fuzzy
+msgid "Ping a Known Address from Computer"
+msgstr "Pingen einer bekannten Adresse vom Computer aus"
+
+#: wmi_tools.php:179
+#, fuzzy
+msgid "Get Row System OS Performance Data"
+msgstr "Leistungsdaten des Reihensystems OS abrufen"
+
+#: wmi_tools.php:185
+#, fuzzy
+msgid "Get Formatted System OS Performance Data"
+msgstr "Formatierte Leistungsdaten des Systembetriebssystems abrufen"
+
+#: wmi_tools.php:191
+#, fuzzy
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr "Formatierte phsycalische Festplattenleistungsdaten erhalten"
+
+#: wmi_tools.php:197
+#, fuzzy
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr "Raw Phsycal Disk Leistungsdaten erhalten"
+
+#: wmi_tools.php:203
+#, fuzzy
+msgid "Get Logical Disk Information"
+msgstr "Informationen über logische Laufwerke abrufen"
+
+#: wmi_tools.php:209
+#, fuzzy
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr "Formatierte Leistungsdaten logischer Festplatten erhalten"
+
+#: wmi_tools.php:215
+#, fuzzy
+msgid "Get Raw Logical Disk Performance Data"
+msgstr "Raw Logical Disk Performance-Daten erhalten"
+
+#: wmi_tools.php:221
+#, fuzzy
+msgid "Get Formatted CPU Performance Data"
+msgstr "Formatierte CPU-Leistungsdaten abrufen"
+
+#: wmi_tools.php:227
+#, fuzzy
+msgid "Get Raw CPU Performance Data"
+msgstr "Raw CPU-Leistungsdaten abrufen"
+
+#: wmi_tools.php:233
+#, fuzzy
+msgid "Get Raw Memory Performance Data"
+msgstr "Raw Memory Leistungsdaten abrufen"
+
+#: wmi_tools.php:239
+#, fuzzy
+msgid "Get Formatted Network Performance Data"
+msgstr "Formatierte Netzwerkleistungsdaten erhalten"
+
+#: wmi_tools.php:245
+#, fuzzy
+msgid "Get Raw Network Performance Data"
+msgstr "Raw Network Leistungsdaten abrufen"
+
+#: wmi_tools.php:251
+#, fuzzy
+msgid "Get Network Adapter Information"
+msgstr "Informationen zum Netzwerkadapter abrufen"
+
+#: wmi_tools.php:257
+#, fuzzy
+msgid "Get Computer Asset Information"
+msgstr "Computer Asset Informationen abrufen"
+
+#: wmi_tools.php:268
+#, fuzzy
+msgid "Name Space"
+msgstr "Namensraum"
+
+#: wmi_tools.php:284 wmi_tools.php:306
+msgid "Close"
+msgstr "Schließen"
+
+#: wmi_tools.php:300
+#, fuzzy, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+"Wenn Sie Hilfe zu Fehlercodes benötigen, verwenden Sie Google oder hier den "
+"folgenden Link %s."
+
+#: wmi_tools.php:300
+#, fuzzy
+msgid "Microsoft Common WBEM Errors"
+msgstr "Microsoft häufige WBEM-Fehler"
+
+#: wmi_tools.php:301
+#, fuzzy
+msgid "Distributed COM Setup"
+msgstr "Verteilte COM-Einrichtung"
+
+#: wmi_tools.php:301
+#, fuzzy, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"Damit WMI funktioniert, muss dem von Ihnen verwendeten Benutzerkonto die "
+"Berechtigung Verteilte COM erteilt werden, und die Windows-Firewall muss so "
+"konfiguriert sein, dass sie verteilte COM-Kommunikation zulässt.  Ein "
+"wirklich gutes Dokument zu diesem Verfahren finden Sie unter dem folgenden "
+"Link %s."
+
+#: wmi_tools.php:334
+msgid "Host"
+msgstr "Zielsystem"
+
+#: wmi_tools.php:346
+msgid "Command"
+msgstr "Befehl"
+
+#: wmi_tools.php:352
+#, fuzzy
+msgid "More Class Information @Microsoft"
+msgstr "Mehr Klasseninformationen @Microsoft"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run"
+msgstr "Statistik des letzten Durchlaufs"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run the WMI Query against the Device"
+msgstr "Ausführen der WMI-Abfrage gegen das Gerät"
+
+#: wmi_tools.php:355
+msgid "Clear"
+msgstr "Löschen"
+
+#: wmi_tools.php:355
+#, fuzzy
+msgid "Clear the results panel."
+msgstr "Löschen Sie das Ergebnisfeld."
+
+#: wmi_tools.php:356
+#, fuzzy
+msgid "Pick from a list of common queries."
+msgstr "Wählen Sie aus einer Liste gängiger Abfragen."
+
+#: wmi_tools.php:357
+#, fuzzy
+msgid "Get some help on setting up WMI"
+msgstr "Holen Sie sich Hilfe bei der Einrichtung von WMI"
+
+#: wmi_tools.php:357
+msgid "Help"
+msgstr "Hilfe"
+
+#: wmi_tools.php:358
+#, fuzzy
+msgid "Create a new WMI Query from the existing Query."
+msgstr "Erstellen Sie eine neue WMI-Query aus der bestehenden Query."
+
+#: wmi_tools.php:369
+#, fuzzy
+msgid "Query Results"
+msgstr "Abfrageergebnisse"
+
+#: wmi_tools.php:398
+#, fuzzy
+msgid "Common Queries (Click to Select)"
+msgstr "Allgemeine Fragen (Klicken Sie hier, um auszuwählen)"
+
+#: wmi_tools.php:427
+#, fuzzy
+msgid "WMI Setup Assistance"
+msgstr "WMI Einrichtungshilfe"
+
+#: wmi_tools.php:522
+#, fuzzy
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr ""
+"FEHLER: Sie müssen einen Host, Benutzernamen, Passwort und Abfrage angeben"
+
+#: wmi_tools.php:552 wmi_tools.php:617
+#, fuzzy, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr ""
+"WMI Abfrageergebnisse für Gerät: %s, Klasse: %s, Spalten: %s, Zeilen: %s"
+
+#: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
+msgid "Showing columns and first one or two rows of data."
+msgstr "Zeigt Spalten und eine oder zwei Datenzeilen an."

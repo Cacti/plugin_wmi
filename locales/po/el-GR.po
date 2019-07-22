@@ -1,0 +1,680 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"PO-Revision-Date: 2019-07-21 20:26-0400\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: el_GR\n"
+
+#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#, fuzzy
+msgid "Queries"
+msgstr "Ερωτήματα"
+
+#: functions.php:30
+msgid "Authentication"
+msgstr "Πιστοποίηση"
+
+#: setup.php:39
+#, fuzzy
+msgid "WMI Management"
+msgstr "Διαχείριση WMI"
+
+#: setup.php:284
+#, fuzzy
+msgid "WMI Data"
+msgstr "Δεδομένα WMI"
+
+#: setup.php:285
+#, fuzzy
+msgid "WMI Data Query"
+msgstr "WMI Data Query"
+
+#: setup.php:289
+#, fuzzy, php-format
+msgid "%d Minute"
+msgstr "% d λεπτά"
+
+#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#, fuzzy, php-format
+msgid "%d Minutes"
+msgstr "%d λεπτά"
+
+#: setup.php:295
+#, fuzzy, php-format
+msgid "%d Hour"
+msgstr "% d ώρα"
+
+#: setup.php:296 setup.php:297
+#, fuzzy, php-format
+msgid "%d Hours"
+msgstr "% d Ώρες"
+
+#: setup.php:298
+#, fuzzy, php-format
+msgid "%d Day"
+msgstr "% d Ημέρα"
+
+#: setup.php:303
+msgid "Utilities"
+msgstr "Παροχές"
+
+#: setup.php:303 wmi_tools.php:316
+#, fuzzy
+msgid "WMI Query Tool"
+msgstr "WMI Εργαλείο Query"
+
+#: setup.php:304
+#, fuzzy
+msgid "Data Collection"
+msgstr "Συλλογή δεδομένων"
+
+#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
+#: wmi_queries.php:405
+#, fuzzy
+msgid "WMI Queries"
+msgstr "WMI ερωτήματα"
+
+#: setup.php:316 setup.php:330
+#, fuzzy
+msgid "WMI Autenication"
+msgstr "WMI Autenication"
+
+#: setup.php:323
+#, fuzzy
+msgid "WMI Autenication -> Edit"
+msgstr "WMI Autenication -> Επεξεργασία"
+
+#: setup.php:344
+#, fuzzy
+msgid "WMI Queries -> Edit"
+msgstr "WMI ερωτήματα -> Επεξεργασία"
+
+#: setup.php:365
+#, fuzzy
+msgid "WMI Tools"
+msgstr "Εργαλεία WMI"
+
+#: setup.php:404
+#, fuzzy
+msgid "WMI Account Options"
+msgstr "Επιλογές λογαριασμού WMI"
+
+#: setup.php:409
+#, fuzzy
+msgid "WMI Authentication Account"
+msgstr "Λογαριασμός ελέγχου ταυτότητας WMI"
+
+#: setup.php:410
+#, fuzzy
+msgid "Choose an account to use when Authenticating via WMI"
+msgstr ""
+"Επιλέξτε έναν λογαριασμό που θα χρησιμοποιηθεί κατά τον έλεγχο ταυτότητας "
+"μέσω του WMI"
+
+#: setup.php:424
+#, fuzzy
+msgid "WMI Settings"
+msgstr "Ρυθμίσεις WMI"
+
+#: setup.php:428
+#, fuzzy
+msgid "Auto Create WMI Queries"
+msgstr "Δημιουργία αυτόματων ερωτημάτων WMI"
+
+#: setup.php:429
+#, fuzzy
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"Εάν επιλεγεί, κατά την εκτέλεση αυτοματοποίησης ή κατά τη δημιουργία / "
+"αποθήκευση μιας Συσκευής, θα δημιουργηθούν όλα τα Ερωτήματα WMI που "
+"σχετίζονται με το Πρότυπο Συσκευής."
+
+#: setup.php:447 setup.php:500
+#, fuzzy
+msgid "Associated WMI Queries"
+msgstr "Συσχετισμένα ερωτήματα WMI"
+
+#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: wmi_tools.php:324
+msgid "Name"
+msgstr "Όνομα"
+
+#: setup.php:462
+msgid "Status"
+msgstr "Κατάσταση"
+
+#: setup.php:474
+#, fuzzy
+msgid "WMI Query Exists"
+msgstr "Το ερώτημα WMI υπάρχει"
+
+#: setup.php:476
+#, fuzzy
+msgid "WMI Query Does Not Exist"
+msgstr "Το ερώτημα WMI δεν υπάρχει"
+
+#: setup.php:493 setup.php:525
+#, fuzzy
+msgid "No Associated WMI Queries."
+msgstr "Δεν υπάρχουν ερωτήματα σχετικά με το WMI."
+
+#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: setup.php:542
+#, fuzzy
+msgid "Add WMI Query"
+msgstr "Προσθήκη ερώτησης WMI"
+
+#: setup.php:548 wmi_tools.php:358
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: setup.php:548
+#, fuzzy
+msgid "Add WMI Query to Device Template"
+msgstr "Προσθέστε το ερώτημα WMI στο πρότυπο συσκευής"
+
+#: setup.php:589
+#, fuzzy
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr ""
+"Κάντε κλικ στο κουμπί \"Συνέχεια\" για να διαγράψετε τα ακόλουθα ερωτήματα "
+"WMI θα διαχωριστούν από το Πρότυπο συσκευής."
+
+#: setup.php:590
+#, fuzzy, php-format
+msgid "WMI Query Name: %s"
+msgstr "Όνομα ερωτήματος WMI: %s"
+
+#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+msgid "Continue"
+msgstr "Συνέχεια"
+
+#: setup.php:596
+#, fuzzy
+msgid "Remove WMI Query"
+msgstr "Κατάργηση του ερωτήματος WMI"
+
+#: wmi_accounts.php:48
+#, fuzzy
+msgid "Give this account a meaningful name that will be displayed."
+msgstr "Δώστε σε αυτόν τον λογαριασμό ένα σημαντικό όνομα που θα εμφανιστεί."
+
+#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+msgid "Username"
+msgstr "Όνομα Χρήστη"
+
+#: wmi_accounts.php:55
+#, fuzzy
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+"Το όνομα χρήστη που θα χρησιμοποιηθεί για έλεγχο ταυτότητας. Παρακαλείσθε "
+"επίσης να συμπεριλάβετε τον τομέα αν είναι απαραίτητο."
+
+#: wmi_accounts.php:61 wmi_tools.php:340
+msgid "Password"
+msgstr "Κωδικός"
+
+#: wmi_accounts.php:62
+#, fuzzy
+msgid "The password used for authentication."
+msgstr "Ο κωδικός πρόσβασης που χρησιμοποιείται για τον έλεγχο ταυτότητας."
+
+#: wmi_accounts.php:146
+#, fuzzy
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "Πατήστε 'Συνέχεια' για να διαγράψετε τους ακόλουθους λογαριασμούς."
+
+#: wmi_accounts.php:153
+#, fuzzy
+msgid "You must select at least one account."
+msgstr "Πρέπει να επιλέξετε τουλάχιστον έναν λογαριασμό."
+
+#: wmi_accounts.php:215
+#, fuzzy, php-format
+msgid "Account [edit: %s]"
+msgstr "Λογαριασμός [επεξεργασία: %s]"
+
+#: wmi_accounts.php:217
+#, fuzzy
+msgid "Account [new]"
+msgstr "Λογαριασμός [νέο]"
+
+#: wmi_accounts.php:238
+#, fuzzy
+msgid "WMI Accounts"
+msgstr "Λογαριασμοί WMI"
+
+#: wmi_accounts.php:246 wmi_queries.php:270
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: wmi_accounts.php:252 wmi_accounts.php:365
+#, fuzzy
+msgid "Accounts"
+msgstr "Λογαριασμοί"
+
+#: wmi_accounts.php:256 wmi_queries.php:280
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: wmi_accounts.php:270 wmi_queries.php:297
+msgctxt "filter: use"
+msgid "Go"
+msgstr "Πήγαινε"
+
+#: wmi_accounts.php:273 wmi_queries.php:300
+msgctxt "filter: reset"
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#: wmi_accounts.php:373 wmi_tools.php:268
+msgid "Description"
+msgstr "Περιγραφή"
+
+#: wmi_accounts.php:373
+msgid "Devices"
+msgstr "Τύπος Συσκευής"
+
+#: wmi_accounts.php:389
+#, fuzzy
+msgid "No Accounts Found"
+msgstr "Δεν βρέθηκαν λογαριασμοί"
+
+#: wmi_queries.php:47
+#, fuzzy
+msgid "Give this query a meaningful name that will be displayed."
+msgstr "Δώστε σε αυτό το ερώτημα ένα σημαντικό όνομα που θα εμφανιστεί."
+
+#: wmi_queries.php:53
+#, fuzzy
+msgid "Collection Frequency"
+msgstr "Συχνότητα Συλλογής"
+
+#: wmi_queries.php:54
+#, fuzzy
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+"Όταν αυτό το WMI Query προστίθεται σε μια Συσκευή, αυτή είναι η Συχνότητα "
+"Συλλογής Δεδομένων που θα χρησιμοποιηθεί."
+
+#: wmi_queries.php:61
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+#: wmi_queries.php:62
+#, fuzzy
+msgid "Should this Query be enabled on hosts using it"
+msgstr ""
+"Πρέπει να ενεργοποιηθεί αυτό το ερώτημα σε κεντρικούς υπολογιστές που το "
+"χρησιμοποιούν"
+
+#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#, fuzzy
+msgid "Namespace"
+msgstr "Ο χώρος ονομάτων"
+
+#: wmi_queries.php:69
+#, fuzzy
+msgid "The Namespace for this Query."
+msgstr "Ο χώρος ονομάτων για αυτό το ερώτημα."
+
+#: wmi_queries.php:75 wmi_tools.php:268
+msgid "Query"
+msgstr ""
+"Οι ετικέτες υπό συνθήκη ερώτηματος δεν δουλεύουν πριν εκτελεστεί το ερώτημα. "
+"Στην οποία περίπτωση επιστρέφουν σφάλμα."
+
+#: wmi_queries.php:76
+#, fuzzy
+msgid "The Query to execute for gathering WMI data from the device."
+msgstr ""
+"Το ερώτημα που θα εκτελεστεί για τη συλλογή δεδομένων WMI από τη συσκευή."
+
+#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#, fuzzy
+msgid "Primary Key"
+msgstr "Πρωτεύων κλειδί"
+
+#: wmi_queries.php:85
+#, fuzzy
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"Όταν ένα ερώτημα WMI επιστρέφει πολλές σειρές, ποιο Όνομα κλειδιού θα είναι "
+"το πρωτεύον κλειδί ή ευρετήριο; Εάν το πρωτεύον κλειδί περιλαμβάνει πολλές "
+"στήλες, διαχωρίστε τις με κόμμα."
+
+#: wmi_queries.php:174
+#, fuzzy
+msgid "Click 'Continue' to Delete the following WMI Queries."
+msgstr ""
+"Κάντε κλικ στο κουμπί \"Συνέχεια\" για να διαγράψετε τα ακόλουθα ερωτήματα "
+"του WMI."
+
+#: wmi_queries.php:181
+#, fuzzy
+msgid "You must select at least one WMI Query."
+msgstr "Πρέπει να επιλέξετε τουλάχιστον ένα ερώτημα WMI."
+
+#: wmi_queries.php:182
+msgid "Return"
+msgstr "Επιστροφή"
+
+#: wmi_queries.php:184
+#, fuzzy
+msgid "Delete WMI Query"
+msgstr "Διαγραφή ερωτήματος WMI"
+
+#: wmi_queries.php:238
+#, fuzzy, php-format
+msgid "Query [edit: %s]"
+msgstr "Ερώτημα [επεξεργασία: %s]"
+
+#: wmi_queries.php:240
+#, fuzzy
+msgid "Query [new]"
+msgstr "Ερώτημα [νέο]"
+
+#: wmi_queries.php:294
+#, fuzzy
+msgid "Has Graphs"
+msgstr "Έχει γραφήματα"
+
+#: wmi_queries.php:410
+msgid "ID"
+msgstr "ID"
+
+#: wmi_queries.php:411 wmi_tools.php:327
+msgid "Frequency"
+msgstr "Συχνότητα"
+
+#: wmi_queries.php:413
+#, fuzzy
+msgid "WQL Query"
+msgstr "WQL Query"
+
+#: wmi_tools.php:107
+#, fuzzy
+msgid "Get Computer Information"
+msgstr "Αποκτήστε πληροφορίες υπολογιστή"
+
+#: wmi_tools.php:113
+#, fuzzy
+msgid "Get System Processes"
+msgstr "Αποκτήστε διαδικασίες συστήματος"
+
+#: wmi_tools.php:119
+#, fuzzy
+msgid "Get Installed Software"
+msgstr "Λάβετε εγκατεστημένο λογισμικό"
+
+#: wmi_tools.php:125
+#, fuzzy
+msgid "Get Operating System Information"
+msgstr "Λάβετε πληροφορίες για το λειτουργικό σύστημα"
+
+#: wmi_tools.php:131
+#, fuzzy
+msgid "Get OD Service Information"
+msgstr "Λάβετε πληροφορίες υπηρεσίας OD"
+
+#: wmi_tools.php:137
+#, fuzzy
+msgid "Get System Enclosure Information"
+msgstr "Λάβετε πληροφορίες σχετικά με το περίβλημα του συστήματος"
+
+#: wmi_tools.php:143
+#, fuzzy
+msgid "Get System Physical Memory Information"
+msgstr "Λάβετε πληροφορίες σχετικά με τη φυσική μνήμη συστήματος"
+
+#: wmi_tools.php:149
+#, fuzzy
+msgid "Get Memory Device Details"
+msgstr "Αποκτήστε λεπτομέρειες της συσκευής μνήμης"
+
+#: wmi_tools.php:155
+#, fuzzy
+msgid "Get System BIOS Information"
+msgstr "Αποκτήστε πληροφορίες BIOS συστήματος"
+
+#: wmi_tools.php:161
+#, fuzzy
+msgid "Get System Baseboard Information"
+msgstr "Λάβετε πληροφορίες σχετικά με το σύστημα βάσης συστήματος"
+
+#: wmi_tools.php:167
+#, fuzzy
+msgid "Get Processor Information"
+msgstr "Λήψη πληροφοριών επεξεργαστή"
+
+#: wmi_tools.php:173
+#, fuzzy
+msgid "Ping a Known Address from Computer"
+msgstr "Ping μια γνωστή διεύθυνση από τον υπολογιστή"
+
+#: wmi_tools.php:179
+#, fuzzy
+msgid "Get Row System OS Performance Data"
+msgstr "Λάβετε Δεδομένα απόδοσης λειτουργικών συστημάτων συστήματος Row"
+
+#: wmi_tools.php:185
+#, fuzzy
+msgid "Get Formatted System OS Performance Data"
+msgstr ""
+"Λάβετε δεδομένα μορφοποίησης δεδομένων λειτουργικού συστήματος του συστήματος"
+
+#: wmi_tools.php:191
+#, fuzzy
+msgid "Get Formatted Phsycal Disk Performance Data"
+msgstr "Αποκτήστε μορφοποιημένα δεδομένα απόδοσης δίσκου Phsycal"
+
+#: wmi_tools.php:197
+#, fuzzy
+msgid "Get Raw Phsycal Disk Performance Data"
+msgstr "Αποκτήστε δεδομένα απόδοσης αρχείων Raw Phsycal Disk"
+
+#: wmi_tools.php:203
+#, fuzzy
+msgid "Get Logical Disk Information"
+msgstr "Λάβετε πληροφορίες λογικών δίσκων"
+
+#: wmi_tools.php:209
+#, fuzzy
+msgid "Get Formatted Logical Disk Performance Data"
+msgstr "Λάβετε δεδομένα μορφοποιημένης λογικής απόδοσης δίσκου"
+
+#: wmi_tools.php:215
+#, fuzzy
+msgid "Get Raw Logical Disk Performance Data"
+msgstr "Λάβετε δεδομένα σχετικά με την απόδοση πρωτογενούς λογικού δίσκου"
+
+#: wmi_tools.php:221
+#, fuzzy
+msgid "Get Formatted CPU Performance Data"
+msgstr "Λάβετε δεδομένα μορφοποιημένης απόδοσης CPU"
+
+#: wmi_tools.php:227
+#, fuzzy
+msgid "Get Raw CPU Performance Data"
+msgstr "Αποκτήστε δεδομένα απόδοσης πρωτογενούς CPU"
+
+#: wmi_tools.php:233
+#, fuzzy
+msgid "Get Raw Memory Performance Data"
+msgstr "Αποκτήστε δεδομένα επιδόσεων ακατέργαστης μνήμης"
+
+#: wmi_tools.php:239
+#, fuzzy
+msgid "Get Formatted Network Performance Data"
+msgstr "Αποκτήστε μορφοποιημένα δεδομένα απόδοσης δικτύου"
+
+#: wmi_tools.php:245
+#, fuzzy
+msgid "Get Raw Network Performance Data"
+msgstr "Λάβετε δεδομένα σχετικά με την απόδοση δικτύου"
+
+#: wmi_tools.php:251
+#, fuzzy
+msgid "Get Network Adapter Information"
+msgstr "Αποκτήστε πληροφορίες προσαρμογέα δικτύου"
+
+#: wmi_tools.php:257
+#, fuzzy
+msgid "Get Computer Asset Information"
+msgstr "Αποκτήστε πληροφορίες σχετικά με τα στοιχεία του υπολογιστή"
+
+#: wmi_tools.php:268
+#, fuzzy
+msgid "Name Space"
+msgstr "Όνομα Χώρος"
+
+#: wmi_tools.php:284 wmi_tools.php:306
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: wmi_tools.php:300
+#, fuzzy, php-format
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+"Εάν χρειάζεστε βοήθεια σχετικά με τους κωδικούς σφαλμάτων, χρησιμοποιήστε το "
+"google, ή εδώ χρησιμοποιήστε τον ακόλουθο σύνδεσμο %s."
+
+#: wmi_tools.php:300
+#, fuzzy
+msgid "Microsoft Common WBEM Errors"
+msgstr "Κοινά σφάλματα WBEM της Microsoft"
+
+#: wmi_tools.php:301
+#, fuzzy
+msgid "Distributed COM Setup"
+msgstr "Διανεμημένη ρύθμιση COM"
+
+#: wmi_tools.php:301
+#, fuzzy, php-format
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"Για να λειτουργήσει το WMI, ο λογαριασμός χρήστη που χρησιμοποιείτε πρέπει "
+"να έχει δικαιώματα Distributed COM και το τείχος προστασίας των Windows "
+"πρέπει να έχει ρυθμιστεί έτσι ώστε να επιτρέπει τις επικοινωνίες Distributed "
+"COM. Μπορείτε να βρείτε ένα πραγματικά καλό έγγραφο σχετικά με αυτή τη "
+"διαδικασία στο ακόλουθο Link %s."
+
+#: wmi_tools.php:334
+msgid "Host"
+msgstr "Διακομιστής"
+
+#: wmi_tools.php:346
+msgid "Command"
+msgstr "Εντολή"
+
+#: wmi_tools.php:352
+#, fuzzy
+msgid "More Class Information @Microsoft"
+msgstr "Περισσότερες πληροφορίες κλάσης @ Microsoft"
+
+#: wmi_tools.php:354
+msgid "Run"
+msgstr "Εκτέλεση"
+
+#: wmi_tools.php:354
+#, fuzzy
+msgid "Run the WMI Query against the Device"
+msgstr "Εκτελέστε το ερώτημα WMI στη συσκευή"
+
+#: wmi_tools.php:355
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#: wmi_tools.php:355
+#, fuzzy
+msgid "Clear the results panel."
+msgstr "Διαγράψτε τον πίνακα αποτελεσμάτων."
+
+#: wmi_tools.php:356
+#, fuzzy
+msgid "Pick from a list of common queries."
+msgstr "Επιλέξτε από μια λίστα με κοινά ερωτήματα."
+
+#: wmi_tools.php:357
+#, fuzzy
+msgid "Get some help on setting up WMI"
+msgstr "Λάβετε βοήθεια σχετικά με τη ρύθμιση του WMI"
+
+#: wmi_tools.php:357
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: wmi_tools.php:358
+#, fuzzy
+msgid "Create a new WMI Query from the existing Query."
+msgstr "Δημιουργήστε ένα νέο ερώτημα WMI από το υπάρχον ερώτημα."
+
+#: wmi_tools.php:369
+msgid "Query Results"
+msgstr "Αποτελέσματα Ερωτήματος"
+
+#: wmi_tools.php:398
+#, fuzzy
+msgid "Common Queries (Click to Select)"
+msgstr "Κοινά ερωτήματα (κάντε κλικ για επιλογή)"
+
+#: wmi_tools.php:427
+#, fuzzy
+msgid "WMI Setup Assistance"
+msgstr "Βοήθεια εγκατάστασης WMI"
+
+#: wmi_tools.php:522
+#, fuzzy
+msgid "ERROR: You must provide a host, username, password and query"
+msgstr ""
+"Σφάλμα: Πρέπει να δώσετε έναν κεντρικό υπολογιστή, όνομα χρήστη, κωδικό "
+"πρόσβασης και ερώτημα"
+
+#: wmi_tools.php:552 wmi_tools.php:617
+#, fuzzy, php-format
+msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
+msgstr ""
+"Αποτελέσματα ερωτήματος WMI για τη συσκευή: %s, Κλάση: %s, Στήλες: %s, "
+"Γραμμές: %s"
+
+#: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
+msgid "Showing columns and first one or two rows of data."
+msgstr "Εμφανίζονται στήλες και πρώτα μία ή δύο σειρές δεδομένων."
