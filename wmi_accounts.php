@@ -105,11 +105,18 @@ function actions_accounts() {
 		if ($selected_items != false) {
 			if (get_request_var('drp_action') == '1') {
 				for ($i=0; $i<count($selected_items); $i++) {
-					db_execute_prepared('DELETE FROM wmi_user_accounts WHERE id = ?', array($selected_items[$i]));
+					db_execute_prepared('DELETE FROM wmi_user_accounts
+						WHERE id = ?',
+						array($selected_items[$i]));
+
+					db_execute_prepared('UPDATE host
+						SET wmi_account = 0
+						WHERE wmi_account = ?',
+						array($selected_items[$i]));
 				}
 			}
 
-			header('Location: wmi_accounts.php?header=false');
+			header('Location: wmi_accounts.php');
 			exit;
 		}
 	}
