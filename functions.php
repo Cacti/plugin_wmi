@@ -32,14 +32,14 @@ function display_tabs() {
 	/* if they were redirected to the page, let's set that up */
 	if (!isset_request_var('tab')) {
 		$current_tab = 'queries';
-	}else{
+	} else {
 		$current_tab = get_request_var('tab');
 	}
 
 	/* draw the tabs */
 	print "<div class='tabs'><nav><ul>";
 
-	if (sizeof($tabs)) {
+	if (cacti_sizeof($tabs)) {
 		foreach ($tabs as $shortname => $tab) {
 			print '<li><a class="tab ' . (($shortname == $current_tab) ? 'selected"':'"') . " href='" . htmlspecialchars($config['url_path'] .
 				'plugins/wmi/' . $tab['url'] . '?' .
@@ -97,7 +97,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$i = 0;
 		$keys = explode(',', $wmic['querykeys']);
 
-		if (sizeof($keys) > 0) {
+		if (cacti_sizeof($keys) > 0) {
 			foreach ($keys as $item2) {
 				$data .= "\t\t\t\t\t<item_" . str_pad(strval($i), 3, "0", STR_PAD_LEFT) . ">\n";
 				$data .= "\t\t\t\t\t\t<snmp_field_name>" . $item2 . "</snmp_field_name>\n";
@@ -151,7 +151,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t\t</ds>\n";
 		$data .= "\t\t<items>\n";
 
-		if (sizeof($keys) > 0) {
+		if (cacti_sizeof($keys) > 0) {
 			foreach ($keys as $item2) {
 
 			$data .= "\t\t\t<hash_" . $hashes['data_template_item'][$item2] . ">\n";
@@ -177,7 +177,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data_input_data = db_fetch_assoc("SELECT * FROM data_input_fields WHERE data_input_fields.data_input_id=$input AND input_output = 'in' ORDER BY id DESC");
 		$data .= "\t\t<data>\n";
 		$i = 0;
-		if (sizeof($data_input_data) > 0) {
+		if (cacti_sizeof($data_input_data) > 0) {
 			foreach ($data_input_data as $item) {
 				$data .= "\t\t\t<item_" . str_pad(strval($i), 3, "0", STR_PAD_LEFT) . ">\n";
 				$data .= "\t\t\t\t<data_input_field_id>hash_" . get_hash_version("data_input_field") . $item['hash'] . "</data_input_field_id>\n";
@@ -399,16 +399,16 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 			$wmic->Security_->ImpersonationLevel = 3;
 			$data = $wmic->ExecQuery($command);
 
-			if (sizeof($data)) {
+			if (cacti_sizeof($data)) {
 				$indexes = array_keys($data[0]);
 			}
 		}
 
-		if (sizeof($data)) {
+		if (cacti_sizeof($data)) {
 			$sql = array();
 
 			$pk_index = -1;
-			if (sizeof($indexes)) {
+			if (cacti_sizeof($indexes)) {
 				foreach($indexes as $index => $value) {
 					if ($value == $wmi_query['primary_key']) {
 						$pk_index = $index;
@@ -417,12 +417,14 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 				}
 			}
 
-			if (sizeof($data)) {
+			if (cacti_sizeof($data)) {
 				foreach($data as $row) {
 					$pk = isset($row[$pk_index]) ? $row[$pk_index]:'N/A';
 
 					foreach($row as $index => $value) {
-						if ($indexes[$index] != 'OEMLogoBitmap') {
+						if (!isset($indexes[$index])) {
+							continue;
+						} elseif ($indexes[$index] != 'OEMLogoBitmap') {
 							$sql[] = '(' .
 								$host_id                  . ',' .
 								$wmi_query_id             . ',' .
