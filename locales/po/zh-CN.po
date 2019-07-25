@@ -6,15 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: developer@cacti.net\n"
 "POT-Creation-Date: 2019-07-21 19:43-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2019-07-26 13:15+0000\n"
+"Last-Translator: tomcat <luis_126@126.com>\n"
+"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
+"cacti/wmi/zh-CN/>\n"
 "Language: zh-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
 msgid "Queries"
@@ -147,7 +150,7 @@ msgstr ""
 
 #: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: setup.php:542
 msgid "Add WMI Query"
