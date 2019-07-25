@@ -264,9 +264,9 @@ function account_filter() {
 							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default', 'wmi');?></option>
 							<?php
 							if (sizeof($item_rows)) {
-							foreach ($item_rows as $key => $value) {
-								print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
-							}
+								foreach ($item_rows as $key => $value) {
+									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
+								}
 							}
 							?>
 						</select>
@@ -339,10 +339,9 @@ function show_accounts() {
 			'default' => '1'
 		),
 		'filter' => array(
-			'filter' => FILTER_CALLBACK,
+			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
-			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'default' => ''
 		),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
@@ -365,7 +364,18 @@ function show_accounts() {
         $rows = get_request_var('rows');
     }
 
-	$accounts   = db_fetch_assoc('SELECT * FROM wmi_user_accounts LIMIT ' . ($rows*(get_request_var('page')-1)) . ', ' . $rows);
+	if (get_request_var('filter') != '') {
+		$sql_where = 'WHERE name LIKE ' . db_qstr('%' . get_request_var('filter') . '%');
+	} else {
+		$sql_where = '';
+	}
+
+	$accounts = db_fetch_assoc("SELECT *
+		FROM wmi_user_accounts
+		$sql_where
+		ORDER BY name
+		LIMIT " . ($rows*(get_request_var('page')-1)) . ', ' . $rows);
+
 	$total_rows = db_fetch_cell('SELECT COUNT(*) FROM wmi_user_accounts');
 
 	account_filter();

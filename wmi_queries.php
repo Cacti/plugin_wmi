@@ -270,7 +270,7 @@ function query_filter() {
 						<?php print __('Search', 'wmi');?>
 					</td>
 					<td>
-						<input type='text' id='filter' size='25' value='<?php print get_request_var('filter');?>'>
+						<input type='text' id='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
 					</td>
 					<td>
 						<?php print __('Queries', 'wmi');?>
@@ -358,10 +358,9 @@ function show_queries() {
 			'default' => '1'
 		),
 		'filter' => array(
-			'filter' => FILTER_CALLBACK,
+			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
-			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'default' => ''
 		),
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
@@ -387,12 +386,19 @@ function show_queries() {
 		$rows = get_request_var('rows');
 	}
 
+	if (get_request_var('filter') != '') {
+		$sql_where = 'WHERE name LIKE ' . db_qstr('%' . get_request_var('filter') . '%');
+	} else {
+		$sql_where = '';
+	}
+
 	query_filter();
 
-	$queries = db_fetch_assoc('SELECT *
+	$queries = db_fetch_assoc("SELECT *
 		FROM wmi_wql_queries
+		$sql_where
 		ORDER BY name
-		LIMIT ' . ($rows*(get_request_var('page')-1)) . ", " . $rows);
+		LIMIT " . ($rows*(get_request_var('page')-1)) . ", " . $rows);
 
 	$total_rows = sizeof($queries);
 
