@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"POT-Creation-Date: 2020-08-29 10:58-0400\n"
 "PO-Revision-Date: 2019-07-21 20:24-0400\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
-"Language: pl_PL\n"
 
-#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
 msgstr "Zapytania"
 
@@ -80,58 +80,92 @@ msgstr "Narzędzie do zapytań WMI"
 msgid "Data Collection"
 msgstr "Zbieranie danych"
 
-#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
-#: wmi_queries.php:405
+#: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
+#: wmi_queries.php:415
 #, fuzzy
 msgid "WMI Queries"
 msgstr "Zapytania WMI"
 
-#: setup.php:316 setup.php:330
+#: setup.php:307
+msgid "Template Editor"
+msgstr ""
+
+#: setup.php:320 setup.php:334
 #, fuzzy
 msgid "WMI Autenication"
 msgstr "Autenizacja WMI"
 
-#: setup.php:323
+#: setup.php:327
 #, fuzzy
 msgid "WMI Autenication -> Edit"
 msgstr "Autenizacja WMI -> Edycja"
 
-#: setup.php:344
+#: setup.php:348
 #, fuzzy
 msgid "WMI Queries -> Edit"
 msgstr "Zapytania WMI -> Edytuj"
 
-#: setup.php:365
+#: setup.php:369
 #, fuzzy
 msgid "WMI Tools"
 msgstr "Narzędzia WMI"
 
-#: setup.php:404
+#: setup.php:408
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "Opcje konta WMI"
 
-#: setup.php:409
+#: setup.php:413
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "Konto uwierzytelniające WMI"
 
-#: setup.php:410
+#: setup.php:414
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Wybierz konto do użycia podczas uwierzytelniania przez WMI"
 
-#: setup.php:424
+#: setup.php:425
+msgid "1 Process"
+msgstr ""
+
+#: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
+#: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
+#: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
+#: setup.php:441 setup.php:442
+#, fuzzy, php-format
+msgid "%d Processes"
+msgstr "Uzyskaj procesy systemowe"
+
+#: setup.php:447
 #, fuzzy
 msgid "WMI Settings"
 msgstr "Ustawienia WMI"
 
-#: setup.php:428
+#: setup.php:451
+#, fuzzy
+msgid "Enable WMI Data Collection"
+msgstr "Zbieranie danych"
+
+#: setup.php:452
+msgid "Check this box, if you want the WMI Plugin to query Windows devices."
+msgstr ""
+
+#: setup.php:457
+#, fuzzy
+msgid "Concurrent Processes"
+msgstr "Uzyskaj procesy systemowe"
+
+#: setup.php:458
+msgid "How many concurrent WMI queries do you want the system to run?"
+msgstr ""
+
+#: setup.php:464
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Automatyczne tworzenie zapytań WMI"
 
-#: setup.php:429
+#: setup.php:465
 #, fuzzy
 msgid ""
 "If selected, when running either automation, or when creating/saving a "
@@ -141,54 +175,58 @@ msgstr ""
 "tworzenia/zapisywania urządzenia, zostaną utworzone wszystkie zapytania WMI "
 "związane z szablonem urządzenia."
 
-#: setup.php:447 setup.php:500
+#: setup.php:471
+msgid "Misc"
+msgstr ""
+
+#: setup.php:491 setup.php:544
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "Powiązane zapytania WMI"
 
-#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
 msgstr "Nazwa"
 
-#: setup.php:462
+#: setup.php:506
 msgid "Status"
 msgstr "Status"
 
-#: setup.php:474
+#: setup.php:518
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "Zapytanie w systemie WMI istnieje"
 
-#: setup.php:476
+#: setup.php:520
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "Zapytanie WMI nie istnieje"
 
-#: setup.php:493 setup.php:525
+#: setup.php:537 setup.php:569
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "Brak powiązanych zapytań WMI."
 
-#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "Usuń"
 
-#: setup.php:542
+#: setup.php:586
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "Dodaj zapytanie WMI"
 
-#: setup.php:548 wmi_tools.php:358
+#: setup.php:592 wmi_tools.php:358
 msgid "Add"
 msgstr "Dodaj"
 
-#: setup.php:548
+#: setup.php:592
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "Dodaj zapytanie WMI do szablonu urządzenia"
 
-#: setup.php:589
+#: setup.php:633
 #, fuzzy
 msgid ""
 "Click 'Continue' to delete the following WMI Queries will be disassociated "
@@ -197,20 +235,20 @@ msgstr ""
 "Kliknij \"Continue\", aby usunąć następujące zapytania WMI, zostaną one "
 "oddzielone od szablonu urządzenia."
 
-#: setup.php:590
+#: setup.php:634
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "Nazwa zapytania WMI: %s"
 
-#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+#: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+#: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
 msgstr "Kontynuuj"
 
-#: setup.php:596
+#: setup.php:640
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "Usuń zapytanie WMI"
@@ -220,7 +258,7 @@ msgstr "Usuń zapytanie WMI"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Nadaj temu kontu sensowną nazwę, która będzie wyświetlana."
 
-#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+#: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
@@ -242,77 +280,77 @@ msgstr "Hasło"
 msgid "The password used for authentication."
 msgstr "Hasło używane do uwierzytelniania."
 
-#: wmi_accounts.php:146
+#: wmi_accounts.php:154
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Naciśnij 'Continue', aby usunąć następujące konta."
 
-#: wmi_accounts.php:153
+#: wmi_accounts.php:161
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "Musisz wybrać co najmniej jedno konto."
 
-#: wmi_accounts.php:215
+#: wmi_accounts.php:223
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "Konto [edycja: %s]"
 
-#: wmi_accounts.php:217
+#: wmi_accounts.php:225
 #, fuzzy
 msgid "Account [new]"
 msgstr "Konto [nowe]"
 
-#: wmi_accounts.php:238
+#: wmi_accounts.php:246
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "Konta WMI"
 
-#: wmi_accounts.php:246 wmi_queries.php:270
+#: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
 msgstr "Szukaj"
 
-#: wmi_accounts.php:252 wmi_accounts.php:365
+#: wmi_accounts.php:260 wmi_accounts.php:383
 msgid "Accounts"
 msgstr "Konta"
 
-#: wmi_accounts.php:256 wmi_queries.php:280
+#: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
 msgstr "Domyślny"
 
-#: wmi_accounts.php:270 wmi_queries.php:297
+#: wmi_accounts.php:278 wmi_queries.php:301
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Idź"
 
-#: wmi_accounts.php:273 wmi_queries.php:300
+#: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: wmi_accounts.php:373 wmi_tools.php:268
+#: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
 msgstr "Opis"
 
-#: wmi_accounts.php:373
+#: wmi_accounts.php:403
 msgid "Devices"
 msgstr "Urządzenia"
 
-#: wmi_accounts.php:389
+#: wmi_accounts.php:425
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "Brak rachunków Znaleziono"
 
-#: wmi_queries.php:47
+#: wmi_queries.php:50
 #, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
 msgstr "Nadaj temu zapytaniu sensowną nazwę, która zostanie wyświetlona."
 
-#: wmi_queries.php:53
+#: wmi_queries.php:56
 #, fuzzy
 msgid "Collection Frequency"
 msgstr "Kolekcja Częstotliwość"
 
-#: wmi_queries.php:54
+#: wmi_queries.php:57
 #, fuzzy
 msgid ""
 "When this WMI Query is added to a Device, this is the Frequency of Data "
@@ -321,41 +359,41 @@ msgstr ""
 "Gdy to zapytanie WMI zostanie dodane do urządzenia, jest to częstotliwość "
 "zbierania danych, która będzie wykorzystywana."
 
-#: wmi_queries.php:61
+#: wmi_queries.php:64
 msgid "Enabled"
 msgstr "Włączone"
 
-#: wmi_queries.php:62
+#: wmi_queries.php:65
 #, fuzzy
 msgid "Should this Query be enabled on hosts using it"
 msgstr ""
 "Czy to zapytanie powinno być włączone na hostach korzystających z niego?"
 
-#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 #, fuzzy
 msgid "Namespace"
 msgstr "Przestrzeń nazwisk"
 
-#: wmi_queries.php:69
+#: wmi_queries.php:72
 #, fuzzy
 msgid "The Namespace for this Query."
 msgstr "Przestrzeń nazwisk dla tego zapytania."
 
-#: wmi_queries.php:75 wmi_tools.php:268
+#: wmi_queries.php:78 wmi_tools.php:268
 msgid "Query"
 msgstr "Zapytanie"
 
-#: wmi_queries.php:76
+#: wmi_queries.php:79
 #, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Zapytanie do wykonania w celu zebrania danych WMI z urządzenia."
 
-#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 #, fuzzy
 msgid "Primary Key"
 msgstr "Klucz główny"
 
-#: wmi_queries.php:85
+#: wmi_queries.php:88
 #, fuzzy
 msgid ""
 "When a WMI Query returns multiple rows, which Keyname will be the primary "
@@ -366,49 +404,49 @@ msgstr ""
 "kluczem podstawowym lub indeksem?  Jeśli klucz główny zawiera wiele kolumn, "
 "oddziel je przecinkiem."
 
-#: wmi_queries.php:174
+#: wmi_queries.php:177
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Kliknij \"Continue\", aby usunąć następujące zapytania WMI."
 
-#: wmi_queries.php:181
+#: wmi_queries.php:184
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "Należy wybrać co najmniej jedno zapytanie WMI."
 
-#: wmi_queries.php:182
+#: wmi_queries.php:185
 msgid "Return"
 msgstr "Powróć"
 
-#: wmi_queries.php:184
+#: wmi_queries.php:187
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "Usuń zapytanie WMI"
 
-#: wmi_queries.php:238
+#: wmi_queries.php:242
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "Zapytanie [edit: %s]"
 
-#: wmi_queries.php:240
+#: wmi_queries.php:244
 #, fuzzy
 msgid "Query [new]"
 msgstr "Zapytanie [nowe]"
 
-#: wmi_queries.php:294
+#: wmi_queries.php:298
 #, fuzzy
 msgid "Has Graphs"
 msgstr "Ma Graphs"
 
-#: wmi_queries.php:410
+#: wmi_queries.php:425
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:411 wmi_tools.php:327
+#: wmi_queries.php:430 wmi_tools.php:327
 msgid "Frequency"
 msgstr "Częstotliwość"
 
-#: wmi_queries.php:413
+#: wmi_queries.php:440
 #, fuzzy
 msgid "WQL Query"
 msgstr "Zapytanie WQL"

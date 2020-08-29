@@ -2,7 +2,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2017 The Cacti Group                                 |
+ | Copyright (C) 2004-2020 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -173,10 +173,10 @@ function process_all_devices() {
 			OR host.status=1
 		)");
 
-	$concurrent_processes = read_config_option('wmi_concurrent_processes');
+	$concurrent_processes = read_config_option('wmi_processes');
 
 	if (empty($concurrent_processes)) {
-		set_config_option('wmi_concurrent_processes', '10');
+		set_config_option('wmi_processes', '10');
 	}
 
 	print "NOTE: Launching Collectors Starting" . PHP_EOL;

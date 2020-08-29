@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2020 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -35,6 +35,9 @@ $ds_actions = array(
 if (!isset_request_var('tab')) {
 	set_request_var('tab', 'queries');
 }
+
+global $wmi_frequencies;
+
 
 set_default_action();
 
@@ -208,6 +211,7 @@ function save_queries() {
 	}
 
 	$save['name']        = get_nfilter_request_var('name');
+	$save['hash']        = get_hash_wmi_query($save['id']);
 	$save['namespace']   = get_nfilter_request_var('namespace');
 	$save['frequency']   = get_filter_request_var('frequency');
 	$save['enabled']     = isset_request_var('enabled') ? 'on':'';
@@ -412,12 +416,36 @@ function show_queries() {
 
 	html_header_checkbox(
 		array(
-			__('Name', 'wmi'),
-			__('ID', 'wmi'),
-			__('Frequency', 'wmi'),
-			__('Namespace', 'wmi'),
-			__('WQL Query', 'wmi'),
-			__('Primary Key', 'wmi')
+			'name' => array(
+				'display' => __('Name', 'wmi'),
+				'align' => 'left',
+				'sort' => 'ASC'
+			),
+			'id' => array(
+				'display' => __('ID', 'wmi'),
+				'align' => 'right',
+				'sort' => 'ASC'
+			),
+			'frequency' => array(
+				'display' => __('Frequency', 'wmi'),
+				'align' => 'right',
+				'sort' => 'ASC'
+			),
+			'namespace' => array(
+				'display' => __('Namespace', 'wmi'),
+				'align' => 'left',
+				'sort' => 'ASC'
+			),
+			'query' => array(
+				'display' => __('WQL Query', 'wmi'),
+				'align' => 'left',
+				'sort' => 'ASC'
+			),
+			'primary_key' => array(
+				'display' => __('Primary Key', 'wmi'),
+				'align' => 'left',
+				'sort' => 'ASC'
+			)
 		)
 	);
 
@@ -425,8 +453,8 @@ function show_queries() {
 		foreach ($queries as $row) {
 			form_alternate_row('line' . $row['id'], true);
 			form_selectable_cell('<a class="linkEditMain" href="' . htmlspecialchars('wmi_queries.php?&action=edit&id=' . $row['id']) . '">' . $row['name'] . '</a>', $row['id']);
-			form_selectable_cell($row['id'], $row['id']);
-			form_selectable_cell($row['frequency'], $row['id']);
+			form_selectable_cell($row['id'], $row['id'], '', 'right');
+			form_selectable_cell($row['frequency'], $row['id'], '', 'right');
 			form_selectable_cell($row['namespace'], $row['id']);
 			form_selectable_cell($row['query'], $row['id']);
 			form_selectable_cell($row['primary_key'], $row['id']);

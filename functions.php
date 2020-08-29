@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2020 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -478,3 +478,17 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		AND wmi_query_id = ?',
 		array($host_id, $wmi_query_id));
 }
+
+/* get_hash_wmi_query - returns the current unique hash for an wmi query
+   @arg $wmi_query_id - (int) the ID of the wmi_query to return a hash for
+   @returns - a 128-bit, hexadecimal hash */
+function get_hash_wmi_query($wmi_query_id) {
+	$hash = db_fetch_cell_prepared('SELECT hash FROM wmi_wql_queries WHERE id = ?', array($wmi_query_id));
+
+	if (preg_match('/[a-fA-F0-9]{32}/', $hash)) {
+		return $hash;
+	} else {
+		return generate_hash();
+	}
+}
+

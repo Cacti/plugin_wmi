@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"POT-Creation-Date: 2020-08-29 10:58-0400\n"
 "PO-Revision-Date: 2019-07-21 20:18-0400\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: hi_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
-"Language: hi_IN\n"
 
-#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 #, fuzzy
 msgid "Queries"
 msgstr "प्रश्नों"
@@ -83,58 +83,92 @@ msgstr "WMI क्वेरी उपकरण"
 msgid "Data Collection"
 msgstr "डेटा संग्रहण"
 
-#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
-#: wmi_queries.php:405
+#: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
+#: wmi_queries.php:415
 #, fuzzy
 msgid "WMI Queries"
 msgstr "WMI प्रश्न"
 
-#: setup.php:316 setup.php:330
+#: setup.php:307
+msgid "Template Editor"
+msgstr ""
+
+#: setup.php:320 setup.php:334
 #, fuzzy
 msgid "WMI Autenication"
 msgstr "डब्ल्यूएमआई ऑटिकेशन"
 
-#: setup.php:323
+#: setup.php:327
 #, fuzzy
 msgid "WMI Autenication -> Edit"
 msgstr "डब्लूएमआई स्वैच्छिक -> संपादित करें"
 
-#: setup.php:344
+#: setup.php:348
 #, fuzzy
 msgid "WMI Queries -> Edit"
 msgstr "WMI क्वेरीज़ -> संपादित करें"
 
-#: setup.php:365
+#: setup.php:369
 #, fuzzy
 msgid "WMI Tools"
 msgstr "WMI उपकरण"
 
-#: setup.php:404
+#: setup.php:408
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "WMI खाता विकल्प"
 
-#: setup.php:409
+#: setup.php:413
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "WMI प्रमाणीकरण खाता"
 
-#: setup.php:410
+#: setup.php:414
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "WMI के माध्यम से प्रमाणीकरण करते समय उपयोग करने के लिए एक खाता चुनें"
 
-#: setup.php:424
+#: setup.php:425
+msgid "1 Process"
+msgstr ""
+
+#: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
+#: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
+#: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
+#: setup.php:441 setup.php:442
+#, fuzzy, php-format
+msgid "%d Processes"
+msgstr "सिस्टम प्रोसेस प्राप्त करें"
+
+#: setup.php:447
 #, fuzzy
 msgid "WMI Settings"
 msgstr "WMI सेटिंग्स"
 
-#: setup.php:428
+#: setup.php:451
+#, fuzzy
+msgid "Enable WMI Data Collection"
+msgstr "डेटा संग्रहण"
+
+#: setup.php:452
+msgid "Check this box, if you want the WMI Plugin to query Windows devices."
+msgstr ""
+
+#: setup.php:457
+#, fuzzy
+msgid "Concurrent Processes"
+msgstr "सिस्टम प्रोसेस प्राप्त करें"
+
+#: setup.php:458
+msgid "How many concurrent WMI queries do you want the system to run?"
+msgstr ""
+
+#: setup.php:464
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "ऑटो WMI क्वेरी बनाएँ"
 
-#: setup.php:429
+#: setup.php:465
 #, fuzzy
 msgid ""
 "If selected, when running either automation, or when creating/saving a "
@@ -143,56 +177,60 @@ msgstr ""
 "यदि चयनित है, तो या तो स्वचालन चलाते समय, या उपकरण बनाते / सहेजते समय, डिवाइस "
 "टेम्पलेट से जुड़ी सभी WMI क्वेरीज़ बनाई जाएंगी।"
 
-#: setup.php:447 setup.php:500
+#: setup.php:471
+msgid "Misc"
+msgstr ""
+
+#: setup.php:491 setup.php:544
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "एसोसिएटेड WMI क्वेरीज़"
 
-#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
 msgstr "नाम"
 
-#: setup.php:462
+#: setup.php:506
 msgid "Status"
 msgstr "ऑर्डर स्थिति"
 
-#: setup.php:474
+#: setup.php:518
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "WMI क्वेरी मौजूद है"
 
-#: setup.php:476
+#: setup.php:520
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "WMI क्वेरी मौजूद नहीं है"
 
-#: setup.php:493 setup.php:525
+#: setup.php:537 setup.php:569
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "कोई एसोसिएटेड WMI क्वेरी नहीं।"
 
-#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 #, fuzzy
 msgid "Delete"
 msgstr "हटाना"
 
-#: setup.php:542
+#: setup.php:586
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "WMI क्वेरी जोड़ें"
 
-#: setup.php:548 wmi_tools.php:358
+#: setup.php:592 wmi_tools.php:358
 #, fuzzy
 msgid "Add"
 msgstr "जोड़ना"
 
-#: setup.php:548
+#: setup.php:592
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "डिवाइस टेम्पलेट में WMI क्वेरी जोड़ें"
 
-#: setup.php:589
+#: setup.php:633
 #, fuzzy
 msgid ""
 "Click 'Continue' to delete the following WMI Queries will be disassociated "
@@ -201,20 +239,20 @@ msgstr ""
 "निम्नलिखित WMI क्वेरीज़ को हटाने के लिए 'जारी रखें' को डिवाइस टेम्पलेट से अलग कर दिया "
 "जाएगा।"
 
-#: setup.php:590
+#: setup.php:634
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "WMI क्वेरी नाम: %s"
 
-#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+#: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
 msgstr "कैंसिल करें"
 
-#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+#: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
 msgstr "जारी रखें"
 
-#: setup.php:596
+#: setup.php:640
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "WMI क्वेरी निकालें"
@@ -224,7 +262,7 @@ msgstr "WMI क्वेरी निकालें"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "इस खाते को एक सार्थक नाम दें जिसे प्रदर्शित किया जाएगा।"
 
-#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+#: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
@@ -246,82 +284,82 @@ msgstr "पासवर्ड"
 msgid "The password used for authentication."
 msgstr "प्रमाणीकरण के लिए उपयोग किया जाने वाला पासवर्ड।"
 
-#: wmi_accounts.php:146
+#: wmi_accounts.php:154
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "निम्नलिखित खातों को हटाने के लिए 'जारी रखें' दबाएँ।"
 
-#: wmi_accounts.php:153
+#: wmi_accounts.php:161
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "आपको कम से कम एक खाता चुनना होगा।"
 
-#: wmi_accounts.php:215
+#: wmi_accounts.php:223
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "खाता [संपादित करें: %s]"
 
-#: wmi_accounts.php:217
+#: wmi_accounts.php:225
 #, fuzzy
 msgid "Account [new]"
 msgstr "खाता [नया]"
 
-#: wmi_accounts.php:238
+#: wmi_accounts.php:246
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "WMI खाते"
 
-#: wmi_accounts.php:246 wmi_queries.php:270
+#: wmi_accounts.php:254 wmi_queries.php:274
 #, fuzzy
 msgid "Search"
 msgstr "खोज"
 
-#: wmi_accounts.php:252 wmi_accounts.php:365
+#: wmi_accounts.php:260 wmi_accounts.php:383
 #, fuzzy
 msgid "Accounts"
 msgstr "हिसाब किताब"
 
-#: wmi_accounts.php:256 wmi_queries.php:280
+#: wmi_accounts.php:264 wmi_queries.php:284
 #, fuzzy
 msgid "Default"
 msgstr "चूक"
 
-#: wmi_accounts.php:270 wmi_queries.php:297
+#: wmi_accounts.php:278 wmi_queries.php:301
 #, fuzzy
 msgctxt "filter: use"
 msgid "Go"
 msgstr "चले जाओ"
 
-#: wmi_accounts.php:273 wmi_queries.php:300
+#: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "明确"
 
-#: wmi_accounts.php:373 wmi_tools.php:268
+#: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
 msgstr "विवरण"
 
-#: wmi_accounts.php:373
+#: wmi_accounts.php:403
 #, fuzzy
 msgid "Devices"
 msgstr "उपकरण"
 
-#: wmi_accounts.php:389
+#: wmi_accounts.php:425
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "कोई हिसाब नहीं मिला"
 
-#: wmi_queries.php:47
+#: wmi_queries.php:50
 #, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
 msgstr "इस क्वेरी को एक सार्थक नाम दें जिसे प्रदर्शित किया जाएगा।"
 
-#: wmi_queries.php:53
+#: wmi_queries.php:56
 #, fuzzy
 msgid "Collection Frequency"
 msgstr "संग्रह की आवृत्ति"
 
-#: wmi_queries.php:54
+#: wmi_queries.php:57
 #, fuzzy
 msgid ""
 "When this WMI Query is added to a Device, this is the Frequency of Data "
@@ -330,41 +368,41 @@ msgstr ""
 "जब यह WMI क्वेरी डिवाइस में जोड़ी जाती है, तो यह डेटा संग्रह की आवृत्ति है जिसका उपयोग "
 "किया जाएगा।"
 
-#: wmi_queries.php:61
+#: wmi_queries.php:64
 msgid "Enabled"
 msgstr "सक्षम"
 
-#: wmi_queries.php:62
+#: wmi_queries.php:65
 #, fuzzy
 msgid "Should this Query be enabled on hosts using it"
 msgstr "क्या इस क्वेरी को इसका उपयोग करते हुए मेजबानों पर सक्षम होना चाहिए"
 
-#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 #, fuzzy
 msgid "Namespace"
 msgstr "नाम स्थान"
 
-#: wmi_queries.php:69
+#: wmi_queries.php:72
 #, fuzzy
 msgid "The Namespace for this Query."
 msgstr "इस क्वेरी के लिए नामस्थान।"
 
-#: wmi_queries.php:75 wmi_tools.php:268
+#: wmi_queries.php:78 wmi_tools.php:268
 #, fuzzy
 msgid "Query"
 msgstr "सवाल"
 
-#: wmi_queries.php:76
+#: wmi_queries.php:79
 #, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "डिवाइस से WMI डेटा एकत्र करने के लिए निष्पादित करने की क्वेरी।"
 
-#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 #, fuzzy
 msgid "Primary Key"
 msgstr "प्राथमिक कुंजी"
 
-#: wmi_queries.php:85
+#: wmi_queries.php:88
 #, fuzzy
 msgid ""
 "When a WMI Query returns multiple rows, which Keyname will be the primary "
@@ -374,51 +412,51 @@ msgstr ""
 "जब एक WMI क्वेरी कई पंक्तियों को लौटाती है, तो Keyname प्राथमिक कुंजी या सूचकांक कौन सा "
 "होगा? यदि प्राथमिक कुंजी में कई कॉलम शामिल हैं, तो उन्हें अल्पविराम से अलग करें।"
 
-#: wmi_queries.php:174
+#: wmi_queries.php:177
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "निम्नलिखित WMI क्वेरी को हटाने के लिए 'जारी रखें' पर क्लिक करें।"
 
-#: wmi_queries.php:181
+#: wmi_queries.php:184
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "आपको कम से कम एक WMI क्वेरी का चयन करना होगा।"
 
-#: wmi_queries.php:182
+#: wmi_queries.php:185
 #, fuzzy
 msgid "Return"
 msgstr "वापसी"
 
-#: wmi_queries.php:184
+#: wmi_queries.php:187
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "WMI क्वेरी हटाएं"
 
-#: wmi_queries.php:238
+#: wmi_queries.php:242
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "क्वेरी [संपादित करें: %s]"
 
-#: wmi_queries.php:240
+#: wmi_queries.php:244
 #, fuzzy
 msgid "Query [new]"
 msgstr "क्वेरी [नया]"
 
-#: wmi_queries.php:294
+#: wmi_queries.php:298
 #, fuzzy
 msgid "Has Graphs"
 msgstr "रेखांकन है"
 
-#: wmi_queries.php:410
+#: wmi_queries.php:425
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:411 wmi_tools.php:327
+#: wmi_queries.php:430 wmi_tools.php:327
 #, fuzzy
 msgid "Frequency"
 msgstr "आवृत्ति"
 
-#: wmi_queries.php:413
+#: wmi_queries.php:440
 #, fuzzy
 msgid "WQL Query"
 msgstr "WQL क्वेरी"

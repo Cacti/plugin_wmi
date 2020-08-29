@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2020 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -388,7 +388,25 @@ function show_accounts() {
 
     html_start_box('', '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
 
-	html_header_checkbox(array(__('Description', 'wmi'), __('Username', 'wmi'), __('Devices', 'wmi')));
+	$display_text = array(
+		'name' => array(
+			'display' => __('Description', 'wmi'),
+			'order' => 'ASC',
+			'align' => 'left'
+		),
+		'username' => array(
+			'display' => __('Username', 'wmi'),
+			'order' => 'ASC',
+			'align' => 'left'
+		),
+		'nosort' => array(
+			'display' => __('Devices', 'wmi'),
+			'order' => 'DESC',
+			'align' => 'right'
+		)
+	);
+
+	html_header_checkbox($display_text);
 
 	if (sizeof($accounts)) {
 		foreach ($accounts as $row) {
@@ -399,7 +417,7 @@ function show_accounts() {
 			form_alternate_row('line' . $row['id'], false);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'), 'wmi_accounts.php?&action=edit&id=' . $row['id']), $row['id']);
 			form_selectable_cell($row['username'], $row['id']);
-			form_selectable_cell(number_format_i18n($count), $row['id']);
+			form_selectable_cell(number_format_i18n($count), $row['id'], '', 'right');
 			form_checkbox_cell($row['name'], $row['id']);
 			form_end_row();
 		}

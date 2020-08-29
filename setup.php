@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2019 The Cacti Group                                 |
+ | Copyright (C) 2004-2020 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -300,8 +300,12 @@ function wmi_config_arrays() {
 
 	$fields_data_query_edit['data_input_id']['sql'] = 'SELECT id,name FROM data_input WHERE type_id IN(3,4,6,8) ORDER BY name';
 
-	$menu[__('Utilities')]['plugins/wmi/wmi_tools.php']      = __('WMI Query Tool', 'wmi');
+	$menu[__('Utilities')]['plugins/wmi/wmi_tools.php']         = __('WMI Query Tool', 'wmi');
 	$menu[__('Data Collection')]['plugins/wmi/wmi_queries.php'] = __('WMI Queries', 'wmi');
+
+	if (function_exists('auth_augment_roles')) {
+		auth_augment_roles(__('Template Editor'), array('wmi_accounts.php', 'wmi_queries.php', 'wmi_tools.php'));
+	}
 }
 
 function wmi_data_input_sql_where($sql_where) {
@@ -417,20 +421,60 @@ function wmi_config_form() {
 function wmi_config_settings () {
 	global $tabs, $settings, $item_rows, $config;
 
-	if (get_current_page() != 'settings.php') return;
+	$wmi_processes = array(
+		1  => __('1 Process', 'wmi'),
+		2  => __('%d Processes', 2, 'wmi'),
+		3  => __('%d Processes', 3, 'wmi'),
+		4  => __('%d Processes', 4, 'wmi'),
+		5  => __('%d Processes', 5, 'wmi'),
+		6  => __('%d Processes', 6, 'wmi'),
+		7  => __('%d Processes', 7, 'wmi'),
+		8  => __('%d Processes', 8, 'wmi'),
+		9  => __('%d Processes', 9, 'wmi'),
+		10 => __('%d Processes', 10, 'wmi'),
+		15 => __('%d Processes', 15, 'wmi'),
+		20 => __('%d Processes', 20, 'wmi'),
+		25 => __('%d Processes', 25, 'wmi'),
+		30 => __('%d Processes', 30, 'wmi'),
+		35 => __('%d Processes', 35, 'wmi'),
+		40 => __('%d Processes', 40, 'wmi'),
+		45 => __('%d Processes', 45, 'wmi'),
+		50 => __('%d Processes', 50, 'wmi')
+	);
 
-	$settings['snmp'] = array_merge($settings['snmp'], array(
-		'wmi_general_header' => array(
+	$temp = array(
+		'wmi_header' => array(
 			'friendly_name' => __('WMI Settings', 'wmi'),
 			'method' => 'spacer',
-		),
+			),
+		'wmi_enabled' => array(
+			'friendly_name' => __('Enable WMI Data Collection', 'wmi'),
+			'description' => __('Check this box, if you want the WMI Plugin to query Windows devices.', 'wmi'),
+			'method' => 'checkbox',
+			'default' => 'on'
+			),
+		'wmi_processes' => array(
+			'friendly_name' => __('Concurrent Processes', 'wmi'),
+			'description' => __('How many concurrent WMI queries do you want the system to run?', 'wmi'),
+			'method' => 'drop_array',
+			'default' => '10',
+			'array' => $wmi_processes
+			),
 		'wmi_autocreate' => array(
 			'friendly_name' => __('Auto Create WMI Queries', 'wmi'),
 			'description' => __('If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created.', 'wmi'),
 			'method' => 'checkbox',
 			'default' => 'on'
-		),
-	));
+		)
+	);
+
+	$tabs['misc'] = __('Misc', 'wmi');
+
+	if (isset($settings['misc'])) {
+		$settings['misc'] = array_merge($settings['misc'], $temp);
+	}else{
+		$settings['misc'] = $temp;
+	}
 }
 
 function wmi_api_device_save($save) {
