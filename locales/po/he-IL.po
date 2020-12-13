@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:16-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
-"2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 #, fuzzy
@@ -170,12 +169,8 @@ msgstr "יצירת שאילתות"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"אם נבחר, בעת הפעלת אוטומציה או בעת יצירת / שמירה של התקן, כל השאילתות של WMI "
-"המשויכות לתבנית ההתקן ייווצרו."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "אם נבחר, בעת הפעלת אוטומציה או בעת יצירת / שמירה של התקן, כל השאילתות של WMI המשויכות לתבנית ההתקן ייווצרו."
 
 #: setup.php:471
 msgid "Misc"
@@ -230,9 +225,7 @@ msgstr "הוסף שאילתת WMI לתבנית התקן"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות ינותקו מתבנית ההתקן."
 
 #: setup.php:634
@@ -264,9 +257,7 @@ msgstr "שם משתמש"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "שם המשתמש שישמש לאימות. נא לכלול גם את הדומיין במידת הצורך."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
@@ -331,9 +322,7 @@ msgstr "תיאור"
 
 #: wmi_accounts.php:403
 msgid "Devices"
-msgstr ""
-"ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה "
-"על כפתור התנתקות מכל ההתקנים האחרים."
+msgstr "ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה על כפתור התנתקות מכל ההתקנים האחרים."
 
 #: wmi_accounts.php:425
 #, fuzzy
@@ -352,9 +341,7 @@ msgstr "תדירות איסוף"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
 msgstr "כאשר שאילתת WMI זו מתווספת להתקן, זהו תדירות איסוף הנתונים שישמש."
 
 #: wmi_queries.php:64
@@ -392,13 +379,8 @@ msgstr "מפתח ראשי"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"כאשר שאילתת WMI מחזירה מספר שורות, אילו Keyname יהיה המפתח הראשי או האינדקס? "
-"אם המפתח הראשי כולל עמודות מרובות, הפרד ביניהם בפסיק."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "כאשר שאילתת WMI מחזירה מספר שורות, אילו Keyname יהיה המפתח הראשי או האינדקס? אם המפתח הראשי כולל עמודות מרובות, הפרד ביניהם בפסיק."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -588,9 +570,7 @@ msgstr "סגור"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr "אם אתה זקוק לסיוע בקודי שגיאה, השתמש ב- Google, או השתמש בקישור הבא s."
 
 #: wmi_tools.php:300
@@ -605,15 +585,8 @@ msgstr "הגדרת COM מבוזרת"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"כדי ש- WMI תעבוד, יש להעניק לחשבון המשתמש שבו אתה משתמש הרשאות COM מבוזרות, "
-"ויש להגדיר את חומת האש של Windows כדי לאפשר תקשורת COM מבוזרת. אתה יכול "
-"למצוא מסמך טוב אמיתי על הליך זה הקישור הבא %s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "כדי ש- WMI תעבוד, יש להעניק לחשבון המשתמש שבו אתה משתמש הרשאות COM מבוזרות, ויש להגדיר את חומת האש של Windows כדי לאפשר תקשורת COM מבוזרת. אתה יכול למצוא מסמך טוב אמיתי על הליך זה הקישור הבא %s."
 
 #: wmi_tools.php:334
 msgid "Host"

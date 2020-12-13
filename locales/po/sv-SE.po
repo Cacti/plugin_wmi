@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:32-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -166,12 +166,8 @@ msgstr "Skapa automatiskt WMI-frågor"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Om det väljs, när du kör antingen automatisering eller när du skapar / "
-"sparar en enhet, skapas alla WMI-frågor som är kopplade till enhetsmall."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Om det väljs, när du kör antingen automatisering eller när du skapar / sparar en enhet, skapas alla WMI-frågor som är kopplade till enhetsmall."
 
 #: setup.php:471
 msgid "Misc"
@@ -226,12 +222,8 @@ msgstr "Lägg till WMI-fråga i enhetsmall"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Klicka på \"Fortsätt\" för att radera följande WMI-frågor kommer att kopplas "
-"bort från enhetsmallen."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Klicka på \"Fortsätt\" för att radera följande WMI-frågor kommer att kopplas bort från enhetsmallen."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -262,12 +254,8 @@ msgstr "Användarnamn"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Användarnamnet som ska användas för autentisering. Vänligen inkludera även "
-"domänen om det behövs."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Användarnamnet som ska användas för autentisering. Vänligen inkludera även domänen om det behövs."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -350,12 +338,8 @@ msgstr "Samlingsfrekvens"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"När den här WMI-frågan läggs till i en enhet, är det datafältets frekvens "
-"som ska användas."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "När den här WMI-frågan läggs till i en enhet, är det datafältets frekvens som ska användas."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -392,14 +376,8 @@ msgstr "Primärnyckel"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"När en WMI-fråga returnerar flera rader, vilken Keyname blir den primära "
-"nyckeln eller indexet? Om den primära nyckeln innehåller flera kolumner, "
-"separera dem med ett komma."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "När en WMI-fråga returnerar flera rader, vilken Keyname blir den primära nyckeln eller indexet? Om den primära nyckeln innehåller flera kolumner, separera dem med ett komma."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -589,12 +567,8 @@ msgstr "Stäng"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Om du behöver hjälp med felkoder använder du google, eller använd följande "
-"länk %s."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Om du behöver hjälp med felkoder använder du google, eller använd följande länk %s."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -608,16 +582,8 @@ msgstr "Distribuerad COM-inställning"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"För att WMI ska fungera måste användarkontot du använder använda Distributed "
-"COM-behörigheter och Windows-brandväggen måste konfigureras för att tillåta "
-"distribuerad COM-kommunikation. Du kan hitta ett riktigt bra dokument på den "
-"här proceduren vid följande länk %s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "För att WMI ska fungera måste användarkontot du använder använda Distributed COM-behörigheter och Windows-brandväggen måste konfigureras för att tillåta distribuerad COM-kommunikation. Du kan hitta ett riktigt bra dokument på den här proceduren vid följande länk %s."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -693,8 +659,7 @@ msgstr "FEL: Du måste ange en värd, användarnamn, lösenord och fråga"
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"Resultat för WMI-fråge för enhet: %s, klass: %s, kolumner: %s, rader: %s"
+msgstr "Resultat för WMI-fråge för enhet: %s, klass: %s, kolumner: %s, rader: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

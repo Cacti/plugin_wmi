@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:37-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -166,12 +166,8 @@ msgstr "Tự động tạo truy vấn WMI"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Nếu được chọn, khi chạy tự động hóa hoặc khi tạo / lưu Thiết bị, tất cả các "
-"Truy vấn WMI được liên kết với Mẫu thiết bị sẽ được tạo."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Nếu được chọn, khi chạy tự động hóa hoặc khi tạo / lưu Thiết bị, tất cả các Truy vấn WMI được liên kết với Mẫu thiết bị sẽ được tạo."
 
 #: setup.php:471
 msgid "Misc"
@@ -226,12 +222,8 @@ msgstr "Thêm truy vấn WMI vào mẫu thiết bị"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau sẽ được tách ra khỏi Mẫu "
-"thiết bị."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau sẽ được tách ra khỏi Mẫu thiết bị."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -262,12 +254,8 @@ msgstr "Tên đăng nhập"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Tên người dùng sẽ được sử dụng để xác thực. Vui lòng bao gồm tên miền nếu "
-"cần thiết."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Tên người dùng sẽ được sử dụng để xác thực. Vui lòng bao gồm tên miền nếu cần thiết."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -350,12 +338,8 @@ msgstr "Tần suất thu thập"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Khi Truy vấn WMI này được thêm vào Thiết bị, đây là Tần suất Thu thập Dữ "
-"liệu sẽ được sử dụng."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Khi Truy vấn WMI này được thêm vào Thiết bị, đây là Tần suất Thu thập Dữ liệu sẽ được sử dụng."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -392,13 +376,8 @@ msgstr "Khóa chính"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Khi Truy vấn WMI trả về nhiều hàng, Tên khóa nào sẽ là khóa chính hoặc chỉ "
-"mục? Nếu Khóa chính bao gồm nhiều cột, hãy phân tách chúng bằng dấu phẩy."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Khi Truy vấn WMI trả về nhiều hàng, Tên khóa nào sẽ là khóa chính hoặc chỉ mục? Nếu Khóa chính bao gồm nhiều cột, hãy phân tách chúng bằng dấu phẩy."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -588,12 +567,8 @@ msgstr "Đóng"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Nếu bạn cần hỗ trợ về mã lỗi, hãy sử dụng google hoặc tại đây, sử dụng Liên "
-"kết %s sau đây."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Nếu bạn cần hỗ trợ về mã lỗi, hãy sử dụng google hoặc tại đây, sử dụng Liên kết %s sau đây."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -607,16 +582,8 @@ msgstr "Cài đặt COM phân tán"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"Để WMI hoạt động, tài khoản người dùng bạn đang sử dụng phải được cấp quyền "
-"COM phân tán và Tường lửa Windows phải được cấu hình để cho phép truyền "
-"thông COM phân tán. Bạn có thể tìm thấy một tài liệu thực sự tốt về quy "
-"trình này tại Liên kết %s sau đây."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "Để WMI hoạt động, tài khoản người dùng bạn đang sử dụng phải được cấp quyền COM phân tán và Tường lửa Windows phải được cấu hình để cho phép truyền thông COM phân tán. Bạn có thể tìm thấy một tài liệu thực sự tốt về quy trình này tại Liên kết %s sau đây."
 
 #: wmi_tools.php:334
 msgid "Host"

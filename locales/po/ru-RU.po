@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:31-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.3\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -167,13 +166,8 @@ msgstr "Автоматическое создание запросов WMI"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Если этот параметр выбран, при запуске системы автоматизации или при "
-"создании/сохранении устройства будут созданы все запросы WMI, связанные с "
-"шаблоном устройства."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Если этот параметр выбран, при запуске системы автоматизации или при создании/сохранении устройства будут созданы все запросы WMI, связанные с шаблоном устройства."
 
 #: setup.php:471
 msgid "Misc"
@@ -228,12 +222,8 @@ msgstr "Добавить запрос WMI в шаблон устройства"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI, которые "
-"будут удалены из шаблона устройства."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI, которые будут удалены из шаблона устройства."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -256,8 +246,7 @@ msgstr "Удалить запрос WMI"
 #: wmi_accounts.php:48
 #, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr ""
-"Дайте этой учетной записи значимое имя, которое будет отображаться на экране."
+msgstr "Дайте этой учетной записи значимое имя, которое будет отображаться на экране."
 
 #: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
@@ -265,12 +254,8 @@ msgstr "Имя Пользователя"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Имя пользователя, которое будет использоваться для аутентификации.  "
-"Пожалуйста, при необходимости включите и домен."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Имя пользователя, которое будет использоваться для аутентификации.  Пожалуйста, при необходимости включите и домен."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -344,8 +329,7 @@ msgstr "Счета не найдены"
 #: wmi_queries.php:50
 #, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr ""
-"Дайте этому запросу значимое имя, которое будет отображаться на экране."
+msgstr "Дайте этому запросу значимое имя, которое будет отображаться на экране."
 
 #: wmi_queries.php:56
 #, fuzzy
@@ -354,12 +338,8 @@ msgstr "Частота сбора данных"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Когда этот WMI-запрос добавляется к устройству, будет использоваться частота "
-"сбора данных."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Когда этот WMI-запрос добавляется к устройству, будет использоваться частота сбора данных."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -395,14 +375,8 @@ msgstr "Основной ключ"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Когда WMI-запрос возвращает несколько строк, какое Имя ключа будет основным "
-"ключом или индексом?  Если основной ключ содержит несколько столбцов, "
-"разделите их запятой."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Когда WMI-запрос возвращает несколько строк, какое Имя ключа будет основным ключом или индексом?  Если основной ключ содержит несколько столбцов, разделите их запятой."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -529,8 +503,7 @@ msgstr "Отформатировать данные производительн
 #: wmi_tools.php:197
 #, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr ""
-"Получить исходные данные производительности исходного психодиального диска"
+msgstr "Получить исходные данные производительности исходного психодиального диска"
 
 #: wmi_tools.php:203
 #, fuzzy
@@ -593,12 +566,8 @@ msgstr "Закрыть"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Если вам нужна помощь по кодам ошибок, используйте Google, или здесь "
-"используйте следующие процентные соотношения ссылок."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Если вам нужна помощь по кодам ошибок, используйте Google, или здесь используйте следующие процентные соотношения ссылок."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -612,17 +581,8 @@ msgstr "Распределенная настройка COM-сервера"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"Для работы WMI с учетной записью пользователя, которую вы используете, "
-"должны быть назначены Distributed COM разрешения, а брандмауэр Windows "
-"Firewall должен быть настроен на разрешение Distributed COM соединений.  Вы "
-"можете найти очень хороший документ по этой процедуре на следующих ссылках "
-"%s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "Для работы WMI с учетной записью пользователя, которую вы используете, должны быть назначены Distributed COM разрешения, а брандмауэр Windows Firewall должен быть настроен на разрешение Distributed COM соединений.  Вы можете найти очень хороший документ по этой процедуре на следующих ссылках %s."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -697,8 +657,7 @@ msgstr "ERRROR: Вы должны указать хост, имя пользов
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"Результаты запроса WMI для устройства: %s, класс: %s, столбцы: %s, строки: %s"
+msgstr "Результаты запроса WMI для устройства: %s, класс: %s, столбцы: %s, строки: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

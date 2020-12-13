@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:11-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -123,9 +123,7 @@ msgstr "WMI Authentifizierungskonto"
 #: setup.php:414
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr ""
-"Wählen Sie ein Konto, das bei der Authentifizierung über WMI verwendet "
-"werden soll"
+msgstr "Wählen Sie ein Konto, das bei der Authentifizierung über WMI verwendet werden soll"
 
 #: setup.php:425
 msgid "1 Process"
@@ -169,13 +167,8 @@ msgstr "Automatische Erstellung von WMI-Abfragen"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Wenn diese Option ausgewählt ist, werden beim Ausführen einer "
-"Automatisierung oder beim Erstellen/Speichern eines Geräts alle WMI-Abfragen "
-"erstellt, die mit der Gerätevorlage verknüpft sind."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Wenn diese Option ausgewählt ist, werden beim Ausführen einer Automatisierung oder beim Erstellen/Speichern eines Geräts alle WMI-Abfragen erstellt, die mit der Gerätevorlage verknüpft sind."
 
 #: setup.php:471
 msgid "Misc"
@@ -230,12 +223,8 @@ msgstr "WMI-Abfrage zur Gerätevorlage hinzufügen"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Klicken Sie auf'Weiter', um die folgenden WMI-Abfragen zu löschen, die von "
-"der Gerätevorlage getrennt werden."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Klicken Sie auf'Weiter', um die folgenden WMI-Abfragen zu löschen, die von der Gerätevorlage getrennt werden."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -258,8 +247,7 @@ msgstr "WMI-Abfrage entfernen"
 #: wmi_accounts.php:48
 #, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr ""
-"Geben Sie diesem Konto einen aussagekräftigen Namen, der angezeigt wird."
+msgstr "Geben Sie diesem Konto einen aussagekräftigen Namen, der angezeigt wird."
 
 #: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
@@ -267,12 +255,8 @@ msgstr "Benutzername"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Der Benutzername, der für die Authentifizierung verwendet wird.  Bitte geben "
-"Sie bei Bedarf auch die Domain an."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Der Benutzername, der für die Authentifizierung verwendet wird.  Bitte geben Sie bei Bedarf auch die Domain an."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -346,8 +330,7 @@ msgstr "Keine Konten gefunden"
 #: wmi_queries.php:50
 #, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr ""
-"Geben Sie dieser Abfrage einen aussagekräftigen Namen, der angezeigt wird."
+msgstr "Geben Sie dieser Abfrage einen aussagekräftigen Namen, der angezeigt wird."
 
 #: wmi_queries.php:56
 #, fuzzy
@@ -356,12 +339,8 @@ msgstr "Abholfrequenz"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Wenn diese WMI-Abfrage zu einem Gerät hinzugefügt wird, ist dies die "
-"Häufigkeit der Datenerfassung, die verwendet wird."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Wenn diese WMI-Abfrage zu einem Gerät hinzugefügt wird, ist dies die Häufigkeit der Datenerfassung, die verwendet wird."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -399,14 +378,8 @@ msgstr "Primärschlüssel"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Wenn eine WMI-Query mehrere Zeilen zurückgibt, welcher Schlüsselname wird "
-"dann der Primärschlüssel oder Index sein?  Wenn der Primärschlüssel mehrere "
-"Spalten enthält, trennen Sie diese durch ein Komma."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Wenn eine WMI-Query mehrere Zeilen zurückgibt, welcher Schlüsselname wird dann der Primärschlüssel oder Index sein?  Wenn der Primärschlüssel mehrere Spalten enthält, trennen Sie diese durch ein Komma."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -596,12 +569,8 @@ msgstr "Schließen"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Wenn Sie Hilfe zu Fehlercodes benötigen, verwenden Sie Google oder hier den "
-"folgenden Link %s."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Wenn Sie Hilfe zu Fehlercodes benötigen, verwenden Sie Google oder hier den folgenden Link %s."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -615,17 +584,8 @@ msgstr "Verteilte COM-Einrichtung"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"Damit WMI funktioniert, muss dem von Ihnen verwendeten Benutzerkonto die "
-"Berechtigung Verteilte COM erteilt werden, und die Windows-Firewall muss so "
-"konfiguriert sein, dass sie verteilte COM-Kommunikation zulässt.  Ein "
-"wirklich gutes Dokument zu diesem Verfahren finden Sie unter dem folgenden "
-"Link %s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "Damit WMI funktioniert, muss dem von Ihnen verwendeten Benutzerkonto die Berechtigung Verteilte COM erteilt werden, und die Windows-Firewall muss so konfiguriert sein, dass sie verteilte COM-Kommunikation zulässt.  Ein wirklich gutes Dokument zu diesem Verfahren finden Sie unter dem folgenden Link %s."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -696,14 +656,12 @@ msgstr "WMI Einrichtungshilfe"
 #: wmi_tools.php:522
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
-"FEHLER: Sie müssen einen Host, Benutzernamen, Passwort und Abfrage angeben"
+msgstr "FEHLER: Sie müssen einen Host, Benutzernamen, Passwort und Abfrage angeben"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"WMI Abfrageergebnisse für Gerät: %s, Klasse: %s, Spalten: %s, Zeilen: %s"
+msgstr "WMI Abfrageergebnisse für Gerät: %s, Klasse: %s, Spalten: %s, Zeilen: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

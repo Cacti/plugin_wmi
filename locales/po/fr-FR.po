@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:15-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -168,13 +168,8 @@ msgstr "Création automatique de requêtes WMI"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Si cette option est sélectionnée, lors de l'exécution de l'automatisation ou "
-"de la création/enregistrement d'un dispositif, toutes les requêtes WMI "
-"associées au modèle de dispositif seront créées."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Si cette option est sélectionnée, lors de l'exécution de l'automatisation ou de la création/enregistrement d'un dispositif, toutes les requêtes WMI associées au modèle de dispositif seront créées."
 
 #: setup.php:471
 msgid "Misc"
@@ -229,12 +224,8 @@ msgstr "Ajouter une requête WMI au modèle de périphérique"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Cliquez sur'Continuer' pour supprimer les requêtes WMI suivantes seront "
-"dissociées du modèle de dispositif."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Cliquez sur'Continuer' pour supprimer les requêtes WMI suivantes seront dissociées du modèle de dispositif."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -265,12 +256,8 @@ msgstr "Nom d'utilisateur"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Le nom d'utilisateur qui sera utilisé pour l'authentification.  Veuillez "
-"également inclure le domaine si nécessaire."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Le nom d'utilisateur qui sera utilisé pour l'authentification.  Veuillez également inclure le domaine si nécessaire."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -353,12 +340,8 @@ msgstr "Fréquence des collectes"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Lorsque cette requête WMI est ajoutée à un dispositif, c'est la fréquence de "
-"collecte des données qui sera utilisée."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Lorsque cette requête WMI est ajoutée à un dispositif, c'est la fréquence de collecte des données qui sera utilisée."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -395,14 +378,8 @@ msgstr "Clé primaire"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Lorsqu'une requête WMI renvoie plusieurs lignes, quel nom-clé sera la clé "
-"primaire ou l'index ?  Si la clé primaire comprend plusieurs colonnes, "
-"séparez-les par une virgule."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Lorsqu'une requête WMI renvoie plusieurs lignes, quel nom-clé sera la clé primaire ou l'index ?  Si la clé primaire comprend plusieurs colonnes, séparez-les par une virgule."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -514,14 +491,12 @@ msgstr "Sonner une adresse connue à partir de l'ordinateur"
 #: wmi_tools.php:179
 #, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr ""
-"Obtenir les données de performance du système d'exploitation de Row System"
+msgstr "Obtenir les données de performance du système d'exploitation de Row System"
 
 #: wmi_tools.php:185
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr ""
-"Obtenir des données formatées sur les performances du système d'exploitation"
+msgstr "Obtenir des données formatées sur les performances du système d'exploitation"
 
 #: wmi_tools.php:191
 #, fuzzy
@@ -594,12 +569,8 @@ msgstr "Fermer"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Si vous avez besoin d'aide sur les codes d'erreur, utilisez google, ou ici "
-"utilisez le lien %s suivant."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Si vous avez besoin d'aide sur les codes d'erreur, utilisez google, ou ici utilisez le lien %s suivant."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -613,16 +584,8 @@ msgstr "Configuration COM distribuée"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"Pour que WMI fonctionne, le compte utilisateur que vous utilisez doit avoir "
-"les permissions COM distribuées et le pare-feu Windows doit être configuré "
-"pour permettre les communications COM distribuées.  Vous trouverez un très "
-"bon document sur cette procédure dans le Link %s suivant."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "Pour que WMI fonctionne, le compte utilisateur que vous utilisez doit avoir les permissions COM distribuées et le pare-feu Windows doit être configuré pour permettre les communications COM distribuées.  Vous trouverez un très bon document sur cette procédure dans le Link %s suivant."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -692,16 +655,12 @@ msgstr "Assistance à la configuration WMI"
 #: wmi_tools.php:522
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
-"ERREUR : Vous devez fournir un hôte, un nom d'utilisateur, un mot de passe "
-"et une requête"
+msgstr "ERREUR : Vous devez fournir un hôte, un nom d'utilisateur, un mot de passe et une requête"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"Résultats de la requête WMI pour le périphérique : %s, Classe : %s, "
-"Colonnes : %s, Lignes : %s"
+msgstr "Résultats de la requête WMI pour le périphérique : %s, Classe : %s, Colonnes : %s, Lignes : %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

@@ -6,12 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: developer@cacti.net\n"
-"POT-Creation-Date: 2019-07-21 19:43-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-26 13:15+0000\n"
 "Last-Translator: tomcat <luis_126@126.com>\n"
-"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/"
-"cacti/wmi/zh-CN/>\n"
+"Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/wmi/zh-CN/>\n"
 "Language: zh-CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 3.4-dev\n"
 
-#: functions.php:29 wmi_queries.php:276 wmi_queries.php:399 wmi_tools.php:356
+#: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
 msgstr ""
 
@@ -76,114 +75,146 @@ msgstr ""
 msgid "Data Collection"
 msgstr ""
 
-#: setup.php:304 setup.php:337 setup.php:351 wmi_queries.php:262
-#: wmi_queries.php:405
+#: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
+#: wmi_queries.php:415
 msgid "WMI Queries"
 msgstr ""
 
-#: setup.php:316 setup.php:330
+#: setup.php:307
+msgid "Template Editor"
+msgstr ""
+
+#: setup.php:320 setup.php:334
 msgid "WMI Autenication"
 msgstr ""
 
-#: setup.php:323
+#: setup.php:327
 msgid "WMI Autenication -> Edit"
 msgstr ""
 
-#: setup.php:344
+#: setup.php:348
 msgid "WMI Queries -> Edit"
 msgstr ""
 
-#: setup.php:365
+#: setup.php:369
 msgid "WMI Tools"
 msgstr ""
 
-#: setup.php:404
+#: setup.php:408
 msgid "WMI Account Options"
 msgstr ""
 
-#: setup.php:409
+#: setup.php:413
 msgid "WMI Authentication Account"
 msgstr ""
 
-#: setup.php:410
+#: setup.php:414
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr ""
 
-#: setup.php:424
+#: setup.php:425
+msgid "1 Process"
+msgstr ""
+
+#: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
+#: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
+#: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
+#: setup.php:441 setup.php:442
+#, php-format
+msgid "%d Processes"
+msgstr ""
+
+#: setup.php:447
 msgid "WMI Settings"
 msgstr ""
 
-#: setup.php:428
+#: setup.php:451
+msgid "Enable WMI Data Collection"
+msgstr ""
+
+#: setup.php:452
+msgid "Check this box, if you want the WMI Plugin to query Windows devices."
+msgstr ""
+
+#: setup.php:457
+msgid "Concurrent Processes"
+msgstr ""
+
+#: setup.php:458
+msgid "How many concurrent WMI queries do you want the system to run?"
+msgstr ""
+
+#: setup.php:464
 msgid "Auto Create WMI Queries"
 msgstr ""
 
-#: setup.php:429
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
+#: setup.php:465
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr ""
 
-#: setup.php:447 setup.php:500
+#: setup.php:471
+msgid "Misc"
+msgstr ""
+
+#: setup.php:491 setup.php:544
 msgid "Associated WMI Queries"
 msgstr ""
 
-#: setup.php:462 wmi_accounts.php:47 wmi_queries.php:46 wmi_queries.php:409
+#: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
 msgstr ""
 
-#: setup.php:462
+#: setup.php:506
 msgid "Status"
 msgstr ""
 
-#: setup.php:474
+#: setup.php:518
 msgid "WMI Query Exists"
 msgstr ""
 
-#: setup.php:476
+#: setup.php:520
 msgid "WMI Query Does Not Exist"
 msgstr ""
 
-#: setup.php:493 setup.php:525
+#: setup.php:537 setup.php:569
 msgid "No Associated WMI Queries."
 msgstr ""
 
-#: setup.php:517 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "删除"
 
-#: setup.php:542
+#: setup.php:586
 msgid "Add WMI Query"
 msgstr ""
 
-#: setup.php:548 wmi_tools.php:358
+#: setup.php:592 wmi_tools.php:358
 msgid "Add"
 msgstr ""
 
-#: setup.php:548
+#: setup.php:592
 msgid "Add WMI Query to Device Template"
 msgstr ""
 
-#: setup.php:589
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
+#: setup.php:633
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr ""
 
-#: setup.php:590
+#: setup.php:634
 #, php-format
 msgid "WMI Query Name: %s"
 msgstr ""
 
-#: setup.php:595 wmi_accounts.php:164 wmi_queries.php:184
+#: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
 msgstr ""
 
-#: setup.php:596 wmi_accounts.php:156 wmi_queries.php:184
+#: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
 msgstr ""
 
-#: setup.php:596
+#: setup.php:640
 msgid "Remove WMI Query"
 msgstr ""
 
@@ -191,14 +222,12 @@ msgstr ""
 msgid "Give this account a meaningful name that will be displayed."
 msgstr ""
 
-#: wmi_accounts.php:54 wmi_accounts.php:373 wmi_tools.php:337
+#: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
 msgstr ""
 
 #: wmi_accounts.php:55
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr ""
 
 #: wmi_accounts.php:61 wmi_tools.php:340
@@ -209,148 +238,143 @@ msgstr ""
 msgid "The password used for authentication."
 msgstr ""
 
-#: wmi_accounts.php:146
+#: wmi_accounts.php:154
 msgid "Press 'Continue' to delete the following accounts."
 msgstr ""
 
-#: wmi_accounts.php:153
+#: wmi_accounts.php:161
 msgid "You must select at least one account."
 msgstr ""
 
-#: wmi_accounts.php:215
+#: wmi_accounts.php:223
 #, php-format
 msgid "Account [edit: %s]"
 msgstr ""
 
-#: wmi_accounts.php:217
+#: wmi_accounts.php:225
 msgid "Account [new]"
 msgstr ""
 
-#: wmi_accounts.php:238
+#: wmi_accounts.php:246
 msgid "WMI Accounts"
 msgstr ""
 
-#: wmi_accounts.php:246 wmi_queries.php:270
+#: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
 msgstr ""
 
-#: wmi_accounts.php:252 wmi_accounts.php:365
+#: wmi_accounts.php:260 wmi_accounts.php:383
 msgid "Accounts"
 msgstr ""
 
-#: wmi_accounts.php:256 wmi_queries.php:280
+#: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
 msgstr ""
 
-#: wmi_accounts.php:270 wmi_queries.php:297
+#: wmi_accounts.php:278 wmi_queries.php:301
 msgctxt "filter: use"
 msgid "Go"
 msgstr ""
 
-#: wmi_accounts.php:273 wmi_queries.php:300
+#: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr ""
 
-#: wmi_accounts.php:373 wmi_tools.php:268
+#: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
 msgstr ""
 
-#: wmi_accounts.php:373
+#: wmi_accounts.php:403
 msgid "Devices"
 msgstr ""
 
-#: wmi_accounts.php:389
+#: wmi_accounts.php:425
 msgid "No Accounts Found"
 msgstr ""
 
-#: wmi_queries.php:47
+#: wmi_queries.php:50
 msgid "Give this query a meaningful name that will be displayed."
 msgstr ""
 
-#: wmi_queries.php:53
+#: wmi_queries.php:56
 msgid "Collection Frequency"
 msgstr ""
 
-#: wmi_queries.php:54
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
+#: wmi_queries.php:57
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
 msgstr ""
 
-#: wmi_queries.php:61
+#: wmi_queries.php:64
 msgid "Enabled"
 msgstr ""
 
-#: wmi_queries.php:62
+#: wmi_queries.php:65
 msgid "Should this Query be enabled on hosts using it"
 msgstr ""
 
-#: wmi_queries.php:68 wmi_queries.php:412 wmi_tools.php:343
+#: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 msgid "Namespace"
 msgstr ""
 
-#: wmi_queries.php:69
+#: wmi_queries.php:72
 msgid "The Namespace for this Query."
 msgstr ""
 
-#: wmi_queries.php:75 wmi_tools.php:268
+#: wmi_queries.php:78 wmi_tools.php:268
 msgid "Query"
 msgstr ""
 
-#: wmi_queries.php:76
+#: wmi_queries.php:79
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr ""
 
-#: wmi_queries.php:84 wmi_queries.php:414 wmi_tools.php:268 wmi_tools.php:349
+#: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
 msgstr ""
 
-#: wmi_queries.php:85
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
+#: wmi_queries.php:88
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr ""
 
-#: wmi_queries.php:174
+#: wmi_queries.php:177
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr ""
 
-#: wmi_queries.php:181
+#: wmi_queries.php:184
 msgid "You must select at least one WMI Query."
 msgstr ""
 
-#: wmi_queries.php:182
+#: wmi_queries.php:185
 msgid "Return"
 msgstr ""
 
-#: wmi_queries.php:184
+#: wmi_queries.php:187
 msgid "Delete WMI Query"
 msgstr ""
 
-#: wmi_queries.php:238
+#: wmi_queries.php:242
 #, php-format
 msgid "Query [edit: %s]"
 msgstr ""
 
-#: wmi_queries.php:240
+#: wmi_queries.php:244
 msgid "Query [new]"
 msgstr ""
 
-#: wmi_queries.php:294
+#: wmi_queries.php:298
 msgid "Has Graphs"
 msgstr ""
 
-#: wmi_queries.php:410
+#: wmi_queries.php:425
 msgid "ID"
 msgstr ""
 
-#: wmi_queries.php:411 wmi_tools.php:327
+#: wmi_queries.php:430 wmi_tools.php:327
 msgid "Frequency"
 msgstr ""
 
-#: wmi_queries.php:413
+#: wmi_queries.php:440
 msgid "WQL Query"
 msgstr ""
 
@@ -468,9 +492,7 @@ msgstr ""
 
 #: wmi_tools.php:300
 #, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr ""
 
 #: wmi_tools.php:300
@@ -483,11 +505,7 @@ msgstr ""
 
 #: wmi_tools.php:301
 #, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
 msgstr ""
 
 #: wmi_tools.php:334

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:20-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -167,13 +167,8 @@ msgstr "Creazione automatica di query WMI"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Se selezionata, sia durante l'esecuzione di un'automazione, sia durante la "
-"creazione/salvataggio di un Dispositivo, verranno create tutte le Query WMI "
-"associate al Device Template."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Se selezionata, sia durante l'esecuzione di un'automazione, sia durante la creazione/salvataggio di un Dispositivo, verranno create tutte le Query WMI associate al Device Template."
 
 #: setup.php:471
 msgid "Misc"
@@ -228,12 +223,8 @@ msgstr "Aggiunta di una query WMI al modello del dispositivo"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Fare clic su 'Continua' per cancellare le seguenti WMI Query che verranno "
-"dissociate dal Device Template."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Fare clic su 'Continua' per cancellare le seguenti WMI Query che verranno dissociate dal Device Template."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -264,12 +255,8 @@ msgstr "Nome utente"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Il nome utente che verrà utilizzato per l'autenticazione.  Si prega di "
-"includere anche il dominio, se necessario."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Il nome utente che verrà utilizzato per l'autenticazione.  Si prega di includere anche il dominio, se necessario."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -352,12 +339,8 @@ msgstr "Frequenza di raccolta"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Quando questa WMI Query viene aggiunta ad un dispositivo, questa è la "
-"frequenza di raccolta dati che verrà utilizzata."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Quando questa WMI Query viene aggiunta ad un dispositivo, questa è la frequenza di raccolta dati che verrà utilizzata."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -393,14 +376,8 @@ msgstr "Chiave primaria"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Quando una WMI Query restituisce più righe, quale Keyname sarà la chiave "
-"primaria o l'indice?  Se la Chiave Primaria include più colonne, separarle "
-"con una virgola."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Quando una WMI Query restituisce più righe, quale Keyname sarà la chiave primaria o l'indice?  Se la Chiave Primaria include più colonne, separarle con una virgola."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -517,9 +494,7 @@ msgstr "Ottenere i dati sulle prestazioni del sistema operativo Row System OS"
 #: wmi_tools.php:185
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr ""
-"Ottenere dati formattati sulle prestazioni del sistema operativo del sistema "
-"operativo"
+msgstr "Ottenere dati formattati sulle prestazioni del sistema operativo del sistema operativo"
 
 #: wmi_tools.php:191
 #, fuzzy
@@ -592,12 +567,8 @@ msgstr "Chiudi"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Se hai bisogno di assistenza sui codici di errore, usa google, o qui usa il "
-"seguente Link %s."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Se hai bisogno di assistenza sui codici di errore, usa google, o qui usa il seguente Link %s."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -611,17 +582,8 @@ msgstr "Configurazione COM distribuita"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"Affinché WMI possa funzionare, l'account utente che si sta utilizzando deve "
-"avere le autorizzazioni Distributed COM, e il Firewall di Windows deve "
-"essere configurato per consentire le comunicazioni Distributed COM.  Potete "
-"trovare un documento veramente valido su questa procedura al seguente Link "
-"%s."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "Affinché WMI possa funzionare, l'account utente che si sta utilizzando deve avere le autorizzazioni Distributed COM, e il Firewall di Windows deve essere configurato per consentire le comunicazioni Distributed COM.  Potete trovare un documento veramente valido su questa procedura al seguente Link %s."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -690,15 +652,12 @@ msgstr "Assistenza alla configurazione WMI"
 #: wmi_tools.php:522
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
-"ERROR: È necessario fornire un host, un nome utente, una password e una query"
+msgstr "ERROR: È necessario fornire un host, un nome utente, una password e una query"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"Risultati della query WMI per il dispositivo: %s, classe: %s, colonne: %s, "
-"righe: %s"
+msgstr "Risultati della query WMI per il dispositivo: %s, classe: %s, colonne: %s, righe: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:18-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -170,12 +170,8 @@ msgstr "ऑटो WMI क्वेरी बनाएँ"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"यदि चयनित है, तो या तो स्वचालन चलाते समय, या उपकरण बनाते / सहेजते समय, डिवाइस "
-"टेम्पलेट से जुड़ी सभी WMI क्वेरीज़ बनाई जाएंगी।"
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "यदि चयनित है, तो या तो स्वचालन चलाते समय, या उपकरण बनाते / सहेजते समय, डिवाइस टेम्पलेट से जुड़ी सभी WMI क्वेरीज़ बनाई जाएंगी।"
 
 #: setup.php:471
 msgid "Misc"
@@ -232,12 +228,8 @@ msgstr "डिवाइस टेम्पलेट में WMI क्वे�
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"निम्नलिखित WMI क्वेरीज़ को हटाने के लिए 'जारी रखें' को डिवाइस टेम्पलेट से अलग कर दिया "
-"जाएगा।"
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "निम्नलिखित WMI क्वेरीज़ को हटाने के लिए 'जारी रखें' को डिवाइस टेम्पलेट से अलग कर दिया जाएगा।"
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -268,12 +260,8 @@ msgstr "उपयोगकर्ता नाम"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"उपयोगकर्ता नाम जो प्रमाणीकरण के लिए उपयोग किया जाएगा। यदि आवश्यक हो तो कृपया डोमेन "
-"भी शामिल करें।"
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "उपयोगकर्ता नाम जो प्रमाणीकरण के लिए उपयोग किया जाएगा। यदि आवश्यक हो तो कृपया डोमेन भी शामिल करें।"
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -361,12 +349,8 @@ msgstr "संग्रह की आवृत्ति"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"जब यह WMI क्वेरी डिवाइस में जोड़ी जाती है, तो यह डेटा संग्रह की आवृत्ति है जिसका उपयोग "
-"किया जाएगा।"
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "जब यह WMI क्वेरी डिवाइस में जोड़ी जाती है, तो यह डेटा संग्रह की आवृत्ति है जिसका उपयोग किया जाएगा।"
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -404,13 +388,8 @@ msgstr "प्राथमिक कुंजी"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"जब एक WMI क्वेरी कई पंक्तियों को लौटाती है, तो Keyname प्राथमिक कुंजी या सूचकांक कौन सा "
-"होगा? यदि प्राथमिक कुंजी में कई कॉलम शामिल हैं, तो उन्हें अल्पविराम से अलग करें।"
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "जब एक WMI क्वेरी कई पंक्तियों को लौटाती है, तो Keyname प्राथमिक कुंजी या सूचकांक कौन सा होगा? यदि प्राथमिक कुंजी में कई कॉलम शामिल हैं, तो उन्हें अल्पविराम से अलग करें।"
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -602,12 +581,8 @@ msgstr "बंद"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"यदि आपको त्रुटि कोड पर सहायता की आवश्यकता है, तो Google का उपयोग करें, या यहां निम्न "
-"लिंक %s का उपयोग करें।"
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "यदि आपको त्रुटि कोड पर सहायता की आवश्यकता है, तो Google का उपयोग करें, या यहां निम्न लिंक %s का उपयोग करें।"
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -621,16 +596,8 @@ msgstr "वितरित COM सेटअप"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"WMI के लिए आप उपयोग कर रहे उपयोगकर्ता खाते को वितरित करने के लिए COM अनुमतियाँ प्रदान "
-"की जानी चाहिए, और वितरित COM संचार की अनुमति देने के लिए Windows फ़ायरवॉल को "
-"कॉन्फ़िगर किया जाना चाहिए। आप निम्न लिंक %s पर इस प्रक्रिया पर एक वास्तविक अच्छा "
-"दस्तावेज़ पा सकते हैं।"
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "WMI के लिए आप उपयोग कर रहे उपयोगकर्ता खाते को वितरित करने के लिए COM अनुमतियाँ प्रदान की जानी चाहिए, और वितरित COM संचार की अनुमति देने के लिए Windows फ़ायरवॉल को कॉन्फ़िगर किया जाना चाहिए। आप निम्न लिंक %s पर इस प्रक्रिया पर एक वास्तविक अच्छा दस्तावेज़ पा सकते हैं।"
 
 #: wmi_tools.php:334
 #, fuzzy

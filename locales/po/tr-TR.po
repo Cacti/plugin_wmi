@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:33-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -168,12 +168,8 @@ msgstr "WMI Sorgularını Otomatik Oluştur"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"Seçilirse, otomasyondan birini çalıştırırken veya bir Cihaz oluştururken / "
-"kaydederken, Cihaz Şablonuyla ilişkili tüm WMI Sorguları oluşturulur."
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "Seçilirse, otomasyondan birini çalıştırırken veya bir Cihaz oluştururken / kaydederken, Cihaz Şablonuyla ilişkili tüm WMI Sorguları oluşturulur."
 
 #: setup.php:471
 msgid "Misc"
@@ -228,12 +224,8 @@ msgstr "Aygıt Şablonuna WMI Sorgusu Ekleme"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"Aşağıdaki WMI Sorgularını silmek için 'Devam Et'i tıklayın, Cihaz "
-"Şablonundan ayrılmayacaksınız."
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "Aşağıdaki WMI Sorgularını silmek için 'Devam Et'i tıklayın, Cihaz Şablonundan ayrılmayacaksınız."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -264,12 +256,8 @@ msgstr "Kullanıcı Adı"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
-msgstr ""
-"Kimlik doğrulama için kullanılacak kullanıcı adı. Lütfen gerekirse etki "
-"alanını da ekleyin."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgstr "Kimlik doğrulama için kullanılacak kullanıcı adı. Lütfen gerekirse etki alanını da ekleyin."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -352,12 +340,8 @@ msgstr "Toplama Sıklığı"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"Bu WMI Sorgusu bir Cihaza eklendiğinde, kullanılacak Veri Toplama Sıklığı "
-"budur."
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "Bu WMI Sorgusu bir Cihaza eklendiğinde, kullanılacak Veri Toplama Sıklığı budur."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -394,14 +378,8 @@ msgstr "Birincil anahtar"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"Bir WMI Sorgusu birden çok satır döndürdüğünde, birincil anahtar veya dizin "
-"hangi Anahtar Adı olur? Birincil Anahtar birden çok sütun içeriyorsa, "
-"bunları virgülle ayırın."
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "Bir WMI Sorgusu birden çok satır döndürdüğünde, birincil anahtar veya dizin hangi Anahtar Adı olur? Birincil Anahtar birden çok sütun içeriyorsa, bunları virgülle ayırın."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -591,12 +569,8 @@ msgstr "Kapat"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"Hata kodları konusunda yardıma ihtiyacınız varsa, google kullanın veya "
-"burada şu %s bağlantısını kullanın."
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "Hata kodları konusunda yardıma ihtiyacınız varsa, google kullanın veya burada şu %s bağlantısını kullanın."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -610,16 +584,8 @@ msgstr "Dağıtılmış COM Kurulumu"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"WMI'nın çalışması için kullandığınız kullanıcı hesabına Distributed COM "
-"izinleri verilmelidir ve Windows Güvenlik Duvarı, Distributed COM "
-"iletişimine izin verecek şekilde yapılandırılmalıdır. Bu prosedür hakkında "
-"gerçek bir dokümanı aşağıdaki Link %s adresinde bulabilirsiniz."
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "WMI'nın çalışması için kullandığınız kullanıcı hesabına Distributed COM izinleri verilmelidir ve Windows Güvenlik Duvarı, Distributed COM iletişimine izin verecek şekilde yapılandırılmalıdır. Bu prosedür hakkında gerçek bir dokümanı aşağıdaki Link %s adresinde bulabilirsiniz."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -694,8 +660,7 @@ msgstr "HATA: Bir ana bilgisayar, kullanıcı adı, şifre ve sorgu sağlamalıs
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
-"Aygıt için WMI Sorgu Sonuçları: %s, Sınıf: %s, Sütunlar: %s, Satırlar: %s"
+msgstr "Aygıt için WMI Sorgu Sonuçları: %s, Sınıf: %s, Sütunlar: %s, Satırlar: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy

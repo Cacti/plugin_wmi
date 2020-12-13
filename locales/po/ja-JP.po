@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-29 10:58-0400\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2019-07-21 20:21-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -168,12 +168,8 @@ msgstr "WMIクエリを自動作成する"
 
 #: setup.php:465
 #, fuzzy
-msgid ""
-"If selected, when running either automation, or when creating/saving a "
-"Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
-"選択した場合、自動化を実行するとき、またはデバイスを作成または保存するとき"
-"に、デバイステンプレートに関連付けられているすべてのWMIクエリが作成されます。"
+msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
+msgstr "選択した場合、自動化を実行するとき、またはデバイスを作成または保存するときに、デバイステンプレートに関連付けられているすべてのWMIクエリが作成されます。"
 
 #: setup.php:471
 msgid "Misc"
@@ -228,12 +224,8 @@ msgstr "デバイステンプレートにWMIクエリを追加する"
 
 #: setup.php:633
 #, fuzzy
-msgid ""
-"Click 'Continue' to delete the following WMI Queries will be disassociated "
-"from the Device Template."
-msgstr ""
-"次のWMIクエリを削除するには、[続行]をクリックします。クエリがデバイステンプ"
-"レートから関連付け解除されます。"
+msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgstr "次のWMIクエリを削除するには、[続行]をクリックします。クエリがデバイステンプレートから関連付け解除されます。"
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -264,9 +256,7 @@ msgstr "ユーザー名"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid ""
-"The username that will be used for authentication.  Please also include the "
-"domain if necessary."
+msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "認証に使用されるユーザー名。必要に応じてドメインも含めてください。"
 
 #: wmi_accounts.php:61 wmi_tools.php:340
@@ -350,11 +340,8 @@ msgstr "収集頻度"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid ""
-"When this WMI Query is added to a Device, this is the Frequency of Data "
-"Collection that will be used."
-msgstr ""
-"このWMIクエリがデバイスに追加されると、これが使用されるデータ収集の頻度です。"
+msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgstr "このWMIクエリがデバイスに追加されると、これが使用されるデータ収集の頻度です。"
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -392,13 +379,8 @@ msgstr "主キー"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid ""
-"When a WMI Query returns multiple rows, which Keyname will be the primary "
-"key or index?  If the Primary Key includes multiple columns, separate them "
-"with a comma."
-msgstr ""
-"WMIクエリが複数の行を返す場合、どのキー名が主キーまたはインデックスになります"
-"か。主キーに複数の列が含まれている場合は、それらをコンマで区切ります。"
+msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
+msgstr "WMIクエリが複数の行を返す場合、どのキー名が主キーまたはインデックスになりますか。主キーに複数の列が含まれている場合は、それらをコンマで区切ります。"
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -588,12 +570,8 @@ msgstr "閉じる"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid ""
-"If you need assistance on error codes, use google, or here use the following "
-"Link %s."
-msgstr ""
-"エラーコードについてサポートが必要な場合は、Googleを使用するか、こちらのリン"
-"ク％sを使用してください。"
+msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgstr "エラーコードについてサポートが必要な場合は、Googleを使用するか、こちらのリンク％sを使用してください。"
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -607,16 +585,8 @@ msgstr "分散COMセットアップ"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid ""
-"For WMI to work the user account you are using must be granted Distributed "
-"COM permissions, and the Windows Firewall must be configured to allow "
-"Distributed COM communications.  You can find a real good document on this "
-"procedure at the following Link %s."
-msgstr ""
-"WMIが機能するには、使用しているユーザーアカウントにDistributed COMアクセス許"
-"可が付与されている必要があります。また、WindowsファイアウォールがDistributed "
-"COM通信を許可するように構成されている必要があります。次のリンク％sでこの手順"
-"に関する本当に良い文書を見つけることができます。"
+msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
+msgstr "WMIが機能するには、使用しているユーザーアカウントにDistributed COMアクセス許可が付与されている必要があります。また、WindowsファイアウォールがDistributed COM通信を許可するように構成されている必要があります。次のリンク％sでこの手順に関する本当に良い文書を見つけることができます。"
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -686,9 +656,7 @@ msgstr "WMI設定支援"
 #: wmi_tools.php:522
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
-"エラー：あなたはホスト、ユーザー名、パスワード、そしてクエリを提供しなければ"
-"なりません"
+msgstr "エラー：あなたはホスト、ユーザー名、パスワード、そしてクエリを提供しなければなりません"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
