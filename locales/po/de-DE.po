@@ -8,20 +8,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:11-0400\n"
+"PO-Revision-Date: 2020-12-14 20:01-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
-#, fuzzy
 msgid "Queries"
-msgstr "Zugeordnete Datenabfragen"
+msgstr "Abfragen"
 
 #: functions.php:30
 msgid "Authentication"
@@ -88,7 +87,7 @@ msgstr "WMI Abfragen"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Vorlagen Editor"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -126,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Wählen Sie ein Konto, das bei der Authentifizierung über WMI verwendet werden soll"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Prozess"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -148,17 +148,18 @@ msgid "Enable WMI Data Collection"
 msgstr "Datensammlung"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Aktivieren Sie dieses Kontrollkästchen, wenn das WMI-Plugin Windows-Geräte abfragen soll."
 
 #: setup.php:457
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Systemprozesse holen"
+msgstr "Gleichzeitige Prozesse"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Wie viele gleichzeitige WMI-Abfragen soll das System ausführen?"
 
 #: setup.php:464
 #, fuzzy
@@ -172,7 +173,7 @@ msgstr "Wenn diese Option ausgewählt ist, werden beim Ausführen einer Automati
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Sonstiges"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -362,9 +363,8 @@ msgid "The Namespace for this Query."
 msgstr "Der Namensraum für diese Query."
 
 #: wmi_queries.php:78 wmi_tools.php:268
-#, fuzzy
 msgid "Query"
-msgstr "Name von Daten Abfragen"
+msgstr "Abfrage"
 
 #: wmi_queries.php:79
 #, fuzzy
@@ -372,7 +372,6 @@ msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Die auszuführende Abfrage zum Sammeln von WMI-Daten vom Gerät."
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
-#, fuzzy
 msgid "Primary Key"
 msgstr "Primärschlüssel"
 
@@ -601,9 +600,8 @@ msgid "More Class Information @Microsoft"
 msgstr "Mehr Klasseninformationen @Microsoft"
 
 #: wmi_tools.php:354
-#, fuzzy
 msgid "Run"
-msgstr "Statistik des letzten Durchlaufs"
+msgstr "Ausführen"
 
 #: wmi_tools.php:354
 #, fuzzy

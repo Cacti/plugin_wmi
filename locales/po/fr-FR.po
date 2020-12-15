@@ -8,20 +8,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:15-0400\n"
+"PO-Revision-Date: 2020-12-14 20:02-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
-#, fuzzy
 msgid "Queries"
-msgstr "Interrogations avancées associées"
+msgstr "Optimisation automatique sans aucune requête"
 
 #: functions.php:30
 msgid "Authentication"
@@ -48,7 +47,7 @@ msgid "%d Minute"
 msgstr "%d Minute"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
 msgstr "%d minutes"
 
@@ -58,9 +57,9 @@ msgid "%d Hour"
 msgstr "%d Heure"
 
 #: setup.php:296 setup.php:297
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
-msgstr "%d dernières heures"
+msgstr "%d heures"
 
 #: setup.php:298
 #, php-format
@@ -77,7 +76,6 @@ msgid "WMI Query Tool"
 msgstr "Outil d'interrogation WMI"
 
 #: setup.php:304
-#, fuzzy
 msgid "Data Collection"
 msgstr "Collecte des données"
 
@@ -89,7 +87,7 @@ msgstr "Requêtes WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Éditeur de Template/Modèle"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -127,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Choisissez un compte à utiliser lors de l'authentification via WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Processus"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -149,17 +148,18 @@ msgid "Enable WMI Data Collection"
 msgstr "Collecte des données"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Cochez cette case si vous souhaitez que le plug-in WMI interroge les périphériques Windows."
 
 #: setup.php:457
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Obtenir les processus du système"
+msgstr "Processus Simultanés"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Combien de requêtes WMI simultanées voulez-vous que le système exécute?"
 
 #: setup.php:464
 #, fuzzy
@@ -173,7 +173,7 @@ msgstr "Si cette option est sélectionnée, lors de l'exécution de l'automatisa
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Divers"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -362,9 +362,8 @@ msgid "The Namespace for this Query."
 msgstr "L'espace de nommage pour cette requête."
 
 #: wmi_queries.php:78 wmi_tools.php:268
-#, fuzzy
 msgid "Query"
-msgstr "Nom de l'interrogation avancée"
+msgstr "Requête"
 
 #: wmi_queries.php:79
 #, fuzzy
@@ -638,9 +637,8 @@ msgid "Create a new WMI Query from the existing Query."
 msgstr "Créez une nouvelle requête WMI à partir de la requête existante."
 
 #: wmi_tools.php:369
-#, fuzzy
 msgid "Query Results"
-msgstr "Résultats de la recherche"
+msgstr "Résultats de la requête"
 
 #: wmi_tools.php:398
 #, fuzzy

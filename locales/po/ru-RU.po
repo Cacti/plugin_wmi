@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:31-0400\n"
+"PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -52,7 +52,7 @@ msgid "%d Minutes"
 msgstr "%d Минут"
 
 #: setup.php:295
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hour"
 msgstr "%d Час"
 
@@ -62,9 +62,9 @@ msgid "%d Hours"
 msgstr "%d Часа(ов)"
 
 #: setup.php:298
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "День"
+msgstr "%d День"
 
 #: setup.php:303
 msgid "Utilities"
@@ -87,7 +87,7 @@ msgstr "Запросы WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Редактор шаблонов"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -125,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Выберите учетную запись для использования при аутентификации через WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Процесс"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -147,17 +148,18 @@ msgid "Enable WMI Data Collection"
 msgstr "Коллекции Данных"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Установите этот флажок, если хотите, чтобы подключаемый модуль WMI запрашивал устройства Windows."
 
 #: setup.php:457
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Получить системные процессы"
+msgstr "Количество Конкурирующих процессов"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Сколько одновременных запросов WMI вы хотите, чтобы система выполняла?"
 
 #: setup.php:464
 #, fuzzy
@@ -171,7 +173,7 @@ msgstr "Если этот параметр выбран, при запуске �
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Разное"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -369,9 +371,8 @@ msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Запрос на выполнение для сбора данных WMI с устройства."
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
-#, fuzzy
 msgid "Primary Key"
-msgstr "Основной ключ"
+msgstr "Первичный ключ"
 
 #: wmi_queries.php:88
 #, fuzzy

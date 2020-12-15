@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:24-0400\n"
+"PO-Revision-Date: 2020-12-14 20:05-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -62,9 +62,9 @@ msgid "%d Hours"
 msgstr "%d godzin"
 
 #: setup.php:298
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "d Day"
+msgstr "%d dzień"
 
 #: setup.php:303
 msgid "Utilities"
@@ -87,7 +87,7 @@ msgstr "Zapytania WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Edytor Szablonu"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -125,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Wybierz konto do użycia podczas uwierzytelniania przez WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Proces"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -147,8 +148,9 @@ msgid "Enable WMI Data Collection"
 msgstr "Zbieranie danych"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Zaznacz to pole, jeśli chcesz, aby wtyczka WMI wysyłała zapytania do urządzeń Windows."
 
 #: setup.php:457
 #, fuzzy
@@ -156,8 +158,9 @@ msgid "Concurrent Processes"
 msgstr "Uzyskaj procesy systemowe"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Ile jednoczesnych zapytań WMI ma uruchamiać system?"
 
 #: setup.php:464
 #, fuzzy
@@ -171,7 +174,7 @@ msgstr "W przypadku wybrania tej opcji, podczas uruchamiania automatyki lub podc
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Różne"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -370,7 +373,6 @@ msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Zapytanie do wykonania w celu zebrania danych WMI z urządzenia."
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
-#, fuzzy
 msgid "Primary Key"
 msgstr "Klucz główny"
 

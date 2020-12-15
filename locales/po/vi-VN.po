@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:37-0400\n"
+"PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -47,19 +47,19 @@ msgid "%d Minute"
 msgstr "%d phút"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
 msgstr "%d phút"
 
 #: setup.php:295
 #, fuzzy, php-format
 msgid "%d Hour"
-msgstr "% d giờ"
+msgstr "%d giờ"
 
 #: setup.php:296 setup.php:297
 #, fuzzy, php-format
 msgid "%d Hours"
-msgstr "% d giờ"
+msgstr "%d giờ"
 
 #: setup.php:298
 #, fuzzy, php-format
@@ -86,8 +86,9 @@ msgid "WMI Queries"
 msgstr "Truy vấn WMI"
 
 #: setup.php:307
+#, fuzzy
 msgid "Template Editor"
-msgstr ""
+msgstr "Trình chỉnh sửa mẫu"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -125,8 +126,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Chọn một tài khoản để sử dụng khi Xác thực qua WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 quy trình"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -147,8 +149,9 @@ msgid "Enable WMI Data Collection"
 msgstr "Thu thập dữ liệu"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Chọn hộp này nếu bạn muốn Plugin WMI truy vấn thiết bị Windows."
 
 #: setup.php:457
 #, fuzzy
@@ -156,8 +159,9 @@ msgid "Concurrent Processes"
 msgstr "Nhận quy trình hệ thống"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Bạn muốn hệ thống chạy bao nhiêu truy vấn WMI đồng thời?"
 
 #: setup.php:464
 #, fuzzy
@@ -171,7 +175,7 @@ msgstr "Nếu được chọn, khi chạy tự động hóa hoặc khi tạo / l
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Linh tinh"
 
 #: setup.php:491 setup.php:544
 #, fuzzy

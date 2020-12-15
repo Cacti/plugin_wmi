@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:10-0400\n"
+"PO-Revision-Date: 2020-12-14 20:01-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bg_BG\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -43,24 +43,24 @@ msgid "WMI Data Query"
 msgstr "WMI Data Query"
 
 #: setup.php:289
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minute"
-msgstr "% d Минута"
+msgstr "%d минута"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
-msgstr "% d Минути"
+msgstr "%d минути"
 
 #: setup.php:295
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hour"
-msgstr "% d Час"
+msgstr "%d час"
 
 #: setup.php:296 setup.php:297
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
-msgstr "% d Часове"
+msgstr "%d часа"
 
 #: setup.php:298
 #, fuzzy, php-format
@@ -88,8 +88,9 @@ msgid "WMI Queries"
 msgstr "WMI заявки"
 
 #: setup.php:307
+#, fuzzy
 msgid "Template Editor"
-msgstr ""
+msgstr "Редактор на шаблони"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -127,8 +128,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Изберете акаунт, който да използвате при удостоверяване чрез WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Процес"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -149,8 +151,9 @@ msgid "Enable WMI Data Collection"
 msgstr "Събиране на данни"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Поставете отметка в това квадратче, ако искате приставката WMI да прави заявки за устройства с Windows."
 
 #: setup.php:457
 #, fuzzy
@@ -158,8 +161,9 @@ msgid "Concurrent Processes"
 msgstr "Получаване на системни процеси"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Колко едновременни WMI заявки искате да работи системата?"
 
 #: setup.php:464
 #, fuzzy
@@ -173,7 +177,7 @@ msgstr "Ако е избрано, когато се изпълнява или а
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Разни"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -363,9 +367,8 @@ msgid "The Namespace for this Query."
 msgstr "Пространството от имена за тази заявка."
 
 #: wmi_queries.php:78 wmi_tools.php:268
-#, fuzzy
 msgid "Query"
-msgstr "Създаване на графики от автоматизирано събиране на данни"
+msgstr "Query (заявка/запитване)"
 
 #: wmi_queries.php:79
 #, fuzzy
@@ -393,9 +396,8 @@ msgid "You must select at least one WMI Query."
 msgstr "Трябва да изберете поне една WMI заявка."
 
 #: wmi_queries.php:185
-#, fuzzy
 msgid "Return"
-msgstr "връщане"
+msgstr "Връщане"
 
 #: wmi_queries.php:187
 #, fuzzy
@@ -590,9 +592,8 @@ msgid "For WMI to work the user account you are using must be granted Distribute
 msgstr "За да може WMI да работи с потребителския акаунт, който използвате, трябва да бъдат предоставени разрешения за дистрибутиран COM, а защитната стена на Windows трябва да е конфигурирана така, че да позволява разпределени COM комуникации. Можете да намерите истински добър документ за тази процедура на следната връзка %s."
 
 #: wmi_tools.php:334
-#, fuzzy
 msgid "Host"
-msgstr "домакин"
+msgstr "Хост"
 
 #: wmi_tools.php:346
 msgid "Command"

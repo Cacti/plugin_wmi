@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:32-0400\n"
+"PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -54,12 +54,12 @@ msgstr "%d minuter"
 #: setup.php:295
 #, fuzzy, php-format
 msgid "%d Hour"
-msgstr "% d timme"
+msgstr "%d timme"
 
 #: setup.php:296 setup.php:297
 #, fuzzy, php-format
 msgid "%d Hours"
-msgstr "% d timmar"
+msgstr "%d timmar"
 
 #: setup.php:298
 #, fuzzy, php-format
@@ -87,7 +87,7 @@ msgstr "WMI-frågor"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Mall Redigerare"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -125,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Välj ett konto som ska användas när du verifierar via WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Process"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -147,8 +148,9 @@ msgid "Enable WMI Data Collection"
 msgstr "Datainsamling"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Markera den här rutan om du vill att WMI-pluginet ska fråga Windows-enheter."
 
 #: setup.php:457
 #, fuzzy
@@ -156,8 +158,9 @@ msgid "Concurrent Processes"
 msgstr "Få systemprocesser"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Hur många samtidiga WMI-frågor vill du att systemet ska köras?"
 
 #: setup.php:464
 #, fuzzy
@@ -171,7 +174,7 @@ msgstr "Om det väljs, när du kör antingen automatisering eller när du skapar
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Övrigt"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -590,7 +593,6 @@ msgid "Host"
 msgstr "Värd"
 
 #: wmi_tools.php:346
-#, fuzzy
 msgid "Command"
 msgstr "Kommando"
 

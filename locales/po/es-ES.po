@@ -8,20 +8,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:13-0400\n"
+"PO-Revision-Date: 2020-12-14 20:02-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
-#, fuzzy
 msgid "Queries"
-msgstr "Volver a ejecutar consultas de datos"
+msgstr "Consultas"
 
 #: functions.php:30
 msgid "Authentication"
@@ -88,7 +87,7 @@ msgstr "Consultas WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Editor de plantillas"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -127,15 +126,15 @@ msgstr "Elija una cuenta para utilizar cuando se autentica a través de WMI"
 
 #: setup.php:425
 msgid "1 Process"
-msgstr ""
+msgstr "1 proceso"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
 #: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
 #: setup.php:441 setup.php:442
-#, fuzzy, php-format
+#, php-format
 msgid "%d Processes"
-msgstr "Obtener procesos del sistema"
+msgstr "Procesos %d"
 
 #: setup.php:447
 #, fuzzy
@@ -148,17 +147,18 @@ msgid "Enable WMI Data Collection"
 msgstr "Recolección de datos"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Marque esta casilla si desea que el complemento WMI consulte los dispositivos Windows."
 
 #: setup.php:457
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Obtener procesos del sistema"
+msgstr "Procesos concurrentes"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "¿Cuántas consultas WMI simultáneas desea que ejecute el sistema?"
 
 #: setup.php:464
 #, fuzzy
@@ -172,7 +172,7 @@ msgstr "Si se selecciona esta opción, al ejecutar la automatización o al crear
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Misc"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -297,9 +297,8 @@ msgid "Search"
 msgstr "Buscar"
 
 #: wmi_accounts.php:260 wmi_accounts.php:383
-#, fuzzy
 msgid "Accounts"
-msgstr "Caducar cuentas inactivas"
+msgstr "Cuentas"
 
 #: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
@@ -353,9 +352,8 @@ msgid "Should this Query be enabled on hosts using it"
 msgstr "Si esta consulta está habilitada en los hosts que la utilizan"
 
 #: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
-#, fuzzy
 msgid "Namespace"
-msgstr "Espacio de nombres"
+msgstr "ES Namespace"
 
 #: wmi_queries.php:72
 #, fuzzy
@@ -600,9 +598,8 @@ msgid "More Class Information @Microsoft"
 msgstr "Más información sobre la clase @Microsoft"
 
 #: wmi_tools.php:354
-#, fuzzy
 msgid "Run"
-msgstr "Detalles de tiempo de ejecución"
+msgstr "Ejecutar"
 
 #: wmi_tools.php:354
 #, fuzzy
@@ -629,9 +626,8 @@ msgid "Get some help on setting up WMI"
 msgstr "Obtenga ayuda para configurar WMI"
 
 #: wmi_tools.php:357
-#, fuzzy
 msgid "Help"
-msgstr "Número de Ticket para cruzar referencias con tu sistema corporativo de Help Desk."
+msgstr "Ayuda"
 
 #: wmi_tools.php:358
 #, fuzzy

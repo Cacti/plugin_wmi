@@ -8,20 +8,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:20-0400\n"
+"PO-Revision-Date: 2020-12-14 20:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
-#, fuzzy
 msgid "Queries"
-msgstr "Domande"
+msgstr "Richieste"
 
 #: functions.php:30
 msgid "Authentication"
@@ -43,19 +42,19 @@ msgid "WMI Data Query"
 msgstr "Interrogazione dati WMI"
 
 #: setup.php:289
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minute"
 msgstr "%d Minuto"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
-msgstr "%d minuti"
+msgstr "%d Minuti"
 
 #: setup.php:295
 #, fuzzy, php-format
 msgid "%d Hour"
-msgstr "%d Ora"
+msgstr "%d ora"
 
 #: setup.php:296 setup.php:297
 #, php-format
@@ -88,7 +87,7 @@ msgstr "Interrogazioni WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Editor di template"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -126,8 +125,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Scegliere un account da utilizzare per l'autenticazione tramite WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 Processo"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -148,8 +148,9 @@ msgid "Enable WMI Data Collection"
 msgstr "Raccolta dati"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Seleziona questa casella se desideri che il plug-in WMI esegua query sui dispositivi Windows."
 
 #: setup.php:457
 #, fuzzy
@@ -157,8 +158,9 @@ msgid "Concurrent Processes"
 msgstr "Ottenere i processi di sistema"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Quante query WMI simultanee desideri che il sistema esegua?"
 
 #: setup.php:464
 #, fuzzy
@@ -172,7 +174,7 @@ msgstr "Se selezionata, sia durante l'esecuzione di un'automazione, sia durante 
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Varie"
 
 #: setup.php:491 setup.php:544
 #, fuzzy

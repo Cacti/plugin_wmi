@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:18-0400\n"
+"PO-Revision-Date: 2020-12-14 20:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hi_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -24,7 +24,6 @@ msgid "Queries"
 msgstr "प्रश्नों"
 
 #: functions.php:30
-#, fuzzy
 msgid "Authentication"
 msgstr "प्रमाणीकरण"
 
@@ -69,9 +68,8 @@ msgid "%d Day"
 msgstr "% द डे"
 
 #: setup.php:303
-#, fuzzy
 msgid "Utilities"
-msgstr "उपयोगिताएँ"
+msgstr "यूटिलिटीज"
 
 #: setup.php:303 wmi_tools.php:316
 #, fuzzy
@@ -90,8 +88,9 @@ msgid "WMI Queries"
 msgstr "WMI प्रश्न"
 
 #: setup.php:307
+#, fuzzy
 msgid "Template Editor"
-msgstr ""
+msgstr "खाका संपादक"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -129,8 +128,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "WMI के माध्यम से प्रमाणीकरण करते समय उपयोग करने के लिए एक खाता चुनें"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 प्रक्रिया"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -151,8 +151,9 @@ msgid "Enable WMI Data Collection"
 msgstr "डेटा संग्रहण"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "यदि आप Windows डिवाइस को क्वेरी करने के लिए WMI प्लगिन चाहते हैं, तो इस बॉक्स को चेक करें।"
 
 #: setup.php:457
 #, fuzzy
@@ -160,8 +161,9 @@ msgid "Concurrent Processes"
 msgstr "सिस्टम प्रोसेस प्राप्त करें"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "कितने समवर्ती WMI प्रश्न आप सिस्टम को चलाना चाहते हैं?"
 
 #: setup.php:464
 #, fuzzy
@@ -174,8 +176,9 @@ msgid "If selected, when running either automation, or when creating/saving a De
 msgstr "यदि चयनित है, तो या तो स्वचालन चलाते समय, या उपकरण बनाते / सहेजते समय, डिवाइस टेम्पलेट से जुड़ी सभी WMI क्वेरीज़ बनाई जाएंगी।"
 
 #: setup.php:471
+#, fuzzy
 msgid "Misc"
-msgstr ""
+msgstr "विविध"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -207,9 +210,8 @@ msgid "No Associated WMI Queries."
 msgstr "कोई एसोसिएटेड WMI क्वेरी नहीं।"
 
 #: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
-#, fuzzy
 msgid "Delete"
-msgstr "हटाना"
+msgstr "हटाएं"
 
 #: setup.php:586
 #, fuzzy
@@ -217,9 +219,8 @@ msgid "Add WMI Query"
 msgstr "WMI क्वेरी जोड़ें"
 
 #: setup.php:592 wmi_tools.php:358
-#, fuzzy
 msgid "Add"
-msgstr "जोड़ना"
+msgstr "शामिल करें"
 
 #: setup.php:592
 #, fuzzy
@@ -298,9 +299,8 @@ msgid "WMI Accounts"
 msgstr "WMI खाते"
 
 #: wmi_accounts.php:254 wmi_queries.php:274
-#, fuzzy
 msgid "Search"
-msgstr "खोज"
+msgstr "खोजें"
 
 #: wmi_accounts.php:260 wmi_accounts.php:383
 #, fuzzy
@@ -308,15 +308,13 @@ msgid "Accounts"
 msgstr "हिसाब किताब"
 
 #: wmi_accounts.php:264 wmi_queries.php:284
-#, fuzzy
 msgid "Default"
-msgstr "चूक"
+msgstr "डिफ़ॉल्ट"
 
 #: wmi_accounts.php:278 wmi_queries.php:301
-#, fuzzy
 msgctxt "filter: use"
 msgid "Go"
-msgstr "चले जाओ"
+msgstr "जाएं"
 
 #: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
@@ -328,9 +326,8 @@ msgid "Description"
 msgstr "विवरण"
 
 #: wmi_accounts.php:403
-#, fuzzy
 msgid "Devices"
-msgstr "उपकरण"
+msgstr "डिवाइस"
 
 #: wmi_accounts.php:425
 #, fuzzy
@@ -402,7 +399,6 @@ msgid "You must select at least one WMI Query."
 msgstr "आपको कम से कम एक WMI क्वेरी का चयन करना होगा।"
 
 #: wmi_queries.php:185
-#, fuzzy
 msgid "Return"
 msgstr "वापसी"
 
@@ -431,7 +427,6 @@ msgid "ID"
 msgstr "ID"
 
 #: wmi_queries.php:430 wmi_tools.php:327
-#, fuzzy
 msgid "Frequency"
 msgstr "आवृत्ति"
 
@@ -600,14 +595,12 @@ msgid "For WMI to work the user account you are using must be granted Distribute
 msgstr "WMI के लिए आप उपयोग कर रहे उपयोगकर्ता खाते को वितरित करने के लिए COM अनुमतियाँ प्रदान की जानी चाहिए, और वितरित COM संचार की अनुमति देने के लिए Windows फ़ायरवॉल को कॉन्फ़िगर किया जाना चाहिए। आप निम्न लिंक %s पर इस प्रक्रिया पर एक वास्तविक अच्छा दस्तावेज़ पा सकते हैं।"
 
 #: wmi_tools.php:334
-#, fuzzy
 msgid "Host"
-msgstr "मेज़बान"
+msgstr "होस्ट"
 
 #: wmi_tools.php:346
-#, fuzzy
 msgid "Command"
-msgstr "आदेश"
+msgstr "निर्देश"
 
 #: wmi_tools.php:352
 #, fuzzy

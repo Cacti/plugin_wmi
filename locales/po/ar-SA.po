@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-21 20:09-0400\n"
+"PO-Revision-Date: 2020-12-14 19:59-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar_SA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -50,17 +50,17 @@ msgstr "٪ د دقيقة"
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
 #, fuzzy, php-format
 msgid "%d Minutes"
-msgstr "٪ د دقائق"
+msgstr "<ph id=\"mtc_1\" equiv-text=\"base64:JWQ=\"/> دقيقة (دقائق)"
 
 #: setup.php:295
 #, fuzzy, php-format
 msgid "%d Hour"
-msgstr "٪ د ساعة"
+msgstr "%d ساعة"
 
 #: setup.php:296 setup.php:297
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
-msgstr "٪ د ساعات"
+msgstr "‫d٪ د ساعات"
 
 #: setup.php:298
 #, fuzzy, php-format
@@ -68,9 +68,8 @@ msgid "%d Day"
 msgstr "٪ د يوم"
 
 #: setup.php:303
-#, fuzzy
 msgid "Utilities"
-msgstr "خدمات"
+msgstr "المرافق"
 
 #: setup.php:303 wmi_tools.php:316
 #, fuzzy
@@ -78,7 +77,6 @@ msgid "WMI Query Tool"
 msgstr "أداة الاستعلام WMI"
 
 #: setup.php:304
-#, fuzzy
 msgid "Data Collection"
 msgstr "جمع البيانات"
 
@@ -90,7 +88,7 @@ msgstr "استفسارات WMI"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "محرر النماذج"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
@@ -128,8 +126,9 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "اختر حسابًا لاستخدامه عند المصادقة عبر WMI"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1 عملية"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -150,8 +149,9 @@ msgid "Enable WMI Data Collection"
 msgstr "جمع البيانات"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "حدد هذا المربع ، إذا كنت تريد أن يقوم WMI Plugin بالاستعلام عن أجهزة Windows."
 
 #: setup.php:457
 #, fuzzy
@@ -159,8 +159,9 @@ msgid "Concurrent Processes"
 msgstr "الحصول على عمليات النظام"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "كم عدد استعلامات WMI المتزامنة التي تريد أن يقوم النظام بتشغيلها؟"
 
 #: setup.php:464
 #, fuzzy
@@ -173,8 +174,9 @@ msgid "If selected, when running either automation, or when creating/saving a De
 msgstr "عند تحديده ، عند تشغيل أي من الأتمتة ، أو عند إنشاء / حفظ جهاز ، سيتم إنشاء جميع استعلامات WMI المرتبطة بقالب الجهاز."
 
 #: setup.php:471
+#, fuzzy
 msgid "Misc"
-msgstr ""
+msgstr "متفرقات"
 
 #: setup.php:491 setup.php:544
 #, fuzzy
@@ -321,7 +323,6 @@ msgid "Description"
 msgstr "الوصف"
 
 #: wmi_accounts.php:403
-#, fuzzy
 msgid "Devices"
 msgstr "الأجهزة"
 
@@ -423,9 +424,8 @@ msgid "ID"
 msgstr "المعرف"
 
 #: wmi_queries.php:430 wmi_tools.php:327
-#, fuzzy
 msgid "Frequency"
-msgstr "تكرر"
+msgstr "التكرار"
 
 #: wmi_queries.php:440
 #, fuzzy
@@ -592,14 +592,12 @@ msgid "For WMI to work the user account you are using must be granted Distribute
 msgstr "لكي يعمل WMI ، يجب منح حساب المستخدم الذي تستخدمه أذونات COM الموزعة ، ويجب تكوين جدار حماية Windows للسماح باتصالات COM الموزعة. يمكنك العثور على مستند جيد حقيقي عن هذا الإجراء على الرابط التالي٪ s."
 
 #: wmi_tools.php:334
-#, fuzzy
 msgid "Host"
-msgstr "مضيف"
+msgstr "المستضيف Host"
 
 #: wmi_tools.php:346
-#, fuzzy
 msgid "Command"
-msgstr "أمر"
+msgstr "المشرف"
 
 #: wmi_tools.php:352
 #, fuzzy

@@ -5,116 +5,129 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
-"PO-Revision-Date: 2019-07-26 13:15+0000\n"
+"PO-Revision-Date: 2020-12-14 20:07-0500\n"
 "Last-Translator: tomcat <luis_126@126.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/wmi/zh-CN/>\n"
-"Language: zh-CN\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.4-dev\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
-msgstr ""
+msgstr "查询"
 
 #: functions.php:30
 msgid "Authentication"
-msgstr ""
+msgstr "认证"
 
 #: setup.php:39
+#, fuzzy
 msgid "WMI Management"
-msgstr ""
+msgstr "WMI管理"
 
 #: setup.php:284
+#, fuzzy
 msgid "WMI Data"
-msgstr ""
+msgstr "WMI数据"
 
 #: setup.php:285
+#, fuzzy
 msgid "WMI Data Query"
-msgstr ""
+msgstr "WMI数据查询"
 
 #: setup.php:289
 #, php-format
 msgid "%d Minute"
-msgstr ""
+msgstr "%d 分钟"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
 #, php-format
 msgid "%d Minutes"
-msgstr ""
+msgstr "%d分钟"
 
 #: setup.php:295
 #, php-format
 msgid "%d Hour"
-msgstr ""
+msgstr "%d 小时"
 
 #: setup.php:296 setup.php:297
 #, php-format
 msgid "%d Hours"
-msgstr ""
+msgstr "%d 小时"
 
 #: setup.php:298
 #, php-format
 msgid "%d Day"
-msgstr ""
+msgstr "%d 天"
 
 #: setup.php:303
 msgid "Utilities"
-msgstr ""
+msgstr "实用程序"
 
 #: setup.php:303 wmi_tools.php:316
+#, fuzzy
 msgid "WMI Query Tool"
-msgstr ""
+msgstr "WMI查询工具"
 
 #: setup.php:304
 msgid "Data Collection"
-msgstr ""
+msgstr "数据采集"
 
 #: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
 #: wmi_queries.php:415
+#, fuzzy
 msgid "WMI Queries"
-msgstr ""
+msgstr "WMI查询"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "模板编辑器"
 
 #: setup.php:320 setup.php:334
+#, fuzzy
 msgid "WMI Autenication"
-msgstr ""
+msgstr "WMI自动化"
 
 #: setup.php:327
+#, fuzzy
 msgid "WMI Autenication -> Edit"
-msgstr ""
+msgstr "WMI自动化->编辑"
 
 #: setup.php:348
+#, fuzzy
 msgid "WMI Queries -> Edit"
-msgstr ""
+msgstr "WMI查询->编辑"
 
 #: setup.php:369
+#, fuzzy
 msgid "WMI Tools"
-msgstr ""
+msgstr "WMI工具"
 
 #: setup.php:408
+#, fuzzy
 msgid "WMI Account Options"
-msgstr ""
+msgstr "WMI帐户选项"
 
 #: setup.php:413
+#, fuzzy
 msgid "WMI Authentication Account"
-msgstr ""
+msgstr "WMI身份验证帐户"
 
 #: setup.php:414
+#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr ""
+msgstr "选择通过WMI进行身份验证时要使用的帐户"
 
 #: setup.php:425
+#, fuzzy
 msgid "1 Process"
-msgstr ""
+msgstr "1过程"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -122,457 +135,526 @@ msgstr ""
 #: setup.php:441 setup.php:442
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d 进程"
 
 #: setup.php:447
+#, fuzzy
 msgid "WMI Settings"
-msgstr ""
+msgstr "WMI设置"
 
 #: setup.php:451
+#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr ""
+msgstr "启用WMI数据收集"
 
 #: setup.php:452
+#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "如果要WMI插件查询Windows设备，请选中此框。"
 
 #: setup.php:457
 msgid "Concurrent Processes"
-msgstr ""
+msgstr "并发进程"
 
 #: setup.php:458
+#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "您希望系统运行多少个并发的WMI查询？"
 
 #: setup.php:464
+#, fuzzy
 msgid "Auto Create WMI Queries"
-msgstr ""
+msgstr "自动创建WMI查询"
 
 #: setup.php:465
+#, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
+msgstr "如果选择此选项，则在运行自动化或创建/保存设备时，将创建与设备模板关联的所有WMI查询。"
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "杂项"
 
 #: setup.php:491 setup.php:544
+#, fuzzy
 msgid "Associated WMI Queries"
-msgstr ""
+msgstr "关联的WMI查询"
 
 #: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: setup.php:506
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: setup.php:518
+#, fuzzy
 msgid "WMI Query Exists"
-msgstr ""
+msgstr "存在WMI查询"
 
 #: setup.php:520
+#, fuzzy
 msgid "WMI Query Does Not Exist"
-msgstr ""
+msgstr "WMI查询不存在"
 
 #: setup.php:537 setup.php:569
+#, fuzzy
 msgid "No Associated WMI Queries."
-msgstr ""
+msgstr "没有关联的WMI查询。"
 
 #: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "删除"
 
 #: setup.php:586
+#, fuzzy
 msgid "Add WMI Query"
-msgstr ""
+msgstr "添加WMI查询"
 
 #: setup.php:592 wmi_tools.php:358
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: setup.php:592
+#, fuzzy
 msgid "Add WMI Query to Device Template"
-msgstr ""
+msgstr "将WMI查询添加到设备模板"
 
 #: setup.php:633
+#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr ""
+msgstr "单击“继续”以删除以下WMI查询，这些查询将与设备模板解除关联。"
 
 #: setup.php:634
-#, php-format
+#, fuzzy, php-format
 msgid "WMI Query Name: %s"
-msgstr ""
+msgstr "WMI查询名称：%s"
 
 #: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 #: setup.php:640
+#, fuzzy
 msgid "Remove WMI Query"
-msgstr ""
+msgstr "删除WMI查询"
 
 #: wmi_accounts.php:48
 msgid "Give this account a meaningful name that will be displayed."
-msgstr ""
+msgstr "为此帐户提供一个有意义的名称，以便显示。"
 
 #: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: wmi_accounts.php:55
+#, fuzzy
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr ""
+msgstr "用于认证的用户名。如有必要，还请包括域。"
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: wmi_accounts.php:62
 msgid "The password used for authentication."
-msgstr ""
+msgstr "用于身份验证的密码。"
 
 #: wmi_accounts.php:154
+#, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
-msgstr ""
+msgstr "按“继续”以删除以下帐户。"
 
 #: wmi_accounts.php:161
+#, fuzzy
 msgid "You must select at least one account."
-msgstr ""
+msgstr "您必须至少选择一个帐户。"
 
 #: wmi_accounts.php:223
-#, php-format
+#, fuzzy, php-format
 msgid "Account [edit: %s]"
-msgstr ""
+msgstr "帐号：[编辑：%s]"
 
 #: wmi_accounts.php:225
+#, fuzzy
 msgid "Account [new]"
-msgstr ""
+msgstr "帐户：[新建]"
 
 #: wmi_accounts.php:246
+#, fuzzy
 msgid "WMI Accounts"
-msgstr ""
+msgstr "WMI帐户"
 
 #: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
-msgstr ""
+msgstr "搜索"
 
 #: wmi_accounts.php:260 wmi_accounts.php:383
 msgid "Accounts"
-msgstr ""
+msgstr "帐户"
 
 #: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 #: wmi_accounts.php:278 wmi_queries.php:301
 msgctxt "filter: use"
 msgid "Go"
-msgstr ""
+msgstr "Go"
 
 #: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
 #: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: wmi_accounts.php:403
 msgid "Devices"
-msgstr ""
+msgstr "设备"
 
 #: wmi_accounts.php:425
+#, fuzzy
 msgid "No Accounts Found"
-msgstr ""
+msgstr "未找到路由器帐户"
 
 #: wmi_queries.php:50
+#, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr ""
+msgstr "为该查询提供一个有意义的名称，该名称将被显示。"
 
 #: wmi_queries.php:56
+#, fuzzy
 msgid "Collection Frequency"
-msgstr ""
+msgstr "定义采集频率."
 
 #: wmi_queries.php:57
+#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr ""
+msgstr "当此WMI查询添加到设备时，这就是将要使用的数据收集频率。"
 
 #: wmi_queries.php:64
 msgid "Enabled"
-msgstr ""
+msgstr "启用"
 
 #: wmi_queries.php:65
+#, fuzzy
 msgid "Should this Query be enabled on hosts using it"
-msgstr ""
+msgstr "是否应在使用该查询的主机上启用该查询"
 
 #: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 msgid "Namespace"
-msgstr ""
+msgstr "域名服务器设置"
 
 #: wmi_queries.php:72
+#, fuzzy
 msgid "The Namespace for this Query."
-msgstr ""
+msgstr "此查询的命名空间。"
 
 #: wmi_queries.php:78 wmi_tools.php:268
 msgid "Query"
-msgstr ""
+msgstr "查询"
 
 #: wmi_queries.php:79
+#, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
-msgstr ""
+msgstr "执行以从设备收集WMI数据的查询。"
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
-msgstr ""
+msgstr "主键"
 
 #: wmi_queries.php:88
+#, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr ""
+msgstr "当WMI查询返回多行时，哪个Keyname是主键或索引？如果主键包含多个列，请用逗号分隔它们。"
 
 #: wmi_queries.php:177
+#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr ""
+msgstr "单击“继续”以删除以下WMI查询。"
 
 #: wmi_queries.php:184
+#, fuzzy
 msgid "You must select at least one WMI Query."
-msgstr ""
+msgstr "您必须至少选择一个WMI查询。"
 
 #: wmi_queries.php:185
 msgid "Return"
-msgstr ""
+msgstr "返回"
 
 #: wmi_queries.php:187
+#, fuzzy
 msgid "Delete WMI Query"
-msgstr ""
+msgstr "删除WMI查询"
 
 #: wmi_queries.php:242
 #, php-format
 msgid "Query [edit: %s]"
-msgstr ""
+msgstr "查询[编辑：%s]"
 
 #: wmi_queries.php:244
 msgid "Query [new]"
-msgstr ""
+msgstr "查询[新建]"
 
 #: wmi_queries.php:298
 msgid "Has Graphs"
-msgstr ""
+msgstr "有图"
 
 #: wmi_queries.php:425
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: wmi_queries.php:430 wmi_tools.php:327
 msgid "Frequency"
-msgstr ""
+msgstr "频率"
 
 #: wmi_queries.php:440
+#, fuzzy
 msgid "WQL Query"
-msgstr ""
+msgstr "WQL查询"
 
 #: wmi_tools.php:107
+#, fuzzy
 msgid "Get Computer Information"
-msgstr ""
+msgstr "获取计算机信息"
 
 #: wmi_tools.php:113
+#, fuzzy
 msgid "Get System Processes"
-msgstr ""
+msgstr "获取系统进程"
 
 #: wmi_tools.php:119
+#, fuzzy
 msgid "Get Installed Software"
-msgstr ""
+msgstr "获取安装的软件"
 
 #: wmi_tools.php:125
+#, fuzzy
 msgid "Get Operating System Information"
-msgstr ""
+msgstr "获取操作系统信息"
 
 #: wmi_tools.php:131
+#, fuzzy
 msgid "Get OD Service Information"
-msgstr ""
+msgstr "获取OD服务信息"
 
 #: wmi_tools.php:137
+#, fuzzy
 msgid "Get System Enclosure Information"
-msgstr ""
+msgstr "获取系统机箱信息"
 
 #: wmi_tools.php:143
+#, fuzzy
 msgid "Get System Physical Memory Information"
-msgstr ""
+msgstr "获取系统物理内存信息"
 
 #: wmi_tools.php:149
+#, fuzzy
 msgid "Get Memory Device Details"
-msgstr ""
+msgstr "获取内存设备详细信息"
 
 #: wmi_tools.php:155
+#, fuzzy
 msgid "Get System BIOS Information"
-msgstr ""
+msgstr "获取系统BIOS信息"
 
 #: wmi_tools.php:161
+#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr ""
+msgstr "获取系统底板信息"
 
 #: wmi_tools.php:167
+#, fuzzy
 msgid "Get Processor Information"
-msgstr ""
+msgstr "获取处理器信息"
 
 #: wmi_tools.php:173
+#, fuzzy
 msgid "Ping a Known Address from Computer"
-msgstr ""
+msgstr "从计算机ping已知地址"
 
 #: wmi_tools.php:179
+#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr ""
+msgstr "获取行系统操作系统性能数据"
 
 #: wmi_tools.php:185
+#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr ""
+msgstr "获取格式化的系统操作系统性能数据"
 
 #: wmi_tools.php:191
+#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr ""
+msgstr "获取格式化的物理磁盘性能数据"
 
 #: wmi_tools.php:197
+#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr ""
+msgstr "获取原始物理磁盘性能数据"
 
 #: wmi_tools.php:203
+#, fuzzy
 msgid "Get Logical Disk Information"
-msgstr ""
+msgstr "获取逻辑磁盘信息"
 
 #: wmi_tools.php:209
+#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr ""
+msgstr "获取格式化的逻辑磁盘性能数据"
 
 #: wmi_tools.php:215
+#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr ""
+msgstr "获取原始逻辑磁盘性能数据"
 
 #: wmi_tools.php:221
+#, fuzzy
 msgid "Get Formatted CPU Performance Data"
-msgstr ""
+msgstr "获取格式化的CPU性能数据"
 
 #: wmi_tools.php:227
+#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr ""
+msgstr "获取原始CPU性能数据"
 
 #: wmi_tools.php:233
+#, fuzzy
 msgid "Get Raw Memory Performance Data"
-msgstr ""
+msgstr "获取原始内存性能数据"
 
 #: wmi_tools.php:239
+#, fuzzy
 msgid "Get Formatted Network Performance Data"
-msgstr ""
+msgstr "获取格式化的网络性能数据"
 
 #: wmi_tools.php:245
+#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr ""
+msgstr "获取原始网络性能数据"
 
 #: wmi_tools.php:251
+#, fuzzy
 msgid "Get Network Adapter Information"
-msgstr ""
+msgstr "获取网络适配器信息"
 
 #: wmi_tools.php:257
+#, fuzzy
 msgid "Get Computer Asset Information"
-msgstr ""
+msgstr "获取计算机资产信息"
 
 #: wmi_tools.php:268
 msgid "Name Space"
-msgstr ""
+msgstr "命名空间"
 
 #: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: wmi_tools.php:300
-#, php-format
+#, fuzzy, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr ""
+msgstr "如果您需要错误代码方面的帮助，请使用google，或在此处使用以下链接%s。"
 
 #: wmi_tools.php:300
+#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr ""
+msgstr "Microsoft常见的WBEM错误"
 
 #: wmi_tools.php:301
+#, fuzzy
 msgid "Distributed COM Setup"
-msgstr ""
+msgstr "分布式COM设置"
 
 #: wmi_tools.php:301
-#, php-format
+#, fuzzy, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr ""
+msgstr "为了使WMI正常工作，必须为您使用的用户帐户授予“分布式COM”权限，并且必须将Windows防火墙配置为允许“分布式COM”通信。您可以在下面的链接%s上找到有关此过程的有效文档。"
 
 #: wmi_tools.php:334
 msgid "Host"
-msgstr ""
+msgstr "主机"
 
 #: wmi_tools.php:346
 msgid "Command"
-msgstr ""
+msgstr "命令"
 
 #: wmi_tools.php:352
+#, fuzzy
 msgid "More Class Information @Microsoft"
-msgstr ""
+msgstr "更多课程信息@Microsoft"
 
 #: wmi_tools.php:354
 msgid "Run"
-msgstr ""
+msgstr "运行"
 
 #: wmi_tools.php:354
+#, fuzzy
 msgid "Run the WMI Query against the Device"
-msgstr ""
+msgstr "针对设备运行WMI查询"
 
 #: wmi_tools.php:355
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
 #: wmi_tools.php:355
+#, fuzzy
 msgid "Clear the results panel."
-msgstr ""
+msgstr "清除结果面板。"
 
 #: wmi_tools.php:356
+#, fuzzy
 msgid "Pick from a list of common queries."
-msgstr ""
+msgstr "从常见查询列表中选择。"
 
 #: wmi_tools.php:357
+#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr ""
+msgstr "获取有关设置WMI的帮助"
 
 #: wmi_tools.php:357
 msgid "Help"
-msgstr ""
+msgstr "帮助"
 
 #: wmi_tools.php:358
+#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
-msgstr ""
+msgstr "从现有查询创建一个新的WMI查询。"
 
 #: wmi_tools.php:369
 msgid "Query Results"
-msgstr ""
+msgstr "查询结果"
 
 #: wmi_tools.php:398
+#, fuzzy
 msgid "Common Queries (Click to Select)"
-msgstr ""
+msgstr "常见查询（单击以选择）"
 
 #: wmi_tools.php:427
+#, fuzzy
 msgid "WMI Setup Assistance"
-msgstr ""
+msgstr "WMI设置协助"
 
 #: wmi_tools.php:522
+#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
+msgstr "错误：您必须提供主机，用户名，密码和查询"
 
 #: wmi_tools.php:552 wmi_tools.php:617
-#, php-format
+#, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
+msgstr "设备的WMI查询结果：%s，类：%s，列：%s，行：%s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
+#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr ""
+msgstr "显示列和前一或两行数据。"
