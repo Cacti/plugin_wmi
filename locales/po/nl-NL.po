@@ -9,12 +9,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2020-12-14 20:05-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -149,7 +149,8 @@ msgstr "Schakel WMI-gegevensverzameling in"
 #: setup.php:452
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "Vink dit vakje aan als u wilt dat de WMI-plug-in Windows-apparaten opvraagt."
+msgstr ""
+"Vink dit vakje aan als u wilt dat de WMI-plug-in Windows-apparaten opvraagt."
 
 #: setup.php:457
 msgid "Concurrent Processes"
@@ -167,8 +168,13 @@ msgstr "Maak automatisch WMI-query's"
 
 #: setup.php:465
 #, fuzzy
-msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "Als deze optie is geselecteerd, worden bij het uitvoeren van automatisering of bij het maken / opslaan van een apparaat alle WMI-query's gemaakt die zijn gekoppeld aan de apparaatsjabloon."
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"Als deze optie is geselecteerd, worden bij het uitvoeren van automatisering "
+"of bij het maken / opslaan van een apparaat alle WMI-query's gemaakt die "
+"zijn gekoppeld aan de apparaatsjabloon."
 
 #: setup.php:471
 msgid "Misc"
@@ -223,8 +229,12 @@ msgstr "Voeg WMI-query toe aan apparaatsjabloon"
 
 #: setup.php:633
 #, fuzzy
-msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr "Klik op 'Doorgaan' om de volgende WMI-query's te verwijderen uit de apparaatsjabloon."
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
+msgstr ""
+"Klik op 'Doorgaan' om de volgende WMI-query's te verwijderen uit de "
+"apparaatsjabloon."
 
 #: setup.php:634
 #, fuzzy, php-format
@@ -255,8 +265,12 @@ msgstr "Gebruikersnaam"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr "De gebruikersnaam die zal worden gebruikt voor authenticatie. Voeg indien nodig ook het domein toe."
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
+msgstr ""
+"De gebruikersnaam die zal worden gebruikt voor authenticatie. Voeg indien "
+"nodig ook het domein toe."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
@@ -339,8 +353,12 @@ msgstr "Definieer een verzamelfrequentie."
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "Wanneer deze WMI-query wordt toegevoegd aan een apparaat, is dit de frequentie van gegevensverzameling die wordt gebruikt."
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
+msgstr ""
+"Wanneer deze WMI-query wordt toegevoegd aan een apparaat, is dit de "
+"frequentie van gegevensverzameling die wordt gebruikt."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -367,7 +385,8 @@ msgstr "Query"
 #: wmi_queries.php:79
 #, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
-msgstr "De uit te voeren query voor het verzamelen van WMI-gegevens van het apparaat."
+msgstr ""
+"De uit te voeren query voor het verzamelen van WMI-gegevens van het apparaat."
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
@@ -375,8 +394,14 @@ msgstr "Primaire sleutel"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "Wanneer een WMI-query meerdere rijen retourneert, welke sleutelnaam wordt dan de primaire sleutel of index? Als de primaire sleutel meerdere kolommen bevat, scheidt u deze met een komma."
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"Wanneer een WMI-query meerdere rijen retourneert, welke sleutelnaam wordt "
+"dan de primaire sleutel of index? Als de primaire sleutel meerdere kolommen "
+"bevat, scheidt u deze met een komma."
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -492,7 +517,8 @@ msgstr "Haal prestatiegegevens van het besturingssysteem van het rijsysteem op"
 #: wmi_tools.php:185
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "Ontvang geformatteerde prestatiegegevens van het systeembesturingssysteem"
+msgstr ""
+"Ontvang geformatteerde prestatiegegevens van het systeembesturingssysteem"
 
 #: wmi_tools.php:191
 #, fuzzy
@@ -565,8 +591,12 @@ msgstr "Sluiten"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr "Als u hulp nodig heeft bij foutcodes, gebruik dan google of gebruik hier de volgende link %s."
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
+msgstr ""
+"Als u hulp nodig heeft bij foutcodes, gebruik dan google of gebruik hier de "
+"volgende link %s."
 
 #: wmi_tools.php:300
 #, fuzzy
@@ -580,8 +610,16 @@ msgstr "Gedistribueerde COM-installatie"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "Om WMI te laten werken, moet de gebruikersaccount die u gebruikt, gedistribueerde COM-machtigingen hebben en moet de Windows Firewall zijn geconfigureerd om gedistribueerde COM-communicatie toe te staan. U kunt een echt goed document over deze procedure vinden op de volgende link %s."
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"Om WMI te laten werken, moet de gebruikersaccount die u gebruikt, "
+"gedistribueerde COM-machtigingen hebben en moet de Windows Firewall zijn "
+"geconfigureerd om gedistribueerde COM-communicatie toe te staan. U kunt een "
+"echt goed document over deze procedure vinden op de volgende link %s."
 
 #: wmi_tools.php:334
 msgid "Host"
@@ -656,9 +694,12 @@ msgstr "FOUT: u moet een host, gebruikersnaam, wachtwoord en vraag opgeven"
 #: wmi_tools.php:552 wmi_tools.php:617
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "WMI-zoekopdrachtresultaten voor apparaat: %s, klasse: %s, kolommen: %s, rijen: %s"
+msgstr ""
+"WMI-zoekopdrachtresultaten voor apparaat: %s, klasse: %s, kolommen: %s, "
+"rijen: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "Kolommen en de eerste een of twee rijen met gegevens worden weergegeven."
+msgstr ""
+"Kolommen en de eerste een of twee rijen met gegevens worden weergegeven."

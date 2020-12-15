@@ -9,12 +9,12 @@ msgstr ""
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
 "POT-Creation-Date: 2020-12-12 22:16-0500\n"
 "PO-Revision-Date: 2020-12-14 20:07-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -169,8 +169,12 @@ msgstr "自動創建WMI查詢"
 
 #: setup.php:465
 #, fuzzy
-msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "如果選擇此選項，則在運行自動化或創建/保存設備時，將創建與設備模板關聯的所有WMI查詢。"
+msgid ""
+"If selected, when running either automation, or when creating/saving a "
+"Device, all WMI Queries associated with the Device Template will be created."
+msgstr ""
+"如果選擇此選項，則在運行自動化或創建/保存設備時，將創建與設備模板關聯的所有"
+"WMI查詢。"
 
 #: setup.php:471
 msgid "Misc"
@@ -225,7 +229,9 @@ msgstr "將WMI查詢添加到設備模板"
 
 #: setup.php:633
 #, fuzzy
-msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
+msgid ""
+"Click 'Continue' to delete the following WMI Queries will be disassociated "
+"from the Device Template."
 msgstr "單擊“繼續”以刪除以下WMI查詢，這些查詢將與設備模板解除關聯。"
 
 #: setup.php:634
@@ -257,7 +263,9 @@ msgstr "用戶名"
 
 #: wmi_accounts.php:55
 #, fuzzy
-msgid "The username that will be used for authentication.  Please also include the domain if necessary."
+msgid ""
+"The username that will be used for authentication.  Please also include the "
+"domain if necessary."
 msgstr "用於認證的用戶名。如有必要，還請包括域。"
 
 #: wmi_accounts.php:61 wmi_tools.php:340
@@ -341,7 +349,9 @@ msgstr "收集頻率"
 
 #: wmi_queries.php:57
 #, fuzzy
-msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
+msgid ""
+"When this WMI Query is added to a Device, this is the Frequency of Data "
+"Collection that will be used."
 msgstr "當此WMI查詢添加到設備時，這就是將要使用的數據收集頻率。"
 
 #: wmi_queries.php:64
@@ -378,8 +388,13 @@ msgstr "首要的關鍵"
 
 #: wmi_queries.php:88
 #, fuzzy
-msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "當WMI查詢返回多行時，哪個Keyname是主鍵或索引？如果主鍵包含多個列，請用逗號分隔它們。"
+msgid ""
+"When a WMI Query returns multiple rows, which Keyname will be the primary "
+"key or index?  If the Primary Key includes multiple columns, separate them "
+"with a comma."
+msgstr ""
+"當WMI查詢返回多行時，哪個Keyname是主鍵或索引？如果主鍵包含多個列，請用逗號分"
+"隔它們。"
 
 #: wmi_queries.php:177
 #, fuzzy
@@ -569,7 +584,9 @@ msgstr "關閉"
 
 #: wmi_tools.php:300
 #, fuzzy, php-format
-msgid "If you need assistance on error codes, use google, or here use the following Link %s."
+msgid ""
+"If you need assistance on error codes, use google, or here use the following "
+"Link %s."
 msgstr "如果您需要錯誤代碼方面的幫助，請使用google，或在此處使用以下鏈接%s。"
 
 #: wmi_tools.php:300
@@ -584,8 +601,15 @@ msgstr "分佈式COM設置"
 
 #: wmi_tools.php:301
 #, fuzzy, php-format
-msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "為了使WMI正常工作，必須為您使用的用戶帳戶授予“分佈式COM”權限，並且必須將Windows防火牆配置為允許“分佈式COM”通信。您可以在下面的鏈接%s上找到有關此過程的有效文檔。"
+msgid ""
+"For WMI to work the user account you are using must be granted Distributed "
+"COM permissions, and the Windows Firewall must be configured to allow "
+"Distributed COM communications.  You can find a real good document on this "
+"procedure at the following Link %s."
+msgstr ""
+"為了使WMI正常工作，必須為您使用的用戶帳戶授予“分佈式COM”權限，並且必須將"
+"Windows防火牆配置為允許“分佈式COM”通信。您可以在下面的鏈接%s上找到有關此過程"
+"的有效文檔。"
 
 #: wmi_tools.php:334
 msgid "Host"
