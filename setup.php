@@ -1,7 +1,7 @@
 <?php
 /*
  +-------------------------------------------------------------------------+
- | Copyright (C) 2004-2020 The Cacti Group                                 |
+ | Copyright (C) 2004-2022 The Cacti Group                                 |
  |                                                                         |
  | This program is free software; you can redistribute it and/or           |
  | modify it under the terms of the GNU General Public License             |
@@ -324,10 +324,10 @@ function wmi_draw_navigation_text($nav) {
 	);
 
 	$nav['wmi_accounts.php:edit'] = array(
-		'title' => __('WMI Autenication -> Edit', 'wmi'),
-		'mapping' => 'index.php:',
+		'title' => __('(Edit)', 'wmi'),
+		'mapping' => 'index.php:wmi_accounts.php:',
 		'url' => 'wmi_accounts.php',
-		'level' => '1'
+		'level' => '2'
 	);
 
 	$nav['wmi_accounts.php:actions'] = array(
@@ -345,8 +345,8 @@ function wmi_draw_navigation_text($nav) {
 	);
 
 	$nav['wmi_queries.php:edit'] = array(
-		'title' => __('WMI Queries -> Edit', 'wmi'),
-		'mapping' => 'index.php:',
+		'title' => __('(Edit)', 'wmi'),
+		'mapping' => 'index.php:,wmi_queries.php:',
 		'url' => 'wmi_queries.php',
 		'level' => '2'
 	);
@@ -366,10 +366,10 @@ function wmi_draw_navigation_text($nav) {
 	);
 
 	$nav['wmi_tools.php:query'] = array(
-		'title' => __('WMI Tools', 'wmi'),
-		'mapping' => 'index.php:',
+		'title' => __('(Query)', 'wmi'),
+		'mapping' => 'index.php:wmi_tools.php:',
 		'url' => 'wmi_tools.php',
-		'level' => '1'
+		'level' => '2'
 	);
 
 	return $nav;
