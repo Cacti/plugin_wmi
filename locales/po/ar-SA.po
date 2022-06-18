@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 19:59-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -95,20 +95,14 @@ msgstr "محرر النماذج"
 msgid "WMI Autenication"
 msgstr "WMI Autenication"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI Autenication -> تحرير"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "استفسارات WMI -> تحرير"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "أدوات WMI"
+msgid "(Query)"
+msgstr "سؤال"
 
 #: setup.php:408
 #, fuzzy
@@ -670,3 +664,15 @@ msgstr "نتائج استعلام WMI للجهاز:٪ s ، الفئة:٪ s ، ا
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "عرض الأعمدة والصف الأول أو الصفين من البيانات."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "أدوات WMI"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "استفسارات WMI -> تحرير"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI Autenication -> تحرير"

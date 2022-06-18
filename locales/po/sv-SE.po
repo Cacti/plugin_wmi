@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -94,20 +94,14 @@ msgstr "Mall Redigerare"
 msgid "WMI Autenication"
 msgstr "WMI Autenication"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI Autenication -> Redigera"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI-frågor -> Redigera"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "WMI-verktyg"
+msgid "(Query)"
+msgstr "Fråga"
 
 #: setup.php:408
 #, fuzzy
@@ -667,3 +661,15 @@ msgstr "Resultat för WMI-fråge för enhet: %s, klass: %s, kolumner: %s, rader:
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Visar kolumner och första eller två rader av data."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "WMI-verktyg"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI-frågor -> Redigera"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI Autenication -> Redigera"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -96,20 +96,14 @@ msgstr "Şablon Düzenleyici"
 msgid "WMI Autenication"
 msgstr "WMI Yetkilendirme"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI Yetkilendirme -> Düzenle"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI Sorguları -> Düzenle"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "WMI Araçları"
+msgid "(Query)"
+msgstr "Sorgu"
 
 #: setup.php:408
 #, fuzzy
@@ -668,3 +662,15 @@ msgstr "Aygıt için WMI Sorgu Sonuçları: %s, Sınıf: %s, Sütunlar: %s, Sat�
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Sütunlar ve ilk bir veya iki veri satırı gösteriliyor."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "WMI Araçları"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI Sorguları -> Düzenle"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI Yetkilendirme -> Düzenle"

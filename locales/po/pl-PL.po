@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:05-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -94,20 +94,14 @@ msgstr "Edytor Szablonu"
 msgid "WMI Autenication"
 msgstr "Autenizacja WMI"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "Autenizacja WMI -> Edycja"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "Zapytania WMI -> Edytuj"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "Narzędzia WMI"
+msgid "(Query)"
+msgstr "Zapytanie"
 
 #: setup.php:408
 #, fuzzy
@@ -666,3 +660,15 @@ msgstr "Wyniki zapytania WMI dla urządzenia: %s, klasa: %s, kolumny: %s, rzędy
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Wyświetlanie kolumn i pierwszego lub dwóch wierszy danych."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "Narzędzia WMI"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "Zapytania WMI -> Edytuj"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "Autenizacja WMI -> Edycja"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:06-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -95,20 +95,14 @@ msgstr "Trình chỉnh sửa mẫu"
 msgid "WMI Autenication"
 msgstr "Tự động hóa WMI"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "Tự động WMI -> Chỉnh sửa"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "Truy vấn WMI -> Chỉnh sửa"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "Công cụ WMI"
+msgid "(Query)"
+msgstr "Truy vấn"
 
 #: setup.php:408
 #, fuzzy
@@ -668,3 +662,15 @@ msgstr "Kết quả truy vấn WMI cho thiết bị: %s, Class: %s, Cột: %s, H
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Hiển thị các cột và một hoặc hai hàng dữ liệu đầu tiên."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "Công cụ WMI"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "Truy vấn WMI -> Chỉnh sửa"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "Tự động WMI -> Chỉnh sửa"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:07-0500\n"
 "Last-Translator: tomcat <luis_126@126.com>\n"
 "Language-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/wmi/zh-CN/>\n"
@@ -94,20 +94,14 @@ msgstr "模板编辑器"
 msgid "WMI Autenication"
 msgstr "WMI自动化"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI自动化->编辑"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI查询->编辑"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "WMI工具"
+msgid "(Query)"
+msgstr "查询"
 
 #: setup.php:408
 #, fuzzy
@@ -658,3 +652,15 @@ msgstr "设备的WMI查询结果：%s，类：%s，列：%s，行：%s"
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "显示列和前一或两行数据。"
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "WMI工具"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI查询->编辑"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI自动化->编辑"

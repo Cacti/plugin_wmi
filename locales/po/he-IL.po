@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:02-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -97,20 +97,14 @@ msgstr "עורך תבניות"
 msgid "WMI Autenication"
 msgstr "WMI"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI הודעה -> ערוך"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI שאילתות -> ערוך"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "כלים WMI"
+msgid "(Query)"
+msgstr "שאילתא"
 
 #: setup.php:408
 #, fuzzy
@@ -670,3 +664,15 @@ msgstr "תוצאות שאילתת WMI עבור ההתקן: %s, מחלקה: %s, �
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "מציג עמודות והשורה הראשונה או שתיים של נתונים."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "כלים WMI"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI שאילתות -> ערוך"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI הודעה -> ערוך"

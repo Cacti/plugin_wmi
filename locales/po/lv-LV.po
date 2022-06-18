@@ -4,7 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:16-0500\nPO-Revision-Date: 2022-06-18 06:37+0000\nLast-Translator: Coool <coool@mail.lv>\nLanguage-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\nLanguage: lv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\nX-Generator: Weblate 4.8.1\n"
+msgstr ""
+"Project-Id-Version: Cacti\n"
+"Report-Msgid-Bugs-To: developers@cacti.net\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
+"PO-Revision-Date: 2022-06-18 06:37+0000\n"
+"Last-Translator: Coool <coool@mail.lv>\n"
+"Language-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
+"X-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -76,17 +88,13 @@ msgstr "Veidņu redaktors"
 msgid "WMI Autenication"
 msgstr "WMI autentifikācija"
 
-#: setup.php:327
-msgid "WMI Autenication -> Edit"
-msgstr "WMI autentifikācija -> Rediģēt"
-
-#: setup.php:348
-msgid "WMI Queries -> Edit"
-msgstr "WMI vaicājumi -> Rediģēt"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
-msgid "WMI Tools"
-msgstr "WMI rīki"
+msgid "(Query)"
+msgstr ""
 
 #: setup.php:408
 msgid "WMI Account Options"
@@ -564,3 +572,12 @@ msgstr ""
 #: wmi_tools.php:554 wmi_tools.php:619
 msgid "Showing columns and first one or two rows of data."
 msgstr ""
+
+#~ msgid "WMI Tools"
+#~ msgstr "WMI rīki"
+
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI vaicājumi -> Rediģēt"
+
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI autentifikācija -> Rediģēt"

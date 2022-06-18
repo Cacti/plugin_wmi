@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -97,20 +97,14 @@ msgstr "템플릿 편집기"
 msgid "WMI Autenication"
 msgstr "WMI 권한 부여"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "WMI Autenication -> 편집"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI 쿼리 -> 편집"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "WMI 도구"
+msgid "(Query)"
+msgstr "데이터 쿼리"
 
 #: setup.php:408
 #, fuzzy
@@ -670,3 +664,15 @@ msgstr "장치 :  %s, 클래스 :  %s, 열 :  %s, 행 :  %s에 대한 WMI 쿼리
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "열과 첫 번째 또는 두 번째 데이터 행을 표시합니다."
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "WMI 도구"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI 쿼리 -> 편집"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "WMI Autenication -> 편집"

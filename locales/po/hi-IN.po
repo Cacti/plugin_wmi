@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -97,20 +97,14 @@ msgstr "खाका संपादक"
 msgid "WMI Autenication"
 msgstr "डब्ल्यूएमआई ऑटिकेशन"
 
-#: setup.php:327
-#, fuzzy
-msgid "WMI Autenication -> Edit"
-msgstr "डब्लूएमआई स्वैच्छिक -> संपादित करें"
-
-#: setup.php:348
-#, fuzzy
-msgid "WMI Queries -> Edit"
-msgstr "WMI क्वेरीज़ -> संपादित करें"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
+msgstr ""
 
 #: setup.php:369
 #, fuzzy
-msgid "WMI Tools"
-msgstr "WMI उपकरण"
+msgid "(Query)"
+msgstr "सवाल"
 
 #: setup.php:408
 #, fuzzy
@@ -674,3 +668,15 @@ msgstr "डिवाइस के लिए WMI क्वेरी परिण�
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "कॉलम और डेटा की पहली या दो पंक्तियों को दिखाना।"
+
+#, fuzzy
+#~ msgid "WMI Tools"
+#~ msgstr "WMI उपकरण"
+
+#, fuzzy
+#~ msgid "WMI Queries -> Edit"
+#~ msgstr "WMI क्वेरीज़ -> संपादित करें"
+
+#, fuzzy
+#~ msgid "WMI Autenication -> Edit"
+#~ msgstr "डब्लूएमआई स्वैच्छिक -> संपादित करें"

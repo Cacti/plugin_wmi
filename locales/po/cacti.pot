@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2020-12-12 22:16-0500\n"
+"POT-Creation-Date: 2022-06-18 08:26-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: Cacti Developers <developers@cacti.net>>\n"
+"Language-Team: Cacti Developers <developers@cacti.net>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
@@ -87,16 +87,12 @@ msgstr ""
 msgid "WMI Autenication"
 msgstr ""
 
-#: setup.php:327
-msgid "WMI Autenication -> Edit"
-msgstr ""
-
-#: setup.php:348
-msgid "WMI Queries -> Edit"
+#: setup.php:327 setup.php:348
+msgid "(Edit)"
 msgstr ""
 
 #: setup.php:369
-msgid "WMI Tools"
+msgid "(Query)"
 msgstr ""
 
 #: setup.php:408
