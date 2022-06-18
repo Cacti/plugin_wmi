@@ -4,105 +4,105 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:16-0500\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: lv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2020-12-12 22:16-0500\nPO-Revision-Date: 2022-06-18 06:37+0000\nLast-Translator: Coool <coool@mail.lv>\nLanguage-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\nLanguage: lv\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
-msgstr ""
+msgstr "Vaicājumi"
 
 #: functions.php:30
 msgid "Authentication"
-msgstr ""
+msgstr "Autentifikācija"
 
 #: setup.php:39
 msgid "WMI Management"
-msgstr ""
+msgstr "WMI vadība"
 
 #: setup.php:284
 msgid "WMI Data"
-msgstr ""
+msgstr "WMI dati"
 
 #: setup.php:285
 msgid "WMI Data Query"
-msgstr ""
+msgstr "WMI datu vaicājums"
 
 #: setup.php:289
 #, php-format
 msgid "%d Minute"
-msgstr ""
+msgstr "%d minūte"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
 #, php-format
 msgid "%d Minutes"
-msgstr ""
+msgstr "%d minūtes"
 
 #: setup.php:295
 #, php-format
 msgid "%d Hour"
-msgstr ""
+msgstr "%d stunda"
 
 #: setup.php:296 setup.php:297
 #, php-format
 msgid "%d Hours"
-msgstr ""
+msgstr "%d stundas"
 
 #: setup.php:298
 #, php-format
 msgid "%d Day"
-msgstr ""
+msgstr "%d diena"
 
 #: setup.php:303
 msgid "Utilities"
-msgstr ""
+msgstr "Rīki"
 
 #: setup.php:303 wmi_tools.php:316
 msgid "WMI Query Tool"
-msgstr ""
+msgstr "WMI vaicājumu rīks"
 
 #: setup.php:304
 msgid "Data Collection"
-msgstr ""
+msgstr "Datu apkopošana"
 
 #: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
 #: wmi_queries.php:415
 msgid "WMI Queries"
-msgstr ""
+msgstr "WMI vaicājumi"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "Veidņu redaktors"
 
 #: setup.php:320 setup.php:334
 msgid "WMI Autenication"
-msgstr ""
+msgstr "WMI autentifikācija"
 
 #: setup.php:327
 msgid "WMI Autenication -> Edit"
-msgstr ""
+msgstr "WMI autentifikācija -> Rediģēt"
 
 #: setup.php:348
 msgid "WMI Queries -> Edit"
-msgstr ""
+msgstr "WMI vaicājumi -> Rediģēt"
 
 #: setup.php:369
 msgid "WMI Tools"
-msgstr ""
+msgstr "WMI rīki"
 
 #: setup.php:408
 msgid "WMI Account Options"
-msgstr ""
+msgstr "WMI konta opcijas"
 
 #: setup.php:413
 msgid "WMI Authentication Account"
-msgstr ""
+msgstr "WMI autentifikācijas konts"
 
 #: setup.php:414
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr ""
+msgstr "Izvēlieties kontu, ko izmantot WMI autentifikācijai"
 
 #: setup.php:425
 msgid "1 Process"
-msgstr ""
+msgstr "1 process"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -110,27 +110,27 @@ msgstr ""
 #: setup.php:441 setup.php:442
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d procesi"
 
 #: setup.php:447
 msgid "WMI Settings"
-msgstr ""
+msgstr "WMI iestatījumi"
 
 #: setup.php:451
 msgid "Enable WMI Data Collection"
-msgstr ""
+msgstr "Aktivizēt WMI datu vākšanu"
 
 #: setup.php:452
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr ""
+msgstr "Atķeksējiet, ja vēlaties WMI spraudnim vaicāt Windows ierīces."
 
 #: setup.php:457
 msgid "Concurrent Processes"
-msgstr ""
+msgstr "Vienlaicīgo procesu skaits"
 
 #: setup.php:458
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr ""
+msgstr "Cik vienlaicīgus WMI vaicājumus vēlaties, lai sistēma veiktu?"
 
 #: setup.php:464
 msgid "Auto Create WMI Queries"
