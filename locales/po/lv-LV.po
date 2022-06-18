@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2022-06-18 08:26-0400\n"
-"PO-Revision-Date: 2022-06-18 06:37+0000\n"
-"Last-Translator: Coool <coool@mail.lv>\n"
-"Language-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\n"
-"Language: lv\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2022-06-18 16:55+0000\nLast-Translator: Coool <coool@mail.lv>\nLanguage-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\nLanguage: lv-LV\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -90,11 +78,11 @@ msgstr "WMI autentifikācija"
 
 #: setup.php:327 setup.php:348
 msgid "(Edit)"
-msgstr ""
+msgstr "(Rediģēt)"
 
 #: setup.php:369
 msgid "(Query)"
-msgstr ""
+msgstr "(Vaicāt)"
 
 #: setup.php:408
 msgid "WMI Account Options"
@@ -142,436 +130,436 @@ msgstr "Cik vienlaicīgus WMI vaicājumus vēlaties, lai sistēma veiktu?"
 
 #: setup.php:464
 msgid "Auto Create WMI Queries"
-msgstr ""
+msgstr "Automātiski izveidot WMI vaicājumus"
 
 #: setup.php:465
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
+msgstr "Ja atķeksēts, palaižot automatizāciju vai izveidojot/saglabājot ierīci, tiks izveidoti visi WMI vaicājumi, kas saistīti ar ierīces veidni."
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "Dažādi"
 
 #: setup.php:491 setup.php:544
 msgid "Associated WMI Queries"
-msgstr ""
+msgstr "Sasaistītie WMI vaicājumi"
 
 #: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
-msgstr ""
+msgstr "Nosaukums"
 
 #: setup.php:506
 msgid "Status"
-msgstr ""
+msgstr "Statuss"
 
 #: setup.php:518
 msgid "WMI Query Exists"
-msgstr ""
+msgstr "Pastāv WMI vaicājums"
 
 #: setup.php:520
 msgid "WMI Query Does Not Exist"
-msgstr ""
+msgstr "Nepastāv WMI vaicājums"
 
 #: setup.php:537 setup.php:569
 msgid "No Associated WMI Queries."
-msgstr ""
+msgstr "Nav saistītu WMI vaicājumu."
 
 #: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
-msgstr ""
+msgstr "Dzēst"
 
 #: setup.php:586
 msgid "Add WMI Query"
-msgstr ""
+msgstr "Pievienot WMI vaicājumu"
 
 #: setup.php:592 wmi_tools.php:358
 msgid "Add"
-msgstr ""
+msgstr "Pievienot"
 
 #: setup.php:592
 msgid "Add WMI Query to Device Template"
-msgstr ""
+msgstr "Pievienot WMI vaicājumu ierīces veidnei"
 
 #: setup.php:633
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr ""
+msgstr "Noklikšķiniet 'Turpināt', lai dzēstu norādītos WMI vaicājumus, kuri tiks atsaistīti no ierīces veidnes."
 
 #: setup.php:634
 #, php-format
 msgid "WMI Query Name: %s"
-msgstr ""
+msgstr "WMI vaicājuma nosaukums: %s"
 
 #: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
-msgstr ""
+msgstr "Atcelt"
 
 #: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
-msgstr ""
+msgstr "Turpināt"
 
 #: setup.php:640
 msgid "Remove WMI Query"
-msgstr ""
+msgstr "Noņemt WMI vaicājumu"
 
 #: wmi_accounts.php:48
 msgid "Give this account a meaningful name that will be displayed."
-msgstr ""
+msgstr "Piešķiriet šīm kontam jēgpilnu nosaukumu, kas tiks attēlots."
 
 #: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
-msgstr ""
+msgstr "Lietotājvārds"
 
 #: wmi_accounts.php:55
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr ""
+msgstr "Lietotājvārds, kurš tiks izmantots autentifikācijai.  Ja nepieciešams, lūdzu, norādiet arī domēnu."
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
-msgstr ""
+msgstr "Parole"
 
 #: wmi_accounts.php:62
 msgid "The password used for authentication."
-msgstr ""
+msgstr "Parole, kura tiks izmantota autentifikācijai."
 
 #: wmi_accounts.php:154
 msgid "Press 'Continue' to delete the following accounts."
-msgstr ""
+msgstr "Nospiediet 'Turpināt', lai dzēstu norādītos kontus."
 
 #: wmi_accounts.php:161
 msgid "You must select at least one account."
-msgstr ""
+msgstr "Jums ir jāizvēlas vismaz viens konts."
 
 #: wmi_accounts.php:223
 #, php-format
 msgid "Account [edit: %s]"
-msgstr ""
+msgstr "Konts [labot: %s]"
 
 #: wmi_accounts.php:225
 msgid "Account [new]"
-msgstr ""
+msgstr "Konts [jauns]"
 
 #: wmi_accounts.php:246
 msgid "WMI Accounts"
-msgstr ""
+msgstr "WMI konti"
 
 #: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
-msgstr ""
+msgstr "Meklēt"
 
 #: wmi_accounts.php:260 wmi_accounts.php:383
 msgid "Accounts"
-msgstr ""
+msgstr "Konti"
 
 #: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
-msgstr ""
+msgstr "Noklusējuma"
 
 #: wmi_accounts.php:278 wmi_queries.php:301
 msgctxt "filter: use"
 msgid "Go"
-msgstr ""
+msgstr "Palaist"
 
 #: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
-msgstr ""
+msgstr "Notīrīt"
 
 #: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
-msgstr ""
+msgstr "Apraksts"
 
 #: wmi_accounts.php:403
 msgid "Devices"
-msgstr ""
+msgstr "Ierīces"
 
 #: wmi_accounts.php:425
 msgid "No Accounts Found"
-msgstr ""
+msgstr "Konti nav atrasti"
 
 #: wmi_queries.php:50
 msgid "Give this query a meaningful name that will be displayed."
-msgstr ""
+msgstr "Piešķiriet šim vaicājumam jēgpilnu nosaukumu, kas tiks attēlots."
 
 #: wmi_queries.php:56
 msgid "Collection Frequency"
-msgstr ""
+msgstr "Ievākšanas biežums"
 
 #: wmi_queries.php:57
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr ""
+msgstr "Šī ir datu ievākšanas biežums, ko izmantos, kad WMI vaicājums tiek pievienots ierīcei."
 
 #: wmi_queries.php:64
 msgid "Enabled"
-msgstr ""
+msgstr "Iespējots"
 
 #: wmi_queries.php:65
 msgid "Should this Query be enabled on hosts using it"
-msgstr ""
+msgstr "Vai šo vaicājumu iespējot resursdatoriem, kas to izmanto"
 
 #: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 msgid "Namespace"
-msgstr ""
+msgstr "Nosaukumvieta"
 
 #: wmi_queries.php:72
 msgid "The Namespace for this Query."
-msgstr ""
+msgstr "Šī vaicājuma nosaukumvieta."
 
 #: wmi_queries.php:78 wmi_tools.php:268
 msgid "Query"
-msgstr ""
+msgstr "Vaicājums"
 
 #: wmi_queries.php:79
 msgid "The Query to execute for gathering WMI data from the device."
-msgstr ""
+msgstr "Vaicājums, ko izpildīt, lai ievāktu WMI datus no ierīces."
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
-msgstr ""
+msgstr "Primārā atslēga"
 
 #: wmi_queries.php:88
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr ""
+msgstr "Kad WMI vaicājums atgriež vairākas rindas, kurš atslēgas nosaukums būs primārā atslēga vai indekss?  Ja primārajā atslēgā ir vairākas kolonnas, atdaliet tās ar komatu."
 
 #: wmi_queries.php:177
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr ""
+msgstr "Noklikšķiniet 'Turpināt', lai dzēstu norādītos WMI vaicājumus."
 
 #: wmi_queries.php:184
 msgid "You must select at least one WMI Query."
-msgstr ""
+msgstr "Jums ir jāizvēlas vismaz viens WMI vaicājums."
 
 #: wmi_queries.php:185
 msgid "Return"
-msgstr ""
+msgstr "Atgriezties"
 
 #: wmi_queries.php:187
 msgid "Delete WMI Query"
-msgstr ""
+msgstr "Dzēst WMI vaicājumu"
 
 #: wmi_queries.php:242
 #, php-format
 msgid "Query [edit: %s]"
-msgstr ""
+msgstr "Vaicājums [labot: %s]"
 
 #: wmi_queries.php:244
 msgid "Query [new]"
-msgstr ""
+msgstr "Vaicājums [jauns]"
 
 #: wmi_queries.php:298
 msgid "Has Graphs"
-msgstr ""
+msgstr "Satur grafikus"
 
 #: wmi_queries.php:425
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: wmi_queries.php:430 wmi_tools.php:327
 msgid "Frequency"
-msgstr ""
+msgstr "Biežums"
 
 #: wmi_queries.php:440
 msgid "WQL Query"
-msgstr ""
+msgstr "WQL vaicājums"
 
 #: wmi_tools.php:107
 msgid "Get Computer Information"
-msgstr ""
+msgstr "Iegūt informāciju par datoru"
 
 #: wmi_tools.php:113
 msgid "Get System Processes"
-msgstr ""
+msgstr "Iegūt sistēmas procesus"
 
 #: wmi_tools.php:119
 msgid "Get Installed Software"
-msgstr ""
+msgstr "Iegūt uzstādītās programmas"
 
 #: wmi_tools.php:125
 msgid "Get Operating System Information"
-msgstr ""
+msgstr "Iegūt informāciju par operētājsistēmu"
 
 #: wmi_tools.php:131
 msgid "Get OD Service Information"
-msgstr ""
+msgstr "Iegūt OD pakalpojuma informāciju"
 
 #: wmi_tools.php:137
 msgid "Get System Enclosure Information"
-msgstr ""
+msgstr "Iegūt informāciju par ierīces korpusu"
 
 #: wmi_tools.php:143
 msgid "Get System Physical Memory Information"
-msgstr ""
+msgstr "Iegūt informāciju par ierīces fizisko atmiņu"
 
 #: wmi_tools.php:149
 msgid "Get Memory Device Details"
-msgstr ""
+msgstr "Iegūt informāciju par ierīces atmiņu"
 
 #: wmi_tools.php:155
 msgid "Get System BIOS Information"
-msgstr ""
+msgstr "Iegūt ierīces UEFI (BIOS) informāciju"
 
 #: wmi_tools.php:161
 msgid "Get System Baseboard Information"
-msgstr ""
+msgstr "Iegūt ierīces mātesplates informāciju"
 
 #: wmi_tools.php:167
 msgid "Get Processor Information"
-msgstr ""
+msgstr "Iegūt informāciju par procesoru"
 
 #: wmi_tools.php:173
 msgid "Ping a Known Address from Computer"
-msgstr ""
+msgstr "Ping zināmu adresi no datora"
 
 #: wmi_tools.php:179
 msgid "Get Row System OS Performance Data"
-msgstr ""
+msgstr "Iegūt virknes ierīces operētājsistēmas veiktspējas datus"
 
 #: wmi_tools.php:185
 msgid "Get Formatted System OS Performance Data"
-msgstr ""
+msgstr "Iegūt formatētus ierīces operētājsistēmas veiktspējas datus"
 
 #: wmi_tools.php:191
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr ""
+msgstr "Iegūt formatētus fiziskā diska veiktspējas datus"
 
 #: wmi_tools.php:197
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr ""
+msgstr "Iegūt neapstrādātus fiziskā diska veiktspējas datus"
 
 #: wmi_tools.php:203
 msgid "Get Logical Disk Information"
-msgstr ""
+msgstr "Iegūt loģiskā diska informāciju"
 
 #: wmi_tools.php:209
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr ""
+msgstr "Iegūt formatētus loģiskā diska veiktspējas datus"
 
 #: wmi_tools.php:215
 msgid "Get Raw Logical Disk Performance Data"
-msgstr ""
+msgstr "Iegūt neapstrādātus loģiskā diska veiktspējas datus"
 
 #: wmi_tools.php:221
 msgid "Get Formatted CPU Performance Data"
-msgstr ""
+msgstr "Iegūt formatētus CPU veiktspējas datus"
 
 #: wmi_tools.php:227
 msgid "Get Raw CPU Performance Data"
-msgstr ""
+msgstr "Iegūt neapstrādātus CPU veiktspējas datus"
 
 #: wmi_tools.php:233
 msgid "Get Raw Memory Performance Data"
-msgstr ""
+msgstr "Iegūt neapstrādātus atmiņas veiktspējas datus"
 
 #: wmi_tools.php:239
 msgid "Get Formatted Network Performance Data"
-msgstr ""
+msgstr "Iegūt formatētus tīkla veiktspējas datus"
 
 #: wmi_tools.php:245
 msgid "Get Raw Network Performance Data"
-msgstr ""
+msgstr "Iegūt neapstrādātus tīkla veiktspējas datus"
 
 #: wmi_tools.php:251
 msgid "Get Network Adapter Information"
-msgstr ""
+msgstr "Iegūt informāciju par tīkla adapteri"
 
 #: wmi_tools.php:257
 msgid "Get Computer Asset Information"
-msgstr ""
+msgstr "Iegūt informāciju par datora īpašumiem"
 
 #: wmi_tools.php:268
 msgid "Name Space"
-msgstr ""
+msgstr "Vārda telpa"
 
 #: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
-msgstr ""
+msgstr "Aizvērt"
 
 #: wmi_tools.php:300
 #, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr ""
+msgstr "Ja jums nepieciešama palīdzība par kļūdu kodiem, izmantojiet Google vai sekojiet šai saitei %s."
 
 #: wmi_tools.php:300
 msgid "Microsoft Common WBEM Errors"
-msgstr ""
+msgstr "Microsoft izplatītākās WBEM kļūdas"
 
 #: wmi_tools.php:301
 msgid "Distributed COM Setup"
-msgstr ""
+msgstr "Distributed COM iestatīšana"
 
 #: wmi_tools.php:301
 #, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr ""
+msgstr "Lai WMI darbotos, norādītajam lietotāja kontam ir jāpiešķir Distributed COM atļaujas un Windows ugunsmūrim ir jāļauj Distributed COM sakari.  Labu dokumentāciju par šo tēmu variet atrast saitē %s."
 
 #: wmi_tools.php:334
 msgid "Host"
-msgstr ""
+msgstr "Resursdatora"
 
 #: wmi_tools.php:346
 msgid "Command"
-msgstr ""
+msgstr "Komanda"
 
 #: wmi_tools.php:352
 msgid "More Class Information @Microsoft"
-msgstr ""
+msgstr "Plašāka informācija par klasi @Microsoft"
 
 #: wmi_tools.php:354
 msgid "Run"
-msgstr ""
+msgstr "Palaist"
 
 #: wmi_tools.php:354
 msgid "Run the WMI Query against the Device"
-msgstr ""
+msgstr "Palaist WMI vaicājumu pret ierīci"
 
 #: wmi_tools.php:355
 msgid "Clear"
-msgstr ""
+msgstr "Notīrīt"
 
 #: wmi_tools.php:355
 msgid "Clear the results panel."
-msgstr ""
+msgstr "Notīrīt rezultātu paneli."
 
 #: wmi_tools.php:356
 msgid "Pick from a list of common queries."
-msgstr ""
+msgstr "Izvēlieties no izplatītāko vaicājumu saraksta."
 
 #: wmi_tools.php:357
 msgid "Get some help on setting up WMI"
-msgstr ""
+msgstr "Saņemt palīdzību WMI iestatīšanā"
 
 #: wmi_tools.php:357
 msgid "Help"
-msgstr ""
+msgstr "Palīdzība"
 
 #: wmi_tools.php:358
 msgid "Create a new WMI Query from the existing Query."
-msgstr ""
+msgstr "Izveidot jaunu WMI vaicājumu no esošā vaicājuma."
 
 #: wmi_tools.php:369
 msgid "Query Results"
-msgstr ""
+msgstr "Vaicājuma rezultāti"
 
 #: wmi_tools.php:398
 msgid "Common Queries (Click to Select)"
-msgstr ""
+msgstr "Izplatītākie vaicājumi (noklikšķiniet, lai izvēlētos)"
 
 #: wmi_tools.php:427
 msgid "WMI Setup Assistance"
-msgstr ""
+msgstr "WMI iestatīšanas palīdzība"
 
 #: wmi_tools.php:522
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
+msgstr "KĻŪDA: ir jānorāda resursdators, lietotājvārds, parole un vaicājums"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
+msgstr "WMI vaicājuma rezultāti Ierīcei: %s, Klase: %s, Kolonnas: %s, Rindas: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 msgid "Showing columns and first one or two rows of data."
-msgstr ""
+msgstr "Rāda datu kolonnas un pirmo vai divas pirmās datu rindas."
 
 #~ msgid "WMI Tools"
 #~ msgstr "WMI rīki"
