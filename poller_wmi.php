@@ -244,16 +244,15 @@ function process_all_devices() {
 	}
 
 	/* take time and log performance data */
-	list($micro,$seconds) = explode(' ', microtime());
-	$end = $seconds + $micro;
+	$end = microtime(true);
 
 	$cacti_stats = sprintf(
-		'Time:%01.4f ' .
+		'Time:%01.2f ' .
 		'Processes:%s ' .
 		'Devices:%s',
-		round($end-$start,2),
+		$end - $start,
 		$concurrent_processes,
-		sizeof($devices));
+		cacti_sizeof($devices));
 
 	/* log to the database */
 	set_config_option('stats_wmi', $cacti_stats);
