@@ -381,7 +381,7 @@ function show_tools() {
 	$(function() {
 		<?php if (get_selected_theme() != 'classic') {?>
 		$('#add').button('disable');
-		<?php }else{?>
+		<?php } else {?>
 		$('#add').prop('disabled', true);
 		<?php }?>
 
@@ -411,7 +411,7 @@ function show_tools() {
 				$('#close_queries').button().click(function() {
 					$('#common_queries').remove();
 				});
-				<?php }else{?>
+				<?php } else {?>
 				$('#close_queries').click(function() {
 					$('#common_queries').remove();
 				});
@@ -432,7 +432,7 @@ function show_tools() {
 				$('#close_help').button().click(function() {
 					$('#assistance').remove();
 				});
-				<?php }else{?>
+				<?php } else {?>
 				$('#close_help').click(function() {
 					$('#assistance').remove();
 				});
@@ -456,7 +456,7 @@ function show_tools() {
 			$('#results').empty();
 			<?php if (get_selected_theme() != 'classic') {?>
 			$('#submit').button('enable');
-			<?php }else{?>
+			<?php } else {?>
 			$('#submit').prop('disabled', false);
 			<?php }?>
 		});
@@ -485,13 +485,13 @@ function show_tools() {
 			applySkin();
 			<?php if (get_selected_theme() != 'classic') {?>
 			$('#submit').button('enable');
-			<?php }else{?>
+			<?php } else {?>
 			$('#submit').prop('disabled', false);
 			<?php }?>
 			if (data.indexOf('ERROR:') == -1) {
 				<?php if (get_selected_theme() != 'classic') {?>
 				$('#add').button('enable');
-				<?php }else{?>
+				<?php } else {?>
 				$('#add').prop('disabled', false);
 				<?php }?>
 			}
@@ -512,7 +512,7 @@ function walk_host() {
 
 	if (!isset_request_var('command')) {
 		$command = 'SELECT * FROM Win32_Process';
-	}else{
+	} else {
 		$command = get_nfilter_request_var('command');
 	}
 
@@ -559,7 +559,7 @@ function walk_host() {
 			$present = 'columns';
 
 			if ($present == 'columns') {
-				if (sizeof($data[0])) {
+				if (cacti_sizeof($data[0])) {
 					foreach($data[0] as $index => $r) {
 						form_alternate_row('line' . $index, true);
 
@@ -572,10 +572,10 @@ function walk_host() {
 						form_end_row();
 					}
 				}
-			}else{
+			} else {
 				foreach($data as $row) {
 					$indexes = array_keys($row);
-					if (sizeof($indexes)) {
+					if (cacti_sizeof($indexes)) {
 						print "<tr>";
 						foreach($indexes as $col) {
 							print "<th>" . $col . "</th>";
@@ -592,10 +592,10 @@ function walk_host() {
 			}
 
 			print "</table>";
-		}else{
+		} else {
 			print $wmi->error;
 		}
-	}else{
+	} else {
 		// Windows version
 		$wmi  = new COM('WbemScripting.SWwebLocator');
 		$wmic = $wmi->ConnectServer($host, $namespace, $username, $password);
@@ -603,12 +603,12 @@ function walk_host() {
 
 		$data = $wmic->ExecQuery($command);
 
-		if (sizeof($data)) {
+		if (cacti_sizeof($data)) {
 			$odata = (array) $data[0];
 			$indexes = array_keys($odata);
 			if (isset($data[1])) {
 				$odata1 = (array) $data[1];
-			}else{
+			} else {
 				$odata1 = array();
 			}
 
@@ -621,13 +621,13 @@ function walk_host() {
 			print "</table>";
 			print "<table style='width:100%'>";
 
-			if (sizeof($odata)) {
+			if (cacti_sizeof($odata)) {
 				foreach($odata as $index => $r) {
 					form_alternate_row('line' . $index, true);
 
 					print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>";
 
-					if (sizeof($odata1)) {
+					if (cacti_sizeof($odata1)) {
 						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $odata1[$index] . "</td>";
 					}
 
@@ -641,7 +641,7 @@ function walk_host() {
 }
 
 function is_valid_host($host) {
-	if(preg_match('/^((([0-9]{1,3}\.){3}[0-9]{1,3})|([0-9a-z-.]{0,61})?\.[a-z]{2,4})$/i', $host)) {
+	if (preg_match('/^((([0-9]{1,3}\.){3}[0-9]{1,3})|([0-9a-z-.]{0,61})?\.[a-z]{2,4})$/i', $host)) {
 		return true;
 	}
 

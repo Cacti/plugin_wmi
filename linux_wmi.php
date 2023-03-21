@@ -211,16 +211,16 @@ class Linux_WMI {
 	}
 
 	function getcommand() {
-		$this->clean();
-
 		if ($this->username == '' || $this->password == '') {
 			$this->error = 'ERROR: Username or Password not set!';
 
 			return false;
 		}
 
+		$this->clean();
+
 		return $this->binary .
-			' --delimiter=' . cacti_escapeshellarg($this->separator) .
+			' --delimiter=' . $this->separator .
 			' --user=' . $this->username .
 			' --password=' . $this->password .
 			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
