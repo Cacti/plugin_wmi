@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2023-04-16 21:06+0000\nLast-Translator: Сергей <zersh@mail.ru>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2023-06-26 11:06+0000\nLast-Translator: Coool (github.com/Coool) <coool@mail.lv>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -246,9 +246,8 @@ msgid "Password"
 msgstr "Пароль"
 
 #: wmi_accounts.php:62
-#, fuzzy
 msgid "The password used for authentication."
-msgstr "Пароль, используемый для аутентификации."
+msgstr "Пароль, которое будет использоваться для аутентификации."
 
 #: wmi_accounts.php:154
 #, fuzzy
