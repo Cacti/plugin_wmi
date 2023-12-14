@@ -34,7 +34,7 @@ WMI Queries that are specific to Windows SQL Server there.
 There is presently only one setting support in the WMI plugin, and that is to
 Autocreate the actual WMI polling at device creation or update based upon the
 WMI Queries defined as a part of the Device Template.  This setting can be found
-unser Settings -> Device Defaults.
+under Settings -> Device Defaults.
 
 ## Authors
 

@@ -35,10 +35,10 @@ print_r($results);
 */
 
 class Linux_WMI {
-	var $hostid;      // ID of host, to pull authenication from
+	var $hostid;      // ID of host, to pull authentication from
 	var $hostname;    // Hostname / IP to contact
-	var $username;    // Username to authenicate with (will be pulled from DB)
-	var $password;    // Password to authenicate with (will be pulled form DB)
+	var $username;    // Username to authenticate with (will be pulled from DB)
+	var $password;    // Password to authenticate with (will be pulled form DB)
 	var $command;     // This is the WMI Query to exec
 	var $results;     // This will hold all our data
 	var $binary;      // Path to WMIC binary
@@ -282,7 +282,7 @@ class Linux_WMI {
 			return true;
 		}
 
-		$this->error = 'ERROR: WMI Authenication account not found!';
+		$this->error = 'ERROR: WMI Authentication account not found!';
 
 		return false;
 	}

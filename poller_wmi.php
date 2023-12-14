@@ -214,7 +214,7 @@ function process_all_devices() {
 			$pl = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 			if ($processes_left == 0) {
-				print "NOTE: All Processees Complete, Exiting" . PHP_EOL;
+				print "NOTE: All Processes Complete, Exiting" . PHP_EOL;
 				break;
 			} else {
 				print "NOTE: Waiting on '$processes_left' Processes" . PHP_EOL;
