@@ -56,4 +56,4 @@ scalability to Cacti when gathering data from WMI compatible device's.
 * feature: Initial Support for Cacti 1.0
 
 -----------------------------------------------
-Copyright (c) 2004-2023 - The Cacti Group, Inc.
+Copyright (c) 2004-2024 - The Cacti Group, Inc.
