@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-06-20 15:11+0000\nLast-Translator: tql <fttx31@126.com>\nLanguage-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/wmi/zh_Hans/>\nLanguage: zh-CN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-06-21 08:51+0000\nLast-Translator: tql <fttx31@126.com>\nLanguage-Team: Chinese (Simplified) <http://translate.cacti.net/projects/cacti/wmi/zh_Hans/>\nLanguage: zh-CN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -107,9 +107,8 @@ msgid "Choose an account to use when Authenticating via WMI"
 msgstr "选择通过WMI进行身份验证时要使用的帐户"
 
 #: setup.php:425
-#, fuzzy
 msgid "1 Process"
-msgstr "1过程"
+msgstr "1流程"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
