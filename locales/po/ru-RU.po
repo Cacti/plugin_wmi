@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2023-06-26 11:06+0000\nLast-Translator: Coool (github.com/Coool) <coool@mail.lv>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-11-04 17:08+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -15,17 +15,14 @@ msgid "Authentication"
 msgstr "Аутентификация"
 
 #: setup.php:39
-#, fuzzy
 msgid "WMI Management"
 msgstr "Управление WMI"
 
 #: setup.php:284
-#, fuzzy
 msgid "WMI Data"
 msgstr "Данные WMI"
 
 #: setup.php:285
-#, fuzzy
 msgid "WMI Data Query"
 msgstr "Запрос данных WMI"
 
@@ -59,7 +56,6 @@ msgid "Utilities"
 msgstr "Утилиты"
 
 #: setup.php:303 wmi_tools.php:316
-#, fuzzy
 msgid "WMI Query Tool"
 msgstr "Инструмент запроса WMI"
 
@@ -69,7 +65,6 @@ msgstr "Коллекции Данных"
 
 #: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
 #: wmi_queries.php:415
-#, fuzzy
 msgid "WMI Queries"
 msgstr "Запросы WMI"
 
@@ -78,36 +73,30 @@ msgid "Template Editor"
 msgstr "Редактор шаблонов"
 
 #: setup.php:320 setup.php:334
-#, fuzzy
 msgid "WMI Autenication"
 msgstr "Аутентификация WMI"
 
 #: setup.php:327 setup.php:348
 msgid "(Edit)"
-msgstr ""
+msgstr "(Редактировать)"
 
 #: setup.php:369
-#, fuzzy
 msgid "(Query)"
-msgstr "Запрос"
+msgstr "(Запрос)"
 
 #: setup.php:408
-#, fuzzy
 msgid "WMI Account Options"
-msgstr "Опции WMI счета"
+msgstr "Опции учетной записи WMI"
 
 #: setup.php:413
-#, fuzzy
 msgid "WMI Authentication Account"
 msgstr "Учетная запись WMI аутентификации"
 
 #: setup.php:414
-#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Выберите учетную запись для использования при аутентификации через WMI"
 
 #: setup.php:425
-#, fuzzy
 msgid "1 Process"
 msgstr "1 Процесс"
 
@@ -115,22 +104,19 @@ msgstr "1 Процесс"
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
 #: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
 #: setup.php:441 setup.php:442
-#, fuzzy, php-format
+#, php-format
 msgid "%d Processes"
-msgstr "Получить системные процессы"
+msgstr "%d Процессы"
 
 #: setup.php:447
-#, fuzzy
 msgid "WMI Settings"
 msgstr "Настройки WMI"
 
 #: setup.php:451
-#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr "Коллекции Данных"
+msgstr "Включить сбор данных WMI"
 
 #: setup.php:452
-#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Установите этот флажок, если хотите, чтобы подключаемый модуль WMI запрашивал устройства Windows."
 
@@ -139,12 +125,10 @@ msgid "Concurrent Processes"
 msgstr "Количество Конкурирующих процессов"
 
 #: setup.php:458
-#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr "Сколько одновременных запросов WMI вы хотите, чтобы система выполняла?"
+msgstr "Сколько запросов WMI вы хотите чтобы выполнялось одновременно?"
 
 #: setup.php:464
-#, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Автоматическое создание запросов WMI"
 
