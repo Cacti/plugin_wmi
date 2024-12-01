@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-11-04 17:08+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-12-01 02:16+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -142,7 +142,6 @@ msgid "Misc"
 msgstr "Разное"
 
 #: setup.php:491 setup.php:544
-#, fuzzy
 msgid "Associated WMI Queries"
 msgstr "Связанные запросы WMI"
 
@@ -156,17 +155,14 @@ msgid "Status"
 msgstr "Статус"
 
 #: setup.php:518
-#, fuzzy
 msgid "WMI Query Exists"
 msgstr "Запрос WMI существует"
 
 #: setup.php:520
-#, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "Запрос WMI не существует"
 
 #: setup.php:537 setup.php:569
-#, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "Нет соответствующих запросов WMI."
 
@@ -175,7 +171,6 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: setup.php:586
-#, fuzzy
 msgid "Add WMI Query"
 msgstr "Добавить запрос WMI"
 
@@ -184,17 +179,15 @@ msgid "Add"
 msgstr "Добавить"
 
 #: setup.php:592
-#, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "Добавить запрос WMI в шаблон устройства"
 
 #: setup.php:633
-#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI, которые будут удалены из шаблона устройства."
 
 #: setup.php:634
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Name: %s"
 msgstr "Имя запроса WMI: %s"
 
@@ -207,12 +200,10 @@ msgid "Continue"
 msgstr "Продолжить"
 
 #: setup.php:640
-#, fuzzy
 msgid "Remove WMI Query"
 msgstr "Удалить запрос WMI"
 
 #: wmi_accounts.php:48
-#, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Дайте этой учетной записи значимое имя, которое будет отображаться на экране."
 
