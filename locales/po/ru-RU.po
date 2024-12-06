@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-12-01 02:16+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2024-12-06 19:24+0000\nLast-Translator: Anton Zhuravlev <baka109g@gmail.com>\nLanguage-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\nLanguage: ru-RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -44,7 +44,7 @@ msgstr "%d Час"
 #: setup.php:296 setup.php:297
 #, php-format
 msgid "%d Hours"
-msgstr "%d Часа(ов)"
+msgstr "%d Часов"
 
 #: setup.php:298
 #, php-format
@@ -225,29 +225,25 @@ msgid "The password used for authentication."
 msgstr "Пароль, которое будет использоваться для аутентификации."
 
 #: wmi_accounts.php:154
-#, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие учетные записи."
 
 #: wmi_accounts.php:161
-#, fuzzy
 msgid "You must select at least one account."
 msgstr "Вы должны выбрать хотя бы одну учетную запись."
 
 #: wmi_accounts.php:223
-#, fuzzy, php-format
+#, php-format
 msgid "Account [edit: %s]"
 msgstr "Учетная запись [редактирование: %s]"
 
 #: wmi_accounts.php:225
-#, fuzzy
 msgid "Account [new]"
 msgstr "Учетная запись [новая]"
 
 #: wmi_accounts.php:246
-#, fuzzy
 msgid "WMI Accounts"
-msgstr "WMI счета"
+msgstr "WMI учетные записи"
 
 #: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
@@ -280,9 +276,8 @@ msgid "Devices"
 msgstr "Устройства"
 
 #: wmi_accounts.php:425
-#, fuzzy
 msgid "No Accounts Found"
-msgstr "Счета не найдены"
+msgstr "Учетные записи не найдены"
 
 #: wmi_queries.php:50
 #, fuzzy
@@ -295,9 +290,8 @@ msgid "Collection Frequency"
 msgstr "Частота сбора данных"
 
 #: wmi_queries.php:57
-#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "Когда этот WMI-запрос добавляется к устройству, будет использоваться частота сбора данных."
+msgstr "Когда WMI-запрос добавляется к устройству, эта частота сбора данных будет использоваться."
 
 #: wmi_queries.php:64
 msgid "Enabled"
@@ -313,7 +307,6 @@ msgid "Namespace"
 msgstr "Пространствоимён"
 
 #: wmi_queries.php:72
-#, fuzzy
 msgid "The Namespace for this Query."
 msgstr "Пространство имен для этого запроса."
 
@@ -322,7 +315,6 @@ msgid "Query"
 msgstr "Запрос"
 
 #: wmi_queries.php:79
-#, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Запрос на выполнение для сбора данных WMI с устройства."
 
@@ -336,12 +328,10 @@ msgid "When a WMI Query returns multiple rows, which Keyname will be the primary
 msgstr "Когда WMI-запрос возвращает несколько строк, какое Имя ключа будет основным ключом или индексом?  Если основной ключ содержит несколько столбцов, разделите их запятой."
 
 #: wmi_queries.php:177
-#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI."
 
 #: wmi_queries.php:184
-#, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "Вы должны выбрать хотя бы один запрос WMI."
 
@@ -350,17 +340,15 @@ msgid "Return"
 msgstr "Вернуть"
 
 #: wmi_queries.php:187
-#, fuzzy
 msgid "Delete WMI Query"
 msgstr "Удалить запрос WMI"
 
 #: wmi_queries.php:242
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
 msgstr "Запрос [Редактировать: %s]"
 
 #: wmi_queries.php:244
-#, fuzzy
 msgid "Query [new]"
 msgstr "Запрос [новый]"
 
@@ -377,32 +365,26 @@ msgid "Frequency"
 msgstr "Частота"
 
 #: wmi_queries.php:440
-#, fuzzy
 msgid "WQL Query"
-msgstr "WQL Query"
+msgstr "WQL Запрос"
 
 #: wmi_tools.php:107
-#, fuzzy
 msgid "Get Computer Information"
-msgstr "Получить компьютерную информацию"
+msgstr "Получить информацию о компьютере"
 
 #: wmi_tools.php:113
-#, fuzzy
 msgid "Get System Processes"
 msgstr "Получить системные процессы"
 
 #: wmi_tools.php:119
-#, fuzzy
 msgid "Get Installed Software"
 msgstr "Получить установленное программное обеспечение"
 
 #: wmi_tools.php:125
-#, fuzzy
 msgid "Get Operating System Information"
 msgstr "Получить информацию об операционной системе"
 
 #: wmi_tools.php:131
-#, fuzzy
 msgid "Get OD Service Information"
 msgstr "Получить сервисную информацию OD"
 
@@ -412,29 +394,24 @@ msgid "Get System Enclosure Information"
 msgstr "Получить информацию о системном шкафу"
 
 #: wmi_tools.php:143
-#, fuzzy
 msgid "Get System Physical Memory Information"
 msgstr "Получить информацию о физической памяти системы"
 
 #: wmi_tools.php:149
-#, fuzzy
 msgid "Get Memory Device Details"
 msgstr "Получить сведения об устройстве памяти"
 
 #: wmi_tools.php:155
-#, fuzzy
 msgid "Get System BIOS Information"
 msgstr "Получить информацию о BIOS системы"
 
 #: wmi_tools.php:161
-#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr "Получить информацию о базовой панели системы"
+msgstr "Получить информацию о материнской плате системы"
 
 #: wmi_tools.php:167
-#, fuzzy
 msgid "Get Processor Information"
-msgstr "Получить информацию об процессоре"
+msgstr "Получить информацию о процессоре"
 
 #: wmi_tools.php:173
 #, fuzzy
@@ -442,67 +419,54 @@ msgid "Ping a Known Address from Computer"
 msgstr "Пинг по известному адресу с компьютера"
 
 #: wmi_tools.php:179
-#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr "Получить данные о производительности строковых систем ОС"
+msgstr "Получить исходные данные о производительности ОС"
 
 #: wmi_tools.php:185
-#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "Отформатировать данные о производительности ОС системы"
+msgstr "Получить отформатированные данные о производительности ОС"
 
 #: wmi_tools.php:191
-#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "Отформатировать данные производительности псикального диска"
+msgstr "Отформатировать отформатированные данные производительности физического диска"
 
 #: wmi_tools.php:197
-#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "Получить исходные данные производительности исходного психодиального диска"
+msgstr "Получить исходные данные производительности физического диска"
 
 #: wmi_tools.php:203
-#, fuzzy
 msgid "Get Logical Disk Information"
 msgstr "Получить информацию о логическом диске"
 
 #: wmi_tools.php:209
-#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr "Форматирование данных о производительности логических дисков"
+msgstr "Получить форматированные данные о производительности логического диска"
 
 #: wmi_tools.php:215
-#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr "Получить исходные логические данные производительности диска"
+msgstr "Получить исходные данные производительности логического диска"
 
 #: wmi_tools.php:221
-#, fuzzy
 msgid "Get Formatted CPU Performance Data"
 msgstr "Получить отформатированные данные о производительности процессора"
 
 #: wmi_tools.php:227
-#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr "Получить исходные данные производительности процессора"
+msgstr "Получить исходные данные о производительности процессора"
 
 #: wmi_tools.php:233
-#, fuzzy
 msgid "Get Raw Memory Performance Data"
 msgstr "Получить исходные данные производительности памяти"
 
 #: wmi_tools.php:239
-#, fuzzy
 msgid "Get Formatted Network Performance Data"
-msgstr "Получить отформатированные данные о производительности сети"
+msgstr "Получить форматированные данные о производительности сети"
 
 #: wmi_tools.php:245
-#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr "Получить исходные данные производительности сети"
+msgstr "Получить исходные данные о производительности сети"
 
 #: wmi_tools.php:251
-#, fuzzy
 msgid "Get Network Adapter Information"
 msgstr "Получить информацию о сетевом адаптере"
 
@@ -512,7 +476,6 @@ msgid "Get Computer Asset Information"
 msgstr "Получить информацию о компьютерных активах"
 
 #: wmi_tools.php:268
-#, fuzzy
 msgid "Name Space"
 msgstr "Пространство имен"
 
@@ -526,9 +489,8 @@ msgid "If you need assistance on error codes, use google, or here use the follow
 msgstr "Если вам нужна помощь по кодам ошибок, используйте Google, или здесь используйте следующие процентные соотношения ссылок."
 
 #: wmi_tools.php:300
-#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr "Microsoft Общие ошибки WBEM Ошибки Microsoft"
+msgstr "Microsoft Общие ошибки WBEM"
 
 #: wmi_tools.php:301
 #, fuzzy
@@ -549,7 +511,6 @@ msgid "Command"
 msgstr "Команда"
 
 #: wmi_tools.php:352
-#, fuzzy
 msgid "More Class Information @Microsoft"
 msgstr "Дополнительная информация о классе @Microsoft"
 
@@ -567,58 +528,49 @@ msgid "Clear"
 msgstr "Очистить"
 
 #: wmi_tools.php:355
-#, fuzzy
 msgid "Clear the results panel."
 msgstr "Очистите панель результатов."
 
 #: wmi_tools.php:356
-#, fuzzy
 msgid "Pick from a list of common queries."
 msgstr "Выберите из списка распространенных запросов."
 
 #: wmi_tools.php:357
-#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr "Получите помощь по настройке WMI"
+msgstr "Получить помощь по настройке WMI"
 
 #: wmi_tools.php:357
 msgid "Help"
 msgstr "Помощь"
 
 #: wmi_tools.php:358
-#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
 msgstr "Создайте новый запрос WMI из существующего запроса."
 
 #: wmi_tools.php:369
-#, fuzzy
 msgid "Query Results"
 msgstr "Результаты запроса"
 
 #: wmi_tools.php:398
-#, fuzzy
 msgid "Common Queries (Click to Select)"
 msgstr "Общие запросы (нажмите, чтобы выбрать)"
 
 #: wmi_tools.php:427
-#, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "Помощь по настройке WMI"
 
 #: wmi_tools.php:522
-#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr "ERRROR: Вы должны указать хост, имя пользователя, пароль и запрос"
+msgstr "ОШИБКА: Вы должны указать хост, имя пользователя, пароль и запрос"
 
 #: wmi_tools.php:552 wmi_tools.php:617
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "Результаты запроса WMI для устройства: %s, класс: %s, столбцы: %s, строки: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
-#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "Показывает столбцы и первые одну или две строки данных."
+msgstr "Показывать столбцы и первые одну-две строки данных."
 
 #, fuzzy
 #~ msgid "WMI Tools"
