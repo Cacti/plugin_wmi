@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-03-14 13:09+0000\nLast-Translator: Daniel Nylander <weblate@danielnylander.se>\nLanguage-Team: Swedish <http://translate.cacti.net/projects/cacti/wmi/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-03-18 09:57+0000\nLast-Translator: Daniel Nylander <weblate@danielnylander.se>\nLanguage-Team: Swedish <http://translate.cacti.net/projects/cacti/wmi/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 4.8.1\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -98,7 +98,7 @@ msgstr "Välj ett konto som ska användas vid autentisering via WMI"
 
 #: setup.php:425
 msgid "1 Process"
-msgstr "1 Process"
+msgstr "1 process"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -106,7 +106,7 @@ msgstr "1 Process"
 #: setup.php:441 setup.php:442
 #, php-format
 msgid "%d Processes"
-msgstr "%d Processer"
+msgstr "%d processer"
 
 #: setup.php:447
 msgid "WMI Settings"
@@ -118,7 +118,7 @@ msgstr "Aktivera WMI-datainsamling"
 
 #: setup.php:452
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "Markera den här rutan om du vill att WMI Plugin ska ställa frågor om Windows-enheter."
+msgstr "Markera den här rutan om du vill att WMI-tillägget ska ställa frågor om Windows-enheter."
 
 #: setup.php:457
 msgid "Concurrent Processes"
@@ -506,7 +506,7 @@ msgstr "Mer klassinformation @Microsoft"
 
 #: wmi_tools.php:354
 msgid "Run"
-msgstr "Aktivera"
+msgstr "Kör"
 
 #: wmi_tools.php:354
 msgid "Run the WMI Query against the Device"
