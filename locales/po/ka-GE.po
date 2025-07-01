@@ -4,15 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\nLast-Translator: Automatically generated\nLanguage-Team: none\nLanguage: ka\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-01 15:52+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
-msgstr ""
+msgstr "მოთხოვნები"
 
 #: functions.php:30
 msgid "Authentication"
-msgstr ""
+msgstr "ავთენტიკაცია"
 
 #: setup.php:39
 msgid "WMI Management"
@@ -29,22 +29,22 @@ msgstr ""
 #: setup.php:289
 #, php-format
 msgid "%d Minute"
-msgstr ""
+msgstr "%d წუთი"
 
 #: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
 #, php-format
 msgid "%d Minutes"
-msgstr ""
+msgstr "%d წუთი"
 
 #: setup.php:295
 #, php-format
 msgid "%d Hour"
-msgstr ""
+msgstr "%d საათი"
 
 #: setup.php:296 setup.php:297
 #, php-format
 msgid "%d Hours"
-msgstr ""
+msgstr "%d საათი"
 
 #: setup.php:298
 #, php-format
@@ -53,7 +53,7 @@ msgstr ""
 
 #: setup.php:303
 msgid "Utilities"
-msgstr ""
+msgstr "ხელსაწყოები"
 
 #: setup.php:303 wmi_tools.php:316
 msgid "WMI Query Tool"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: setup.php:304
 msgid "Data Collection"
-msgstr ""
+msgstr "მონაცემების შეგროვება"
 
 #: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
 #: wmi_queries.php:415
@@ -78,11 +78,11 @@ msgstr ""
 
 #: setup.php:327 setup.php:348
 msgid "(Edit)"
-msgstr ""
+msgstr "(ჩასწორება)"
 
 #: setup.php:369
 msgid "(Query)"
-msgstr ""
+msgstr "(მოთხოვნა)"
 
 #: setup.php:408
 msgid "WMI Account Options"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: setup.php:447
 msgid "WMI Settings"
-msgstr ""
+msgstr "WMI-ის მორგება"
 
 #: setup.php:451
 msgid "Enable WMI Data Collection"
@@ -138,7 +138,7 @@ msgstr ""
 
 #: setup.php:471
 msgid "Misc"
-msgstr ""
+msgstr "სხვადსხვა"
 
 #: setup.php:491 setup.php:544
 msgid "Associated WMI Queries"
@@ -147,11 +147,11 @@ msgstr ""
 #: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #: setup.php:506
 msgid "Status"
-msgstr ""
+msgstr "სტატუსი"
 
 #: setup.php:518
 msgid "WMI Query Exists"
@@ -167,7 +167,7 @@ msgstr ""
 
 #: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
-msgstr ""
+msgstr "წაშლა"
 
 #: setup.php:586
 msgid "Add WMI Query"
@@ -175,7 +175,7 @@ msgstr ""
 
 #: setup.php:592 wmi_tools.php:358
 msgid "Add"
-msgstr ""
+msgstr "დამატება"
 
 #: setup.php:592
 msgid "Add WMI Query to Device Template"
@@ -192,11 +192,11 @@ msgstr ""
 
 #: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
 msgid "Continue"
-msgstr ""
+msgstr "გაგრძელება"
 
 #: setup.php:640
 msgid "Remove WMI Query"
@@ -208,7 +208,7 @@ msgstr ""
 
 #: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
 msgid "Username"
-msgstr ""
+msgstr "მომხმარებლის სახელი"
 
 #: wmi_accounts.php:55
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
@@ -216,7 +216,7 @@ msgstr ""
 
 #: wmi_accounts.php:61 wmi_tools.php:340
 msgid "Password"
-msgstr ""
+msgstr "პაროლი"
 
 #: wmi_accounts.php:62
 msgid "The password used for authentication."
@@ -241,37 +241,37 @@ msgstr ""
 
 #: wmi_accounts.php:246
 msgid "WMI Accounts"
-msgstr ""
+msgstr "WMI ანგარიშები"
 
 #: wmi_accounts.php:254 wmi_queries.php:274
 msgid "Search"
-msgstr ""
+msgstr "ძებნა"
 
 #: wmi_accounts.php:260 wmi_accounts.php:383
 msgid "Accounts"
-msgstr ""
+msgstr "ანგარიშები"
 
 #: wmi_accounts.php:264 wmi_queries.php:284
 msgid "Default"
-msgstr ""
+msgstr "ნაგულისხმევი"
 
 #: wmi_accounts.php:278 wmi_queries.php:301
 msgctxt "filter: use"
 msgid "Go"
-msgstr ""
+msgstr "მიდი"
 
 #: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
-msgstr ""
+msgstr "გასუფთავება"
 
 #: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
-msgstr ""
+msgstr "აღწერა"
 
 #: wmi_accounts.php:403
 msgid "Devices"
-msgstr ""
+msgstr "მოწყობილობები"
 
 #: wmi_accounts.php:425
 msgid "No Accounts Found"
@@ -291,7 +291,7 @@ msgstr ""
 
 #: wmi_queries.php:64
 msgid "Enabled"
-msgstr ""
+msgstr "ჩართულია"
 
 #: wmi_queries.php:65
 msgid "Should this Query be enabled on hosts using it"
@@ -299,7 +299,7 @@ msgstr ""
 
 #: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 msgid "Namespace"
-msgstr ""
+msgstr "სახელების სივრცე"
 
 #: wmi_queries.php:72
 msgid "The Namespace for this Query."
@@ -307,7 +307,7 @@ msgstr ""
 
 #: wmi_queries.php:78 wmi_tools.php:268
 msgid "Query"
-msgstr ""
+msgstr "მოთხოვნა"
 
 #: wmi_queries.php:79
 msgid "The Query to execute for gathering WMI data from the device."
@@ -331,7 +331,7 @@ msgstr ""
 
 #: wmi_queries.php:185
 msgid "Return"
-msgstr ""
+msgstr "დაბრუნება"
 
 #: wmi_queries.php:187
 msgid "Delete WMI Query"
@@ -352,11 +352,11 @@ msgstr ""
 
 #: wmi_queries.php:425
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: wmi_queries.php:430 wmi_tools.php:327
 msgid "Frequency"
-msgstr ""
+msgstr "სიხშირე"
 
 #: wmi_queries.php:440
 msgid "WQL Query"
@@ -472,7 +472,7 @@ msgstr ""
 
 #: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
-msgstr ""
+msgstr "დახურვა"
 
 #: wmi_tools.php:300
 #, php-format
@@ -494,11 +494,11 @@ msgstr ""
 
 #: wmi_tools.php:334
 msgid "Host"
-msgstr ""
+msgstr "ჰოსტი"
 
 #: wmi_tools.php:346
 msgid "Command"
-msgstr ""
+msgstr "ბრძანება"
 
 #: wmi_tools.php:352
 msgid "More Class Information @Microsoft"
@@ -506,7 +506,7 @@ msgstr ""
 
 #: wmi_tools.php:354
 msgid "Run"
-msgstr ""
+msgstr "გაშვება"
 
 #: wmi_tools.php:354
 msgid "Run the WMI Query against the Device"
@@ -514,7 +514,7 @@ msgstr ""
 
 #: wmi_tools.php:355
 msgid "Clear"
-msgstr ""
+msgstr "გასუფთავება"
 
 #: wmi_tools.php:355
 msgid "Clear the results panel."
@@ -530,7 +530,7 @@ msgstr ""
 
 #: wmi_tools.php:357
 msgid "Help"
-msgstr ""
+msgstr "დახმარება"
 
 #: wmi_tools.php:358
 msgid "Create a new WMI Query from the existing Query."
