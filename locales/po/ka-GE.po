@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-01 15:52+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-02 19:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -16,11 +16,11 @@ msgstr "ავთენტიკაცია"
 
 #: setup.php:39
 msgid "WMI Management"
-msgstr ""
+msgstr "WMI-ის მართვა"
 
 #: setup.php:284
 msgid "WMI Data"
-msgstr ""
+msgstr "WMI მონაცემები"
 
 #: setup.php:285
 msgid "WMI Data Query"
@@ -49,7 +49,7 @@ msgstr "%d საათი"
 #: setup.php:298
 #, php-format
 msgid "%d Day"
-msgstr ""
+msgstr "%d დღე"
 
 #: setup.php:303
 msgid "Utilities"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr ""
+msgstr "შაბლონის რედაქტორი"
 
 #: setup.php:320 setup.php:334
 msgid "WMI Autenication"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: setup.php:425
 msgid "1 Process"
-msgstr ""
+msgstr "1 პროცესი"
 
 #: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
@@ -106,7 +106,7 @@ msgstr ""
 #: setup.php:441 setup.php:442
 #, php-format
 msgid "%d Processes"
-msgstr ""
+msgstr "%d პროცესი"
 
 #: setup.php:447
 msgid "WMI Settings"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: setup.php:457
 msgid "Concurrent Processes"
-msgstr ""
+msgstr "ერთდროულად გაშვებული პროცესები"
 
 #: setup.php:458
 msgid "How many concurrent WMI queries do you want the system to run?"
@@ -283,7 +283,7 @@ msgstr ""
 
 #: wmi_queries.php:56
 msgid "Collection Frequency"
-msgstr ""
+msgstr "მოგროვების სიხშირე"
 
 #: wmi_queries.php:57
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
@@ -315,7 +315,7 @@ msgstr ""
 
 #: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
 msgid "Primary Key"
-msgstr ""
+msgstr "ძირითადი გასაღები"
 
 #: wmi_queries.php:88
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
@@ -344,11 +344,11 @@ msgstr ""
 
 #: wmi_queries.php:244
 msgid "Query [new]"
-msgstr ""
+msgstr "მოთხოვნა [ახალი]"
 
 #: wmi_queries.php:298
 msgid "Has Graphs"
-msgstr ""
+msgstr "აქვს გრაფიკები"
 
 #: wmi_queries.php:425
 msgid "ID"
@@ -468,7 +468,7 @@ msgstr ""
 
 #: wmi_tools.php:268
 msgid "Name Space"
-msgstr ""
+msgstr "სახელების სივრცე"
 
 #: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
@@ -538,7 +538,7 @@ msgstr ""
 
 #: wmi_tools.php:369
 msgid "Query Results"
-msgstr ""
+msgstr "მოთხოვნის პასუხები"
 
 #: wmi_tools.php:398
 msgid "Common Queries (Click to Select)"
