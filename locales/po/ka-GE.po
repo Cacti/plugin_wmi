@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-02 19:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-04 10:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -66,7 +66,7 @@ msgstr "მონაცემების შეგროვება"
 #: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
 #: wmi_queries.php:415
 msgid "WMI Queries"
-msgstr ""
+msgstr "WMI მოთხოვნები"
 
 #: setup.php:307
 msgid "Template Editor"
@@ -74,7 +74,7 @@ msgstr "შაბლონის რედაქტორი"
 
 #: setup.php:320 setup.php:334
 msgid "WMI Autenication"
-msgstr ""
+msgstr "WMI ავთენტიკაცია"
 
 #: setup.php:327 setup.php:348
 msgid "(Edit)"
@@ -237,7 +237,7 @@ msgstr ""
 
 #: wmi_accounts.php:225
 msgid "Account [new]"
-msgstr ""
+msgstr "ანგარიში [ახალი]"
 
 #: wmi_accounts.php:246
 msgid "WMI Accounts"
@@ -360,7 +360,7 @@ msgstr "სიხშირე"
 
 #: wmi_queries.php:440
 msgid "WQL Query"
-msgstr ""
+msgstr "WQL მოთხოვნა"
 
 #: wmi_tools.php:107
 msgid "Get Computer Information"
