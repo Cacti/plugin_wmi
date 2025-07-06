@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-04 10:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-06 06:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -142,7 +142,7 @@ msgstr "სხვადსხვა"
 
 #: setup.php:491 setup.php:544
 msgid "Associated WMI Queries"
-msgstr ""
+msgstr "მინიჭებული WMI მოთხოვნები"
 
 #: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
 #: wmi_tools.php:324
@@ -155,7 +155,7 @@ msgstr "სტატუსი"
 
 #: setup.php:518
 msgid "WMI Query Exists"
-msgstr ""
+msgstr "WMI მოთხოვნა არსებობს"
 
 #: setup.php:520
 msgid "WMI Query Does Not Exist"
@@ -275,7 +275,7 @@ msgstr "მოწყობილობები"
 
 #: wmi_accounts.php:425
 msgid "No Accounts Found"
-msgstr ""
+msgstr "ანგარიშები აღმოჩენილი არაა"
 
 #: wmi_queries.php:50
 msgid "Give this query a meaningful name that will be displayed."
@@ -335,12 +335,12 @@ msgstr "დაბრუნება"
 
 #: wmi_queries.php:187
 msgid "Delete WMI Query"
-msgstr ""
+msgstr "WMI მოთხოვნის წაშლა"
 
 #: wmi_queries.php:242
 #, php-format
 msgid "Query [edit: %s]"
-msgstr ""
+msgstr "მოთხოვნა [ჩასწორება: %s]"
 
 #: wmi_queries.php:244
 msgid "Query [new]"
@@ -364,7 +364,7 @@ msgstr "WQL მოთხოვნა"
 
 #: wmi_tools.php:107
 msgid "Get Computer Information"
-msgstr ""
+msgstr "კომპიუტერის ინფორმაციის მიღება"
 
 #: wmi_tools.php:113
 msgid "Get System Processes"
@@ -404,7 +404,7 @@ msgstr ""
 
 #: wmi_tools.php:167
 msgid "Get Processor Information"
-msgstr ""
+msgstr "ინფორმაციის მიღება პროცესორის შესახებ"
 
 #: wmi_tools.php:173
 msgid "Ping a Known Address from Computer"
