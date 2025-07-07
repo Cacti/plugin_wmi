@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-06 06:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-07-07 07:26+0000\nLast-Translator: Ekaterine papava <papava.e@gtu.ge>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -200,7 +200,7 @@ msgstr "გაგრძელება"
 
 #: setup.php:640
 msgid "Remove WMI Query"
-msgstr ""
+msgstr "WMI მოთხოვნის მოცილება"
 
 #: wmi_accounts.php:48
 msgid "Give this account a meaningful name that will be displayed."
@@ -485,7 +485,7 @@ msgstr ""
 
 #: wmi_tools.php:301
 msgid "Distributed COM Setup"
-msgstr ""
+msgstr "განაწილებული COM-ის მორგება"
 
 #: wmi_tools.php:301
 #, php-format
@@ -546,7 +546,7 @@ msgstr ""
 
 #: wmi_tools.php:427
 msgid "WMI Setup Assistance"
-msgstr ""
+msgstr "WMI-ის მორგების დახმარება"
 
 #: wmi_tools.php:522
 msgid "ERROR: You must provide a host, username, password and query"
