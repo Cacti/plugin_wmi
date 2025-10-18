@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-10-16 18:18+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://translate.cacti.net/projects/cacti/wmi/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2022-06-18 08:26-0400\nPO-Revision-Date: 2025-10-18 11:25+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://translate.cacti.net/projects/cacti/wmi/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
 msgid "Queries"
@@ -57,7 +57,7 @@ msgstr "Tillbehör"
 
 #: setup.php:303 wmi_tools.php:316
 msgid "WMI Query Tool"
-msgstr "WMI frågeverktyg"
+msgstr "WMI-frågeverktyg"
 
 #: setup.php:304
 msgid "Data Collection"
@@ -70,7 +70,7 @@ msgstr "WMI-frågor"
 
 #: setup.php:307
 msgid "Template Editor"
-msgstr "Mall Redigerare"
+msgstr "Mallredigerare"
 
 #: setup.php:320 setup.php:334
 msgid "WMI Autenication"
@@ -155,11 +155,11 @@ msgstr "Status"
 
 #: setup.php:518
 msgid "WMI Query Exists"
-msgstr "WMI-fråga existerar"
+msgstr "WMI-fråga finns"
 
 #: setup.php:520
 msgid "WMI Query Does Not Exist"
-msgstr "WMI-frågan existerar inte"
+msgstr "WMI-frågan finns inte"
 
 #: setup.php:537 setup.php:569
 msgid "No Associated WMI Queries."
@@ -237,7 +237,7 @@ msgstr "Konto [redigera: %s]"
 
 #: wmi_accounts.php:225
 msgid "Account [new]"
-msgstr "Konto [ny]"
+msgstr "Konto [nytt]"
 
 #: wmi_accounts.php:246
 msgid "WMI Accounts"
@@ -263,7 +263,7 @@ msgstr "Utför"
 #: wmi_accounts.php:281 wmi_queries.php:304
 msgctxt "filter: reset"
 msgid "Clear"
-msgstr "Rensa"
+msgstr "Töm"
 
 #: wmi_accounts.php:393 wmi_tools.php:268
 msgid "Description"
@@ -283,7 +283,7 @@ msgstr "Ge den här frågan ett meningsfullt namn som kommer att visas."
 
 #: wmi_queries.php:56
 msgid "Collection Frequency"
-msgstr "Inkasseringsfrekvens"
+msgstr "Insamlingsfrekvens"
 
 #: wmi_queries.php:57
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
@@ -291,7 +291,7 @@ msgstr "När denna WMI-fråga läggs till i en enhet är detta den frekvens för
 
 #: wmi_queries.php:64
 msgid "Enabled"
-msgstr "Aktiverat"
+msgstr "Aktiverad"
 
 #: wmi_queries.php:65
 msgid "Should this Query be enabled on hosts using it"
@@ -299,7 +299,7 @@ msgstr "Bör denna fråga vara aktiverad på värdar som använder den"
 
 #: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
 msgid "Namespace"
-msgstr "Namnområde"
+msgstr "Namnrymd"
 
 #: wmi_queries.php:72
 msgid "The Namespace for this Query."
@@ -348,7 +348,7 @@ msgstr "Fråga [ny]"
 
 #: wmi_queries.php:298
 msgid "Has Graphs"
-msgstr "Har grafer"
+msgstr "Har diagram"
 
 #: wmi_queries.php:425
 msgid "ID"
@@ -364,7 +364,7 @@ msgstr "WQL-frågeställning"
 
 #: wmi_tools.php:107
 msgid "Get Computer Information"
-msgstr "Få datorinformation"
+msgstr "Hämta datorinformation"
 
 #: wmi_tools.php:113
 msgid "Get System Processes"
@@ -380,11 +380,11 @@ msgstr "Hämta information om operativsystemet"
 
 #: wmi_tools.php:131
 msgid "Get OD Service Information"
-msgstr "Få information om OD-tjänster"
+msgstr "Hämta information om OD-tjänster"
 
 #: wmi_tools.php:137
 msgid "Get System Enclosure Information"
-msgstr "Hämta information om systemkapsling"
+msgstr "Hämta information om systemets chassi"
 
 #: wmi_tools.php:143
 msgid "Get System Physical Memory Information"
@@ -392,7 +392,7 @@ msgstr "Hämta information om systemets fysiska minne"
 
 #: wmi_tools.php:149
 msgid "Get Memory Device Details"
-msgstr "Hämta detaljer om minnesenheten"
+msgstr "Hämta information om minnesenheter"
 
 #: wmi_tools.php:155
 msgid "Get System BIOS Information"
@@ -400,7 +400,7 @@ msgstr "Hämta BIOS-information för systemet"
 
 #: wmi_tools.php:161
 msgid "Get System Baseboard Information"
-msgstr "Hämta information om systemets basbord"
+msgstr "Hämta information om systemets moderkort"
 
 #: wmi_tools.php:167
 msgid "Get Processor Information"
@@ -412,7 +412,7 @@ msgstr "Pinga en känd adress från datorn"
 
 #: wmi_tools.php:179
 msgid "Get Row System OS Performance Data"
-msgstr "Hämta data om radsystemets OS-prestanda"
+msgstr "Hämta rad om systemets OS-prestanda"
 
 #: wmi_tools.php:185
 msgid "Get Formatted System OS Performance Data"
@@ -420,11 +420,11 @@ msgstr "Hämta formaterad data om systemets OS-prestanda"
 
 #: wmi_tools.php:191
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "Hämta formaterade data om Phsycal-diskens prestanda"
+msgstr "Hämta formaterade data om fysisk diskprestanda"
 
 #: wmi_tools.php:197
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "Hämta rådata om Phsycal-diskens prestanda"
+msgstr "Hämta rådata om fysisk diskprestanda"
 
 #: wmi_tools.php:203
 msgid "Get Logical Disk Information"
@@ -444,11 +444,11 @@ msgstr "Hämta formaterad CPU-prestandadata"
 
 #: wmi_tools.php:227
 msgid "Get Raw CPU Performance Data"
-msgstr "Få rådata om CPU-prestanda"
+msgstr "Hämta rådata om CPU-prestanda"
 
 #: wmi_tools.php:233
 msgid "Get Raw Memory Performance Data"
-msgstr "Få rådata om minnesprestanda"
+msgstr "Hämta rådata om minnesprestanda"
 
 #: wmi_tools.php:239
 msgid "Get Formatted Network Performance Data"
@@ -456,11 +456,11 @@ msgstr "Hämta formaterad data om nätverksprestanda"
 
 #: wmi_tools.php:245
 msgid "Get Raw Network Performance Data"
-msgstr "Få rådata om nätverksprestanda"
+msgstr "Hämta rådata om nätverksprestanda"
 
 #: wmi_tools.php:251
 msgid "Get Network Adapter Information"
-msgstr "Hämta information om nätverksadapter"
+msgstr "Hämta information om nätverkskort"
 
 #: wmi_tools.php:257
 msgid "Get Computer Asset Information"
@@ -468,7 +468,7 @@ msgstr "Hämta information om datortillgångar"
 
 #: wmi_tools.php:268
 msgid "Name Space"
-msgstr "Namn Utrymme"
+msgstr "Namnrymd"
 
 #: wmi_tools.php:284 wmi_tools.php:306
 msgid "Close"
@@ -518,7 +518,7 @@ msgstr "Töm"
 
 #: wmi_tools.php:355
 msgid "Clear the results panel."
-msgstr "Rensa resultatpanelen."
+msgstr "Töm resultatpanelen."
 
 #: wmi_tools.php:356
 msgid "Pick from a list of common queries."
@@ -534,11 +534,11 @@ msgstr "Hjälp"
 
 #: wmi_tools.php:358
 msgid "Create a new WMI Query from the existing Query."
-msgstr "Skapa en ny WMI Query från den befintliga Query."
+msgstr "Skapa en ny WMI-fråga från den befintliga frågan."
 
 #: wmi_tools.php:369
 msgid "Query Results"
-msgstr "Sökresultat"
+msgstr "Frågeresultat"
 
 #: wmi_tools.php:398
 msgid "Common Queries (Click to Select)"
@@ -546,16 +546,16 @@ msgstr "Vanliga frågor (Klicka för att välja)"
 
 #: wmi_tools.php:427
 msgid "WMI Setup Assistance"
-msgstr "Hjälp med WMI-installation"
+msgstr "Hjälp med WMI-konfiguration"
 
 #: wmi_tools.php:522
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr "ERROR: Du måste ange värd, användarnamn, lösenord och fråga"
+msgstr "FEL: Du måste ange värd, användarnamn, lösenord och fråga"
 
 #: wmi_tools.php:552 wmi_tools.php:617
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "Resultat av WMI-frågan för Device: %s, Klass: %s, Kolumner: %s, Rader: %s"
+msgstr "Resultat av WMI-frågan för enheten: %s, Klass: %s, Kolumner: %s, Rader: %s"
 
 #: wmi_tools.php:554 wmi_tools.php:619
 msgid "Showing columns and first one or two rows of data."
