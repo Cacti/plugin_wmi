@@ -236,8 +236,8 @@ function process_all_devices() {
 
 		if (sizeof($dead_devices)) {
 			foreach($dead_devices as $device) {
-				db_execute('DELETE FROM host_wmi_cache WHERE host_id='. $device['host_id']);
-				db_execute('DELETE FROM host_wmi_query WHERE host_id='. $device['host_id']);
+				db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id=?', array($device['host_id']));
+				db_execute_prepared('DELETE FROM host_wmi_query WHERE host_id=?', array($device['host_id']));
 				print "Purged WMI Device with ID '" . $device['host_id'] . "'" . PHP_EOL;
 			}
 		}
