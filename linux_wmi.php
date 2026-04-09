@@ -289,7 +289,7 @@ class Linux_WMI {
 
 	function decode($info) {
 		$info = base64_decode($info);
-		$info = unserialize($info);
+		$info = unserialize($info, array('allowed_classes' => false));
 		$info = $info['password'];
 
 		return $info;
