@@ -203,7 +203,7 @@ function plugin_wmi_setup_tables() {
 
 	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
 	if (!$exists) {
-		$save = array();
+		$save = [];
 		$save['hash']         = '4af550dfe8b451579054d038ad62ba3e';
 		$save['name']         = 'Get WMI Data';
 		$save['input_string'] = '';
@@ -226,7 +226,7 @@ function plugin_wmi_setup_tables() {
 		WHERE hash="42e584b81075f6ad6556e62afc509179"');
 
 	if (!$exists) {
-		$save = array();
+		$save = [];
 		$save['hash']         = '42e584b81075f6ad6556e62afc509179';
 		$save['name']         = 'Get WMI Data (Indexed)';
 		$save['input_string'] = '';
@@ -306,7 +306,7 @@ function wmi_config_arrays() {
 	$menu[__('Data Collection')]['plugins/wmi/wmi_queries.php'] = __('WMI Queries', 'wmi');
 
 	if (function_exists('auth_augment_roles')) {
-		auth_augment_roles(__('Template Editor'), array('wmi_accounts.php', 'wmi_queries.php', 'wmi_tools.php'));
+		auth_augment_roles(__('Template Editor'), ['wmi_accounts.php', 'wmi_queries.php', 'wmi_tools.php']);
 	}
 }
 
@@ -381,23 +381,23 @@ function wmi_config_form() {
 	global $fields_host_edit, $plugins;
 
 //	$fields_host_edit2 = $fields_host_edit;
-//	$fields_host_edit3 = array();
+//	$fields_host_edit3 = [];
 //	foreach ($fields_host_edit2 as $f => $a) {
 //		if ($f == 'disabled') {
-//			$fields_host_edit3['serial'] = array(
+//			$fields_host_edit3['serial'] = [
 //				'friendly_name' => 'Serial / Service Code',
 //				'description' => 'This is the Serial Number for this server.',
 //				'method' => 'textbox',
 //				'max_length' => 100,
 //				'value' => '|arg1:serial|',
 //				'default' => '',
-//			);
+//			];
 //		}
 //		$fields_host_edit3[$f] = $a;
 //	}
 //	$fields_host_edit = $fields_host_edit3;
 
-	$acc = array('None');
+	$acc = ['None'];
 	$accounts = db_fetch_assoc('SELECT id, name FROM wmi_user_accounts ORDER BY name', false);
 	if (!empty($accounts)) {
 		foreach ($accounts as $a) {
@@ -503,7 +503,7 @@ function wmi_device_edit_pre_bottom() {
 		ON wwq.id=htwq.wmi_query_id
 		WHERE htwq.host_template_id = ?
 		ORDER BY name',
-		array($host_template_id));
+		[$host_template_id]);
 
 	html_header(array(__('Name', 'wmi'), __('Status', 'wmi')));
 

@@ -34,7 +34,7 @@ if (!isset($called_by_script_server)) {
 		array_shift($_SERVER['argv']);
 	}
 
-	print call_user_func_array('wmi_script', $_SERVER['argv']);
+	print call_user_func_['wmi_script', $_SERVER['argv']];
 }
 
 function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2 = '') {
@@ -50,7 +50,7 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 	$wmiinfo = db_fetch_row_prepared('SELECT *
 		FROM wmi_wql_queries
 		WHERE queryname = ?',
-		array($wmiquery));
+		[$wmiquery]);
 
 	if (!isset($wmiinfo['queryclass'])) {
 		return '';

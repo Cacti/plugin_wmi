@@ -187,7 +187,7 @@ class Linux_WMI {
 
 			return $new;
 		}else{
-			return array();
+			return [];
 		}
 	}
 
@@ -242,7 +242,7 @@ class Linux_WMI {
 		$config['cacti_server_os'] = 'unix';
 
 		$return_var   = 0;
-		$return_array = array();
+		$return_array = [];
 
 		exec($command, $return_array, $return_var);
 
@@ -276,7 +276,7 @@ class Linux_WMI {
 			INNER JOIN host AS h
 			WHERE pwa.id = h.wmi_account
 			AND h.id = ?",
-			array($this->hostid));
+			[$this->hostid]);
 
 		if (isset($info['username'])) {
 			$this->username = $info['username'];

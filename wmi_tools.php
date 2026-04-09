@@ -60,41 +60,41 @@ function process_request_vars() {
 			'filter' => FILTER_CALLBACK,
 			'pageset' => true,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
-		'password' => array(
+		'password' => [
 			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => '',
-		),
+		],
 		'namespace' => array(
 			'filter' => FILTER_CALLBACK,
 			'pageset' => true,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 		'keyname' => array(
 			'filter' => FILTER_CALLBACK,
 			'pageset' => true,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
-		'frequency' => array(
+		'frequency' => [
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '120'
-		),
+		],
 		'host' => array(
 			'filter' => FILTER_CALLBACK,
 			'pageset' => true,
 			'default' => '',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 		'name' => array(
 			'filter' => FILTER_CALLBACK,
 			'pageset' => true,
 			'default' => 'New Query',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		)
 	);
 
@@ -611,7 +611,7 @@ function walk_host() {
 			if (isset($data[1])) {
 				$odata1 = (array) $data[1];
 			} else {
-				$odata1 = array();
+				$odata1 = [];
 			}
 
 			print "<table style='width:100%'><tr><td>";

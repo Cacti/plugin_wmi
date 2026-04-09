@@ -67,10 +67,10 @@ $account_edit = array(
 		'max_length' => '64',
 		'size' => '30'
 		),
-	'id' => array(
+	'id' => [
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
-		)
+		]
 );
 
 switch (get_request_var('action')) {
@@ -109,12 +109,12 @@ function actions_accounts() {
 				for ($i=0; $i<count($selected_items); $i++) {
 					db_execute_prepared('DELETE FROM wmi_user_accounts
 						WHERE id = ?',
-						array($selected_items[$i]));
+						[$selected_items[$i]]);
 
 					db_execute_prepared('UPDATE host
 						SET wmi_account = 0
 						WHERE wmi_account = ?',
-						array($selected_items[$i]));
+						[$selected_items[$i]]);
 				}
 			}
 
@@ -137,7 +137,7 @@ function actions_accounts() {
 			$account_list .= '<li>' . db_fetch_cell_prepared('SELECT name
 				FROM wmi_user_accounts
 				WHERE id = ?',
-				array($matches[1])) . '</li>';
+				[$matches[1]]) . '</li>';
 
 			$account_array[] = $matches[1];
 		}
@@ -217,7 +217,7 @@ function edit_accounts() {
 	get_filter_request_var('id');
 	/* ==================================================== */
 
-	$account = array();
+	$account = [];
 	if (!isempty_request_var('id')) {
 		$account = db_fetch_row_prepared('SELECT * FROM wmi_user_accounts WHERE id = ?', array(get_request_var('id')));
 
@@ -232,7 +232,7 @@ function edit_accounts() {
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 	draw_edit_form(
 		array(
-			'config' => array('no_form_tag' => true),
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($account_edit, $account)
 		)
 	);
@@ -331,29 +331,29 @@ function show_accounts() {
 
 	/* ================= input validation and session storage ================= */
 	$filters = array(
-		'rows' => array(
+		'rows' => [
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
-		'page' => array(
+		],
+		'page' => [
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'filter' => array(
+		],
+		'filter' => [
 			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => ''
-		),
+		],
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 		'sort_direction' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 	);
 
@@ -414,7 +414,7 @@ function show_accounts() {
 		foreach ($accounts as $row) {
 			$count = db_fetch_cell_prepared("SELECT COUNT(wmi_account)
 				FROM host
-				WHERE wmi_account = ?", array($row['id']));
+				WHERE wmi_account = ?", [$row['id']]);
 
 			form_alternate_row('line' . $row['id'], false);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'), 'wmi_accounts.php?&action=edit&id=' . $row['id']), $row['id']);

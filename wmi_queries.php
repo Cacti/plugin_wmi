@@ -43,7 +43,7 @@ global $wmi_frequencies;
 
 set_default_action();
 
-$ns = array('root\\\\CIMV2', 'root\\\\MSCluster');
+$ns = ['root\\\\CIMV2', 'root\\\\MSCluster'];
 
 $query_edit = array(
 	'name' => array(
@@ -91,10 +91,10 @@ $query_edit = array(
 		'value' => '|arg1:primary_key|',
 		'max_length' => '128',
 	),
-	'id' => array(
+	'id' => [
 		'method' => 'hidden_zero',
 		'value' => '|arg1:id|'
-	)
+	]
 );
 
 switch (get_request_var('action')) {
@@ -135,10 +135,10 @@ function actions_queries() {
 					input_validate_input_number($selected_items[$i]);
 					/* ==================================================== */
 
-					db_execute_prepared('DELETE FROM host_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM host_wmi_cache WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', array($selected_items[$i]));
+					db_execute_prepared('DELETE FROM host_wmi_query WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM host_wmi_cache WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', [$selected_items[$i]]);
 				}
 			}
 		}
@@ -161,7 +161,7 @@ function actions_queries() {
 			$query_list .= '<li>' . db_fetch_cell_prepared('SELECT name
 				FROM wmi_wql_queries
 				WHERE id = ?',
-				array($matches[1])) . '</li>';
+				[$matches[1]]) . '</li>';
 
 			$query_array[] = $matches[1];
 		}
@@ -234,7 +234,7 @@ function save_queries() {
 function edit_queries() {
 	global $query_edit;
 
-	$query = array();
+	$query = [];
 	if (isset_request_var('id')) {
 		$query = db_fetch_row_prepared('SELECT *
 			FROM wmi_wql_queries
@@ -252,7 +252,7 @@ function edit_queries() {
 
 	draw_edit_form(
 		array(
-			'config' => array('no_form_tag' => true),
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($query_edit, $query)
 		)
 	);
@@ -354,29 +354,29 @@ function show_queries() {
 
 	/* ================= input validation and session storage ================= */
 	$filters = array(
-		'rows' => array(
+		'rows' => [
 			'filter' => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
-		'page' => array(
+		],
+		'page' => [
 			'filter' => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'filter' => array(
+		],
+		'filter' => [
 			'filter' => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => ''
-		),
+		],
 		'sort_column' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 		'sort_direction' => array(
 			'filter' => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
+			'options' => ['options' => 'sanitize_search_string']
 		),
 	);
 
@@ -384,7 +384,7 @@ function show_queries() {
     /* ================= input validation ================= */
 
 	$total_rows = 0;
-	$queries = array();
+	$queries = [];
 
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');

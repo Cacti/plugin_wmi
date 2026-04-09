@@ -293,7 +293,7 @@ function process_device($host_id) {
 		WHERE (UNIX_TIMESTAMP(NOW()) >= UNIX_TIMESTAMP(last_started)+frequency OR last_started IS NULL)
 		AND h.id = ?
 		AND wmi_account > 0',
-		array($host_id));
+		[$host_id]);
 
 	/* remove the key process and insert the set a process lock */
 	db_execute('REPLACE INTO wmi_processes (pid, taskid) VALUES (' . getmypid() . ", $seed)");
@@ -310,7 +310,7 @@ function process_device($host_id) {
 			$account = db_fetch_row_prepared('SELECT *
 				FROM wmi_user_accounts
 				WHERE id = ?',
-				array($q['wmi_account']));
+				[$q['wmi_account']]);
 
 			if (!cacti_sizeof($account)) {
 				cacti_log("WARNING: WMI Account ID " . $q['wmi_account'] . " not found for WMI Device[$host_id].", false, 'WMI');
@@ -321,7 +321,7 @@ function process_device($host_id) {
 				FROM host_wmi_query
 				WHERE host_id = ?
 				AND wmi_query_id = ?',
-				array($host_id, $q['wmi_query_id']));
+				[$host_id, $q['wmi_query_id']]);
 
 			if (!cacti_sizeof($run_before)) {
 				$last_failed = '0000-00-00 00:00:00';

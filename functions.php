@@ -328,25 +328,25 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 	$host_info = db_fetch_row_prepared('SELECT *
 		FROM host
 		WHERE id = ?',
-		array($host_id));
+		[$host_id]);
 
 	// Prepared old entries for removal
 	db_execute_prepared('UPDATE host_wmi_cache
 		SET present = 0
 		WHERE host_id = ?
 		AND wmi_query_id = ?',
-		array($host_id, $wmi_query_id));
+		[$host_id, $wmi_query_id]);
 
 	if (cacti_sizeof($host_info)) {
 		$auth_info = db_fetch_row_prepared('SELECT *
 			FROM wmi_user_accounts
 			WHERE id = ?',
-			array($host_info['wmi_account']));
+			[$host_info['wmi_account']]);
 
 		$wmi_query = db_fetch_row_prepared('SELECT *
 			FROM wmi_wql_queries
 			WHERE id = ?',
-			array($wmi_query_id));
+			[$wmi_query_id]);
 
 		if (!cacti_sizeof($auth_info)) {
 			return false;
@@ -365,8 +365,8 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 
 		// Initialize variables
 		$cur_time  = date('Y-m-d H:i:s');
-		$data      = array();
-		$indexes   = array();
+		$data      = [];
+		$indexes   = [];
 
 		if ($config['cacti_server_os'] != 'win32') {
 			include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
@@ -391,8 +391,8 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 				$indexes = $wmi->fetch_indexes();
 				$data    = $wmi->fetch_data();
 			} else {
-				$indexes = array();
-				$data    = array();
+				$indexes = [];
+				$data    = [];
 			}
 		} else {
 			// Windows version
@@ -407,7 +407,7 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		}
 
 		if (cacti_sizeof($data)) {
-			$sql = array();
+			$sql = [];
 
 			$pk_index = -1;
 			if (cacti_sizeof($indexes)) {
@@ -478,14 +478,14 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		WHERE present = 0
 		AND host_id = ?
 		AND wmi_query_id = ?',
-		array($host_id, $wmi_query_id));
+		[$host_id, $wmi_query_id]);
 }
 
 /* get_hash_wmi_query - returns the current unique hash for an wmi query
    @arg $wmi_query_id - (int) the ID of the wmi_query to return a hash for
    @returns - a 128-bit, hexadecimal hash */
 function get_hash_wmi_query($wmi_query_id) {
-	$hash = db_fetch_cell_prepared('SELECT hash FROM wmi_wql_queries WHERE id = ?', array($wmi_query_id));
+	$hash = db_fetch_cell_prepared('SELECT hash FROM wmi_wql_queries WHERE id = ?', [$wmi_query_id]);
 
 	if (preg_match('/[a-fA-F0-9]{32}/', $hash)) {
 		return $hash;
