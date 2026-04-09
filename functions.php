@@ -174,7 +174,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		}
 		$data .= "\t\t</items>\n";
 
-		$data_input_data = db_fetch_assoc("SELECT * FROM data_input_fields WHERE data_input_fields.data_input_id=$input AND input_output = 'in' ORDER BY id DESC");
+		$data_input_data = db_fetch_assoc_prepared("SELECT * FROM data_input_fields WHERE data_input_fields.data_input_id=? AND input_output = 'in' ORDER BY id DESC", array($input));
 		$data .= "\t\t<data>\n";
 		$i = 0;
 		if (cacti_sizeof($data_input_data) > 0) {
