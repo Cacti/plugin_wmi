@@ -258,7 +258,8 @@ class Linux_WMI {
 	function clean() {
 		$this->username  = cacti_escapeshellarg($this->username);
 		$this->password  = cacti_escapeshellarg($this->password);
-		$this->hostname  = trim($this->hostname);
+		/* hostname must be quoted: trim() alone does not neutralise shell metacharacters */
+		$this->hostname  = cacti_escapeshellarg(trim($this->hostname));
 		$this->binary    = cacti_escapeshellarg($this->binary);
 		$this->command   = cacti_escapeshellarg($this->command);
 	}
@@ -289,19 +290,24 @@ class Linux_WMI {
 
 	function decode($info) {
 		$info = base64_decode($info);
-		$info = unserialize($info);
-		$info = $info['password'];
 
-		return $info;
+		/*
+		 * Legacy records were stored with serialize(). Detect and migrate on
+		 * read so existing credentials survive the format change. New writes
+		 * always use JSON (see encode()).
+		 */
+		if (substr($info, 0, strlen('a:')) === 'a:') {
+			$decoded = @unserialize($info, ['allowed_classes' => false]);
+			return is_array($decoded) ? ($decoded['password'] ?? '') : '';
+		}
+
+		$decoded = json_decode($info, true);
+		return is_array($decoded) ? ($decoded['password'] ?? '') : '';
 	}
 
 	function encode($info) {
-		$a = array(rand(1,time()) => rand(1,time()),'password' => '', rand(1,time()) => rand(1,time()));
-		$a['password'] = $info;
-		$a = serialize($a);
-		$a = base64_encode($a);
-
-		return $a;
+		$a = ['password' => $info];
+		return base64_encode(json_encode($a));
 	}
 }
 
