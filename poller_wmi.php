@@ -282,6 +282,13 @@ function process_background_device($host_id, $seed, $key) {
 function process_device($host_id) {
 	global $config, $start, $seed, $key, $snmp_errors;
 
+	if (empty($seed)) {
+		$seed = rand();
+	}
+	if (empty($key)) {
+		$key = getmypid();
+	}
+
 	$wmi_errors = 0;
 
 	$queries_to_run = db_fetch_assoc_prepared('SELECT h.id, h.wmi_account, htwq.wmi_query_id, wwq.*
