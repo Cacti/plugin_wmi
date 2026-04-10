@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 /*
  +-------------------------------------------------------------------------+
  | Copyright (C) 2004-2026 The Cacti Group                                 |
@@ -226,7 +225,7 @@ class Linux_WMI {
 			' --user=' . $this->username .
 			' --password=' . $this->password .
 			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
-			' //' . trim($this->hostname) .
+			' //' . $this->hostname .
 			' ' . $this->command;
 	}
 
@@ -260,7 +259,7 @@ class Linux_WMI {
 	function clean() {
 		$this->username  = cacti_escapeshellarg($this->username);
 		$this->password  = cacti_escapeshellarg($this->password);
-		$this->hostname  = trim($this->hostname);
+		$this->hostname  = cacti_escapeshellarg(trim($this->hostname));
 		$this->binary    = cacti_escapeshellarg($this->binary);
 		$this->command   = cacti_escapeshellarg($this->command);
 	}
@@ -291,19 +290,20 @@ class Linux_WMI {
 
 	function decode($info) {
 		$info = base64_decode($info);
-		$info = unserialize($info);
-		$info = $info['password'];
 
-		return $info;
+		/* Legacy records were stored with serialize(). Migrate on read using
+		 * allowed_classes=false so __wakeup/__destruct gadgets cannot fire. */
+		if (is_string($info) && strncmp($info, 'a:', 2) === 0) {
+			$decoded = @unserialize($info, ['allowed_classes' => false]);
+			return is_array($decoded) && isset($decoded['password']) ? $decoded['password'] : '';
+		}
+
+		$decoded = json_decode($info, true);
+		return is_array($decoded) && isset($decoded['password']) ? $decoded['password'] : '';
 	}
 
 	function encode($info) {
-		$a = array(rand(1,time()) => rand(1,time()),'password' => '', rand(1,time()) => rand(1,time()));
-		$a['password'] = $info;
-		$a = serialize($a);
-		$a = base64_encode($a);
-
-		return $a;
+		return base64_encode(json_encode(['password' => $info]));
 	}
 }
 

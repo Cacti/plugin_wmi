@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 /*
  +-------------------------------------------------------------------------+
  | Copyright (C) 2004-2026 The Cacti Group                                 |
@@ -551,7 +550,7 @@ function walk_host() {
 			$class   = $wmi->fetch_class();
 			$data    = $wmi->fetch_data();
 
-			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
+			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', html_escape($host), html_escape($class), sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
 
 			print "<p>" . __('Showing columns and first one or two rows of data.', 'wmi') . "</p>";
 
@@ -565,10 +564,10 @@ function walk_host() {
 					foreach($data[0] as $index => $r) {
 						form_alternate_row('line' . $index, true);
 
-						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>";
+						print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . "</td><td>" . html_escape($r) . "</td>";
 
 						if (isset($data[1][$index])) {
-							print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $data[1][$index] . "</td>";
+							print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . "</td><td>" . html_escape($data[1][$index]) . "</td>";
 						}
 
 						form_end_row();
@@ -580,14 +579,14 @@ function walk_host() {
 					if (cacti_sizeof($indexes)) {
 						print "<tr>";
 						foreach($indexes as $col) {
-							print "<th>" . $col . "</th>";
+							print "<th>" . html_escape($col) . "</th>";
 						}
 						print "</tr>";
 					}
 
 					print "<tr>";
 					foreach($row as $data) {
-						print "<td>" . $data . "</td>";
+						print "<td>" . html_escape($data) . "</td>";
 					}
 					print "</tr>";
 				}
@@ -595,7 +594,7 @@ function walk_host() {
 
 			print "</table>";
 		} else {
-			print $wmi->error;
+			print html_escape($wmi->error);
 		}
 	} else {
 		// Windows version
@@ -616,7 +615,7 @@ function walk_host() {
 
 			print "<table style='width:100%'><tr><td>";
 
-			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $namespace, sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
+			print "<h4>" . __('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', html_escape($host), html_escape($namespace), sizeof($indexes), sizeof($data), 'wmi') . "</h4>";
 
 			print "<p>" . __('Showing columns and first one or two rows of data.', 'wmi') . "</p>";
 
@@ -627,10 +626,10 @@ function walk_host() {
 				foreach($odata as $index => $r) {
 					form_alternate_row('line' . $index, true);
 
-					print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $r . "</td>";
+					print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . "</td><td>" . html_escape($r) . "</td>";
 
 					if (cacti_sizeof($odata1)) {
-						print "<td style='font-weight:bold;'>" . $indexes[$index] . "</td><td>" . $odata1[$index] . "</td>";
+						print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . "</td><td>" . html_escape($odata1[$index]) . "</td>";
 					}
 
 					form_end_row();
