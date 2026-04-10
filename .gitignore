@@ -1,3 +1,4 @@
 .git*
 
 locales/po/*.mo
+.omc/
