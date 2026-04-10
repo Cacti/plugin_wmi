@@ -73,11 +73,11 @@ if (!class_exists('Linux_WMI_Testable')) {
             /* Legacy records were stored with serialize(). Migrate on read. */
             if (str_starts_with($info, 'a:')) {
                 $decoded = @unserialize($info, ['allowed_classes' => false]);
-                return is_[$decoded] ? ($decoded['password'] ?? '') : '';
+                return is_array($decoded) ? ($decoded['password'] ?? '') : '';
             }
 
             $decoded = json_decode($info, true);
-            return is_[$decoded] ? ($decoded['password'] ?? '') : '';
+            return is_array($decoded) ? ($decoded['password'] ?? '') : '';
         }
     }
 }
