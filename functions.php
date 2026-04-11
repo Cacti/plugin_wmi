@@ -59,7 +59,7 @@ function plugin_wmi_query_exists($query) {
 
 	foreach($tokens as $token) {
 		if ($next_ic) {
-			$exists = db_fetch_cell("SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE '^FROM\s$token$+'");
+			$exists = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', array('^FROM\\s' . preg_quote($token, '/') . '$+'));
 		}
 
 		if (strtolower($token) == 'from') {
@@ -72,7 +72,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 	global $config;
 
 	include_once($config['base_path'] . '/lib/export.php');
-	$wmic = db_fetch_row("SELECT * FROM wmi_wql_queries WHERE id = $id");
+	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', array((int)$id));
 	$data = '';
 	if (isset($wmic['id'])) {
 		$data = "<cacti>\n";
@@ -279,7 +279,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 }
 
 function plugin_wmi_create_resource_xml($id) {
-	$wmic = db_fetch_row("SELECT * FROM wmi_wql_queries WHERE id = $id");
+	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', array((int)$id));
 	$data = '';
 	if (isset($wmic['id'])) {
 		$data = "<WMIQuery>\n";
@@ -492,4 +492,3 @@ function get_hash_wmi_query($wmi_query_id) {
 		return generate_hash();
 	}
 }
-

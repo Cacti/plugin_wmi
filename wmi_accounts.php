@@ -133,10 +133,10 @@ function actions_accounts() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$account_list .= '<li>' . db_fetch_cell_prepared('SELECT name
+			$account_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name
 				FROM wmi_user_accounts
 				WHERE id = ?',
-				[$matches[1]]) . '</li>';
+				[$matches[1]])) . '</li>';
 
 			$account_array[] = $matches[1];
 		}
@@ -169,7 +169,7 @@ function actions_accounts() {
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
 			<input type='hidden' name='selected_items' value='" . (isset($account_array) ? serialize($account_array) : '') . "'>
-			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
+			<input type='hidden' name='drp_action' value='" . html_escape(get_request_var('drp_action')) . "'>
 			<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>
 			$save_html
 		</td>
@@ -436,4 +436,3 @@ function show_accounts() {
 
 	form_end();
 }
-

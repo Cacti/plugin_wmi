@@ -157,10 +157,10 @@ function actions_queries() {
 			input_validate_input_number($matches[1]);
 			/* ==================================================== */
 
-			$query_list .= '<li>' . db_fetch_cell_prepared('SELECT name
+			$query_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name
 				FROM wmi_wql_queries
 				WHERE id = ?',
-				[$matches[1]]) . '</li>';
+				[$matches[1]])) . '</li>';
 
 			$query_array[] = $matches[1];
 		}
@@ -192,7 +192,7 @@ function actions_queries() {
 		<td class='saveRow'>
 			<input type='hidden' name='action' value='actions'>
 			<input type='hidden' name='selected_items' value='" . (isset($query_array) ? serialize($query_array) : '') . "'>
-			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
+			<input type='hidden' name='drp_action' value='" . html_escape(get_request_var('drp_action')) . "'>
 			$save_html
 		</td>
 	</tr>";
@@ -474,5 +474,4 @@ function show_queries() {
 
 	form_end();
 }
-
 
