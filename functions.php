@@ -476,9 +476,9 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 }
 
 /** get_hash_wmi_query - returns the current unique hash for an wmi query
-   @arg $wmi_query_id - (int) the ID of the wmi_query to return a hash for
-   * @param mixed $wmi_query_id
-   @returns - a 128-bit, hexadecimal hash */
+ * @arg $wmi_query_id - (int) the ID of the wmi_query to return a hash for
+ * @param mixed $wmi_query_id
+ * @returns - a 128-bit, hexadecimal hash */
 function get_hash_wmi_query($wmi_query_id) {
 	$hash = db_fetch_cell_prepared('SELECT hash FROM wmi_wql_queries WHERE id = ?', [$wmi_query_id]);
 
