@@ -23,7 +23,7 @@
  +-------------------------------------------------------------------------+
 */
 
-chdir(dirname(__FILE__));
+chdir(__DIR__);
 chdir('../..');
 
 include('./include/cli_check.php');
@@ -31,53 +31,60 @@ include_once('./lib/poller.php');
 include_once('./lib/ping.php');
 include_once('./plugins/wmi/functions.php');
 
-/* process calling arguments */
+// process calling arguments
 $parms = $_SERVER['argv'];
 array_shift($parms);
 
 global $debug, $start, $seed, $forcerun;
 
-$debug          = FALSE;
-$forcerun       = FALSE;
-$mainrun        = FALSE;
+$debug          = false;
+$forcerun       = false;
+$mainrun        = false;
 $host_id        = '';
 $start          = '';
 $seed           = '';
 $key            = '';
 
 if (sizeof($parms)) {
-	foreach($parms as $parameter) {
+	foreach ($parms as $parameter) {
 		if (strpos($parameter, '=')) {
-			list($arg, $value) = explode('=', $parameter);
+			[$arg, $value] = explode('=', $parameter);
 		} else {
-			$arg = $parameter;
+			$arg   = $parameter;
 			$value = '';
 		}
 
 		switch ($arg) {
 			case '-d':
 			case '--debug':
-				$debug = TRUE;
+				$debug = true;
+
 				break;
 			case '--host-id':
 				$host_id = $value;
+
 				break;
 			case '--seed':
 				$seed = $value;
+
 				break;
 			case '--key':
 				$key = $value;
+
 				break;
 			case '-f':
 			case '--force':
-				$forcerun = TRUE;
+				$forcerun = true;
+
 				break;
 			case '-M':
-				$mainrun = TRUE;
+				$mainrun = true;
+
 				break;
 			case '-s':
 			case '--start':
 				$start = $value;
+
 				break;
 			case '--version':
 			case '-V':
@@ -97,13 +104,13 @@ if (sizeof($parms)) {
 	}
 }
 
-/* Check for mandatory parameters */
+// Check for mandatory parameters
 if (!$mainrun && $host_id == '') {
-	print "FATAL: You must specify a Cacti host-id run" . PHP_EOL;
+	print 'FATAL: You must specify a Cacti host-id run' . PHP_EOL;
 	exit;
 }
 
-/* Do not process if not enabled */
+// Do not process if not enabled
 if (!api_plugin_is_enabled('wmi')) {
 	print 'WARNING: The Host WMI Collection is Down!  Exiting' . PHP_EOL;
 	exit(0);
@@ -136,11 +143,11 @@ function debug($message) {
 function process_all_devices() {
 	global $start, $seed;
 
-	print "NOTE: Processing Hosts Begins" . PHP_EOL;
+	print 'NOTE: Processing Hosts Begins' . PHP_EOL;
 
-	/* Do not process collectors are still running */
+	// Do not process collectors are still running
 	if (db_fetch_cell('SELECT COUNT(*) FROM wmi_processes') > 0) {
-		print "WARNING: Another WMI Collector is still running!  Exiting" . PHP_EOL;
+		print 'WARNING: Another WMI Collector is still running!  Exiting' . PHP_EOL;
 		exit(0);
 	}
 
@@ -164,7 +171,7 @@ function process_all_devices() {
 		AND wwq.enabled = 'on'
         AND wmi_account > 0");
 
-	/* Remove entries from  down and disabled devices */
+	// Remove entries from  down and disabled devices
 	db_execute("DELETE FROM host_wmi_cache
 		WHERE host_id IN(
 			SELECT id
@@ -179,16 +186,17 @@ function process_all_devices() {
 		set_config_option('wmi_processes', '10');
 	}
 
-	print "NOTE: Launching Collectors Starting" . PHP_EOL;
+	print 'NOTE: Launching Collectors Starting' . PHP_EOL;
 
 	$i = 0;
+
 	if (sizeof($devices)) {
 		foreach ($devices as $device) {
 			while (true) {
 				$processes = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 				if ($processes < $concurrent_processes) {
-					/* put a placeholder in place to prevent overloads on slow systems */
+					// put a placeholder in place to prevent overloads on slow systems
 					$key = rand();
 
 					db_execute("INSERT INTO wmi_processes (pid, taskid, started) VALUES ($key, $seed, NOW())");
@@ -206,15 +214,16 @@ function process_all_devices() {
 			}
 		}
 
-		print "NOTE: All WMI Devices Launched, proceeding to wait for completion" . PHP_EOL;
+		print 'NOTE: All WMI Devices Launched, proceeding to wait for completion' . PHP_EOL;
 
-		/* wait for all processes to end or max run time */
+		// wait for all processes to end or max run time
 		while (true) {
 			$processes_left = db_fetch_cell("SELECT COUNT(*) FROM wmi_processes WHERE taskid = $seed");
-			$pl = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
+			$pl             = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 			if ($processes_left == 0) {
-				print "NOTE: All Processes Complete, Exiting" . PHP_EOL;
+				print 'NOTE: All Processes Complete, Exiting' . PHP_EOL;
+
 				break;
 			} else {
 				print "NOTE: Waiting on '$processes_left' Processes" . PHP_EOL;
@@ -222,11 +231,11 @@ function process_all_devices() {
 			}
 		}
 	} else {
-		print "NOTE: No Devices found this pass to launch" . PHP_EOL;
+		print 'NOTE: No Devices found this pass to launch' . PHP_EOL;
 	}
 
 	if (read_config_option('wmi_autopurge') == 'on') {
-		print "NOTE: Auto Purging Devices" . PHP_EOL;
+		print 'NOTE: Auto Purging Devices' . PHP_EOL;
 
 		$dead_devices = db_fetch_assoc('SELECT host_id
 			FROM host_wmi_cache AS hwc
@@ -235,15 +244,15 @@ function process_all_devices() {
 			WHERE host.id IS NULL');
 
 		if (sizeof($dead_devices)) {
-			foreach($dead_devices as $device) {
-				db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id=?', array($device['host_id']));
-				db_execute_prepared('DELETE FROM host_wmi_query WHERE host_id=?', array($device['host_id']));
+			foreach ($dead_devices as $device) {
+				db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id=?', [$device['host_id']]);
+				db_execute_prepared('DELETE FROM host_wmi_query WHERE host_id=?', [$device['host_id']]);
 				print "Purged WMI Device with ID '" . $device['host_id'] . "'" . PHP_EOL;
 			}
 		}
 	}
 
-	/* take time and log performance data */
+	// take time and log performance data
 	$end = microtime(true);
 
 	$cacti_stats = sprintf(
@@ -254,11 +263,11 @@ function process_all_devices() {
 		$concurrent_processes,
 		cacti_sizeof($devices));
 
-	/* log to the database */
+	// log to the database
 	set_config_option('stats_wmi', $cacti_stats);
 
-	/* log to the logfile */
-	cacti_log('WMI STATS: ' . $cacti_stats , TRUE, 'SYSTEM');
+	// log to the logfile
+	cacti_log('WMI STATS: ' . $cacti_stats , true, 'SYSTEM');
 
 	print "NOTE: Device WMI Polling Completed, $cacti_stats" . PHP_EOL;
 }
@@ -272,8 +281,8 @@ function process_background_device($host_id, $seed, $key) {
 		' --start=' . $start .
 		' --seed=' . $seed .
 		' --key=' . $key .
-		($forcerun ? ' --force':'') .
-		($debug ? ' --debug':''));
+		($forcerun ? ' --force' : '') .
+		($debug ? ' --debug' : ''));
 }
 
 function process_device($host_id) {
@@ -293,27 +302,28 @@ function process_device($host_id) {
 		WHERE (UNIX_TIMESTAMP(NOW()) >= UNIX_TIMESTAMP(last_started)+frequency OR last_started IS NULL)
 		AND h.id = ?
 		AND wmi_account > 0',
-		array($host_id));
+		[$host_id]);
 
-	/* remove the key process and insert the set a process lock */
+	// remove the key process and insert the set a process lock
 	db_execute('REPLACE INTO wmi_processes (pid, taskid) VALUES (' . getmypid() . ", $seed)");
 	db_execute("DELETE FROM wmi_processes WHERE pid = $key AND taskid = $seed");
 
 	$qstart  = date('Y-m-d H:i:s');
 
 	if (cacti_sizeof($queries_to_run)) {
-		foreach($queries_to_run AS $q) {
+		foreach ($queries_to_run as $q) {
 			$qmstart = microtime(true);
 
-			cacti_log("NOTE: Executing WMI Query[" . $q['wmi_query_id'] . "] for Device [$host_id].", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
+			cacti_log('NOTE: Executing WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id].", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 
 			$account = db_fetch_row_prepared('SELECT *
 				FROM wmi_user_accounts
 				WHERE id = ?',
-				array($q['wmi_account']));
+				[$q['wmi_account']]);
 
 			if (!cacti_sizeof($account)) {
-				cacti_log("WARNING: WMI Account ID " . $q['wmi_account'] . " not found for WMI Device[$host_id].", false, 'WMI');
+				cacti_log('WARNING: WMI Account ID ' . $q['wmi_account'] . " not found for WMI Device[$host_id].", false, 'WMI');
+
 				break;
 			}
 
@@ -321,7 +331,7 @@ function process_device($host_id) {
 				FROM host_wmi_query
 				WHERE host_id = ?
 				AND wmi_query_id = ?',
-				array($host_id, $q['wmi_query_id']));
+				[$host_id, $q['wmi_query_id']]);
 
 			if (!cacti_sizeof($run_before)) {
 				$last_failed = '0000-00-00 00:00:00';
@@ -339,22 +349,22 @@ function process_device($host_id) {
 			if ($status != 0) {
 				$last_failed = date('Y-m-d H:i:s');
 
-				cacti_log("WARNING: Errored WMI Query[" . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend - $qmstart, 2) . " seconds.", false, 'WMI');
+				cacti_log('WARNING: Errored WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend - $qmstart, 2) . ' seconds.', false, 'WMI');
 			} else {
-				cacti_log("NOTE: Finished WMI Query[" . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend -$qmstart, 2) . " seconds.", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
+				cacti_log('NOTE: Finished WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend - $qmstart, 2) . ' seconds.', false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 			}
 
 			db_execute_prepared('REPLACE INTO host_wmi_query
 				(host_id, wmi_query_id, sort_field, title_format, last_started, last_runtime, last_failed)
 				VALUES (?, ?, ?, ?, ?, ?, ?)',
-				array($host_id, $q['wmi_query_id'], '', '', $qstart, ($qmend - $qmstart), $last_failed)
+				[$host_id, $q['wmi_query_id'], '', '', $qstart, ($qmend - $qmstart), $last_failed]
 			);
 		}
 	} else {
 		cacti_log("NOTE: WMI Device[$host_id] had no WMI Queries to run this cycle.", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 	}
 
-	/* remove the process lock */
+	// remove the process lock
 	db_execute('DELETE FROM wmi_processes WHERE pid=' . getmypid());
 
 	if ($wmi_errors > 0) {
@@ -370,16 +380,15 @@ function display_version() {
 	}
 
 	$info = plugin_wmi_version();
-	print "Device WMI Poller Process, Version " . $info['version'] . ", " . COPYRIGHT_YEARS . PHP_EOL;
+	print 'Device WMI Poller Process, Version ' . $info['version'] . ', ' . COPYRIGHT_YEARS . PHP_EOL;
 }
 
 function display_help() {
 	display_version();
 
 	print PHP_EOL;
-	print "The Device WMI poller process script for Cacti." . PHP_EOL . PHP_EOL;
-	print "usage:" . PHP_EOL;
-	print "master process: poller_wmi.php [-M] [-f] [-d]" . PHP_EOL;
-	print "child  process: poller_wmi.php --host-id=N [--seed=N] [-f] [-d]" . PHP_EOL . PHP_EOL;
+	print 'The Device WMI poller process script for Cacti.' . PHP_EOL . PHP_EOL;
+	print 'usage:' . PHP_EOL;
+	print 'master process: poller_wmi.php [-M] [-f] [-d]' . PHP_EOL;
+	print 'child  process: poller_wmi.php --host-id=N [--seed=N] [-f] [-d]' . PHP_EOL . PHP_EOL;
 }
-

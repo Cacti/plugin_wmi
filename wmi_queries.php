@@ -28,9 +28,9 @@ include('./include/auth.php');
 include_once($config['base_path'] . '/plugins/wmi/functions.php');
 include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
 
-$ds_actions = array(
+$ds_actions = [
 	1 => __('Delete', 'wmi')
-);
+];
 
 if (!isset_request_var('tab')) {
 	set_request_var('tab', 'queries');
@@ -38,105 +38,108 @@ if (!isset_request_var('tab')) {
 
 global $wmi_frequencies;
 
-
 set_default_action();
 
-$ns = array('root\\\\CIMV2', 'root\\\\MSCluster');
+$ns = ['root\\\\CIMV2', 'root\\\\MSCluster'];
 
-$query_edit = array(
-	'name' => array(
-		'method' => 'textbox',
+$query_edit = [
+	'name' => [
+		'method'        => 'textbox',
 		'friendly_name' => __('Name', 'wmi'),
-		'description' => __('Give this query a meaningful name that will be displayed.', 'wmi'),
-		'value' => '|arg1:name|',
-		'max_length' => '64',
-	),
-	'frequency' => array(
-		'method' => 'drop_array',
+		'description'   => __('Give this query a meaningful name that will be displayed.', 'wmi'),
+		'value'         => '|arg1:name|',
+		'max_length'    => '64',
+	],
+	'frequency' => [
+		'method'        => 'drop_array',
 		'friendly_name' => __('Collection Frequency', 'wmi'),
-		'description' => __('When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used.', 'wmi'),
-		'value' => '|arg1:frequency|',
-		'default' => '300',
-		'array' => $wmi_frequencies
-	),
-	'enabled' => array(
-		'method' => 'checkbox',
+		'description'   => __('When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used.', 'wmi'),
+		'value'         => '|arg1:frequency|',
+		'default'       => '300',
+		'array'         => $wmi_frequencies
+	],
+	'enabled' => [
+		'method'        => 'checkbox',
 		'friendly_name' => __('Enabled', 'wmi'),
-		'description' => __('Should this Query be enabled on hosts using it', 'wmi'),
-		'value' => '|arg1:enabled|',
-		'default' => ''
-	),
-	'namespace' => array(
-		'method' => 'textbox',
+		'description'   => __('Should this Query be enabled on hosts using it', 'wmi'),
+		'value'         => '|arg1:enabled|',
+		'default'       => ''
+	],
+	'namespace' => [
+		'method'        => 'textbox',
 		'friendly_name' => __('Namespace', 'wmi'),
-		'description' => __('The Namespace for this Query.', 'wmi'),
-		'value' => '|arg1:namespace|',
-		'max_length' => '64',
-	),
-	'query' => array(
-		'method' => 'textarea',
+		'description'   => __('The Namespace for this Query.', 'wmi'),
+		'value'         => '|arg1:namespace|',
+		'max_length'    => '64',
+	],
+	'query' => [
+		'method'        => 'textarea',
 		'friendly_name' => __('Query', 'wmi'),
-		'description' => __('The Query to execute for gathering WMI data from the device.', 'wmi'),
-		'value' => '|arg1:query|',
+		'description'   => __('The Query to execute for gathering WMI data from the device.', 'wmi'),
+		'value'         => '|arg1:query|',
 		'textarea_rows' => '4',
 		'textarea_cols' => '80',
-		'max_length' => '1024',
-	),
-	'primary_key' => array(
-		'method' => 'textbox',
+		'max_length'    => '1024',
+	],
+	'primary_key' => [
+		'method'        => 'textbox',
 		'friendly_name' => __('Primary Key', 'wmi'),
-		'description' => __('When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma.', 'wmi'),
-		'value' => '|arg1:primary_key|',
-		'max_length' => '128',
-	),
-	'id' => array(
+		'description'   => __('When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma.', 'wmi'),
+		'value'         => '|arg1:primary_key|',
+		'max_length'    => '128',
+	],
+	'id' => [
 		'method' => 'hidden_zero',
-		'value' => '|arg1:id|'
-	)
-);
+		'value'  => '|arg1:id|'
+	]
+];
 
 switch (get_request_var('action')) {
 	case 'actions':
 		actions_queries();
+
 		break;
 	case 'save':
 		save_queries();
+
 		break;
 	case 'edit':
 		top_header();
 		display_tabs();
 		edit_queries();
 		bottom_footer();
+
 		break;
 	default:
 		top_header();
 		display_tabs();
 		show_queries();
 		bottom_footer();
+
 		break;
 }
 
 function actions_queries() {
 	global $colors, $ds_actions, $config;
 
-	/* ================= input validation ================= */
+	// ================= input validation =================
 	input_validate_input_number(get_request_var_post('drp_action'));
-	/* ==================================================== */
+	// ====================================================
 
 	if (isset_request_var('selected_items')) {
-        $selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
+		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
-        if ($selected_items != false) {
+		if ($selected_items != false) {
 			if (get_request_var('drp_action') == '1') {
-				for ($i=0; $i<count($selected_items); $i++) {
-					/* ================= input validation ================= */
+				for ($i = 0; $i < count($selected_items); $i++) {
+					// ================= input validation =================
 					input_validate_input_number($selected_items[$i]);
-					/* ==================================================== */
+					// ====================================================
 
-					db_execute_prepared('DELETE FROM host_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM host_wmi_cache WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', array($selected_items[$i]));
-					db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', array($selected_items[$i]));
+					db_execute_prepared('DELETE FROM host_wmi_query WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM host_wmi_cache WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', [$selected_items[$i]]);
+					db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', [$selected_items[$i]]);
 				}
 			}
 		}
@@ -145,21 +148,20 @@ function actions_queries() {
 		exit;
 	}
 
-
-	/* setup some variables */
+	// setup some variables
 	$query_list = '';
 
-	/* loop through each of the queries selected on the previous page and get more info about them */
+	// loop through each of the queries selected on the previous page and get more info about them
 	foreach ($_POST as $var => $val) {
 		if (preg_match('/^chk_([0-9]+)$/', $var, $matches)) {
-			/* ================= input validation ================= */
+			// ================= input validation =================
 			input_validate_input_number($matches[1]);
-			/* ==================================================== */
+			// ====================================================
 
 			$query_list .= '<li>' . db_fetch_cell_prepared('SELECT name
 				FROM wmi_wql_queries
 				WHERE id = ?',
-				array($matches[1])) . '</li>';
+				[$matches[1]]) . '</li>';
 
 			$query_array[] = $matches[1];
 		}
@@ -171,7 +173,7 @@ function actions_queries() {
 
 	html_start_box($ds_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
 
-	if (get_request_var('drp_action') == '1') { /* Delete */
+	if (get_request_var('drp_action') == '1') { // Delete
 		print "<tr>
 			<td colspan='2' class='textArea'>
 				<p>" . __('Click \'Continue\' to Delete the following WMI Queries.', 'wmi') . "</p>
@@ -181,9 +183,9 @@ function actions_queries() {
 	}
 
 	if (!isset($query_array)) {
-		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one WMI Query.', 'wmi') . "</span></td></tr>";
+		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one WMI Query.', 'wmi') . '</span></td></tr>';
 		$save_html = "<input type='button' value='" . __('Return', 'wmi') . "' onClick='cactiReturnTo()'>";
-	}else{
+	} else {
 		$save_html = "<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __('Continue', 'wmi') . "' title='" . __('Delete WMI Query', 'wmi') . "'>";
 	}
 
@@ -214,7 +216,7 @@ function save_queries() {
 	$save['hash']        = get_hash_wmi_query($save['id']);
 	$save['namespace']   = get_nfilter_request_var('namespace');
 	$save['frequency']   = get_filter_request_var('frequency');
-	$save['enabled']     = isset_request_var('enabled') ? 'on':'';
+	$save['enabled']     = isset_request_var('enabled') ? 'on' : '';
 	$save['query']       = get_nfilter_request_var('query');
 	$save['primary_key'] = get_nfilter_request_var('primary_key');
 
@@ -232,15 +234,16 @@ function save_queries() {
 function edit_queries() {
 	global $query_edit;
 
-	$query = array();
+	$query = [];
+
 	if (isset_request_var('id')) {
 		$query = db_fetch_row_prepared('SELECT *
 			FROM wmi_wql_queries
 			WHERE id= ?',
-			array(get_filter_request_var('id')));
+			[get_filter_request_var('id')]);
 
 		$header_label = __('Query [edit: %s]', $query['name'], 'wmi');
-	}else{
+	} else {
 		$header_label = __('Query [new]', 'wmi');
 	}
 
@@ -249,10 +252,10 @@ function edit_queries() {
 	html_start_box($header_label, '100%', '', '3', 'center', '');
 
 	draw_edit_form(
-		array(
-			'config' => array('no_form_tag' => true),
+		[
+			'config' => ['no_form_tag' => true],
 			'fields' => inject_form_variables($query_edit, $query)
-		)
+		]
 	);
 
 	html_end_box();
@@ -263,7 +266,7 @@ function edit_queries() {
 function query_filter() {
 	global $item_rows;
 
-	html_start_box( __('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
+	html_start_box(__('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
 	?>
 	<tr class='even'>
 		<td>
@@ -271,41 +274,45 @@ function query_filter() {
 			<table class='filterTable'>
 				<tr>
 					<td>
-						<?php print __('Search', 'wmi');?>
+						<?php print __('Search', 'wmi'); ?>
 					</td>
 					<td>
-						<input type='text' id='filter' size='25' value='<?php print html_escape_request_var('filter');?>'>
+						<input type='text' id='filter' size='25' value='<?php print html_escape_request_var('filter'); ?>'>
 					</td>
 					<td>
-						<?php print __('Queries', 'wmi');?>
+						<?php print __('Queries', 'wmi'); ?>
 					</td>
 					<td>
 						<select id='rows' onChange='applyFilter()'>
-							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>':'>') . __('Default', 'wmi');?></option>
+							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>' : '>') . __('Default', 'wmi'); ?></option>
 							<?php
 							if (sizeof($item_rows)) {
 								foreach ($item_rows as $key => $value) {
-									print "<option value='" . $key . "'"; if (get_request_var('rows') == $key) { print ' selected'; } print '>' . $value . "</option>";
+									print "<option value='" . $key . "'";
+
+									if (get_request_var('rows') == $key) {
+										print ' selected';
+									} print '>' . $value . '</option>';
 								}
 							}
-							?>
+	?>
 						</select>
 					</td>
                     <td>
-                        <input type='checkbox' id='has_graphs' <?php print (get_request_var('has_graphs') == 'true' ? 'checked':'');?>>
+                        <input type='checkbox' id='has_graphs' <?php print(get_request_var('has_graphs') == 'true' ? 'checked' : ''); ?>>
                     </td>
 					<td>
-						<label for='has_graphs'><?php print __('Has Graphs', 'wmi');?></label>
+						<label for='has_graphs'><?php print __('Has Graphs', 'wmi'); ?></label>
 					</td>
 					<td>
-						<input type='button' Value='<?php print __x('filter: use', 'Go');?>' id='refresh'>
+						<input type='button' Value='<?php print __x('filter: use', 'Go'); ?>' id='refresh'>
 					</td>
 					<td>
-						<input type='button' Value='<?php print __x('filter: reset', 'Clear');?>' id='clear'>
+						<input type='button' Value='<?php print __x('filter: reset', 'Clear'); ?>' id='clear'>
 					</td>
 				</tr>
 			</table>
-			<input type='hidden' id='page' value='<?php print get_filter_request_var('page');?>'>
+			<input type='hidden' id='page' value='<?php print get_filter_request_var('page'); ?>'>
 			</form>
 			<script type='text/javascript'>
 
@@ -350,43 +357,43 @@ function show_queries() {
 	global $action, $host, $username, $password, $command;
 	global $config, $ds_actions;
 
-	/* ================= input validation and session storage ================= */
-	$filters = array(
-		'rows' => array(
-			'filter' => FILTER_VALIDATE_INT,
+	// ================= input validation and session storage =================
+	$filters = [
+		'rows' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'pageset' => true,
 			'default' => '-1'
-		),
-		'page' => array(
-			'filter' => FILTER_VALIDATE_INT,
+		],
+		'page' => [
+			'filter'  => FILTER_VALIDATE_INT,
 			'default' => '1'
-		),
-		'filter' => array(
-			'filter' => FILTER_DEFAULT,
+		],
+		'filter' => [
+			'filter'  => FILTER_DEFAULT,
 			'pageset' => true,
 			'default' => ''
-		),
-		'sort_column' => array(
-			'filter' => FILTER_CALLBACK,
+		],
+		'sort_column' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'name',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-		'sort_direction' => array(
-			'filter' => FILTER_CALLBACK,
+			'options' => ['options' => 'sanitize_search_string']
+		],
+		'sort_direction' => [
+			'filter'  => FILTER_CALLBACK,
 			'default' => 'ASC',
-			'options' => array('options' => 'sanitize_search_string')
-		),
-	);
+			'options' => ['options' => 'sanitize_search_string']
+		],
+	];
 
-    validate_store_request_vars($filters, 'sess_wmiq');
-    /* ================= input validation ================= */
+	validate_store_request_vars($filters, 'sess_wmiq');
+	// ================= input validation =================
 
 	$total_rows = 0;
-	$queries = array();
+	$queries    = [];
 
 	if (get_request_var('rows') == '-1') {
 		$rows = read_config_option('num_rows_table');
-	}else{
+	} else {
 		$rows = get_request_var('rows');
 	}
 
@@ -402,7 +409,7 @@ function show_queries() {
 		FROM wmi_wql_queries
 		$sql_where
 		ORDER BY name
-		LIMIT " . ($rows*(get_request_var('page')-1)) . ", " . $rows);
+		LIMIT " . ($rows * (get_request_var('page') - 1)) . ', ' . $rows);
 
 	$total_rows = sizeof($queries);
 
@@ -415,38 +422,38 @@ function show_queries() {
 	html_start_box(__('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
 
 	html_header_checkbox(
-		array(
-			'name' => array(
+		[
+			'name' => [
 				'display' => __('Name', 'wmi'),
-				'align' => 'left',
-				'sort' => 'ASC'
-			),
-			'id' => array(
+				'align'   => 'left',
+				'sort'    => 'ASC'
+			],
+			'id' => [
 				'display' => __('ID', 'wmi'),
-				'align' => 'right',
-				'sort' => 'ASC'
-			),
-			'frequency' => array(
+				'align'   => 'right',
+				'sort'    => 'ASC'
+			],
+			'frequency' => [
 				'display' => __('Frequency', 'wmi'),
-				'align' => 'right',
-				'sort' => 'ASC'
-			),
-			'namespace' => array(
+				'align'   => 'right',
+				'sort'    => 'ASC'
+			],
+			'namespace' => [
 				'display' => __('Namespace', 'wmi'),
-				'align' => 'left',
-				'sort' => 'ASC'
-			),
-			'query' => array(
+				'align'   => 'left',
+				'sort'    => 'ASC'
+			],
+			'query' => [
 				'display' => __('WQL Query', 'wmi'),
-				'align' => 'left',
-				'sort' => 'ASC'
-			),
-			'primary_key' => array(
+				'align'   => 'left',
+				'sort'    => 'ASC'
+			],
+			'primary_key' => [
 				'display' => __('Primary Key', 'wmi'),
-				'align' => 'left',
-				'sort' => 'ASC'
-			)
-		)
+				'align'   => 'left',
+				'sort'    => 'ASC'
+			]
+		]
 	);
 
 	if (!empty($queries)) {
@@ -473,5 +480,3 @@ function show_queries() {
 
 	form_end();
 }
-
-
