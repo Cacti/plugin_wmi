@@ -31,13 +31,13 @@ describe('prepared statement consistency in wmi', function () {
 			$path = realpath(__DIR__ . '/../../' . $relativeFile);
 
 			if ($path === false) {
-				continue;
+				throw new RuntimeException("Unable to resolve path for {$relativeFile}");
 			}
 
 			$contents = file_get_contents($path);
 
 			if ($contents === false) {
-				continue;
+				throw new RuntimeException("Unable to read contents of {$relativeFile}");
 			}
 
 			$lines = explode("\n", $contents);
