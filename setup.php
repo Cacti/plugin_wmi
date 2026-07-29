@@ -200,7 +200,7 @@ function plugin_wmi_setup_tables() {
 		ENGINE=MEMORY
 		COMMENT='Running wmi collector processes';");
 
-	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
+	$exists = db_fetch_cell_prepared('SELECT id FROM data_input WHERE hash = ?', array('4af550dfe8b451579054d038ad62ba3e'));
 	if (!$exists) {
 		$save = [];
 		$save['hash']         = '4af550dfe8b451579054d038ad62ba3e';
@@ -220,9 +220,9 @@ function plugin_wmi_setup_tables() {
 		}
 	}
 
-	$exists = db_fetch_cell('SELECT id
+	$exists = db_fetch_cell_prepared('SELECT id
 		FROM data_input
-		WHERE hash="42e584b81075f6ad6556e62afc509179"');
+		WHERE hash = ?', array('42e584b81075f6ad6556e62afc509179'));
 
 	if (!$exists) {
 		$save = [];

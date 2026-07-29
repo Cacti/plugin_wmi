@@ -235,7 +235,7 @@ function process_all_devices() {
 			ON host.id = hwc.host_id
 			WHERE host.id IS NULL');
 
-		if (sizeof($dead_devices)) {
+		if (cacti_sizeof($dead_devices)) {
 			foreach($dead_devices as $device) {
 				db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?',
 					array($device['host_id']));
