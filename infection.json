@@ -1,7 +1,8 @@
 {
     "$schema": "vendor/infection/infection/resources/schema.json",
     "source": {
-        "directories": ["src"]
+        "directories": ["."],
+        "excludes": ["tests"]
     },
     "mutators": {
         "@default": true
