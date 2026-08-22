@@ -278,7 +278,14 @@ class Linux_WMI {
 
 		if (isset($info['username'])) {
 			$this->username = $info['username'];
-			$this->password = $this->decode($info['password']);
+			$password = $this->decode($info['password']);
+			if ($password === false) {
+				$this->error = 'ERROR: WMI Authentication account password is invalid!';
+
+				return false;
+			}
+
+			$this->password = $password;
 			return true;
 		}
 
@@ -288,11 +295,21 @@ class Linux_WMI {
 	}
 
 	function decode($info) {
-		$info = base64_decode($info);
-		$info = unserialize($info, array('allowed_classes' => false));
-		$info = $info['password'];
+		if (!is_string($info)) {
+			return false;
+		}
 
-		return $info;
+		$decoded = base64_decode($info, true);
+		if ($decoded === false) {
+			return false;
+		}
+
+		$info = @unserialize($decoded, array('allowed_classes' => false));
+		if (!is_array($info) || !array_key_exists('password', $info) || !is_string($info['password'])) {
+			return false;
+		}
+
+		return $info['password'];
 	}
 
 	function encode($info) {
@@ -304,4 +321,3 @@ class Linux_WMI {
 		return $a;
 	}
 }
-
