@@ -290,7 +290,14 @@ class Linux_WMI {
 
 		if (isset($info['username'])) {
 			$this->username = $info['username'];
-			$this->password = $this->decode($info['password']);
+			$password = $this->decode($info['password']);
+			if ($password === false) {
+				$this->error = 'ERROR: WMI Authentication account password is invalid!';
+
+				return false;
+			}
+
+			$this->password = $password;
 
 			return true;
 		}
@@ -301,27 +308,43 @@ class Linux_WMI {
 	}
 
 	function decode($info) {
+		if (!is_string($info)) {
+			return false;
+		}
+
 		$info = base64_decode($info, true);
+		if ($info === false) {
+			return false;
+		}
 
 		/*
-		 * Legacy records were stored with serialize(). Detect and migrate on
-		 * read so existing credentials survive the format change. New writes
-		 * always use JSON (see encode()).
+		 * Legacy records were stored with serialize(). Detect and decode them
+		 * so existing credentials survive the format change. New writes use
+		 * JSON whenever the password is valid UTF-8 (see encode()).
 		 */
 		if (substr($info, 0, strlen('a:')) === 'a:') {
 			$decoded = @unserialize($info, ['allowed_classes' => false]);
 
-			return is_array($decoded) ? ($decoded['password'] ?? '') : '';
+			return is_array($decoded) && isset($decoded['password']) && is_string($decoded['password'])
+				? $decoded['password']
+				: false;
 		}
 
 		$decoded = json_decode($info, true);
 
-		return is_array($decoded) ? ($decoded['password'] ?? '') : '';
+		return is_array($decoded) && isset($decoded['password']) && is_string($decoded['password'])
+			? $decoded['password']
+			: false;
 	}
 
 	function encode($info) {
 		$a = ['password' => $info];
+		$encoded = json_encode($a);
 
-		return base64_encode(json_encode($a));
+		if ($encoded === false) {
+			$encoded = serialize($a);
+		}
+
+		return base64_encode($encoded);
 	}
 }
