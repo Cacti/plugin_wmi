@@ -304,7 +304,11 @@ function wmi_config_arrays() {
 	$menu[__('Data Collection')]['plugins/wmi/wmi_queries.php'] = __('WMI Queries', 'wmi');
 
 	if (function_exists('auth_augment_roles')) {
-		auth_augment_roles(__('Template Editor'), array('wmi_accounts.php', 'wmi_queries.php', 'wmi_tools.php'));
+		// Template Editors define WMI queries as part of template work. Credential
+		// management (wmi_accounts.php) and the live query tool (wmi_tools.php,
+		// which reaches Linux_WMI::exec) stay behind the dedicated WMI Management
+		// realm rather than being handed to every Template Editor.
+		auth_augment_roles(__('Template Editor'), array('wmi_queries.php'));
 	}
 }
 

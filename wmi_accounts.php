@@ -220,7 +220,7 @@ function edit_accounts() {
 		$account = db_fetch_row_prepared('SELECT * FROM wmi_user_accounts WHERE id = ?', array(get_request_var('id')));
 
 		$account['password'] = '';
-		$header_label = __('Account [edit: %s]', $account['name'], 'wmi');
+		$header_label = __esc('Account [edit: %s]', $account['name'], 'wmi');
 	}else{
 		$header_label = __('Account [new]', 'wmi');
 	}
@@ -416,7 +416,7 @@ function show_accounts() {
 
 			form_alternate_row('line' . $row['id'], false);
 			form_selectable_cell(filter_value($row['name'], get_request_var('filter'), 'wmi_accounts.php?&action=edit&id=' . $row['id']), $row['id']);
-			form_selectable_cell($row['username'], $row['id']);
+			form_selectable_cell(html_escape($row['username']), $row['id']);
 			form_selectable_cell(number_format_i18n($count), $row['id'], '', 'right');
 			form_checkbox_cell($row['name'], $row['id']);
 			form_end_row();
