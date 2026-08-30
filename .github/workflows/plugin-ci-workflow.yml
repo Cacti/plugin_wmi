@@ -31,6 +31,9 @@ on:
       - main
       - develop
 
+permissions:
+  contents: read
+
 jobs:
   integration-test:
     runs-on: ${{ matrix.os }}
@@ -61,18 +64,18 @@ jobs:
     
     steps:
     - name: Checkout Cacti
-      uses: actions/checkout@v4
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       with:
         repository: Cacti/cacti
         path: cacti
     
     - name: Checkout wmi Plugin
-      uses: actions/checkout@v4
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       with:
         path: cacti/plugins/wmi
     
     - name: Install PHP ${{ matrix.php }}
-      uses: shivammathur/setup-php@v2
+      uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2
       with:
         php-version: ${{ matrix.php }}
         extensions: intl, mysql, gd, ldap, gmp, xml, curl, json, mbstring
@@ -201,6 +204,12 @@ jobs:
     - name: Checking coding standards on base code
       run: composer run-script phpcsfixer ${{ github.workspace }}/cacti/plugins/wmi
       working-directory: ${{ github.workspace }}/cacti
+
+    - name: Run plugin unit tests
+      run: |
+        composer install --no-interaction --no-progress
+        vendor/bin/pest --no-coverage
+      working-directory: ${{ github.workspace }}/cacti/plugins/wmi
 
 #    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
 #      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/wmi
