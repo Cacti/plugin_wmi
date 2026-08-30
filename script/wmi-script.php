@@ -23,8 +23,9 @@
 */
 
 if (!isset($called_by_script_server)) {
-	include_once(dirname(__FILE__) . '/../include/cli_check.php');
+	include_once(__DIR__ . '/../include/cli_check.php');
 	array_shift($_SERVER['argv']);
+
 	if (isset($_SERVER['argv'][0]) && $_SERVER['argv'][0] == 'wmi_script') {
 		array_shift($_SERVER['argv']);
 	}
@@ -37,29 +38,31 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 
 	include_once($config['base_path'] . '/plugins/wmi/linux-wmi.php');
 
-	$wmi = new Linux_WMI ($host_id);
+	$wmi           = new Linux_WMI($host_id);
 	$wmi->hostname = $hostname;
 	$wmi->binary   = $config['base_path'] . '/plugins/wmi/wmic';
 
-	/* Fetch the info for this WMI query from the database, exit if not found */
-	$wmiinfo = db_fetch_row("SELECT * FROM plugin_wmi_queries WHERE queryname = '$wmiquery'", FALSE);
+	// Fetch the info for this WMI query from the database, exit if not found
+	$wmiinfo = db_fetch_row_prepared('SELECT * FROM plugin_wmi_queries WHERE queryname = ?', [$wmiquery], false);
+
 	if (!isset($wmiinfo['queryclass'])) {
 		return '';
 	}
-	$wmi->indexkey = $wmiinfo['indexkey'];
-	$wmi->keys = $wmiinfo['querykeys'];
+	$wmi->indexkey   = $wmiinfo['indexkey'];
+	$wmi->keys       = $wmiinfo['querykeys'];
 	$wmi->queryclass = $wmiinfo['queryclass'];
 
 	if ($cmd == 'index') {
 		$wmi->create_query();
 		$results = $wmi->fetch();
-		$k = $wmi->fetch_key_index('Name');
+		$k       = $wmi->fetch_key_index('Name');
 
 		if (isset($results[2])) {
 			array_shift($results);
 			array_shift($results);
+
 			foreach ($results as $r) {
-				print str_replace(array(' ','(', ')'), '', $r[$k]) . "\n";
+				print str_replace([' ', '(', ')'], '', $r[$k]) . "\n";
 			}
 		}
 	} elseif ($cmd == 'query') {
@@ -75,7 +78,6 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 	} elseif ($cmd == 'get') {
 		$wmi->create_query();
 		$results = $wmi->fetch();
-		echo $wmi->fetch_value($arg1, $arg2);
+		print $wmi->fetch_value($arg1, $arg2);
 	}
 }
-

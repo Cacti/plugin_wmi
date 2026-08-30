@@ -3,9 +3,9 @@
 The WMI Plugin provides data collection services for devices that support the
 WMI protocol.  It operates asyncrhonously to the Cacti data collection and
 stores the resulting information into cache tables.  These cache tables can then
-be used to generate graphs, thresholds and alerts.  It relies on the 'wmic'
-command in Linux, and WMI services via Microsofts COM protocol from Windows
-Cacti servers.
+be used to generate graphs, thresholds and alerts.  It collects over WMI using
+one of two transports, chosen automatically from the Cacti server's operating
+system (see Transports below).
 
 ### WARNING: Development in progress
 
@@ -21,7 +21,26 @@ complete, you can start to define WMI queries for your Windows and other Device
 Templates that support WMI.
 
 Make certain that you install the wmic binary if you are planning on running on
-Linux.
+Linux.  Cacti with PHP 8.1 or newer is required.
+
+## Transports
+
+Each query runs through a transport, chosen automatically from the Cacti
+server's operating system.  Code that constructs `Linux_WMI` directly can pass
+an explicit transport instead.
+
+- **wmic** (default on a Linux server).  Uses the Linux `wmic` client to reach
+  Windows hosts over DCOM.  Install the `wmi-client` / openwsman package and
+  keep the binary path in `Linux_WMI` (`/usr/bin/wmic`) in step.  This client
+  predates current Windows hardening; hosts that disable NTLMv1 or enforce the
+  DCOM packet-integrity level (KB5004442) may reject it, in which case use the
+  PowerShell transport.
+- **PowerShell / CIM** (default on a Windows server).  Uses `Get-CimInstance`
+  through `pwsh` or `powershell.exe`, so it works when Cacti runs on Windows and
+  against a remote host over WinRM/CIM.  Needs PowerShell on the Cacti server
+  and, for a remote host, WinRM enabled on the target.  Credentials and every
+  device-supplied value are passed through the child process environment and a
+  fixed script on standard input, never on the command line.
 
 ## Usage
 
@@ -35,6 +54,18 @@ There is presently only one setting support in the WMI plugin, and that is to
 Autocreate the actual WMI polling at device creation or update based upon the
 WMI Queries defined as a part of the Device Template.  This setting can be found
 under Settings -> Device Defaults.
+
+Credentials are added under WMI Authentication, and the WMI Query Tool under
+Utilities runs an ad-hoc query against a device for testing.
+
+## Access
+
+The plugin registers a WMI Management realm covering account management, query
+definition, and the query tool.  The Template Editor role is additionally
+granted the query-definition page only; credential management and the live query
+tool stay behind the WMI Management realm.  The poller needs the host password
+in cleartext, so accounts are stored reversibly, the same posture Cacti core
+uses for SNMP v3 credentials; protect the database accordingly.
 
 ## Authors
 
