@@ -219,8 +219,11 @@ class Linux_WMI {
 
 		$this->clean();
 
+		// Quote the delimiter for the shell only. $this->separator stays raw for
+		// the explode() in fetch(); its default (|+|) is otherwise split as a
+		// shell pipeline.
 		return $this->binary .
-			' --delimiter=' . $this->separator .
+			' --delimiter=' . cacti_escapeshellarg($this->separator) .
 			' --user=' . $this->username .
 			' --password=' . $this->password .
 			($this->querynspace != '' ? ' --namespace=' . $this->querynspace : '') .
