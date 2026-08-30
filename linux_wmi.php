@@ -23,285 +23,375 @@
 */
 
 /*
-$wmi = new Linux_WMI ();
-$wmi->hostname = '192.168.126.1';
-$wmi->username = 'test';
-$wmi->password = 'test';
-$wmi->querynspace = 'root\\CIMV2';
-$wmi->command = "select * from Win32_Process";
+ * $wmi = new Linux_WMI();
+ * $wmi->hostname    = '192.168.126.1';
+ * $wmi->username    = 'test';
+ * $wmi->password    = 'test';
+ * $wmi->querynspace = 'root\\CIMV2';
+ * $wmi->command     = 'SELECT * FROM Win32_Process';
+ *
+ * print_r($wmi->fetch());
+ */
 
-$results = $wmi->fetch();
-print_r($results);
-*/
+/**
+ * The parameters a transport needs to run one WMI query.
+ */
+class Wmi_Request {
+	public function __construct(
+		public string $hostname,
+		public string $username,
+		public string $password,
+		public string $namespace,
+		public string $query,
+		public string $separator,
+		public string $binary
+	) {
+	}
+}
+
+/**
+ * A WMI transport runs one query against a host and returns the raw stdout
+ * lines: the class name, the delimiter-joined column header, then one
+ * delimiter-joined line per row. Backends (the wmic DCOM client, a future
+ * PowerShell/CIM path) implement this contract so Linux_WMI stays agnostic.
+ */
+interface Wmi_Transport {
+	/**
+	 * @return array<int, string>|false Raw stdout lines, or false on failure.
+	 */
+	public function query(Wmi_Request $request): array|false;
+
+	/** Last error message, or null after a successful query. */
+	public function error(): ?string;
+}
+
+/**
+ * Default transport: the Linux `wmic` client invoked through the shell.
+ */
+class Wmic_Shell_Transport implements Wmi_Transport {
+	private ?string $error = null;
+
+	public function query(Wmi_Request $request): array|false {
+		$this->error = null;
+
+		$output = [];
+		$status = 0;
+
+		exec($this->build_command($request), $output, $status);
+
+		if ($status !== 0) {
+			$this->error = 'ERROR: ' . implode('<br>', $output);
+
+			return false;
+		}
+
+		if (count($output) === 0) {
+			$this->error = 'ERROR: WMI Returned no Data';
+
+			return false;
+		}
+
+		return $output;
+	}
+
+	public function error(): ?string {
+		return $this->error;
+	}
+
+	/**
+	 * Build the wmic command line. Every device-influenced value is shell
+	 * escaped; the hostname and namespace are additionally stripped of cmd.exe
+	 * metacharacters on win32. The delimiter is quoted so its pipe characters
+	 * are not read as a shell pipeline.
+	 */
+	public function build_command(Wmi_Request $request): string {
+		$namespace = $request->namespace !== ''
+			? ' --namespace=' . cacti_escapeshellarg($this->strip_metachars($request->namespace))
+			: '';
+
+		return cacti_escapeshellarg($request->binary) .
+			' --delimiter=' . cacti_escapeshellarg($request->separator) .
+			' --user=' . cacti_escapeshellarg($request->username) .
+			' --password=' . cacti_escapeshellarg($request->password) .
+			$namespace .
+			' //' . cacti_escapeshellarg($this->strip_metachars(trim($request->hostname))) .
+			' ' . cacti_escapeshellarg($request->query);
+	}
+
+	/**
+	 * A hostname or namespace never legitimately contains shell or cmd.exe
+	 * metacharacters. cmd.exe ignores \" , toggles quoting on every " , and
+	 * expands %VAR% despite quoting, so strip those on win32 before quoting.
+	 */
+	private function strip_metachars(string $value): string {
+		global $config;
+
+		if (isset($config['cacti_server_os']) && $config['cacti_server_os'] === 'win32') {
+			$value = str_replace(['"', '&', '|', '^', '<', '>', '(', ')', '%'], '', $value);
+		}
+
+		return $value;
+	}
+}
 
 class Linux_WMI {
-	var $hostid;      // ID of host, to pull authentication from
-	var $hostname;    // Hostname / IP to contact
-	var $username;    // Username to authenticate with (will be pulled from DB)
-	var $password;    // Password to authenticate with (will be pulled form DB)
-	var $command;     // This is the WMI Query to exec
-	var $results;     // This will hold all our data
-	var $binary;      // Path to WMIC binary
-	var $separator;   // Separator (defaults to |)
-	var $error;       // Last Error message
-	var $indexkey;    // Key to use as Index
-	var $keys;        // Comma separated keys
-	var $queryclass;  // Class name to pull
-	var $querynspace; // Namespace to pull
+	public int|string $hostid  = '';   // Host id, to pull authentication from
+	public string $hostname    = '';   // Hostname / IP to contact
+	public string $username    = '';   // Username to authenticate with
+	public string $password    = '';   // Password to authenticate with
+	public string $command     = '';   // The WMI query to run
+	public string $binary      = '/usr/bin/wmic';
+	public string $separator   = '|+|';
+	public bool|string $error  = false; // false, or the last error message
+	public string $indexkey    = '';   // Key to use as the index
+	public string $keys        = '';   // Comma separated keys
+	public string $queryclass  = '';   // Class name to pull
+	public string $querynspace = '';  // Namespace to pull
 
-	function __construct($hostid = '') {
-		// Function for initial create
-		$this->binary    = '/usr/bin//wmic';
-		$this->separator = '|+|';
-		$this->error     = false;
+	/** @var array<int, array<int, string>> Parsed rows from the last fetch(). */
+	public array $results = [];
 
-		if ($hostid != '') {
+	private Wmi_Transport $transport;
+
+	public function __construct(int|string $hostid = '', ?Wmi_Transport $transport = null) {
+		$this->transport = $transport ?? new Wmic_Shell_Transport();
+
+		if ($hostid !== '') {
 			$this->hostid = $hostid;
 
-			/* Ensure we have a username / password pair setup for this host */
+			// Ensure we have a username / password pair setup for this host
 			$this->retrieve_account();
 		}
 	}
 
-	function __destruct() {
-		return true;
-	}
+	public function create_query(): bool {
+		$this->command = 'SELECT ';
 
-	function create_query() {
-		$this->command = "SELECT ";
-
-		if ($this->keys != '') {
-			if ($this->indexkey != '') {
+		if ($this->keys !== '') {
+			if ($this->indexkey !== '') {
 				$this->command .= $this->indexkey . ',';
 			}
 
 			$this->command .= $this->keys;
-		} else	if ($this->indexkey != '') {
+		} elseif ($this->indexkey !== '') {
 			$this->command .= $this->indexkey . ',';
 		} else {
 			$this->command = '';
-			$this->error = 'ERROR: WMI Keys and Index is Empty!';
+			$this->error   = 'ERROR: WMI Keys and Index is Empty!';
 
 			return false;
 		}
 
-		$this->command .= ' FROM ';
-		if ($this->queryclass != '') {
-			$this->command .= $this->queryclass;
-		} else {
+		if ($this->queryclass === '') {
 			$this->command = '';
-			$this->error = 'ERROR: WMI Query Class is empty!';
+			$this->error   = 'ERROR: WMI Query Class is empty!';
 
 			return false;
 		}
+
+		$this->command .= ' FROM ' . $this->queryclass;
+
+		return true;
 	}
 
-	function fetch_key_index($name) {
-		if (isset($this->results[1])) {
-			foreach ($this->results[1] as $i => $a) {
-				if ($a == $name) {
-					return $i;
-				}
-			}
-
-			$this->error = 'ERROR: Key not found';
+	public function fetch_key_index(string $name): int|false {
+		if (!isset($this->results[1])) {
+			$this->error = 'ERROR: Empty Result!';
 
 			return false;
 		}
-		$this->error = 'ERROR: Empty Result!';
+
+		foreach ($this->results[1] as $i => $a) {
+			if ($a === $name) {
+				return $i;
+			}
+		}
+
+		$this->error = 'ERROR: Key not found';
 
 		return false;
 	}
 
-	function fetch_value($keyname, $index) {
+	public function fetch_value(string $keyname, string $index): string|false {
 		$i = $this->fetch_key_index($this->indexkey);
 		$k = $this->fetch_key_index($keyname);
-		$results = $this->results;
-		if (isset($results[2])) {
-			array_shift($results);
-			array_shift($results);
-			foreach ($results as $r) {
-				if (str_replace(array(' ','(', ')'), '', $r[$i]) == $index) {
-					return $r[$k];
-				}
+
+		if ($i === false || $k === false) {
+			return false;
+		}
+
+		foreach ($this->data_rows() as $r) {
+			if (str_replace([' ', '(', ')'], '', $r[$i]) === $index) {
+				return $r[$k];
 			}
 		}
 
 		return false;
 	}
 
-	function print_fetch_key_value_pair($keyname, $index) {
+	public function print_fetch_key_value_pair(string $keyname, string $index): void {
 		$i = $this->fetch_key_index($this->indexkey);
 		$k = $this->fetch_key_index($keyname);
 
-		$results = $this->results;
+		if ($i === false || $k === false) {
+			return;
+		}
 
-		if (isset($results[2])) {
-			array_shift($results);
-			array_shift($results);
-			foreach ($results as $r) {
-				if (str_replace(array(' ','(', ')'), '', $r[$i]) == $index) {
-					print "$keyname!" . $r[$k] . "'" . PHP_EOL;
-				}
+		foreach ($this->data_rows() as $r) {
+			if (str_replace([' ', '(', ')'], '', $r[$i]) === $index) {
+				print "$keyname!" . $r[$k] . "'" . PHP_EOL;
 			}
 		}
 	}
 
-	function print_indexes() {
+	public function print_indexes(): void {
 		$k = $this->fetch_key_index($this->indexkey);
-		$results = $this->results;
-		if (isset($results[2])) {
-			array_shift($results);
-			array_shift($results);
 
-			foreach ($results as $r) {
-				/* Indexes should not have spaces in their name so we remove them */
-				print str_replace(array(' ','(', ')'), '', $r[$k]) . '!' . str_replace(array(' ','(', ')'), '', $r[$k]) . PHP_EOL;
-			}
+		if ($k === false) {
+			return;
+		}
+
+		foreach ($this->data_rows() as $r) {
+			// Indexes should not have spaces in their name so we remove them
+			$name = str_replace([' ', '(', ')'], '', $r[$k]);
+			print $name . '!' . $name . PHP_EOL;
 		}
 	}
 
-	function fetch_indexes() {
-		if (isset($this->results[1])) {
-			return $this->results[1];
-		}else{
-			return false;
-		}
+	public function fetch_indexes(): array|false {
+		return $this->results[1] ?? false;
 	}
 
-	function fetch_class() {
-		if (sizeof($this->results)) {
-			return $this->results[0][0];
-		}else{
-			return false;
-		}
+	public function fetch_class(): string|false {
+		return $this->results[0][0] ?? false;
 	}
 
-	function fetch_data() {
-		if (sizeof($this->results) > 2) {
-			$new = $this->results;
-			array_shift($new);
-			array_shift($new);
-
-			return $new;
-		}else{
-			return array();
-		}
+	public function fetch_data(): array {
+		return $this->data_rows();
 	}
 
-	function fetch() {
-		if ($this->command == '') {
+	public function fetch(): array|false {
+		if ($this->command === '') {
 			$this->error = 'ERROR: WMI Query is empty';
+
 			return false;
 		}
 
-		$results = $this->exec();
+		$output = $this->exec();
 
-		if ($results !== false) {
-			foreach ($results as $id => $result) {
-				$results[$id] = explode($this->separator, $result);
-			}
-
-			$this->results = $results;
-
-			return $results;
-		}else{
+		if ($output === false) {
 			return false;
 		}
+
+		$this->results = array_map(
+			fn (string $line): array => explode($this->separator, $line),
+			$output
+		);
+
+		return $this->results;
 	}
 
-	function getcommand() {
-		if ($this->username == '' || $this->password == '') {
+	/**
+	 * Run the current query through the transport and return its raw lines.
+	 */
+	public function exec(): array|false {
+		if ($this->username === '' || $this->password === '') {
 			$this->error = 'ERROR: Username or Password not set!';
 
 			return false;
 		}
 
-		$this->clean();
+		$output = $this->transport->query($this->request());
 
-		return $this->binary .
-			' --delimiter=' . $this->separator .
-			' --user=' . $this->username .
-			' --password=' . $this->password .
-			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
-			' //' . trim($this->hostname) .
-			' ' . $this->command;
-	}
+		if ($output === false) {
+			$this->error = $this->transport->error() ?? 'ERROR: WMI query failed';
 
-	function exec() {
-		$command = $this->getcommand();
-
-		if ($command === false) {
 			return false;
 		}
 
-		//$command .= ' --option="client_ntlmv2_auth"=Yes';
+		return $output;
+	}
 
-		$config['cacti_server_os'] = 'unix';
-
-		$return_var   = 0;
-		$return_array = array();
-
-		exec($command, $return_array, $return_var);
-
-		if ($return_var != 0) {
-			$this->error = 'ERROR: ' . implode("<br>", $return_array);
+	/**
+	 * Render the shell command for the wmic transport. Retained for callers and
+	 * tests that inspect the command; non-shell transports return false.
+	 */
+	public function getcommand(): string|false {
+		if (!$this->transport instanceof Wmic_Shell_Transport) {
 			return false;
-		}elseif (!sizeof($return_array)) {
-			$this->error = 'ERROR: WMI Returned no Data';
-			return false;
-		}else{
-			return $return_array;
 		}
+
+		return $this->transport->build_command($this->request());
 	}
 
-	function clean() {
-		$this->username  = cacti_escapeshellarg($this->username);
-		$this->password  = cacti_escapeshellarg($this->password);
-		$this->hostname  = trim($this->hostname);
-		$this->binary    = cacti_escapeshellarg($this->binary);
-		$this->command   = cacti_escapeshellarg($this->command);
-	}
-
-	function retrieve_account() {
-		if ($this->hostid == '') {
+	public function retrieve_account(): bool {
+		if ($this->hostid === '') {
 			$this->error = 'ERROR: hostid is not set!';
+
 			return false;
 		}
 
-		$info = db_fetch_row_prepared("SELECT pwa.*
+		$info = db_fetch_row_prepared('SELECT pwa.*
 			FROM wmi_user_accounts AS pwa
 			INNER JOIN host AS h
 			WHERE pwa.id = h.wmi_account
-			AND h.id = ?",
-			array($this->hostid));
+			AND h.id = ?',
+			[$this->hostid]);
 
-		if (isset($info['username'])) {
-			$this->username = $info['username'];
-			$this->password = $this->decode($info['password']);
-			return true;
+		if (!isset($info['username'])) {
+			$this->error = 'ERROR: WMI Authentication account not found!';
+
+			return false;
 		}
 
-		$this->error = 'ERROR: WMI Authentication account not found!';
+		$this->username = $info['username'];
+		$this->password = $this->decode($info['password']);
 
-		return false;
+		return true;
 	}
 
-	function decode($info) {
-		$info = base64_decode($info);
-		$info = unserialize($info);
-		$info = $info['password'];
+	public function decode(string $info): string {
+		// allowed_classes => false forbids object instantiation, so no gadget
+		// chain can run; the blob is our own base64(serialize()) from encode().
+		// nosemgrep: php.lang.security.unserialize-use.unserialize-use
+		$decoded = unserialize(base64_decode($info, true), ['allowed_classes' => false]);
 
-		return $info;
+		return is_array($decoded) && isset($decoded['password']) ? (string) $decoded['password'] : '';
 	}
 
-	function encode($info) {
-		$a = array(rand(1,time()) => rand(1,time()),'password' => '', rand(1,time()) => rand(1,time()));
-		$a['password'] = $info;
-		$a = serialize($a);
-		$a = base64_encode($a);
+	public function encode(string $info): string {
+		$payload = [
+			rand(1, time()) => rand(1, time()),
+			'password'      => $info,
+			rand(1, time()) => rand(1, time()),
+		];
 
-		return $a;
+		return base64_encode(serialize($payload));
+	}
+
+	private function request(): Wmi_Request {
+		return new Wmi_Request(
+			$this->hostname,
+			$this->username,
+			$this->password,
+			$this->querynspace,
+			$this->command,
+			$this->separator,
+			$this->binary
+		);
+	}
+
+	/**
+	 * The data rows: results with the class-name and column-header lines
+	 * removed.
+	 *
+	 * @return array<int, array<int, string>>
+	 */
+	private function data_rows(): array {
+		if (count($this->results) <= 2) {
+			return [];
+		}
+
+		return array_slice($this->results, 2);
 	}
 }
-
