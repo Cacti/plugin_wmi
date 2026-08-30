@@ -48,9 +48,11 @@ check(strpos($cmd, '; touch /tmp/pwned') === false || strpos($cmd, "'127.0.0.1; 
 check(preg_match('#//\x27#', $cmd) === 1, 'the target host is quoted (//\'...\')');
 check(strpos($cmd, "--namespace='") !== false, 'namespace is quoted');
 
-// win32: metacharacters are stripped from the hostname before quoting
+// win32: metacharacters are stripped from the hostname before quoting.
+// A win32 server defaults to the PowerShell transport, so select the wmic
+// transport explicitly to exercise its cmd.exe stripping.
 $GLOBALS['config']['cacti_server_os'] = 'win32';
-$w2                                   = new Linux_WMI();
+$w2                                   = new Linux_WMI('', new Wmic_Shell_Transport());
 $w2->username                         = 'u';
 $w2->password                         = 'p';
 $w2->binary                           = 'wmic';

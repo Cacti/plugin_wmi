@@ -288,7 +288,7 @@ class Linux_WMI {
 	private Wmi_Transport $transport;
 
 	public function __construct(int|string $hostid = '', ?Wmi_Transport $transport = null) {
-		$this->transport = $transport ?? new Wmic_Shell_Transport();
+		$this->transport = $transport ?? self::default_transport();
 
 		if ($hostid !== '') {
 			$this->hostid = $hostid;
@@ -296,6 +296,21 @@ class Linux_WMI {
 			// Ensure we have a username / password pair setup for this host
 			$this->retrieve_account();
 		}
+	}
+
+	/**
+	 * Pick the transport for the Cacti server it runs on: PowerShell/CIM on a
+	 * Windows server (the Linux wmic client is not present there), the wmic
+	 * client otherwise. An explicit transport passed to the constructor wins.
+	 */
+	private static function default_transport(): Wmi_Transport {
+		global $config;
+
+		if (isset($config['cacti_server_os']) && $config['cacti_server_os'] === 'win32') {
+			return new PowerShellCim_Transport('powershell.exe');
+		}
+
+		return new Wmic_Shell_Transport();
 	}
 
 	public function create_query(): bool {

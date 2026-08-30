@@ -77,6 +77,13 @@ $seen = [];
 $t    = new PowerShellCim_Transport('pwsh', recording_runner($seen, [], 1, 'Access denied'));
 check('non-zero exit surfaces stderr', $t->query($request) === false && str_contains((string) $t->error(), 'Access denied'));
 
+// 4. Transport auto-selection follows the Cacti server OS.
+$GLOBALS['config'] = ['cacti_server_os' => 'win32'];
+check('win32 server defaults to the PowerShell transport', (new Linux_WMI())->getcommand() === false);
+
+$GLOBALS['config'] = ['cacti_server_os' => 'unix'];
+check('other servers default to the wmic transport', is_string((new Linux_WMI())->getcommand()));
+
 if ($failures > 0) {
 	print PHP_EOL . "$failures check(s) failed" . PHP_EOL;
 	exit(1);
