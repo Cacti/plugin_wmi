@@ -134,6 +134,140 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	}
 }
 
+/**
+ * PowerShell/CIM transport. Runs the query with Get-CimInstance through pwsh or
+ * powershell.exe: usable on a Windows Cacti server and, for a remote target,
+ * over WinRM/CIM against modern Windows hosts the legacy wmic client can no
+ * longer authenticate to.
+ *
+ * Credentials and every device-supplied value pass through the child process
+ * environment and a fixed script on stdin, never on the command line, so
+ * neither a shell nor the process table (ps) ever sees the password, and no
+ * value is interpolated into the script (no PowerShell injection).
+ */
+class PowerShellCim_Transport implements Wmi_Transport {
+	/**
+	 * The PowerShell program. Reads every value from the environment and emits
+	 * the class name, the separator-joined column header, then one
+	 * separator-joined row per instance: the shape the wmic transport produces.
+	 */
+	private const SCRIPT = <<<'PS'
+		$ErrorActionPreference = 'Stop'
+		$sep = $env:WMI_SEP
+		$params = @{ Query = $env:WMI_QUERY; ErrorAction = 'Stop' }
+		if (![string]::IsNullOrEmpty($env:WMI_NS)) {
+		    $params['Namespace'] = ($env:WMI_NS -replace '\\', '/')
+		}
+		if (![string]::IsNullOrEmpty($env:WMI_HOST)) {
+		    $secure = ConvertTo-SecureString $env:WMI_PASS -AsPlainText -Force
+		    $params['ComputerName'] = $env:WMI_HOST
+		    $params['Credential']   = New-Object System.Management.Automation.PSCredential($env:WMI_USER, $secure)
+		}
+		$items = @(Get-CimInstance @params)
+		if ($items.Count -eq 0) { exit 0 }
+		$props = $items[0].CimInstanceProperties.Name
+		Write-Output $items[0].CimClass.CimClassName
+		Write-Output ($props -join $sep)
+		foreach ($item in $items) {
+		    $vals = foreach ($p in $props) { [string]$item.$p }
+		    Write-Output ($vals -join $sep)
+		}
+		PS;
+
+	private ?string $error = null;
+
+	/** @var callable(string, array<int, string>, string, array<string, string>): array{exit: int, stdout: array<int, string>, stderr: string} */
+	private $runner;
+
+	/**
+	 * @param string        $binary The PowerShell binary (pwsh, or powershell.exe on win32).
+	 * @param callable|null $runner Process runner seam; the default uses proc_open.
+	 */
+	public function __construct(
+		public string $binary = 'pwsh',
+		?callable $runner = null
+	) {
+		$this->runner = $runner ?? $this->default_runner();
+	}
+
+	public function query(Wmi_Request $request): array|false {
+		$this->error = null;
+
+		$env = [
+			'WMI_HOST'  => trim($request->hostname),
+			'WMI_USER'  => $request->username,
+			'WMI_PASS'  => $request->password,
+			'WMI_NS'    => $request->namespace,
+			'WMI_QUERY' => $request->query,
+			'WMI_SEP'   => $request->separator,
+		];
+
+		$result = ($this->runner)(
+			$this->binary,
+			['-NoProfile', '-NonInteractive', '-Command', '-'],
+			self::SCRIPT,
+			$env
+		);
+
+		if ($result['exit'] !== 0) {
+			$detail      = $result['stderr'] !== '' ? $result['stderr'] : implode('<br>', $result['stdout']);
+			$this->error = 'ERROR: ' . trim($detail);
+
+			return false;
+		}
+
+		if (count($result['stdout']) === 0) {
+			$this->error = 'ERROR: WMI Returned no Data';
+
+			return false;
+		}
+
+		return $result['stdout'];
+	}
+
+	public function error(): ?string {
+		return $this->error;
+	}
+
+	private function default_runner(): callable {
+		return function (string $binary, array $args, string $stdin, array $env): array {
+			$descriptors = [
+				0 => ['pipe', 'r'],
+				1 => ['pipe', 'w'],
+				2 => ['pipe', 'w'],
+			];
+
+			// proc_open replaces the environment wholesale, so merge our values
+			// onto the inherited one to keep PATH and friends.
+			$child_env = array_merge(getenv(), $env);
+
+			$process = proc_open(array_merge([$binary], $args), $descriptors, $pipes, null, $child_env);
+
+			if (!is_resource($process)) {
+				return ['exit' => -1, 'stdout' => [], 'stderr' => 'proc_open failed'];
+			}
+
+			fwrite($pipes[0], $stdin);
+			fclose($pipes[0]);
+
+			$stdout = stream_get_contents($pipes[1]);
+			$stderr = stream_get_contents($pipes[2]);
+			fclose($pipes[1]);
+			fclose($pipes[2]);
+
+			$exit = proc_close($process);
+
+			$stdout = str_replace("\r\n", "\n", rtrim($stdout, "\r\n"));
+
+			return [
+				'exit'   => $exit,
+				'stdout' => $stdout === '' ? [] : explode("\n", $stdout),
+				'stderr' => $stderr,
+			];
+		};
+	}
+}
+
 class Linux_WMI {
 	public int|string $hostid  = '';   // Host id, to pull authentication from
 	public string $hostname    = '';   // Hostname / IP to contact
