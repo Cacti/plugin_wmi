@@ -9,10 +9,12 @@
  * include the collector, and assert getcommand() neutralises an injected value.
  */
 
-$GLOBALS['config'] = array('cacti_server_os' => 'unix');
+$GLOBALS['config'] = ['cacti_server_os' => 'unix'];
 
 if (!function_exists('cacti_escapeshellarg')) {
-	function cacti_escapeshellarg($s) { return escapeshellarg($s); }
+	function cacti_escapeshellarg($s) {
+		return escapeshellarg($s);
+	}
 }
 
 require_once __DIR__ . '/../linux_wmi.php';
@@ -21,6 +23,7 @@ $fail = 0;
 
 function check($cond, $msg) {
 	global $fail;
+
 	if ($cond) {
 		print "  ok: $msg\n";
 	} else {
@@ -29,8 +32,8 @@ function check($cond, $msg) {
 	}
 }
 
-/* unix: an injected hostname must be single-quote contained, not break out */
-$w = new Linux_WMI();
+// unix: an injected hostname must be single-quote contained, not break out
+$w              = new Linux_WMI();
 $w->username    = 'u';
 $w->password    = 'p';
 $w->binary      = '/usr/bin/wmic';
@@ -45,13 +48,17 @@ check(strpos($cmd, '; touch /tmp/pwned') === false || strpos($cmd, "'127.0.0.1; 
 check(preg_match('#//\x27#', $cmd) === 1, 'the target host is quoted (//\'...\')');
 check(strpos($cmd, "--namespace='") !== false, 'namespace is quoted');
 
-/* win32: metacharacters are stripped from the hostname before quoting */
+// win32: metacharacters are stripped from the hostname before quoting
 $GLOBALS['config']['cacti_server_os'] = 'win32';
-$w2 = new Linux_WMI();
-$w2->username = 'u'; $w2->password = 'p'; $w2->binary = 'wmic'; $w2->command = 'x';
-$w2->hostname = 'host" & calc.exe & %USERNAME%';
-$cmd2 = $w2->getcommand();
-foreach (array('"', '&', '(', ')', '%') as $meta) {
+$w2                                   = new Linux_WMI();
+$w2->username                         = 'u';
+$w2->password                         = 'p';
+$w2->binary                           = 'wmic';
+$w2->command                          = 'x';
+$w2->hostname                         = 'host" & calc.exe & %USERNAME%';
+$cmd2                                 = $w2->getcommand();
+
+foreach (['"', '&', '(', ')', '%'] as $meta) {
 	check(strpos(substr($cmd2, strpos($cmd2, '//')), $meta) === false, "win32: '$meta' stripped from the target host");
 }
 
