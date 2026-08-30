@@ -211,10 +211,14 @@ jobs:
         vendor/bin/pest --no-coverage
       working-directory: ${{ github.workspace }}/cacti/plugins/wmi
 
-#    - name: Run PHPStan at Level 6 on base code outside of Composer due to technical issues
-#      run: ./include/vendor/bin/phpstan analyze --level 6 ${{ github.workspace }}/cacti/plugins/wmi
-#      working-directory: ${{ github.workspace }}/cacti
-    
+    - name: Run PHPStan
+      run: |
+        if [ -f phpstan.neon ]; then
+          composer require --dev phpstan/phpstan --no-interaction --no-progress
+          vendor/bin/phpstan analyse -c phpstan.neon --no-progress
+        fi
+      working-directory: ${{ github.workspace }}/cacti/plugins/wmi
+
     - name: Run Cacti Poller
       run: |
         cd ${{ github.workspace }}/cacti
