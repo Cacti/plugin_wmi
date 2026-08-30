@@ -191,7 +191,7 @@ function process_all_devices() {
 					/* put a placeholder in place to prevent overloads on slow systems */
 					$key = rand();
 
-					db_execute("INSERT INTO wmi_processes (pid, taskid, started) VALUES ($key, $seed, NOW())");
+					db_execute_prepared('INSERT INTO wmi_processes (pid, taskid, started) VALUES (?, ?, NOW())', array($key, $seed));
 
 					print "NOTE: Launching WMI Collector For: '" . $device['description'] . '[' . $device['hostname'] . "]'" . PHP_EOL;
 
@@ -210,7 +210,7 @@ function process_all_devices() {
 
 		/* wait for all processes to end or max run time */
 		while (true) {
-			$processes_left = db_fetch_cell("SELECT COUNT(*) FROM wmi_processes WHERE taskid = $seed");
+			$processes_left = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', array($seed));
 			$pl = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 			if ($processes_left == 0) {
@@ -296,8 +296,8 @@ function process_device($host_id) {
 		array($host_id));
 
 	/* remove the key process and insert the set a process lock */
-	db_execute('REPLACE INTO wmi_processes (pid, taskid) VALUES (' . getmypid() . ", $seed)");
-	db_execute("DELETE FROM wmi_processes WHERE pid = $key AND taskid = $seed");
+	db_execute_prepared('REPLACE INTO wmi_processes (pid, taskid) VALUES (?, ?)', array(getmypid(), $seed));
+	db_execute_prepared('DELETE FROM wmi_processes WHERE pid = ? AND taskid = ?', array($key, $seed));
 
 	$qstart  = date('Y-m-d H:i:s');
 
@@ -355,7 +355,7 @@ function process_device($host_id) {
 	}
 
 	/* remove the process lock */
-	db_execute('DELETE FROM wmi_processes WHERE pid=' . getmypid());
+	db_execute_prepared('DELETE FROM wmi_processes WHERE pid = ?', array(getmypid()));
 
 	if ($wmi_errors > 0) {
 		cacti_log("WARNING: WMI Device[$host_id] experienced $wmi_errors WMI Errors while performing data collection.  Increase logging to HIGH for this device to see the errors.", false, 'WMI');
