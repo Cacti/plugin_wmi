@@ -407,6 +407,7 @@ class Linux_WMI {
 		}
 	}
 
+	/** @return array<int, string>|false The column header, or false if unset. */
 	public function fetch_indexes(): array|false {
 		return $this->results[1] ?? false;
 	}
@@ -415,10 +416,12 @@ class Linux_WMI {
 		return $this->results[0][0] ?? false;
 	}
 
+	/** @return array<int, array<int, string>> */
 	public function fetch_data(): array {
 		return $this->data_rows();
 	}
 
+	/** @return array<int, array<int, string>>|false */
 	public function fetch(): array|false {
 		if ($this->command === '') {
 			$this->error = 'ERROR: WMI Query is empty';
@@ -442,6 +445,8 @@ class Linux_WMI {
 
 	/**
 	 * Run the current query through the transport and return its raw lines.
+	 *
+	 * @return array<int, string>|false
 	 */
 	public function exec(): array|false {
 		if ($this->username === '' || $this->password === '') {
