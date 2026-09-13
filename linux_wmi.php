@@ -58,7 +58,7 @@ class Linux_WMI {
 		if ($hostid != '') {
 			$this->hostid = $hostid;
 
-			/* Ensure we have a username / password pair setup for this host */
+			// Ensure we have a username / password pair setup for this host
 			$this->retrieve_account();
 		}
 	}
@@ -68,7 +68,7 @@ class Linux_WMI {
 	}
 
 	function create_query() {
-		$this->command = "SELECT ";
+		$this->command = 'SELECT ';
 
 		if ($this->keys != '') {
 			if ($this->indexkey != '') {
@@ -76,21 +76,22 @@ class Linux_WMI {
 			}
 
 			$this->command .= $this->keys;
-		} else	if ($this->indexkey != '') {
+		} elseif ($this->indexkey != '') {
 			$this->command .= $this->indexkey . ',';
 		} else {
 			$this->command = '';
-			$this->error = 'ERROR: WMI Keys and Index is Empty!';
+			$this->error   = 'ERROR: WMI Keys and Index is Empty!';
 
 			return false;
 		}
 
 		$this->command .= ' FROM ';
+
 		if ($this->queryclass != '') {
 			$this->command .= $this->queryclass;
 		} else {
 			$this->command = '';
-			$this->error = 'ERROR: WMI Query Class is empty!';
+			$this->error   = 'ERROR: WMI Query Class is empty!';
 
 			return false;
 		}
@@ -114,14 +115,16 @@ class Linux_WMI {
 	}
 
 	function fetch_value($keyname, $index) {
-		$i = $this->fetch_key_index($this->indexkey);
-		$k = $this->fetch_key_index($keyname);
+		$i       = $this->fetch_key_index($this->indexkey);
+		$k       = $this->fetch_key_index($keyname);
 		$results = $this->results;
+
 		if (isset($results[2])) {
 			array_shift($results);
 			array_shift($results);
+
 			foreach ($results as $r) {
-				if (str_replace(array(' ','(', ')'), '', $r[$i]) == $index) {
+				if (str_replace([' ', '(', ')'], '', $r[$i]) == $index) {
 					return $r[$k];
 				}
 			}
@@ -139,8 +142,9 @@ class Linux_WMI {
 		if (isset($results[2])) {
 			array_shift($results);
 			array_shift($results);
+
 			foreach ($results as $r) {
-				if (str_replace(array(' ','(', ')'), '', $r[$i]) == $index) {
+				if (str_replace([' ', '(', ')'], '', $r[$i]) == $index) {
 					print "$keyname!" . $r[$k] . "'" . PHP_EOL;
 				}
 			}
@@ -148,15 +152,16 @@ class Linux_WMI {
 	}
 
 	function print_indexes() {
-		$k = $this->fetch_key_index($this->indexkey);
+		$k       = $this->fetch_key_index($this->indexkey);
 		$results = $this->results;
+
 		if (isset($results[2])) {
 			array_shift($results);
 			array_shift($results);
 
 			foreach ($results as $r) {
-				/* Indexes should not have spaces in their name so we remove them */
-				print str_replace(array(' ','(', ')'), '', $r[$k]) . '!' . str_replace(array(' ','(', ')'), '', $r[$k]) . PHP_EOL;
+				// Indexes should not have spaces in their name so we remove them
+				print str_replace([' ', '(', ')'], '', $r[$k]) . '!' . str_replace([' ', '(', ')'], '', $r[$k]) . PHP_EOL;
 			}
 		}
 	}
@@ -164,7 +169,7 @@ class Linux_WMI {
 	function fetch_indexes() {
 		if (isset($this->results[1])) {
 			return $this->results[1];
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -172,7 +177,7 @@ class Linux_WMI {
 	function fetch_class() {
 		if (sizeof($this->results)) {
 			return $this->results[0][0];
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -184,14 +189,15 @@ class Linux_WMI {
 			array_shift($new);
 
 			return $new;
-		}else{
-			return array();
+		} else {
+			return [];
 		}
 	}
 
 	function fetch() {
 		if ($this->command == '') {
 			$this->error = 'ERROR: WMI Query is empty';
+
 			return false;
 		}
 
@@ -205,7 +211,7 @@ class Linux_WMI {
 			$this->results = $results;
 
 			return $results;
-		}else{
+		} else {
 			return false;
 		}
 	}
@@ -223,7 +229,7 @@ class Linux_WMI {
 			' --delimiter=' . $this->separator .
 			' --user=' . $this->username .
 			' --password=' . $this->password .
-			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
+			($this->querynspace != '' ? ' --namespace=' . $this->querynspace : '') .
 			' //' . trim($this->hostname) .
 			' ' . $this->command;
 	}
@@ -235,22 +241,26 @@ class Linux_WMI {
 			return false;
 		}
 
-		//$command .= ' --option="client_ntlmv2_auth"=Yes';
+		// $command .= ' --option="client_ntlmv2_auth"=Yes';
 
 		$config['cacti_server_os'] = 'unix';
 
 		$return_var   = 0;
-		$return_array = array();
+		$return_array = [];
 
 		exec($command, $return_array, $return_var);
 
 		if ($return_var != 0) {
-			$this->error = 'ERROR: ' . implode("<br>", $return_array);
+			$this->error = 'ERROR: ' . implode('<br>', $return_array);
+
 			return false;
-		}elseif (!sizeof($return_array)) {
+		}
+
+		if (!sizeof($return_array)) {
 			$this->error = 'ERROR: WMI Returned no Data';
+
 			return false;
-		}else{
+		} else {
 			return $return_array;
 		}
 	}
@@ -266,19 +276,21 @@ class Linux_WMI {
 	function retrieve_account() {
 		if ($this->hostid == '') {
 			$this->error = 'ERROR: hostid is not set!';
+
 			return false;
 		}
 
-		$info = db_fetch_row_prepared("SELECT pwa.*
+		$info = db_fetch_row_prepared('SELECT pwa.*
 			FROM wmi_user_accounts AS pwa
 			INNER JOIN host AS h
 			WHERE pwa.id = h.wmi_account
-			AND h.id = ?",
-			array($this->hostid));
+			AND h.id = ?',
+			[$this->hostid]);
 
 		if (isset($info['username'])) {
 			$this->username = $info['username'];
 			$this->password = $this->decode($info['password']);
+
 			return true;
 		}
 
@@ -288,20 +300,23 @@ class Linux_WMI {
 	}
 
 	function decode($info) {
-		$info = base64_decode($info);
-		$info = unserialize($info);
+		$info = base64_decode($info, true);
+		$info = @unserialize($info, ['allowed_classes' => false]);
+
+		if (!is_array($info) || !isset($info['password'])) {
+			return false;
+		}
 		$info = $info['password'];
 
 		return $info;
 	}
 
 	function encode($info) {
-		$a = array(rand(1,time()) => rand(1,time()),'password' => '', rand(1,time()) => rand(1,time()));
+		$a             = [rand(1,time()) => rand(1,time()), 'password' => '', rand(1,time()) => rand(1,time())];
 		$a['password'] = $info;
-		$a = serialize($a);
-		$a = base64_encode($a);
+		$a             = serialize($a);
+		$a             = base64_encode($a);
 
 		return $a;
 	}
 }
-
