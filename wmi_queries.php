@@ -455,9 +455,9 @@ function show_queries() {
 			form_selectable_cell('<a class="linkEditMain" href="' . htmlspecialchars('wmi_queries.php?&action=edit&id=' . $row['id']) . '">' . html_escape($row['name']) . '</a>', $row['id']);
 			form_selectable_cell($row['id'], $row['id'], '', 'right');
 			form_selectable_cell($row['frequency'], $row['id'], '', 'right');
-			form_selectable_cell(html_escape($row['namespace']), $row['id']);
-			form_selectable_cell(html_escape($row['query']), $row['id']);
-			form_selectable_cell(html_escape($row['primary_key']), $row['id']);
+			form_selectable_ecell($row['namespace'], $row['id']);
+			form_selectable_ecell($row['query'], $row['id']);
+			form_selectable_ecell($row['primary_key'], $row['id']);
 			form_checkbox_cell($row['name'], $row['id']);
 			form_end_row();
 		}
