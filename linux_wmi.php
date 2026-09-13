@@ -219,12 +219,15 @@ class Linux_WMI {
 
 		$this->clean();
 
+		// Quote the delimiter for the shell only. $this->separator stays raw for
+		// the explode() in fetch(); its default (|+|) is otherwise split as a
+		// shell pipeline.
 		return $this->binary .
-			' --delimiter=' . $this->separator .
+			' --delimiter=' . cacti_escapeshellarg($this->separator) .
 			' --user=' . $this->username .
 			' --password=' . $this->password .
-			($this->querynspace != '' ? ' --namespace=' . $this->querynspace:'') .
-			' //' . trim($this->hostname) .
+			($this->querynspace != '' ? ' --namespace=' . $this->querynspace : '') .
+			' //' . $this->hostname .
 			' ' . $this->command;
 	}
 
@@ -255,12 +258,27 @@ class Linux_WMI {
 		}
 	}
 
+	/* A hostname/namespace never legitimately contains shell or cmd.exe
+	 * metacharacters. Strip them (cmd.exe ignores \" and toggles quoting on
+	 * every ", and expands %VAR%) before quoting so a device-supplied address
+	 * cannot inject a command on the Cacti server. */
+	function wmi_clean_arg($value) {
+		global $config;
+
+		if (isset($config['cacti_server_os']) && $config['cacti_server_os'] == 'win32') {
+			$value = str_replace(array('"', '&', '|', '^', '<', '>', '(', ')', '%'), '', $value);
+		}
+
+		return $value;
+	}
+
 	function clean() {
-		$this->username  = cacti_escapeshellarg($this->username);
-		$this->password  = cacti_escapeshellarg($this->password);
-		$this->hostname  = trim($this->hostname);
-		$this->binary    = cacti_escapeshellarg($this->binary);
-		$this->command   = cacti_escapeshellarg($this->command);
+		$this->username    = cacti_escapeshellarg($this->username);
+		$this->password    = cacti_escapeshellarg($this->password);
+		$this->hostname    = cacti_escapeshellarg($this->wmi_clean_arg(trim($this->hostname)));
+		$this->querynspace = ($this->querynspace != '' ? cacti_escapeshellarg($this->wmi_clean_arg($this->querynspace)) : '');
+		$this->binary      = cacti_escapeshellarg($this->binary);
+		$this->command     = cacti_escapeshellarg($this->command);
 	}
 
 	function retrieve_account() {
@@ -289,7 +307,7 @@ class Linux_WMI {
 
 	function decode($info) {
 		$info = base64_decode($info);
-		$info = unserialize($info);
+		$info = unserialize($info, array('allowed_classes' => false));
 		$info = $info['password'];
 
 		return $info;
