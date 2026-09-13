@@ -58,7 +58,7 @@ function plugin_wmi_query_exists($query) {
 
 	foreach($tokens as $token) {
 		if ($next_ic) {
-			$exists = db_fetch_cell("SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE '^FROM\s$token$+'");
+			$exists = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', array('^FROM\s' . $token . '$+'));
 		}
 
 		if (strtolower($token) == 'from') {
@@ -71,7 +71,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 	global $config;
 
 	include_once($config['base_path'] . '/lib/export.php');
-	$wmic = db_fetch_row("SELECT * FROM wmi_wql_queries WHERE id = $id");
+	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', array($id));
 	$data = '';
 	if (isset($wmic['id'])) {
 		$data = "<cacti>\n";
@@ -174,7 +174,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		}
 		$data .= "\t\t</items>\n";
 
-		$data_input_data = db_fetch_assoc("SELECT * FROM data_input_fields WHERE data_input_fields.data_input_id=$input AND input_output = 'in' ORDER BY id DESC");
+		$data_input_data = db_fetch_assoc_prepared("SELECT * FROM data_input_fields WHERE data_input_fields.data_input_id = ? AND input_output = 'in' ORDER BY id DESC", array($input));
 		$data .= "\t\t<data>\n";
 		$i = 0;
 		if (cacti_sizeof($data_input_data) > 0) {
@@ -278,7 +278,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 }
 
 function plugin_wmi_create_resource_xml($id) {
-	$wmic = db_fetch_row("SELECT * FROM wmi_wql_queries WHERE id = $id");
+	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', array($id));
 	$data = '';
 	if (isset($wmic['id'])) {
 		$data = "<WMIQuery>\n";

@@ -239,7 +239,7 @@ function edit_queries() {
 			WHERE id= ?',
 			array(get_filter_request_var('id')));
 
-		$header_label = __('Query [edit: %s]', $query['name'], 'wmi');
+		$header_label = __esc('Query [edit: %s]', $query['name'], 'wmi');
 	}else{
 		$header_label = __('Query [new]', 'wmi');
 	}
@@ -452,12 +452,12 @@ function show_queries() {
 	if (!empty($queries)) {
 		foreach ($queries as $row) {
 			form_alternate_row('line' . $row['id'], true);
-			form_selectable_cell('<a class="linkEditMain" href="' . htmlspecialchars('wmi_queries.php?&action=edit&id=' . $row['id']) . '">' . $row['name'] . '</a>', $row['id']);
+			form_selectable_cell('<a class="linkEditMain" href="' . htmlspecialchars('wmi_queries.php?&action=edit&id=' . $row['id']) . '">' . html_escape($row['name']) . '</a>', $row['id']);
 			form_selectable_cell($row['id'], $row['id'], '', 'right');
 			form_selectable_cell($row['frequency'], $row['id'], '', 'right');
-			form_selectable_cell($row['namespace'], $row['id']);
-			form_selectable_cell($row['query'], $row['id']);
-			form_selectable_cell($row['primary_key'], $row['id']);
+			form_selectable_ecell($row['namespace'], $row['id']);
+			form_selectable_ecell($row['query'], $row['id']);
+			form_selectable_ecell($row['primary_key'], $row['id']);
 			form_checkbox_cell($row['name'], $row['id']);
 			form_end_row();
 		}
