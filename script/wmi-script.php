@@ -42,7 +42,7 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 	$wmi->binary   = $config['base_path'] . '/plugins/wmi/wmic';
 
 	/* Fetch the info for this WMI query from the database, exit if not found */
-	$wmiinfo = db_fetch_row_prepared('SELECT * FROM plugin_wmi_queries WHERE queryname = ?', array($wmiquery), FALSE);
+	$wmiinfo = db_fetch_row_prepared('SELECT * FROM plugin_wmi_queries WHERE queryname = ?', array($wmiquery));
 	if (!isset($wmiinfo['queryclass'])) {
 		return '';
 	}
