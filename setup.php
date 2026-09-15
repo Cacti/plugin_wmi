@@ -639,7 +639,7 @@ function wmi_device_template_top() {
 		<tr>
 			<td class='topBoxAlt'>
 				<p><?php print __('Click \'Continue\' to delete the following WMI Queries will be disassociated from the Device Template.', 'wmi'); ?></p>
-				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi'); ?>'<br>
+				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi'); ?><br>
 			</td>
 		</tr>
 		<tr>

@@ -232,7 +232,7 @@ if (!function_exists('is_error_message')) {
 
 if (!function_exists('sql_save')) {
 	function sql_save($array, $table, $key = 'id') {
-		return isset($array['id']) ? $array['id'] : 1;
+		return $array['id'] ?? 1;
 	}
 }
 
