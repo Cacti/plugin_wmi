@@ -26,11 +26,17 @@ describe('wmi setup.php structure', function () {
 		expect($source)->toContain('function plugin_wmi_uninstall');
 	});
 
-	it('returns version array with name key', function () use ($source) {
-		expect($source)->toMatch('/[\'\""]name[\'\""]\s*=>/');
+	it('INFO metadata provides a name', function () {
+		$info = parse_ini_file(realpath(__DIR__ . '/../../INFO'), true);
+
+		expect($info['info'])->toHaveKey('name');
+		expect($info['info']['name'])->not->toBeEmpty();
 	});
 
-	it('returns version array with version key', function () use ($source) {
-		expect($source)->toMatch('/[\'\""]version[\'\""]\s*=>/');
+	it('INFO metadata provides a version', function () {
+		$info = parse_ini_file(realpath(__DIR__ . '/../../INFO'), true);
+
+		expect($info['info'])->toHaveKey('version');
+		expect($info['info']['version'])->not->toBeEmpty();
 	});
 });

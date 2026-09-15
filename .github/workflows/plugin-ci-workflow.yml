@@ -111,9 +111,8 @@ jobs:
         cat ~/.my.cnf
 
     - name: Initialize Cacti Database
-      env:
-        MYSQL_AUTH_USR: '--defaults-file=~/.my.cnf'
       run: |
+        MYSQL_AUTH_USR="--defaults-file=$HOME/.my.cnf"
         mysql $MYSQL_AUTH_USR -e 'CREATE DATABASE IF NOT EXISTS cacti;'
         mysql $MYSQL_AUTH_USR -e "CREATE USER IF NOT EXISTS 'cactiuser'@'localhost' IDENTIFIED BY 'cactiuser';"
         mysql $MYSQL_AUTH_USR -e "GRANT ALL PRIVILEGES ON cacti.* TO 'cactiuser'@'localhost';"
