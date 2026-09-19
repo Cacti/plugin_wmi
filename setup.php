@@ -44,7 +44,6 @@ function plugin_wmi_install() {
 function plugin_wmi_uninstall() {
 	global $config;
 
-	return true;
 	include_once($config['base_path'] . '/lib/api_data_source.php');
 	include_once($config['base_path'] . '/lib/api_graph.php');
 

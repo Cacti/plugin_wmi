@@ -526,124 +526,82 @@ function walk_host() {
 		exit;
 	}
 
-	if ($config['cacti_server_os'] != 'win32') {
-		include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+	// Linux_WMI self-selects the PowerShell/CIM transport on a Windows
+	// Cacti server and the wmic shell transport otherwise, so the same
+	// client is used here regardless of $config['cacti_server_os'].
+	include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
 
-		$wmi              = new Linux_WMI();
-		$wmi->hostname    = $host;
-		$wmi->username    = $username;
-		$wmi->password    = $password;
-		$wmi->querynspace = $namespace;
-		$wmi->command     = $command;
-		$wmi->binary      = read_config_option('path_wmi');
+	$wmi              = new Linux_WMI();
+	$wmi->hostname    = $host;
+	$wmi->username    = $username;
+	$wmi->password    = $password;
+	$wmi->querynspace = $namespace;
+	$wmi->command     = $command;
+	$wmi->binary      = read_config_option('path_wmi');
 
-		if ($wmi->binary == '') {
-			$wmi->binary = '/usr/bin/wmic';
-		}
+	if ($wmi->binary == '') {
+		$wmi->binary = '/usr/bin/wmic';
+	}
 
-		if ($wmi->querynspace == '') {
-			$wmi->querynspace = 'root\\\\CIMV2';
-		}
+	if ($wmi->querynspace == '') {
+		$wmi->querynspace = 'root\\\\CIMV2';
+	}
 
-		if ($wmi->fetch() !== false) {
-			print "<table style='width:100%'><tr><td class='even'>";
+	if ($wmi->fetch() !== false) {
+		print "<table style='width:100%'><tr><td class='even'>";
 
-			$indexes = $wmi->fetch_indexes();
-			$class   = $wmi->fetch_class();
-			$data    = $wmi->fetch_data();
+		$indexes = $wmi->fetch_indexes();
+		$class   = $wmi->fetch_class();
+		$data    = $wmi->fetch_data();
 
-			print '<h4>' . __esc('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data), 'wmi') . '</h4>';
+		print '<h4>' . __esc('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data), 'wmi') . '</h4>';
 
-			print '<p>' . __('Showing columns and first one or two rows of data.', 'wmi') . '</p>';
+		print '<p>' . __('Showing columns and first one or two rows of data.', 'wmi') . '</p>';
 
-			print '</table>';
-			print "<table style='width:100%'>";
+		print '</table>';
+		print "<table style='width:100%'>";
 
-			$present = 'columns';
+		$present = 'columns';
 
-			if ($present == 'columns') {
-				if (cacti_sizeof($data[0])) {
-					foreach ($data[0] as $index => $r) {
-						form_alternate_row('line' . $index, true);
-
-						print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . '</td><td>' . html_escape($r) . '</td>';
-
-						if (isset($data[1][$index])) {
-							print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . '</td><td>' . html_escape($data[1][$index]) . '</td>';
-						}
-
-						form_end_row();
-					}
-				}
-			} else {
-				foreach ($data as $row) {
-					$indexes = array_keys($row);
-
-					if (cacti_sizeof($indexes)) {
-						print '<tr>';
-
-						foreach ($indexes as $col) {
-							print '<th>' . html_escape($col) . '</th>';
-						}
-						print '</tr>';
-					}
-
-					print '<tr>';
-
-					foreach ($row as $data) {
-						print '<td>' . html_escape($data) . '</td>';
-					}
-					print '</tr>';
-				}
-			}
-
-			print '</table>';
-		} else {
-			print $wmi->error;
-		}
-	} else {
-		// Windows version
-		$wmi                                 = new COM('WbemScripting.SWwebLocator');
-		$wmic                                = $wmi->ConnectServer($host, $namespace, $username, $password);
-		$wmic->Security_->ImpersonationLevel = 3;
-
-		$data = $wmic->ExecQuery($command);
-
-		if (cacti_sizeof($data)) {
-			$odata   = (array) $data[0];
-			$indexes = array_keys($odata);
-
-			if (isset($data[1])) {
-				$odata1 = (array) $data[1];
-			} else {
-				$odata1 = [];
-			}
-
-			print "<table style='width:100%'><tr><td>";
-
-			print '<h4>' . __esc('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $namespace, sizeof($indexes), sizeof($data), 'wmi') . '</h4>';
-
-			print '<p>' . __('Showing columns and first one or two rows of data.', 'wmi') . '</p>';
-
-			print '</table>';
-			print "<table style='width:100%'>";
-
-			if (cacti_sizeof($odata)) {
-				foreach ($odata as $index => $r) {
+		if ($present == 'columns') {
+			if (cacti_sizeof($data[0])) {
+				foreach ($data[0] as $index => $r) {
 					form_alternate_row('line' . $index, true);
 
 					print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . '</td><td>' . html_escape($r) . '</td>';
 
-					if (cacti_sizeof($odata1)) {
-						print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . '</td><td>' . html_escape($odata1[$index]) . '</td>';
+					if (isset($data[1][$index])) {
+						print "<td style='font-weight:bold;'>" . html_escape($indexes[$index]) . '</td><td>' . html_escape($data[1][$index]) . '</td>';
 					}
 
 					form_end_row();
 				}
 			}
+		} else {
+			foreach ($data as $row) {
+				$indexes = array_keys($row);
 
-			print '</table>';
+				if (cacti_sizeof($indexes)) {
+					print '<tr>';
+
+					foreach ($indexes as $col) {
+						print '<th>' . html_escape($col) . '</th>';
+					}
+					print '</tr>';
+				}
+
+				print '<tr>';
+
+				foreach ($row as $data) {
+					print '<td>' . html_escape($data) . '</td>';
+				}
+				print '</tr>';
+			}
 		}
+
+		print '</table>';
+	} else {
+		print $wmi->error;
 	}
 }
 

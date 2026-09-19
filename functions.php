@@ -358,42 +358,34 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		$data      = [];
 		$indexes   = [];
 
-		if ($config['cacti_server_os'] != 'win32') {
-			include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+		// Linux_WMI self-selects the PowerShell/CIM transport on a Windows
+		// Cacti server and the wmic shell transport otherwise (see
+		// Linux_WMI::default_transport()), so the same client is used here
+		// regardless of $config['cacti_server_os'].
+		include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
 
-			$wmi              = new Linux_WMI();
-			$wmi->hostname    = $host;
-			$wmi->username    = $username;
-			$wmi->password    = $wmi->decode($password);
-			$wmi->querynspace = $namespace;
-			$wmi->command     = $command;
-			$wmi->binary      = read_config_option('path_wmi');
+		$wmi              = new Linux_WMI();
+		$wmi->hostname    = $host;
+		$wmi->username    = $username;
+		$wmi->password    = $wmi->decode($password);
+		$wmi->querynspace = $namespace;
+		$wmi->command     = $command;
+		$wmi->binary      = read_config_option('path_wmi');
 
-			if ($wmi->binary == '') {
-				$wmi->binary = '/usr/bin/wmic';
-			}
+		if ($wmi->binary == '') {
+			$wmi->binary = '/usr/bin/wmic';
+		}
 
-			if ($wmi->querynspace == '') {
-				$wmi->querynspace = 'root\\\\CIMV2';
-			}
+		if ($wmi->querynspace == '') {
+			$wmi->querynspace = 'root\\\\CIMV2';
+		}
 
-			if ($wmi->fetch() !== false) {
-				$indexes = $wmi->fetch_indexes();
-				$data    = $wmi->fetch_data();
-			} else {
-				$indexes = [];
-				$data    = [];
-			}
+		if ($wmi->fetch() !== false) {
+			$indexes = $wmi->fetch_indexes();
+			$data    = $wmi->fetch_data();
 		} else {
-			// Windows version
-			$wmi                                 = new COM('WbemScripting.SWwebLocator');
-			$wmic                                = $wmi->ConnectServer($host, $namespace, $username, $password);
-			$wmic->Security_->ImpersonationLevel = 3;
-			$data                                = $wmic->ExecQuery($command);
-
-			if (cacti_sizeof($data)) {
-				$indexes = array_keys($data[0]);
-			}
+			$indexes = [];
+			$data    = [];
 		}
 
 		if (cacti_sizeof($data)) {
@@ -457,11 +449,7 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 
 			return true;
 		} else {
-			if ($config['cacti_server_os'] != 'win32') {
-				print $wmi->error;
-			} else {
-				print 'WMI Error';
-			}
+			print $wmi->error;
 
 			return false;
 		}
