@@ -135,7 +135,7 @@ function actions_accounts() {
 			input_validate_input_number($matches[1]);
 			// ====================================================
 
-			$account_list .= '<li>' . db_fetch_cell_prepared('SELECT name
+			$account_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name
 				FROM wmi_user_accounts
 				WHERE id = ?',
 				[$matches[1]]) . '</li>';

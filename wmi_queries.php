@@ -158,7 +158,7 @@ function actions_queries() {
 			input_validate_input_number($matches[1]);
 			// ====================================================
 
-			$query_list .= '<li>' . db_fetch_cell_prepared('SELECT name
+			$query_list .= '<li>' . html_escape(db_fetch_cell_prepared('SELECT name
 				FROM wmi_wql_queries
 				WHERE id = ?',
 				[$matches[1]]) . '</li>';
