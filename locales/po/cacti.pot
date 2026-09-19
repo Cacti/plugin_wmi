@@ -84,7 +84,7 @@ msgid "Template Editor"
 msgstr ""
 
 #: setup.php:320 setup.php:334
-msgid "WMI Autenication"
+msgid "WMI Authentication"
 msgstr ""
 
 #: setup.php:327 setup.php:348

@@ -223,7 +223,7 @@ function edit_accounts() {
 		$account = db_fetch_row_prepared('SELECT * FROM wmi_user_accounts WHERE id = ?', [get_request_var('id')]);
 
 		$account['password'] = '';
-		$header_label         = __esc('Account [edit: %s]', $account['name'], 'wmi');
+		$header_label        = __esc('Account [edit: %s]', $account['name'], 'wmi');
 	} else {
 		$header_label = __('Account [new]', 'wmi');
 	}

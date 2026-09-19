@@ -347,7 +347,7 @@ function show_tools() {
 	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>";
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Command', 'wmi') . '</td>';
-	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command' value='" . html_escape_request_var('command') . "'></textarea></td>";
+	print "<td><textarea class='textAreaNotes' rows='4' cols='80' id='command'>" . html_escape_request_var('command') . '</textarea></td>';
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Primary Key', 'wmi') . '</td>';
 	print "<td><input type='text' size='30' id='keyname' value='" . html_escape_request_var('keyname') . "'></td>";
@@ -599,7 +599,7 @@ function walk_host() {
 
 			print '</table>';
 		} else {
-			print $wmi->error;
+			print nl2br(html_escape($wmi->error));
 		}
 	} else {
 		// Windows version

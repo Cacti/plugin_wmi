@@ -73,7 +73,7 @@ msgid "Template Editor"
 msgstr "Редактор шаблонов"
 
 #: setup.php:320 setup.php:334
-msgid "WMI Autenication"
+msgid "WMI Authentication"
 msgstr "Аутентификация WMI"
 
 #: setup.php:327 setup.php:348

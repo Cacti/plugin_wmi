@@ -44,7 +44,6 @@ function plugin_wmi_install() {
 function plugin_wmi_uninstall() {
 	global $config;
 
-	return true;
 	include_once($config['base_path'] . '/lib/api_data_source.php');
 	include_once($config['base_path'] . '/lib/api_graph.php');
 
@@ -309,7 +308,7 @@ function wmi_config_arrays() {
 		// management (wmi_accounts.php) and the live query tool (wmi_tools.php,
 		// which reaches Linux_WMI::exec) stay behind the dedicated WMI Management
 		// realm rather than being handed to every Template Editor.
-		auth_augment_roles(__('Template Editor'), array('wmi_queries.php'));
+		auth_augment_roles(__('Template Editor'), ['wmi_queries.php']);
 	}
 }
 
@@ -322,7 +321,7 @@ function wmi_data_input_sql_where($sql_where) {
 
 function wmi_draw_navigation_text($nav) {
 	$nav['wmi_accounts.php:']        = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'
@@ -336,7 +335,7 @@ function wmi_draw_navigation_text($nav) {
 	];
 
 	$nav['wmi_accounts.php:actions'] = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'
@@ -639,7 +638,7 @@ function wmi_device_template_top() {
 		<tr>
 			<td class='topBoxAlt'>
 				<p><?php print __('Click \'Continue\' to delete the following WMI Queries will be disassociated from the Device Template.', 'wmi'); ?></p>
-				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi'); ?><br>
+				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi'); ?>'<br>
 			</td>
 		</tr>
 		<tr>
