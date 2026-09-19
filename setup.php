@@ -44,7 +44,6 @@ function plugin_wmi_install() {
 function plugin_wmi_uninstall() {
 	global $config;
 
-	return true;
 	include_once($config['base_path'] . '/lib/api_data_source.php');
 	include_once($config['base_path'] . '/lib/api_graph.php');
 
@@ -322,7 +321,7 @@ function wmi_data_input_sql_where($sql_where) {
 
 function wmi_draw_navigation_text($nav) {
 	$nav['wmi_accounts.php:']        = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'
@@ -336,7 +335,7 @@ function wmi_draw_navigation_text($nav) {
 	];
 
 	$nav['wmi_accounts.php:actions'] = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'

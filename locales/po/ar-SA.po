@@ -92,8 +92,8 @@ msgstr "محرر النماذج"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
-msgid "WMI Autenication"
-msgstr "WMI Autenication"
+msgid "WMI Authentication"
+msgstr "WMI Authentication"
 
 #: setup.php:327 setup.php:348
 msgid "(Edit)"

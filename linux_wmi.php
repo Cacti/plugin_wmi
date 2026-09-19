@@ -80,7 +80,7 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 		exec($this->build_command($request), $output, $status);
 
 		if ($status !== 0) {
-			$this->error = 'ERROR: ' . implode('<br>', $output);
+			$this->error = 'ERROR: ' . implode("\n", $output);
 
 			return false;
 		}

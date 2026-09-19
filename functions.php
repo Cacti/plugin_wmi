@@ -58,13 +58,16 @@ function plugin_wmi_query_exists($query) {
 
 	foreach ($tokens as $token) {
 		if ($next_ic) {
-			$exists = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', ['^FROM\s' . $token . '$+']);
+			$pattern = 'FROM[[:space:]]+' . preg_quote($token, '/') . '\\b';
+			$exists  = (bool) db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', [$pattern]);
 		}
 
 		if (strtolower($token) == 'from') {
 			$next_ic = true;
 		}
 	}
+
+	return $exists;
 }
 
 function plugin_wmi_create_dataquery_xml($id) {

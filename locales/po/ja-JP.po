@@ -80,7 +80,7 @@ msgstr "テンプレートエディタ"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
-msgid "WMI Autenication"
+msgid "WMI Authentication"
 msgstr "WMIオーネーション"
 
 #: setup.php:327 setup.php:348
