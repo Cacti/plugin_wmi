@@ -10,3 +10,6 @@ function db_fetch_row_prepared(string $sql, array $params = [], bool $log = true
 
 function cacti_escapeshellarg(string $string, bool $quote = true): string {
 }
+
+function __(string $text, string $domain = 'default'): string {
+}
