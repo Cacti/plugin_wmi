@@ -211,13 +211,13 @@ class PowerShellCim_Transport implements Wmi_Transport {
 
 		if ($result['exit'] !== 0) {
 			$detail      = $result['stderr'] !== '' ? $result['stderr'] : implode("\n", $result['stdout']);
-			$this->error = 'ERROR: ' . trim($detail);
+			$this->error = __('ERROR:') . ' ' . trim($detail);
 
 			return false;
 		}
 
 		if (count($result['stdout']) === 0) {
-			$this->error = 'ERROR: WMI Returned no Data';
+			$this->error = __('ERROR: WMI Returned no Data');
 
 			return false;
 		}
