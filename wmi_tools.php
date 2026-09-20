@@ -601,7 +601,7 @@ function walk_host() {
 
 		print '</table>';
 	} else {
-		print $wmi->error;
+		print html_escape($wmi->error);
 	}
 }
 

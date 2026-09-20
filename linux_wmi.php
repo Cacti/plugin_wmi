@@ -156,7 +156,7 @@ class PowerShellCim_Transport implements Wmi_Transport {
 		$sep = $env:WMI_SEP
 		$params = @{ Query = $env:WMI_QUERY; ErrorAction = 'Stop' }
 		if (![string]::IsNullOrEmpty($env:WMI_NS)) {
-		    $params['Namespace'] = ($env:WMI_NS -replace '\\', '/')
+		    $params['Namespace'] = ($env:WMI_NS -replace '\\+', '/')
 		}
 		if (![string]::IsNullOrEmpty($env:WMI_HOST)) {
 		    $secure = ConvertTo-SecureString $env:WMI_PASS -AsPlainText -Force
