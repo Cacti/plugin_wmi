@@ -97,4 +97,19 @@ describe('PowerShellCim_Transport', function () {
 		$GLOBALS['config']['cacti_server_os'] = 'unix';
 		expect(is_string((new Linux_WMI())->getcommand()))->toBeTrue();
 	});
+
+	/*
+	 * Get-CimInstance has no -Credential parameter, so passing one alongside
+	 * -ComputerName in the splat fails every remote query with an
+	 * unknown-parameter error before it reaches the CIM provider. A remote
+	 * credential must go through an explicit New-CimSession instead.
+	 */
+	it('authenticates remote queries through an explicit CimSession rather than -Credential on Get-CimInstance', function () {
+		$script = (new ReflectionClassConstant(PowerShellCim_Transport::class, 'SCRIPT'))->getValue();
+
+		expect($script)->toContain('New-CimSession');
+		expect($script)->toContain("\$params['CimSession']");
+		expect($script)->not->toContain("\$params['Credential']");
+		expect($script)->not->toContain("\$params['ComputerName']");
+	});
 });

@@ -158,12 +158,18 @@ class PowerShellCim_Transport implements Wmi_Transport {
 		if (![string]::IsNullOrEmpty($env:WMI_NS)) {
 		    $params['Namespace'] = ($env:WMI_NS -replace '\\+', '/')
 		}
+		$session = $null
 		if (![string]::IsNullOrEmpty($env:WMI_HOST)) {
 		    $secure = ConvertTo-SecureString $env:WMI_PASS -AsPlainText -Force
-		    $params['ComputerName'] = $env:WMI_HOST
-		    $params['Credential']   = New-Object System.Management.Automation.PSCredential($env:WMI_USER, $secure)
+		    $cred = New-Object System.Management.Automation.PSCredential($env:WMI_USER, $secure)
+		    $session = New-CimSession -ComputerName $env:WMI_HOST -Credential $cred
+		    $params['CimSession'] = $session
 		}
-		$items = @(Get-CimInstance @params)
+		try {
+		    $items = @(Get-CimInstance @params)
+		} finally {
+		    if ($session) { Remove-CimSession -CimSession $session }
+		}
 		if ($items.Count -eq 0) { exit 0 }
 		$props = $items[0].CimInstanceProperties.Name
 		Write-Output $items[0].CimClass.CimClassName

@@ -1,5 +1,13 @@
 <?php
 /*
+ +-------------------------------------------------------------------------+
+ | Copyright (C) 2004-2026 The Cacti Group                                 |
+ +-------------------------------------------------------------------------+
+ | Cacti: The Complete RRDtool-based Graphing Solution                     |
+ +-------------------------------------------------------------------------+
+*/
+
+/*
  * Signature stubs for the Cacti core functions the plugin calls, so PHPStan can
  * resolve them without a full Cacti checkout. Not loaded at runtime.
  */
