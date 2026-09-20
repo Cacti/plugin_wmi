@@ -58,13 +58,16 @@ function plugin_wmi_query_exists($query) {
 
 	foreach ($tokens as $token) {
 		if ($next_ic) {
-			$exists = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', ['^FROM\s' . $token . '$+']);
+			$pattern = 'FROM[[:space:]]+' . preg_quote($token, '/') . '\\b';
+			$exists  = (bool) db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_wql_queries WHERE query RLIKE ?', [$pattern]);
 		}
 
 		if (strtolower($token) == 'from') {
 			$next_ic = true;
 		}
 	}
+
+	return $exists;
 }
 
 function plugin_wmi_create_dataquery_xml($id) {
@@ -84,7 +87,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t<hash_" . $hashes['data_query'] . ">\n";
 		$data .= "\t\t<name>" . $wmic['name'] . "</name>\n";
 		$data .= "\t\t<description>WMI Query for " . $wmic['name'] . "</description>\n";
-		$data .= "\t\t<xml_path>&amp;lt;path_cacti&amp;gt;/resource/script_server/" . $wmic['queryname'] . ".xml</xml_path>\n";
+		$data .= "\t\t<xml_path>&amp;lt;path_cacti&amp;gt;/resource/script_server/" . $wmic['name'] . ".xml</xml_path>\n";
 
 		$input = db_fetch_cell("SELECT id FROM data_input WHERE name = 'Get Script Server Data (Indexed)'");
 		$data .= "\t\t<data_input_id>hash_" . get_hash_version('data_input_method') . get_hash_data_input($input) . "</data_input_id>\n";
@@ -96,7 +99,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t\t\t\t<name>" . $wmic['name'] . "</name>\n";
 		$data .= "\t\t\t\t<rrd>\n";
 		$i    = 0;
-		$keys = explode(',', $wmic['querykeys']);
+		$keys = explode(',', $wmic['primary_key']);
 
 		if (cacti_sizeof($keys) > 0) {
 			foreach ($keys as $item2) {
@@ -116,7 +119,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t\t\t\t\t<hash_" . $hashes['graph_sv'] . ">\n";
 		$data .= "\t\t\t\t\t\t<field_name>title</field_name>\n";
 		$data .= "\t\t\t\t\t\t<sequence>2</sequence>\n";
-		$data .= "\t\t\t\t\t\t<text>|host_description| - |query_" . $wmic['indexkey'] . "|</text>\n";
+		$data .= "\t\t\t\t\t\t<text>|host_description| - |query_" . $wmic['primary_key'] . "|</text>\n";
 		$data .= "\t\t\t\t\t</hash_" . $hashes['graph_sv'] . ">\n";
 		$data .= "\t\t\t\t</sv_graph>\n";
 
@@ -126,7 +129,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t\t\t\t\t\t<field_name>name</field_name>\n";
 		$data .= "\t\t\t\t\t\t<data_template_id>hash_" . $hashes['data_template'] . "</data_template_id>\n";
 		$data .= "\t\t\t\t\t\t<sequence>2</sequence>\n";
-		$data .= "\t\t\t\t\t\t<text>|host_description| - |query_" . $wmic['indexkey'] . "|</text>\n";
+		$data .= "\t\t\t\t\t\t<text>|host_description| - |query_" . $wmic['primary_key'] . "|</text>\n";
 		$data .= "\t\t\t\t\t</hash_" . $hashes['query_sv'] . ">\n";
 		$data .= "\t\t\t\t</sv_data_source>\n";
 
@@ -139,7 +142,7 @@ function plugin_wmi_create_dataquery_xml($id) {
 		$data .= "\t\t<name>" . $wmic['name'] . "</name>\n";
 		$data .= "\t\t<ds>\n";
 		$data .= "\t\t\t<t_name></t_name>\n";
-		$data .= "\t\t\t<name>|host_description| - |query_" . $wmic['indexkey'] . "|</name>\n";
+		$data .= "\t\t\t<name>|host_description| - |query_" . $wmic['primary_key'] . "|</name>\n";
 		$data .= "\t\t\t<data_input_id>hash_" . get_hash_version('data_input_method') . get_hash_data_input($input) . "</data_input_id>\n";
 		$data .= "\t\t\t<t_rra_id></t_rra_id>\n";
 		$data .= "\t\t\t<t_rrd_step></t_rrd_step>\n";
@@ -277,24 +280,24 @@ function plugin_wmi_create_resource_xml($id) {
 		$data .= "	<script_function>wmic_script</script_function>\n";
 		$data .= '	<description>WMI Query for ' . $wmic['name'] . "</description>\n";
 		$data .= "	<script_server>php</script_server>\n";
-		$data .= '	<arg_prepend>|host_hostname| |host_id| ' . $wmic['queryname'] . "</arg_prepend>\n";
+		$data .= '	<arg_prepend>|host_hostname| |host_id| ' . $wmic['name'] . "</arg_prepend>\n";
 		$data .= "	<arg_index>index</arg_index>\n";
 		$data .= "	<arg_query>query</arg_query>\n";
 		$data .= "	<arg_get>get</arg_get>\n";
 		$data .= "	<output_delimeter>!</output_delimeter>\n";
 
-		$data .= '	<index_order>' . $wmic['indexkey'] . "</index_order>\n";
+		$data .= '	<index_order>' . $wmic['primary_key'] . "</index_order>\n";
 		$data .= "	<index_order_type>alphabetic</index_order_type>\n";
 		$data .= "	<index_title_format>|chosen_order_field|</index_title_format>\n";
 
 		$data .= "	<fields>\n";
-		$data .= '		<' . $wmic['indexkey'] . ">\n";
-		$data .= '			<name>' . $wmic['indexkey'] . "</name>\n";
+		$data .= '		<' . $wmic['primary_key'] . ">\n";
+		$data .= '			<name>' . $wmic['primary_key'] . "</name>\n";
 		$data .= "			<direction>input</direction>\n";
 		$data .= "			<query_name>index</query_name>\n";
-		$data .= '		</' . $wmic['indexkey'] . ">\n";
+		$data .= '		</' . $wmic['primary_key'] . ">\n";
 
-		$fields = explode(',', $wmic['querykeys']);
+		$fields = explode(',', $wmic['primary_key']);
 
 		if (count($fields)) {
 			foreach ($fields as $f) {

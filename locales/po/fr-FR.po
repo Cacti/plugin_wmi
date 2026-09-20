@@ -91,7 +91,7 @@ msgstr "Éditeur de Template/Modèle"
 
 #: setup.php:320 setup.php:334
 #, fuzzy
-msgid "WMI Autenication"
+msgid "WMI Authentication"
 msgstr "Authentification WMI"
 
 #: setup.php:327 setup.php:348

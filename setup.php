@@ -321,7 +321,7 @@ function wmi_data_input_sql_where($sql_where) {
 
 function wmi_draw_navigation_text($nav) {
 	$nav['wmi_accounts.php:']        = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'
@@ -335,7 +335,7 @@ function wmi_draw_navigation_text($nav) {
 	];
 
 	$nav['wmi_accounts.php:actions'] = [
-		'title'   => __('WMI Autenication', 'wmi'),
+		'title'   => __('WMI Authentication', 'wmi'),
 		'mapping' => 'index.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '1'

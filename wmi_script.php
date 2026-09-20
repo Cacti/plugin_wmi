@@ -48,20 +48,18 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 	// Fetch the info for this WMI query from the database, exit if not found
 	$wmiinfo = db_fetch_row_prepared('SELECT *
 		FROM wmi_wql_queries
-		WHERE queryname = ?',
+		WHERE name = ?',
 		[$wmiquery]);
 
-	if (!isset($wmiinfo['queryclass'])) {
+	if (!isset($wmiinfo['query'])) {
 		return '';
 	}
 
-	$wmi->indexkey    = $wmiinfo['indexkey'];
-	$wmi->keys        = $wmiinfo['querykeys'];
-	$wmi->queryclass  = $wmiinfo['queryclass'];
-	$wmi->querynspace = $wmiinfo['querynspace'];
+	$wmi->indexkey    = $wmiinfo['primary_key'];
+	$wmi->command     = $wmiinfo['query'];
+	$wmi->querynspace = $wmiinfo['namespace'];
 
 	if ($cmd == 'index') {
-		$wmi->create_query();
 		$results = $wmi->fetch();
 		$k       = $wmi->fetch_key_index('Name');
 
@@ -75,16 +73,13 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 		}
 	} elseif ($cmd == 'query') {
 		if ($arg1 == 'index') {
-			$wmi->create_query();
 			$results = $wmi->fetch();
 			$wmi->print_indexes();
 		} else {
-			$wmi->create_query();
 			$results = $wmi->fetch();
 			$wmi->print_fetch_key_value_pair($arg1, $arg2);
 		}
 	} elseif ($cmd == 'get') {
-		$wmi->create_query();
 		$results = $wmi->fetch();
 
 		return $wmi->fetch_value($arg1, $arg2);
