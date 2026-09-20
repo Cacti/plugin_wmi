@@ -33,8 +33,10 @@ an explicit transport instead.
   Windows hosts over DCOM.  Install the `wmi-client` / openwsman package and
   keep the binary path in `Linux_WMI` (`/usr/bin/wmic`) in step.  This client
   predates current Windows hardening; hosts that disable NTLMv1 or enforce the
-  DCOM packet-integrity level (KB5004442) may reject it, in which case use the
-  PowerShell transport.
+  DCOM packet-integrity level (KB5004442) may reject it. There is currently no
+  console setting to switch a Linux Cacti server to the PowerShell transport
+  for such hosts; it is only available to code that constructs `Linux_WMI`
+  directly and passes an explicit transport (see below).
 - **PowerShell / CIM** (default on a Windows server).  Uses `Get-CimInstance`
   through `pwsh` or `powershell.exe`, so it works when Cacti runs on Windows and
   against a remote host over WinRM/CIM.  Needs PowerShell on the Cacti server

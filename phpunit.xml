@@ -17,6 +17,7 @@
             <directory>tests/Security</directory>
             <file>tests/test_tab_wrapper.php</file>
             <file>tests/WmiCommandInjectionTest.php</file>
+            <file>tests/WmiPowerShellTransportTest.php</file>
         </testsuite>
     </testsuites>
 
