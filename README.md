@@ -21,7 +21,7 @@ complete, you can start to define WMI queries for your Windows and other Device
 Templates that support WMI.
 
 Make certain that you install the wmic binary if you are planning on running on
-Linux.  Cacti with PHP 8.1 or newer is required.
+Linux.  Cacti with PHP 8.2 or newer is required.
 
 ## Transports
 
