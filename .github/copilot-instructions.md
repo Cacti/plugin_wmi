@@ -176,10 +176,19 @@ existing code or adding new code, not just in dedicated cleanup passes:
 - **i18n text domain.** Every `__()`/`__esc()` call must include this plugin's text domain as the
   final argument, except when deliberately comparing against a literal, untranslated Cacti-core
   label.
-- **Plugin table-creation API.** Use `api_plugin_db_table_create()`/`api_plugin_db_add_column()`
-  (from Cacti core's `lib/plugins.php`) instead of raw `CREATE TABLE`/`ALTER TABLE ... ADD COLUMN`.
-  Both are idempotent (safe no-ops when already applied), so the same call can run unconditionally
-  from both the install AND upgrade paths.
+- **Plugin table-creation API.** Use `api_plugin_db_table_create()` for creating new tables and
+  `api_plugin_db_add_column()` for adding columns (both from Cacti core's `lib/plugins.php`)
+  instead of raw `CREATE TABLE`/`ALTER TABLE ... ADD COLUMN`.
+  - `api_plugin_db_add_column()` is genuinely idempotent (checks column existence, adds only if
+    missing) - safe to call unconditionally from both the install and upgrade paths.
+  - `api_plugin_db_table_create()` is create-only: once the table exists it's a complete no-op,
+    so it will NOT retrofit new/changed keys, indexes, or other structural changes onto an
+    existing table. Use it for the install path only.
+  - For structural changes to a table that may already exist (new/changed keys, indexes,
+    engine, etc.), there is no dedicated plugin API yet - until one exists, call Cacti core's
+    `db_update_table($table, $data)` directly (`lib/database.php`) in the upgrade path. It diffs
+    the schema array against the live table and issues one combined `ALTER TABLE` for whatever
+    changed.
 - **PHPDoc shape.** Every function gets a PHPDoc block: a one-line description, a blank comment
   line, `@param` lines, a blank comment line, then `@return`. Infer parameter/return types from
   actual usage; don't change the function's real type-hints in the same pass (let static analysis
