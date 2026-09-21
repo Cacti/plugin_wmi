@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2022-06-18 08:26-0400\n"
+"POT-Creation-Date: 2026-09-21 13:15-0400\n"
 "PO-Revision-Date: 2024-11-22 02:12+0000\n"
 "Last-Translator: Nakayama Kito <nakayamakito@icloud.com>\n"
 "Language-Team: Japanese <http://translate.cacti.net/projects/cacti/wmi/ja/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: functions.php:29 wmi_queries.php:280 wmi_queries.php:409 wmi_tools.php:356
+#: functions.php:29 wmi_queries.php:283 wmi_queries.php:416 wmi_tools.php:359
 msgid "Queries"
 msgstr "クエリ"
 
@@ -70,7 +70,7 @@ msgstr "％d日"
 msgid "Utilities"
 msgstr "ユーティリティ"
 
-#: setup.php:303 wmi_tools.php:316
+#: setup.php:303 wmi_tools.php:318
 #, fuzzy
 msgid "WMI Query Tool"
 msgstr "WMIクエリツール"
@@ -79,164 +79,164 @@ msgstr "WMIクエリツール"
 msgid "Data Collection"
 msgstr "サーベイ"
 
-#: setup.php:304 setup.php:341 setup.php:355 wmi_queries.php:266
-#: wmi_queries.php:415
+#: setup.php:304 setup.php:345 setup.php:359 wmi_queries.php:269
+#: wmi_queries.php:422
 #, fuzzy
 msgid "WMI Queries"
 msgstr "WMIクエリ"
 
-#: setup.php:307
+#: setup.php:311
 #, fuzzy
 msgid "Template Editor"
 msgstr "テンプレートエディタ"
 
-#: setup.php:320 setup.php:334
+#: setup.php:324 setup.php:338
 #, fuzzy
 msgid "WMI Authentication"
 msgstr "WMIオーネーション"
 
-#: setup.php:327 setup.php:348
+#: setup.php:331 setup.php:352
 msgid "(Edit)"
 msgstr ""
 
-#: setup.php:369
+#: setup.php:373
 #, fuzzy
 msgid "(Query)"
 msgstr "クエリ"
 
-#: setup.php:408
+#: setup.php:413
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "WMIアカウントオプション"
 
-#: setup.php:413
+#: setup.php:418
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "WMI認証アカウント"
 
-#: setup.php:414
+#: setup.php:419
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "WMIによる認証時に使用するアカウントを選択してください"
 
-#: setup.php:425
+#: setup.php:430
 #, fuzzy
 msgid "1 Process"
 msgstr "1プロセス"
 
-#: setup.php:426 setup.php:427 setup.php:428 setup.php:429 setup.php:430
 #: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
 #: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
-#: setup.php:441 setup.php:442
+#: setup.php:441 setup.php:442 setup.php:443 setup.php:444 setup.php:445
+#: setup.php:446 setup.php:447
 #, php-format
 msgid "%d Processes"
 msgstr "%d プロセス"
 
-#: setup.php:447
+#: setup.php:452
 #, fuzzy
 msgid "WMI Settings"
 msgstr "WMI設定"
 
-#: setup.php:451
+#: setup.php:456
 #, fuzzy
 msgid "Enable WMI Data Collection"
 msgstr "データ収集"
 
-#: setup.php:452
+#: setup.php:457
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "WMIプラグインでWindowsデバイスにクエリを実行する場合は、このチェックボックスをオンにします。"
 
-#: setup.php:457
+#: setup.php:462
 #, fuzzy
 msgid "Concurrent Processes"
 msgstr "システムプロセスを取得する"
 
-#: setup.php:458
+#: setup.php:463
 #, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "システムで同時に実行するWMIクエリはいくつありますか？"
 
-#: setup.php:464
+#: setup.php:469
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "WMIクエリを自動作成する"
 
-#: setup.php:465
+#: setup.php:470
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "選択した場合、自動化を実行するとき、またはデバイスを作成または保存するときに、デバイステンプレートに関連付けられているすべてのWMIクエリが作成されます。"
 
-#: setup.php:471
+#: setup.php:476
 msgid "Misc"
 msgstr "その他"
 
-#: setup.php:491 setup.php:544
+#: setup.php:496 setup.php:550
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "関連付けられているWMIクエリ"
 
-#: setup.php:506 wmi_accounts.php:47 wmi_queries.php:49 wmi_queries.php:420
-#: wmi_tools.php:324
+#: setup.php:511 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:427
+#: wmi_tools.php:326
 msgid "Name"
 msgstr "名前"
 
-#: setup.php:506
+#: setup.php:511
 msgid "Status"
 msgstr "状態"
 
-#: setup.php:518
+#: setup.php:524
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "WMIクエリが存在します"
 
-#: setup.php:520
+#: setup.php:526
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "WMIクエリが存在しません"
 
-#: setup.php:537 setup.php:569
+#: setup.php:543 setup.php:576
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "関連付けられているWMIクエリはありません。"
 
-#: setup.php:561 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:568 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "削除"
 
-#: setup.php:586
+#: setup.php:593
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "WMIクエリを追加する"
 
-#: setup.php:592 wmi_tools.php:358
+#: setup.php:599 wmi_tools.php:361
 msgid "Add"
 msgstr "追加"
 
-#: setup.php:592
+#: setup.php:599
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "デバイステンプレートにWMIクエリを追加する"
 
-#: setup.php:633
+#: setup.php:640
 #, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "次のWMIクエリを削除するには、[続行]をクリックします。クエリがデバイステンプレートから関連付け解除されます。"
 
-#: setup.php:634
+#: setup.php:641
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "WMIクエリ名：％s"
 
-#: setup.php:639 wmi_accounts.php:172 wmi_queries.php:187
+#: setup.php:646 wmi_accounts.php:174 wmi_queries.php:189
 msgid "Cancel"
 msgstr "取り消し"
 
-#: setup.php:640 wmi_accounts.php:164 wmi_queries.php:187
+#: setup.php:647 wmi_accounts.php:166 wmi_queries.php:189
 msgid "Continue"
 msgstr "続ける"
 
-#: setup.php:640
+#: setup.php:647
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "WMIクエリを削除する"
@@ -246,7 +246,7 @@ msgstr "WMIクエリを削除する"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "このアカウントに、表示されるわかりやすい名前を付けます。"
 
-#: wmi_accounts.php:54 wmi_accounts.php:398 wmi_tools.php:337
+#: wmi_accounts.php:54 wmi_accounts.php:405 wmi_tools.php:340
 msgid "Username"
 msgstr "ユーザー名"
 
@@ -255,7 +255,7 @@ msgstr "ユーザー名"
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "認証に使用されるユーザー名。必要に応じてドメインも含めてください。"
 
-#: wmi_accounts.php:61 wmi_tools.php:340
+#: wmi_accounts.php:61 wmi_tools.php:343
 msgid "Password"
 msgstr "パスワード"
 
@@ -264,400 +264,400 @@ msgstr "パスワード"
 msgid "The password used for authentication."
 msgstr "認証に使用されるパスワード。"
 
-#: wmi_accounts.php:154
+#: wmi_accounts.php:156
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "次のアカウントを削除するには、[続行]をクリックしてください。"
 
-#: wmi_accounts.php:161
+#: wmi_accounts.php:163
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "少なくとも1つのアカウントを選択する必要があります。"
 
-#: wmi_accounts.php:223
+#: wmi_accounts.php:226
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "アカウント[編集：％s]"
 
-#: wmi_accounts.php:225
+#: wmi_accounts.php:228
 #, fuzzy
 msgid "Account [new]"
 msgstr "アカウント[新規]"
 
-#: wmi_accounts.php:246
+#: wmi_accounts.php:249
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "WMIアカウント"
 
-#: wmi_accounts.php:254 wmi_queries.php:274
+#: wmi_accounts.php:257 wmi_queries.php:277
 msgid "Search"
 msgstr "検索"
 
-#: wmi_accounts.php:260 wmi_accounts.php:383
+#: wmi_accounts.php:263 wmi_accounts.php:390
 msgid "Accounts"
 msgstr "アカウント"
 
-#: wmi_accounts.php:264 wmi_queries.php:284
+#: wmi_accounts.php:267 wmi_queries.php:287
 msgid "Default"
 msgstr "デフォルト"
 
-#: wmi_accounts.php:278 wmi_queries.php:301
+#: wmi_accounts.php:285 wmi_queries.php:308
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Go"
 
-#: wmi_accounts.php:281 wmi_queries.php:304
+#: wmi_accounts.php:288 wmi_queries.php:311
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "クリア"
 
-#: wmi_accounts.php:393 wmi_tools.php:268
+#: wmi_accounts.php:400 wmi_tools.php:269
 msgid "Description"
 msgstr "説明"
 
-#: wmi_accounts.php:403
+#: wmi_accounts.php:410
 msgid "Devices"
 msgstr "デバイス"
 
-#: wmi_accounts.php:425
+#: wmi_accounts.php:432
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "アカウントが見つかりません"
 
-#: wmi_queries.php:50
+#: wmi_queries.php:49
 #, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
 msgstr "このクエリに表示される意味のある名前を付けます。"
 
-#: wmi_queries.php:56
+#: wmi_queries.php:55
 #, fuzzy
 msgid "Collection Frequency"
 msgstr "収集頻度"
 
-#: wmi_queries.php:57
+#: wmi_queries.php:56
 #, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
 msgstr "このWMIクエリがデバイスに追加されると、これが使用されるデータ収集の頻度です。"
 
-#: wmi_queries.php:64
+#: wmi_queries.php:63
 msgid "Enabled"
 msgstr "有効"
 
-#: wmi_queries.php:65
+#: wmi_queries.php:64
 #, fuzzy
 msgid "Should this Query be enabled on hosts using it"
 msgstr "このクエリを使用しているホストでこのクエリを有効にする必要があります"
 
-#: wmi_queries.php:71 wmi_queries.php:435 wmi_tools.php:343
+#: wmi_queries.php:70 wmi_queries.php:442 wmi_tools.php:346
 msgid "Namespace"
 msgstr "ネームスペース"
 
-#: wmi_queries.php:72
+#: wmi_queries.php:71
 #, fuzzy
 msgid "The Namespace for this Query."
 msgstr "このクエリのネームスペース。"
 
-#: wmi_queries.php:78 wmi_tools.php:268
+#: wmi_queries.php:77 wmi_tools.php:269
 msgid "Query"
 msgstr "クエリ"
 
-#: wmi_queries.php:79
+#: wmi_queries.php:78
 #, fuzzy
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "デバイスからWMIデータを収集するために実行するクエリ。"
 
-#: wmi_queries.php:87 wmi_queries.php:445 wmi_tools.php:268 wmi_tools.php:349
+#: wmi_queries.php:86 wmi_queries.php:452 wmi_tools.php:269 wmi_tools.php:352
 #, fuzzy
 msgid "Primary Key"
 msgstr "主キー"
 
-#: wmi_queries.php:88
+#: wmi_queries.php:87
 #, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "WMIクエリが複数の行を返す場合、どのキー名が主キーまたはインデックスになりますか。主キーに複数の列が含まれている場合は、それらをコンマで区切ります。"
 
-#: wmi_queries.php:177
+#: wmi_queries.php:179
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "次のWMIクエリを削除するには、[続行]をクリックします。"
 
-#: wmi_queries.php:184
+#: wmi_queries.php:186
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "少なくとも1つのWMIクエリを選択する必要があります。"
 
-#: wmi_queries.php:185
+#: wmi_queries.php:187
 msgid "Return"
 msgstr "帰還"
 
-#: wmi_queries.php:187
+#: wmi_queries.php:189
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "WMIクエリを削除する"
 
-#: wmi_queries.php:242
+#: wmi_queries.php:245
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "クエリ[編集：％s]"
 
-#: wmi_queries.php:244
+#: wmi_queries.php:247
 #, fuzzy
 msgid "Query [new]"
 msgstr "クエリ[新規]"
 
-#: wmi_queries.php:298
+#: wmi_queries.php:305
 #, fuzzy
 msgid "Has Graphs"
 msgstr "グラフあり"
 
-#: wmi_queries.php:425
+#: wmi_queries.php:432
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:430 wmi_tools.php:327
+#: wmi_queries.php:437 wmi_tools.php:329
 msgid "Frequency"
 msgstr "回数"
 
-#: wmi_queries.php:440
+#: wmi_queries.php:447
 #, fuzzy
 msgid "WQL Query"
 msgstr "WQLクエリ"
 
-#: wmi_tools.php:107
+#: wmi_tools.php:108
 #, fuzzy
 msgid "Get Computer Information"
 msgstr "コンピュータ情報を入手する"
 
-#: wmi_tools.php:113
+#: wmi_tools.php:114
 #, fuzzy
 msgid "Get System Processes"
 msgstr "システムプロセスを取得する"
 
-#: wmi_tools.php:119
+#: wmi_tools.php:120
 #, fuzzy
 msgid "Get Installed Software"
 msgstr "インストール済みソフトウェアを入手する"
 
-#: wmi_tools.php:125
+#: wmi_tools.php:126
 #, fuzzy
 msgid "Get Operating System Information"
 msgstr "オペレーティングシステム情報を入手する"
 
-#: wmi_tools.php:131
+#: wmi_tools.php:132
 #, fuzzy
 msgid "Get OD Service Information"
 msgstr "ODサービス情報を入手する"
 
-#: wmi_tools.php:137
+#: wmi_tools.php:138
 #, fuzzy
 msgid "Get System Enclosure Information"
 msgstr "システムエンクロージャー情報を取得する"
 
-#: wmi_tools.php:143
+#: wmi_tools.php:144
 #, fuzzy
 msgid "Get System Physical Memory Information"
 msgstr "システムの物理メモリ情報を取得する"
 
-#: wmi_tools.php:149
+#: wmi_tools.php:150
 #, fuzzy
 msgid "Get Memory Device Details"
 msgstr "メモリデバイスの詳細を取得"
 
-#: wmi_tools.php:155
+#: wmi_tools.php:156
 #, fuzzy
 msgid "Get System BIOS Information"
 msgstr "システムBIOS情報を入手する"
 
-#: wmi_tools.php:161
+#: wmi_tools.php:162
 #, fuzzy
 msgid "Get System Baseboard Information"
 msgstr "システムベースボード情報を取得する"
 
-#: wmi_tools.php:167
+#: wmi_tools.php:168
 #, fuzzy
 msgid "Get Processor Information"
 msgstr "プロセッサ情報を入手する"
 
-#: wmi_tools.php:173
+#: wmi_tools.php:174
 #, fuzzy
 msgid "Ping a Known Address from Computer"
 msgstr "コンピュータから既知のアドレスをpingする"
 
-#: wmi_tools.php:179
+#: wmi_tools.php:180
 #, fuzzy
 msgid "Get Row System OS Performance Data"
 msgstr "Row System OSのパフォーマンスデータを取得する"
 
-#: wmi_tools.php:185
+#: wmi_tools.php:186
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
 msgstr "フォーマットされたシステムOSパフォーマンスデータを取得する"
 
-#: wmi_tools.php:191
+#: wmi_tools.php:192
 #, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
 msgstr "フォーマット済みPhsycalディスクパフォーマンスデータを取得する"
 
-#: wmi_tools.php:197
+#: wmi_tools.php:198
 #, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
 msgstr "生のPhsycalディスクパフォーマンスデータを取得する"
 
-#: wmi_tools.php:203
+#: wmi_tools.php:204
 #, fuzzy
 msgid "Get Logical Disk Information"
 msgstr "論理ディスク情報を取得する"
 
-#: wmi_tools.php:209
+#: wmi_tools.php:210
 #, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
 msgstr "フォーマット済み論理ディスクのパフォーマンスデータを取得する"
 
-#: wmi_tools.php:215
+#: wmi_tools.php:216
 #, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
 msgstr "生の論理ディスクパフォーマンスデータを取得する"
 
-#: wmi_tools.php:221
+#: wmi_tools.php:222
 #, fuzzy
 msgid "Get Formatted CPU Performance Data"
 msgstr "フォーマットされたCPUパフォーマンスデータを取得する"
 
-#: wmi_tools.php:227
+#: wmi_tools.php:228
 #, fuzzy
 msgid "Get Raw CPU Performance Data"
 msgstr "生のCPUパフォーマンスデータを取得する"
 
-#: wmi_tools.php:233
+#: wmi_tools.php:234
 #, fuzzy
 msgid "Get Raw Memory Performance Data"
 msgstr "生のメモリパフォーマンスデータを取得する"
 
-#: wmi_tools.php:239
+#: wmi_tools.php:240
 #, fuzzy
 msgid "Get Formatted Network Performance Data"
 msgstr "フォーマットされたネットワークパフォーマンスデータを取得する"
 
-#: wmi_tools.php:245
+#: wmi_tools.php:246
 #, fuzzy
 msgid "Get Raw Network Performance Data"
 msgstr "生のネットワークパフォーマンスデータを取得する"
 
-#: wmi_tools.php:251
+#: wmi_tools.php:252
 #, fuzzy
 msgid "Get Network Adapter Information"
 msgstr "ネットワークアダプタ情報を取得する"
 
-#: wmi_tools.php:257
+#: wmi_tools.php:258
 #, fuzzy
 msgid "Get Computer Asset Information"
 msgstr "コンピュータ資産情報を入手する"
 
-#: wmi_tools.php:268
+#: wmi_tools.php:269
 #, fuzzy
 msgid "Name Space"
 msgstr "ネームスペース"
 
-#: wmi_tools.php:284 wmi_tools.php:306
+#: wmi_tools.php:286 wmi_tools.php:308
 msgid "Close"
 msgstr "閉じる"
 
-#: wmi_tools.php:300
+#: wmi_tools.php:302
 #, fuzzy, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr "エラーコードについてサポートが必要な場合は、Googleを使用するか、こちらのリンク％sを使用してください。"
 
-#: wmi_tools.php:300
+#: wmi_tools.php:302
 #, fuzzy
 msgid "Microsoft Common WBEM Errors"
 msgstr "MicrosoftよくあるWBEMエラー"
 
-#: wmi_tools.php:301
+#: wmi_tools.php:303
 #, fuzzy
 msgid "Distributed COM Setup"
 msgstr "分散COMセットアップ"
 
-#: wmi_tools.php:301
+#: wmi_tools.php:303
 #, fuzzy, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
 msgstr "WMIが機能するには、使用しているユーザーアカウントにDistributed COMアクセス許可が付与されている必要があります。また、WindowsファイアウォールがDistributed COM通信を許可するように構成されている必要があります。次のリンク％sでこの手順に関する本当に良い文書を見つけることができます。"
 
-#: wmi_tools.php:334
+#: wmi_tools.php:337
 msgid "Host"
 msgstr "ホスト"
 
-#: wmi_tools.php:346
+#: wmi_tools.php:349
 msgid "Command"
 msgstr "コマンド"
 
-#: wmi_tools.php:352
+#: wmi_tools.php:355
 #, fuzzy
 msgid "More Class Information @Microsoft"
 msgstr "その他のクラス情報@Microsoft"
 
-#: wmi_tools.php:354
+#: wmi_tools.php:357
 msgid "Run"
 msgstr "実行"
 
-#: wmi_tools.php:354
+#: wmi_tools.php:357
 #, fuzzy
 msgid "Run the WMI Query against the Device"
 msgstr "デバイスに対してWMIクエリを実行する"
 
-#: wmi_tools.php:355
+#: wmi_tools.php:358
 msgid "Clear"
 msgstr "クリア"
 
-#: wmi_tools.php:355
+#: wmi_tools.php:358
 #, fuzzy
 msgid "Clear the results panel."
 msgstr "結果パネルを消去します。"
 
-#: wmi_tools.php:356
+#: wmi_tools.php:359
 #, fuzzy
 msgid "Pick from a list of common queries."
 msgstr "一般的なクエリのリストから選択してください。"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:360
 #, fuzzy
 msgid "Get some help on setting up WMI"
 msgstr "WMIの設定に関するいくつかの助けを得る"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:360
 msgid "Help"
 msgstr "ヘルプ"
 
-#: wmi_tools.php:358
+#: wmi_tools.php:361
 #, fuzzy
 msgid "Create a new WMI Query from the existing Query."
 msgstr "既存のクエリから新しいWMIクエリを作成します。"
 
-#: wmi_tools.php:369
+#: wmi_tools.php:372
 #, fuzzy
 msgid "Query Results"
 msgstr "クエリ結果"
 
-#: wmi_tools.php:398
+#: wmi_tools.php:401
 #, fuzzy
 msgid "Common Queries (Click to Select)"
 msgstr "一般的なクエリ（クリックして選択）"
 
-#: wmi_tools.php:427
+#: wmi_tools.php:430
 #, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "WMI設定支援"
 
-#: wmi_tools.php:522
+#: wmi_tools.php:525
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "エラー：あなたはホスト、ユーザー名、パスワード、そしてクエリを提供しなければなりません"
 
-#: wmi_tools.php:552 wmi_tools.php:617
+#: wmi_tools.php:557
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "デバイスのWMIクエリ結果：％s、クラス：％s、列：％s、行：％s"
 
-#: wmi_tools.php:554 wmi_tools.php:619
+#: wmi_tools.php:559
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "列と最初の1行または2行のデータを表示します。"
