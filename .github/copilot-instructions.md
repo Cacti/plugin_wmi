@@ -187,8 +187,8 @@ existing code or adding new code, not just in dedicated cleanup passes:
   - For structural changes to a table that may already exist (new/changed keys, indexes,
     engine, etc.), there is no dedicated plugin API yet - until one exists, call Cacti core's
     `db_update_table($table, $data)` directly (`lib/database.php`) in the upgrade path. It diffs
-    the schema array against the live table and issues one combined `ALTER TABLE` for whatever
-    changed.
+    the schema array against the live table and issues one combined `ALTER TABLE` for all
+    detected changes.
 - **PHPDoc shape.** Every function gets a PHPDoc block: a one-line description, a blank comment
   line, `@param` lines, a blank comment line, then `@return`. Infer parameter/return types from
   actual usage; don't change the function's real type-hints in the same pass (let static analysis
