@@ -21,9 +21,10 @@ beforeAll(function () {
 });
 
 beforeEach(function () {
-        $GLOBALS['__test_db_calls']          = array();
-        $GLOBALS['__test_add_column_calls']  = array();
-        $GLOBALS['__test_sql_save_calls']    = array();
+	$GLOBALS['__test_db_calls']         = array();
+	$GLOBALS['__test_add_column_calls'] = array();
+	$GLOBALS['__test_sql_save_calls']   = array();
+});
 
 it('parses the plugin INFO file into an info array', function () {
 	$info = plugin_wmi_version();
@@ -45,25 +46,28 @@ it('reports the upgrade as always successful', function () {
 it('adds the wmi_account column and creates every table', function () {
 	plugin_wmi_setup_tables();
 
-        expect($GLOBALS['__test_add_column_calls'])->toHaveCount(1);
-        expect($GLOBALS['__test_add_column_calls'][0]['plugin'])->toBe('wmi');
-        expect($GLOBALS['__test_add_column_calls'][0]['table'])->toBe('host');
-        expect($GLOBALS['__test_add_column_calls'][0]['data']['name'])->toBe('wmi_account');
+	expect($GLOBALS['__test_add_column_calls'])->toHaveCount(1);
+	expect($GLOBALS['__test_add_column_calls'][0]['plugin'])->toBe('wmi');
+	expect($GLOBALS['__test_add_column_calls'][0]['table'])->toBe('host');
+	expect($GLOBALS['__test_add_column_calls'][0]['data']['name'])->toBe('wmi_account');
 
-        $creates = array_filter($GLOBALS['__test_db_calls'], function ($call) {
-                return $call['fn'] === 'db_execute' && stripos($call['sql'], 'CREATE TABLE IF NOT EXISTS') !== false;
-        });
+	$creates = array_filter($GLOBALS['__test_db_calls'], function ($call) {
+		return $call['fn'] === 'db_execute' && stripos($call['sql'], 'CREATE TABLE IF NOT EXISTS') !== false;
+	});
 
-        expect($creates)->toHaveCount(7);
+	expect($creates)->toHaveCount(7);
 });
 
 it('seeds both WMI data_input rows when they are not already present', function () {
-        plugin_wmi_setup_tables();
+	plugin_wmi_setup_tables();
 
-        expect($GLOBALS['__test_sql_save_calls'])->toHaveCount(2);
-        expect($GLOBALS['__test_sql_save_calls'][0]['table'])->toBe('data_input');
-        expect($GLOBALS['__test_sql_save_calls'][0]['array']['hash'])->toBe('4af550dfe8b451579054d038ad62ba3e');
-        expect($GLOBALS['__test_sql_save_calls'][1]['array']['hash'])->toBe('42e584b81075f6ad6556e62afc509179');
+	expect($GLOBALS['__test_sql_save_calls'])->toHaveCount(2);
+	expect($GLOBALS['__test_sql_save_calls'][0]['table'])->toBe('data_input');
+	expect($GLOBALS['__test_sql_save_calls'][0]['array']['hash'])->toBe('4af550dfe8b451579054d038ad62ba3e');
+	expect($GLOBALS['__test_sql_save_calls'][1]['array']['hash'])->toBe('42e584b81075f6ad6556e62afc509179');
+
+	$inserts = array_filter($GLOBALS['__test_db_calls'], function ($call) {
+		return $call['fn'] === 'db_execute' && stripos($call['sql'], 'INSERT INTO `data_input_fields`') !== false;
 	});
 
 	// 2 fields for the non-indexed query, 4 for the indexed query.
