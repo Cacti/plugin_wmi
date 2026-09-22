@@ -29,21 +29,24 @@ it('registers every hook wmi depends on, its realm, and provisions its tables', 
 		$hooks[$registered['hook']] = $registered;
 	}
 
-	foreach (array(
-		'config_arrays',
-		'config_form',
-		'config_settings',
-		'draw_navigation_text',
-		'api_device_save',
-		'data_input_sql_where',
-		'poller_bottom',
-		'device_template_edit',
-		'device_template_top',
-		'device_edit_pre_bottom',
-		'api_device_new',
-	) as $expected) {
+	$expectedHooks = array(
+		'config_arrays'          => 'wmi_config_arrays',
+		'config_form'            => 'wmi_config_form',
+		'config_settings'        => 'wmi_config_settings',
+		'draw_navigation_text'   => 'wmi_draw_navigation_text',
+		'api_device_save'        => 'wmi_api_device_save',
+		'data_input_sql_where'   => 'wmi_data_input_sql_where',
+		'poller_bottom'          => 'wmi_poller_bottom',
+		'device_template_edit'   => 'wmi_device_template_edit',
+		'device_template_top'    => 'wmi_device_template_top',
+		'device_edit_pre_bottom' => 'wmi_device_edit_pre_bottom',
+		'api_device_new'         => 'wmi_api_device_new',
+	);
+
+	foreach ($expectedHooks as $expected => $expectedFunction) {
 		expect($hooks)->toHaveKey($expected);
 		expect($hooks[$expected]['plugin'])->toBe('wmi');
+		expect($hooks[$expected]['function'])->toBe($expectedFunction);
 		expect($hooks[$expected]['file'])->toBe('setup.php');
 	}
 

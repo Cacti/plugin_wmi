@@ -138,6 +138,7 @@ if (!function_exists('db_column_exists')) {
 
 if (!function_exists('api_plugin_db_add_column')) {
 	function api_plugin_db_add_column($plugin, $table, $data) {
+		$GLOBALS['__test_add_column_calls'][] = array('plugin' => $plugin, 'table' => $table, 'data' => $data);
 		return true;
 	}
 }
@@ -231,6 +232,7 @@ if (!function_exists('is_error_message')) {
 
 if (!function_exists('sql_save')) {
 	function sql_save($array, $table, $key = 'id') {
+		$GLOBALS['__test_sql_save_calls'][] = array('array' => $array, 'table' => $table, 'key' => $key);
 		return $array['id'] ?? 1;
 	}
 }
