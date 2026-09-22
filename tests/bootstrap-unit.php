@@ -235,6 +235,55 @@ if (!function_exists('sql_save')) {
 	}
 }
 
+$GLOBALS['__test_registered_hooks']  = array();
+$GLOBALS['__test_registered_realms'] = array();
+
+if (!function_exists('api_plugin_register_hook')) {
+	function api_plugin_register_hook($plugin, $hook, $function, $file, $enabled = 1) {
+		$GLOBALS['__test_registered_hooks'][] = array(
+			'plugin'   => $plugin,
+			'hook'     => $hook,
+			'function' => $function,
+			'file'     => $file,
+			'enabled'  => $enabled,
+		);
+		return true;
+	}
+}
+
+if (!function_exists('api_plugin_register_realm')) {
+	function api_plugin_register_realm($plugin, $file, $description, $enabled = 1) {
+		$GLOBALS['__test_registered_realms'][] = array(
+			'plugin'      => $plugin,
+			'file'        => $file,
+			'description' => $description,
+			'enabled'     => $enabled,
+		);
+		return true;
+	}
+}
+
+$GLOBALS['__test_auth_augment_roles_calls'] = array();
+
+if (!function_exists('auth_augment_roles')) {
+	function auth_augment_roles($role, $files) {
+		$GLOBALS['__test_auth_augment_roles_calls'][] = array('role' => $role, 'files' => $files);
+	}
+}
+
+if (!function_exists('exec_background')) {
+	function exec_background($command, $args = '') {
+		$GLOBALS['__test_db_calls'][] = array('fn' => 'exec_background', 'command' => $command, 'args' => $args);
+		return true;
+	}
+}
+
+if (!function_exists('cacti_escapeshellcmd')) {
+	function cacti_escapeshellcmd($string) {
+		return escapeshellcmd($string);
+	}
+}
+
 if (!defined('CACTI_PATH_BASE')) {
 	define('CACTI_PATH_BASE', '/var/www/html/cacti');
 }
