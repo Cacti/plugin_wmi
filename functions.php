@@ -22,6 +22,17 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Renders this plugin's tabbed navigation (Queries, Authentication) atop
+ * wmi_queries.php/wmi_accounts.php, highlighting the currently active tab
+ * based on the request's 'tab' value. Called from the top of both of
+ * those files' page-rendering functions.
+ *
+ * @return void Outputs HTML directly.
+ *
+ * @global array $config Cacti global configuration array; used to build
+ *                        each tab's link URL.
+ */
 function display_tabs() {
 	global $config;
 
@@ -51,6 +62,19 @@ function display_tabs() {
 	print '</ul></nav></div>';
 }
 
+/**
+ * Determines whether any saved WQL query already selects from the same
+ * WMI class (table) referenced in the given query's 'FROM' clause,
+ * used to warn against creating duplicate/conflicting queries. Called
+ * from wmi_queries.php's form_save() before saving a new or edited
+ * query.
+ *
+ * @param string $query The WQL query text to check (e.g.
+ *                       'SELECT * FROM Win32_Something').
+ *
+ * @return bool True when an existing saved query already targets the
+ *              same WMI class.
+ */
 function plugin_wmi_query_exists($query) {
 	$tokens  = preg_split('/\s+/', $query);
 	$next_ic = false;
@@ -70,6 +94,21 @@ function plugin_wmi_query_exists($query) {
 	return $exists;
 }
 
+/**
+ * Generates the Cacti Data Query/Data Template export XML for a saved WMI
+ * query, defining a Script Server (Indexed) data query with one data
+ * source per primary-key field, suitable for packaging/importing as a
+ * reusable Cacti template. Called from wmi_queries.php's export/download
+ * action for a given saved query.
+ *
+ * @param int $id The wmi_wql_queries.id to generate export XML for.
+ *
+ * @return string The generated Cacti export XML, or '' when the query
+ *                id does not exist.
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        lib/export.php.
+ */
 function plugin_wmi_create_dataquery_xml($id) {
 	global $config;
 
@@ -269,6 +308,20 @@ function plugin_wmi_create_dataquery_xml($id) {
 	return $data;
 }
 
+/**
+ * Generates the Script Server resource XML descriptor for a saved WMI
+ * query (wiring up its index/query/get script arguments and declaring
+ * its primary-key and output fields), used alongside
+ * plugin_wmi_create_dataquery_xml() when packaging a query as a reusable
+ * Cacti Data Query resource file. Called from wmi_queries.php's export/
+ * download action for a given saved query.
+ *
+ * @param int $id The wmi_wql_queries.id to generate the resource XML
+ *                 for.
+ *
+ * @return string The generated Script Server resource XML, or '' when
+ *                the query id does not exist.
+ */
 function plugin_wmi_create_resource_xml($id) {
 	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', [$id]);
 	$data = '';
@@ -315,6 +368,27 @@ function plugin_wmi_create_resource_xml($id) {
 	return $data;
 }
 
+/**
+ * Runs a saved WQL query against a host's configured WMI account (via the
+ * Linux_WMI client), storing the results in host_wmi_cache and marking
+ * any previously cached rows no longer returned as stale/removed.
+ * Called from poller_wmi.php's polling loop for each host/query pairing
+ * configured to use WMI-based data collection.
+ *
+ * @param int $host_id      The Cacti host id to query.
+ * @param int $wmi_query_id The wmi_wql_queries.id to run against the
+ *                           host.
+ *
+ * @return bool|void True when the query succeeded and results were
+ *                    cached; false when the host's WMI account/query
+ *                    could not be found or the query failed; no explicit
+ *                    return value when the host itself could not be
+ *                    found (stale cache rows are still cleaned up in that
+ *                    case).
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        this plugin's linux_wmi.php client.
+ */
 function run_store_wmi_query($host_id, $wmi_query_id) {
 	global $config;
 
@@ -466,10 +540,16 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		[$host_id, $wmi_query_id]);
 }
 
-/** get_hash_wmi_query - returns the current unique hash for an wmi query
-   @arg $wmi_query_id - (int) the ID of the wmi_query to return a hash for
-   * @param mixed $wmi_query_id
-   @returns - a 128-bit, hexadecimal hash */
+/**
+ * Returns the current unique hash for a WMI query, generating and
+ * assigning a new one if the stored value doesn't already look like a
+ * valid 128-bit hex hash. Used when packaging a saved query into export
+ * XML so it can be referenced consistently across exports/imports.
+ *
+ * @param int $wmi_query_id The ID of the WMI query to return a hash for.
+ *
+ * @return string A 128-bit, hexadecimal hash.
+ */
 function get_hash_wmi_query($wmi_query_id) {
 	$hash = db_fetch_cell_prepared('SELECT hash FROM wmi_wql_queries WHERE id = ?', [$wmi_query_id]);
 

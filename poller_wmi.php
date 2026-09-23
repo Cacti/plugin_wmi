@@ -132,6 +132,18 @@ if ($mainrun) {
 
 exit(0);
 
+/**
+ * Writes $message to standard output, prefixed 'DEBUG:', when this script
+ * was invoked with the '-d'/'--debug' option. Called throughout this
+ * script's device-processing functions to trace progress.
+ *
+ * @param string $message The message to print when debugging is enabled.
+ *
+ * @return void
+ *
+ * @global bool $debug Whether debug output is enabled, set from this
+ *                      script's own CLI argument parsing.
+ */
 function debug($message) {
 	global $debug;
 
@@ -140,6 +152,24 @@ function debug($message) {
 	}
 }
 
+/**
+ * Master-run entry point: finds every enabled, up, non-disabled device
+ * due for a WMI query refresh, launches a background poller_wmi.php
+ * child process (bounded by the 'wmi_processes' concurrency setting) for
+ * each, waits for all children to finish (tracked via the wmi_processes
+ * table), optionally auto-purges cache/mapping rows for devices that no
+ * longer exist, and logs overall polling statistics. Called from this
+ * script's main flow when invoked with the '-M' (master) option.
+ *
+ * @return void
+ *
+ * @global float $start Set from this script's own CLI argument parsing
+ *                       (or the current time); used to compute total
+ *                       elapsed run time for the stats log.
+ * @global int   $seed  Set from this script's own CLI argument parsing
+ *                       (or a random value); used to tag/track this run's
+ *                       child processes in the wmi_processes table.
+ */
 function process_all_devices() {
 	global $start, $seed;
 
@@ -272,6 +302,29 @@ function process_all_devices() {
 	print "NOTE: Device WMI Polling Completed, $cacti_stats" . PHP_EOL;
 }
 
+/**
+ * Launches a background poller_wmi.php child process to poll a single
+ * device's WMI queries, passing along the master run's shared seed/start
+ * time and the device's process-lock placeholder key. Called from
+ * process_all_devices() for each device due for a WMI query refresh.
+ *
+ * @param int    $host_id The Cacti host id to poll in the background.
+ * @param int    $seed    The master run's shared task/seed identifier,
+ *                         used to track this run's child processes.
+ * @param int    $key     The wmi_processes placeholder row's pid value to
+ *                         replace once the child process starts.
+ *
+ * @return void
+ *
+ * @global array  $config    Cacti global configuration array; used to
+ *                            locate the PHP binary and this script.
+ * @global bool   $debug     Whether debug output is enabled, propagated
+ *                            to the child process.
+ * @global float  $start     The master run's shared start time,
+ *                            propagated to the child process.
+ * @global bool   $forcerun  Whether a forced run was requested,
+ *                            propagated to the child process.
+ */
 function process_background_device($host_id, $seed, $key) {
 	global $config, $debug, $start, $forcerun;
 
@@ -285,6 +338,34 @@ function process_background_device($host_id, $seed, $key) {
 		($debug ? ' --debug' : ''));
 }
 
+/**
+ * Child-process entry point: runs every WMI query due for a single
+ * device (via run_store_wmi_query()), recording each query's last-run
+ * time, runtime, and failure status in host_wmi_query, then releases this
+ * process's lock row in wmi_processes. Called from this script's main
+ * flow when invoked with '--host-id=N' (i.e. as a background child of
+ * process_background_device()).
+ *
+ * @param int $host_id The Cacti host id to poll.
+ *
+ * @return void
+ *
+ * @global array  $config       Reserved/declared for parity with other
+ *                               device-processing functions; not used
+ *                               directly here.
+ * @global float  $start        Reserved/declared for parity with other
+ *                               device-processing functions; not used
+ *                               directly here.
+ * @global int    $seed         The current run's shared task identifier,
+ *                               used to release this device's process
+ *                               lock row.
+ * @global int    $key          This device's wmi_processes placeholder
+ *                               pid value, replaced with the real pid at
+ *                               the start of processing.
+ * @global int    $snmp_errors  Reserved/declared for parity with other
+ *                               device-processing functions; not used
+ *                               directly here.
+ */
 function process_device($host_id) {
 	global $config, $start, $seed, $key, $snmp_errors;
 
@@ -372,6 +453,18 @@ function process_device($host_id) {
 	}
 }
 
+/**
+ * Prints this script's name, plugin version, and copyright banner.
+ * Called from this script's own CLI argument parsing when
+ * '--version'/'-V'/'-v' is passed, and from display_help() before
+ * printing usage text.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        this plugin's setup.php if needed to determine
+ *                        the plugin version.
+ */
 function display_version() {
 	global $config;
 
@@ -383,6 +476,13 @@ function display_version() {
 	print 'Device WMI Poller Process, Version ' . $info['version'] . ', ' . COPYRIGHT_YEARS . PHP_EOL;
 }
 
+/**
+ * Prints this script's usage/help text for both master and child process
+ * invocations. Called from this script's own CLI argument parsing when
+ * '--help'/'-H'/'-h' is passed.
+ *
+ * @return void
+ */
 function display_help() {
 	display_version();
 

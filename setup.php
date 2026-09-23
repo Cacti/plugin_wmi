@@ -22,6 +22,18 @@
  +-------------------------------------------------------------------------+
 */
 
+/**
+ * Installs the WMI plugin: registers its Cacti hooks (config_arrays,
+ * config_form, config_settings, draw_navigation_text, api_device_save,
+ * data_input_sql_where, poller_bottom, device_template_edit,
+ * device_template_top, device_edit_pre_bottom, api_device_new),
+ * registers its realm covering wmi_accounts.php/wmi_queries.php/
+ * wmi_tools.php, and creates its database tables. Invoked by Cacti's
+ * plugin architecture when an administrator installs this plugin from
+ * Console > Plugin Management.
+ *
+ * @return void
+ */
 function plugin_wmi_install() {
 	api_plugin_register_hook('wmi', 'config_arrays',        'wmi_config_arrays',        'setup.php');
 	api_plugin_register_hook('wmi', 'config_form',          'wmi_config_form',          'setup.php');
@@ -41,6 +53,17 @@ function plugin_wmi_install() {
 	plugin_wmi_setup_tables();
 }
 
+/**
+ * Uninstalls the WMI plugin: drops all of its database tables and
+ * removes any graphs/data sources created by its two WMI Data Input
+ * Methods. Invoked by Cacti's plugin architecture when an administrator
+ * uninstalls this plugin from Console > Plugin Management.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        lib/api_data_source.php and lib/api_graph.php.
+ */
 function plugin_wmi_uninstall() {
 	global $config;
 
@@ -100,14 +123,39 @@ function plugin_wmi_uninstall() {
 	}
 }
 
+/**
+ * Verifies the plugin's configuration; currently a no-op placeholder.
+ * Invoked by Cacti's plugin architecture on relevant page loads.
+ *
+ * @return bool Always returns true.
+ */
 function plugin_wmi_check_config() {
 	return true;
 }
 
+/**
+ * Performs any schema/data migrations needed when upgrading to a newer
+ * version of this plugin; currently a no-op placeholder. Invoked by
+ * Cacti's plugin architecture when an installed plugin's version
+ * increases.
+ *
+ * @return bool Always returns true.
+ */
 function plugin_wmi_upgrade() {
 	return true;
 }
 
+/**
+ * Adds the 'wmi_account' column to Cacti's host table, creates this
+ * plugin's database tables (wmi_user_accounts, wmi_wql_queries,
+ * host_wmi_query, host_template_wmi_query, host_wmi_accounts,
+ * host_wmi_cache, wmi_processes), and registers this plugin's two Data
+ * Input Methods ('Get WMI Data' and 'Get WMI Data (Indexed)') along with
+ * their input/output fields, if not already present. Called from
+ * plugin_wmi_install() during plugin installation.
+ *
+ * @return void
+ */
 function plugin_wmi_setup_tables() {
 	api_plugin_db_add_column('wmi', 'host',
 		[
@@ -250,6 +298,16 @@ function plugin_wmi_setup_tables() {
 	}
 }
 
+/**
+ * Reads this plugin's INFO file and returns its [info] section. Used by
+ * Cacti's plugin architecture via the api_plugin_version hook.
+ *
+ * @return array The parsed [info] section of the plugin's INFO file (keys
+ *               such as name, version, author).
+ *
+ * @global array $config Cacti global configuration array; used to locate
+ *                        the plugin's base path.
+ */
 function plugin_wmi_version() {
 	global $config;
 
@@ -258,6 +316,19 @@ function plugin_wmi_version() {
 	return $info['info'];
 }
 
+/**
+ * Hook implementation for Cacti's 'poller_bottom' filter. On the primary
+ * poller, launches poller_wmi.php in master mode ('-M') as a background
+ * process to poll all configured WMI devices. Called by Cacti's poller
+ * via api_plugin_hook('poller_bottom', ...) at the end of each polling
+ * cycle.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to locate
+ *                        the PHP binary, this plugin's poller script, and
+ *                        to check the current poller_id.
+ */
 function wmi_poller_bottom() {
 	global $config;
 
@@ -268,6 +339,43 @@ function wmi_poller_bottom() {
 	}
 }
 
+/**
+ * Hook implementation for Cacti's 'config_arrays' filter. Registers this
+ * plugin's two Data Input type constants/labels, populates the shared
+ * $wmi_frequencies lookup used throughout this plugin's UI, restricts the
+ * Data Query edit form's Data Input dropdown to relevant input types,
+ * adds the WMI Query Tool/WMI Queries pages to Cacti's menu, and grants
+ * Template Editors access to wmi_queries.php (credential management and
+ * the live query tool remain restricted to the dedicated WMI Management
+ * realm). Called by Cacti core via api_plugin_hook('config_arrays', ...)
+ * while building the navigation menu.
+ *
+ * @return void
+ *
+ * @global array $user_auth_realms          Cacti's registered realm map
+ *                                           (unused directly here;
+ *                                           declared for parity with
+ *                                           other config_arrays hook
+ *                                           implementations).
+ * @global array $user_auth_realm_filenames Cacti's realm-to-filename map
+ *                                           (unused directly here;
+ *                                           declared for parity with
+ *                                           other config_arrays hook
+ *                                           implementations).
+ * @global array $menu                      Cacti's main navigation menu
+ *                                           array, extended here with
+ *                                           this plugin's entries.
+ * @global array $input_types               Cacti's registered Data Input
+ *                                           type labels, extended here
+ *                                           with this plugin's two types.
+ * @global array $fields_data_query_edit     The Data Query edit form's
+ *                                           field definitions, narrowed
+ *                                           here to relevant Data Input
+ *                                           options.
+ * @global array $wmi_frequencies            Populated here with this
+ *                                           plugin's collection-frequency
+ *                                           options.
+ */
 function wmi_config_arrays() {
 	global $user_auth_realms, $user_auth_realm_filenames, $menu;
 	global $input_types, $fields_data_query_edit, $wmi_frequencies;
@@ -312,6 +420,20 @@ function wmi_config_arrays() {
 	}
 }
 
+/**
+ * Hook implementation for Cacti's 'data_input_sql_where' filter. Excludes
+ * this plugin's two special Data Input Methods from a query's Data Input
+ * selection list, since they are internal implementation details rather
+ * than user-selectable input methods. Called by Cacti core via
+ * api_plugin_hook('data_input_sql_where', ...) while building Data Input
+ * selection queries.
+ *
+ * @param string $sql_where The existing SQL WHERE clause fragment
+ *                           contributed by Cacti core and other plugins.
+ *
+ * @return string The $sql_where fragment with this plugin's exclusion
+ *                condition appended.
+ */
 function wmi_data_input_sql_where($sql_where) {
 	// Exclude special data input methods
 	$sql_where .= (strlen($sql_where) ? ' AND' : 'WHERE') . " (di.hash NOT IN ('4af550dfe8b451579054d038ad62ba3e', '42e584b81075f6ad6556e62afc509179'))";
@@ -319,6 +441,19 @@ function wmi_data_input_sql_where($sql_where) {
 	return $sql_where;
 }
 
+/**
+ * Hook implementation for Cacti's 'draw_navigation_text' filter. Adds
+ * breadcrumb entries for wmi_accounts.php's, wmi_queries.php's, and
+ * wmi_tools.php's various views. Called by Cacti core via
+ * api_plugin_hook('draw_navigation_text', ...) while rendering the page
+ * breadcrumb trail.
+ *
+ * @param array $nav The existing breadcrumb map contributed by Cacti
+ *                    core and other plugins.
+ *
+ * @return array The $nav array with this plugin's breadcrumb entries
+ *               added.
+ */
 function wmi_draw_navigation_text($nav) {
 	$nav['wmi_accounts.php:']        = [
 		'title'   => __('WMI Authentication', 'wmi'),
@@ -379,6 +514,24 @@ function wmi_draw_navigation_text($nav) {
 	return $nav;
 }
 
+/**
+ * Hook implementation for Cacti's 'config_form' filter. Intended to add a
+ * 'Serial / Service Code' field to the Device edit form; currently
+ * disabled (the implementation is commented out, leaving the function
+ * body effectively a no-op). Called by Cacti core via
+ * api_plugin_hook('config_form', ...) while building the Device edit
+ * form.
+ *
+ * @return void
+ *
+ * @global array $fields_host_edit The Device edit form's field
+ *                                  definitions (unused directly while the
+ *                                  implementation is disabled).
+ * @global array $plugins          Reserved/declared for parity with
+ *                                  other config_form hook
+ *                                  implementations; not used directly
+ *                                  here.
+ */
 function wmi_config_form() {
 	global $fields_host_edit, $plugins;
 
@@ -423,6 +576,27 @@ function wmi_config_form() {
 	];
 }
 
+/**
+ * Hook implementation for Cacti's 'config_settings' filter. Registers the
+ * "Misc" Settings tab's WMI fields (enable WMI collection, concurrent
+ * process count, auto-create WMI queries). Called by Cacti core via
+ * api_plugin_hook('config_settings', ...) while building the Settings
+ * page.
+ *
+ * @return void
+ *
+ * @global array $tabs      Cacti's registered Settings page tabs,
+ *                          extended here with the 'misc' tab label.
+ * @global array $settings  Cacti's registered Settings page fields,
+ *                          extended here with this plugin's settings
+ *                          under the 'misc' tab.
+ * @global array $item_rows Reserved/declared for parity with other
+ *                          config_settings hook implementations; not used
+ *                          directly here.
+ * @global array $config    Reserved/declared for parity with other
+ *                          config_settings hook implementations; not used
+ *                          directly here.
+ */
 function wmi_config_settings() {
 	global $tabs, $settings, $item_rows, $config;
 
@@ -482,6 +656,17 @@ function wmi_config_settings() {
 	}
 }
 
+/**
+ * Hook implementation for Cacti's 'api_device_save' filter. Persists the
+ * submitted 'wmi_account' selection onto the device being saved. Called
+ * by Cacti core via api_plugin_hook('api_device_save', ...) before a
+ * device is saved.
+ *
+ * @param array $save The device values being saved.
+ *
+ * @return array The $save array with 'wmi_account' set from the request
+ *               (or 0 when not submitted).
+ */
 function wmi_api_device_save($save) {
 	if (isset_request_var('wmi_account')) {
 		$save['wmi_account'] = form_input_validate(get_filter_request_var('wmi_account'), 'wmi_account', '^[0-9]+$', false, 3);
@@ -492,6 +677,16 @@ function wmi_api_device_save($save) {
 	return $save;
 }
 
+/**
+ * Hook implementation for Cacti's 'device_edit_pre_bottom' filter. Prints
+ * a read-only table listing the WMI queries associated with the current
+ * device's host template and whether each has already been recorded for
+ * this device (in host_wmi_query). Called by Cacti core via
+ * api_plugin_hook('device_edit_pre_bottom', ...) while rendering the
+ * Device edit page.
+ *
+ * @return void Outputs HTML directly.
+ */
 function wmi_device_edit_pre_bottom() {
 	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
 
@@ -546,6 +741,17 @@ function wmi_device_edit_pre_bottom() {
 	html_end_box();
 }
 
+/**
+ * Hook implementation for Cacti's 'device_template_edit' filter. Prints
+ * an editable table of WMI queries associated with the current device
+ * template, each with a delete link, plus a dropdown/button for adding
+ * an unmapped query to the template (via AJAX to host_templates.php's
+ * 'item_add_wq' action). Called by Cacti core via
+ * api_plugin_hook('device_template_edit', ...) while rendering the
+ * Device Template edit page.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ */
 function wmi_device_template_edit() {
 	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
 
@@ -621,6 +827,22 @@ function wmi_device_template_edit() {
 	html_end_box();
 }
 
+/**
+ * Hook implementation for Cacti's 'device_template_top' filter. Handles
+ * three device-template WMI-query actions delegated from
+ * host_templates.php: 'item_remove_wq_confirm' (prints a removal
+ * confirmation dialog), 'item_remove_wq' (deletes the
+ * host_template_wmi_query mapping), and 'item_add_wq' (creates a new
+ * mapping) - each triggered from wmi_device_template_edit()'s UI. Called
+ * by Cacti core via api_plugin_hook('device_template_top', ...) at the
+ * top of the Device Template edit page, before any of Cacti core's own
+ * output.
+ *
+ * @return void For 'item_remove_wq_confirm', outputs a dialog and exits;
+ *              for 'item_remove_wq'/'item_add_wq', redirects back to the
+ *              template edit page and exits; otherwise returns no
+ *              explicit value.
+ */
 function wmi_device_template_top() {
 	if (get_request_var('action') == 'item_remove_wq_confirm') {
 		// ================= input validation =================
@@ -704,6 +926,21 @@ function wmi_device_template_top() {
 	}
 }
 
+/**
+ * Hook implementation for Cacti's 'api_device_new' filter. Intended to
+ * auto-create this device's associated WMI queries when the
+ * 'wmi_autocreate' setting is enabled; currently a no-op (the
+ * implementation call is commented out). Called by Cacti core via
+ * api_plugin_hook('api_device_new', ...) after a new device is created.
+ *
+ * @param array $save The newly-created device's values, including 'id'.
+ *
+ * @return array The unmodified $save array (this hook does not currently
+ *               modify its payload).
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                        this plugin's functions.php.
+ */
 function wmi_api_device_new($save) {
 	global $config;
 

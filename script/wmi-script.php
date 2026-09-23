@@ -33,6 +33,33 @@ if (!isset($called_by_script_server)) {
 	print call_user_func_array('wmi_script', $_SERVER['argv']);
 }
 
+/**
+ * Script-server/CLI entry point that runs a named saved WMI query against
+ * a remote host (via the Linux_WMI wrapper around this plugin's bundled
+ * wmic binary) and either lists its index keys, prints an indexed
+ * key/value pair, or prints a single fetched value, depending on $cmd.
+ * Called by Cacti's script server (or directly from the CLI) when a Data
+ * Input Method configured to use this script is polled.
+ *
+ * @param string $hostname The target host's hostname/IP for the WMI
+ *                          query.
+ * @param int    $host_id  The Cacti host id, used to load any per-host
+ *                          WMI credentials.
+ * @param string $wmiquery The saved query's name (wmi_wql_queries.name)
+ *                          to run.
+ * @param string $cmd      The sub-command to perform: 'index' (list index
+ *                          keys), 'query' (print an index or a key/value
+ *                          pair), or 'get' (print a single value);
+ *                          defaults to ''.
+ * @param string $arg1     For 'query'/'get', the index value (or
+ *                          'index'); defaults to ''.
+ * @param string $arg2     For 'query'/'get', the field name to fetch;
+ *                          defaults to ''.
+ *
+ * @return string|void Returns '' when the named query does not exist;
+ *                      otherwise prints output directly and returns no
+ *                      explicit value.
+ */
 function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2 = '') {
 	global $config;
 
