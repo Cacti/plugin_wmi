@@ -159,3 +159,37 @@ Document all changes in `CHANGELOG.md`; use descriptive commit messages referenc
 - [Cacti Documentation](https://www.github.com/Cacti/documentation)
 - `README.md` for feature descriptions
 - `CHANGELOG.md` for version history
+
+## Security & Quality Conventions
+
+These conventions apply across the Cacti plugin fleet and should be followed whenever touching
+existing code or adding new code, not just in dedicated cleanup passes:
+
+- **No hardcoded third-party hosts.** Never hardcode a third-party IP address, hostname, or URL
+  in plugin code (even for tooling/download helpers). Expose it as a plugin setting instead, with
+  secure-by-default values (e.g. an SSL-verification setting that defaults to verify-on).
+- **Prepared statements over `db_qstr()`.** Build dynamic `WHERE` clauses using the
+  `$sql_where`/`$sql_params` prepared-statement pattern, not string concatenation via `db_qstr()`.
+- **Use `html_escape_request_var()`.** Prefer it over the `html_escape(get_request_var(...))` call
+  chain.
+- **Harden `unserialize()`.** Always pass `['allowed_classes' => false]` as the second argument.
+- **i18n text domain.** Every `__()`/`__esc()` call must include this plugin's text domain as the
+  final argument, except when deliberately comparing against a literal, untranslated Cacti-core
+  label.
+- **Plugin table-creation API.** Use `api_plugin_db_table_create()` for creating new tables and
+  `api_plugin_db_add_column()` for adding columns (both from Cacti core's `lib/plugins.php`)
+  instead of raw `CREATE TABLE`/`ALTER TABLE ... ADD COLUMN`.
+  - `api_plugin_db_add_column()` is genuinely idempotent (checks column existence, adds only if
+    missing) - safe to call unconditionally from both the install and upgrade paths.
+  - `api_plugin_db_table_create()` is create-only: once the table exists it's a complete no-op,
+    so it will NOT retrofit new/changed keys, indexes, or other structural changes onto an
+    existing table. Use it for the install path only.
+  - For structural changes to a table that may already exist (new/changed keys, indexes,
+    engine, etc.), there is no dedicated plugin API yet - until one exists, call Cacti core's
+    `db_update_table($table, $data)` directly (`lib/database.php`) in the upgrade path. It diffs
+    the schema array against the live table and issues one combined `ALTER TABLE` for all
+    detected changes.
+- **PHPDoc shape.** Every function gets a PHPDoc block: a one-line description, a blank comment
+  line, `@param` lines, a blank comment line, then `@return`. Infer parameter/return types from
+  actual usage; don't change the function's real type-hints in the same pass (let static analysis
+  flag mismatches separately). Skip vendored third-party library files.
