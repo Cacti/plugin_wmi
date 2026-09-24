@@ -52,6 +52,14 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Validates and persists (in session) the WMI Query Tool form's request
+ * variables (username, password, namespace, key name, frequency, host,
+ * query name). Called from this file's main flow before dispatching the
+ * requested action.
+ *
+ * @return void
+ */
 function process_request_vars() {
 	// ================= input validation and session storage =================
 	$filters = [
@@ -101,6 +109,15 @@ function process_request_vars() {
 	// ================= input validation =================
 }
 
+/**
+ * Renders a reference table of common, ready-to-use WMI queries (with
+ * their suggested primary key and namespace) that a user can pick from
+ * when building a query in the WMI Query Tool. Invoked from this file's
+ * dispatcher when the request's 'action' is 'queries', opened via the
+ * tool page's "Common Queries" panel toggle.
+ *
+ * @return void Outputs HTML directly.
+ */
 function common_queries_panel() {
 	$common = [
 		[
@@ -290,6 +307,15 @@ function common_queries_panel() {
 	print '</div>';
 }
 
+/**
+ * Renders a help panel with links/guidance for troubleshooting common WMI
+ * connectivity and permissions issues (DCOM permissions, firewall
+ * configuration, common error codes). Invoked from this file's dispatcher
+ * when the request's 'action' is 'assistance', opened via the tool
+ * page's "Assistance" panel toggle.
+ *
+ * @return void Outputs HTML directly.
+ */
 // Assistance Panel
 function assistance_panel() {
 	print "<div id='assistance' style='display:none;'>";
@@ -312,6 +338,34 @@ function assistance_panel() {
 	print '</div>';
 }
 
+/**
+ * Renders the main WMI Query Tool page: a form for entering a target
+ * host, credentials, namespace, and ad-hoc WQL query, along with buttons
+ * to run the query, browse common queries, save it as a reusable saved
+ * query, or view troubleshooting assistance. Invoked from this file's
+ * dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the page HTML and JavaScript directly.
+ *
+ * @global string $action           Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $host             Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $username         Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $password         Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $command          Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global array  $wmi_frequencies  Options for the query's collection
+ *                                   frequency, used to populate that
+ *                                   selector.
+ */
 function show_tools() {
 	global $action, $host, $username, $password, $command, $wmi_frequencies;
 
@@ -505,6 +559,22 @@ function show_tools() {
 	<?php
 }
 
+/**
+ * Runs an ad-hoc WQL query against a host (via the Linux_WMI client,
+ * using submitted credentials rather than a saved account) and prints
+ * the resulting columns/rows as an HTML table, or the WMI client's error
+ * message on failure. Invoked from this file's dispatcher when the
+ * request's 'action' is 'query', called via AJAX from the tool page's
+ * form submission.
+ *
+ * @return void Outputs HTML directly; exits early with an error message
+ *              when required host/username/password fields are missing.
+ *
+ * @global array  $config Cacti global configuration array; used to load
+ *                         this plugin's linux_wmi.php client.
+ * @global string $host   Set to the lowercased submitted hostname, for
+ *                         use by the caller/templates.
+ */
 function walk_host() {
 	global $config, $host;
 
@@ -605,6 +675,17 @@ function walk_host() {
 	}
 }
 
+/**
+ * Validates that a string looks like a syntactically plausible hostname
+ * or IPv4 address (format only; does not perform DNS/network
+ * verification). Currently unused/dead code: not called from anywhere
+ * else in this file.
+ *
+ * @param string $host The candidate hostname or IP address.
+ *
+ * @return bool True when $host matches the expected hostname/IPv4
+ *              pattern.
+ */
 function is_valid_host($host) {
 	if (preg_match('/^((([0-9]{1,3}\.){3}[0-9]{1,3})|([0-9a-z-.]{0,61})?\.[a-z]{2,4})$/i', $host)) {
 		return true;

@@ -96,6 +96,21 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Handles the bulk-delete form for the WMI Accounts list. On first
+ * display, renders the confirmation dialog listing the selected
+ * accounts; once confirmed, deletes each selected account and clears its
+ * assignment from any host using it. Invoked from this file's dispatcher
+ * when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after deleting the
+ *              selected accounts, or prints the confirmation dialog and
+ *              returns nothing.
+ *
+ * @global array $account_actions Map of bulk-action ids to their display
+ *                                 labels (only '1' => Delete), used for
+ *                                 the confirmation dialog title.
+ */
 function actions_accounts() {
 	global $account_actions;
 
@@ -181,6 +196,15 @@ function actions_accounts() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single WMI account (name, username, and an
+ * encoded password when a new/changed one was submitted and confirmed)
+ * from the submitted edit form. Invoked from this file's dispatcher when
+ * the request's 'action' is 'save'.
+ *
+ * @return void Redirects back to the account list, or back to the edit
+ *              form on validation failure.
+ */
 function save_accounts() {
 	$save['id']       = get_filter_request_var('id');
 	$save['name']     = get_nfilter_request_var('name');
@@ -210,6 +234,18 @@ function save_accounts() {
 	exit;
 }
 
+/**
+ * Renders the add/edit form for a single WMI account, pre-populating its
+ * name/username (never its stored password) when editing an existing
+ * account. Invoked from this file's dispatcher when the request's
+ * 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $account_edit The edit form's field definitions,
+ *                              populated here with the account's current
+ *                              values.
+ */
 function edit_accounts() {
 	global $account_edit;
 
@@ -243,6 +279,17 @@ function edit_accounts() {
 	form_save_button('wmi_accounts.php');
 }
 
+/**
+ * Renders the WMI Accounts list's search/filter toolbar (name search box,
+ * rows-per-page selector, has-graphs checkbox) and its client-side
+ * JavaScript. Called from show_accounts() before the accounts table
+ * itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                           used to populate the 'rows' select list.
+ */
 function account_filter() {
 	global $item_rows;
 
@@ -330,6 +377,33 @@ function account_filter() {
 	html_end_box();
 }
 
+/**
+ * Renders the main WMI Accounts list page: draws the search filter
+ * toolbar, queries wmi_user_accounts with the current filter/pagination
+ * settings (always sorted by name; the stored sort_column/sort_direction
+ * request values are not applied to this query), and prints the
+ * paginated results table (including each account's in-use device
+ * count). Invoked from this file's dispatcher for the default (no
+ * 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global string $host             Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $username         Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $password         Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global string $command          Reserved/declared for parity with
+ *                                   other WMI-related functions; not used
+ *                                   directly here.
+ * @global array  $account_actions  Map of bulk-action ids to their
+ *                                   display labels, used to populate the
+ *                                   actions dropdown.
+ */
 function show_accounts() {
 	global $host, $username, $password, $command;
 	global $account_actions;

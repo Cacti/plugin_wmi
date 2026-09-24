@@ -119,6 +119,25 @@ switch (get_request_var('action')) {
 		break;
 }
 
+/**
+ * Handles the bulk-delete form for the WMI Queries list. On first
+ * display, renders the confirmation dialog listing the selected queries;
+ * once confirmed, deletes each selected query along with its
+ * host/template associations and cached data. Invoked from this file's
+ * dispatcher when the request's 'action' is 'actions'.
+ *
+ * @return void Either redirects back to this page after deleting the
+ *              selected queries, or prints the confirmation dialog and
+ *              returns nothing.
+ *
+ * @global array $colors     Reserved/declared for parity with other list-
+ *                            action functions; not used directly here.
+ * @global array $ds_actions Map of bulk-action ids to their display
+ *                            labels (only '1' => Delete), used for the
+ *                            confirmation dialog title.
+ * @global array $config     Reserved/declared for parity with other list-
+ *                            action functions; not used directly here.
+ */
 function actions_queries() {
 	global $colors, $ds_actions, $config;
 
@@ -205,6 +224,17 @@ function actions_queries() {
 	bottom_footer();
 }
 
+/**
+ * Validates and saves a single WMI query (name, namespace, collection
+ * frequency, enabled flag, WQL query text, primary key) from the
+ * submitted edit form, via get_hash_wmi_query() preserving its existing
+ * hash if already valid, or assigning a freshly generated one only for a
+ * new or invalid-hash record. Invoked from this file's dispatcher when
+ * the request's 'action' is 'save'.
+ *
+ * @return void Redirects back to the query list, or back to the edit
+ *              form on validation failure.
+ */
 function save_queries() {
 	if (isset_request_var('id')) {
 		$save['id'] = get_filter_request_var('id');
@@ -231,6 +261,16 @@ function save_queries() {
 	exit;
 }
 
+/**
+ * Renders the add/edit form for a single WMI query, pre-populating its
+ * fields when editing an existing query. Invoked from this file's
+ * dispatcher when the request's 'action' is 'edit'.
+ *
+ * @return void Outputs the edit form HTML directly.
+ *
+ * @global array $query_edit The edit form's field definitions, populated
+ *                            here with the query's current values.
+ */
 function edit_queries() {
 	global $query_edit;
 
@@ -263,6 +303,16 @@ function edit_queries() {
 	form_save_button('wmi_queries.php');
 }
 
+/**
+ * Renders the WMI Queries list's search/filter toolbar and its client-
+ * side JavaScript. Called from show_queries() before the queries table
+ * itself is rendered.
+ *
+ * @return void Outputs HTML and JavaScript directly.
+ *
+ * @global array $item_rows Rows-per-page options offered by Cacti core,
+ *                           used to populate the 'rows' select list.
+ */
 function query_filter() {
 	global $item_rows;
 
@@ -353,6 +403,36 @@ function query_filter() {
 	html_end_box();
 }
 
+/**
+ * Renders the main WMI Queries list page: draws the search filter
+ * toolbar, queries wmi_wql_queries with the current filter/sort/
+ * pagination settings, and prints the paginated results table. Invoked
+ * from this file's dispatcher for the default (no 'action') request.
+ *
+ * @return void Outputs the list page HTML directly.
+ *
+ * @global string $action     Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global string $host       Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global string $username   Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global string $password   Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global string $command    Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global array  $config     Reserved/declared for parity with other
+ *                             WMI-related functions; not used directly
+ *                             here.
+ * @global array  $ds_actions Map of bulk-action ids to their display
+ *                             labels, used to populate the actions
+ *                             dropdown.
+ */
 function show_queries() {
 	global $action, $host, $username, $password, $command;
 	global $config, $ds_actions;
