@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:15-0400\n"
+"POT-Creation-Date: 2026-09-24 12:26-0400\n"
 "PO-Revision-Date: 2020-12-14 20:04-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,227 +18,227 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: functions.php:29 wmi_queries.php:283 wmi_queries.php:416 wmi_tools.php:359
+#: functions.php:40 wmi_queries.php:333 wmi_queries.php:496 wmi_tools.php:413
 #, fuzzy
 msgid "Queries"
 msgstr "검색어"
 
-#: functions.php:30
+#: functions.php:41
 msgid "Authentication"
 msgstr "인증"
 
-#: setup.php:39
+#: setup.php:51
 #, fuzzy
 msgid "WMI Management"
 msgstr "WMI 관리"
 
-#: setup.php:284
+#: setup.php:392
 #, fuzzy
 msgid "WMI Data"
 msgstr "WMI 데이터"
 
-#: setup.php:285
+#: setup.php:393
 #, fuzzy
 msgid "WMI Data Query"
 msgstr "WMI 데이터 쿼리"
 
-#: setup.php:289
+#: setup.php:397
 #, php-format
 msgid "%d Minute"
 msgstr "%d 분"
 
-#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#: setup.php:398 setup.php:399 setup.php:400 setup.php:401 setup.php:402
 #, php-format
 msgid "%d Minutes"
 msgstr "%d 분"
 
-#: setup.php:295
+#: setup.php:403
 #, php-format
 msgid "%d Hour"
 msgstr "%d 시간"
 
-#: setup.php:296 setup.php:297
+#: setup.php:404 setup.php:405
 #, php-format
 msgid "%d Hours"
 msgstr "%d 시간"
 
-#: setup.php:298
+#: setup.php:406
 #, fuzzy, php-format
 msgid "%d Day"
 msgstr "% d 일"
 
-#: setup.php:303
+#: setup.php:411
 msgid "Utilities"
 msgstr "도구 "
 
-#: setup.php:303 wmi_tools.php:318
+#: setup.php:411 wmi_tools.php:372
 #, fuzzy
 msgid "WMI Query Tool"
 msgstr "WMI 쿼리 도구"
 
-#: setup.php:304
+#: setup.php:412
 #, fuzzy
 msgid "Data Collection"
 msgstr "데이터 수집"
 
-#: setup.php:304 setup.php:345 setup.php:359 wmi_queries.php:269
-#: wmi_queries.php:422
+#: setup.php:412 setup.php:480 setup.php:494 wmi_queries.php:319
+#: wmi_queries.php:502
 #, fuzzy
 msgid "WMI Queries"
 msgstr "WMI 쿼리"
 
-#: setup.php:311
+#: setup.php:419
 #, fuzzy
 msgid "Template Editor"
 msgstr "템플릿 편집기"
 
-#: setup.php:324 setup.php:338
+#: setup.php:459 setup.php:473
 #, fuzzy
 msgid "WMI Authentication"
 msgstr "WMI 권한 부여"
 
-#: setup.php:331 setup.php:352
+#: setup.php:466 setup.php:487
 msgid "(Edit)"
 msgstr ""
 
-#: setup.php:373
+#: setup.php:508
 #, fuzzy
 msgid "(Query)"
 msgstr "데이터 쿼리"
 
-#: setup.php:413
+#: setup.php:568
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "WMI 계정 옵션"
 
-#: setup.php:418
+#: setup.php:573
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "WMI 인증 계정"
 
-#: setup.php:419
+#: setup.php:574
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "WMI를 통해 인증 할 때 사용할 계정 선택"
 
-#: setup.php:430
+#: setup.php:606
 #, fuzzy
 msgid "1 Process"
 msgstr "1 프로세스"
 
-#: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
-#: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
-#: setup.php:441 setup.php:442 setup.php:443 setup.php:444 setup.php:445
-#: setup.php:446 setup.php:447
+#: setup.php:607 setup.php:608 setup.php:609 setup.php:610 setup.php:611
+#: setup.php:612 setup.php:613 setup.php:614 setup.php:615 setup.php:616
+#: setup.php:617 setup.php:618 setup.php:619 setup.php:620 setup.php:621
+#: setup.php:622 setup.php:623
 #, fuzzy, php-format
 msgid "%d Processes"
 msgstr "시스템 프로세스 가져 오기"
 
-#: setup.php:452
+#: setup.php:628
 #, fuzzy
 msgid "WMI Settings"
 msgstr "WMI 설정"
 
-#: setup.php:456
+#: setup.php:632
 #, fuzzy
 msgid "Enable WMI Data Collection"
 msgstr "데이터 수집"
 
-#: setup.php:457
+#: setup.php:633
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "WMI 플러그인이 Windows 장치를 쿼리하도록하려면이 확인란을 선택합니다."
 
-#: setup.php:462
+#: setup.php:638
 #, fuzzy
 msgid "Concurrent Processes"
 msgstr "시스템 프로세스 가져 오기"
 
-#: setup.php:463
+#: setup.php:639
 #, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "시스템에서 몇 개의 동시 WMI 쿼리를 실행 하시겠습니까?"
 
-#: setup.php:469
+#: setup.php:645
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "WMI 쿼리 자동 생성"
 
-#: setup.php:470
+#: setup.php:646
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "이 옵션을 선택하면 자동화를 실행하거나 장치를 만들거나 저장할 때 장치 템플릿과 관련된 모든 WMI 쿼리가 만들어집니다."
 
-#: setup.php:476
+#: setup.php:652
 msgid "Misc"
 msgstr "기타"
 
-#: setup.php:496 setup.php:550
+#: setup.php:693 setup.php:758
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "연결된 WMI 쿼리"
 
-#: setup.php:511 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:427
-#: wmi_tools.php:326
+#: setup.php:708 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:507
+#: wmi_tools.php:380
 msgid "Name"
 msgstr "이름"
 
-#: setup.php:511
+#: setup.php:708
 msgid "Status"
 msgstr "상태"
 
-#: setup.php:524
+#: setup.php:721
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "WMI 쿼리가 있음"
 
-#: setup.php:526
+#: setup.php:723
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "WMI 쿼리가 존재하지 않습니다."
 
-#: setup.php:543 setup.php:576
+#: setup.php:740 setup.php:784
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "연결된 WMI 쿼리가 없습니다."
 
-#: setup.php:568 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:776 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "삭제"
 
-#: setup.php:593
+#: setup.php:801
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "WMI 쿼리 추가"
 
-#: setup.php:599 wmi_tools.php:361
+#: setup.php:807 wmi_tools.php:415
 msgid "Add"
 msgstr "추가"
 
-#: setup.php:599
+#: setup.php:807
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "장치 템플릿에 WMI 쿼리 추가"
 
-#: setup.php:640
+#: setup.php:864
 #, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "'계속'을 클릭하여 다음 WMI 쿼리를 삭제하면 장치 템플릿에서 쿼리의 연결이 해제됩니다."
 
-#: setup.php:641
+#: setup.php:865
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "WMI 쿼리 이름 :  %s"
 
-#: setup.php:646 wmi_accounts.php:174 wmi_queries.php:189
+#: setup.php:870 wmi_accounts.php:189 wmi_queries.php:208
 msgid "Cancel"
 msgstr "취소"
 
-#: setup.php:647 wmi_accounts.php:166 wmi_queries.php:189
+#: setup.php:871 wmi_accounts.php:181 wmi_queries.php:208
 msgid "Continue"
 msgstr "계속"
 
-#: setup.php:647
+#: setup.php:871
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "WMI 쿼리 제거"
@@ -248,7 +248,7 @@ msgstr "WMI 쿼리 제거"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "이 계정에 의미있는 이름을 지정하십시오."
 
-#: wmi_accounts.php:54 wmi_accounts.php:405 wmi_tools.php:340
+#: wmi_accounts.php:54 wmi_accounts.php:479 wmi_tools.php:394
 msgid "Username"
 msgstr "아이디"
 
@@ -257,7 +257,7 @@ msgstr "아이디"
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "인증에 사용될 사용자 이름입니다. 필요한 경우 도메인도 포함하십시오."
 
-#: wmi_accounts.php:61 wmi_tools.php:343
+#: wmi_accounts.php:61 wmi_tools.php:397
 msgid "Password"
 msgstr "비밀번호"
 
@@ -266,62 +266,62 @@ msgstr "비밀번호"
 msgid "The password used for authentication."
 msgstr "인증에 사용되는 암호."
 
-#: wmi_accounts.php:156
+#: wmi_accounts.php:171
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "다음 계정을 삭제하려면 '계속'을 누르십시오."
 
-#: wmi_accounts.php:163
+#: wmi_accounts.php:178
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "하나 이상의 계정을 선택해야합니다."
 
-#: wmi_accounts.php:226
+#: wmi_accounts.php:262
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "계정 [편집 :  %s]"
 
-#: wmi_accounts.php:228
+#: wmi_accounts.php:264
 #, fuzzy
 msgid "Account [new]"
 msgstr "계정 [신규]"
 
-#: wmi_accounts.php:249
+#: wmi_accounts.php:296
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "WMI 계정"
 
-#: wmi_accounts.php:257 wmi_queries.php:277
+#: wmi_accounts.php:304 wmi_queries.php:327
 msgid "Search"
 msgstr "검색"
 
-#: wmi_accounts.php:263 wmi_accounts.php:390
+#: wmi_accounts.php:310 wmi_accounts.php:464
 msgid "Accounts"
 msgstr "계정"
 
-#: wmi_accounts.php:267 wmi_queries.php:287
+#: wmi_accounts.php:314 wmi_queries.php:337
 msgid "Default"
 msgstr "기본값"
 
-#: wmi_accounts.php:285 wmi_queries.php:308
+#: wmi_accounts.php:332 wmi_queries.php:358
 msgctxt "filter: use"
 msgid "Go"
 msgstr "가기"
 
-#: wmi_accounts.php:288 wmi_queries.php:311
+#: wmi_accounts.php:335 wmi_queries.php:361
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "지우기"
 
-#: wmi_accounts.php:400 wmi_tools.php:269
+#: wmi_accounts.php:474 wmi_tools.php:286
 msgid "Description"
 msgstr "설명"
 
-#: wmi_accounts.php:410
+#: wmi_accounts.php:484
 msgid "Devices"
 msgstr "장치"
 
-#: wmi_accounts.php:432
+#: wmi_accounts.php:506
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "발견 된 계정 없음"
@@ -350,7 +350,7 @@ msgstr "활성화"
 msgid "Should this Query be enabled on hosts using it"
 msgstr "이 쿼리를 사용하는 호스트에서이 쿼리를 사용해야합니까?"
 
-#: wmi_queries.php:70 wmi_queries.php:442 wmi_tools.php:346
+#: wmi_queries.php:70 wmi_queries.php:522 wmi_tools.php:400
 #, fuzzy
 msgid "Namespace"
 msgstr "네임 스페이스"
@@ -360,7 +360,7 @@ msgstr "네임 스페이스"
 msgid "The Namespace for this Query."
 msgstr "이 쿼리의 네임 스페이스"
 
-#: wmi_queries.php:77 wmi_tools.php:269
+#: wmi_queries.php:77 wmi_tools.php:286
 msgid "Query"
 msgstr "데이터 쿼리"
 
@@ -369,7 +369,7 @@ msgstr "데이터 쿼리"
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "장치에서 WMI 데이터를 수집하기 위해 실행할 쿼리입니다."
 
-#: wmi_queries.php:86 wmi_queries.php:452 wmi_tools.php:269 wmi_tools.php:352
+#: wmi_queries.php:86 wmi_queries.php:532 wmi_tools.php:286 wmi_tools.php:406
 #, fuzzy
 msgid "Primary Key"
 msgstr "기본 키"
@@ -379,288 +379,288 @@ msgstr "기본 키"
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "WMI 쿼리가 여러 행을 반환하면 Keyname이 기본 키 또는 인덱스가됩니까? 기본 키에 여러 열이 포함되어 있으면 쉼표로 구분하십시오."
 
-#: wmi_queries.php:179
+#: wmi_queries.php:198
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "다음 WMI 쿼리를 삭제하려면 '계속'을 클릭하십시오."
 
-#: wmi_queries.php:186
+#: wmi_queries.php:205
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "하나 이상의 WMI 쿼리를 선택해야합니다."
 
-#: wmi_queries.php:187
+#: wmi_queries.php:206
 msgid "Return"
 msgstr "반환"
 
-#: wmi_queries.php:189
+#: wmi_queries.php:208
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "WMI 쿼리 삭제"
 
-#: wmi_queries.php:245
+#: wmi_queries.php:285
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "쿼리 [편집 :  %s]"
 
-#: wmi_queries.php:247
+#: wmi_queries.php:287
 #, fuzzy
 msgid "Query [new]"
 msgstr "검색어 [신규]"
 
-#: wmi_queries.php:305
+#: wmi_queries.php:355
 #, fuzzy
 msgid "Has Graphs"
 msgstr "그래프 있음"
 
-#: wmi_queries.php:432
+#: wmi_queries.php:512
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:437 wmi_tools.php:329
+#: wmi_queries.php:517 wmi_tools.php:383
 msgid "Frequency"
 msgstr "회수"
 
-#: wmi_queries.php:447
+#: wmi_queries.php:527
 #, fuzzy
 msgid "WQL Query"
 msgstr "WQL 쿼리"
 
-#: wmi_tools.php:108
+#: wmi_tools.php:125
 #, fuzzy
 msgid "Get Computer Information"
 msgstr "컴퓨터 정보 얻기"
 
-#: wmi_tools.php:114
+#: wmi_tools.php:131
 #, fuzzy
 msgid "Get System Processes"
 msgstr "시스템 프로세스 가져 오기"
 
-#: wmi_tools.php:120
+#: wmi_tools.php:137
 #, fuzzy
 msgid "Get Installed Software"
 msgstr "설치된 소프트웨어 가져 오기"
 
-#: wmi_tools.php:126
+#: wmi_tools.php:143
 #, fuzzy
 msgid "Get Operating System Information"
 msgstr "운영 체제 정보 얻기"
 
-#: wmi_tools.php:132
+#: wmi_tools.php:149
 #, fuzzy
 msgid "Get OD Service Information"
 msgstr "마약 서비스 정보 얻기"
 
-#: wmi_tools.php:138
+#: wmi_tools.php:155
 #, fuzzy
 msgid "Get System Enclosure Information"
 msgstr "시스템 인클로저 정보 얻기"
 
-#: wmi_tools.php:144
+#: wmi_tools.php:161
 #, fuzzy
 msgid "Get System Physical Memory Information"
 msgstr "시스템의 실제 메모리 정보 얻기"
 
-#: wmi_tools.php:150
+#: wmi_tools.php:167
 #, fuzzy
 msgid "Get Memory Device Details"
 msgstr "메모리 장치 정보 가져 오기"
 
-#: wmi_tools.php:156
+#: wmi_tools.php:173
 #, fuzzy
 msgid "Get System BIOS Information"
 msgstr "시스템 BIOS 정보 얻기"
 
-#: wmi_tools.php:162
+#: wmi_tools.php:179
 #, fuzzy
 msgid "Get System Baseboard Information"
 msgstr "시스템베이스 보드 정보 얻기"
 
-#: wmi_tools.php:168
+#: wmi_tools.php:185
 #, fuzzy
 msgid "Get Processor Information"
 msgstr "프로세서 정보 얻기"
 
-#: wmi_tools.php:174
+#: wmi_tools.php:191
 #, fuzzy
 msgid "Ping a Known Address from Computer"
 msgstr "컴퓨터에서 알려진 주소로 핑 (ping)"
 
-#: wmi_tools.php:180
+#: wmi_tools.php:197
 #, fuzzy
 msgid "Get Row System OS Performance Data"
 msgstr "행 시스템 OS 성능 데이터 가져 오기"
 
-#: wmi_tools.php:186
+#: wmi_tools.php:203
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
 msgstr "형식화 된 시스템 OS 성능 데이터 가져 오기"
 
-#: wmi_tools.php:192
+#: wmi_tools.php:209
 #, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
 msgstr "포맷 된 Phsycal 디스크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:198
+#: wmi_tools.php:215
 #, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
 msgstr "Raw Phsycal 디스크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:204
+#: wmi_tools.php:221
 #, fuzzy
 msgid "Get Logical Disk Information"
 msgstr "논리 디스크 정보 얻기"
 
-#: wmi_tools.php:210
+#: wmi_tools.php:227
 #, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
 msgstr "포맷 된 논리 디스크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:216
+#: wmi_tools.php:233
 #, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
 msgstr "원시 논리 디스크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:222
+#: wmi_tools.php:239
 #, fuzzy
 msgid "Get Formatted CPU Performance Data"
 msgstr "포맷 된 CPU 성능 데이터 가져 오기"
 
-#: wmi_tools.php:228
+#: wmi_tools.php:245
 #, fuzzy
 msgid "Get Raw CPU Performance Data"
 msgstr "원시 CPU 성능 데이터 가져 오기"
 
-#: wmi_tools.php:234
+#: wmi_tools.php:251
 #, fuzzy
 msgid "Get Raw Memory Performance Data"
 msgstr "원시 메모리 성능 데이터 가져 오기"
 
-#: wmi_tools.php:240
+#: wmi_tools.php:257
 #, fuzzy
 msgid "Get Formatted Network Performance Data"
 msgstr "형식화 된 네트워크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:246
+#: wmi_tools.php:263
 #, fuzzy
 msgid "Get Raw Network Performance Data"
 msgstr "원시 네트워크 성능 데이터 가져 오기"
 
-#: wmi_tools.php:252
+#: wmi_tools.php:269
 #, fuzzy
 msgid "Get Network Adapter Information"
 msgstr "네트워크 어댑터 정보 얻기"
 
-#: wmi_tools.php:258
+#: wmi_tools.php:275
 #, fuzzy
 msgid "Get Computer Asset Information"
 msgstr "컴퓨터 자산 정보 얻기"
 
-#: wmi_tools.php:269
+#: wmi_tools.php:286
 #, fuzzy
 msgid "Name Space"
 msgstr "이름 공간"
 
-#: wmi_tools.php:286 wmi_tools.php:308
+#: wmi_tools.php:303 wmi_tools.php:334
 msgid "Close"
 msgstr "닫기"
 
-#: wmi_tools.php:302
+#: wmi_tools.php:328
 #, fuzzy, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr "오류 코드에 대한 도움이 필요하면 google을 사용하거나 다음 링크  %s를 사용하십시오."
 
-#: wmi_tools.php:302
+#: wmi_tools.php:328
 #, fuzzy
 msgid "Microsoft Common WBEM Errors"
 msgstr "Microsoft의 일반적인 WBEM 오류"
 
-#: wmi_tools.php:303
+#: wmi_tools.php:329
 #, fuzzy
 msgid "Distributed COM Setup"
 msgstr "분산 COM 설치"
 
-#: wmi_tools.php:303
+#: wmi_tools.php:329
 #, fuzzy, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
 msgstr "WMI가 작동하려면 사용중인 사용자 계정에 분산 COM 사용 권한이 부여되어야하며 Windows 방화벽은 분산 COM 통신을 허용하도록 구성되어야합니다. 이 절차에 대한 실제 좋은 문서는 다음 링크  %s에서 찾을 수 있습니다."
 
-#: wmi_tools.php:337
+#: wmi_tools.php:391
 msgid "Host"
 msgstr "호스트"
 
-#: wmi_tools.php:349
+#: wmi_tools.php:403
 msgid "Command"
 msgstr "명령어"
 
-#: wmi_tools.php:355
+#: wmi_tools.php:409
 #, fuzzy
 msgid "More Class Information @Microsoft"
 msgstr "자세한 클래스 정보 @Microsoft"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:411
 msgid "Run"
 msgstr "실행"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:411
 #, fuzzy
 msgid "Run the WMI Query against the Device"
 msgstr "장치에 대한 WMI 쿼리 실행"
 
-#: wmi_tools.php:358
+#: wmi_tools.php:412
 msgid "Clear"
 msgstr "지우기"
 
-#: wmi_tools.php:358
+#: wmi_tools.php:412
 #, fuzzy
 msgid "Clear the results panel."
 msgstr "결과 패널을 지우십시오."
 
-#: wmi_tools.php:359
+#: wmi_tools.php:413
 #, fuzzy
 msgid "Pick from a list of common queries."
 msgstr "일반적인 쿼리 목록에서 선택하십시오."
 
-#: wmi_tools.php:360
+#: wmi_tools.php:414
 #, fuzzy
 msgid "Get some help on setting up WMI"
 msgstr "WMI 설정에 대한 도움 받기"
 
-#: wmi_tools.php:360
+#: wmi_tools.php:414
 msgid "Help"
 msgstr "도움말"
 
-#: wmi_tools.php:361
+#: wmi_tools.php:415
 #, fuzzy
 msgid "Create a new WMI Query from the existing Query."
 msgstr "기존 쿼리에서 새 WMI 쿼리를 만듭니다."
 
-#: wmi_tools.php:372
+#: wmi_tools.php:426
 #, fuzzy
 msgid "Query Results"
 msgstr "쿼리 결과"
 
-#: wmi_tools.php:401
+#: wmi_tools.php:455
 #, fuzzy
 msgid "Common Queries (Click to Select)"
 msgstr "일반적인 검색어 (클릭하여 선택)"
 
-#: wmi_tools.php:430
+#: wmi_tools.php:484
 #, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "WMI 설치 지원"
 
-#: wmi_tools.php:525
+#: wmi_tools.php:595
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "오류 : 호스트, 사용자 이름, 비밀번호 및 검색어를 입력해야합니다."
 
-#: wmi_tools.php:557
+#: wmi_tools.php:627
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "장치 :  %s, 클래스 :  %s, 열 :  %s, 행 :  %s에 대한 WMI 쿼리 결과"
 
-#: wmi_tools.php:559
+#: wmi_tools.php:629
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "열과 첫 번째 또는 두 번째 데이터 행을 표시합니다."
