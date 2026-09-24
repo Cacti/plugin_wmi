@@ -56,9 +56,12 @@ if (!isset($called_by_script_server)) {
  * @param string $arg2     For 'query'/'get', the field name to fetch;
  *                          defaults to ''.
  *
- * @return string|void Returns '' when the named query does not exist;
+ * @return string|null Returns '' when the named query does not exist;
  *                      otherwise prints output directly and returns no
- *                      explicit value.
+ *                      explicit value (null).
+ *
+ * @global array $config Cacti global configuration array; used to load
+ *                       linux_wmi.php.
  */
 function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2 = '') {
 	global $config;

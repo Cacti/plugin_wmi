@@ -65,9 +65,9 @@ function display_tabs() {
 /**
  * Determines whether any saved WQL query already selects from the same
  * WMI class (table) referenced in the given query's 'FROM' clause,
- * used to warn against creating duplicate/conflicting queries. Called
- * from wmi_queries.php's form_save() before saving a new or edited
- * query.
+ * used to warn against creating duplicate/conflicting queries.
+ * Currently has no call site in this plugin (wmi_queries.php has no
+ * form_save() path that invokes it).
  *
  * @param string $query The WQL query text to check (e.g.
  *                       'SELECT * FROM Win32_Something').
@@ -98,8 +98,7 @@ function plugin_wmi_query_exists($query) {
  * Generates the Cacti Data Query/Data Template export XML for a saved WMI
  * query, defining a Script Server (Indexed) data query with one data
  * source per primary-key field, suitable for packaging/importing as a
- * reusable Cacti template. Called from wmi_queries.php's export/download
- * action for a given saved query.
+ * reusable Cacti template. Currently has no call site in this plugin.
  *
  * @param int $id The wmi_wql_queries.id to generate export XML for.
  *
@@ -541,10 +540,11 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 }
 
 /**
- * Returns the current unique hash for a WMI query, generating and
- * assigning a new one if the stored value doesn't already look like a
- * valid 128-bit hex hash. Used when packaging a saved query into export
- * XML so it can be referenced consistently across exports/imports.
+ * Returns the current unique hash for a WMI query, or generates a new
+ * one if the stored value doesn't already look like a valid 128-bit hex
+ * hash; does not itself persist the returned value. Called from
+ * wmi_queries.php's save_queries(), which persists the returned hash
+ * onto the saved query row.
  *
  * @param int $wmi_query_id The ID of the WMI query to return a hash for.
  *

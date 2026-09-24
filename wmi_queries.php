@@ -227,8 +227,10 @@ function actions_queries() {
 /**
  * Validates and saves a single WMI query (name, namespace, collection
  * frequency, enabled flag, WQL query text, primary key) from the
- * submitted edit form, assigning it a fresh unique hash. Invoked from
- * this file's dispatcher when the request's 'action' is 'save'.
+ * submitted edit form, via get_hash_wmi_query() preserving its existing
+ * hash if already valid, or assigning a freshly generated one only for a
+ * new or invalid-hash record. Invoked from this file's dispatcher when
+ * the request's 'action' is 'save'.
  *
  * @return void Redirects back to the query list, or back to the edit
  *              form on validation failure.

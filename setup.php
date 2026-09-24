@@ -515,18 +515,20 @@ function wmi_draw_navigation_text($nav) {
 }
 
 /**
- * Hook implementation for Cacti's 'config_form' filter. Intended to add a
- * 'Serial / Service Code' field to the Device edit form; currently
- * disabled (the implementation is commented out, leaving the function
- * body effectively a no-op). Called by Cacti core via
+ * Hook implementation for Cacti's 'config_form' filter. Adds a 'WMI
+ * Account Options' spacer and a 'wmi_account' dropdown (populated from
+ * wmi_user_accounts) to the Device edit form. Also intended to add a
+ * 'Serial / Service Code' field, but that part of the implementation is
+ * currently commented out/disabled. Called by Cacti core via
  * api_plugin_hook('config_form', ...) while building the Device edit
  * form.
  *
  * @return void
  *
  * @global array $fields_host_edit The Device edit form's field
- *                                  definitions (unused directly while the
- *                                  implementation is disabled).
+ *                                  definitions; the 'wmi_spacer' and
+ *                                  'wmi_account' fields are appended
+ *                                  here.
  * @global array $plugins          Reserved/declared for parity with
  *                                  other config_form hook
  *                                  implementations; not used directly

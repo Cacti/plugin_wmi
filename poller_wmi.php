@@ -421,9 +421,7 @@ function process_device($host_id) {
 			}
 
 			// Run the query and store the data
-			run_store_wmi_query($host_id, $q['wmi_query_id']);
-
-			$status = 0;
+			$status = run_store_wmi_query($host_id, $q['wmi_query_id']) ? 0 : 1;
 
 			$qmend = microtime(true);
 

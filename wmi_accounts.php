@@ -379,10 +379,12 @@ function account_filter() {
 
 /**
  * Renders the main WMI Accounts list page: draws the search filter
- * toolbar, queries wmi_user_accounts with the current filter/sort/
- * pagination settings, and prints the paginated results table (including
- * each account's in-use device count). Invoked from this file's
- * dispatcher for the default (no 'action') request.
+ * toolbar, queries wmi_user_accounts with the current filter/pagination
+ * settings (always sorted by name; the stored sort_column/sort_direction
+ * request values are not applied to this query), and prints the
+ * paginated results table (including each account's in-use device
+ * count). Invoked from this file's dispatcher for the default (no
+ * 'action') request.
  *
  * @return void Outputs the list page HTML directly.
  *
