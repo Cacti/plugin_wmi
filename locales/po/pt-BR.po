@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-21 13:15-0400\n"
+"POT-Creation-Date: 2026-09-24 12:26-0400\n"
 "PO-Revision-Date: 2024-06-25 16:31+0000\n"
 "Last-Translator: fabricio tavares maciel <fabricio.tavares@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.cacti.net/projects/cacti/wmi/pt_BR/>\n"
@@ -18,225 +18,225 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: functions.php:29 wmi_queries.php:283 wmi_queries.php:416 wmi_tools.php:359
+#: functions.php:40 wmi_queries.php:333 wmi_queries.php:496 wmi_tools.php:413
 #, fuzzy
 msgid "Queries"
 msgstr "Consultas"
 
-#: functions.php:30
+#: functions.php:41
 msgid "Authentication"
 msgstr "Autenticação"
 
-#: setup.php:39
+#: setup.php:51
 #, fuzzy
 msgid "WMI Management"
 msgstr "Gestão WMI"
 
-#: setup.php:284
+#: setup.php:392
 #, fuzzy
 msgid "WMI Data"
 msgstr "Dados WMI"
 
-#: setup.php:285
+#: setup.php:393
 #, fuzzy
 msgid "WMI Data Query"
 msgstr "Consulta de dados WMI"
 
-#: setup.php:289
+#: setup.php:397
 #, php-format
 msgid "%d Minute"
 msgstr "%d Minuto"
 
-#: setup.php:290 setup.php:291 setup.php:292 setup.php:293 setup.php:294
+#: setup.php:398 setup.php:399 setup.php:400 setup.php:401 setup.php:402
 #, php-format
 msgid "%d Minutes"
 msgstr "%d Minutos"
 
-#: setup.php:295
+#: setup.php:403
 #, php-format
 msgid "%d Hour"
 msgstr "%d Hora"
 
-#: setup.php:296 setup.php:297
+#: setup.php:404 setup.php:405
 #, php-format
 msgid "%d Hours"
 msgstr "%d horas"
 
-#: setup.php:298
+#: setup.php:406
 #, php-format
 msgid "%d Day"
 msgstr "%d Dia"
 
-#: setup.php:303
+#: setup.php:411
 msgid "Utilities"
 msgstr "Ferramentas"
 
-#: setup.php:303 wmi_tools.php:318
+#: setup.php:411 wmi_tools.php:372
 #, fuzzy
 msgid "WMI Query Tool"
 msgstr "Ferramenta de consulta WMI"
 
-#: setup.php:304
+#: setup.php:412
 msgid "Data Collection"
 msgstr "Coleta de Dados"
 
-#: setup.php:304 setup.php:345 setup.php:359 wmi_queries.php:269
-#: wmi_queries.php:422
+#: setup.php:412 setup.php:480 setup.php:494 wmi_queries.php:319
+#: wmi_queries.php:502
 #, fuzzy
 msgid "WMI Queries"
 msgstr "Consultas WMI"
 
-#: setup.php:311
+#: setup.php:419
 msgid "Template Editor"
 msgstr "Editor de Modelo"
 
-#: setup.php:324 setup.php:338
+#: setup.php:459 setup.php:473
 #, fuzzy
 msgid "WMI Authentication"
 msgstr "Autenticação WMI"
 
-#: setup.php:331 setup.php:352
+#: setup.php:466 setup.php:487
 msgid "(Edit)"
 msgstr ""
 
-#: setup.php:373
+#: setup.php:508
 #, fuzzy
 msgid "(Query)"
 msgstr "Consulta"
 
-#: setup.php:413
+#: setup.php:568
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "Opções de conta WMI"
 
-#: setup.php:418
+#: setup.php:573
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "Conta de Autenticação WMI"
 
-#: setup.php:419
+#: setup.php:574
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Escolha uma conta para usar ao Autenticar via WMI"
 
-#: setup.php:430
+#: setup.php:606
 #, fuzzy
 msgid "1 Process"
 msgstr "1 processo"
 
-#: setup.php:431 setup.php:432 setup.php:433 setup.php:434 setup.php:435
-#: setup.php:436 setup.php:437 setup.php:438 setup.php:439 setup.php:440
-#: setup.php:441 setup.php:442 setup.php:443 setup.php:444 setup.php:445
-#: setup.php:446 setup.php:447
+#: setup.php:607 setup.php:608 setup.php:609 setup.php:610 setup.php:611
+#: setup.php:612 setup.php:613 setup.php:614 setup.php:615 setup.php:616
+#: setup.php:617 setup.php:618 setup.php:619 setup.php:620 setup.php:621
+#: setup.php:622 setup.php:623
 #, fuzzy, php-format
 msgid "%d Processes"
 msgstr "Obter Processos do Sistema"
 
-#: setup.php:452
+#: setup.php:628
 #, fuzzy
 msgid "WMI Settings"
 msgstr "Configurações WMI"
 
-#: setup.php:456
+#: setup.php:632
 #, fuzzy
 msgid "Enable WMI Data Collection"
 msgstr "Coleta de Dados"
 
-#: setup.php:457
+#: setup.php:633
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Marque esta caixa se desejar que o plug-in WMI consulte dispositivos Windows."
 
-#: setup.php:462
+#: setup.php:638
 #, fuzzy
 msgid "Concurrent Processes"
 msgstr "Obter Processos do Sistema"
 
-#: setup.php:463
+#: setup.php:639
 #, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Quantas consultas WMI simultâneas você deseja que o sistema execute?"
 
-#: setup.php:469
+#: setup.php:645
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Criação automática de consultas WMI"
 
-#: setup.php:470
+#: setup.php:646
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "Se selecionado, ao executar a automação ou ao criar/salvar um dispositivo, todas as consultas WMI associadas ao Modelo do dispositivo serão criadas."
 
-#: setup.php:476
+#: setup.php:652
 msgid "Misc"
 msgstr "Diversos"
 
-#: setup.php:496 setup.php:550
+#: setup.php:693 setup.php:758
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "Consultas WMI Associadas"
 
-#: setup.php:511 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:427
-#: wmi_tools.php:326
+#: setup.php:708 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:507
+#: wmi_tools.php:380
 msgid "Name"
 msgstr "Nome"
 
-#: setup.php:511
+#: setup.php:708
 msgid "Status"
 msgstr "Status"
 
-#: setup.php:524
+#: setup.php:721
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "A consulta WMI existe"
 
-#: setup.php:526
+#: setup.php:723
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "A consulta WMI não existe"
 
-#: setup.php:543 setup.php:576
+#: setup.php:740 setup.php:784
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "Sem consultas associadas ao WMI."
 
-#: setup.php:568 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:776 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "Excluir"
 
-#: setup.php:593
+#: setup.php:801
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "Adicionar consulta WMI"
 
-#: setup.php:599 wmi_tools.php:361
+#: setup.php:807 wmi_tools.php:415
 msgid "Add"
 msgstr "Adicionar"
 
-#: setup.php:599
+#: setup.php:807
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "Adicionar consulta WMI ao modelo do dispositivo"
 
-#: setup.php:640
+#: setup.php:864
 #, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Clique em 'Continuar' para excluir as seguintes consultas WMI serão dissociadas do Modelo do Dispositivo."
 
-#: setup.php:641
+#: setup.php:865
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "Nome da consulta WMI: %s"
 
-#: setup.php:646 wmi_accounts.php:174 wmi_queries.php:189
+#: setup.php:870 wmi_accounts.php:189 wmi_queries.php:208
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: setup.php:647 wmi_accounts.php:166 wmi_queries.php:189
+#: setup.php:871 wmi_accounts.php:181 wmi_queries.php:208
 msgid "Continue"
 msgstr "Continuar"
 
-#: setup.php:647
+#: setup.php:871
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "Remover consulta WMI"
@@ -246,7 +246,7 @@ msgstr "Remover consulta WMI"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Dê a esta conta um nome significativo que será exibido."
 
-#: wmi_accounts.php:54 wmi_accounts.php:405 wmi_tools.php:340
+#: wmi_accounts.php:54 wmi_accounts.php:479 wmi_tools.php:394
 msgid "Username"
 msgstr "Nome de usuário"
 
@@ -255,7 +255,7 @@ msgstr "Nome de usuário"
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "O nome de usuário que será usado para autenticação.  Por favor, inclua também o domínio, se necessário."
 
-#: wmi_accounts.php:61 wmi_tools.php:343
+#: wmi_accounts.php:61 wmi_tools.php:397
 msgid "Password"
 msgstr "Senha"
 
@@ -264,62 +264,62 @@ msgstr "Senha"
 msgid "The password used for authentication."
 msgstr "A senha usada para autenticação."
 
-#: wmi_accounts.php:156
+#: wmi_accounts.php:171
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Prima \"Continuar\" para eliminar as seguintes contas."
 
-#: wmi_accounts.php:163
+#: wmi_accounts.php:178
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "Você deve selecionar pelo menos uma conta."
 
-#: wmi_accounts.php:226
+#: wmi_accounts.php:262
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "Conta [editar: %s]"
 
-#: wmi_accounts.php:228
+#: wmi_accounts.php:264
 #, fuzzy
 msgid "Account [new]"
 msgstr "Conta [nova]"
 
-#: wmi_accounts.php:249
+#: wmi_accounts.php:296
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "Contas WMI"
 
-#: wmi_accounts.php:257 wmi_queries.php:277
+#: wmi_accounts.php:304 wmi_queries.php:327
 msgid "Search"
 msgstr "Pesquisar"
 
-#: wmi_accounts.php:263 wmi_accounts.php:390
+#: wmi_accounts.php:310 wmi_accounts.php:464
 msgid "Accounts"
 msgstr "Contas"
 
-#: wmi_accounts.php:267 wmi_queries.php:287
+#: wmi_accounts.php:314 wmi_queries.php:337
 msgid "Default"
 msgstr "Padrão"
 
-#: wmi_accounts.php:285 wmi_queries.php:308
+#: wmi_accounts.php:332 wmi_queries.php:358
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Ir"
 
-#: wmi_accounts.php:288 wmi_queries.php:311
+#: wmi_accounts.php:335 wmi_queries.php:361
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "Limpar"
 
-#: wmi_accounts.php:400 wmi_tools.php:269
+#: wmi_accounts.php:474 wmi_tools.php:286
 msgid "Description"
 msgstr "Descrição"
 
-#: wmi_accounts.php:410
+#: wmi_accounts.php:484
 msgid "Devices"
 msgstr "Dispositivos"
 
-#: wmi_accounts.php:432
+#: wmi_accounts.php:506
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "Nenhuma Conta Encontrada"
@@ -348,7 +348,7 @@ msgstr "Ativado"
 msgid "Should this Query be enabled on hosts using it"
 msgstr "Caso esta Consulta seja activada em hosts que a utilizem"
 
-#: wmi_queries.php:70 wmi_queries.php:442 wmi_tools.php:346
+#: wmi_queries.php:70 wmi_queries.php:522 wmi_tools.php:400
 msgid "Namespace"
 msgstr "Namespace ID"
 
@@ -357,7 +357,7 @@ msgstr "Namespace ID"
 msgid "The Namespace for this Query."
 msgstr "O Espaço de Nomes para esta Consulta."
 
-#: wmi_queries.php:77 wmi_tools.php:269
+#: wmi_queries.php:77 wmi_tools.php:286
 msgid "Query"
 msgstr "Consulta"
 
@@ -366,7 +366,7 @@ msgstr "Consulta"
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "A Consulta a executar para recolha de dados WMI do dispositivo."
 
-#: wmi_queries.php:86 wmi_queries.php:452 wmi_tools.php:269 wmi_tools.php:352
+#: wmi_queries.php:86 wmi_queries.php:532 wmi_tools.php:286 wmi_tools.php:406
 msgid "Primary Key"
 msgstr "Chave Primária"
 
@@ -375,288 +375,288 @@ msgstr "Chave Primária"
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "Quando uma consulta WMI retorna várias linhas, qual será a chave primária ou índice?  Se a Chave Principal incluir várias colunas, separá-las com uma vírgula."
 
-#: wmi_queries.php:179
+#: wmi_queries.php:198
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Clique em 'Continuar' para excluir as seguintes consultas WMI."
 
-#: wmi_queries.php:186
+#: wmi_queries.php:205
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "Você deve selecionar pelo menos uma consulta WMI."
 
-#: wmi_queries.php:187
+#: wmi_queries.php:206
 msgid "Return"
 msgstr "Retorno"
 
-#: wmi_queries.php:189
+#: wmi_queries.php:208
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "Eliminar consulta WMI"
 
-#: wmi_queries.php:245
+#: wmi_queries.php:285
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "Consulta [editar: %s]"
 
-#: wmi_queries.php:247
+#: wmi_queries.php:287
 #, fuzzy
 msgid "Query [new]"
 msgstr "Consulta [nova]"
 
-#: wmi_queries.php:305
+#: wmi_queries.php:355
 #, fuzzy
 msgid "Has Graphs"
 msgstr "Tem Gráficos"
 
-#: wmi_queries.php:432
+#: wmi_queries.php:512
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:437 wmi_tools.php:329
+#: wmi_queries.php:517 wmi_tools.php:383
 msgid "Frequency"
 msgstr "Frequência"
 
-#: wmi_queries.php:447
+#: wmi_queries.php:527
 #, fuzzy
 msgid "WQL Query"
 msgstr "Consulta WQL"
 
-#: wmi_tools.php:108
+#: wmi_tools.php:125
 #, fuzzy
 msgid "Get Computer Information"
 msgstr "Obter Informação de Computador"
 
-#: wmi_tools.php:114
+#: wmi_tools.php:131
 #, fuzzy
 msgid "Get System Processes"
 msgstr "Obter Processos do Sistema"
 
-#: wmi_tools.php:120
+#: wmi_tools.php:137
 #, fuzzy
 msgid "Get Installed Software"
 msgstr "Obtenha Software Instalado"
 
-#: wmi_tools.php:126
+#: wmi_tools.php:143
 #, fuzzy
 msgid "Get Operating System Information"
 msgstr "Obter informações sobre o sistema operacional"
 
-#: wmi_tools.php:132
+#: wmi_tools.php:149
 #, fuzzy
 msgid "Get OD Service Information"
 msgstr "Obter Informações de Serviço OD"
 
-#: wmi_tools.php:138
+#: wmi_tools.php:155
 #, fuzzy
 msgid "Get System Enclosure Information"
 msgstr "Obter informações sobre o gabinete do sistema"
 
-#: wmi_tools.php:144
+#: wmi_tools.php:161
 #, fuzzy
 msgid "Get System Physical Memory Information"
 msgstr "Obter informações de memória física do sistema"
 
-#: wmi_tools.php:150
+#: wmi_tools.php:167
 #, fuzzy
 msgid "Get Memory Device Details"
 msgstr "Obter detalhes do dispositivo de memória"
 
-#: wmi_tools.php:156
+#: wmi_tools.php:173
 #, fuzzy
 msgid "Get System BIOS Information"
 msgstr "Obter informações sobre a BIOS do sistema"
 
-#: wmi_tools.php:162
+#: wmi_tools.php:179
 #, fuzzy
 msgid "Get System Baseboard Information"
 msgstr "Obter informações sobre o rodapé do sistema"
 
-#: wmi_tools.php:168
+#: wmi_tools.php:185
 #, fuzzy
 msgid "Get Processor Information"
 msgstr "Obter informações sobre o processador"
 
-#: wmi_tools.php:174
+#: wmi_tools.php:191
 #, fuzzy
 msgid "Ping a Known Address from Computer"
 msgstr "Pingar um endereço conhecido do computador"
 
-#: wmi_tools.php:180
+#: wmi_tools.php:197
 #, fuzzy
 msgid "Get Row System OS Performance Data"
 msgstr "Obter dados de desempenho do sistema operacional Row System"
 
-#: wmi_tools.php:186
+#: wmi_tools.php:203
 #, fuzzy
 msgid "Get Formatted System OS Performance Data"
 msgstr "Obter dados de desempenho do sistema operacional formatado"
 
-#: wmi_tools.php:192
+#: wmi_tools.php:209
 #, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
 msgstr "Obter Dados de Desempenho do Disco Phsycal Formatados"
 
-#: wmi_tools.php:198
+#: wmi_tools.php:215
 #, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
 msgstr "Obter dados de desempenho do disco cru Phsycal"
 
-#: wmi_tools.php:204
+#: wmi_tools.php:221
 #, fuzzy
 msgid "Get Logical Disk Information"
 msgstr "Obter informações lógicas do disco"
 
-#: wmi_tools.php:210
+#: wmi_tools.php:227
 #, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
 msgstr "Obter dados de desempenho de disco lógico formatados"
 
-#: wmi_tools.php:216
+#: wmi_tools.php:233
 #, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
 msgstr "Obter dados de desempenho de disco lógico bruto"
 
-#: wmi_tools.php:222
+#: wmi_tools.php:239
 #, fuzzy
 msgid "Get Formatted CPU Performance Data"
 msgstr "Obter dados de desempenho da CPU formatados"
 
-#: wmi_tools.php:228
+#: wmi_tools.php:245
 #, fuzzy
 msgid "Get Raw CPU Performance Data"
 msgstr "Obter dados brutos de desempenho da CPU"
 
-#: wmi_tools.php:234
+#: wmi_tools.php:251
 #, fuzzy
 msgid "Get Raw Memory Performance Data"
 msgstr "Obter dados de desempenho de memória bruta"
 
-#: wmi_tools.php:240
+#: wmi_tools.php:257
 #, fuzzy
 msgid "Get Formatted Network Performance Data"
 msgstr "Obter dados de desempenho de rede formatados"
 
-#: wmi_tools.php:246
+#: wmi_tools.php:263
 #, fuzzy
 msgid "Get Raw Network Performance Data"
 msgstr "Obter dados de desempenho de rede bruta"
 
-#: wmi_tools.php:252
+#: wmi_tools.php:269
 #, fuzzy
 msgid "Get Network Adapter Information"
 msgstr "Obter informações sobre o adaptador de rede"
 
-#: wmi_tools.php:258
+#: wmi_tools.php:275
 #, fuzzy
 msgid "Get Computer Asset Information"
 msgstr "Obter Informação de Ativos de Computador"
 
-#: wmi_tools.php:269
+#: wmi_tools.php:286
 #, fuzzy
 msgid "Name Space"
 msgstr "Nome Espaço"
 
-#: wmi_tools.php:286 wmi_tools.php:308
+#: wmi_tools.php:303 wmi_tools.php:334
 msgid "Close"
 msgstr "Fechar"
 
-#: wmi_tools.php:302
+#: wmi_tools.php:328
 #, fuzzy, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr "Se precisar de assistência em códigos de erro, utilize o Google ou, aqui, utilize as seguintes % de ligação."
 
-#: wmi_tools.php:302
+#: wmi_tools.php:328
 #, fuzzy
 msgid "Microsoft Common WBEM Errors"
 msgstr "Erros WBEM comuns da Microsoft"
 
-#: wmi_tools.php:303
+#: wmi_tools.php:329
 #, fuzzy
 msgid "Distributed COM Setup"
 msgstr "Configuração COM distribuída"
 
-#: wmi_tools.php:303
+#: wmi_tools.php:329
 #, fuzzy, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
 msgstr "Para que o WMI funcione, a conta de usuário que você está usando deve ter permissões COM Distribuídas e o Firewall do Windows deve ser configurado para permitir comunicações COM Distribuídas.  Você pode encontrar um bom documento sobre este procedimento nos seguintes Link %s."
 
-#: wmi_tools.php:337
+#: wmi_tools.php:391
 msgid "Host"
 msgstr "Host"
 
-#: wmi_tools.php:349
+#: wmi_tools.php:403
 msgid "Command"
 msgstr "Comando"
 
-#: wmi_tools.php:355
+#: wmi_tools.php:409
 #, fuzzy
 msgid "More Class Information @Microsoft"
 msgstr "Mais informações sobre a classe @Microsoft"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:411
 msgid "Run"
 msgstr "Executar"
 
-#: wmi_tools.php:357
+#: wmi_tools.php:411
 #, fuzzy
 msgid "Run the WMI Query against the Device"
 msgstr "Executar a consulta WMI contra o dispositivo"
 
-#: wmi_tools.php:358
+#: wmi_tools.php:412
 msgid "Clear"
 msgstr "Limpar"
 
-#: wmi_tools.php:358
+#: wmi_tools.php:412
 #, fuzzy
 msgid "Clear the results panel."
 msgstr "Limpar o painel de resultados."
 
-#: wmi_tools.php:359
+#: wmi_tools.php:413
 #, fuzzy
 msgid "Pick from a list of common queries."
 msgstr "Escolha a partir de uma lista de consultas comuns."
 
-#: wmi_tools.php:360
+#: wmi_tools.php:414
 #, fuzzy
 msgid "Get some help on setting up WMI"
 msgstr "Obtenha ajuda para configurar o WMI"
 
-#: wmi_tools.php:360
+#: wmi_tools.php:414
 msgid "Help"
 msgstr "Ajuda"
 
-#: wmi_tools.php:361
+#: wmi_tools.php:415
 #, fuzzy
 msgid "Create a new WMI Query from the existing Query."
 msgstr "Criar uma nova consulta WMI a partir da consulta existente."
 
-#: wmi_tools.php:372
+#: wmi_tools.php:426
 #, fuzzy
 msgid "Query Results"
 msgstr "Resultados da consulta"
 
-#: wmi_tools.php:401
+#: wmi_tools.php:455
 #, fuzzy
 msgid "Common Queries (Click to Select)"
 msgstr "Consultas comuns (clique para selecionar)"
 
-#: wmi_tools.php:430
+#: wmi_tools.php:484
 #, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "Assistência de configuração do WMI"
 
-#: wmi_tools.php:525
+#: wmi_tools.php:595
 #, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "ERRO: Você deve fornecer um host, nome de usuário, senha e consulta"
 
-#: wmi_tools.php:557
+#: wmi_tools.php:627
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "Resultados de consultas do WMI para Dispositivo: %s, Classe: %s, Colunas: %s, Linhas: %s"
 
-#: wmi_tools.php:559
+#: wmi_tools.php:629
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Mostrar colunas e a primeira ou duas linhas de dados."
