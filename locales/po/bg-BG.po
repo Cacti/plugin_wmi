@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-24 12:26-0400\n"
+"POT-Creation-Date: 2026-09-25 09:52-0400\n"
 "PO-Revision-Date: 2020-12-14 20:01-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: functions.php:40 wmi_queries.php:333 wmi_queries.php:496 wmi_tools.php:413
+#: functions.php:40 wmi_queries.php:339 wmi_queries.php:502 wmi_tools.php:413
 #, fuzzy
 msgid "Queries"
 msgstr "Заявки"
@@ -32,213 +32,213 @@ msgstr "Идентификация"
 msgid "WMI Management"
 msgstr "WMI управление"
 
-#: setup.php:392
+#: setup.php:394
 #, fuzzy
 msgid "WMI Data"
 msgstr "WMI данни"
 
-#: setup.php:393
+#: setup.php:395
 #, fuzzy
 msgid "WMI Data Query"
 msgstr "WMI Data Query"
 
-#: setup.php:397
+#: setup.php:399
 #, php-format
 msgid "%d Minute"
 msgstr "%d минута"
 
-#: setup.php:398 setup.php:399 setup.php:400 setup.php:401 setup.php:402
+#: setup.php:400 setup.php:401 setup.php:402 setup.php:403 setup.php:404
 #, php-format
 msgid "%d Minutes"
 msgstr "%d минути"
 
-#: setup.php:403
+#: setup.php:405
 #, php-format
 msgid "%d Hour"
 msgstr "%d час"
 
-#: setup.php:404 setup.php:405
+#: setup.php:406 setup.php:407
 #, php-format
 msgid "%d Hours"
 msgstr "%d часа"
 
-#: setup.php:406
+#: setup.php:408
 #, fuzzy, php-format
 msgid "%d Day"
 msgstr "% d ден"
 
-#: setup.php:411
+#: setup.php:413
 msgid "Utilities"
 msgstr "Приложения"
 
-#: setup.php:411 wmi_tools.php:372
+#: setup.php:413 wmi_tools.php:372
 #, fuzzy
 msgid "WMI Query Tool"
 msgstr "WMI инструмент за заявки"
 
-#: setup.php:412
+#: setup.php:414
 #, fuzzy
 msgid "Data Collection"
 msgstr "Събиране на данни"
 
-#: setup.php:412 setup.php:480 setup.php:494 wmi_queries.php:319
-#: wmi_queries.php:502
+#: setup.php:414 setup.php:482 setup.php:496 wmi_queries.php:325
+#: wmi_queries.php:508
 #, fuzzy
 msgid "WMI Queries"
 msgstr "WMI заявки"
 
-#: setup.php:419
+#: setup.php:421
 #, fuzzy
 msgid "Template Editor"
 msgstr "Редактор на шаблони"
 
-#: setup.php:459 setup.php:473
+#: setup.php:461 setup.php:475
 #, fuzzy
 msgid "WMI Authentication"
 msgstr "WMI Authentication"
 
-#: setup.php:466 setup.php:487
+#: setup.php:468 setup.php:489
 msgid "(Edit)"
 msgstr ""
 
-#: setup.php:508
+#: setup.php:510
 #, fuzzy
 msgid "(Query)"
 msgstr "Query (заявка/запитване)"
 
-#: setup.php:568
+#: setup.php:570
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "Опции за сметка на WMI"
 
-#: setup.php:573
+#: setup.php:575
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "Проверка на автентичността на WMI"
 
-#: setup.php:574
+#: setup.php:576
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Изберете акаунт, който да използвате при удостоверяване чрез WMI"
 
-#: setup.php:606
+#: setup.php:608
 #, fuzzy
 msgid "1 Process"
 msgstr "1 Процес"
 
-#: setup.php:607 setup.php:608 setup.php:609 setup.php:610 setup.php:611
-#: setup.php:612 setup.php:613 setup.php:614 setup.php:615 setup.php:616
-#: setup.php:617 setup.php:618 setup.php:619 setup.php:620 setup.php:621
-#: setup.php:622 setup.php:623
+#: setup.php:609 setup.php:610 setup.php:611 setup.php:612 setup.php:613
+#: setup.php:614 setup.php:615 setup.php:616 setup.php:617 setup.php:618
+#: setup.php:619 setup.php:620 setup.php:621 setup.php:622 setup.php:623
+#: setup.php:624 setup.php:625
 #, fuzzy, php-format
 msgid "%d Processes"
 msgstr "Получаване на системни процеси"
 
-#: setup.php:628
+#: setup.php:630
 #, fuzzy
 msgid "WMI Settings"
 msgstr "WMI настройки"
 
-#: setup.php:632
+#: setup.php:634
 #, fuzzy
 msgid "Enable WMI Data Collection"
 msgstr "Събиране на данни"
 
-#: setup.php:633
+#: setup.php:635
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Поставете отметка в това квадратче, ако искате приставката WMI да прави заявки за устройства с Windows."
 
-#: setup.php:638
+#: setup.php:640
 #, fuzzy
 msgid "Concurrent Processes"
 msgstr "Получаване на системни процеси"
 
-#: setup.php:639
+#: setup.php:641
 #, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Колко едновременни WMI заявки искате да работи системата?"
 
-#: setup.php:645
+#: setup.php:647
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Автоматично създаване на WMI заявки"
 
-#: setup.php:646
+#: setup.php:648
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "Ако е избрано, когато се изпълнява или автоматизация, или при създаване / запазване на устройство, ще бъдат създадени всички WMI заявки, свързани с шаблона на устройството."
 
-#: setup.php:652
+#: setup.php:654
 msgid "Misc"
 msgstr "Разни"
 
-#: setup.php:693 setup.php:758
+#: setup.php:695 setup.php:760
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "Свързани WMI заявки"
 
-#: setup.php:708 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:507
+#: setup.php:710 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
 #: wmi_tools.php:380
 msgid "Name"
 msgstr "Име"
 
-#: setup.php:708
+#: setup.php:710
 msgid "Status"
 msgstr "Статус"
 
-#: setup.php:721
+#: setup.php:723
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "Съществува WMI заявка"
 
-#: setup.php:723
+#: setup.php:725
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "WMI не съществува"
 
-#: setup.php:740 setup.php:784
+#: setup.php:742 setup.php:786
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "Няма свързани WMI заявки."
 
-#: setup.php:776 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:778 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "Изтрий"
 
-#: setup.php:801
+#: setup.php:803
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "Добавяне на WMI заявка"
 
-#: setup.php:807 wmi_tools.php:415
+#: setup.php:809 wmi_tools.php:415
 msgid "Add"
 msgstr "Добави"
 
-#: setup.php:807
+#: setup.php:809
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "Добавете WMI заявка към Шаблон на устройството"
 
-#: setup.php:864
+#: setup.php:867
 #, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Кликнете върху „Напред“, за да изтриете следните WMI заявки, които няма да бъдат свързани с шаблона на устройството."
 
-#: setup.php:865
+#: setup.php:868
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "Име на заявката за WMI: %s"
 
-#: setup.php:870 wmi_accounts.php:189 wmi_queries.php:208
+#: setup.php:873 wmi_accounts.php:194 wmi_queries.php:213
 msgid "Cancel"
 msgstr "Отказ"
 
-#: setup.php:871 wmi_accounts.php:181 wmi_queries.php:208
+#: setup.php:874 wmi_accounts.php:186 wmi_queries.php:213
 msgid "Continue"
 msgstr "Продължи"
 
-#: setup.php:871
+#: setup.php:874
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "Премахване на WMI заявка"
@@ -248,7 +248,7 @@ msgstr "Премахване на WMI заявка"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Дайте на този акаунт смислено име, което ще се покаже."
 
-#: wmi_accounts.php:54 wmi_accounts.php:479 wmi_tools.php:394
+#: wmi_accounts.php:54 wmi_accounts.php:485 wmi_tools.php:394
 msgid "Username"
 msgstr "Потребител"
 
@@ -266,62 +266,62 @@ msgstr "Парола"
 msgid "The password used for authentication."
 msgstr "Паролата, използвана за удостоверяване."
 
-#: wmi_accounts.php:171
+#: wmi_accounts.php:176
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Натиснете „Напред“, за да изтриете следните профили."
 
-#: wmi_accounts.php:178
+#: wmi_accounts.php:183
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "Трябва да изберете поне един профил."
 
-#: wmi_accounts.php:262
+#: wmi_accounts.php:268
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "Профил [редактиране: %s]"
 
-#: wmi_accounts.php:264
+#: wmi_accounts.php:270
 #, fuzzy
 msgid "Account [new]"
 msgstr "Профил [нов]"
 
-#: wmi_accounts.php:296
+#: wmi_accounts.php:302
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "WMI сметки"
 
-#: wmi_accounts.php:304 wmi_queries.php:327
+#: wmi_accounts.php:310 wmi_queries.php:333
 msgid "Search"
 msgstr "Търсене"
 
-#: wmi_accounts.php:310 wmi_accounts.php:464
+#: wmi_accounts.php:316 wmi_accounts.php:470
 msgid "Accounts"
 msgstr "Профили"
 
-#: wmi_accounts.php:314 wmi_queries.php:337
+#: wmi_accounts.php:320 wmi_queries.php:343
 msgid "Default"
 msgstr "По подразбиране"
 
-#: wmi_accounts.php:332 wmi_queries.php:358
+#: wmi_accounts.php:338 wmi_queries.php:364
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Търси"
 
-#: wmi_accounts.php:335 wmi_queries.php:361
+#: wmi_accounts.php:341 wmi_queries.php:367
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "Изчисти"
 
-#: wmi_accounts.php:474 wmi_tools.php:286
+#: wmi_accounts.php:480 wmi_tools.php:286
 msgid "Description"
 msgstr "Описание"
 
-#: wmi_accounts.php:484
+#: wmi_accounts.php:490
 msgid "Devices"
 msgstr "Устройства"
 
-#: wmi_accounts.php:506
+#: wmi_accounts.php:512
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "Няма намерени профили"
@@ -350,7 +350,7 @@ msgstr "Разрешен"
 msgid "Should this Query be enabled on hosts using it"
 msgstr "Ако тази заявка бъде активирана за хостове, които я използват"
 
-#: wmi_queries.php:70 wmi_queries.php:522 wmi_tools.php:400
+#: wmi_queries.php:70 wmi_queries.php:528 wmi_tools.php:400
 #, fuzzy
 msgid "Namespace"
 msgstr "Именно пространство"
@@ -369,7 +369,7 @@ msgstr "Query (заявка/запитване)"
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Заявката за изпълнение за събиране на WMI данни от устройството."
 
-#: wmi_queries.php:86 wmi_queries.php:532 wmi_tools.php:286 wmi_tools.php:406
+#: wmi_queries.php:86 wmi_queries.php:538 wmi_tools.php:286 wmi_tools.php:406
 #, fuzzy
 msgid "Primary Key"
 msgstr "Първичен ключ"
@@ -379,49 +379,49 @@ msgstr "Първичен ключ"
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "Когато WMI Query върне няколко реда, кой Keyname ще бъде първичен ключ или индекс? Ако първичният ключ включва няколко колони, отделете ги със запетая."
 
-#: wmi_queries.php:198
+#: wmi_queries.php:203
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Кликнете върху „Напред“, за да изтриете следните WMI заявки."
 
-#: wmi_queries.php:205
+#: wmi_queries.php:210
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "Трябва да изберете поне една WMI заявка."
 
-#: wmi_queries.php:206
+#: wmi_queries.php:211
 msgid "Return"
 msgstr "Връщане"
 
-#: wmi_queries.php:208
+#: wmi_queries.php:213
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "Изтриване на заявката за WMI"
 
-#: wmi_queries.php:285
+#: wmi_queries.php:291
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "Заявка [редактиране: %s]"
 
-#: wmi_queries.php:287
+#: wmi_queries.php:293
 #, fuzzy
 msgid "Query [new]"
 msgstr "Заявка [нова]"
 
-#: wmi_queries.php:355
+#: wmi_queries.php:361
 #, fuzzy
 msgid "Has Graphs"
 msgstr "Има графики"
 
-#: wmi_queries.php:512
+#: wmi_queries.php:518
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:517 wmi_tools.php:383
+#: wmi_queries.php:523 wmi_tools.php:383
 msgid "Frequency"
 msgstr "Честота"
 
-#: wmi_queries.php:527
+#: wmi_queries.php:533
 #, fuzzy
 msgid "WQL Query"
 msgstr "WQL Query"
@@ -655,12 +655,12 @@ msgstr "Помощ за инсталиране на WMI"
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "ГРЕШКА: Трябва да предоставите хост, потребителско име, парола и заявка"
 
-#: wmi_tools.php:627
+#: wmi_tools.php:629
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "WMI резултати от заявки за устройство: %s, клас: %s, колони: %s, редове: %s"
 
-#: wmi_tools.php:629
+#: wmi_tools.php:631
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "Показват се колони и първи или два реда данни."
