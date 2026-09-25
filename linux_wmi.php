@@ -236,6 +236,12 @@ class PowerShellCim_Transport implements Wmi_Transport {
 	}
 
 	private function default_runner(): callable {
+		/**
+		 * @param array<int, string>    $args
+		 * @param array<string, string> $env
+		 *
+		 * @return array{exit: int, stdout: array<int, string>, stderr: string}
+		 */
 		return function (string $binary, array $args, string $stdin, array $env): array {
 			$descriptors = [
 				0 => ['pipe', 'r'],
@@ -247,7 +253,7 @@ class PowerShellCim_Transport implements Wmi_Transport {
 			// onto the inherited one to keep PATH and friends.
 			$child_env = array_merge(getenv(), $env);
 
-			$process = proc_open(array_merge([$binary], $args), $descriptors, $pipes, null, $child_env);
+			$process = proc_open(array_values(array_merge([$binary], $args)), $descriptors, $pipes, null, $child_env);
 
 			if (!is_resource($process)) {
 				return ['exit' => -1, 'stdout' => [], 'stderr' => 'proc_open failed'];
@@ -442,7 +448,7 @@ class Linux_WMI {
 		}
 
 		$this->results = array_map(
-			fn (string $line): array => explode($this->separator, $line),
+			fn (string $line): array => explode($this->effective_separator(), $line),
 			$output
 		);
 
@@ -511,10 +517,16 @@ class Linux_WMI {
 	}
 
 	public function decode(string $info): string {
+		$raw = base64_decode($info, true);
+
+		if ($raw === false) {
+			return '';
+		}
+
 		// allowed_classes => false forbids object instantiation, so no gadget
 		// chain can run; the blob is our own base64(serialize()) from encode().
 		// nosemgrep: php.lang.security.unserialize-use.unserialize-use
-		$decoded = unserialize(base64_decode($info, true), ['allowed_classes' => false]);
+		$decoded = unserialize($raw, ['allowed_classes' => false]);
 
 		return is_array($decoded) && isset($decoded['password']) ? (string) $decoded['password'] : '';
 	}
@@ -536,9 +548,22 @@ class Linux_WMI {
 			$this->password,
 			$this->querynspace,
 			$this->command,
-			$this->separator,
+			$this->effective_separator(),
 			$this->binary
 		);
+	}
+
+	/**
+	 * The separator used for both the transport request and parsing its
+	 * output. Falls back to the default when $separator (a public,
+	 * mutable property) is empty, since an empty delimiter would make
+	 * explode() throw (PHP 8) when parsing the results, and would make the
+	 * wmic/PowerShell transport emit unsplit rows.
+	 *
+	 * @return non-empty-string
+	 */
+	private function effective_separator(): string {
+		return $this->separator !== '' ? $this->separator : '|+|';
 	}
 
 	/**
