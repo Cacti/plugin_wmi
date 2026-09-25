@@ -448,7 +448,7 @@ class Linux_WMI {
 		}
 
 		$this->results = array_map(
-			fn (string $line): array => explode($this->separator !== '' ? $this->separator : '|+|', $line),
+			fn (string $line): array => explode($this->effective_separator(), $line),
 			$output
 		);
 
@@ -548,9 +548,22 @@ class Linux_WMI {
 			$this->password,
 			$this->querynspace,
 			$this->command,
-			$this->separator,
+			$this->effective_separator(),
 			$this->binary
 		);
+	}
+
+	/**
+	 * The separator used for both the transport request and parsing its
+	 * output. Falls back to the default when $separator (a public,
+	 * mutable property) is empty, since an empty delimiter would make
+	 * explode() throw (PHP 8) when parsing the results, and would make the
+	 * wmic/PowerShell transport emit unsplit rows.
+	 *
+	 * @return non-empty-string
+	 */
+	private function effective_separator(): string {
+		return $this->separator !== '' ? $this->separator : '|+|';
 	}
 
 	/**
