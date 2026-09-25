@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-24 12:26-0400\n"
+"POT-Creation-Date: 2026-09-25 09:52-0400\n"
 "PO-Revision-Date: 2020-12-14 20:02-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
 
-#: functions.php:40 wmi_queries.php:333 wmi_queries.php:496 wmi_tools.php:413
+#: functions.php:40 wmi_queries.php:339 wmi_queries.php:502 wmi_tools.php:413
 #, fuzzy
 msgid "Queries"
 msgstr "שאילתות"
@@ -32,213 +32,213 @@ msgstr "שיטת האימות לא חוקי"
 msgid "WMI Management"
 msgstr "ניהול WMI"
 
-#: setup.php:392
+#: setup.php:394
 #, fuzzy
 msgid "WMI Data"
 msgstr "WMI נתונים"
 
-#: setup.php:393
+#: setup.php:395
 #, fuzzy
 msgid "WMI Data Query"
 msgstr "שאילתת נתונים WMI"
 
-#: setup.php:397
+#: setup.php:399
 #, php-format
 msgid "%d Minute"
 msgstr "‫%d דקה"
 
-#: setup.php:398 setup.php:399 setup.php:400 setup.php:401 setup.php:402
+#: setup.php:400 setup.php:401 setup.php:402 setup.php:403 setup.php:404
 #, fuzzy, php-format
 msgid "%d Minutes"
 msgstr "דקות %d"
 
-#: setup.php:403
+#: setup.php:405
 #, php-format
 msgid "%d Hour"
 msgstr "‫%d שעה"
 
-#: setup.php:404 setup.php:405
+#: setup.php:406 setup.php:407
 #, fuzzy, php-format
 msgid "%d Hours"
 msgstr "%d לפני מספר ימים"
 
-#: setup.php:406
+#: setup.php:408
 #, fuzzy, php-format
 msgid "%d Day"
 msgstr "% d יום"
 
-#: setup.php:411
+#: setup.php:413
 msgid "Utilities"
 msgstr "Comment"
 
-#: setup.php:411 wmi_tools.php:372
+#: setup.php:413 wmi_tools.php:372
 #, fuzzy
 msgid "WMI Query Tool"
 msgstr "כלי שאילתה WMI"
 
-#: setup.php:412
+#: setup.php:414
 #, fuzzy
 msgid "Data Collection"
 msgstr "איסוף נתונים"
 
-#: setup.php:412 setup.php:480 setup.php:494 wmi_queries.php:319
-#: wmi_queries.php:502
+#: setup.php:414 setup.php:482 setup.php:496 wmi_queries.php:325
+#: wmi_queries.php:508
 #, fuzzy
 msgid "WMI Queries"
 msgstr "שאילתות WMI"
 
-#: setup.php:419
+#: setup.php:421
 #, fuzzy
 msgid "Template Editor"
 msgstr "עורך תבניות"
 
-#: setup.php:459 setup.php:473
+#: setup.php:461 setup.php:475
 #, fuzzy
 msgid "WMI Authentication"
 msgstr "WMI"
 
-#: setup.php:466 setup.php:487
+#: setup.php:468 setup.php:489
 msgid "(Edit)"
 msgstr ""
 
-#: setup.php:508
+#: setup.php:510
 #, fuzzy
 msgid "(Query)"
 msgstr "שאילתא"
 
-#: setup.php:568
+#: setup.php:570
 #, fuzzy
 msgid "WMI Account Options"
 msgstr "אפשרויות חשבון WMI"
 
-#: setup.php:573
+#: setup.php:575
 #, fuzzy
 msgid "WMI Authentication Account"
 msgstr "חשבון אימות WMI"
 
-#: setup.php:574
+#: setup.php:576
 #, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "בחר חשבון לשימוש בעת אימות באמצעות WMI"
 
-#: setup.php:606
+#: setup.php:608
 #, fuzzy
 msgid "1 Process"
 msgstr "1 תהליך"
 
-#: setup.php:607 setup.php:608 setup.php:609 setup.php:610 setup.php:611
-#: setup.php:612 setup.php:613 setup.php:614 setup.php:615 setup.php:616
-#: setup.php:617 setup.php:618 setup.php:619 setup.php:620 setup.php:621
-#: setup.php:622 setup.php:623
+#: setup.php:609 setup.php:610 setup.php:611 setup.php:612 setup.php:613
+#: setup.php:614 setup.php:615 setup.php:616 setup.php:617 setup.php:618
+#: setup.php:619 setup.php:620 setup.php:621 setup.php:622 setup.php:623
+#: setup.php:624 setup.php:625
 #, fuzzy, php-format
 msgid "%d Processes"
 msgstr "קבל תהליכי מערכת"
 
-#: setup.php:628
+#: setup.php:630
 #, fuzzy
 msgid "WMI Settings"
 msgstr "הגדרות WMI"
 
-#: setup.php:632
+#: setup.php:634
 #, fuzzy
 msgid "Enable WMI Data Collection"
 msgstr "איסוף נתונים"
 
-#: setup.php:633
+#: setup.php:635
 #, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "סמן תיבה זו, אם ברצונך שתוסף ה- WMI ישאיל על מכשירי Windows."
 
-#: setup.php:638
+#: setup.php:640
 #, fuzzy
 msgid "Concurrent Processes"
 msgstr "קבל תהליכי מערכת"
 
-#: setup.php:639
+#: setup.php:641
 #, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "כמה שאילתות WMI במקביל אתה רוצה שהמערכת תפעל?"
 
-#: setup.php:645
+#: setup.php:647
 #, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "יצירת שאילתות"
 
-#: setup.php:646
+#: setup.php:648
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "אם נבחר, בעת הפעלת אוטומציה או בעת יצירת / שמירה של התקן, כל השאילתות של WMI המשויכות לתבנית ההתקן ייווצרו."
 
-#: setup.php:652
+#: setup.php:654
 msgid "Misc"
 msgstr "שונות"
 
-#: setup.php:693 setup.php:758
+#: setup.php:695 setup.php:760
 #, fuzzy
 msgid "Associated WMI Queries"
 msgstr "שאילתות משויכות"
 
-#: setup.php:708 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:507
+#: setup.php:710 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
 #: wmi_tools.php:380
 msgid "Name"
 msgstr "שם"
 
-#: setup.php:708
+#: setup.php:710
 msgid "Status"
 msgstr "סטטוס"
 
-#: setup.php:721
+#: setup.php:723
 #, fuzzy
 msgid "WMI Query Exists"
 msgstr "שאילתת WMI קיימת"
 
-#: setup.php:723
+#: setup.php:725
 #, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "שאילתת WMI אינה קיימת"
 
-#: setup.php:740 setup.php:784
+#: setup.php:742 setup.php:786
 #, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "אין שאילתות WMI משויכות."
 
-#: setup.php:776 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:778 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "מחק"
 
-#: setup.php:801
+#: setup.php:803
 #, fuzzy
 msgid "Add WMI Query"
 msgstr "הוסף שאילתת WMI"
 
-#: setup.php:807 wmi_tools.php:415
+#: setup.php:809 wmi_tools.php:415
 msgid "Add"
 msgstr "הוסף"
 
-#: setup.php:807
+#: setup.php:809
 #, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "הוסף שאילתת WMI לתבנית התקן"
 
-#: setup.php:864
+#: setup.php:867
 #, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות ינותקו מתבנית ההתקן."
 
-#: setup.php:865
+#: setup.php:868
 #, fuzzy, php-format
 msgid "WMI Query Name: %s"
 msgstr "שם שאילתה של WMI: %s"
 
-#: setup.php:870 wmi_accounts.php:189 wmi_queries.php:208
+#: setup.php:873 wmi_accounts.php:194 wmi_queries.php:213
 msgid "Cancel"
 msgstr "ביטול"
 
-#: setup.php:871 wmi_accounts.php:181 wmi_queries.php:208
+#: setup.php:874 wmi_accounts.php:186 wmi_queries.php:213
 msgid "Continue"
 msgstr "המשך"
 
-#: setup.php:871
+#: setup.php:874
 #, fuzzy
 msgid "Remove WMI Query"
 msgstr "הסר שאילתת WMI"
@@ -248,7 +248,7 @@ msgstr "הסר שאילתת WMI"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "תן לחשבון הזה שם בעל משמעות שיוצג."
 
-#: wmi_accounts.php:54 wmi_accounts.php:479 wmi_tools.php:394
+#: wmi_accounts.php:54 wmi_accounts.php:485 wmi_tools.php:394
 msgid "Username"
 msgstr "שם משתמש"
 
@@ -266,62 +266,62 @@ msgstr "סיסמה"
 msgid "The password used for authentication."
 msgstr "הסיסמה המשמשת לאימות."
 
-#: wmi_accounts.php:171
+#: wmi_accounts.php:176
 #, fuzzy
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "לחץ על 'המשך' כדי למחוק את החשבונות הבאים."
 
-#: wmi_accounts.php:178
+#: wmi_accounts.php:183
 #, fuzzy
 msgid "You must select at least one account."
 msgstr "עליך לבחור לפחות חשבון אחד."
 
-#: wmi_accounts.php:262
+#: wmi_accounts.php:268
 #, fuzzy, php-format
 msgid "Account [edit: %s]"
 msgstr "חשבון [עריכה: %s]"
 
-#: wmi_accounts.php:264
+#: wmi_accounts.php:270
 #, fuzzy
 msgid "Account [new]"
 msgstr "חשבון [חדש]"
 
-#: wmi_accounts.php:296
+#: wmi_accounts.php:302
 #, fuzzy
 msgid "WMI Accounts"
 msgstr "חשבונות"
 
-#: wmi_accounts.php:304 wmi_queries.php:327
+#: wmi_accounts.php:310 wmi_queries.php:333
 msgid "Search"
 msgstr "חיפוש"
 
-#: wmi_accounts.php:310 wmi_accounts.php:464
+#: wmi_accounts.php:316 wmi_accounts.php:470
 msgid "Accounts"
 msgstr "חשבונות"
 
-#: wmi_accounts.php:314 wmi_queries.php:337
+#: wmi_accounts.php:320 wmi_queries.php:343
 msgid "Default"
 msgstr "ברירת מחדל"
 
-#: wmi_accounts.php:332 wmi_queries.php:358
+#: wmi_accounts.php:338 wmi_queries.php:364
 msgctxt "filter: use"
 msgid "Go"
 msgstr "עבור"
 
-#: wmi_accounts.php:335 wmi_queries.php:361
+#: wmi_accounts.php:341 wmi_queries.php:367
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "נקה"
 
-#: wmi_accounts.php:474 wmi_tools.php:286
+#: wmi_accounts.php:480 wmi_tools.php:286
 msgid "Description"
 msgstr "תיאור"
 
-#: wmi_accounts.php:484
+#: wmi_accounts.php:490
 msgid "Devices"
 msgstr "ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה על כפתור התנתקות מכל ההתקנים האחרים."
 
-#: wmi_accounts.php:506
+#: wmi_accounts.php:512
 #, fuzzy
 msgid "No Accounts Found"
 msgstr "לא נמצאו חשבונות"
@@ -350,7 +350,7 @@ msgstr "מאופשר"
 msgid "Should this Query be enabled on hosts using it"
 msgstr "אם שאילתת שאילתה זו מופעלת במארחים המשתמשים בה"
 
-#: wmi_queries.php:70 wmi_queries.php:522 wmi_tools.php:400
+#: wmi_queries.php:70 wmi_queries.php:528 wmi_tools.php:400
 #, fuzzy
 msgid "Namespace"
 msgstr "מרחב שמות"
@@ -369,7 +369,7 @@ msgstr "שאילתא"
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "שאילתה לבצע עבור איסוף נתונים WMI מהמכשיר."
 
-#: wmi_queries.php:86 wmi_queries.php:532 wmi_tools.php:286 wmi_tools.php:406
+#: wmi_queries.php:86 wmi_queries.php:538 wmi_tools.php:286 wmi_tools.php:406
 #, fuzzy
 msgid "Primary Key"
 msgstr "מפתח ראשי"
@@ -379,49 +379,49 @@ msgstr "מפתח ראשי"
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "כאשר שאילתת WMI מחזירה מספר שורות, אילו Keyname יהיה המפתח הראשי או האינדקס? אם המפתח הראשי כולל עמודות מרובות, הפרד ביניהם בפסיק."
 
-#: wmi_queries.php:198
+#: wmi_queries.php:203
 #, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות."
 
-#: wmi_queries.php:205
+#: wmi_queries.php:210
 #, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "עליך לבחור לפחות שאילתת WMI אחת."
 
-#: wmi_queries.php:206
+#: wmi_queries.php:211
 msgid "Return"
 msgstr "חזרה אל עריכת פוסט"
 
-#: wmi_queries.php:208
+#: wmi_queries.php:213
 #, fuzzy
 msgid "Delete WMI Query"
 msgstr "מחק שאילתת WMI"
 
-#: wmi_queries.php:285
+#: wmi_queries.php:291
 #, fuzzy, php-format
 msgid "Query [edit: %s]"
 msgstr "שאילתה [עריכה: %s]"
 
-#: wmi_queries.php:287
+#: wmi_queries.php:293
 #, fuzzy
 msgid "Query [new]"
 msgstr "שאילתה [חדש]"
 
-#: wmi_queries.php:355
+#: wmi_queries.php:361
 #, fuzzy
 msgid "Has Graphs"
 msgstr "יש גרפים"
 
-#: wmi_queries.php:512
+#: wmi_queries.php:518
 msgid "ID"
 msgstr "מזהה"
 
-#: wmi_queries.php:517 wmi_tools.php:383
+#: wmi_queries.php:523 wmi_tools.php:383
 msgid "Frequency"
 msgstr "תדירות"
 
-#: wmi_queries.php:527
+#: wmi_queries.php:533
 #, fuzzy
 msgid "WQL Query"
 msgstr "שאילתת WQL"
@@ -655,12 +655,12 @@ msgstr "סיוע בהגדרת WMI"
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "שגיאה: עליך לספק מארח, שם משתמש, סיסמה ושאילתה"
 
-#: wmi_tools.php:627
+#: wmi_tools.php:629
 #, fuzzy, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "תוצאות שאילתת WMI עבור ההתקן: %s, מחלקה: %s, עמודות: %s, שורות: %s"
 
-#: wmi_tools.php:629
+#: wmi_tools.php:631
 #, fuzzy
 msgid "Showing columns and first one or two rows of data."
 msgstr "מציג עמודות והשורה הראשונה או שתיים של נתונים."
