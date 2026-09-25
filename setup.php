@@ -303,7 +303,9 @@ function plugin_wmi_setup_tables() {
  * Cacti's plugin architecture via the api_plugin_version hook.
  *
  * @return array The parsed [info] section of the plugin's INFO file (keys
- *               such as name, version, author).
+ *               such as name, version, author), or an empty array when
+ *               the INFO file is missing/malformed or has no [info]
+ *               section.
  *
  * @global array $config Cacti global configuration array; used to locate
  *                        the plugin's base path.
@@ -313,7 +315,7 @@ function plugin_wmi_version() {
 
 	$info = parse_ini_file($config['base_path'] . '/plugins/wmi/INFO', true);
 
-	return $info['info'];
+	return isset($info['info']) && is_array($info['info']) ? $info['info'] : [];
 }
 
 /**
@@ -429,7 +431,7 @@ function wmi_config_arrays() {
  * selection queries.
  *
  * @param string $sql_where The existing SQL WHERE clause fragment
- *                           contributed by Cacti core and other plugins.
+ *                          contributed by Cacti core and other plugins.
  *
  * @return string The $sql_where fragment with this plugin's exclusion
  *                condition appended.
@@ -449,7 +451,7 @@ function wmi_data_input_sql_where($sql_where) {
  * breadcrumb trail.
  *
  * @param array $nav The existing breadcrumb map contributed by Cacti
- *                    core and other plugins.
+ *                   core and other plugins.
  *
  * @return array The $nav array with this plugin's breadcrumb entries
  *               added.
@@ -690,7 +692,7 @@ function wmi_api_device_save($save) {
  * @return void Outputs HTML directly.
  */
 function wmi_device_edit_pre_bottom() {
-	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
+	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', false, 3, 'center', '');
 
 	$host_template_id = db_fetch_cell_prepared('SELECT host_template_id
 		FROM host
@@ -755,7 +757,7 @@ function wmi_device_edit_pre_bottom() {
  * @return void Outputs HTML and JavaScript directly.
  */
 function wmi_device_template_edit() {
-	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', '', '3', 'center', '');
+	html_start_box(__('Associated WMI Queries', 'wmi'), '100%', false, 3, 'center', '');
 
 	$wmi_queries = db_fetch_assoc_prepared('SELECT wwq.id, wwq.name
 		FROM wmi_wql_queries AS wwq
@@ -854,15 +856,16 @@ function wmi_device_template_top() {
 
 		form_start('host_templates.php?action=edit&id' . get_request_var('host_template_id'));
 
-		html_start_box('', '100%', '', '3', 'center', '');
+		html_start_box('', '100%', false, 3, 'center', '');
 
 		$query = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', [get_request_var('id')]);
+		$query = is_array($query) ? $query : [];
 
 		?>
 		<tr>
 			<td class='topBoxAlt'>
 				<p><?php print __('Click \'Continue\' to delete the following WMI Queries will be disassociated from the Device Template.', 'wmi'); ?></p>
-				<p><?php print __esc('WMI Query Name: %s', $query['name'], 'wmi'); ?>'<br>
+				<p><?php print __esc('WMI Query Name: %s', $query['name'] ?? '', 'wmi'); ?>'<br>
 			</td>
 		</tr>
 		<tr>

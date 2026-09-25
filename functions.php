@@ -70,13 +70,14 @@ function display_tabs() {
  * form_save() path that invokes it).
  *
  * @param string $query The WQL query text to check (e.g.
- *                       'SELECT * FROM Win32_Something').
+ *                      'SELECT * FROM Win32_Something').
  *
  * @return bool True when an existing saved query already targets the
  *              same WMI class.
  */
 function plugin_wmi_query_exists($query) {
 	$tokens  = preg_split('/\s+/', $query);
+	$tokens  = is_array($tokens) ? $tokens : [];
 	$next_ic = false;
 	$exists  = false;
 
@@ -316,7 +317,7 @@ function plugin_wmi_create_dataquery_xml($id) {
  * download action for a given saved query.
  *
  * @param int $id The wmi_wql_queries.id to generate the resource XML
- *                 for.
+ *                for.
  *
  * @return string The generated Script Server resource XML, or '' when
  *                the query id does not exist.
@@ -328,8 +329,8 @@ function plugin_wmi_create_resource_xml($id) {
 	if (isset($wmic['id'])) {
 		$data = "<WMIQuery>\n";
 		$data .= '	<name>' . $wmic['name'] . "</name>\n";
-		$data .= "	<script_path>|path_cacti|/scripts/wmic-script.php</script_path>\n";
-		$data .= "	<script_function>wmic_script</script_function>\n";
+		$data .= "	<script_path>|path_cacti|/scripts/wmi-script.php</script_path>\n";
+		$data .= "	<script_function>wmi_script</script_function>\n";
 		$data .= '	<description>WMI Query for ' . $wmic['name'] . "</description>\n";
 		$data .= "	<script_server>php</script_server>\n";
 		$data .= '	<arg_prepend>|host_hostname| |host_id| ' . $wmic['name'] . "</arg_prepend>\n";
@@ -376,14 +377,14 @@ function plugin_wmi_create_resource_xml($id) {
  *
  * @param int $host_id      The Cacti host id to query.
  * @param int $wmi_query_id The wmi_wql_queries.id to run against the
- *                           host.
+ *                          host.
  *
  * @return bool|void True when the query succeeded and results were
- *                    cached; false when the host's WMI account/query
- *                    could not be found or the query failed; no explicit
- *                    return value when the host itself could not be
- *                    found (stale cache rows are still cleaned up in that
- *                    case).
+ *                   cached; false when the host's WMI account/query
+ *                   could not be found or the query failed; no explicit
+ *                   return value when the host itself could not be
+ *                   found (stale cache rows are still cleaned up in that
+ *                   case).
  *
  * @global array $config Cacti global configuration array; used to load
  *                        this plugin's linux_wmi.php client.
@@ -395,6 +396,8 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		FROM host
 		WHERE id = ?',
 		[$host_id]);
+
+	$host_info = is_array($host_info) ? $host_info : [];
 
 	// Prepared old entries for removal
 	db_execute_prepared('UPDATE host_wmi_cache
@@ -409,10 +412,14 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 			WHERE id = ?',
 			[$host_info['wmi_account']]);
 
+		$auth_info = is_array($auth_info) ? $auth_info : [];
+
 		$wmi_query = db_fetch_row_prepared('SELECT *
 			FROM wmi_wql_queries
 			WHERE id = ?',
 			[$wmi_query_id]);
+
+		$wmi_query = is_array($wmi_query) ? $wmi_query : [];
 
 		if (!cacti_sizeof($auth_info)) {
 			return false;
@@ -463,6 +470,8 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 			$indexes = [];
 			$data    = [];
 		}
+
+		$indexes = is_array($indexes) ? $indexes : [];
 
 		if (cacti_sizeof($data)) {
 			$sql = [];

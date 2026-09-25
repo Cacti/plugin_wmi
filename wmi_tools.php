@@ -281,7 +281,7 @@ function common_queries_panel() {
 	// Common Queries Panel
 	print "<div id='common_queries' style='display:none;'>";
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	html_header([__('Description', 'wmi'), __('Primary Key', 'wmi'), __('Name Space', 'wmi'), __('Query', 'wmi')]);
 
@@ -320,7 +320,7 @@ function common_queries_panel() {
 function assistance_panel() {
 	print "<div id='assistance' style='display:none;'>";
 
-	html_start_box('', '100%', '', '3', 'center', '');
+	html_start_box('', '100%', false, 3, 'center', '');
 
 	form_alternate_row();
 	print '<td>';
@@ -369,7 +369,7 @@ function assistance_panel() {
 function show_tools() {
 	global $action, $host, $username, $password, $command, $wmi_frequencies;
 
-	html_start_box(__('WMI Query Tool', 'wmi') , '100%', '', '3', 'center', '');
+	html_start_box(__('WMI Query Tool', 'wmi') , '100%', false, 3, 'center', '');
 
 	print '<tr><td>';
 
@@ -423,7 +423,7 @@ function show_tools() {
 	html_end_box();
 
 	// Query Results Panel
-	html_start_box(__('Query Results', 'wmi') , '100%', '', '3', 'center', '');
+	html_start_box(__('Query Results', 'wmi') , '100%', false, 3, 'center', '');
 
 	form_alternate_row();
 
@@ -623,6 +623,8 @@ function walk_host() {
 		$indexes = $wmi->fetch_indexes();
 		$class   = $wmi->fetch_class();
 		$data    = $wmi->fetch_data();
+
+		$indexes = is_array($indexes) ? $indexes : [];
 
 		print '<h4>' . __esc('WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s', $host, $class, sizeof($indexes), sizeof($data), 'wmi') . '</h4>';
 

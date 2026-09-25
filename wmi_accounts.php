@@ -118,6 +118,11 @@ function actions_accounts() {
 	get_filter_request_var('drp_action');
 	// ====================================================
 
+	if (!array_key_exists((int) get_request_var('drp_action'), $account_actions)) {
+		header('Location: wmi_accounts.php');
+		exit;
+	}
+
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
@@ -163,7 +168,7 @@ function actions_accounts() {
 
 	form_start('wmi_accounts.php');
 
-	html_start_box($account_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($account_actions[(int) get_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (get_nfilter_request_var('drp_action') == '1') { // Delete
 		print "<tr>
@@ -257,16 +262,17 @@ function edit_accounts() {
 
 	if (!isempty_request_var('id')) {
 		$account = db_fetch_row_prepared('SELECT * FROM wmi_user_accounts WHERE id = ?', [get_request_var('id')]);
+		$account = is_array($account) ? $account : [];
 
 		$account['password'] = '';
-		$header_label        = __esc('Account [edit: %s]', $account['name'], 'wmi');
+		$header_label        = __esc('Account [edit: %s]', $account['name'] ?? '', 'wmi');
 	} else {
 		$header_label = __('Account [new]', 'wmi');
 	}
 
 	form_start('wmi_accounts.php?tab=accounts', 'chk');
 
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', false, 3, 'center', '');
 	draw_edit_form(
 		[
 			'config' => ['no_form_tag' => true],
@@ -293,7 +299,7 @@ function edit_accounts() {
 function account_filter() {
 	global $item_rows;
 
-	html_start_box(__('WMI Accounts', 'wmi'), '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
+	html_start_box(__('WMI Accounts', 'wmi'), '100%', false, 3, 'center', 'wmi_accounts.php?action=edit');
 	?>
 	<tr class='even'>
 		<td>
@@ -467,7 +473,7 @@ function show_accounts() {
 
 	print $nav;
 
-	html_start_box('', '100%', '', '3', 'center', 'wmi_accounts.php?action=edit');
+	html_start_box('', '100%', false, 3, 'center', 'wmi_accounts.php?action=edit');
 
 	$display_text = [
 		'name' => [

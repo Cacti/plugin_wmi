@@ -127,7 +127,7 @@ if ($start == '') {
 if ($mainrun) {
 	process_all_devices();
 } else {
-	process_device($host_id);
+	process_device((int) $host_id);
 }
 
 exit(0);
@@ -308,11 +308,11 @@ function process_all_devices() {
  * time and the device's process-lock placeholder key. Called from
  * process_all_devices() for each device due for a WMI query refresh.
  *
- * @param int    $host_id The Cacti host id to poll in the background.
- * @param int    $seed    The master run's shared task/seed identifier,
- *                         used to track this run's child processes.
- * @param int    $key     The wmi_processes placeholder row's pid value to
- *                         replace once the child process starts.
+ * @param int $host_id The Cacti host id to poll in the background.
+ * @param int $seed    The master run's shared task/seed identifier,
+ *                     used to track this run's child processes.
+ * @param int $key     The wmi_processes placeholder row's pid value to
+ *                     replace once the child process starts.
  *
  * @return void
  *
@@ -414,6 +414,8 @@ function process_device($host_id) {
 				AND wmi_query_id = ?',
 				[$host_id, $q['wmi_query_id']]);
 
+			$run_before = is_array($run_before) ? $run_before : [];
+
 			if (!cacti_sizeof($run_before)) {
 				$last_failed = '0000-00-00 00:00:00';
 			} else {
@@ -471,6 +473,13 @@ function display_version() {
 	}
 
 	$info = plugin_wmi_version();
+
+	if (!isset($info['version'])) {
+		cacti_log('ERROR: WMI plugin INFO file is missing required fields, skipping version display', false, 'WMI');
+
+		return;
+	}
+
 	print 'Device WMI Poller Process, Version ' . $info['version'] . ', ' . COPYRIGHT_YEARS . PHP_EOL;
 }
 

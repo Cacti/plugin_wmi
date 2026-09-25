@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: PHPStan level 8 typing pass - fixed an incorrect script_path/script_function in the exported WMI query resource XML, restrictive drp_action/menu-index guards in wmi_accounts.php and wmi_queries.php, several unguarded array offset accesses on DB fetch results, and html_start_box() argument-type mismatches
 * test: Expand Security/Unit/Integration Pest coverage for setup.php lifecycle, hook registration, and table/column provisioning
 * chore: Harmonize CI workflow, issue/PR templates, and PHP-compatibility test structure with the shared Cacti plugin baseline
 * feat: Add a PowerShell/CIM transport (PowerShellCim_Transport) for Windows collector hosts, with automatic transport selection based on the Cacti server OS

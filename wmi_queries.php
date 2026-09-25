@@ -145,6 +145,11 @@ function actions_queries() {
 	input_validate_input_number(get_request_var_post('drp_action'));
 	// ====================================================
 
+	if (!array_key_exists((int) get_request_var('drp_action'), $ds_actions)) {
+		header('Location: wmi_queries.php');
+		exit;
+	}
+
 	if (isset_request_var('selected_items')) {
 		$selected_items = sanitize_unserialize_selected_items(get_nfilter_request_var('selected_items'));
 
@@ -190,7 +195,7 @@ function actions_queries() {
 
 	form_start('wmi_queries.php');
 
-	html_start_box($ds_actions[get_request_var('drp_action')], '60%', '', '3', 'center', '');
+	html_start_box($ds_actions[(int) get_request_var('drp_action')], '60%', false, 3, 'center', '');
 
 	if (get_request_var('drp_action') == '1') { // Delete
 		print "<tr>
@@ -282,14 +287,15 @@ function edit_queries() {
 			WHERE id= ?',
 			[get_filter_request_var('id')]);
 
-		$header_label = __esc('Query [edit: %s]', $query['name'], 'wmi');
+		$query        = is_array($query) ? $query : [];
+		$header_label = __esc('Query [edit: %s]', $query['name'] ?? '', 'wmi');
 	} else {
 		$header_label = __('Query [new]', 'wmi');
 	}
 
 	form_start('wmi_queries.php', 'query_edit');
 
-	html_start_box($header_label, '100%', '', '3', 'center', '');
+	html_start_box($header_label, '100%', false, 3, 'center', '');
 
 	draw_edit_form(
 		[
@@ -316,7 +322,7 @@ function edit_queries() {
 function query_filter() {
 	global $item_rows;
 
-	html_start_box(__('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
+	html_start_box(__('WMI Queries', 'wmi'), '100%', false, 3, 'center', 'wmi_queries.php?action=edit');
 	?>
 	<tr class='even'>
 		<td>
@@ -499,7 +505,7 @@ function show_queries() {
 
 	print $nav;
 
-	html_start_box(__('WMI Queries', 'wmi'), '100%', '', '3', 'center', 'wmi_queries.php?action=edit');
+	html_start_box(__('WMI Queries', 'wmi'), '100%', false, 3, 'center', 'wmi_queries.php?action=edit');
 
 	html_header_checkbox(
 		[

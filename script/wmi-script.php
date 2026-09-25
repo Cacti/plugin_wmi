@@ -42,23 +42,23 @@ if (!isset($called_by_script_server)) {
  * Input Method configured to use this script is polled.
  *
  * @param string $hostname The target host's hostname/IP for the WMI
- *                          query.
+ *                         query.
  * @param int    $host_id  The Cacti host id, used to load any per-host
- *                          WMI credentials.
+ *                         WMI credentials.
  * @param string $wmiquery The saved query's name (wmi_wql_queries.name)
- *                          to run.
+ *                         to run.
  * @param string $cmd      The sub-command to perform: 'index' (list index
- *                          keys), 'query' (print an index or a key/value
- *                          pair), or 'get' (print a single value);
- *                          defaults to ''.
+ *                         keys), 'query' (print an index or a key/value
+ *                         pair), or 'get' (print a single value);
+ *                         defaults to ''.
  * @param string $arg1     For 'query'/'get', the index value (or
- *                          'index'); defaults to ''.
+ *                         'index'); defaults to ''.
  * @param string $arg2     For 'query'/'get', the field name to fetch;
- *                          defaults to ''.
+ *                         defaults to ''.
  *
- * @return string|null Returns '' when the named query does not exist;
- *                      otherwise prints output directly and returns no
- *                      explicit value (null).
+ * @return string|void Returns '' when the named query does not exist;
+ *                     otherwise prints output directly and returns no
+ *                     explicit value.
  *
  * @global array $config Cacti global configuration array; used to load
  *                       linux_wmi.php.
