@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-24 12:26-0400\n"
+"POT-Creation-Date: 2026-09-25 09:52-0400\n"
 "PO-Revision-Date: 2024-12-06 19:24+0000\n"
 "Last-Translator: Anton Zhuravlev <baka109g@gmail.com>\n"
 "Language-Team: Russian <http://translate.cacti.net/projects/cacti/wmi/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: functions.php:40 wmi_queries.php:333 wmi_queries.php:496 wmi_tools.php:413
+#: functions.php:40 wmi_queries.php:339 wmi_queries.php:502 wmi_tools.php:413
 msgid "Queries"
 msgstr "Запросов"
 
@@ -30,188 +30,188 @@ msgstr "Аутентификация"
 msgid "WMI Management"
 msgstr "Управление WMI"
 
-#: setup.php:392
+#: setup.php:394
 msgid "WMI Data"
 msgstr "Данные WMI"
 
-#: setup.php:393
+#: setup.php:395
 msgid "WMI Data Query"
 msgstr "Запрос данных WMI"
 
-#: setup.php:397
+#: setup.php:399
 #, php-format
 msgid "%d Minute"
 msgstr "%d Минута"
 
-#: setup.php:398 setup.php:399 setup.php:400 setup.php:401 setup.php:402
+#: setup.php:400 setup.php:401 setup.php:402 setup.php:403 setup.php:404
 #, php-format
 msgid "%d Minutes"
 msgstr "%d Минут"
 
-#: setup.php:403
+#: setup.php:405
 #, php-format
 msgid "%d Hour"
 msgstr "%d Час"
 
-#: setup.php:404 setup.php:405
+#: setup.php:406 setup.php:407
 #, php-format
 msgid "%d Hours"
 msgstr "%d Часов"
 
-#: setup.php:406
+#: setup.php:408
 #, php-format
 msgid "%d Day"
 msgstr "%d День"
 
-#: setup.php:411
+#: setup.php:413
 msgid "Utilities"
 msgstr "Утилиты"
 
-#: setup.php:411 wmi_tools.php:372
+#: setup.php:413 wmi_tools.php:372
 msgid "WMI Query Tool"
 msgstr "Инструмент запроса WMI"
 
-#: setup.php:412
+#: setup.php:414
 msgid "Data Collection"
 msgstr "Коллекции Данных"
 
-#: setup.php:412 setup.php:480 setup.php:494 wmi_queries.php:319
-#: wmi_queries.php:502
+#: setup.php:414 setup.php:482 setup.php:496 wmi_queries.php:325
+#: wmi_queries.php:508
 msgid "WMI Queries"
 msgstr "Запросы WMI"
 
-#: setup.php:419
+#: setup.php:421
 msgid "Template Editor"
 msgstr "Редактор шаблонов"
 
-#: setup.php:459 setup.php:473
+#: setup.php:461 setup.php:475
 msgid "WMI Authentication"
 msgstr "Аутентификация WMI"
 
-#: setup.php:466 setup.php:487
+#: setup.php:468 setup.php:489
 msgid "(Edit)"
 msgstr "(Редактировать)"
 
-#: setup.php:508
+#: setup.php:510
 msgid "(Query)"
 msgstr "(Запрос)"
 
-#: setup.php:568
+#: setup.php:570
 msgid "WMI Account Options"
 msgstr "Опции учетной записи WMI"
 
-#: setup.php:573
+#: setup.php:575
 msgid "WMI Authentication Account"
 msgstr "Учетная запись WMI аутентификации"
 
-#: setup.php:574
+#: setup.php:576
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Выберите учетную запись для использования при аутентификации через WMI"
 
-#: setup.php:606
+#: setup.php:608
 msgid "1 Process"
 msgstr "1 Процесс"
 
-#: setup.php:607 setup.php:608 setup.php:609 setup.php:610 setup.php:611
-#: setup.php:612 setup.php:613 setup.php:614 setup.php:615 setup.php:616
-#: setup.php:617 setup.php:618 setup.php:619 setup.php:620 setup.php:621
-#: setup.php:622 setup.php:623
+#: setup.php:609 setup.php:610 setup.php:611 setup.php:612 setup.php:613
+#: setup.php:614 setup.php:615 setup.php:616 setup.php:617 setup.php:618
+#: setup.php:619 setup.php:620 setup.php:621 setup.php:622 setup.php:623
+#: setup.php:624 setup.php:625
 #, php-format
 msgid "%d Processes"
 msgstr "%d Процессы"
 
-#: setup.php:628
+#: setup.php:630
 msgid "WMI Settings"
 msgstr "Настройки WMI"
 
-#: setup.php:632
+#: setup.php:634
 msgid "Enable WMI Data Collection"
 msgstr "Включить сбор данных WMI"
 
-#: setup.php:633
+#: setup.php:635
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Установите этот флажок, если хотите, чтобы подключаемый модуль WMI запрашивал устройства Windows."
 
-#: setup.php:638
+#: setup.php:640
 msgid "Concurrent Processes"
 msgstr "Количество Конкурирующих процессов"
 
-#: setup.php:639
+#: setup.php:641
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Сколько запросов WMI вы хотите чтобы выполнялось одновременно?"
 
-#: setup.php:645
+#: setup.php:647
 msgid "Auto Create WMI Queries"
 msgstr "Автоматическое создание запросов WMI"
 
-#: setup.php:646
+#: setup.php:648
 #, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "Если этот параметр выбран, при запуске системы автоматизации или при создании/сохранении устройства будут созданы все запросы WMI, связанные с шаблоном устройства."
 
-#: setup.php:652
+#: setup.php:654
 msgid "Misc"
 msgstr "Разное"
 
-#: setup.php:693 setup.php:758
+#: setup.php:695 setup.php:760
 msgid "Associated WMI Queries"
 msgstr "Связанные запросы WMI"
 
-#: setup.php:708 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:507
+#: setup.php:710 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
 #: wmi_tools.php:380
 msgid "Name"
 msgstr "Имя"
 
-#: setup.php:708
+#: setup.php:710
 msgid "Status"
 msgstr "Статус"
 
-#: setup.php:721
+#: setup.php:723
 msgid "WMI Query Exists"
 msgstr "Запрос WMI существует"
 
-#: setup.php:723
+#: setup.php:725
 msgid "WMI Query Does Not Exist"
 msgstr "Запрос WMI не существует"
 
-#: setup.php:740 setup.php:784
+#: setup.php:742 setup.php:786
 msgid "No Associated WMI Queries."
 msgstr "Нет соответствующих запросов WMI."
 
-#: setup.php:776 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:778 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "Удалить"
 
-#: setup.php:801
+#: setup.php:803
 msgid "Add WMI Query"
 msgstr "Добавить запрос WMI"
 
-#: setup.php:807 wmi_tools.php:415
+#: setup.php:809 wmi_tools.php:415
 msgid "Add"
 msgstr "Добавить"
 
-#: setup.php:807
+#: setup.php:809
 msgid "Add WMI Query to Device Template"
 msgstr "Добавить запрос WMI в шаблон устройства"
 
-#: setup.php:864
+#: setup.php:867
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI, которые будут удалены из шаблона устройства."
 
-#: setup.php:865
+#: setup.php:868
 #, php-format
 msgid "WMI Query Name: %s"
 msgstr "Имя запроса WMI: %s"
 
-#: setup.php:870 wmi_accounts.php:189 wmi_queries.php:208
+#: setup.php:873 wmi_accounts.php:194 wmi_queries.php:213
 msgid "Cancel"
 msgstr "Отмена"
 
-#: setup.php:871 wmi_accounts.php:181 wmi_queries.php:208
+#: setup.php:874 wmi_accounts.php:186 wmi_queries.php:213
 msgid "Continue"
 msgstr "Продолжить"
 
-#: setup.php:871
+#: setup.php:874
 msgid "Remove WMI Query"
 msgstr "Удалить запрос WMI"
 
@@ -219,7 +219,7 @@ msgstr "Удалить запрос WMI"
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Дайте этой учетной записи значимое имя, которое будет отображаться на экране."
 
-#: wmi_accounts.php:54 wmi_accounts.php:479 wmi_tools.php:394
+#: wmi_accounts.php:54 wmi_accounts.php:485 wmi_tools.php:394
 msgid "Username"
 msgstr "Имя Пользователя"
 
@@ -236,58 +236,58 @@ msgstr "Пароль"
 msgid "The password used for authentication."
 msgstr "Пароль, которое будет использоваться для аутентификации."
 
-#: wmi_accounts.php:171
+#: wmi_accounts.php:176
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие учетные записи."
 
-#: wmi_accounts.php:178
+#: wmi_accounts.php:183
 msgid "You must select at least one account."
 msgstr "Вы должны выбрать хотя бы одну учетную запись."
 
-#: wmi_accounts.php:262
+#: wmi_accounts.php:268
 #, php-format
 msgid "Account [edit: %s]"
 msgstr "Учетная запись [редактирование: %s]"
 
-#: wmi_accounts.php:264
+#: wmi_accounts.php:270
 msgid "Account [new]"
 msgstr "Учетная запись [новая]"
 
-#: wmi_accounts.php:296
+#: wmi_accounts.php:302
 msgid "WMI Accounts"
 msgstr "WMI учетные записи"
 
-#: wmi_accounts.php:304 wmi_queries.php:327
+#: wmi_accounts.php:310 wmi_queries.php:333
 msgid "Search"
 msgstr "Поиск"
 
-#: wmi_accounts.php:310 wmi_accounts.php:464
+#: wmi_accounts.php:316 wmi_accounts.php:470
 msgid "Accounts"
 msgstr "Аккаунты"
 
-#: wmi_accounts.php:314 wmi_queries.php:337
+#: wmi_accounts.php:320 wmi_queries.php:343
 msgid "Default"
 msgstr "Стандартно"
 
-#: wmi_accounts.php:332 wmi_queries.php:358
+#: wmi_accounts.php:338 wmi_queries.php:364
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Выполнить"
 
-#: wmi_accounts.php:335 wmi_queries.php:361
+#: wmi_accounts.php:341 wmi_queries.php:367
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "Очистить"
 
-#: wmi_accounts.php:474 wmi_tools.php:286
+#: wmi_accounts.php:480 wmi_tools.php:286
 msgid "Description"
 msgstr "Описание"
 
-#: wmi_accounts.php:484
+#: wmi_accounts.php:490
 msgid "Devices"
 msgstr "Устройства"
 
-#: wmi_accounts.php:506
+#: wmi_accounts.php:512
 msgid "No Accounts Found"
 msgstr "Учетные записи не найдены"
 
@@ -314,7 +314,7 @@ msgstr "Включенные"
 msgid "Should this Query be enabled on hosts using it"
 msgstr "Если этот запрос будет включен на хостах, использующих его"
 
-#: wmi_queries.php:70 wmi_queries.php:522 wmi_tools.php:400
+#: wmi_queries.php:70 wmi_queries.php:528 wmi_tools.php:400
 msgid "Namespace"
 msgstr "Пространствоимён"
 
@@ -330,7 +330,7 @@ msgstr "Запрос"
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Запрос на выполнение для сбора данных WMI с устройства."
 
-#: wmi_queries.php:86 wmi_queries.php:532 wmi_tools.php:286 wmi_tools.php:406
+#: wmi_queries.php:86 wmi_queries.php:538 wmi_tools.php:286 wmi_tools.php:406
 msgid "Primary Key"
 msgstr "Первичный ключ"
 
@@ -339,44 +339,44 @@ msgstr "Первичный ключ"
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "Когда WMI-запрос возвращает несколько строк, какое Имя ключа будет основным ключом или индексом?  Если основной ключ содержит несколько столбцов, разделите их запятой."
 
-#: wmi_queries.php:198
+#: wmi_queries.php:203
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Нажмите кнопку \"Продолжить\", чтобы удалить следующие запросы WMI."
 
-#: wmi_queries.php:205
+#: wmi_queries.php:210
 msgid "You must select at least one WMI Query."
 msgstr "Вы должны выбрать хотя бы один запрос WMI."
 
-#: wmi_queries.php:206
+#: wmi_queries.php:211
 msgid "Return"
 msgstr "Вернуть"
 
-#: wmi_queries.php:208
+#: wmi_queries.php:213
 msgid "Delete WMI Query"
 msgstr "Удалить запрос WMI"
 
-#: wmi_queries.php:285
+#: wmi_queries.php:291
 #, php-format
 msgid "Query [edit: %s]"
 msgstr "Запрос [Редактировать: %s]"
 
-#: wmi_queries.php:287
+#: wmi_queries.php:293
 msgid "Query [new]"
 msgstr "Запрос [новый]"
 
-#: wmi_queries.php:355
+#: wmi_queries.php:361
 msgid "Has Graphs"
 msgstr "Имеет графики"
 
-#: wmi_queries.php:512
+#: wmi_queries.php:518
 msgid "ID"
 msgstr "ИД"
 
-#: wmi_queries.php:517 wmi_tools.php:383
+#: wmi_queries.php:523 wmi_tools.php:383
 msgid "Frequency"
 msgstr "Частота"
 
-#: wmi_queries.php:527
+#: wmi_queries.php:533
 msgid "WQL Query"
 msgstr "WQL Запрос"
 
@@ -575,12 +575,12 @@ msgstr "Помощь по настройке WMI"
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "ОШИБКА: Вы должны указать хост, имя пользователя, пароль и запрос"
 
-#: wmi_tools.php:627
+#: wmi_tools.php:629
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "Результаты запроса WMI для устройства: %s, класс: %s, столбцы: %s, строки: %s"
 
-#: wmi_tools.php:629
+#: wmi_tools.php:631
 msgid "Showing columns and first one or two rows of data."
 msgstr "Показывать столбцы и первые одну-две строки данных."
 
