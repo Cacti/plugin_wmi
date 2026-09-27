@@ -370,7 +370,7 @@ function query_filter() {
 			</table>
 			<input type='hidden' id='page' value='<?php print get_filter_request_var('page'); ?>'>
 			</form>
-			<script type='text/javascript'>
+			<script type='text/javascript' <?php print plugin_wmi_csp_nonce(); ?>>
 
 			function applyFilter() {
 				strURL = 'wmi_queries.php?filter='+$('#filter').val()+'&rows='+$('#rows').val()+'&page='+$('#page').val()+'&has_graphs='+$('#has_graphs').is(':checked')+'&header=false';

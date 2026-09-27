@@ -23,6 +23,22 @@
 */
 
 /**
+ * Return the CSP nonce attribute for inline <script> tags, safely across
+ * Cacti versions. Newer Cacti releases enforce a Content-Security-Policy that
+ * requires a per-request nonce on parser-inserted scripts; older releases lack
+ * the CactiSecureHeaders class, so this returns an empty string there.
+ *
+ * @return string The nonce attribute when supported, otherwise empty string.
+ */
+function plugin_wmi_csp_nonce(): string {
+	if (class_exists('CactiSecureHeaders')) {
+		return CactiSecureHeaders::getNonceAttribute();
+	}
+
+	return '';
+}
+
+/**
  * Installs the WMI plugin: registers its Cacti hooks (config_arrays,
  * config_form, config_settings, draw_navigation_text, api_device_save,
  * data_input_sql_where, poller_bottom, device_template_edit,
@@ -810,7 +826,7 @@ function wmi_device_template_edit() {
 						</td>
 					</tr>
 				</table>
-				<script type='text/javascript'>
+				<script type='text/javascript' <?php print plugin_wmi_csp_nonce(); ?>>
 				$('#add_wq').click(function() {
 					$.post('host_templates.php?header=false&action=item_add_wq', {
 						host_template_id: $('#id').val(),
@@ -881,7 +897,7 @@ function wmi_device_template_top() {
 		form_end();
 
 		?>
-		<script type='text/javascript'>
+		<script type='text/javascript' <?php print plugin_wmi_csp_nonce(); ?>>
 		$(function() {
 			$('#cdialog').dialog();
 		});

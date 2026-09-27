@@ -434,7 +434,7 @@ function show_tools() {
 	html_end_box();
 
 	?>
-	<script type='text/javascript'>
+	<script type='text/javascript' <?php print plugin_wmi_csp_nonce(); ?>>
 	$(function() {
 		<?php if (get_selected_theme() != 'classic') {?>
 		$('#add').button('disable');
