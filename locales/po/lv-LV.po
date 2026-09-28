@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cacti\n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-25 09:52-0400\n"
+"POT-Creation-Date: 2026-09-27 11:29-0400\n"
 "PO-Revision-Date: 2022-10-25 04:08+0000\n"
 "Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
 "Language-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\n"
@@ -26,191 +26,191 @@ msgstr "Vaicājumi"
 msgid "Authentication"
 msgstr "Autentifikācija"
 
-#: setup.php:51
+#: setup.php:67
 msgid "WMI Management"
 msgstr "WMI vadība"
 
-#: setup.php:394
+#: setup.php:410
 msgid "WMI Data"
 msgstr "WMI dati"
 
-#: setup.php:395
+#: setup.php:411
 msgid "WMI Data Query"
 msgstr "WMI datu vaicājums"
 
-#: setup.php:399
+#: setup.php:415
 #, php-format
 msgid "%d Minute"
 msgstr "%d minūte"
 
-#: setup.php:400 setup.php:401 setup.php:402 setup.php:403 setup.php:404
+#: setup.php:416 setup.php:417 setup.php:418 setup.php:419 setup.php:420
 #, php-format
 msgid "%d Minutes"
 msgstr "%d minūtes"
 
-#: setup.php:405
+#: setup.php:421
 #, php-format
 msgid "%d Hour"
 msgstr "%d stunda"
 
-#: setup.php:406 setup.php:407
+#: setup.php:422 setup.php:423
 #, php-format
 msgid "%d Hours"
 msgstr "%d stundas"
 
-#: setup.php:408
+#: setup.php:424
 #, php-format
 msgid "%d Day"
 msgstr "%d diena"
 
-#: setup.php:413
+#: setup.php:429
 msgid "Utilities"
 msgstr "Rīki"
 
-#: setup.php:413 wmi_tools.php:372
+#: setup.php:429 wmi_tools.php:372
 msgid "WMI Query Tool"
 msgstr "WMI vaicājumu rīks"
 
-#: setup.php:414
+#: setup.php:430
 msgid "Data Collection"
 msgstr "Datu apkopošana"
 
-#: setup.php:414 setup.php:482 setup.php:496 wmi_queries.php:325
+#: setup.php:430 setup.php:498 setup.php:512 wmi_queries.php:325
 #: wmi_queries.php:508
 msgid "WMI Queries"
 msgstr "WMI vaicājumi"
 
-#: setup.php:421
+#: setup.php:437
 msgid "Template Editor"
 msgstr "Veidņu redaktors"
 
-#: setup.php:461 setup.php:475
+#: setup.php:477 setup.php:491
 msgid "WMI Authentication"
 msgstr "WMI autentifikācija"
 
-#: setup.php:468 setup.php:489
+#: setup.php:484 setup.php:505
 msgid "(Edit)"
 msgstr "(Rediģēt)"
 
-#: setup.php:510
+#: setup.php:526
 msgid "(Query)"
 msgstr "(Vaicāt)"
 
-#: setup.php:570
+#: setup.php:586
 msgid "WMI Account Options"
 msgstr "WMI konta opcijas"
 
-#: setup.php:575
+#: setup.php:591
 msgid "WMI Authentication Account"
 msgstr "WMI autentifikācijas konts"
 
-#: setup.php:576
+#: setup.php:592
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Izvēlieties kontu, ko izmantot WMI autentifikācijai"
 
-#: setup.php:608
+#: setup.php:624
 msgid "1 Process"
 msgstr "1 process"
 
-#: setup.php:609 setup.php:610 setup.php:611 setup.php:612 setup.php:613
-#: setup.php:614 setup.php:615 setup.php:616 setup.php:617 setup.php:618
-#: setup.php:619 setup.php:620 setup.php:621 setup.php:622 setup.php:623
-#: setup.php:624 setup.php:625
+#: setup.php:625 setup.php:626 setup.php:627 setup.php:628 setup.php:629
+#: setup.php:630 setup.php:631 setup.php:632 setup.php:633 setup.php:634
+#: setup.php:635 setup.php:636 setup.php:637 setup.php:638 setup.php:639
+#: setup.php:640 setup.php:641
 #, php-format
 msgid "%d Processes"
 msgstr "%d procesi"
 
-#: setup.php:630
+#: setup.php:646
 msgid "WMI Settings"
 msgstr "WMI iestatījumi"
 
-#: setup.php:634
+#: setup.php:650
 msgid "Enable WMI Data Collection"
 msgstr "Aktivizēt WMI datu vākšanu"
 
-#: setup.php:635
+#: setup.php:651
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Atķeksējiet, ja vēlaties WMI spraudnim vaicāt Windows ierīces."
 
-#: setup.php:640
+#: setup.php:656
 msgid "Concurrent Processes"
 msgstr "Vienlaicīgo procesu skaits"
 
-#: setup.php:641
+#: setup.php:657
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Cik vienlaicīgus WMI vaicājumus vēlaties, lai sistēma veiktu?"
 
-#: setup.php:647
+#: setup.php:663
 msgid "Auto Create WMI Queries"
 msgstr "Automātiski izveidot WMI vaicājumus"
 
-#: setup.php:648
+#: setup.php:664
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "Ja atķeksēts, palaižot automatizāciju vai izveidojot/saglabājot ierīci, tiks izveidoti visi WMI vaicājumi, kas saistīti ar ierīces veidni."
 
-#: setup.php:654
+#: setup.php:670
 msgid "Misc"
 msgstr "Dažādi"
 
-#: setup.php:695 setup.php:760
+#: setup.php:711 setup.php:776
 msgid "Associated WMI Queries"
 msgstr "Sasaistītie WMI vaicājumi"
 
-#: setup.php:710 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
+#: setup.php:726 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
 #: wmi_tools.php:380
 msgid "Name"
 msgstr "Nosaukums"
 
-#: setup.php:710
+#: setup.php:726
 msgid "Status"
 msgstr "Statuss"
 
-#: setup.php:723
+#: setup.php:739
 msgid "WMI Query Exists"
 msgstr "Pastāv WMI vaicājums"
 
-#: setup.php:725
+#: setup.php:741
 msgid "WMI Query Does Not Exist"
 msgstr "Nepastāv WMI vaicājums"
 
-#: setup.php:742 setup.php:786
+#: setup.php:758 setup.php:802
 msgid "No Associated WMI Queries."
 msgstr "Nav saistītu WMI vaicājumu."
 
-#: setup.php:778 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php:794 wmi_accounts.php:32 wmi_queries.php:32
 msgid "Delete"
 msgstr "Dzēst"
 
-#: setup.php:803
+#: setup.php:819
 msgid "Add WMI Query"
 msgstr "Pievienot WMI vaicājumu"
 
-#: setup.php:809 wmi_tools.php:415
+#: setup.php:825 wmi_tools.php:415
 msgid "Add"
 msgstr "Pievienot"
 
-#: setup.php:809
+#: setup.php:825
 msgid "Add WMI Query to Device Template"
 msgstr "Pievienot WMI vaicājumu ierīces veidnei"
 
-#: setup.php:867
+#: setup.php:883
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Noklikšķiniet 'Turpināt', lai dzēstu norādītos WMI vaicājumus, kuri tiks atsaistīti no ierīces veidnes."
 
-#: setup.php:868
+#: setup.php:884
 #, php-format
 msgid "WMI Query Name: %s"
 msgstr "WMI vaicājuma nosaukums: %s"
 
-#: setup.php:873 wmi_accounts.php:194 wmi_queries.php:213
+#: setup.php:889 wmi_accounts.php:194 wmi_queries.php:213
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: setup.php:874 wmi_accounts.php:186 wmi_queries.php:213
+#: setup.php:890 wmi_accounts.php:186 wmi_queries.php:213
 msgid "Continue"
 msgstr "Turpināt"
 
-#: setup.php:874
+#: setup.php:890
 msgid "Remove WMI Query"
 msgstr "Noņemt WMI vaicājumu"
 
