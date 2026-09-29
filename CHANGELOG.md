@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* dev: Enforce patch coverage of changed lines in CI and remove the inert COMPOSER_ROOT_VERSION env from the Pest step
 * security: Add a version-safe CSP nonce (`plugin_wmi_csp_nonce()`) to every inline `<script>` tag so pages stay compatible with Cacti's Content-Security-Policy nonce enforcement, while falling back cleanly on older Cacti releases that lack the `CactiSecureHeaders` class
 * issue: PHPStan level 8 typing pass - fixed an incorrect script_path/script_function in the exported WMI query resource XML, restrictive drp_action/menu-index guards in wmi_accounts.php and wmi_queries.php, several unguarded array offset accesses on DB fetch results, and html_start_box() argument-type mismatches
 * test: Expand Security/Unit/Integration Pest coverage for setup.php lifecycle, hook registration, and table/column provisioning
