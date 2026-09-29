@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-09-27 11:29-0400\n"
+"POT-Creation-Date: 2026-09-28 16:09-0400\n"
 "PO-Revision-Date: 2026-09-12 08:18+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://translate.cacti.net/projects/cacti/wmi/sv/>\n"
@@ -18,558 +18,553 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 
-#: functions.php:40 wmi_queries.php:339 wmi_queries.php:502 wmi_tools.php:413
+#: functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
 msgstr "Databasfrågor"
 
-#: functions.php:41
+#: functions.php
 msgid "Authentication"
 msgstr "Autentisering"
 
-#: setup.php:67
+#: setup.php
 msgid "WMI Management"
 msgstr "WMI-hantering"
 
-#: setup.php:410
+#: setup.php
 msgid "WMI Data"
 msgstr "WMI-data"
 
-#: setup.php:411
+#: setup.php
 msgid "WMI Data Query"
 msgstr "WMI-datafrågeställning"
 
-#: setup.php:415
+#: setup.php
 #, php-format
 msgid "%d Minute"
 msgstr "%d minut"
 
-#: setup.php:416 setup.php:417 setup.php:418 setup.php:419 setup.php:420
+#: setup.php
 #, php-format
 msgid "%d Minutes"
 msgstr "%d minuter"
 
-#: setup.php:421
+#: setup.php
 #, php-format
 msgid "%d Hour"
 msgstr "%d timme"
 
-#: setup.php:422 setup.php:423
+#: setup.php
 #, php-format
 msgid "%d Hours"
 msgstr "%d timmar"
 
-#: setup.php:424
+#: setup.php
 #, php-format
 msgid "%d Day"
 msgstr "%d Dag"
 
-#: setup.php:429
+#: setup.php
 msgid "Utilities"
 msgstr "Tillbehör"
 
-#: setup.php:429 wmi_tools.php:372
+#: setup.php wmi_tools.php
 msgid "WMI Query Tool"
 msgstr "WMI frågeverktyg"
 
-#: setup.php:430
+#: setup.php
 msgid "Data Collection"
 msgstr "Datainsamling"
 
-#: setup.php:430 setup.php:498 setup.php:512 wmi_queries.php:325
-#: wmi_queries.php:508
+#: setup.php wmi_queries.php
 msgid "WMI Queries"
 msgstr "WMI-frågor"
 
-#: setup.php:437
+#: setup.php
 msgid "Template Editor"
 msgstr "Mall Redigerare"
 
-#: setup.php:477 setup.php:491
+#: setup.php
 msgid "WMI Authentication"
 msgstr "WMI-autentisering"
 
-#: setup.php:484 setup.php:505
+#: setup.php
 msgid "(Edit)"
 msgstr "(Redigera)"
 
-#: setup.php:526
+#: setup.php
 msgid "(Query)"
 msgstr "(Förfrågan)"
 
-#: setup.php:586
+#: setup.php
 msgid "WMI Account Options"
 msgstr "Alternativ för WMI-konto"
 
-#: setup.php:591
+#: setup.php
 msgid "WMI Authentication Account"
 msgstr "Konto för WMI-autentisering"
 
-#: setup.php:592
+#: setup.php
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "Välj ett konto som ska användas vid autentisering via WMI"
 
-#: setup.php:624
+#: setup.php
 msgid "1 Process"
 msgstr "1 process"
 
-#: setup.php:625 setup.php:626 setup.php:627 setup.php:628 setup.php:629
-#: setup.php:630 setup.php:631 setup.php:632 setup.php:633 setup.php:634
-#: setup.php:635 setup.php:636 setup.php:637 setup.php:638 setup.php:639
-#: setup.php:640 setup.php:641
+#: setup.php
 #, php-format
 msgid "%d Processes"
 msgstr "%d processer"
 
-#: setup.php:646
+#: setup.php
 msgid "WMI Settings"
 msgstr "WMI-inställningar"
 
-#: setup.php:650
+#: setup.php
 msgid "Enable WMI Data Collection"
 msgstr "Aktivera WMI-datainsamling"
 
-#: setup.php:651
+#: setup.php
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
 msgstr "Markera den här rutan om du vill att WMI-tillägget ska ställa frågor om Windows-enheter."
 
-#: setup.php:656
+#: setup.php
 msgid "Concurrent Processes"
 msgstr "Samtidiga processer"
 
-#: setup.php:657
+#: setup.php
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Hur många samtidiga WMI-frågor vill du att systemet ska köra?"
 
-#: setup.php:663
+#: setup.php
 msgid "Auto Create WMI Queries"
 msgstr "Skapa WMI-frågor automatiskt"
 
-#: setup.php:664
+#: setup.php
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
 msgstr "Om du väljer detta alternativ skapas alla WMI-frågor som är associerade med enhetsmallen när du kör någon av automatiseringsfunktionerna eller när du skapar/sparar en enhet."
 
-#: setup.php:670
+#: setup.php
 msgid "Misc"
 msgstr "Övrigt"
 
-#: setup.php:711 setup.php:776
+#: setup.php
 msgid "Associated WMI Queries"
 msgstr "Associerade WMI-frågor"
 
-#: setup.php:726 wmi_accounts.php:47 wmi_queries.php:48 wmi_queries.php:513
-#: wmi_tools.php:380
+#: setup.php wmi_accounts.php wmi_queries.php wmi_tools.php
 msgid "Name"
 msgstr "Namn"
 
-#: setup.php:726
+#: setup.php
 msgid "Status"
 msgstr "Status"
 
-#: setup.php:739
+#: setup.php
 msgid "WMI Query Exists"
 msgstr "WMI-fråga existerar"
 
-#: setup.php:741
+#: setup.php
 msgid "WMI Query Does Not Exist"
 msgstr "WMI-frågan existerar inte"
 
-#: setup.php:758 setup.php:802
+#: setup.php
 msgid "No Associated WMI Queries."
 msgstr "Inga associerade WMI-frågor."
 
-#: setup.php:794 wmi_accounts.php:32 wmi_queries.php:32
+#: setup.php wmi_accounts.php wmi_queries.php
 msgid "Delete"
 msgstr "Ta bort"
 
-#: setup.php:819
+#: setup.php
 msgid "Add WMI Query"
 msgstr "Lägg till WMI-fråga"
 
-#: setup.php:825 wmi_tools.php:415
+#: setup.php wmi_tools.php
 msgid "Add"
 msgstr "Lägg till"
 
-#: setup.php:825
+#: setup.php
 msgid "Add WMI Query to Device Template"
 msgstr "Lägg till WMI-fråga i enhetsmall"
 
-#: setup.php:883
+#: setup.php
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
 msgstr "Klicka på \"Fortsätt\" för att ta bort följande WMI-frågor kommer att kopplas bort från enhetsmallen."
 
-#: setup.php:884
+#: setup.php
 #, php-format
 msgid "WMI Query Name: %s"
 msgstr "Namn på WMI-fråga: %s"
 
-#: setup.php:889 wmi_accounts.php:194 wmi_queries.php:213
+#: setup.php wmi_accounts.php wmi_queries.php
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: setup.php:890 wmi_accounts.php:186 wmi_queries.php:213
+#: setup.php wmi_accounts.php wmi_queries.php
 msgid "Continue"
 msgstr "Fortsätt"
 
-#: setup.php:890
+#: setup.php
 msgid "Remove WMI Query"
 msgstr "Ta bort WMI-förfrågan"
 
-#: wmi_accounts.php:48
+#: wmi_accounts.php
 msgid "Give this account a meaningful name that will be displayed."
 msgstr "Ge kontot ett meningsfullt namn som kommer att visas."
 
-#: wmi_accounts.php:54 wmi_accounts.php:485 wmi_tools.php:394
+#: wmi_accounts.php wmi_tools.php
 msgid "Username"
 msgstr "Användarnamn"
 
-#: wmi_accounts.php:55
+#: wmi_accounts.php
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "Det användarnamn som kommer att användas för autentisering.  Inkludera även domänen om det behövs."
 
-#: wmi_accounts.php:61 wmi_tools.php:397
+#: wmi_accounts.php wmi_tools.php
 msgid "Password"
 msgstr "Lösenord"
 
-#: wmi_accounts.php:62
+#: wmi_accounts.php
 msgid "The password used for authentication."
 msgstr "Det lösenord som används för autentisering."
 
-#: wmi_accounts.php:176
+#: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Tryck på \"Fortsätt\" för att radera följande konton."
 
-#: wmi_accounts.php:183
+#: wmi_accounts.php
 msgid "You must select at least one account."
 msgstr "Du måste välja minst ett konto."
 
-#: wmi_accounts.php:268
+#: wmi_accounts.php
 #, php-format
 msgid "Account [edit: %s]"
 msgstr "Konto [redigera: %s]"
 
-#: wmi_accounts.php:270
+#: wmi_accounts.php
 msgid "Account [new]"
 msgstr "Konto [ny]"
 
-#: wmi_accounts.php:302
+#: wmi_accounts.php
 msgid "WMI Accounts"
 msgstr "WMI-konton"
 
-#: wmi_accounts.php:310 wmi_queries.php:333
+#: wmi_accounts.php wmi_queries.php
 msgid "Search"
 msgstr "Sök"
 
-#: wmi_accounts.php:316 wmi_accounts.php:470
+#: wmi_accounts.php
 msgid "Accounts"
 msgstr "Konton"
 
-#: wmi_accounts.php:320 wmi_queries.php:343
+#: wmi_accounts.php wmi_queries.php
 msgid "Default"
 msgstr "Standard"
 
-#: wmi_accounts.php:338 wmi_queries.php:364
+#: wmi_accounts.php wmi_queries.php
 msgctxt "filter: use"
 msgid "Go"
 msgstr "Start"
 
-#: wmi_accounts.php:341 wmi_queries.php:367
+#: wmi_accounts.php wmi_queries.php
 msgctxt "filter: reset"
 msgid "Clear"
 msgstr "Rensa"
 
-#: wmi_accounts.php:480 wmi_tools.php:286
+#: wmi_accounts.php wmi_tools.php
 msgid "Description"
 msgstr "Beskrivning"
 
-#: wmi_accounts.php:490
+#: wmi_accounts.php
 msgid "Devices"
 msgstr "Enheter"
 
-#: wmi_accounts.php:512
+#: wmi_accounts.php
 msgid "No Accounts Found"
 msgstr "Inga konton hittades"
 
-#: wmi_queries.php:49
+#: wmi_queries.php
 msgid "Give this query a meaningful name that will be displayed."
 msgstr "Ge den här frågan ett meningsfullt namn som kommer att visas."
 
-#: wmi_queries.php:55
+#: wmi_queries.php
 msgid "Collection Frequency"
 msgstr "Inkasseringsfrekvens"
 
-#: wmi_queries.php:56
+#: wmi_queries.php
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
 msgstr "När denna WMI-fråga läggs till i en enhet är detta den frekvens för datainsamling som kommer att användas."
 
-#: wmi_queries.php:63
+#: wmi_queries.php
 msgid "Enabled"
 msgstr "Aktiverad"
 
-#: wmi_queries.php:64
+#: wmi_queries.php
 msgid "Should this Query be enabled on hosts using it"
 msgstr "Bör denna fråga vara aktiverad på värdar som använder den"
 
-#: wmi_queries.php:70 wmi_queries.php:528 wmi_tools.php:400
+#: wmi_queries.php wmi_tools.php
 msgid "Namespace"
 msgstr "Namnområde"
 
-#: wmi_queries.php:71
+#: wmi_queries.php
 msgid "The Namespace for this Query."
 msgstr "Namnrymden för denna fråga."
 
-#: wmi_queries.php:77 wmi_tools.php:286
+#: wmi_queries.php wmi_tools.php
 msgid "Query"
 msgstr "Fråga"
 
-#: wmi_queries.php:78
+#: wmi_queries.php
 msgid "The Query to execute for gathering WMI data from the device."
 msgstr "Den fråga som ska köras för att samla in WMI-data från enheten."
 
-#: wmi_queries.php:86 wmi_queries.php:538 wmi_tools.php:286 wmi_tools.php:406
+#: wmi_queries.php wmi_tools.php
 msgid "Primary Key"
 msgstr "Primärnyckel"
 
-#: wmi_queries.php:87
+#: wmi_queries.php
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
 msgstr "När en WMI-fråga returnerar flera rader, vilket nyckelnamn kommer att vara den primära nyckeln eller indexet?  Om primärnyckeln innehåller flera kolumner ska du separera dem med ett kommatecken."
 
-#: wmi_queries.php:203
+#: wmi_queries.php
 msgid "Click 'Continue' to Delete the following WMI Queries."
 msgstr "Klicka på \"Fortsätt\" för att ta bort följande WMI-frågor."
 
-#: wmi_queries.php:210
+#: wmi_queries.php
 msgid "You must select at least one WMI Query."
 msgstr "Du måste välja minst en WMI-fråga."
 
-#: wmi_queries.php:211
+#: wmi_queries.php
 msgid "Return"
 msgstr "Tillbaka"
 
-#: wmi_queries.php:213
+#: wmi_queries.php
 msgid "Delete WMI Query"
 msgstr "Ta bort WMI-fråga"
 
-#: wmi_queries.php:291
+#: wmi_queries.php
 #, php-format
 msgid "Query [edit: %s]"
 msgstr "Fråga [redigera: %s]"
 
-#: wmi_queries.php:293
+#: wmi_queries.php
 msgid "Query [new]"
 msgstr "Fråga [ny]"
 
-#: wmi_queries.php:361
+#: wmi_queries.php
 msgid "Has Graphs"
 msgstr "Har grafer"
 
-#: wmi_queries.php:518
+#: wmi_queries.php
 msgid "ID"
 msgstr "ID"
 
-#: wmi_queries.php:523 wmi_tools.php:383
+#: wmi_queries.php wmi_tools.php
 msgid "Frequency"
 msgstr "Frekvens"
 
-#: wmi_queries.php:533
+#: wmi_queries.php
 msgid "WQL Query"
 msgstr "WQL-frågeställning"
 
-#: wmi_tools.php:125
+#: wmi_tools.php
 msgid "Get Computer Information"
 msgstr "Få datorinformation"
 
-#: wmi_tools.php:131
+#: wmi_tools.php
 msgid "Get System Processes"
 msgstr "Hämta systemprocesser"
 
-#: wmi_tools.php:137
+#: wmi_tools.php
 msgid "Get Installed Software"
 msgstr "Hämta installerad programvara"
 
-#: wmi_tools.php:143
+#: wmi_tools.php
 msgid "Get Operating System Information"
 msgstr "Hämta information om operativsystemet"
 
-#: wmi_tools.php:149
+#: wmi_tools.php
 msgid "Get OD Service Information"
 msgstr "Få information om OD-tjänster"
 
-#: wmi_tools.php:155
+#: wmi_tools.php
 msgid "Get System Enclosure Information"
 msgstr "Hämta information om systemkapsling"
 
-#: wmi_tools.php:161
+#: wmi_tools.php
 msgid "Get System Physical Memory Information"
 msgstr "Hämta information om systemets fysiska minne"
 
-#: wmi_tools.php:167
+#: wmi_tools.php
 msgid "Get Memory Device Details"
 msgstr "Hämta detaljer om minnesenheten"
 
-#: wmi_tools.php:173
+#: wmi_tools.php
 msgid "Get System BIOS Information"
 msgstr "Hämta BIOS-information för systemet"
 
-#: wmi_tools.php:179
+#: wmi_tools.php
 msgid "Get System Baseboard Information"
 msgstr "Hämta information om systemets basbord"
 
-#: wmi_tools.php:185
+#: wmi_tools.php
 msgid "Get Processor Information"
 msgstr "Hämta processorinformation"
 
-#: wmi_tools.php:191
+#: wmi_tools.php
 msgid "Ping a Known Address from Computer"
 msgstr "Pinga en känd adress från datorn"
 
-#: wmi_tools.php:197
+#: wmi_tools.php
 msgid "Get Row System OS Performance Data"
 msgstr "Hämta data om radsystemets OS-prestanda"
 
-#: wmi_tools.php:203
+#: wmi_tools.php
 msgid "Get Formatted System OS Performance Data"
 msgstr "Hämta formaterad data om systemets OS-prestanda"
 
-#: wmi_tools.php:209
+#: wmi_tools.php
 msgid "Get Formatted Phsycal Disk Performance Data"
 msgstr "Hämta formaterade data om Phsycal-diskens prestanda"
 
-#: wmi_tools.php:215
+#: wmi_tools.php
 msgid "Get Raw Phsycal Disk Performance Data"
 msgstr "Hämta rådata om Phsycal-diskens prestanda"
 
-#: wmi_tools.php:221
+#: wmi_tools.php
 msgid "Get Logical Disk Information"
 msgstr "Hämta information om logisk disk"
 
-#: wmi_tools.php:227
+#: wmi_tools.php
 msgid "Get Formatted Logical Disk Performance Data"
 msgstr "Hämta prestandadata för formaterad logisk disk"
 
-#: wmi_tools.php:233
+#: wmi_tools.php
 msgid "Get Raw Logical Disk Performance Data"
 msgstr "Hämta rådata om logisk diskprestanda"
 
-#: wmi_tools.php:239
+#: wmi_tools.php
 msgid "Get Formatted CPU Performance Data"
 msgstr "Hämta formaterad CPU-prestandadata"
 
-#: wmi_tools.php:245
+#: wmi_tools.php
 msgid "Get Raw CPU Performance Data"
 msgstr "Få rådata om CPU-prestanda"
 
-#: wmi_tools.php:251
+#: wmi_tools.php
 msgid "Get Raw Memory Performance Data"
 msgstr "Få rådata om minnesprestanda"
 
-#: wmi_tools.php:257
+#: wmi_tools.php
 msgid "Get Formatted Network Performance Data"
 msgstr "Hämta formaterad data om nätverksprestanda"
 
-#: wmi_tools.php:263
+#: wmi_tools.php
 msgid "Get Raw Network Performance Data"
 msgstr "Få rådata om nätverksprestanda"
 
-#: wmi_tools.php:269
+#: wmi_tools.php
 msgid "Get Network Adapter Information"
 msgstr "Hämta information om nätverksadapter"
 
-#: wmi_tools.php:275
+#: wmi_tools.php
 msgid "Get Computer Asset Information"
 msgstr "Hämta information om datortillgångar"
 
-#: wmi_tools.php:286
+#: wmi_tools.php
 msgid "Name Space"
 msgstr "Namn Utrymme"
 
-#: wmi_tools.php:303 wmi_tools.php:334
+#: wmi_tools.php
 msgid "Close"
 msgstr "Stäng"
 
-#: wmi_tools.php:328
+#: wmi_tools.php
 #, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
 msgstr "Om du behöver hjälp med felkoder, använd Google, eller här använd följande länk %s."
 
-#: wmi_tools.php:328
+#: wmi_tools.php
 msgid "Microsoft Common WBEM Errors"
 msgstr "Vanliga WBEM-fel i Microsoft"
 
-#: wmi_tools.php:329
+#: wmi_tools.php
 msgid "Distributed COM Setup"
 msgstr "Distribuerad COM-konfiguration"
 
-#: wmi_tools.php:329
+#: wmi_tools.php
 #, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
 msgstr "För att WMI ska fungera måste det användarkonto som du använder beviljas Distributed COM-behörighet och Windows-brandväggen måste konfigureras så att den tillåter Distributed COM-kommunikation.  Du kan hitta ett riktigt bra dokument om denna procedur på följande länk %s."
 
-#: wmi_tools.php:391
+#: wmi_tools.php
 msgid "Host"
 msgstr "Värd"
 
-#: wmi_tools.php:403
+#: wmi_tools.php
 msgid "Command"
 msgstr "Kommando"
 
-#: wmi_tools.php:409
+#: wmi_tools.php
 msgid "More Class Information @Microsoft"
 msgstr "Mer klassinformation @Microsoft"
 
-#: wmi_tools.php:411
+#: wmi_tools.php
 msgid "Run"
 msgstr "Kör"
 
-#: wmi_tools.php:411
+#: wmi_tools.php
 msgid "Run the WMI Query against the Device"
 msgstr "Kör WMI-frågan mot enheten"
 
-#: wmi_tools.php:412
+#: wmi_tools.php
 msgid "Clear"
 msgstr "Rensa"
 
-#: wmi_tools.php:412
+#: wmi_tools.php
 msgid "Clear the results panel."
 msgstr "Rensa resultatpanelen."
 
-#: wmi_tools.php:413
+#: wmi_tools.php
 msgid "Pick from a list of common queries."
 msgstr "Välj från en lista med vanliga frågor."
 
-#: wmi_tools.php:414
+#: wmi_tools.php
 msgid "Get some help on setting up WMI"
 msgstr "Få hjälp med att konfigurera WMI"
 
-#: wmi_tools.php:414
+#: wmi_tools.php
 msgid "Help"
 msgstr "Hjälp"
 
-#: wmi_tools.php:415
+#: wmi_tools.php
 msgid "Create a new WMI Query from the existing Query."
 msgstr "Skapa en ny WMI Query från den befintliga Query."
 
-#: wmi_tools.php:426
+#: wmi_tools.php
 msgid "Query Results"
 msgstr "Sökresultat"
 
-#: wmi_tools.php:455
+#: wmi_tools.php
 msgid "Common Queries (Click to Select)"
 msgstr "Vanliga frågor (Klicka för att välja)"
 
-#: wmi_tools.php:484
+#: wmi_tools.php
 msgid "WMI Setup Assistance"
 msgstr "Hjälp med WMI-installation"
 
-#: wmi_tools.php:595
+#: wmi_tools.php
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "ERROR: Du måste ange värd, användarnamn, lösenord och fråga"
 
-#: wmi_tools.php:629
+#: wmi_tools.php
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
 msgstr "Resultat av WMI-frågan för Device: %s, Klass: %s, Kolumner: %s, Rader: %s"
 
-#: wmi_tools.php:631
+#: wmi_tools.php
 msgid "Showing columns and first one or two rows of data."
 msgstr "Visar kolumner och de första en eller två raderna med data."
 
