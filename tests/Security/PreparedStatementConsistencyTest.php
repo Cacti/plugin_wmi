@@ -78,7 +78,7 @@ function wmi_test_extract_call_arguments($contents, $openParenPos) {
 describe('prepared statement consistency in wmi', function () {
 	it('uses prepared DB helpers for every variable-bearing query', function () {
 		$targetFiles = array(
-			'functions.php',
+			'includes/functions.php',
 			'poller_wmi.php',
 			'setup.php',
 			'wmi_accounts.php',
@@ -89,7 +89,7 @@ describe('prepared statement consistency in wmi', function () {
 		);
 
 		$allowedRawCalls = array(
-			'functions.php' => array(
+			'includes/functions.php' => array(
 				"implode(', ', \$part)", // batch insert; every value already escaped via db_qstr() above
 			),
 			'setup.php' => array(

@@ -31,7 +31,7 @@
     <source>
         <include>
             <file>setup.php</file>
-            <file>functions.php</file>
+            <file>includes/functions.php</file>
             <file>linux_wmi.php</file>
             <file>poller_wmi.php</file>
             <file>wmi_accounts.php</file>
