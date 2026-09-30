@@ -41,7 +41,16 @@ it('reports the config as always valid', function () {
 });
 
 it('reports the upgrade as always successful', function () {
-	expect(plugin_wmi_upgrade())->toBeTrue();
+	// Sandbox base_path so the upgrade-time prune (plugin_wmi_prune_files)
+	// runs against an empty temp tree, never the real checkout.
+	$restore = $GLOBALS['config']['base_path'];
+	$GLOBALS['config']['base_path'] = sys_get_temp_dir() . '/wmi-upg-' . uniqid();
+
+	try {
+		expect(plugin_wmi_upgrade())->toBeTrue();
+	} finally {
+		$GLOBALS['config']['base_path'] = $restore;
+	}
 });
 
 it('adds the wmi_account column and creates every table', function () {
@@ -73,4 +82,10 @@ it('seeds both WMI data_input rows when they are not already present', function 
 
 	// 2 fields for the non-indexed query, 4 for the indexed query.
 	expect($inserts)->toHaveCount(6);
+});
+
+it('device_new hook loads the relocated library and returns its payload unchanged', function () {
+	$save = array('id' => 123);
+
+	expect(wmi_api_device_new($save))->toBe($save);
 });
