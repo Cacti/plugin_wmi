@@ -4,7 +4,7 @@
 
 When generating code for this repository:
 
-1. **Version Compatibility**: This is a Cacti plugin (`wmi`, version 1.0) targeting Cacti 1.1.4+ compatibility metadata. **This plugin is explicitly marked "Development in progress" / NOT fully functional in its own README — treat existing code as a work in progress, not a stable reference.**
+1. **Version Compatibility**: This is a Cacti plugin (`wmi`, version 1.0) targeting Cacti 1.2.32+ compatibility metadata. **This plugin is explicitly marked "Development in progress" / NOT fully functional in its own README — treat existing code as a work in progress, not a stable reference.**
 2. **Context Files**: Prioritize patterns and standards defined in this file (`.github/copilot-instructions.md`)
 3. **Codebase Patterns**: When context files don't provide specific guidance, scan the codebase for established patterns
 4. **Architectural Consistency**: Maintain plugin-based architecture extending Cacti core
