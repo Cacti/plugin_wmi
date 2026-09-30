@@ -12,7 +12,6 @@
         "linux_wmi.php",
         "locales/",
         "manifest.json",
-        "phpunit.xml",
         "poller_wmi.php",
         "script/",
         "setup.php",
