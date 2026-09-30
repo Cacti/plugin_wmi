@@ -819,7 +819,7 @@ function wmi_device_template_top() {
 function wmi_api_device_new($save) {
 	global $config;
 
-	include_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
+	require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
 
 	if (read_config_option('wmi_autocreate') == 'on') {
 		if (!empty($save['id'])) {
