@@ -78,7 +78,8 @@ function wmi_test_extract_call_arguments($contents, $openParenPos) {
 describe('prepared statement consistency in wmi', function () {
 	it('uses prepared DB helpers for every variable-bearing query', function () {
 		$targetFiles = array(
-			'functions.php',
+			'includes/database.php',
+			'includes/functions.php',
 			'poller_wmi.php',
 			'setup.php',
 			'wmi_accounts.php',
@@ -89,13 +90,15 @@ describe('prepared statement consistency in wmi', function () {
 		);
 
 		$allowedRawCalls = array(
-			'functions.php' => array(
+			'includes/database.php' => array(
+				'data_input_fields', // install only; $id is sql_save()'s own just-inserted autoincrement id
+			),
+			'includes/functions.php' => array(
 				"implode(', ', \$part)", // batch insert; every value already escaped via db_qstr() above
 			),
 			'setup.php' => array(
 				"IN(' . \$id . ')", // uninstall only; $id is a GROUP_CONCAT of this plugin's own data_input ids
 				'array_to_sql_or($data_sources', // uninstall only; ids come from the query above, not request input
-				'data_input_fields', // install only; $id is sql_save()'s own just-inserted autoincrement id
 			),
 			'wmi_accounts.php' => array(
 				'$sql_where', // built via db_qstr(); rows/page filters are FILTER_VALIDATE_INT

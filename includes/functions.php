@@ -22,6 +22,8 @@
  +-------------------------------------------------------------------------+
 */
 
+require_once(__DIR__ . '/linux_wmi.php');
+
 /**
  * Renders this plugin's tabbed navigation (Queries, Authentication) atop
  * wmi_queries.php/wmi_accounts.php, highlighting the currently active tab
@@ -112,7 +114,7 @@ function plugin_wmi_query_exists($query) {
 function plugin_wmi_create_dataquery_xml($id) {
 	global $config;
 
-	include_once($config['base_path'] . '/lib/export.php');
+	require_once($config['base_path'] . '/lib/export.php');
 	$wmic = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE id = ?', [$id]);
 	$data = '';
 
@@ -445,8 +447,6 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		// Cacti server and the wmic shell transport otherwise (see
 		// Linux_WMI::default_transport()), so the same client is used here
 		// regardless of $config['cacti_server_os'].
-		include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
-
 		$wmi              = new Linux_WMI();
 		$wmi->hostname    = $host;
 		$wmi->username    = $username;

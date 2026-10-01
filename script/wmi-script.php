@@ -23,7 +23,7 @@
 */
 
 if (!isset($called_by_script_server)) {
-	include_once(__DIR__ . '/../include/cli_check.php');
+	require_once(__DIR__ . '/../include/cli_check.php');
 	array_shift($_SERVER['argv']);
 
 	if (isset($_SERVER['argv'][0]) && $_SERVER['argv'][0] == 'wmi_script') {
@@ -66,7 +66,7 @@ if (!isset($called_by_script_server)) {
 function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2 = '') {
 	global $config;
 
-	include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+	require_once($config['base_path'] . '/plugins/wmi/includes/linux_wmi.php');
 
 	$wmi           = new Linux_WMI($host_id);
 	$wmi->hostname = $hostname;

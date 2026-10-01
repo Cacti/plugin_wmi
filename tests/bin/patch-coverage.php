@@ -160,6 +160,25 @@ foreach ($clover->xpath('//file') as $file) {
  * Empty by default; add entries per repository as the need arises.
  */
 $unmeasured_allowlist = [
+	// Schema provisioning relocated verbatim from setup.php; only loaded from
+	// plugin_wmi_install() at install time, not exercisable in the isolated
+	// unit process, and asserted end-to-end by the lifecycle/install tests.
+	'includes/database.php',
+
+	// Web UI pages: each chdir('../../') then require include/auth.php at the
+	// top level, so they cannot be loaded into the isolated unit process.
+	// Their structure is asserted by the navigation, realm-registration,
+	// prepared-statement and tab-wrapper tests rather than by execution.
+	'wmi_accounts.php',
+	'wmi_queries.php',
+	'wmi_tools.php',
+
+	// CLI/script-server entry points: each chdir + require cli_check.php /
+	// global.php at the top level (poller_wmi.php additionally forks background
+	// children), none of which is loadable in the isolated unit process.
+	'poller_wmi.php',
+	'wmi_script.php',
+	'script/wmi-script.php',
 ];
 $unmeasured            = array_values(array_diff(array_keys($changed), array_keys($measured)));
 $unexpected_unmeasured = array_values(array_diff($unmeasured, $unmeasured_allowlist));

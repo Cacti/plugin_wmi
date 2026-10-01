@@ -31,14 +31,8 @@
     <source>
         <include>
             <file>setup.php</file>
-            <file>functions.php</file>
-            <file>linux_wmi.php</file>
-            <file>poller_wmi.php</file>
-            <file>wmi_accounts.php</file>
-            <file>wmi_queries.php</file>
-            <file>wmi_script.php</file>
-            <file>wmi_tools.php</file>
-            <file>script/wmi-script.php</file>
+            <file>includes/functions.php</file>
+            <file>includes/linux_wmi.php</file>
         </include>
     </source>
 </phpunit>

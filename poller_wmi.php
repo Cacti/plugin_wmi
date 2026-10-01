@@ -26,10 +26,10 @@
 chdir(__DIR__);
 chdir('../..');
 
-include('./include/cli_check.php');
-include_once('./lib/poller.php');
-include_once('./lib/ping.php');
-include_once('./plugins/wmi/functions.php');
+require('./include/cli_check.php');
+require_once('./lib/poller.php');
+require_once('./lib/ping.php');
+require_once('./plugins/wmi/includes/functions.php');
 
 // process calling arguments
 $parms = $_SERVER['argv'];
@@ -469,7 +469,7 @@ function display_version() {
 	global $config;
 
 	if (!function_exists('plugin_wmi_version')) {
-		include_once($config['base_path'] . '/plugins/wmi/setup.php');
+		require_once($config['base_path'] . '/plugins/wmi/setup.php');
 	}
 
 	$info = plugin_wmi_version();

@@ -51,6 +51,10 @@ function plugin_wmi_csp_nonce(): string {
  * @return void
  */
 function plugin_wmi_install() {
+	global $config;
+
+	require_once($config['base_path'] . '/plugins/wmi/includes/database.php');
+
 	api_plugin_register_hook('wmi', 'config_arrays',        'wmi_config_arrays',        'setup.php');
 	api_plugin_register_hook('wmi', 'config_form',          'wmi_config_form',          'setup.php');
 	api_plugin_register_hook('wmi', 'config_settings',      'wmi_config_settings',      'setup.php');
@@ -158,161 +162,11 @@ function plugin_wmi_check_config() {
  * @return bool Always returns true.
  */
 function plugin_wmi_upgrade() {
+	wmi_prune_files();
+
 	return true;
 }
 
-/**
- * Adds the 'wmi_account' column to Cacti's host table, creates this
- * plugin's database tables (wmi_user_accounts, wmi_wql_queries,
- * host_wmi_query, host_template_wmi_query, host_wmi_accounts,
- * host_wmi_cache, wmi_processes), and registers this plugin's two Data
- * Input Methods ('Get WMI Data' and 'Get WMI Data (Indexed)') along with
- * their input/output fields, if not already present. Called from
- * plugin_wmi_install() during plugin installation.
- *
- * @return void
- */
-function plugin_wmi_setup_tables() {
-	api_plugin_db_add_column('wmi', 'host',
-		[
-			'name'     => 'wmi_account',
-			'type'     => 'int(10)',
-			'unsigned' => true,
-			'NULL'     => false,
-			'default'  => '0',
-			'after'    => 'disabled'
-		]
-	);
-
-	db_execute("CREATE TABLE IF NOT EXISTS `wmi_user_accounts` (
-		`id` int(11) UNSIGNED NOT NULL auto_increment,
-		`name` varchar(64) NOT NULL,
-		`username` varchar(64) NOT NULL,
-		`password` varchar(256) NOT NULL,
-		PRIMARY KEY (`id`))
-		ENGINE=InnoDB
-		COMMENT='Holds Account Information for WMI Queries'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `wmi_wql_queries` (
-		`id` int(11) UNSIGNED NOT NULL auto_increment,
-		`hash` varchar(32) NOT NULL default '',
-		`name` varchar(64) NOT NULL,
-		`frequency` mediumint(8) unsigned NOT NULL DEFAULT '86400',
-		`enabled` char(2) DEFAULT 'on',
-		`namespace` varchar(64) NOT NULL,
-		`query` varchar(1024) NOT NULL,
-		`primary_key` varchar(128) NOT NULL DEFAULT 'None',
-		PRIMARY KEY (`id`))
-		ENGINE=InnoDB
-		COMMENT='Holds WMI Queries for Devices'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `host_wmi_query` (
-		`host_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`wmi_query_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`sort_field` varchar(50) NOT NULL DEFAULT '',
-		`title_format` varchar(50) NOT NULL DEFAULT '',
-		`last_started` timestamp NOT NULL DEFAULT '0000-00-00',
-		`last_runtime` double NOT NULL DEFAULT '0.00',
-		`last_failed` timestamp NOT NULL DEFAULT '0000-00-00',
-		PRIMARY KEY (`host_id`,`wmi_query_id`))
-		ENGINE=InnoDB
-		COMMENT='Holds WMI Data Queries'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `host_template_wmi_query` (
-		`host_template_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`wmi_query_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		PRIMARY KEY (`host_template_id`,`wmi_query_id`))
-		ENGINE=InnoDB
-		COMMENT='Holds Device Template WMI Queries'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `host_wmi_accounts` (
-		`id` int(11) UNSIGNED NOT NULL auto_increment,
-		`host_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`account_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		PRIMARY KEY (`id`),
-		KEY `host_id` (`host_id`))
-		ENGINE=InnoDB
-		COMMENT='Holds Device WMI Accounts'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `host_wmi_cache` (
-		`host_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`wmi_query_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-		`field_name` varchar(50) NOT NULL DEFAULT '',
-		`field_value` varchar(4096) DEFAULT NULL,
-		`wmi_index` varchar(255) NOT NULL DEFAULT '',
-		`present` tinyint(4) NOT NULL DEFAULT '1',
-		`last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-		PRIMARY KEY (`host_id`,`wmi_query_id`,`field_name`,`wmi_index`),
-		KEY `host_id` (`host_id`,`field_name`),
-		KEY `wmi_index` (`wmi_index`),
-		KEY `field_name` (`field_name`),
-		KEY `field_value` (`field_value`),
-		KEY `wim_query_id` (`wmi_query_id`),
-		KEY `present` (`present`),
-		KEY `last_updated` (`last_updated`))
-		ENGINE=InnoDB
-		COMMENT='Holds Device WMI Information'");
-
-	db_execute("CREATE TABLE IF NOT EXISTS `wmi_processes` (
-		`pid` int(10) unsigned NOT NULL,
-		`taskid` int(10) unsigned NOT NULL,
-		`started` timestamp NOT NULL default CURRENT_TIMESTAMP,
-		PRIMARY KEY  (`pid`))
-		ENGINE=MEMORY
-		COMMENT='Running wmi collector processes';");
-
-	$exists = db_fetch_cell('SELECT id FROM data_input WHERE hash="4af550dfe8b451579054d038ad62ba3e"');
-
-	if (!$exists) {
-		$save                 = [];
-		$save['hash']         = '4af550dfe8b451579054d038ad62ba3e';
-		$save['name']         = 'Get WMI Data';
-		$save['input_string'] = '';
-		$save['type_id']      = 7;
-		$id                   = sql_save($save, 'data_input');
-
-		if ($id) {
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('e45cfa73589b88887725350a728d2ee9',$id,'The WMI Class Name','class','in','',0,'','','')");
-
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('c5f782d783edec607f64bea9cccd533c',$id,'The WMI Column Name','column','in','',0,'','','')");
-		}
-	}
-
-	$exists = db_fetch_cell('SELECT id
-		FROM data_input
-		WHERE hash="42e584b81075f6ad6556e62afc509179"');
-
-	if (!$exists) {
-		$save                 = [];
-		$save['hash']         = '42e584b81075f6ad6556e62afc509179';
-		$save['name']         = 'Get WMI Data (Indexed)';
-		$save['input_string'] = '';
-		$save['type_id']      = 8;
-		$id                   = sql_save($save, 'data_input');
-
-		if ($id) {
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('fb6317f2c49e494007e968283576d5a8',$id,'The WMI Class Name','class','in','',0,'','','')");
-
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('cfebf9aa08f98bc1bfda7de2ebe12d94',$id,'The WMI Column Name','column','in','',0,'','','')");
-
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('41798400f48141c25bc2407b5f5b1573',$id,'Output Type ID','output_type','in','',0,'output_type','','')");
-
-			db_execute("INSERT INTO `data_input_fields`
-				(hash, data_input_id, name, data_name, input_output, update_rra, sequence, type_code, regexp_match, allow_nulls)
-				VALUES ('02cd18a75a17e0a7d4ca28bc224630e0',$id,'Output Value','output','out','on',0,'','','')");
-		}
-	}
-}
 
 /**
  * Reads this plugin's INFO file and returns its [info] section. Used by
@@ -965,7 +819,7 @@ function wmi_device_template_top() {
 function wmi_api_device_new($save) {
 	global $config;
 
-	include_once($config['base_path'] . '/plugins/wmi/functions.php');
+	require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
 
 	if (read_config_option('wmi_autocreate') == 'on') {
 		if (!empty($save['id'])) {
@@ -974,4 +828,174 @@ function wmi_api_device_new($save) {
 	}
 
 	return $save;
+}
+
+/**
+ * Removes files and directories that a previous version of this plugin
+ * shipped but that have since moved or been deleted, using the tombstone
+ * and whitelist lists in manifest.json. Whitelisted (user-data) paths and
+ * any VCS metadata (.git*) are never touched; the dev-only tests/ tree is
+ * removed. Any path that resolves outside the plugin directory (a tampered
+ * manifest.json) is refused, and any file/directory that cannot be removed
+ * (e.g. read-only) is reported to the Cacti log. Any top-level entry that is
+ * neither expected nor a tombstone nor whitelisted is logged to the Cacti
+ * log and left in place. Called on a plugin version change.
+ *
+ * @return void
+ *
+ * @global array $config Cacti global configuration array; used to resolve
+ *                       the plugin directory.
+ */
+function wmi_prune_files(): void {
+	global $config;
+
+	$plugin_dir    = $config['base_path'] . '/plugins/wmi';
+	$manifest_path = $plugin_dir . '/manifest.json';
+
+	if (!is_readable($manifest_path)) {
+		return;
+	}
+
+	$manifest = json_decode((string) file_get_contents($manifest_path), true);
+
+	if (!is_array($manifest)) {
+		cacti_log('WARNING: wmi manifest.json could not be parsed; skipping file prune', false, 'WMI');
+
+		return;
+	}
+
+	$tombstones = isset($manifest['tombstones']) && is_array($manifest['tombstones']) ? $manifest['tombstones'] : [];
+	$expected   = isset($manifest['expected'])   && is_array($manifest['expected'])   ? $manifest['expected']   : [];
+	$whitelist  = isset($manifest['whitelist'])  && is_array($manifest['whitelist'])  ? $manifest['whitelist']  : [];
+
+	$protected = function (string $rel) use ($whitelist): bool {
+		if (strncmp($rel, '.git', 4) === 0 || strncmp($rel, '.md', 3) === 0) {
+			return true;
+		}
+
+		foreach ($whitelist as $entry) {
+			$entry = trim((string) $entry, '/');
+
+			if ($entry !== '' && ($rel === $entry
+				|| strncmp($rel, $entry . '/', strlen($entry) + 1) === 0
+				|| strncmp($entry, $rel . '/', strlen($rel) + 1) === 0)) {
+				return true;
+			}
+		}
+
+		return false;
+	};
+
+	// Security: resolve the plugin directory so a tampered manifest.json
+	// cannot steer the prune outside of it.
+	$plugin_real = realpath($plugin_dir);
+
+	// Remove tombstoned (moved/deleted) paths plus the dev-only tests/
+	// tree and the phpunit.xml test configuration.
+	$remove   = $tombstones;
+	$remove[] = 'tests/';
+	$remove[] = 'phpunit.xml';
+
+	foreach ($remove as $rel) {
+		$rel = trim((string) $rel, '/');
+
+		if ($rel === '' || $protected($rel)) {
+			continue;
+		}
+
+		// A tombstone must never contain '.'/'..' segments; a tampered manifest
+		// could use them to escape the plugin directory or target its root.
+		$segments = explode('/', $rel);
+
+		if (in_array('.', $segments, true) || in_array('..', $segments, true)) {
+			cacti_log(sprintf('WARNING: wmi prune refused to remove %s: path contains a traversal segment (tampered manifest.json?)', $rel), false, 'WMI');
+
+			continue;
+		}
+
+		$path = $plugin_dir . '/' . $rel;
+
+		if (!is_link($path) && !file_exists($path)) {
+			continue;
+		}
+
+		// Refuse any path that, after resolving symlinks and ../ segments,
+		// escapes the plugin directory (protects user data from a tampered
+		// manifest.json).
+		$anchor = is_link($path) ? dirname($path) : $path;
+		$real   = realpath($anchor);
+
+		if ($real === false || ($real !== $plugin_real && strncmp($real, $plugin_real . DIRECTORY_SEPARATOR, strlen((string) $plugin_real) + 1) !== 0)) {
+			cacti_log(sprintf('WARNING: wmi prune refused to remove %s: path resolves outside the plugin directory (tampered manifest.json?)', $rel), false, 'WMI');
+
+			continue;
+		}
+
+		if (is_dir($path) && !is_link($path)) {
+			$removed = wmi_rmtree($path);
+		} else {
+			$removed = @unlink($path);
+		}
+
+		if (!$removed) {
+			cacti_log(sprintf('WARNING: wmi upgrade could not remove %s (check file/directory permissions)', $rel), false, 'WMI');
+		}
+	}
+
+	// Surface any top-level entry the manifest does not account for.
+	$known = [];
+
+	foreach (array_merge($expected, $tombstones) as $entry) {
+		$top = explode('/', trim((string) $entry, '/'))[0];
+
+		if ($top !== '') {
+			$known[$top] = true;
+		}
+	}
+
+	$entries = scandir($plugin_dir);
+
+	foreach (($entries !== false ? $entries : []) as $entry) {
+		if ($entry === '.' || $entry === '..' || $entry === 'tests' || $entry === 'phpunit.xml' || $protected($entry) || isset($known[$entry])) {
+			continue;
+		}
+
+		cacti_log(sprintf('WARNING: wmi upgrade found a file/directory not described in manifest.json: %s (left in place)', $entry), false, 'WMI');
+	}
+}
+
+/**
+ * Recursively deletes a directory and its contents. Symlinks are removed
+ * without being followed. Helper for wmi_prune_files().
+ *
+ * @param string $dir Absolute path to the directory to remove.
+ *
+ * @return bool True if the directory and everything under it was removed;
+ *              false if any entry could not be deleted.
+ */
+function wmi_rmtree(string $dir): bool {
+	$entries = scandir($dir);
+	$ok      = true;
+
+	foreach (($entries !== false ? $entries : []) as $entry) {
+		if ($entry === '.' || $entry === '..') {
+			continue;
+		}
+
+		$path = $dir . '/' . $entry;
+
+		if (is_dir($path) && !is_link($path)) {
+			if (!wmi_rmtree($path)) {
+				$ok = false;
+			}
+		} elseif (!@unlink($path)) {
+			$ok = false;
+		}
+	}
+
+	if (!@rmdir($dir)) {
+		$ok = false;
+	}
+
+	return $ok;
 }

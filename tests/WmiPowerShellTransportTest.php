@@ -20,7 +20,7 @@ if (!function_exists('cacti_escapeshellarg')) {
 	}
 }
 
-require_once __DIR__ . '/../linux_wmi.php';
+require_once __DIR__ . '/../includes/linux_wmi.php';
 
 /** A runner that records what it was handed and returns canned CIM output. */
 function wmi_test_recording_runner(array &$seen, array $stdout, int $exit = 0, string $stderr = ''): callable {

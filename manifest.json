@@ -1,0 +1,25 @@
+{
+    "tombstones": [
+        "functions.php",
+        "linux_wmi.php"
+    ],
+    "expected": [
+        "CHANGELOG.md",
+        "INFO",
+        "LICENSE",
+        "README.md",
+        "includes/",
+        "index.php",
+        "locales/",
+        "manifest.json",
+        "poller_wmi.php",
+        "script/",
+        "setup.php",
+        "templates/",
+        "wmi_accounts.php",
+        "wmi_queries.php",
+        "wmi_script.php",
+        "wmi_tools.php"
+    ],
+    "whitelist": []
+}

@@ -24,9 +24,9 @@
 
 chdir('../../');
 
-include('./include/auth.php');
-include_once($config['base_path'] . '/plugins/wmi/functions.php');
-include_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+require('./include/auth.php');
+require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
+require_once($config['base_path'] . '/plugins/wmi/includes/linux_wmi.php');
 
 $ds_actions = [
 	1 => __('Delete', 'wmi')
