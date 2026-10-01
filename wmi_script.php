@@ -22,7 +22,7 @@
  +-------------------------------------------------------------------------+
 */
 
-require_once(__DIR__ . '/../global/cli_check.php');
+require_once(__DIR__ . '/../../include/cli_check.php');
 require_once($config['base_path'] . '/lib/snmp.php');
 
 if (!isset($called_by_script_server)) {
