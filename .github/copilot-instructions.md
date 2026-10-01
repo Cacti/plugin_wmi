@@ -25,20 +25,19 @@ When generating code for this repository:
 ## Project Structure
 
 ```
-wmi/                     # Repository root (install to plugins/wmi/ in Cacti)
-├── script/                # External wmic/collection helper scripts
-├── templates/                # Data query/graph template XML
-├── tests/                      # Test suite
-├── functions.php                 # Core hook callbacks and shared logic
-├── linux_wmi.php                   # Linux (`wmic`) collection path
-├── poller_wmi.php                    # Background poller entry point (CLI)
-├── wmi_accounts.php                    # WMI credential administration
-├── wmi_queries.php                       # WQL query administration
-├── wmi_script.php                          # Ad hoc query/tool runner
-├── wmi_tools.php                             # Diagnostic tools UI
-├── INFO                                        # Plugin metadata (name, version, compat)
+wmi/                 # Repository root (install to plugins/wmi/ in Cacti)
+├── script/          # External wmic/collection helper scripts
+├── templates/       # Data query/graph template XML
+├── tests/           # Test suite
+├── includes/        # functions.php (core hook callbacks/logic), database.php (schema), linux_wmi.php (wmic/CIM client)
+├── poller_wmi.php   # Background poller entry point (CLI)
+├── wmi_accounts.php # WMI credential administration
+├── wmi_queries.php  # WQL query administration
+├── wmi_script.php   # Ad hoc query/tool runner
+├── wmi_tools.php    # Diagnostic tools UI
+├── INFO             # Plugin metadata (name, version, compat)
 ├── README.md
-└── setup.php                                    # Plugin install/uninstall/upgrade hooks
+└── setup.php        # Plugin install/uninstall/upgrade hooks
 ```
 
 ## Naming Conventions
