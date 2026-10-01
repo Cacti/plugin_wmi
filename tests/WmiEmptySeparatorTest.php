@@ -23,7 +23,7 @@ if (!function_exists('cacti_escapeshellarg')) {
 	}
 }
 
-require_once __DIR__ . '/../linux_wmi.php';
+require_once __DIR__ . '/../includes/linux_wmi.php';
 
 /** A transport stub that records the request it received and returns canned rows built with a given separator. */
 class Wmi_Test_Recording_Transport implements Wmi_Transport {

@@ -32,7 +32,7 @@
         <include>
             <file>setup.php</file>
             <file>includes/functions.php</file>
-            <file>linux_wmi.php</file>
+            <file>includes/linux_wmi.php</file>
         </include>
     </source>
 </phpunit>

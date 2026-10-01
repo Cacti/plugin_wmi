@@ -26,7 +26,7 @@ chdir('../../');
 
 require('./include/auth.php');
 require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
-require_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+require_once($config['base_path'] . '/plugins/wmi/includes/linux_wmi.php');
 
 $account_actions = [
 	1 => __('Delete', 'wmi')

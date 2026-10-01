@@ -599,7 +599,7 @@ function walk_host() {
 	// Linux_WMI self-selects the PowerShell/CIM transport on a Windows
 	// Cacti server and the wmic shell transport otherwise, so the same
 	// client is used here regardless of $config['cacti_server_os'].
-	require_once($config['base_path'] . '/plugins/wmi/linux_wmi.php');
+	require_once($config['base_path'] . '/plugins/wmi/includes/linux_wmi.php');
 
 	$wmi              = new Linux_WMI();
 	$wmi->hostname    = $host;

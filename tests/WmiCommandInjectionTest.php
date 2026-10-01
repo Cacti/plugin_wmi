@@ -20,7 +20,7 @@ if (!function_exists('cacti_escapeshellarg')) {
 	}
 }
 
-require_once __DIR__ . '/../linux_wmi.php';
+require_once __DIR__ . '/../includes/linux_wmi.php';
 
 describe('wmi command injection hardening', function () {
 	it('contains an injected unix hostname inside a quoted argument', function () {
