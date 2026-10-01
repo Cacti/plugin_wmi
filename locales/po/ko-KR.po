@@ -18,12 +18,12 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: functions.php wmi_queries.php wmi_tools.php
+#: includes/functions.php wmi_queries.php wmi_tools.php
 #, fuzzy
 msgid "Queries"
 msgstr "검색어"
 
-#: functions.php
+#: includes/functions.php
 msgid "Authentication"
 msgstr "인증"
 
