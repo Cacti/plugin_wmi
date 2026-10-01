@@ -41,7 +41,7 @@ it('reports the config as always valid', function () {
 });
 
 it('reports the upgrade as always successful', function () {
-	// Sandbox base_path so the upgrade-time prune (plugin_wmi_prune_files)
+	// Sandbox base_path so the upgrade-time prune (wmi_prune_files)
 	// runs against an empty temp tree, never the real checkout.
 	$restore = $GLOBALS['config']['base_path'];
 	$GLOBALS['config']['base_path'] = sys_get_temp_dir() . '/wmi-upg-' . uniqid();

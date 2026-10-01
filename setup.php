@@ -162,7 +162,7 @@ function plugin_wmi_check_config() {
  * @return bool Always returns true.
  */
 function plugin_wmi_upgrade() {
-	plugin_wmi_prune_files();
+	wmi_prune_files();
 
 	return true;
 }
@@ -846,7 +846,7 @@ function wmi_api_device_new($save) {
  * @global array $config Cacti global configuration array; used to resolve
  *                       the plugin directory.
  */
-function plugin_wmi_prune_files(): void {
+function wmi_prune_files(): void {
 	global $config;
 
 	$plugin_dir    = $config['base_path'] . '/plugins/wmi';
@@ -932,7 +932,7 @@ function plugin_wmi_prune_files(): void {
 		}
 
 		if (is_dir($path) && !is_link($path)) {
-			$removed = plugin_wmi_rmtree($path);
+			$removed = wmi_rmtree($path);
 		} else {
 			$removed = @unlink($path);
 		}
@@ -966,14 +966,14 @@ function plugin_wmi_prune_files(): void {
 
 /**
  * Recursively deletes a directory and its contents. Symlinks are removed
- * without being followed. Helper for plugin_wmi_prune_files().
+ * without being followed. Helper for wmi_prune_files().
  *
  * @param string $dir Absolute path to the directory to remove.
  *
  * @return bool True if the directory and everything under it was removed;
  *              false if any entry could not be deleted.
  */
-function plugin_wmi_rmtree(string $dir): bool {
+function wmi_rmtree(string $dir): bool {
 	$entries = scandir($dir);
 	$ok      = true;
 
@@ -985,7 +985,7 @@ function plugin_wmi_rmtree(string $dir): bool {
 		$path = $dir . '/' . $entry;
 
 		if (is_dir($path) && !is_link($path)) {
-			if (!plugin_wmi_rmtree($path)) {
+			if (!wmi_rmtree($path)) {
 				$ok = false;
 			}
 		} elseif (!@unlink($path)) {
