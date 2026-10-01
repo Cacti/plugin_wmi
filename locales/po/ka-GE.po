@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.11.4\n"
 
-#: functions.php wmi_queries.php wmi_tools.php
+#: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
 msgstr "მოთხოვნები"
 
-#: functions.php
+#: includes/functions.php
 msgid "Authentication"
 msgstr "ავთენტიკაცია"
 
