@@ -18,11 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
 "X-Generator: Weblate 4.8.1\n"
 
-#: functions.php wmi_queries.php wmi_tools.php
+#: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
 msgstr "Vaicājumi"
 
-#: functions.php
+#: includes/functions.php
 msgid "Authentication"
 msgstr "Autentifikācija"
 
