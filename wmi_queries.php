@@ -208,9 +208,9 @@ function actions_queries() {
 
 	if (!isset($query_array)) {
 		print "<tr><td class='odd'><span class='textError'>" . __('You must select at least one WMI Query.', 'wmi') . '</span></td></tr>';
-		$save_html = "<input type='button' value='" . __('Return', 'wmi') . "' onClick='cactiReturnTo()'>";
+		$save_html = "<input class='cactiReturnTo' type='button' value='" . __('Return', 'wmi') . "'>";
 	} else {
-		$save_html = "<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>&nbsp;<input type='submit' value='" . __('Continue', 'wmi') . "' title='" . __('Delete WMI Query', 'wmi') . "'>";
+		$save_html = "<input class='cactiReturnTo' type='button' value='" . __('Cancel', 'wmi') . "'>&nbsp;<input type='submit' value='" . __('Continue', 'wmi') . "' title='" . __('Delete WMI Query', 'wmi') . "'>";
 	}
 
 	print "<tr>

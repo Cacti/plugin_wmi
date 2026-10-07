@@ -191,7 +191,7 @@ function actions_accounts() {
 			<input type='hidden' name='action' value='actions'>
 			<input type='hidden' name='selected_items' value='" . (isset($account_array) ? serialize($account_array) : '') . "'>
 			<input type='hidden' name='drp_action' value='" . get_request_var('drp_action') . "'>
-			<input type='button' value='" . __('Cancel', 'wmi') . "' onClick='cactiReturnTo()'>
+			<input class='cactiReturnTo' type='button' value='" . __('Cancel', 'wmi') . "'>
 			$save_html
 		</td>
 	</tr>";
