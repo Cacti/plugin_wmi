@@ -316,7 +316,7 @@ function account_filter() {
 						<?php print __('Accounts', 'wmi'); ?>
 					</td>
 					<td>
-						<select id='rows' onChange='applyFilter()'>
+						<select id='rows'>
 							<option value='-1'<?php print (get_request_var('rows') == '-1' ? ' selected>' : '>') . __('Default', 'wmi'); ?></option>
 							<?php
 							if (sizeof($item_rows)) {
@@ -357,6 +357,10 @@ function account_filter() {
 			}
 
 			$(function() {
+				$('#rows').change(function() {
+					applyFilter();
+				});
+
 				$('#refresh').click(function() {
 					applyFilter();
 				});
