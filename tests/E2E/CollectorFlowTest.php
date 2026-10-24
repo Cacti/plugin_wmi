@@ -16,7 +16,12 @@
 
 $wmi_e2e_root = dirname(__DIR__, 4);
 
+$wmi_e2e_log   = $wmi_e2e_root . '/log/cacti.log';
 $wmi_e2e_ready = getenv('WMI_E2E') === '1' && is_readable($wmi_e2e_root . '/include/config.php');
+
+// Cacti's CLI bootstrap exits when it cannot write its log file, so a driver
+// started by this user would print nothing useful. Skip with the reason.
+$wmi_e2e_log_ok = is_file($wmi_e2e_log) ? is_writable($wmi_e2e_log) : is_writable(dirname($wmi_e2e_log));
 
 /** @return array<string, mixed> */
 function wmi_e2e_observations(string $root): array {
@@ -34,21 +39,26 @@ function wmi_e2e_observations(string $root): array {
 		@rmdir($work);
 
 		$json  = json_decode((string) end($output), true);
-		$cache = is_array($json) ? $json : ['driver_failed' => implode("\n", $output)];
+		$cache = is_array($json) ? $json : ['driver_failed' => 'exit status ' . $status . "\n" . implode("\n", $output)];
 	}
 
 	return $cache;
 }
 
-describe('collector flow against a real Cacti', function () use ($wmi_e2e_root, $wmi_e2e_ready) {
-	beforeEach(function () use ($wmi_e2e_ready) {
+describe('collector flow against a real Cacti', function () use ($wmi_e2e_root, $wmi_e2e_ready, $wmi_e2e_log_ok) {
+	beforeEach(function () use ($wmi_e2e_ready, $wmi_e2e_log_ok) {
 		if (!$wmi_e2e_ready) {
 			$this->markTestSkipped('Set WMI_E2E=1 with an installed Cacti and database to run.');
+		}
+
+		if (!$wmi_e2e_log_ok) {
+			$this->markTestSkipped('Cacti log/cacti.log is not writable by the test user; Cacti would refuse to start.');
 		}
 	});
 
 	it('runs the driver to completion', function () use ($wmi_e2e_root) {
-		expect(wmi_e2e_observations($wmi_e2e_root))->not->toHaveKey('driver_failed');
+		// Comparing the text, not the key, puts the driver's output in the failure.
+		expect(wmi_e2e_observations($wmi_e2e_root)['driver_failed'] ?? '')->toBe('');
 	});
 
 	it('caches every row of the first refresh', function () use ($wmi_e2e_root) {
