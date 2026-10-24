@@ -531,6 +531,10 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 
 			return true;
 		} else {
+			$reason = is_string($wmi->error) ? $wmi->error : 'WMI returned no rows';
+
+			cacti_log('WARNING: WMI Query[' . $wmi_query_id . '] for Device[' . $host_id . '] failed: ' . $reason, false, 'WMI', POLLER_VERBOSITY_MEDIUM);
+
 			print $wmi->error;
 
 			return false;

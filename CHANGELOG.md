@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Log the reason a WMI query failed during polling
 * issue: Index cached WMI rows by every column of a comma separated primary key so multi-row results are no longer overwritten
 * issue: Purge WMI cache rows the device stopped returning, and keep the existing rows when a query fails
 * issue: Expire stale wmi_processes lock rows and stop the master poller waiting indefinitely for collectors that died

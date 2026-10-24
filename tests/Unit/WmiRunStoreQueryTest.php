@@ -128,3 +128,25 @@ it('caches every row of a result whose primary key spans two columns', function 
 	expect($insert)->toContain("'Spooler,Running'");
 	expect($insert)->toContain("'Spooler,Stopped'");
 });
+
+it('logs why a query failed', function () {
+	$t = new Wmi_Test_Canned_Transport(false, 'ERROR: access denied');
+
+	ob_start();
+	run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	expect($GLOBALS['__test_cacti_log'])->toHaveCount(1);
+	expect($GLOBALS['__test_cacti_log'][0])->toContain('WMI Query[9] for Device[5] failed: ERROR: access denied');
+});
+
+it('logs a plain reason when a query succeeds with no rows', function () {
+	$t = new Wmi_Test_Canned_Transport(array('Win32_Service', 'Name|+|State'));
+
+	ob_start();
+	$ok = run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	expect($ok)->toBeFalse();
+	expect($GLOBALS['__test_cacti_log'][0])->toContain('failed: WMI returned no rows');
+});
