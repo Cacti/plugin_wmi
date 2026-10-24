@@ -16,6 +16,19 @@
  * Every row it creates uses ids from 900001 upward and is removed again.
  */
 
+/*
+ * tests/ ships inside the plugin directory, so this file must do nothing when
+ * a web server runs it. It needs the CLI and a work directory that the test
+ * process names and creates; it takes no path or command from a request.
+ */
+$work = getenv('WMI_E2E_WORKDIR');
+
+if (PHP_SAPI !== 'cli' || getenv('WMI_E2E') !== '1' || $work === false || !is_dir($work)) {
+	http_response_code(404);
+
+	exit;
+}
+
 $root = dirname(__DIR__, 4);
 
 chdir($root);
@@ -28,7 +41,6 @@ require_once $root . '/plugins/wmi/includes/functions.php';
 
 const ID = 900001;
 
-$work  = sys_get_temp_dir() . '/wmi-e2e-' . getmypid();
 $out   = [];
 $saved = [];
 
@@ -67,14 +79,12 @@ function cleanup(string $work, array $saved): void {
 		db_execute_prepared("DELETE FROM plugin_config WHERE directory = 'wmi'");
 	}
 
-	foreach (glob($work . '/*') ?: [] as $file) {
-		unlink($file);
+	foreach (['wmic', 'out', 'status', 'argv'] as $name) {
+		if (is_file($work . '/' . $name)) {
+			unlink($work . '/' . $name);
+		}
 	}
-
-	@rmdir($work);
 }
-
-mkdir($work, 0700);
 
 register_shutdown_function(function () use ($work, &$saved) {
 	cleanup($work, $saved);
@@ -87,7 +97,6 @@ foreach (['path_wmi', 'log_verbosity'] as $name) {
 }
 
 cleanup($work, []);
-mkdir($work, 0700);
 
 if (db_fetch_cell_prepared("SELECT COUNT(*) FROM plugin_config WHERE directory = 'wmi'") == 0) {
 	db_execute("INSERT INTO plugin_config (directory, name, status, author, webpage, version) VALUES ('wmi', 'wmi', 1, '', '', '1')");

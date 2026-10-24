@@ -25,8 +25,13 @@ function wmi_e2e_observations(string $root): array {
 	if ($cache === null) {
 		$output = [];
 		$status = 0;
+		$work   = sys_get_temp_dir() . '/wmi-e2e-' . bin2hex(random_bytes(6));
 
-		exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/tests/E2E/collector_flow.php') . ' 2>&1', $output, $status);
+		mkdir($work, 0700);
+
+		exec('WMI_E2E=1 WMI_E2E_WORKDIR=' . escapeshellarg($work) . ' ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/tests/E2E/collector_flow.php') . ' 2>&1', $output, $status);
+
+		@rmdir($work);
 
 		$json  = json_decode((string) end($output), true);
 		$cache = is_array($json) ? $json : ['driver_failed' => implode("\n", $output)];
@@ -87,5 +92,27 @@ describe('collector flow against a real Cacti', function () use ($wmi_e2e_root, 
 		expect($o['stale_lock_output'])->toContain('All Processes Complete');
 		expect($o['stale_lock_indexes'])->toBe(['A']);
 		expect($o['locks_left'])->toBe(0);
+	});
+});
+
+describe('collector flow entry script', function () {
+	it('does nothing and prints nothing without the test environment', function () {
+		$script = __DIR__ . '/collector_flow.php';
+		$output = [];
+		$status = 0;
+
+		exec('env -u WMI_E2E -u WMI_E2E_WORKDIR ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($script) . ' 2>&1', $output, $status);
+
+		expect($output)->toBe([]);
+		expect($status)->toBe(0);
+	});
+
+	it('does nothing when the work directory is missing', function () {
+		$script = __DIR__ . '/collector_flow.php';
+		$output = [];
+
+		exec('WMI_E2E=1 WMI_E2E_WORKDIR=/nonexistent-wmi-e2e ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($script) . ' 2>&1', $output);
+
+		expect($output)->toBe([]);
 	});
 });
