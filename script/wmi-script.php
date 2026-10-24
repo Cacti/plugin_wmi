@@ -23,7 +23,7 @@
 */
 
 if (!isset($called_by_script_server)) {
-	require_once(__DIR__ . '/../include/cli_check.php');
+	require_once(__DIR__ . '/../../../include/cli_check.php');
 	array_shift($_SERVER['argv']);
 
 	if (isset($_SERVER['argv'][0]) && $_SERVER['argv'][0] == 'wmi_script') {
@@ -35,8 +35,8 @@ if (!isset($called_by_script_server)) {
 
 /**
  * Script-server/CLI entry point that runs a named saved WMI query against
- * a remote host (via the Linux_WMI wrapper around this plugin's bundled
- * wmic binary) and either lists its index keys, prints an indexed
+ * a remote host (via the Linux_WMI wrapper around the wmic client set in
+ * the path_wmi setting) and either lists its index keys, prints an indexed
  * key/value pair, or prints a single fetched value, depending on $cmd.
  * Called by Cacti's script server (or directly from the CLI) when a Data
  * Input Method configured to use this script is polled.
@@ -70,7 +70,7 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 
 	$wmi           = new Linux_WMI($host_id);
 	$wmi->hostname = $hostname;
-	$wmi->binary   = $config['base_path'] . '/plugins/wmi/wmic';
+	$wmi->binary   = read_config_option('path_wmi') ?: '/usr/bin/wmic';
 
 	// Fetch the info for this WMI query from the database, exit if not found
 	$wmiinfo = db_fetch_row_prepared('SELECT * FROM wmi_wql_queries WHERE name = ?', [$wmiquery], false);

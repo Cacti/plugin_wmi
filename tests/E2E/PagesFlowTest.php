@@ -167,6 +167,33 @@ describe('WMI pages through real requests', function () {
 		expect(wmi_e2e_pages()['tool_namespaces'][$form])->toBe(['--namespace=root\\CIMV2']);
 	})->with(['empty', 'single', 'double']);
 
+	it('passes the tool credentials to wmic in a private file, not as arguments', function () {
+		$o = wmi_e2e_pages()['tool_run'];
+
+		expect(array_filter($o['argv'], fn ($a) => strpos($a, '--password') === 0 || strpos($a, '--user') === 0))->toBe(array());
+		expect($o['auth']['content'])->toStartWith("username=tool\npassword=T00l-secret-");
+		expect($o['auth']['content'])->toEndWith("domain=DOM\n");
+		expect($o['auth']['mode'])->toBe('600');
+		expect($o['auth']['exists'])->toBeFalse();
+	});
+
+	it('refuses hosts that are not an address or a name and runs nothing', function (string $host) {
+		$o = wmi_e2e_pages()['tool_hosts']['refused'][$host];
+
+		expect($o['message'])->toBeTrue();
+		expect($o['calls'])->toBe(0);
+	})->with(['bad host', '-oProxy=x', 'a..b', 'fe80::1%eth0', '999.1.1.1', 'host;id']);
+
+	it('accepts short names, IPv4 and IPv6 hosts and passes them after the // prefix', function (string $host, string $expected) {
+		expect(wmi_e2e_pages()['tool_hosts']['reached'][$host])->toBe($expected);
+	})->with([
+		['win-server', '//win-server'],
+		['[2001:db8::1]', '//2001:db8::1'],
+		['10.0.0.5', '//10.0.0.5'],
+		['srv.corp.local', '//srv.corp.local'],
+		['2001:0db8:0:0:0:0:0:1', '//2001:0db8:0:0:0:0:0:1'],
+	]);
+
 	it('does not run a tool query without a CSRF token or the WMI realm', function () {
 		$o = wmi_e2e_pages();
 

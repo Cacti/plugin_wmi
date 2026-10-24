@@ -66,6 +66,25 @@ function refresh(int $host = HOST_A, int $query = QUERY_SVC): array {
 // First refresh caches every row.
 wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Running'], ['C', 'Stopped']]), 0);
 $out['first'] = refresh();
+$out['first_auth'] = wmi_e2e_last_auth();
+
+// The script-server scripts, run from the command line, against the same data.
+$script = function (string $file, array $arguments) use ($root): string {
+	$lines = [];
+
+	exec(escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/' . $file) . ' ' . implode(' ', array_map('escapeshellarg', $arguments)) . ' 2>&1', $lines);
+
+	return implode("\n", $lines);
+};
+
+foreach (['dir' => 'script/wmi-script.php', 'root' => 'wmi_script.php'] as $label => $file) {
+	$out['script_' . $label] = [
+		'index' => $script($file, ['winsrv1.invalid', (string) HOST_A, 'e2e-svc', 'query', 'index']),
+		'pair'  => $script($file, ['winsrv1.invalid', (string) HOST_A, 'e2e-svc', 'query', 'State', 'C']),
+		'list'  => $script($file, ['winsrv1.invalid', (string) HOST_A, 'e2e-svc', 'index']),
+		'none'  => $script($file, ['winsrv1.invalid', (string) HOST_A, 'no-such-query', 'query', 'index']),
+	];
+}
 
 // The device drops an instance, which is purged.
 wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Stopped']]), 0);

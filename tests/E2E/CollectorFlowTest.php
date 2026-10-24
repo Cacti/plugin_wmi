@@ -47,11 +47,30 @@ describe('cache refresh against a real Cacti', function () {
 	it('passes the credentials and query to wmic', function () {
 		$argv = wmi_e2e_collector()['first']['argv'];
 
-		expect($argv)->toContain('--user=dom\\user');
-		expect($argv)->toContain('--password=pw');
+		expect($argv)->not->toContain('--user=dom\\user');
+		expect($argv)->not->toContain('--password=pw');
 		expect($argv)->toContain('//winsrv1.invalid');
 		expect($argv)->toContain('SELECT Name,State FROM Win32_Service');
 	});
+
+	it('hands the credentials to wmic in a private file that is gone afterwards', function () {
+		$o = wmi_e2e_collector();
+
+		expect(array_filter($o['first']['argv'], fn ($a) => strpos($a, '--authentication-file=') === 0))->toHaveCount(1);
+		expect($o['first_auth']['content'])->toBe("username=user\npassword=pw\ndomain=dom\n");
+		expect($o['first_auth']['mode'])->toBe('600');
+		expect($o['first_auth']['exists'])->toBeFalse();
+	});
+
+	it('runs the script-server scripts from the command line against the cache data', function (string $script) {
+		$o = wmi_e2e_collector()['script_' . $script];
+
+		expect($o['index'])->toContain('A!A');
+		expect($o['index'])->toContain('C!C');
+		expect($o['pair'])->toContain('State!Stopped');
+		expect($o['list'])->toContain('B');
+		expect($o['none'])->toBe('');
+	})->with(['dir', 'root']);
 
 	it('purges an instance the device stopped returning and updates the rest', function () {
 		$o = wmi_e2e_collector();

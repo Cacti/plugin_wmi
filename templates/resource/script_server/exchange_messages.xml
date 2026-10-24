@@ -1,6 +1,6 @@
 <Exchange>
 	<name>Exchange Messages</name>
-	<script_path>|path_cacti|/scripts/wmi-script.php</script_path>
+	<script_path>|path_cacti|/plugins/wmi/script/wmi-script.php</script_path>
 	<script_function>wmi_script</script_function>
 	<description>Queries an Exchange 2003 Server for its Mail Stores and the number of Messages Send and Delivered</description>
 

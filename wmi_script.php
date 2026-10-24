@@ -26,7 +26,6 @@ require_once(__DIR__ . '/../../include/cli_check.php');
 require_once($config['base_path'] . '/lib/snmp.php');
 
 if (!isset($called_by_script_server)) {
-	require_once(__DIR__ . '/../include/global.php');
 	array_shift($_SERVER['argv']);
 
 	if (isset($_SERVER['argv'][0]) && $_SERVER['argv'][0] == 'wmi_script') {
@@ -72,7 +71,7 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 
 	$wmi           = new Linux_WMI($host_id);
 	$wmi->hostname = $hostname;
-	$wmi->binary   = '/usr/bin/wmic';
+	$wmi->binary   = read_config_option('path_wmi') ?: '/usr/bin/wmic';
 
 	// Fetch the info for this WMI query from the database, exit if not found
 	$wmiinfo = db_fetch_row_prepared('SELECT *

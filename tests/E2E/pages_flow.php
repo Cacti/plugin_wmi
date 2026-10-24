@@ -259,6 +259,7 @@ $out['tool_run'] = [
 	'username_in_page' => strpos($page['body'], 'DOM') !== false,
 	'password_field_empty' => preg_match("/id='password' value=''/", $page['body']) === 1,
 	'argv'            => wmi_e2e_last_argv(),
+	'auth'            => wmi_e2e_last_auth(),
 ];
 
 $bad = [];
@@ -287,6 +288,27 @@ foreach (['empty' => '', 'single' => 'root\\CIMV2', 'double' => 'root\\\\CIMV2']
 }
 
 $out['tool_namespaces'] = $namespaces;
+
+// Hosts the tool refuses run nothing; valid forms reach wmic after the // prefix.
+$refused = [];
+$reached = [];
+
+foreach (['bad host', '-oProxy=x', 'a..b', 'fe80::1%eth0', '999.1.1.1', 'host;id'] as $bad) {
+	$calls = count(wmi_e2e_calls());
+	$r     = $tool(['host' => $bad] + $tool_fields);
+
+	$refused[$bad] = ['message' => strpos($r['body'], 'The host must be an IPv4 or IPv6 address or a host name') !== false, 'calls' => count(wmi_e2e_calls()) - $calls];
+}
+
+foreach (['win-server', '[2001:db8::1]', '10.0.0.5', 'srv.corp.local', '2001:0db8:0:0:0:0:0:1'] as $good) {
+	$tool(['host' => $good] + $tool_fields);
+
+	$target = array_values(array_filter(wmi_e2e_last_argv(), fn ($a) => strpos($a, '//') === 0));
+
+	$reached[$good] = $target[0] ?? '';
+}
+
+$out['tool_hosts'] = ['refused' => $refused, 'reached' => $reached];
 
 $r = $tool($tool_fields, false);
 $out['tool_no_csrf'] = ['code' => $r['code'], 'ran' => strpos($r['body'], 'Spooler') !== false];
