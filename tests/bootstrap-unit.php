@@ -75,39 +75,39 @@ $GLOBALS['config'] = array(
 $GLOBALS['__test_db_calls'] = array();
 
 if (!function_exists('db_execute')) {
-	function db_execute($sql) {
+	function db_execute($sql, $log = true, $db_conn = false, $timeout = 0) {
 		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_execute', 'sql' => $sql, 'params' => array());
 		return true;
 	}
 }
 
 if (!function_exists('db_execute_prepared')) {
-	function db_execute_prepared($sql, $params = array()) {
+	function db_execute_prepared($sql, $params = array(), $log = true, $db_conn = false, $execute_name = 'Exec', $default_value = true, $return_func = 'no_return_function', $return_params = array(), $timeout = 0) {
 		$GLOBALS['__test_db_calls'][] = array('fn' => 'db_execute_prepared', 'sql' => $sql, 'params' => $params);
 		return true;
 	}
 }
 
 if (!function_exists('db_fetch_assoc')) {
-	function db_fetch_assoc($sql) {
+	function db_fetch_assoc($sql, $log = true, $db_conn = false, $timeout = 0) {
 		return array();
 	}
 }
 
 if (!function_exists('db_fetch_assoc_prepared')) {
-	function db_fetch_assoc_prepared($sql, $params = array()) {
+	function db_fetch_assoc_prepared($sql, $params = array(), $log = true, $db_conn = false, $timeout = 0) {
 		return array();
 	}
 }
 
 if (!function_exists('db_fetch_row')) {
-	function db_fetch_row($sql) {
+	function db_fetch_row($sql, $log = true, $db_conn = false, $timeout = 0) {
 		return array();
 	}
 }
 
 if (!function_exists('db_fetch_row_prepared')) {
-	function db_fetch_row_prepared($sql, $params = array()) {
+	function db_fetch_row_prepared($sql, $params = array(), $log = true, $db_conn = false, $timeout = 0) {
 		foreach (($GLOBALS['__test_fetch_row_map'] ?? array()) as $needle => $row) {
 			if (strpos($sql, $needle) !== false) {
 				return $row;
@@ -119,13 +119,13 @@ if (!function_exists('db_fetch_row_prepared')) {
 }
 
 if (!function_exists('db_fetch_cell')) {
-	function db_fetch_cell($sql) {
+	function db_fetch_cell($sql, $col_name = '', $log = true, $db_conn = false, $timeout = 0) {
 		return '';
 	}
 }
 
 if (!function_exists('db_fetch_cell_prepared')) {
-	function db_fetch_cell_prepared($sql, $params = array()) {
+	function db_fetch_cell_prepared($sql, $params = array(), $col_name = '', $log = true, $db_conn = false, $timeout = 0) {
 		foreach (($GLOBALS['__test_fetch_cell_map'] ?? array()) as $needle => $value) {
 			if (strpos($sql, $needle) !== false) {
 				return $value;
@@ -137,19 +137,19 @@ if (!function_exists('db_fetch_cell_prepared')) {
 }
 
 if (!function_exists('db_qstr')) {
-	function db_qstr($text) {
-		return "'" . addslashes((string) $text) . "'";
+	function db_qstr($s, $db_conn = false) {
+		return "'" . addslashes((string) $s) . "'";
 	}
 }
 
 if (!function_exists('db_index_exists')) {
-	function db_index_exists($table, $index) {
+	function db_index_exists($table, $index, $log = true, $db_conn = false) {
 		return false;
 	}
 }
 
 if (!function_exists('db_column_exists')) {
-	function db_column_exists($table, $column) {
+	function db_column_exists($table, $column, $log = true, $db_conn = false) {
 		return false;
 	}
 }
@@ -174,7 +174,7 @@ if (!function_exists('read_config_option')) {
 }
 
 if (!function_exists('set_config_option')) {
-	function set_config_option($name, $value) {
+	function set_config_option($config_name, $value, $remote = false) {
 	}
 }
 
@@ -216,24 +216,24 @@ if (!function_exists('is_realm_allowed')) {
 }
 
 if (!function_exists('raise_message')) {
-	function raise_message($id, $text = '', $level = 0) {
+	function raise_message($message_id, $message = '', $message_level = 0, $message_title = null) {
 	}
 }
 
 if (!function_exists('get_request_var')) {
-	function get_request_var($name) {
-		return $GLOBALS['__test_request'][$name] ?? '';
+	function get_request_var($name, $default = '') {
+		return $GLOBALS['__test_request'][$name] ?? $default;
 	}
 }
 
 if (!function_exists('get_nfilter_request_var')) {
-	function get_nfilter_request_var($name) {
-		return '';
+	function get_nfilter_request_var($name, $default = '') {
+		return $default;
 	}
 }
 
 if (!function_exists('get_filter_request_var')) {
-	function get_filter_request_var($name) {
+	function get_filter_request_var($name, $filter = FILTER_VALIDATE_INT, $options = array()) {
 		return '';
 	}
 }
@@ -251,9 +251,9 @@ if (!function_exists('is_error_message')) {
 }
 
 if (!function_exists('sql_save')) {
-	function sql_save($array, $table, $key = 'id') {
-		$GLOBALS['__test_sql_save_calls'][] = array('array' => $array, 'table' => $table, 'key' => $key);
-		return $array['id'] ?? 1;
+	function sql_save($array_items, $table_name, $key_cols = 'id', $autoinc = true, $db_conn = false) {
+		$GLOBALS['__test_sql_save_calls'][] = array('array' => $array_items, 'table' => $table_name, 'key' => $key_cols);
+		return $array_items['id'] ?? 1;
 	}
 }
 

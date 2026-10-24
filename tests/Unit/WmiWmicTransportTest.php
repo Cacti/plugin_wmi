@@ -13,8 +13,8 @@
  */
 
 if (!function_exists('cacti_escapeshellarg')) {
-	function cacti_escapeshellarg($s) {
-		return escapeshellarg($s);
+	function cacti_escapeshellarg($string, $quote = true) {
+		return escapeshellarg($string);
 	}
 }
 

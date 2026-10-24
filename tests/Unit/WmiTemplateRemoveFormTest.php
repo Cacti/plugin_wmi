@@ -13,8 +13,8 @@
  */
 
 if (!function_exists('form_start')) {
-	function form_start($action, $id = '') {
-		throw new RuntimeException($action);
+	function form_start($url, $name = '', $multipart = false) {
+		throw new RuntimeException($url);
 	}
 }
 
