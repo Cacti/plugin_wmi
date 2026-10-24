@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* dev: Record which plugin lines the end-to-end run executes and report the changed lines no suite reaches (tests/bin/e2e-coverage-report.php)
 * issue: Fix the breadcrumb parents of the Edit WMI Account and WMI Query Tool pages so the account edit page no longer fails on Cacti develop
 * issue: Use the default of 10 concurrent WMI collectors when the setting is empty instead of waiting forever
 * dev: Restore cacti.log after the end-to-end collector test so the CI log check stays clean
