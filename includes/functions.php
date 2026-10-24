@@ -380,6 +380,8 @@ function plugin_wmi_create_resource_xml($id) {
  * @param int $host_id      The Cacti host id to query.
  * @param int $wmi_query_id The wmi_wql_queries.id to run against the
  *                          host.
+ * @param Wmi_Transport|null $transport Transport override; the OS default
+ *                          is used when null.
  *
  * @return bool|void True when the query succeeded and results were
  *                   cached; false when the host's WMI account/query
@@ -391,7 +393,7 @@ function plugin_wmi_create_resource_xml($id) {
  * @global array $config Cacti global configuration array; used to load
  *                        this plugin's linux_wmi.php client.
  */
-function run_store_wmi_query($host_id, $wmi_query_id) {
+function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 	global $config;
 
 	$host_info = db_fetch_row_prepared('SELECT *
@@ -400,13 +402,6 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		[$host_id]);
 
 	$host_info = is_array($host_info) ? $host_info : [];
-
-	// Prepared old entries for removal
-	db_execute_prepared('UPDATE host_wmi_cache
-		SET present = 0
-		WHERE host_id = ?
-		AND wmi_query_id = ?',
-		[$host_id, $wmi_query_id]);
 
 	if (cacti_sizeof($host_info)) {
 		$auth_info = db_fetch_row_prepared('SELECT *
@@ -447,7 +442,7 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		// Cacti server and the wmic shell transport otherwise (see
 		// Linux_WMI::default_transport()), so the same client is used here
 		// regardless of $config['cacti_server_os'].
-		$wmi              = new Linux_WMI();
+		$wmi              = new Linux_WMI('', $transport);
 		$wmi->hostname    = $host;
 		$wmi->username    = $username;
 		$wmi->password    = $wmi->decode($password);
@@ -520,6 +515,13 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 				}
 			}
 
+			// Mark existing rows for removal only once fresh data is in hand
+			db_execute_prepared('UPDATE host_wmi_cache
+				SET present = 0
+				WHERE host_id = ?
+				AND wmi_query_id = ?',
+				[$host_id, $wmi_query_id]);
+
 			$parts = array_chunk($sql, 200);
 
 			foreach ($parts as $part) {
@@ -532,6 +534,13 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 						present=1');
 			}
 
+			// Remove entries the device no longer returns
+			db_execute_prepared('DELETE FROM host_wmi_cache
+				WHERE present = 0
+				AND host_id = ?
+				AND wmi_query_id = ?',
+				[$host_id, $wmi_query_id]);
+
 			return true;
 		} else {
 			print $wmi->error;
@@ -540,10 +549,9 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		}
 	}
 
-	// Remove old entries
+	// The device no longer exists, so drop whatever was cached for it
 	db_execute_prepared('DELETE FROM host_wmi_cache
-		WHERE present = 0
-		AND host_id = ?
+		WHERE host_id = ?
 		AND wmi_query_id = ?',
 		[$host_id, $wmi_query_id]);
 }
