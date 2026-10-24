@@ -71,3 +71,18 @@ it('does not dispatch the background poller on any other poller_id', function ()
 
 	expect($execCalls)->toBeEmpty();
 });
+
+it('maps every breadcrumb to parents that exist in the navigation array', function () {
+	$nav     = wmi_draw_navigation_text(array('index.php:' => array('title' => 'Console')));
+	$missing = array();
+
+	foreach ($nav as $key => $entry) {
+		foreach (explode(',', $entry['mapping'] ?? '') as $parent) {
+			if ($parent !== '' && !isset($nav[$parent])) {
+				$missing[] = $key . ' -> ' . $parent;
+			}
+		}
+	}
+
+	expect($missing)->toBe(array());
+});

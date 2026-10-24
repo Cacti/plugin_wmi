@@ -336,7 +336,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_accounts.php:edit'] = [
 		'title'   => __('(Edit)', 'wmi'),
-		'mapping' => 'index.php:wmi_accounts.php:',
+		'mapping' => 'index.php:,wmi_accounts.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '2'
 	];
@@ -378,7 +378,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_tools.php:query'] = [
 		'title'   => __('(Query)', 'wmi'),
-		'mapping' => 'index.php:wmi_tools.php:',
+		'mapping' => 'index.php:,wmi_tools.php:',
 		'url'     => 'wmi_tools.php',
 		'level'   => '2'
 	];
