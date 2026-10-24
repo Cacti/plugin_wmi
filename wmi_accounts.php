@@ -467,7 +467,9 @@ function show_accounts() {
 		ORDER BY name
 		LIMIT " . ($rows * (get_request_var('page') - 1)) . ', ' . $rows);
 
-	$total_rows = db_fetch_cell('SELECT COUNT(*) FROM wmi_user_accounts');
+	$total_rows = db_fetch_cell("SELECT COUNT(*)
+		FROM wmi_user_accounts
+		$sql_where");
 
 	account_filter();
 

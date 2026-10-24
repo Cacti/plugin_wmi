@@ -501,7 +501,9 @@ function show_queries() {
 		ORDER BY name
 		LIMIT " . ($rows * (get_request_var('page') - 1)) . ', ' . $rows);
 
-	$total_rows = sizeof($queries);
+	$total_rows = db_fetch_cell("SELECT COUNT(*)
+		FROM wmi_wql_queries
+		$sql_where");
 
 	$nav = html_nav_bar('wmi_queries.php', MAX_DISPLAY_PAGES, get_request_var('page'), $rows, $total_rows, 5, __('Queries', 'wmi'), 'page', 'main');
 
