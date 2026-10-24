@@ -14,115 +14,207 @@
  * it runs only when WMI_E2E=1 and include/config.php is present.
  */
 
-$wmi_e2e_root = dirname(__DIR__, 4);
-
-$wmi_e2e_log   = $wmi_e2e_root . '/log/cacti.log';
-$wmi_e2e_ready = getenv('WMI_E2E') === '1' && is_readable($wmi_e2e_root . '/include/config.php');
-
-// Cacti's CLI bootstrap exits when it cannot write its log file, so a driver
-// started by this user would print nothing useful. Skip with the reason.
-$wmi_e2e_log_ok = is_file($wmi_e2e_log) ? is_writable($wmi_e2e_log) : is_writable(dirname($wmi_e2e_log));
+require_once __DIR__ . '/runner.php';
 
 /** @return array<string, mixed> */
-function wmi_e2e_observations(string $root): array {
-	static $cache = null;
-
-	if ($cache === null) {
-		$output = [];
-		$status = 0;
-		$work   = sys_get_temp_dir() . '/wmi-e2e-' . bin2hex(random_bytes(6));
-
-		mkdir($work, 0700);
-
-		exec('WMI_E2E=1 WMI_E2E_WORKDIR=' . escapeshellarg($work) . ' ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/tests/E2E/collector_flow.php') . ' 2>&1', $output, $status);
-
-		@rmdir($work);
-
-		$json  = json_decode((string) end($output), true);
-		$cache = is_array($json) ? $json : ['driver_failed' => 'exit status ' . $status . "\n" . implode("\n", $output)];
-	}
-
-	return $cache;
+function wmi_e2e_collector(): array {
+	return wmi_e2e_run('collector_flow.php');
 }
 
-describe('collector flow against a real Cacti', function () use ($wmi_e2e_root, $wmi_e2e_ready, $wmi_e2e_log_ok) {
-	beforeEach(function () use ($wmi_e2e_ready, $wmi_e2e_log_ok) {
-		if (!$wmi_e2e_ready) {
-			$this->markTestSkipped('Set WMI_E2E=1 with an installed Cacti and database to run.');
-		}
+describe('cache refresh against a real Cacti', function () {
+	beforeEach(function () {
+		$reason = wmi_e2e_unready();
 
-		if (!$wmi_e2e_log_ok) {
-			$this->markTestSkipped('Cacti log/cacti.log is not writable by the test user; Cacti would refuse to start.');
+		if ($reason !== '') {
+			$this->markTestSkipped($reason);
 		}
 	});
 
-	it('runs the driver to completion', function () use ($wmi_e2e_root) {
+	it('runs the driver to completion', function () {
 		// Comparing the text, not the key, puts the driver's output in the failure.
-		expect(wmi_e2e_observations($wmi_e2e_root)['driver_failed'] ?? '')->toBe('');
+		expect(wmi_e2e_collector()['driver_failed'] ?? '')->toBe('');
 	});
 
-	it('caches every row of the first refresh', function () use ($wmi_e2e_root) {
-		$o = wmi_e2e_observations($wmi_e2e_root);
+	it('caches every row of the first refresh', function () {
+		$o = wmi_e2e_collector()['first'];
 
-		expect($o['first_ok'])->toBeTrue();
-		expect($o['first_indexes'])->toBe(['A', 'B', 'C']);
+		expect($o['result'])->toBeTrue();
+		expect($o['indexes'])->toBe(['A', 'B', 'C']);
+		expect($o['rows'])->toBe(6);
+		expect($o['present0'])->toBe(0);
 	});
 
-	it('passes the namespace to wmic with a single backslash', function () use ($wmi_e2e_root) {
-		expect(wmi_e2e_observations($wmi_e2e_root)['namespace_args'])->toBe(['--namespace=root\\CIMV2']);
+	it('passes the credentials and query to wmic', function () {
+		$argv = wmi_e2e_collector()['first']['argv'];
+
+		expect($argv)->toContain('--user=dom\\user');
+		expect($argv)->toContain('--password=pw');
+		expect($argv)->toContain('//winsrv1.invalid');
+		expect($argv)->toContain('SELECT Name,State FROM Win32_Service');
 	});
 
-	it('purges a row the device stopped returning', function () use ($wmi_e2e_root) {
-		expect(wmi_e2e_observations($wmi_e2e_root)['second_indexes'])->toBe(['A', 'B']);
+	it('purges an instance the device stopped returning and updates the rest', function () {
+		$o = wmi_e2e_collector();
+
+		expect($o['dropped']['result'])->toBeTrue();
+		expect($o['dropped']['indexes'])->toBe(['A', 'B']);
+		expect($o['dropped']['rows'])->toBe(4);
+		expect($o['dropped']['present0'])->toBe(0);
+		expect($o['state_b'])->toBe('Stopped');
 	});
 
-	it('keeps the cached rows intact when a query fails and logs why', function () use ($wmi_e2e_root) {
-		$o = wmi_e2e_observations($wmi_e2e_root);
+	it('keeps the cached rows when the query fails in each way', function (string $case) {
+		$o = wmi_e2e_collector()[$case];
 
-		expect($o['failed_ok'])->toBeFalse();
-		expect($o['failed_indexes'])->toBe(['A', 'B']);
-		expect($o['failed_present'])->toBe(0);
-		expect($o['failure_logged'])->toBeTrue();
+		expect($o['result'])->toBeFalse();
+		expect($o['indexes'])->toBe(['A', 'B']);
+		expect($o['rows'])->toBe(4);
+		expect($o['present0'])->toBe(0);
+	})->with(['midway', 'empty_output', 'silent_failure', 'header_only']);
+
+	it('indexes rows by the primary key shape', function (string $case, array $indexes, int $rows) {
+		$o = wmi_e2e_collector()['key_' . $case];
+
+		expect($o['result'])->toBeTrue();
+		expect($o['indexes'])->toBe($indexes);
+		expect($o['rows'])->toBe($rows);
+	})->with([
+		'duplicate single key keeps one row' => ['duplicate_single', ['A'], 2],
+		'None with one row'                  => ['none_one_row', ['N/A'], 2],
+		'None with several rows'             => ['none_many_rows', ['N/A'], 2],
+		'composite key'                      => ['composite', ['A,Running', 'A,Stopped'], 4],
+		'composite key with a space'         => ['composite_spaced', ['A,Running', 'A,Stopped'], 4],
+		'unknown key column'                 => ['unknown_column', ['N/A'], 2],
+	]);
+
+	it('keeps the last row when two rows share a single-column key', function () {
+		expect(wmi_e2e_collector()['key_duplicate_state'])->toBe('Stopped');
 	});
 
-	it('keeps both rows that share a name when the primary key has two columns', function () use ($wmi_e2e_root) {
-		expect(wmi_e2e_observations($wmi_e2e_root)['composite_indexes'])->toBe(['A,Running', 'A,Stopped']);
+	it('passes every namespace form to wmic with single backslashes', function (string $form, string $expected) {
+		expect(wmi_e2e_collector()['namespaces'][$form])->toBe(['--namespace=' . $expected]);
+	})->with([
+		'doubled backslash' => ['double', 'root\\CIMV2'],
+		'single backslash'  => ['single', 'root\\CIMV2'],
+		'empty'             => ['empty', 'root\\CIMV2'],
+		'another namespace' => ['cluster', 'root\\MSCluster'],
+	]);
+
+	it('leaves the cache alone without an account or a query', function () {
+		$o = wmi_e2e_collector();
+
+		expect($o['no_account']['result'])->toBeFalse();
+		expect($o['no_account']['indexes'])->toBe(['A', 'B']);
+		expect($o['no_query'])->toBeFalse();
+		expect($o['no_query_rows'])->toBe(4);
 	});
 
-	it('does not start while a recent collector lock exists', function () use ($wmi_e2e_root) {
-		$o = wmi_e2e_observations($wmi_e2e_root);
+	it('drops the cached rows of a device that no longer exists', function () {
+		$o = wmi_e2e_collector()['no_host'];
 
-		expect($o['fresh_lock_output'])->toContain('still running');
-		expect($o['fresh_lock_indexes'])->toBe([]);
+		expect($o['result'])->toBeNull();
+		expect($o['rows'])->toBe(0);
 	});
 
-	it('clears a stale collector lock and polls the device', function () use ($wmi_e2e_root) {
-		$o = wmi_e2e_observations($wmi_e2e_root);
+	it('logs why a query failed', function () {
+		$log = wmi_e2e_collector()['log'];
 
-		expect($o['stale_lock_output'])->toContain('All Processes Complete');
-		expect($o['stale_lock_indexes'])->toBe(['A']);
-		expect($o['locks_left'])->toBe(0);
+		expect($log)->toContain('WMI Query[900001] for Device[900001] failed: ERROR: WMI Returned no Data');
+		expect($log)->toContain('failed: ERROR: ');
+		expect($log)->toContain('failed: WMI returned no rows');
 	});
 });
 
-describe('collector flow entry script', function () {
-	it('does nothing and prints nothing without the test environment', function () {
-		$script = __DIR__ . '/collector_flow.php';
-		$output = [];
-		$status = 0;
+describe('poller master and child against a real Cacti', function () {
+	beforeEach(function () {
+		$reason = wmi_e2e_unready();
 
-		exec('env -u WMI_E2E -u WMI_E2E_WORKDIR ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($script) . ' 2>&1', $output, $status);
-
-		expect($output)->toBe([]);
-		expect($status)->toBe(0);
+		if ($reason !== '') {
+			$this->markTestSkipped($reason);
+		}
 	});
 
-	it('does nothing when the work directory is missing', function () {
-		$script = __DIR__ . '/collector_flow.php';
-		$output = [];
+	/** The cache every healthy device and query ends up with. */
+	$polled = ['svc' => ['A', 'B'], 'prc' => ['10', '11', '12']];
 
-		exec('WMI_E2E=1 WMI_E2E_WORKDIR=/nonexistent-wmi-e2e ' . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($script) . ' 2>&1', $output);
+	it('does not start while a recent collector lock exists', function () {
+		$o = wmi_e2e_collector()['live_lock'];
 
-		expect($output)->toBe([]);
+		expect($o['output'])->toContain('still running');
+		expect($o['state']['locks'])->toBe(1);
+
+		foreach ($o['state']['cache'] as $cache) {
+			expect($cache)->toBe(['svc' => [], 'prc' => []]);
+		}
+	});
+
+	it('clears a stale lock, polls every device and query, and records the failing pair', function () use ($polled) {
+		$o = wmi_e2e_collector()['stale_lock'];
+
+		expect($o['output'])->toContain('All Processes Complete');
+		expect($o['state']['locks'])->toBe(0);
+		expect($o['state']['cache']['900001'])->toBe($polled);
+		expect($o['state']['cache']['900002'])->toBe($polled);
+		expect($o['state']['cache']['900003'])->toBe(['svc' => [], 'prc' => $polled['prc']]);
+		expect($o['last_failed'])->not->toBe('0000-00-00 00:00:00');
+		expect($o['last_failed_ok'])->toBe('0000-00-00 00:00:00');
+	});
+
+	it('finds nothing due right after a run', function () {
+		expect(wmi_e2e_collector()['not_due']['output'])->toContain('No Devices found this pass');
+	});
+
+	it('polls all devices whatever the concurrency setting holds', function (string $case) use ($polled) {
+		$o = wmi_e2e_collector()['concurrency_' . $case];
+
+		expect($o['status'])->toBe(0);
+		expect($o['output'])->toContain('All Processes Complete');
+		expect($o['state']['locks'])->toBe(0);
+		expect($o['state']['cache']['900001'])->toBe($polled);
+		expect($o['state']['cache']['900002'])->toBe($polled);
+	})->with(['empty', 'one', 'many']);
+
+	it('keeps waiting while a collector cannot start, then recovers once its lock is old', function () use ($polled) {
+		$o = wmi_e2e_collector();
+
+		expect($o['child_dies']['status'])->toBe(124);
+		expect($o['child_dies']['state']['locks'])->toBe(3);
+		expect($o['after_dead_child_live']['output'])->toContain('still running');
+		expect($o['after_dead_child_live']['state']['locks'])->toBe(3);
+		expect($o['after_dead_child_aged']['output'])->toContain('All Processes Complete');
+		expect($o['after_dead_child_aged']['state']['locks'])->toBe(0);
+		expect($o['after_dead_child_aged']['state']['cache']['900001'])->toBe($polled);
+	});
+
+	it('skips down and disabled devices and drops the cache of a down device', function () use ($polled) {
+		$o = wmi_e2e_collector()['skipped_hosts'];
+
+		expect($o['output'])->toContain("wmi-e2e-900003[winsrv3.invalid]");
+		expect($o['output'])->not->toContain('wmi-e2e-900001');
+		expect($o['output'])->not->toContain('wmi-e2e-900002');
+		expect($o['state']['cache']['900001'])->toBe(['svc' => [], 'prc' => []]);
+		expect($o['state']['cache']['900002'])->toBe(['svc' => [], 'prc' => []]);
+	});
+
+	it('finds nothing to poll when no query is enabled', function () {
+		expect(wmi_e2e_collector()['no_enabled_query']['output'])->toContain('No Devices found this pass');
+	});
+
+	it('does nothing while the plugin is disabled', function () {
+		$o = wmi_e2e_collector()['plugin_disabled'];
+
+		expect($o['output'])->toContain('Collection is Down');
+		expect($o['state']['cache']['900001'])->toBe(['svc' => [], 'prc' => []]);
+	});
+
+	it('polls one device when run as a child, and reports bad command lines', function () use ($polled) {
+		$o = wmi_e2e_collector();
+
+		expect($o['child_alone']['state']['cache']['900002'])->toBe($polled);
+		expect($o['child_alone']['state']['cache']['900001'])->toBe(['svc' => [], 'prc' => []]);
+		expect($o['child_no_id']['output'])->toContain('You must specify a Cacti host-id');
+		expect($o['bad_parameter']['output'])->toContain('Invalid Parameter --bogus');
+		expect($o['version']['output'])->toContain('Device WMI Poller Process, Version');
+		expect($o['help']['output'])->toContain('usage:');
 	});
 });

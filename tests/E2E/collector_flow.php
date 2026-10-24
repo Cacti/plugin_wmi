@@ -8,15 +8,11 @@
 */
 
 /*
- * Drives the collector against a real Cacti installation and its database,
- * with a fake wmic executable standing in for the Windows host. Run by
- * CollectorFlowTest.php in its own process; prints one JSON document of
- * observations on the last line of stdout.
+ * Drives the cache refresh and the poller_wmi.php master and child against a
+ * real Cacti installation and its database, with a fake wmic executable
+ * standing in for the Windows hosts. Run by CollectorFlowTest.php in its own
+ * process; prints one JSON document of observations on the last line.
  *
- * Every row it creates uses ids from 900001 upward and is removed again.
- */
-
-/*
  * tests/ ships inside the plugin directory, so this file must do nothing when
  * a web server runs it. It needs the CLI and a work directory that the test
  * process names and creates; it takes no path or command from a request.
@@ -29,178 +25,253 @@ if (PHP_SAPI !== 'cli' || getenv('WMI_E2E') !== '1' || $work === false || !is_di
 	exit;
 }
 
-$root = dirname(__DIR__, 4);
+require_once __DIR__ . '/e2e_common.php';
 
-chdir($root);
+wmi_e2e_boot();
 
-$_SERVER['argv'] = ['collector_flow.php'];
+$root = $GLOBALS['wmi_e2e']['root'];
+$out  = [];
 
-require_once $root . '/include/cli_check.php';
-require_once $root . '/plugins/wmi/includes/database.php';
-require_once $root . '/plugins/wmi/includes/functions.php';
+const HOST_A    = 900001;
+const HOST_B    = 900002;
+const HOST_C    = 900003;
+const QUERY_SVC = 900001;
+const QUERY_PRC = 900002;
+const TEMPLATE  = 900001;
+const ACCOUNT   = 900001;
 
-const ID = 900001;
+$svc_header = ['Name', 'State'];
 
-$out   = [];
-$saved = [];
+wmi_e2e_add_account(ACCOUNT, 'e2e', 'dom\\user', 'pw');
+wmi_e2e_add_host(HOST_A, TEMPLATE, ACCOUNT, 'winsrv1.invalid');
+wmi_e2e_add_query(QUERY_SVC, 'e2e-svc', 'root\\\\CIMV2', 'SELECT Name,State FROM Win32_Service', 'Name');
 
-/** Write the canned wmic output and exit status the fake executable will use. */
-function fake_wmic_script(string $work, array $lines, int $status): void {
-	file_put_contents($work . '/out', implode("\n", $lines) . "\n");
-	file_put_contents($work . '/status', (string) $status);
-}
-
-/** @return array<int, string> The wmi_index values currently cached. */
-function cached_indexes(): array {
-	return array_column(db_fetch_assoc_prepared(
-		"SELECT DISTINCT wmi_index FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ? AND field_name = 'Name' ORDER BY wmi_index",
-		[ID, ID]
-	), 'wmi_index');
-}
-
-function cleanup(string $work, array $saved): void {
-	db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [ID]);
-	db_execute_prepared('DELETE FROM host_wmi_query WHERE host_id = ?', [ID]);
-	db_execute_prepared('DELETE FROM host_template_wmi_query WHERE wmi_query_id = ?', [ID]);
-	db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id = ?', [ID]);
-	db_execute_prepared('DELETE FROM wmi_user_accounts WHERE id = ?', [ID]);
-	db_execute_prepared('DELETE FROM host WHERE id = ?', [ID]);
-	db_execute('DELETE FROM wmi_processes');
-
-	foreach (['path_wmi', 'log_verbosity', 'wmi_processes'] as $name) {
-		if (isset($saved[$name]) && $saved[$name] !== false) {
-			db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', [$name, $saved[$name]]);
-		} else {
-			db_execute_prepared('DELETE FROM settings WHERE name = ?', [$name]);
-		}
-	}
-
-	if (!empty($saved['plugin_row_added'])) {
-		db_execute_prepared("DELETE FROM plugin_config WHERE directory = 'wmi'");
-	}
-
-	foreach (['wmic', 'out', 'status', 'argv'] as $name) {
-		if (is_file($work . '/' . $name)) {
-			unlink($work . '/' . $name);
-		}
-	}
-}
-
-/*
- * The failure case logs a WARNING on purpose, and the CI workflow fails a job
- * whose cacti.log holds any WARNING, ERROR or FATAL line. Remember how long
- * the log was and cut it back to that length when the run ends, keeping the
- * file's owner and mode.
+/**
+ * Run the refresh quietly and report the outcome with the cache state.
+ *
+ * @return array<string, mixed>
  */
-$log_file   = read_config_option('path_cactilog') ?: $root . '/log/cacti.log';
-$log_exists = is_file($log_file);
-$log_before = $log_exists ? (int) filesize($log_file) : 0;
+function refresh(int $host = HOST_A, int $query = QUERY_SVC): array {
+	$result = wmi_e2e_quiet(fn () => run_store_wmi_query($host, $query));
 
-register_shutdown_function(function () use ($work, &$saved, $log_file, $log_exists, $log_before) {
-	cleanup($work, $saved);
-
-	clearstatcache(true, $log_file);
-
-	if (!is_file($log_file)) {
-		return;
-	}
-
-	if (!$log_exists) {
-		unlink($log_file);
-	} elseif (filesize($log_file) > $log_before) {
-		$handle = fopen($log_file, 'r+');
-
-		if ($handle !== false) {
-			ftruncate($handle, $log_before);
-			fclose($handle);
-		}
-	}
-});
-
-plugin_wmi_setup_tables();
-
-foreach (['path_wmi', 'log_verbosity', 'wmi_processes'] as $name) {
-	$saved[$name] = db_fetch_cell_prepared('SELECT value FROM settings WHERE name = ?', [$name]) ?: false;
+	return [
+		'result'   => $result,
+		'indexes'  => wmi_e2e_cached($host, $query),
+		'rows'     => wmi_e2e_cache_count($host, $query),
+		'present0' => (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ? AND present = 0', [$host, $query]),
+		'argv'     => wmi_e2e_last_argv(),
+	];
 }
 
-cleanup($work, []);
+// First refresh caches every row.
+wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Running'], ['C', 'Stopped']]), 0);
+$out['first'] = refresh();
 
-if (db_fetch_cell_prepared("SELECT COUNT(*) FROM plugin_config WHERE directory = 'wmi'") == 0) {
-	db_execute("INSERT INTO plugin_config (directory, name, status, author, webpage, version) VALUES ('wmi', 'wmi', 1, '', '', '1')");
+// The device drops an instance, which is purged.
+wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Stopped']]), 0);
+$out['dropped'] = refresh();
+$out['state_b'] = db_fetch_cell_prepared("SELECT field_value FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ? AND field_name = 'State' AND wmi_index = 'B'", [HOST_A, QUERY_SVC]);
 
-	$saved['plugin_row_added'] = true;
+// Failures keep the cached rows: partial output then non-zero exit, empty
+// output, non-zero exit with no output, and a header without rows.
+wmi_e2e_wmic_default(['Win32_Service', 'Name' . WMI_E2E_SEP . 'State', 'A' . WMI_E2E_SEP . 'Running'], 1);
+$out['midway'] = refresh();
+
+wmi_e2e_wmic_default([], 0);
+$out['empty_output'] = refresh();
+
+wmi_e2e_wmic_default([], 3);
+$out['silent_failure'] = refresh();
+
+wmi_e2e_wmic_default(['Win32_Service', 'Name' . WMI_E2E_SEP . 'State'], 0);
+$out['header_only'] = refresh();
+
+// Primary key shapes: duplicate values of a single key, None with one and
+// with several rows, a composite key with and without spaces, and one naming
+// a column the result does not have.
+$key_cases = [
+	'duplicate_single' => ['Name', [['A', 'Running'], ['A', 'Stopped']]],
+	'none_one_row'     => ['None', [['A', 'Running']]],
+	'none_many_rows'   => ['None', [['A', 'Running'], ['B', 'Running']]],
+	'composite'        => ['Name,State', [['A', 'Running'], ['A', 'Stopped']]],
+	'composite_spaced' => ['Name, State', [['A', 'Running'], ['A', 'Stopped']]],
+	'unknown_column'   => ['Name,Nope', [['A', 'Running'], ['B', 'Running']]],
+];
+
+foreach ($key_cases as $label => [$key, $rows]) {
+	db_execute_prepared('UPDATE wmi_wql_queries SET primary_key = ? WHERE id = ?', [$key, QUERY_SVC]);
+	db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [HOST_A]);
+	wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, $rows), 0);
+
+	$out['key_' . $label] = refresh();
 }
 
-file_put_contents($work . '/wmic', "#!/bin/sh\nprintf '%s\\n' \"\$@\" > " . escapeshellarg($work . '/argv') . "\ncat " . escapeshellarg($work . '/out') . "\nexit \$(cat " . escapeshellarg($work . '/status') . ")\n");
-chmod($work . '/wmic', 0700);
+$out['key_duplicate_state'] = null;
 
-db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', ['path_wmi', $work . '/wmic']);
-db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', ['log_verbosity', (string) POLLER_VERBOSITY_HIGH]);
+db_execute_prepared('UPDATE wmi_wql_queries SET primary_key = ? WHERE id = ?', ['Name', QUERY_SVC]);
+db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [HOST_A]);
+wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['A', 'Stopped']]), 0);
+refresh();
+$out['key_duplicate_state'] = db_fetch_cell_prepared("SELECT field_value FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ? AND field_name = 'State'", [HOST_A, QUERY_SVC]);
 
-$wmi = new Linux_WMI();
+// Namespace forms as they reach wmic.
+$out['namespaces'] = [];
 
-db_execute_prepared("INSERT INTO wmi_user_accounts (id, name, username, password) VALUES (?, 'e2e', 'dom\\\\user', ?)", [ID, $wmi->encode('pw')]);
-db_execute_prepared("INSERT INTO host (id, description, hostname, host_template_id, status, disabled, wmi_account) VALUES (?, 'wmi-e2e', 'winsrv.invalid', ?, 3, '', ?)", [ID, ID, ID]);
-db_execute_prepared("INSERT INTO wmi_wql_queries (id, hash, name, frequency, enabled, namespace, query, primary_key) VALUES (?, '', 'e2e', 60, 'on', ?, 'SELECT Name,State FROM Win32_Service', 'Name')", [ID, 'root\\\\CIMV2']);
-db_execute_prepared('INSERT INTO host_template_wmi_query (host_template_id, wmi_query_id) VALUES (?, ?)', [ID, ID]);
+foreach (['double' => 'root\\\\CIMV2', 'single' => 'root\\CIMV2', 'empty' => '', 'cluster' => 'root\\\\MSCluster'] as $label => $namespace) {
+	db_execute_prepared('UPDATE wmi_wql_queries SET namespace = ? WHERE id = ?', [$namespace, QUERY_SVC]);
+	wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running']]), 0);
+	refresh();
 
-$sep = '|+|';
+	$out['namespaces'][$label] = array_values(array_filter(wmi_e2e_last_argv(), fn ($a) => strpos($a, '--namespace=') === 0));
+}
 
-// First refresh: three services are cached.
-fake_wmic_script($work, ['Win32_Service', 'Name' . $sep . 'State', 'A' . $sep . 'Running', 'B' . $sep . 'Running', 'C' . $sep . 'Stopped'], 0);
-ob_start();
-$out['first_ok']       = run_store_wmi_query(ID, ID);
-ob_end_clean();
-$out['first_indexes']  = cached_indexes();
-$out['namespace_args'] = array_values(array_filter(explode("\n", (string) file_get_contents($work . '/argv')), fn ($a) => strpos($a, '--namespace=') === 0));
+db_execute_prepared('UPDATE wmi_wql_queries SET namespace = ? WHERE id = ?', ['root\\\\CIMV2', QUERY_SVC]);
 
-// Second refresh: service C is gone and must be purged.
-fake_wmic_script($work, ['Win32_Service', 'Name' . $sep . 'State', 'A' . $sep . 'Running', 'B' . $sep . 'Stopped'], 0);
-ob_start();
-$out['second_ok']      = run_store_wmi_query(ID, ID);
-ob_end_clean();
-$out['second_indexes'] = cached_indexes();
+// Account, query and host problems leave the cache alone or clear it.
+wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Running']]), 0);
+db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [HOST_A]);
+refresh();
 
-// A failing query keeps the cached rows and logs the reason.
-fake_wmic_script($work, ['Login to remote object.'], 1);
-ob_start();
-$out['failed_ok']      = run_store_wmi_query(ID, ID);
-ob_end_clean();
-$out['failed_indexes'] = cached_indexes();
-$out['failed_present'] = (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM host_wmi_cache WHERE host_id = ? AND present = 0', [ID]);
+db_execute_prepared('UPDATE host SET wmi_account = 0 WHERE id = ?', [HOST_A]);
+$out['no_account'] = refresh();
+db_execute_prepared('UPDATE host SET wmi_account = ? WHERE id = ?', [ACCOUNT, HOST_A]);
 
-clearstatcache(true, $log_file);
-$log = (string) substr((string) @file_get_contents($log_file), $log_before);
+$out['no_query'] = wmi_e2e_quiet(fn () => run_store_wmi_query(HOST_A, QUERY_SVC + 50));
+$out['no_query_rows'] = wmi_e2e_cache_count(HOST_A, QUERY_SVC);
 
-$out['failure_logged'] = strpos($log, 'WMI Query[' . ID . '] for Device[' . ID . '] failed: ERROR: Login to remote object.') !== false;
+db_execute_prepared('DELETE FROM host WHERE id = ?', [HOST_A]);
+$out['no_host'] = refresh();
 
-// A two-column primary key keeps both rows that share a Name.
-db_execute_prepared("UPDATE wmi_wql_queries SET primary_key = 'Name,State' WHERE id = ?", [ID]);
-fake_wmic_script($work, ['Win32_Service', 'Name' . $sep . 'State', 'A' . $sep . 'Running', 'A' . $sep . 'Stopped'], 0);
-ob_start();
-run_store_wmi_query(ID, ID);
-ob_end_clean();
-$out['composite_indexes'] = cached_indexes();
+$out['log'] = wmi_e2e_log_since_boot();
 
-// Master poller: a fresh lock row blocks the run, a stale one is cleared.
-db_execute_prepared("UPDATE wmi_wql_queries SET primary_key = 'Name' WHERE id = ?", [ID]);
-db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [ID]);
-fake_wmic_script($work, ['Win32_Service', 'Name' . $sep . 'State', 'A' . $sep . 'Running'], 0);
+// Poller: three hosts, two queries, one failing host/query pair.
+db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id >= ?', [HOST_A]);
+db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id >= ?', [QUERY_SVC]);
+wmi_e2e_add_query(QUERY_SVC, 'e2e-svc', 'root\\\\CIMV2', 'SELECT Name,State FROM Win32_Service', 'Name');
+wmi_e2e_add_query(QUERY_PRC, 'e2e-prc', 'root\\\\CIMV2', 'SELECT ProcessId,Name FROM Win32_Process', 'ProcessId');
+wmi_e2e_link_template(TEMPLATE, QUERY_SVC);
+wmi_e2e_link_template(TEMPLATE, QUERY_PRC);
 
-// An unset concurrency setting must not stall the master; bound the run anyway.
-$limit  = trim((string) shell_exec('command -v timeout')) !== '' ? 'timeout 120 ' : '';
-$poller = $limit . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/poller_wmi.php') . ' -M 2>&1';
+$hosts = [HOST_A => 'winsrv1.invalid', HOST_B => 'winsrv2.invalid', HOST_C => 'winsrv3.invalid'];
 
-db_execute_prepared("DELETE FROM settings WHERE name = 'wmi_processes'");
-db_execute('DELETE FROM wmi_processes');
+foreach ($hosts as $id => $name) {
+	wmi_e2e_add_host($id, TEMPLATE, ACCOUNT, $name);
+}
+
+$services  = wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['B', 'Running']]);
+$processes = wmi_e2e_result('Win32_Process', ['ProcessId', 'Name'], [['10', 'sys'], ['11', 'app'], ['12', 'db']]);
+
+$set_wmic = function () use ($services, $processes): void {
+	wmi_e2e_wmic_default([], 0);
+	wmi_e2e_wmic_rules([
+		['winsrv3.invalid SELECT Name,State', 1, ['ERROR: access denied']],
+		['Win32_Service', 0, $services],
+		['Win32_Process', 0, $processes],
+	]);
+};
+
+$set_wmic();
+
+$php    = escapeshellarg(PHP_BINARY);
+$script = escapeshellarg($root . '/plugins/wmi/poller_wmi.php');
+$has_timeout = trim((string) shell_exec('command -v timeout')) !== '';
+
+/**
+ * Run the poller and return its output and exit status.
+ *
+ * @return array{output: string, status: int}
+ */
+$poller = function (string $arguments, int $seconds = 120) use ($php, $script, $has_timeout): array {
+	$lines  = [];
+	$status = 0;
+
+	exec(($has_timeout ? 'timeout ' . $seconds . ' ' : '') . $php . ' ' . $script . ' ' . $arguments . ' 2>&1', $lines, $status);
+
+	return ['output' => implode("\n", $lines), 'status' => $status];
+};
+
+$poll_state = function () use ($hosts): array {
+	$state = ['locks' => (int) db_fetch_cell('SELECT COUNT(*) FROM wmi_processes'), 'cache' => []];
+
+	foreach (array_keys($hosts) as $id) {
+		$state['cache'][$id] = [
+			'svc' => wmi_e2e_cached($id, QUERY_SVC),
+			'prc' => array_column(db_fetch_assoc_prepared("SELECT DISTINCT wmi_index FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ? AND field_name = 'Name' ORDER BY wmi_index", [$id, QUERY_PRC]), 'wmi_index'),
+		];
+	}
+
+	return $state;
+};
+
+$reset = function () use ($hosts): void {
+	db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id >= ?', [HOST_A]);
+	db_execute_prepared('DELETE FROM host_wmi_query WHERE host_id >= ?', [HOST_A]);
+	db_execute('DELETE FROM wmi_processes');
+	db_execute_prepared('UPDATE host SET status = 3, disabled = ? WHERE id >= ?', ['', HOST_A]);
+	db_execute_prepared('UPDATE wmi_wql_queries SET enabled = ? WHERE id >= ?', ['on', QUERY_SVC]);
+	db_execute_prepared('UPDATE plugin_config SET status = 1 WHERE directory = ?', ['wmi']);
+};
+
+// A recent lock blocks the run.
+$reset();
 db_execute('INSERT INTO wmi_processes (pid, taskid, started) VALUES (1, 1, NOW())');
-$out['fresh_lock_output']  = shell_exec($poller);
-$out['fresh_lock_indexes'] = cached_indexes();
+$out['live_lock'] = $poller('-M') + ['state' => $poll_state()];
 
-db_execute('DELETE FROM wmi_processes');
+// A stale lock is cleared, and the setting being absent still launches the
+// collectors.
+$reset();
+db_execute_prepared('DELETE FROM settings WHERE name = ?', ['wmi_processes']);
 db_execute('INSERT INTO wmi_processes (pid, taskid, started) VALUES (1, 1, DATE_SUB(NOW(), INTERVAL 2 HOUR))');
-$out['stale_lock_output']  = shell_exec($poller);
-$out['stale_lock_indexes'] = cached_indexes();
-$out['locks_left']         = (int) db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
+$out['stale_lock'] = $poller('-M') + ['state' => $poll_state()];
+$out['stale_lock']['last_failed'] = db_fetch_cell_prepared('SELECT last_failed FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_C, QUERY_SVC]);
+$out['stale_lock']['last_failed_ok'] = db_fetch_cell_prepared('SELECT last_failed FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_A, QUERY_SVC]);
+
+// A second run right away finds nothing due.
+$out['not_due'] = $poller('-M');
+
+// Concurrency settings: empty string, one process, a larger value.
+foreach (['empty' => '', 'one' => '1', 'many' => '8'] as $label => $value) {
+	$reset();
+	db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', ['wmi_processes', $value]);
+	$out['concurrency_' . $label] = $poller('-M') + ['state' => $poll_state()];
+}
+
+// A collector that cannot start leaves its placeholder row. The master keeps
+// waiting, the next run sees a live lock, and once the row is old it is
+// cleared and the devices are polled.
+$reset();
+db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', ['path_php_binary', '/bin/false']);
+$out['child_dies'] = $poller('-M', 8) + ['state' => $poll_state()];
+db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', ['path_php_binary', $GLOBALS['wmi_e2e']['saved']['path_php_binary'] ?: PHP_BINARY]);
+$out['after_dead_child_live'] = $poller('-M') + ['state' => $poll_state()];
+db_execute('UPDATE wmi_processes SET started = DATE_SUB(NOW(), INTERVAL 2 HOUR)');
+$out['after_dead_child_aged'] = $poller('-M') + ['state' => $poll_state()];
+
+// Devices that are down, disabled or without an enabled query are skipped,
+// and the cache of a down device is dropped.
+$reset();
+db_execute_prepared('UPDATE host SET status = 1 WHERE id = ?', [HOST_A]);
+db_execute_prepared('UPDATE host SET disabled = ? WHERE id = ?', ['on', HOST_B]);
+db_execute_prepared("INSERT INTO host_wmi_cache (host_id, wmi_query_id, field_name, field_value, wmi_index, present) VALUES (?, ?, 'Name', 'old', 'old', 1)", [HOST_A, QUERY_SVC]);
+$out['skipped_hosts'] = $poller('-M') + ['state' => $poll_state()];
+
+$reset();
+db_execute_prepared('UPDATE wmi_wql_queries SET enabled = ? WHERE id >= ?', ['', QUERY_SVC]);
+$out['no_enabled_query'] = $poller('-M') + ['state' => $poll_state()];
+
+// The plugin disabled in Plugin Management.
+$reset();
+db_execute_prepared('UPDATE plugin_config SET status = 0 WHERE directory = ?', ['wmi']);
+$out['plugin_disabled'] = $poller('-M') + ['state' => $poll_state()];
+
+// A child run by itself, and the command line.
+$reset();
+$out['child_alone']    = $poller('--host-id=' . HOST_B . ' --debug --force') + ['state' => $poll_state()];
+$out['child_no_id']    = $poller('');
+$out['bad_parameter']  = $poller('--bogus');
+$out['version']        = $poller('--version');
+$out['help']           = $poller('--help');
+
+$out['log_after'] = wmi_e2e_log_since_boot();
 
 print "\n" . json_encode($out) . "\n";
