@@ -8,13 +8,29 @@
 */
 
 /*
- * The remove-query confirmation dialog is printed by a hook that also calls
- * exit, so its form action is checked in the source.
+ * The remove-query confirmation dialog is printed by a hook that ends in
+ * exit, so the form_start() stub throws once it has recorded the action URL.
  */
 
-it('builds the confirmation form action with an id parameter', function () {
-	$source = plugin_test_read_source('setup.php');
+if (!function_exists('form_start')) {
+	function form_start($action, $id = '') {
+		throw new RuntimeException($action);
+	}
+}
 
-	expect($source)->toContain("form_start('host_templates.php?action=edit&id=' . get_request_var('host_template_id'))");
-	expect($source)->not->toContain("action=edit&id' .");
+require_once __DIR__ . '/../../setup.php';
+
+it('builds the confirmation form action with an id parameter', function () {
+	$GLOBALS['__test_request'] = array('action' => 'item_remove_wq_confirm', 'host_template_id' => '12');
+
+	try {
+		wmi_device_template_top();
+		$action = '';
+	} catch (RuntimeException $e) {
+		$action = $e->getMessage();
+	} finally {
+		$GLOBALS['__test_request'] = array();
+	}
+
+	expect($action)->toBe('host_templates.php?action=edit&id=12');
 });

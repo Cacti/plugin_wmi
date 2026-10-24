@@ -222,7 +222,7 @@ if (!function_exists('raise_message')) {
 
 if (!function_exists('get_request_var')) {
 	function get_request_var($name) {
-		return '';
+		return $GLOBALS['__test_request'][$name] ?? '';
 	}
 }
 
