@@ -68,22 +68,45 @@ interface Wmi_Transport {
 /**
  * Default transport: the Linux `wmic` client.
  *
- * stdout is the result; stderr is kept apart and only added to the error
- * text. A wmic that does not finish within the timeout is stopped.
+ * The credentials go to wmic in a private authentication file (-A) so they
+ * never appear in the process list. stdout is the result; stderr is kept
+ * apart and only added to the error text.
  */
 class Wmic_Shell_Transport implements Wmi_Transport {
 	private ?string $error = null;
 
 	/**
-	 * @param int $timeout Seconds to wait for wmic before it is stopped.
+	 * @param int         $timeout  Seconds to wait for wmic before it is stopped.
+	 * @param string|null $temp_dir Directory for the authentication file; the
+	 *                              system temporary directory when null.
 	 */
-	public function __construct(private int $timeout = 120) {
+	public function __construct(
+		private int $timeout = 120,
+		private ?string $temp_dir = null
+	) {
 	}
 
 	public function query(Wmi_Request $request): array|false {
 		$this->error = null;
 
-		$result = $this->run((DIRECTORY_SEPARATOR === '/' ? 'exec ' : '') . $this->build_command($request));
+		if (preg_match('/[\r\n\0]/', $request->username . $request->password)) {
+			$this->error = 'ERROR: WMI credentials must not contain line breaks';
+
+			return false;
+		}
+
+		$auth = $this->create_auth_file($request);
+
+		try {
+			$result = $this->run(
+				(DIRECTORY_SEPARATOR === '/' ? 'exec ' : '') . $this->build_command($request, $auth['file'] ?? null)
+			);
+		} finally {
+			if ($auth !== null) {
+				@unlink($auth['file']);
+				@rmdir($auth['dir']);
+			}
+		}
 
 		if ($result === null) {
 			$this->error = 'ERROR: Unable to start ' . $request->binary;
@@ -122,16 +145,24 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 * metacharacters on win32. The delimiter is quoted so its pipe characters
 	 * are not read as a shell pipeline. The hostname follows a literal `//`, so
 	 * it can never be read as an option.
+	 *
+	 * @param string|null $auth_file Credentials file for --authentication-file;
+	 *                               without it the credentials are passed as
+	 *                               arguments, which any local user can read.
 	 */
-	public function build_command(Wmi_Request $request): string {
+	public function build_command(Wmi_Request $request, ?string $auth_file = null): string {
 		$namespace = $request->namespace !== ''
 			? ' --namespace=' . cacti_escapeshellarg($this->single_backslashes($this->strip_metachars($request->namespace)))
 			: '';
 
+		$credentials = $auth_file !== null
+			? ' --authentication-file=' . cacti_escapeshellarg($auth_file)
+			: ' --user=' . cacti_escapeshellarg($request->username) .
+				' --password=' . cacti_escapeshellarg($request->password);
+
 		return cacti_escapeshellarg($request->binary) .
 			' --delimiter=' . cacti_escapeshellarg($request->separator) .
-			' --user=' . cacti_escapeshellarg($request->username) .
-			' --password=' . cacti_escapeshellarg($request->password) .
+			$credentials .
 			$namespace .
 			' //' . cacti_escapeshellarg($this->strip_metachars(trim($request->hostname))) .
 			' ' . cacti_escapeshellarg($request->query);
@@ -147,6 +178,63 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	}
 
 	/**
+	 * Write the credentials to a file only this user can read, inside a
+	 * directory with a random name. Returns null, after logging a warning,
+	 * when that is not possible; the caller then falls back to arguments.
+	 *
+	 * @return array{dir: string, file: string}|null
+	 */
+	private function create_auth_file(Wmi_Request $request): ?array {
+		$base = $this->temp_dir ?? sys_get_temp_dir();
+		$dir  = rtrim($base, '/') . '/wmi-' . bin2hex(random_bytes(8));
+
+		if (!is_dir($base) || !is_writable($base) || !@mkdir($dir, 0700)) {
+			cacti_log('WARNING: Unable to create a private directory for the wmic credentials; passing them as arguments', false, 'WMI');
+
+			return null;
+		}
+
+		$file    = $dir . '/' . bin2hex(random_bytes(8));
+		$handle  = $this->open_new_file($file);
+		$written = false;
+
+		if ($handle !== false) {
+			$content = $this->auth_file_content($request);
+			$written = fwrite($handle, $content) === strlen($content);
+
+			fclose($handle);
+		}
+
+		if (!$written || !@chmod($file, 0600)) {
+			if (is_file($file)) {
+				unlink($file);
+			}
+
+			rmdir($dir);
+
+			cacti_log('WARNING: Unable to write the wmic credentials file; passing the credentials as arguments', false, 'WMI');
+
+			return null;
+		}
+
+		return ['dir' => $dir, 'file' => $file];
+	}
+
+	/**
+	 * Create a file that must not exist yet, readable only by this user.
+	 *
+	 * @return resource|false
+	 */
+	protected function open_new_file(string $file) {
+		$old    = umask(0077);
+		$handle = @fopen($file, 'x');
+
+		umask($old);
+
+		return $handle;
+	}
+
+	/**
 	 * Start a process with its stdout and stderr as pipes.
 	 *
 	 * @param array<int, resource> $pipes
@@ -155,6 +243,22 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 */
 	protected function start_process(string $command, ?array &$pipes) {
 		return proc_open($command, [0 => ['file', '/dev/null', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+	}
+
+	/**
+	 * The samba credentials file format. A DOMAIN\user or DOMAIN/user name is
+	 * split the way wmic splits --user.
+	 */
+	private function auth_file_content(Wmi_Request $request): string {
+		$content = '';
+		$user    = $request->username;
+
+		if (preg_match('#^([^\\\\/]+)[\\\\/](.+)$#', $user, $match)) {
+			$content = 'domain=' . $match[1] . "\n";
+			$user    = $match[2];
+		}
+
+		return 'username=' . $user . "\n" . 'password=' . $request->password . "\n" . $content;
 	}
 
 	/**

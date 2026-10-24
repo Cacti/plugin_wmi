@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* security: Pass the Windows credentials to wmic in a private authentication file instead of --user and --password arguments, so they no longer show up in the process list
 * issue: Read wmic's stderr apart from its stdout, add it to the error text only, and stop a wmic that does not finish within two minutes
 * issue: Validate the Query Tool host as an IPv4 address, an IPv6 address or an RFC 1123 host name; the old check refused IPv6, short names and longer top level labels and was never called
 * issue: Record the WMI query start time from the database clock so devices are not polled again every cycle when PHP and the database use different time zones
