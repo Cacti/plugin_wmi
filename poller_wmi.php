@@ -399,10 +399,6 @@ function process_device($host_id) {
 	// database clock: PHP and the database session may use different time zones.
 	$qstart = db_fetch_cell('SELECT NOW()');
 
-	if (!$qstart) {
-		$qstart = date('Y-m-d H:i:s');
-	}
-
 	if (cacti_sizeof($queries_to_run)) {
 		foreach ($queries_to_run as $q) {
 			$qmstart = microtime(true);
