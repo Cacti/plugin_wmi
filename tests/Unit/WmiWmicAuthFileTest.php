@@ -36,7 +36,9 @@ class Wmi_Test_Failing_Transport extends Wmic_Shell_Transport {
 		}
 
 		if ($this->failure === self::SHORT_FILE) {
-			// A stream that cannot be written to, so the write comes up short.
+			// The file exists, but the stream cannot be written to, so the write comes up short.
+			file_put_contents($file, '');
+
 			return fopen('php://memory', 'r');
 		}
 
