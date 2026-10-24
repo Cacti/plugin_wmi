@@ -50,9 +50,19 @@ it('stops waiting and releases the seed rows once the deadline passes', function
 	expect($GLOBALS['__test_cacti_log'][0])->toContain('WMI collectors');
 });
 
-it('expires stale locks before the master checks for a running collector', function () {
-	$source = plugin_test_read_source('poller_wmi.php');
+it('keeps waiting right at the deadline and counts the collectors still running', function () {
+	$GLOBALS['__test_fetch_cell_map']['FROM wmi_processes WHERE taskid'] = '1';
 
-	expect(strpos($source, 'wmi_purge_stale_processes()'))->toBeLessThan(strpos($source, "SELECT COUNT(*) FROM wmi_processes') > 0"));
-	expect($source)->toContain('wmi_collectors_running($seed, $wait_began)');
+	expect(wmi_collectors_running(77, time() - 3600, 3600))->toBe(1);
+	expect($GLOBALS['__test_db_calls'])->toBe(array());
+});
+
+it('treats a missing count as no running collectors', function () {
+	expect(wmi_collectors_running(77, time(), 3600))->toBe(0);
+});
+
+it('purges with the default age of one hour', function () {
+	wmi_purge_stale_processes();
+
+	expect($GLOBALS['__test_db_calls'][0]['params'])->toBe(array(3600));
 });
