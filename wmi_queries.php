@@ -142,7 +142,7 @@ function actions_queries() {
 	global $colors, $ds_actions, $config;
 
 	// ================= input validation =================
-	input_validate_input_number(get_request_var_post('drp_action'));
+	input_validate_input_number(get_nfilter_request_var('drp_action'));
 	// ====================================================
 
 	if (!array_key_exists((int) get_request_var('drp_action'), $ds_actions)) {
