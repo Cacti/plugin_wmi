@@ -66,32 +66,50 @@ interface Wmi_Transport {
 }
 
 /**
- * Default transport: the Linux `wmic` client invoked through the shell.
+ * Default transport: the Linux `wmic` client.
+ *
+ * stdout is the result; stderr is kept apart and only added to the error
+ * text. A wmic that does not finish within the timeout is stopped.
  */
 class Wmic_Shell_Transport implements Wmi_Transport {
 	private ?string $error = null;
 
+	/**
+	 * @param int $timeout Seconds to wait for wmic before it is stopped.
+	 */
+	public function __construct(private int $timeout = 120) {
+	}
+
 	public function query(Wmi_Request $request): array|false {
 		$this->error = null;
 
-		$output = [];
-		$status = 0;
+		$result = $this->run((DIRECTORY_SEPARATOR === '/' ? 'exec ' : '') . $this->build_command($request));
 
-		exec($this->build_command($request), $output, $status);
-
-		if ($status !== 0) {
-			$this->error = 'ERROR: ' . implode("\n", $output);
+		if ($result === null) {
+			$this->error = 'ERROR: Unable to start ' . $request->binary;
 
 			return false;
 		}
 
-		if (count($output) === 0) {
-			$this->error = 'ERROR: WMI Returned no Data';
+		if ($result['timed_out']) {
+			$this->error = $this->with_stderr('ERROR: wmic did not finish within ' . $this->timeout . ' seconds', $result['stderr']);
 
 			return false;
 		}
 
-		return $output;
+		if ($result['status'] !== 0) {
+			$this->error = $this->with_stderr('ERROR: ' . implode("\n", $result['lines']), $result['stderr']);
+
+			return false;
+		}
+
+		if (count($result['lines']) === 0) {
+			$this->error = $this->with_stderr('ERROR: WMI Returned no Data', $result['stderr']);
+
+			return false;
+		}
+
+		return $result['lines'];
 	}
 
 	public function error(): ?string {
@@ -102,7 +120,8 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 * Build the wmic command line. Every device-influenced value is shell
 	 * escaped; the hostname and namespace are additionally stripped of cmd.exe
 	 * metacharacters on win32. The delimiter is quoted so its pipe characters
-	 * are not read as a shell pipeline.
+	 * are not read as a shell pipeline. The hostname follows a literal `//`, so
+	 * it can never be read as an option.
 	 */
 	public function build_command(Wmi_Request $request): string {
 		$namespace = $request->namespace !== ''
@@ -125,6 +144,90 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 */
 	private function single_backslashes(string $value): string {
 		return preg_replace('/\\\\+/', '\\\\', $value);
+	}
+
+	/**
+	 * Start a process with its stdout and stderr as pipes.
+	 *
+	 * @param array<int, resource> $pipes
+	 *
+	 * @return resource|false
+	 */
+	protected function start_process(string $command, ?array &$pipes) {
+		return proc_open($command, [0 => ['file', '/dev/null', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+	}
+
+	/**
+	 * Run a command with stdout and stderr read separately, stopping it when
+	 * it takes longer than the timeout.
+	 *
+	 * @return array{status: int, lines: array<int, string>, stderr: string, timed_out: bool}|null
+	 */
+	private function run(string $command): ?array {
+		$process = $this->start_process($command, $pipes);
+
+		if (!is_resource($process)) {
+			return null;
+		}
+
+		$open     = [1 => $pipes[1], 2 => $pipes[2]];
+		$buffer   = [1 => '', 2 => ''];
+		$deadline = microtime(true) + $this->timeout;
+		$expired  = false;
+
+		foreach ($open as $stream) {
+			stream_set_blocking($stream, false);
+		}
+
+		while ($open !== []) {
+			$left = $deadline - microtime(true);
+
+			if ($left <= 0) {
+				$expired = true;
+
+				break;
+			}
+
+			$read   = $open;
+			$write  = null;
+			$except = null;
+
+			@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
+
+			foreach ($read as $key => $stream) {
+				$chunk = fread($stream, 8192);
+
+				if ($chunk === false || ($chunk === '' && feof($stream))) {
+					unset($open[$key]);
+				} else {
+					$buffer[$key] .= $chunk;
+				}
+			}
+		}
+
+		if ($expired) {
+			proc_terminate($process, 9);
+		}
+
+		fclose($pipes[1]);
+		fclose($pipes[2]);
+
+		$status = proc_close($process);
+
+		if (substr($buffer[1], -1) === "\n") {
+			$buffer[1] = substr($buffer[1], 0, -1);
+		}
+
+		return [
+			'status'    => $expired ? -1 : $status,
+			'lines'     => $buffer[1] === '' ? [] : array_map('rtrim', explode("\n", $buffer[1])),
+			'stderr'    => substr(trim($buffer[2]), 0, 2000),
+			'timed_out' => $expired,
+		];
+	}
+
+	private function with_stderr(string $message, string $stderr): string {
+		return $stderr === '' ? $message : ($message === 'ERROR: ' ? 'ERROR: ' : $message . "\n") . $stderr;
 	}
 
 	/**
