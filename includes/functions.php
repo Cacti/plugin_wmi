@@ -377,11 +377,11 @@ function plugin_wmi_create_resource_xml($id) {
  * Called from poller_wmi.php's polling loop for each host/query pairing
  * configured to use WMI-based data collection.
  *
- * @param int $host_id      The Cacti host id to query.
- * @param int $wmi_query_id The wmi_wql_queries.id to run against the
- *                          host.
- * @param Wmi_Transport|null $transport Transport override; the OS default
- *                          is used when null.
+ * @param int                $host_id      The Cacti host id to query.
+ * @param int                $wmi_query_id The wmi_wql_queries.id to run against the
+ *                                         host.
+ * @param Wmi_Transport|null $transport    Transport override; the OS default
+ *                                         is used when null.
  *
  * @return bool|void True when the query succeeded and results were
  *                   cached; false when the host's WMI account/query
