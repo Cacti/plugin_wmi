@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Index cached WMI rows by every column of a comma separated primary key so multi-row results are no longer overwritten
 * issue: Purge WMI cache rows the device stopped returning, and keep the existing rows when a query fails
 * issue: Expire stale wmi_processes lock rows and stop the master poller waiting indefinitely for collectors that died
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive

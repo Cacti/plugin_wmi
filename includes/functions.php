@@ -471,21 +471,9 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 		if (cacti_sizeof($data)) {
 			$sql = [];
 
-			$pk_index = -1;
-
-			if (cacti_sizeof($indexes)) {
-				foreach ($indexes as $index => $value) {
-					if ($value == $wmi_query['primary_key']) {
-						$pk_index = $index;
-
-						break;
-					}
-				}
-			}
-
 			if (cacti_sizeof($data)) {
 				foreach ($data as $row) {
-					$pk = isset($row[$pk_index]) ? $row[$pk_index] : 'N/A';
+					$pk = wmi_row_index($row, $indexes, $wmi_query['primary_key']);
 
 					foreach ($row as $index => $value) {
 						if (!isset($indexes[$index])) {
@@ -554,6 +542,34 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 		WHERE host_id = ?
 		AND wmi_query_id = ?',
 		[$host_id, $wmi_query_id]);
+}
+
+/**
+ * Builds the host_wmi_cache index value for one result row from the query's
+ * primary key. A comma separated key joins its columns' values with a comma.
+ * 'None', an empty key, or a key column missing from the result header yields
+ * 'N/A', which is the single shared index for queries that return one row.
+ *
+ * @param array<int, string> $row         One result row.
+ * @param array<int, string> $indexes     The result's column header.
+ * @param string             $primary_key The query's primary key setting.
+ *
+ * @return string The cache index for the row.
+ */
+function wmi_row_index($row, $indexes, $primary_key) {
+	$values = [];
+
+	foreach (explode(',', $primary_key) as $column) {
+		$position = array_search(trim($column), $indexes, true);
+
+		if ($position === false || !isset($row[$position])) {
+			return 'N/A';
+		}
+
+		$values[] = $row[$position];
+	}
+
+	return implode(',', $values);
 }
 
 /**

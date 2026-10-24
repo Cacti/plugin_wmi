@@ -91,3 +91,40 @@ it('drops the cached rows of a device that no longer exists', function () {
 	expect($statements)->toHaveCount(1);
 	expect($statements[0])->toContain('DELETE FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ?');
 });
+
+it('indexes a row by a single primary key column', function () {
+	expect(wmi_row_index(array('Spooler', 'Running'), array('Name', 'State'), 'Name'))->toBe('Spooler');
+});
+
+it('indexes a row by every column of a comma separated primary key', function () {
+	expect(wmi_row_index(array('C:', 'D1', 'x'), array('Drive', 'Disk', 'Size'), 'Drive, Disk'))->toBe('C:,D1');
+});
+
+it('uses the shared index when the key is None or missing from the header', function () {
+	$header = array('Name', 'State');
+
+	expect(wmi_row_index(array('a', 'b'), $header, 'None'))->toBe('N/A');
+	expect(wmi_row_index(array('a', 'b'), $header, 'Name,Missing'))->toBe('N/A');
+	expect(wmi_row_index(array('a'), $header, 'State'))->toBe('N/A');
+});
+
+it('caches every row of a result whose primary key spans two columns', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_wql_queries']['primary_key'] = 'Name,State';
+
+	$t = new Wmi_Test_Canned_Transport(array('Win32_Service', 'Name|+|State', 'Spooler|+|Running', 'Spooler|+|Stopped'));
+
+	ob_start();
+	run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	$insert = '';
+
+	foreach (wmi_test_cache_statements() as $statement) {
+		if (strpos($statement, 'INSERT INTO') === 0) {
+			$insert = $statement;
+		}
+	}
+
+	expect($insert)->toContain("'Spooler,Running'");
+	expect($insert)->toContain("'Spooler,Stopped'");
+});
