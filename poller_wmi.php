@@ -395,7 +395,13 @@ function process_device($host_id) {
 	db_execute_prepared('REPLACE INTO wmi_processes (pid, taskid) VALUES (?, ?)', [getmypid(), $seed]);
 	db_execute_prepared('DELETE FROM wmi_processes WHERE pid = ? AND taskid = ?', [$key, $seed]);
 
-	$qstart  = date('Y-m-d H:i:s');
+	// last_started is compared with NOW() in SQL, so take the time from the
+	// database clock: PHP and the database session may use different time zones.
+	$qstart = db_fetch_cell('SELECT NOW()');
+
+	if (!$qstart) {
+		$qstart = date('Y-m-d H:i:s');
+	}
 
 	if (cacti_sizeof($queries_to_run)) {
 		foreach ($queries_to_run as $q) {

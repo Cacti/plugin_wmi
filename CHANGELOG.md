@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Record the WMI query start time from the database clock so devices are not polled again every cycle when PHP and the database use different time zones
 * security: Run the WMI Query Tool query action only for POST requests so credentials stay out of URLs, access logs and browser history
 * dev: Cover the Authentication, Queries and Query Tool pages and the Device Template hook with real-request end-to-end tests and replace the source-text checks
 * dev: Record which plugin lines the end-to-end run executes and report the changed lines no suite reaches (tests/bin/e2e-coverage-report.php)

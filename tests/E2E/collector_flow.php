@@ -106,8 +106,6 @@ foreach ($key_cases as $label => [$key, $rows]) {
 	$out['key_' . $label] = refresh();
 }
 
-$out['key_duplicate_state'] = null;
-
 db_execute_prepared('UPDATE wmi_wql_queries SET primary_key = ? WHERE id = ?', ['Name', QUERY_SVC]);
 db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [HOST_A]);
 wmi_e2e_wmic_default(wmi_e2e_result('Win32_Service', $svc_header, [['A', 'Running'], ['A', 'Stopped']]), 0);
@@ -147,8 +145,8 @@ $out['log'] = wmi_e2e_log_since_boot();
 // Poller: three hosts, two queries, one failing host/query pair.
 db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id >= ?', [HOST_A]);
 db_execute_prepared('DELETE FROM wmi_wql_queries WHERE id >= ?', [QUERY_SVC]);
-wmi_e2e_add_query(QUERY_SVC, 'e2e-svc', 'root\\\\CIMV2', 'SELECT Name,State FROM Win32_Service', 'Name');
-wmi_e2e_add_query(QUERY_PRC, 'e2e-prc', 'root\\\\CIMV2', 'SELECT ProcessId,Name FROM Win32_Process', 'ProcessId');
+wmi_e2e_add_query(QUERY_SVC, 'e2e-svc', 'root\\\\CIMV2', 'SELECT Name,State FROM Win32_Service', 'Name', 3600);
+wmi_e2e_add_query(QUERY_PRC, 'e2e-prc', 'root\\\\CIMV2', 'SELECT ProcessId,Name FROM Win32_Process', 'ProcessId', 3600);
 wmi_e2e_link_template(TEMPLATE, QUERY_SVC);
 wmi_e2e_link_template(TEMPLATE, QUERY_PRC);
 
