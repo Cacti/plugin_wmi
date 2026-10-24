@@ -196,6 +196,16 @@ jobs:
     - name: Set expected Cacti version for unit tests
       run: echo -n "${{ env.CACTI }}" | sudo tee ${{ github.workspace }}/cacti/plugins/wmi/tests/.cacti-version > /dev/null
 
+    # Installing Cacti with sudo leaves log/cacti.log owned by root, and
+    # Cacti's CLI bootstrap refuses to start when it cannot write that file.
+    # The end-to-end collector test runs Cacti as the runner user.
+    - name: Make the Cacti log writable for the test user
+      run: |
+        sudo mkdir -p ${{ github.workspace }}/cacti/log
+        sudo chown -R www-data:runner ${{ github.workspace }}/cacti/log
+        sudo chmod 775 ${{ github.workspace }}/cacti/log
+        sudo find ${{ github.workspace }}/cacti/log -type f -exec chmod 664 {} \;
+
     - name: Run Pest Unit Tests
       env:
         WMI_E2E: '1'
