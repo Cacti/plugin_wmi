@@ -69,11 +69,6 @@ function process_request_vars() {
 			'default' => '',
 			'options' => ['options' => 'sanitize_search_string']
 		],
-		'password' => [
-			'filter'  => FILTER_DEFAULT,
-			'pageset' => true,
-			'default' => '',
-		],
 		'namespace' => [
 			'filter'  => FILTER_CALLBACK,
 			'pageset' => true,
@@ -395,7 +390,7 @@ function show_tools() {
 	print "<td><input type='text' size='30' id='username' value='" . html_escape_request_var('username') . "'></td>";
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Password', 'wmi') . '</td>';
-	print "<td><input type='password' size='30' id='password' value='" . html_escape_request_var('password') . "'></td>";
+	print "<td><input type='password' size='30' id='password' value='' autocomplete='off'></td>";
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Namespace', 'wmi') . '</td>';
 	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>";

@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* security: Stop keeping the Query Tool password in the session and echoing it back into the form
 * issue: Pass the default WMI namespace to wmic with a single backslash
 * issue: Log the reason a WMI query failed during polling
 * issue: Index cached WMI rows by every column of a comma separated primary key so multi-row results are no longer overwritten
