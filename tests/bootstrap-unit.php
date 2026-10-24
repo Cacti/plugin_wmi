@@ -169,7 +169,7 @@ if (!function_exists('api_plugin_db_table_create')) {
 
 if (!function_exists('read_config_option')) {
 	function read_config_option($name, $force = false) {
-		return '';
+		return $GLOBALS['__test_config'][$name] ?? '';
 	}
 }
 

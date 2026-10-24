@@ -566,3 +566,11 @@ msgstr ""
 #: wmi_tools.php
 msgid "Showing columns and first one or two rows of data."
 msgstr ""
+
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""

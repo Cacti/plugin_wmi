@@ -331,7 +331,7 @@ function plugin_wmi_create_resource_xml($id) {
 	if (isset($wmic['id'])) {
 		$data = "<WMIQuery>\n";
 		$data .= '	<name>' . $wmic['name'] . "</name>\n";
-		$data .= "	<script_path>|path_cacti|/scripts/wmi-script.php</script_path>\n";
+		$data .= "	<script_path>|path_cacti|/plugins/wmi/script/wmi-script.php</script_path>\n";
 		$data .= "	<script_function>wmi_script</script_function>\n";
 		$data .= '	<description>WMI Query for ' . $wmic['name'] . "</description>\n";
 		$data .= "	<script_server>php</script_server>\n";

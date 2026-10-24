@@ -528,6 +528,18 @@ function wmi_config_settings() {
 	} else {
 		$settings['misc'] = $temp;
 	}
+
+	if (!isset($settings['path'])) {
+		$settings['path'] = [];
+	}
+
+	$settings['path']['path_wmi'] = [
+		'friendly_name' => __('WMI Client (wmic) Path', 'wmi'),
+		'description'   => __('The path to the wmic binary used to query Windows devices from a Linux Cacti server.', 'wmi'),
+		'method'        => 'filepath',
+		'max_length'    => '255',
+		'default'       => '/usr/bin/wmic'
+	];
 }
 
 /**
