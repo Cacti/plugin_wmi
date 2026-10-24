@@ -106,7 +106,7 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 */
 	public function build_command(Wmi_Request $request): string {
 		$namespace = $request->namespace !== ''
-			? ' --namespace=' . cacti_escapeshellarg($this->strip_metachars($request->namespace))
+			? ' --namespace=' . cacti_escapeshellarg($this->single_backslashes($this->strip_metachars($request->namespace)))
 			: '';
 
 		return cacti_escapeshellarg($request->binary) .
@@ -116,6 +116,15 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 			$namespace .
 			' //' . cacti_escapeshellarg($this->strip_metachars(trim($request->hostname))) .
 			' ' . cacti_escapeshellarg($request->query);
+	}
+
+	/**
+	 * Namespaces are stored with doubled backslashes between segments, a form
+	 * that only collapsed to one backslash inside a double-quoted shell
+	 * string. The value is now single-quoted, so collapse it here.
+	 */
+	private function single_backslashes(string $value): string {
+		return preg_replace('/\\\\+/', '\\\\', $value);
 	}
 
 	/**
