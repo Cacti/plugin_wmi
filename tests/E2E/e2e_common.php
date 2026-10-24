@@ -122,7 +122,7 @@ function wmi_e2e_finish(): void {
 		db_execute_prepared('DELETE FROM plugin_config WHERE directory = ?', ['wmi']);
 	}
 
-	foreach (['wmic', 'out', 'status', 'argv', 'calls', 'rules'] as $name) {
+	foreach (['wmic', 'out', 'status', 'argv', 'calls', 'rules', 'auth_content', 'auth_path', 'auth_mode'] as $name) {
 		$path = $state['work'] . '/' . $name;
 
 		if (is_file($path)) {
@@ -181,6 +181,17 @@ W="$(dirname "$0")"
 ALL="$*"
 printf '%s\n' "$@" > "$W/argv"
 printf '%s\n' "$ALL" >> "$W/calls"
+for a in "$@"; do
+  case "$a" in
+    --authentication-file=*)
+      AUTH="${a#--authentication-file=}"
+      cp "$AUTH" "$W/auth_content"
+      printf '%s' "$AUTH" > "$W/auth_path"
+      stat -c '%a' "$AUTH" > "$W/auth_mode" 2>/dev/null || stat -f '%Lp' "$AUTH" > "$W/auth_mode"
+      ;;
+  esac
+done
+echo "wmic: note on stderr" >&2
 OUT="$W/out"
 ST="$(cat "$W/status")"
 TAB="$(printf '\t')"
@@ -276,6 +287,20 @@ function wmi_e2e_calls(): array {
 	$path = $GLOBALS['wmi_e2e']['work'] . '/calls';
 
 	return is_file($path) ? array_values(array_filter(explode("\n", (string) file_get_contents($path)), 'strlen')) : [];
+}
+
+/**
+ * What the last wmic call recorded about its credentials file: the content,
+ * its mode, and whether it still exists.
+ *
+ * @return array{content: string, mode: string, path: string, exists: bool}
+ */
+function wmi_e2e_last_auth(): array {
+	$work = $GLOBALS['wmi_e2e']['work'];
+	$read = fn (string $name): string => is_file($work . '/' . $name) ? (string) file_get_contents($work . '/' . $name) : '';
+	$path = $read('auth_path');
+
+	return ['content' => $read('auth_content'), 'mode' => trim($read('auth_mode')), 'path' => $path, 'exists' => $path !== '' && file_exists($path)];
 }
 
 function wmi_e2e_add_account(int $id, string $name, string $username, string $password): void {
