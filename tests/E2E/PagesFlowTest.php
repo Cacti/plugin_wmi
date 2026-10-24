@@ -174,6 +174,15 @@ describe('WMI pages through real requests', function () {
 		expect($o['tool_no_realm']['ran'])->toBeFalse();
 	});
 
+	it('does not run a tool query sent by GET and echoes no credentials', function () {
+		$o = wmi_e2e_pages()['tool_get'];
+
+		expect($o['ran'])->toBeFalse();
+		expect($o['wmic_calls'])->toBe(0);
+		expect($o['shows_form'])->toBeTrue();
+		expect($o['secret_echoed'])->toBeFalse();
+	});
+
 	it('builds the device template remove form with an id parameter and links and unlinks queries', function () {
 		$o = wmi_e2e_pages();
 

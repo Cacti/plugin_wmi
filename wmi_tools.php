@@ -31,7 +31,16 @@ set_default_action();
 
 process_request_vars();
 
-switch (get_request_var('action')) {
+$action = get_request_var('action');
+
+// The query action sends credentials to a host. Run it only for a POST, where
+// the CSRF token applies and nothing travels in the URL, a log or the history;
+// any other method gets the empty form.
+if ($action == 'query' && ($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+	$action = '';
+}
+
+switch ($action) {
 	case 'query':
 		walk_host();
 

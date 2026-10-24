@@ -294,8 +294,16 @@ $out['tool_no_csrf'] = ['code' => $r['code'], 'ran' => strpos($r['body'], 'Spool
 $r = $nowmi->post($pages['tools'], $tool_fields, $nowmi->page($pages['tools'])['token'], ['action' => 'query', 'header' => 'false']);
 $out['tool_no_realm'] = ['ran' => strpos($r['body'], 'Spooler') !== false];
 
-$r = $admin->request($pages['tools'], ['action' => 'query', 'header' => 'false'] + $tool_fields);
-$out['tool_get'] = ['code' => $r['code'], 'ran' => strpos($r['body'], 'Spooler') !== false];
+$calls_before = count(wmi_e2e_calls());
+$r           = $admin->request($pages['tools'], ['action' => 'query', 'header' => 'false'] + $tool_fields);
+$page_get    = $admin->request($pages['tools'], ['action' => 'query']);
+$out['tool_get'] = [
+	'code'          => $r['code'],
+	'ran'           => strpos($r['body'], 'Spooler') !== false || strpos($page_get['body'], 'Spooler') !== false,
+	'wmic_calls'    => count(wmi_e2e_calls()) - $calls_before,
+	'shows_form'    => strpos($page_get['body'], "id='command'") !== false,
+	'secret_echoed' => strpos($r['body'], $secret) !== false || strpos($page_get['body'], $secret) !== false,
+];
 
 // The Device Template hook: the confirmation form posts back to the edit page.
 $template = WMI_E2E_ID + 7;
