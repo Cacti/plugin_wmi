@@ -549,6 +549,40 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 }
 
 /**
+ * Checks the fields of a submitted WMI account. A name and username are
+ * required, the password must match its confirmation, and a new account
+ * must have a password.
+ *
+ * @param string $name     The account name.
+ * @param string $username The Windows user name.
+ * @param string $password The new password, or '' to keep the stored one.
+ * @param string $confirm  The password confirmation.
+ * @param int    $id       The account id, 0 for a new account.
+ *
+ * @return bool True when the account can be saved.
+ */
+function wmi_account_input_valid($name, $username, $password, $confirm, $id) {
+	if ($name === '' || $username === '' || $password !== $confirm) {
+		return false;
+	}
+
+	return $password !== '' || $id > 0;
+}
+
+/**
+ * Checks that an encoded password fits the wmi_user_accounts.password
+ * column (varchar(256)) instead of being truncated or rejected by the
+ * database.
+ *
+ * @param string $encoded The value returned by Linux_WMI::encode().
+ *
+ * @return bool True when the value fits.
+ */
+function wmi_account_password_fits($encoded) {
+	return strlen($encoded) <= 256;
+}
+
+/**
  * Builds the host_wmi_cache index value for one result row from the query's
  * primary key. A comma separated key joins its columns' values with a comma.
  * 'None', an empty key, or a key column missing from the result header yields

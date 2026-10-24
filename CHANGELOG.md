@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Reject WMI account saves with a mismatched, missing or oversized password instead of saving a partial account
 * issue: Count all matching rows for the WMI Queries and Accounts pagers
 * security: Stop keeping the Query Tool password in the session and echoing it back into the form
 * issue: Pass the default WMI namespace to wmic with a single backslash
