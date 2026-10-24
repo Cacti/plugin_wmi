@@ -335,15 +335,16 @@ function wmi_e2e_quiet(callable $call) {
 function wmi_e2e_add_user(int $id, string $username, string $password, array $realms): void {
 	$row = db_fetch_row_prepared('SELECT * FROM user_auth WHERE id = 1');
 
-	$row['id']                   = $id;
-	$row['username']             = $username;
-	$row['password']             = password_hash($password, PASSWORD_DEFAULT);
-	$row['must_change_password'] = '';
-	$row['password_change']      = '';
-	$row['enabled']              = 'on';
-	$row['locked']               = '';
-	$row['failed_attempts']      = 0;
-	$row['tfa_enabled']          = '';
+	$row['id']       = $id;
+	$row['username'] = $username;
+	$row['password'] = password_hash($password, PASSWORD_DEFAULT);
+
+	// Columns differ between Cacti releases; only reset the ones this one has.
+	foreach (['must_change_password' => '', 'password_change' => '', 'enabled' => 'on', 'locked' => '', 'failed_attempts' => 0, 'tfa_enabled' => ''] as $column => $value) {
+		if (array_key_exists($column, $row)) {
+			$row[$column] = $value;
+		}
+	}
 
 	sql_save($row, 'user_auth', 'id', false);
 
@@ -488,12 +489,19 @@ function wmi_e2e_start_server(): array {
 		$state['root']
 	);
 
+	// Probe with curl: a failed connect there raises no PHP warning, which
+	// Cacti would write to its log.
 	for ($i = 0; $i < 100; $i++) {
-		$socket = @fsockopen('127.0.0.1', $port, $errno, $error, 0.2);
+		$probe = curl_init('http://127.0.0.1:' . $port . '/');
 
-		if ($socket !== false) {
-			fclose($socket);
+		curl_setopt_array($probe, [CURLOPT_NOBODY => true, CURLOPT_TIMEOUT => 2, CURLOPT_RETURNTRANSFER => true]);
+		curl_exec($probe);
 
+		$reached = curl_getinfo($probe, CURLINFO_HTTP_CODE) > 0;
+
+		curl_close($probe);
+
+		if ($reached) {
 			break;
 		}
 
