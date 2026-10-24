@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Use the default of 10 concurrent WMI collectors when the setting is empty instead of waiting forever
 * dev: Restore cacti.log after the end-to-end collector test so the CI log check stays clean
 * dev: Add an end-to-end collector test that drives poller_wmi.php and the cache refresh through a fake wmic against the CI Cacti install and database
 * issue: Fix the form action of the remove WMI Query confirmation on the Device Template page

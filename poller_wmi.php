@@ -215,6 +215,8 @@ function process_all_devices() {
 	$concurrent_processes = read_config_option('wmi_processes');
 
 	if (empty($concurrent_processes)) {
+		$concurrent_processes = 10;
+
 		set_config_option('wmi_processes', '10');
 	}
 

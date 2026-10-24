@@ -67,7 +67,7 @@ function cleanup(string $work, array $saved): void {
 	db_execute_prepared('DELETE FROM host WHERE id = ?', [ID]);
 	db_execute('DELETE FROM wmi_processes');
 
-	foreach (['path_wmi', 'log_verbosity'] as $name) {
+	foreach (['path_wmi', 'log_verbosity', 'wmi_processes'] as $name) {
 		if (isset($saved[$name]) && $saved[$name] !== false) {
 			db_execute_prepared('REPLACE INTO settings (name, value) VALUES (?, ?)', [$name, $saved[$name]]);
 		} else {
@@ -119,7 +119,7 @@ register_shutdown_function(function () use ($work, &$saved, $log_file, $log_exis
 
 plugin_wmi_setup_tables();
 
-foreach (['path_wmi', 'log_verbosity'] as $name) {
+foreach (['path_wmi', 'log_verbosity', 'wmi_processes'] as $name) {
 	$saved[$name] = db_fetch_cell_prepared('SELECT value FROM settings WHERE name = ?', [$name]) ?: false;
 }
 
@@ -187,8 +187,11 @@ db_execute_prepared("UPDATE wmi_wql_queries SET primary_key = 'Name' WHERE id = 
 db_execute_prepared('DELETE FROM host_wmi_cache WHERE host_id = ?', [ID]);
 fake_wmic_script($work, ['Win32_Service', 'Name' . $sep . 'State', 'A' . $sep . 'Running'], 0);
 
-$poller = escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/poller_wmi.php') . ' -M 2>&1';
+// An unset concurrency setting must not stall the master; bound the run anyway.
+$limit  = trim((string) shell_exec('command -v timeout')) !== '' ? 'timeout 120 ' : '';
+$poller = $limit . escapeshellarg(PHP_BINARY) . ' ' . escapeshellarg($root . '/plugins/wmi/poller_wmi.php') . ' -M 2>&1';
 
+db_execute_prepared("DELETE FROM settings WHERE name = 'wmi_processes'");
 db_execute('DELETE FROM wmi_processes');
 db_execute('INSERT INTO wmi_processes (pid, taskid, started) VALUES (1, 1, NOW())');
 $out['fresh_lock_output']  = shell_exec($poller);
