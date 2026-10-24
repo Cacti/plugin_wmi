@@ -86,8 +86,35 @@ function cleanup(string $work, array $saved): void {
 	}
 }
 
-register_shutdown_function(function () use ($work, &$saved) {
+/*
+ * The failure case logs a WARNING on purpose, and the CI workflow fails a job
+ * whose cacti.log holds any WARNING, ERROR or FATAL line. Remember how long
+ * the log was and cut it back to that length when the run ends, keeping the
+ * file's owner and mode.
+ */
+$log_file   = read_config_option('path_cactilog') ?: $root . '/log/cacti.log';
+$log_exists = is_file($log_file);
+$log_before = $log_exists ? (int) filesize($log_file) : 0;
+
+register_shutdown_function(function () use ($work, &$saved, $log_file, $log_exists, $log_before) {
 	cleanup($work, $saved);
+
+	clearstatcache(true, $log_file);
+
+	if (!is_file($log_file)) {
+		return;
+	}
+
+	if (!$log_exists) {
+		unlink($log_file);
+	} elseif (filesize($log_file) > $log_before) {
+		$handle = fopen($log_file, 'r+');
+
+		if ($handle !== false) {
+			ftruncate($handle, $log_before);
+			fclose($handle);
+		}
+	}
 });
 
 plugin_wmi_setup_tables();
@@ -135,16 +162,17 @@ ob_end_clean();
 $out['second_indexes'] = cached_indexes();
 
 // A failing query keeps the cached rows and logs the reason.
-fake_wmic_script($work, ['ERROR: Login to remote object.'], 1);
+fake_wmic_script($work, ['Login to remote object.'], 1);
 ob_start();
 $out['failed_ok']      = run_store_wmi_query(ID, ID);
 ob_end_clean();
 $out['failed_indexes'] = cached_indexes();
 $out['failed_present'] = (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM host_wmi_cache WHERE host_id = ? AND present = 0', [ID]);
 
-$log = (string) @file_get_contents(read_config_option('path_cactilog') ?: $root . '/log/cacti.log');
+clearstatcache(true, $log_file);
+$log = (string) substr((string) @file_get_contents($log_file), $log_before);
 
-$out['failure_logged'] = strpos($log, 'WMI Query[' . ID . '] for Device[' . ID . '] failed: ERROR: ') !== false;
+$out['failure_logged'] = strpos($log, 'WMI Query[' . ID . '] for Device[' . ID . '] failed: ERROR: Login to remote object.') !== false;
 
 // A two-column primary key keeps both rows that share a Name.
 db_execute_prepared("UPDATE wmi_wql_queries SET primary_key = 'Name,State' WHERE id = ?", [ID]);

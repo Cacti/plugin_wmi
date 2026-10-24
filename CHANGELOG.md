@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* dev: Restore cacti.log after the end-to-end collector test so the CI log check stays clean
 * dev: Add an end-to-end collector test that drives poller_wmi.php and the cache refresh through a fake wmic against the CI Cacti install and database
 * issue: Fix the form action of the remove WMI Query confirmation on the Device Template page
 * issue: Reject WMI account saves with a mismatched, missing or oversized password instead of saving a partial account
