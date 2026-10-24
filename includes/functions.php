@@ -377,9 +377,11 @@ function plugin_wmi_create_resource_xml($id) {
  * Called from poller_wmi.php's polling loop for each host/query pairing
  * configured to use WMI-based data collection.
  *
- * @param int $host_id      The Cacti host id to query.
- * @param int $wmi_query_id The wmi_wql_queries.id to run against the
- *                          host.
+ * @param int                $host_id      The Cacti host id to query.
+ * @param int                $wmi_query_id The wmi_wql_queries.id to run against the
+ *                                         host.
+ * @param Wmi_Transport|null $transport    Transport override; the OS default
+ *                                         is used when null.
  *
  * @return bool|void True when the query succeeded and results were
  *                   cached; false when the host's WMI account/query
@@ -391,7 +393,7 @@ function plugin_wmi_create_resource_xml($id) {
  * @global array $config Cacti global configuration array; used to load
  *                        this plugin's linux_wmi.php client.
  */
-function run_store_wmi_query($host_id, $wmi_query_id) {
+function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 	global $config;
 
 	$host_info = db_fetch_row_prepared('SELECT *
@@ -400,13 +402,6 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		[$host_id]);
 
 	$host_info = is_array($host_info) ? $host_info : [];
-
-	// Prepared old entries for removal
-	db_execute_prepared('UPDATE host_wmi_cache
-		SET present = 0
-		WHERE host_id = ?
-		AND wmi_query_id = ?',
-		[$host_id, $wmi_query_id]);
 
 	if (cacti_sizeof($host_info)) {
 		$auth_info = db_fetch_row_prepared('SELECT *
@@ -447,7 +442,7 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		// Cacti server and the wmic shell transport otherwise (see
 		// Linux_WMI::default_transport()), so the same client is used here
 		// regardless of $config['cacti_server_os'].
-		$wmi              = new Linux_WMI();
+		$wmi              = new Linux_WMI('', $transport);
 		$wmi->hostname    = $host;
 		$wmi->username    = $username;
 		$wmi->password    = $wmi->decode($password);
@@ -476,21 +471,9 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 		if (cacti_sizeof($data)) {
 			$sql = [];
 
-			$pk_index = -1;
-
-			if (cacti_sizeof($indexes)) {
-				foreach ($indexes as $index => $value) {
-					if ($value == $wmi_query['primary_key']) {
-						$pk_index = $index;
-
-						break;
-					}
-				}
-			}
-
 			if (cacti_sizeof($data)) {
 				foreach ($data as $row) {
-					$pk = isset($row[$pk_index]) ? $row[$pk_index] : 'N/A';
+					$pk = wmi_row_index($row, $indexes, $wmi_query['primary_key']);
 
 					foreach ($row as $index => $value) {
 						if (!isset($indexes[$index])) {
@@ -520,6 +503,13 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 				}
 			}
 
+			// Mark existing rows for removal only once fresh data is in hand
+			db_execute_prepared('UPDATE host_wmi_cache
+				SET present = 0
+				WHERE host_id = ?
+				AND wmi_query_id = ?',
+				[$host_id, $wmi_query_id]);
+
 			$parts = array_chunk($sql, 200);
 
 			foreach ($parts as $part) {
@@ -532,20 +522,128 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 						present=1');
 			}
 
+			// Remove entries the device no longer returns
+			db_execute_prepared('DELETE FROM host_wmi_cache
+				WHERE present = 0
+				AND host_id = ?
+				AND wmi_query_id = ?',
+				[$host_id, $wmi_query_id]);
+
 			return true;
 		} else {
+			$reason = is_string($wmi->error) ? $wmi->error : 'WMI returned no rows';
+
+			cacti_log('WARNING: WMI Query[' . $wmi_query_id . '] for Device[' . $host_id . '] failed: ' . $reason, false, 'WMI', POLLER_VERBOSITY_MEDIUM);
+
 			print $wmi->error;
 
 			return false;
 		}
 	}
 
-	// Remove old entries
+	// The device no longer exists, so drop whatever was cached for it
 	db_execute_prepared('DELETE FROM host_wmi_cache
-		WHERE present = 0
-		AND host_id = ?
+		WHERE host_id = ?
 		AND wmi_query_id = ?',
 		[$host_id, $wmi_query_id]);
+}
+
+/**
+ * Checks the fields of a submitted WMI account. A name and username are
+ * required, the password must match its confirmation, and a new account
+ * must have a password.
+ *
+ * @param string $name     The account name.
+ * @param string $username The Windows user name.
+ * @param string $password The new password, or '' to keep the stored one.
+ * @param string $confirm  The password confirmation.
+ * @param int    $id       The account id, 0 for a new account.
+ *
+ * @return bool True when the account can be saved.
+ */
+function wmi_account_input_valid($name, $username, $password, $confirm, $id) {
+	if ($name === '' || $username === '' || $password !== $confirm) {
+		return false;
+	}
+
+	return $password !== '' || $id > 0;
+}
+
+/**
+ * Checks that an encoded password fits the wmi_user_accounts.password
+ * column (varchar(256)) instead of being truncated or rejected by the
+ * database.
+ *
+ * @param string $encoded The value returned by Linux_WMI::encode().
+ *
+ * @return bool True when the value fits.
+ */
+function wmi_account_password_fits($encoded) {
+	return strlen($encoded) <= 256;
+}
+
+/**
+ * Builds the host_wmi_cache index value for one result row from the query's
+ * primary key. A comma separated key joins its columns' values with a comma.
+ * 'None', an empty key, or a key column missing from the result header yields
+ * 'N/A', which is the single shared index for queries that return one row.
+ *
+ * @param array<int, string> $row         One result row.
+ * @param array<int, string> $indexes     The result's column header.
+ * @param string             $primary_key The query's primary key setting.
+ *
+ * @return string The cache index for the row.
+ */
+function wmi_row_index($row, $indexes, $primary_key) {
+	$values = [];
+
+	foreach (explode(',', $primary_key) as $column) {
+		$position = array_search(trim($column), $indexes, true);
+
+		if ($position === false || !isset($row[$position])) {
+			return 'N/A';
+		}
+
+		$values[] = $row[$position];
+	}
+
+	return implode(',', $values);
+}
+
+/**
+ * Deletes wmi_processes lock rows older than $max_age seconds. A collector
+ * that was killed or never started leaves its row behind, and the master
+ * poller refuses to run while any row exists.
+ *
+ * @param int $max_age Age in seconds after which a lock row is stale.
+ *
+ * @return void
+ */
+function wmi_purge_stale_processes($max_age = 3600) {
+	db_execute_prepared('DELETE FROM wmi_processes WHERE started < DATE_SUB(NOW(), INTERVAL ? SECOND)', [(int) $max_age]);
+}
+
+/**
+ * Returns how many collectors launched under $seed are still running. Once
+ * $max_age seconds have passed since $began, the remaining lock rows are
+ * released and 0 is returned so the master poller stops waiting for them.
+ *
+ * @param int $seed    The master run's task identifier.
+ * @param int $began   Unix time the master started waiting.
+ * @param int $max_age Longest time in seconds to wait for the collectors.
+ *
+ * @return int The number of collectors still running.
+ */
+function wmi_collectors_running($seed, $began, $max_age = 3600) {
+	if (time() - $began > $max_age) {
+		db_execute_prepared('DELETE FROM wmi_processes WHERE taskid = ?', [$seed]);
+
+		cacti_log('WARNING: Gave up waiting for WMI collectors after ' . $max_age . ' seconds', false, 'WMI');
+
+		return 0;
+	}
+
+	return (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', [$seed]);
 }
 
 /**

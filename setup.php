@@ -336,7 +336,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_accounts.php:edit'] = [
 		'title'   => __('(Edit)', 'wmi'),
-		'mapping' => 'index.php:wmi_accounts.php:',
+		'mapping' => 'index.php:,wmi_accounts.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '2'
 	];
@@ -378,7 +378,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_tools.php:query'] = [
 		'title'   => __('(Query)', 'wmi'),
-		'mapping' => 'index.php:wmi_tools.php:',
+		'mapping' => 'index.php:,wmi_tools.php:',
 		'url'     => 'wmi_tools.php',
 		'level'   => '2'
 	];
@@ -724,7 +724,7 @@ function wmi_device_template_top() {
 		get_filter_request_var('host_template_id');
 		// ====================================================
 
-		form_start('host_templates.php?action=edit&id' . get_request_var('host_template_id'));
+		form_start('host_templates.php?action=edit&id=' . get_request_var('host_template_id'));
 
 		html_start_box('', '100%', false, 3, 'center', '');
 
