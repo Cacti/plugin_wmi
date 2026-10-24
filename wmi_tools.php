@@ -24,6 +24,7 @@
 
 chdir('../../');
 require('./include/auth.php');
+require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
 require_once('./lib/snmp.php');
 require_once('./lib/utility.php');
 
@@ -593,12 +594,21 @@ function walk_host() {
 		$command = get_nfilter_request_var('command');
 	}
 
-	$host = strtolower($host);
+	$host = strtolower(trim($host));
 
 	if ($username == '' || $password == '' || $host == '') {
 		print __('ERROR: You must provide a host, username, password and query', 'wmi');
 		exit;
 	}
+
+	$valid = wmi_valid_host($host);
+
+	if ($valid === false) {
+		print 'ERROR: The host must be an IPv4 or IPv6 address or a host name';
+		exit;
+	}
+
+	$host = $valid;
 
 	// Linux_WMI self-selects the PowerShell/CIM transport on a Windows
 	// Cacti server and the wmic shell transport otherwise, so the same
@@ -679,23 +689,4 @@ function walk_host() {
 	} else {
 		print nl2br(html_escape($wmi->error));
 	}
-}
-
-/**
- * Validates that a string looks like a syntactically plausible hostname
- * or IPv4 address (format only; does not perform DNS/network
- * verification). Currently unused/dead code: not called from anywhere
- * else in this file.
- *
- * @param string $host The candidate hostname or IP address.
- *
- * @return bool True when $host matches the expected hostname/IPv4
- *              pattern.
- */
-function is_valid_host($host) {
-	if (preg_match('/^((([0-9]{1,3}\.){3}[0-9]{1,3})|([0-9a-z-.]{0,61})?\.[a-z]{2,4})$/i', $host)) {
-		return true;
-	}
-
-	return false;
 }
