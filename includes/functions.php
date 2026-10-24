@@ -549,6 +549,42 @@ function run_store_wmi_query($host_id, $wmi_query_id) {
 }
 
 /**
+ * Deletes wmi_processes lock rows older than $max_age seconds. A collector
+ * that was killed or never started leaves its row behind, and the master
+ * poller refuses to run while any row exists.
+ *
+ * @param int $max_age Age in seconds after which a lock row is stale.
+ *
+ * @return void
+ */
+function wmi_purge_stale_processes($max_age = 3600) {
+	db_execute_prepared('DELETE FROM wmi_processes WHERE started < DATE_SUB(NOW(), INTERVAL ? SECOND)', [(int) $max_age]);
+}
+
+/**
+ * Returns how many collectors launched under $seed are still running. Once
+ * $max_age seconds have passed since $began, the remaining lock rows are
+ * released and 0 is returned so the master poller stops waiting for them.
+ *
+ * @param int $seed    The master run's task identifier.
+ * @param int $began   Unix time the master started waiting.
+ * @param int $max_age Longest time in seconds to wait for the collectors.
+ *
+ * @return int The number of collectors still running.
+ */
+function wmi_collectors_running($seed, $began, $max_age = 3600) {
+	if (time() - $began > $max_age) {
+		db_execute_prepared('DELETE FROM wmi_processes WHERE taskid = ?', [$seed]);
+
+		cacti_log('WARNING: Gave up waiting for WMI collectors after ' . $max_age . ' seconds', false, 'WMI');
+
+		return 0;
+	}
+
+	return (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', [$seed]);
+}
+
+/**
  * Returns the current unique hash for a WMI query, or generates a new
  * one if the stored value doesn't already look like a valid 128-bit hex
  * hash; does not itself persist the returned value. Called from

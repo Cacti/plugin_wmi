@@ -108,6 +108,12 @@ if (!function_exists('db_fetch_row')) {
 
 if (!function_exists('db_fetch_row_prepared')) {
 	function db_fetch_row_prepared($sql, $params = array()) {
+		foreach (($GLOBALS['__test_fetch_row_map'] ?? array()) as $needle => $row) {
+			if (strpos($sql, $needle) !== false) {
+				return $row;
+			}
+		}
+
 		return array();
 	}
 }
@@ -120,7 +126,19 @@ if (!function_exists('db_fetch_cell')) {
 
 if (!function_exists('db_fetch_cell_prepared')) {
 	function db_fetch_cell_prepared($sql, $params = array()) {
+		foreach (($GLOBALS['__test_fetch_cell_map'] ?? array()) as $needle => $value) {
+			if (strpos($sql, $needle) !== false) {
+				return $value;
+			}
+		}
+
 		return '';
+	}
+}
+
+if (!function_exists('db_qstr')) {
+	function db_qstr($text) {
+		return "'" . addslashes((string) $text) . "'";
 	}
 }
 

@@ -175,6 +175,8 @@ function process_all_devices() {
 
 	print 'NOTE: Processing Hosts Begins' . PHP_EOL;
 
+	wmi_purge_stale_processes();
+
 	// Do not process collectors are still running
 	if (db_fetch_cell('SELECT COUNT(*) FROM wmi_processes') > 0) {
 		print 'WARNING: Another WMI Collector is still running!  Exiting' . PHP_EOL;
@@ -247,8 +249,10 @@ function process_all_devices() {
 		print 'NOTE: All WMI Devices Launched, proceeding to wait for completion' . PHP_EOL;
 
 		// wait for all processes to end or max run time
+		$wait_began = time();
+
 		while (true) {
-			$processes_left = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', [$seed]);
+			$processes_left = wmi_collectors_running($seed, $wait_began);
 			$pl             = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 			if ($processes_left == 0) {

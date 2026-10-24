@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Expire stale wmi_processes lock rows and stop the master poller waiting indefinitely for collectors that died
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * security: Move the WMI Accounts and Queries filter rows selects' inline onChange handlers into the ready block so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
