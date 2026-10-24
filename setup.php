@@ -724,7 +724,7 @@ function wmi_device_template_top() {
 		get_filter_request_var('host_template_id');
 		// ====================================================
 
-		form_start('host_templates.php?action=edit&id' . get_request_var('host_template_id'));
+		form_start('host_templates.php?action=edit&id=' . get_request_var('host_template_id'));
 
 		html_start_box('', '100%', false, 3, 'center', '');
 

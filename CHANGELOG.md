@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Fix the form action of the remove WMI Query confirmation on the Device Template page
 * issue: Reject WMI account saves with a mismatched, missing or oversized password instead of saving a partial account
 * issue: Count all matching rows for the WMI Queries and Accounts pagers
 * security: Stop keeping the Query Tool password in the session and echoing it back into the form
