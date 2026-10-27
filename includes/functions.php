@@ -331,7 +331,7 @@ function plugin_wmi_create_resource_xml($id) {
 	if (isset($wmic['id'])) {
 		$data = "<WMIQuery>\n";
 		$data .= '	<name>' . $wmic['name'] . "</name>\n";
-		$data .= "	<script_path>|path_cacti|/scripts/wmi-script.php</script_path>\n";
+		$data .= "	<script_path>|path_cacti|/plugins/wmi/script/wmi-script.php</script_path>\n";
 		$data .= "	<script_function>wmi_script</script_function>\n";
 		$data .= '	<description>WMI Query for ' . $wmic['name'] . "</description>\n";
 		$data .= "	<script_server>php</script_server>\n";
@@ -644,6 +644,55 @@ function wmi_collectors_running($seed, $began, $max_age = 3600) {
 	}
 
 	return (int) db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', [$seed]);
+}
+
+/**
+ * Validates a host as typed into the Query Tool: an IPv4 address, an IPv6
+ * address (optionally in brackets), or a host name under RFC 1123 (labels of
+ * 1 to 63 letters, digits and hyphens that neither start nor end with a
+ * hyphen, at most 253 characters, optional trailing dot). IPv6 zone ids
+ * (fe80::1%eth0) are refused, as is a name whose last label is all digits.
+ *
+ * @param string $host The host as entered.
+ *
+ * @return string|false The host to use (brackets removed), or false when it is
+ *                      not a valid address or name.
+ */
+function wmi_valid_host($host) {
+	if ($host === '') {
+		return false;
+	}
+
+	if ($host[0] === '[' && substr($host, -1) === ']') {
+		$inner = substr($host, 1, -1);
+
+		return filter_var($inner, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false ? $inner : false;
+	}
+
+	if (filter_var($host, FILTER_VALIDATE_IP) !== false) {
+		return $host;
+	}
+
+	$name = substr($host, -1) === '.' ? substr($host, 0, -1) : $host;
+
+	if ($name === '' || strlen($name) > 253) {
+		return false;
+	}
+
+	$labels = explode('.', $name);
+
+	foreach ($labels as $label) {
+		if (!preg_match('/^[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?$/D', $label)) {
+			return false;
+		}
+	}
+
+	// Not a number: 999.1.1.1 is a malformed address, not a host name.
+	if (ctype_digit((string) end($labels))) {
+		return false;
+	}
+
+	return $host;
 }
 
 /**
