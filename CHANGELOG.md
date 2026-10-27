@@ -2,6 +2,29 @@
 
 --- develop ---
 
+* dev: Extend the end-to-end fake wmic with --authentication-file and a stderr line, and cover host validation, the credentials file and the script-server scripts end to end
+* issue: Point the script-server resource and its scripts at the files that exist, load Cacti from where it is, and register the wmic path as the path_wmi setting (default /usr/bin/wmic)
+* security: Pass the Windows credentials to wmic in a private authentication file instead of --user and --password arguments, so they no longer show up in the process list
+* issue: Read wmic's stderr apart from its stdout, add it to the error text only, and stop a wmic that does not finish within two minutes
+* issue: Validate the Query Tool host as an IPv4 address, an IPv6 address or an RFC 1123 host name; the old check refused IPv6, short names and longer top level labels and was never called
+* issue: Record the WMI query start time from the database clock so devices are not polled again every cycle when PHP and the database use different time zones
+* security: Run the WMI Query Tool query action only for POST requests so credentials stay out of URLs, access logs and browser history
+* dev: Cover the Authentication, Queries and Query Tool pages and the Device Template hook with real-request end-to-end tests and replace the source-text checks
+* dev: Record which plugin lines the end-to-end run executes and report the changed lines no suite reaches (tests/bin/e2e-coverage-report.php)
+* issue: Fix the breadcrumb parents of the Edit WMI Account and WMI Query Tool pages so the account edit page no longer fails on Cacti develop
+* issue: Use the default of 10 concurrent WMI collectors when the setting is empty instead of waiting forever
+* dev: Restore cacti.log after the end-to-end collector test so the CI log check stays clean
+* dev: Add an end-to-end collector test that drives poller_wmi.php and the cache refresh through a fake wmic against the CI Cacti install and database
+* issue: Fix the form action of the remove WMI Query confirmation on the Device Template page
+* issue: Reject WMI account saves with a mismatched, missing or oversized password instead of saving a partial account
+* issue: Count all matching rows for the WMI Queries and Accounts pagers
+* security: Stop keeping the Query Tool password in the session and echoing it back into the form
+* issue: Pass the default WMI namespace to wmic with a single backslash
+* issue: Log the reason a WMI query failed during polling
+* issue: Index cached WMI rows by every column of a comma separated primary key so multi-row results are no longer overwritten
+* issue: Purge WMI cache rows the device stopped returning, and keep the existing rows when a query fails
+* issue: Expire stale wmi_processes lock rows and stop the master poller waiting indefinitely for collectors that died
+||||||| parent of 7c3e181 (fix(tools): validate the host as an IP address or an RFC 1123 name)
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * security: Move the WMI Accounts and Queries filter rows selects' inline onChange handlers into the ready block so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)

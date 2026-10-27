@@ -175,6 +175,8 @@ function process_all_devices() {
 
 	print 'NOTE: Processing Hosts Begins' . PHP_EOL;
 
+	wmi_purge_stale_processes();
+
 	// Do not process collectors are still running
 	if (db_fetch_cell('SELECT COUNT(*) FROM wmi_processes') > 0) {
 		print 'WARNING: Another WMI Collector is still running!  Exiting' . PHP_EOL;
@@ -213,6 +215,8 @@ function process_all_devices() {
 	$concurrent_processes = read_config_option('wmi_processes');
 
 	if (empty($concurrent_processes)) {
+		$concurrent_processes = 10;
+
 		set_config_option('wmi_processes', '10');
 	}
 
@@ -247,8 +251,10 @@ function process_all_devices() {
 		print 'NOTE: All WMI Devices Launched, proceeding to wait for completion' . PHP_EOL;
 
 		// wait for all processes to end or max run time
+		$wait_began = time();
+
 		while (true) {
-			$processes_left = db_fetch_cell_prepared('SELECT COUNT(*) FROM wmi_processes WHERE taskid = ?', [$seed]);
+			$processes_left = wmi_collectors_running($seed, $wait_began);
 			$pl             = db_fetch_cell('SELECT COUNT(*) FROM wmi_processes');
 
 			if ($processes_left == 0) {
@@ -389,7 +395,9 @@ function process_device($host_id) {
 	db_execute_prepared('REPLACE INTO wmi_processes (pid, taskid) VALUES (?, ?)', [getmypid(), $seed]);
 	db_execute_prepared('DELETE FROM wmi_processes WHERE pid = ? AND taskid = ?', [$key, $seed]);
 
-	$qstart  = date('Y-m-d H:i:s');
+	// last_started is compared with NOW() in SQL, so take the time from the
+	// database clock: PHP and the database session may use different time zones.
+	$qstart = db_fetch_cell('SELECT NOW()');
 
 	if (cacti_sizeof($queries_to_run)) {
 		foreach ($queries_to_run as $q) {

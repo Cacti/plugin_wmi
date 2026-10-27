@@ -215,19 +215,23 @@ function save_accounts() {
 	$save['name']     = get_nfilter_request_var('name');
 	$save['username'] = get_nfilter_request_var('username');
 
-	if (get_nfilter_request_var('password') == get_nfilter_request_var('password_confirm')) {
-		if (get_nfilter_request_var('password') != '') {
-			$wmi = new Linux_WMI();
+	$password = get_nfilter_request_var('password');
+	$valid    = wmi_account_input_valid($save['name'], $save['username'], $password, get_nfilter_request_var('password_confirm'), (int) $save['id']);
 
-			$save['password'] = $wmi->encode(get_nfilter_request_var('password'));
-		} elseif ($save['id'] < 1) {
-			raise_message(4);
-		}
-	} else {
-		raise_message(4);
+	if ($valid && $password !== '') {
+		$wmi = new Linux_WMI();
+
+		$save['password'] = $wmi->encode($password);
+		$valid            = wmi_account_password_fits($save['password']);
 	}
 
-	$id = sql_save($save, 'wmi_user_accounts', 'id');
+	if ($valid) {
+		$id = sql_save($save, 'wmi_user_accounts', 'id');
+	} else {
+		raise_message(4);
+
+		$id = 0;
+	}
 
 	if (is_error_message()) {
 		header('Location: wmi_accounts.php?header=false&action=edit&id=' . (empty($id) ? get_request_var('id') : $id));
@@ -467,7 +471,9 @@ function show_accounts() {
 		ORDER BY name
 		LIMIT " . ($rows * (get_request_var('page') - 1)) . ', ' . $rows);
 
-	$total_rows = db_fetch_cell('SELECT COUNT(*) FROM wmi_user_accounts');
+	$total_rows = db_fetch_cell("SELECT COUNT(*)
+		FROM wmi_user_accounts
+		$sql_where");
 
 	account_filter();
 
