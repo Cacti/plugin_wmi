@@ -658,6 +658,14 @@ msgstr "Αποτελέσματα ερωτήματος WMI για τη συσκε
 msgid "Showing columns and first one or two rows of data."
 msgstr "Εμφανίζονται στήλες και πρώτα μία ή δύο σειρές δεδομένων."
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "Εργαλεία WMI"
