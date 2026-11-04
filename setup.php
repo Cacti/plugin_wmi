@@ -336,7 +336,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_accounts.php:edit'] = [
 		'title'   => __('(Edit)', 'wmi'),
-		'mapping' => 'index.php:wmi_accounts.php:',
+		'mapping' => 'index.php:,wmi_accounts.php:',
 		'url'     => 'wmi_accounts.php',
 		'level'   => '2'
 	];
@@ -378,7 +378,7 @@ function wmi_draw_navigation_text($nav) {
 
 	$nav['wmi_tools.php:query'] = [
 		'title'   => __('(Query)', 'wmi'),
-		'mapping' => 'index.php:wmi_tools.php:',
+		'mapping' => 'index.php:,wmi_tools.php:',
 		'url'     => 'wmi_tools.php',
 		'level'   => '2'
 	];
@@ -528,6 +528,18 @@ function wmi_config_settings() {
 	} else {
 		$settings['misc'] = $temp;
 	}
+
+	if (!isset($settings['path'])) {
+		$settings['path'] = [];
+	}
+
+	$settings['path']['path_wmi'] = [
+		'friendly_name' => __('WMI Client (wmic) Path', 'wmi'),
+		'description'   => __('The path to the wmic binary used to query Windows devices from a Linux Cacti server.', 'wmi'),
+		'method'        => 'filepath',
+		'max_length'    => '255',
+		'default'       => '/usr/bin/wmic'
+	];
 }
 
 /**
@@ -724,7 +736,7 @@ function wmi_device_template_top() {
 		get_filter_request_var('host_template_id');
 		// ====================================================
 
-		form_start('host_templates.php?action=edit&id' . get_request_var('host_template_id'));
+		form_start('host_templates.php?action=edit&id=' . get_request_var('host_template_id'));
 
 		html_start_box('', '100%', false, 3, 'center', '');
 

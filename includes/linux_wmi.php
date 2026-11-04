@@ -66,32 +66,73 @@ interface Wmi_Transport {
 }
 
 /**
- * Default transport: the Linux `wmic` client invoked through the shell.
+ * Default transport: the Linux `wmic` client.
+ *
+ * The credentials go to wmic in a private authentication file (-A) so they
+ * never appear in the process list. stdout is the result; stderr is kept
+ * apart and only added to the error text.
  */
 class Wmic_Shell_Transport implements Wmi_Transport {
 	private ?string $error = null;
 
+	/**
+	 * @param int         $timeout  Seconds to wait for wmic before it is stopped.
+	 * @param string|null $temp_dir Directory for the authentication file; the
+	 *                              system temporary directory when null.
+	 */
+	public function __construct(
+		private int $timeout = 120,
+		private ?string $temp_dir = null
+	) {
+	}
+
 	public function query(Wmi_Request $request): array|false {
 		$this->error = null;
 
-		$output = [];
-		$status = 0;
-
-		exec($this->build_command($request), $output, $status);
-
-		if ($status !== 0) {
-			$this->error = 'ERROR: ' . implode("\n", $output);
+		if (preg_match('/[\r\n\0]/', $request->username . $request->password)) {
+			$this->error = 'ERROR: WMI credentials must not contain line breaks';
 
 			return false;
 		}
 
-		if (count($output) === 0) {
-			$this->error = 'ERROR: WMI Returned no Data';
+		$auth = $this->create_auth_file($request);
+
+		try {
+			$result = $this->run(
+				(DIRECTORY_SEPARATOR === '/' ? 'exec ' : '') . $this->build_command($request, $auth['file'] ?? null)
+			);
+		} finally {
+			if ($auth !== null) {
+				@unlink($auth['file']);
+				@rmdir($auth['dir']);
+			}
+		}
+
+		if ($result === null) {
+			$this->error = 'ERROR: Unable to start ' . $request->binary;
 
 			return false;
 		}
 
-		return $output;
+		if ($result['timed_out']) {
+			$this->error = $this->with_stderr('ERROR: wmic did not finish within ' . $this->timeout . ' seconds', $result['stderr']);
+
+			return false;
+		}
+
+		if ($result['status'] !== 0) {
+			$this->error = $this->with_stderr('ERROR: ' . implode("\n", $result['lines']), $result['stderr']);
+
+			return false;
+		}
+
+		if (count($result['lines']) === 0) {
+			$this->error = $this->with_stderr('ERROR: WMI Returned no Data', $result['stderr']);
+
+			return false;
+		}
+
+		return $result['lines'];
 	}
 
 	public function error(): ?string {
@@ -102,20 +143,195 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 * Build the wmic command line. Every device-influenced value is shell
 	 * escaped; the hostname and namespace are additionally stripped of cmd.exe
 	 * metacharacters on win32. The delimiter is quoted so its pipe characters
-	 * are not read as a shell pipeline.
+	 * are not read as a shell pipeline. The hostname follows a literal `//`, so
+	 * it can never be read as an option.
+	 *
+	 * @param string|null $auth_file Credentials file for --authentication-file;
+	 *                               without it the credentials are passed as
+	 *                               arguments, which any local user can read.
 	 */
-	public function build_command(Wmi_Request $request): string {
+	public function build_command(Wmi_Request $request, ?string $auth_file = null): string {
 		$namespace = $request->namespace !== ''
-			? ' --namespace=' . cacti_escapeshellarg($this->strip_metachars($request->namespace))
+			? ' --namespace=' . cacti_escapeshellarg($this->single_backslashes($this->strip_metachars($request->namespace)))
 			: '';
+
+		$credentials = $auth_file !== null
+			? ' --authentication-file=' . cacti_escapeshellarg($auth_file)
+			: ' --user=' . cacti_escapeshellarg($request->username) .
+				' --password=' . cacti_escapeshellarg($request->password);
 
 		return cacti_escapeshellarg($request->binary) .
 			' --delimiter=' . cacti_escapeshellarg($request->separator) .
-			' --user=' . cacti_escapeshellarg($request->username) .
-			' --password=' . cacti_escapeshellarg($request->password) .
+			$credentials .
 			$namespace .
 			' //' . cacti_escapeshellarg($this->strip_metachars(trim($request->hostname))) .
 			' ' . cacti_escapeshellarg($request->query);
+	}
+
+	/**
+	 * Namespaces are stored with doubled backslashes between segments, a form
+	 * that only collapsed to one backslash inside a double-quoted shell
+	 * string. The value is now single-quoted, so collapse it here.
+	 */
+	private function single_backslashes(string $value): string {
+		return preg_replace('/\\\\+/', '\\\\', $value);
+	}
+
+	/**
+	 * Write the credentials to a file only this user can read, inside a
+	 * directory with a random name. Returns null, after logging a warning,
+	 * when that is not possible; the caller then falls back to arguments.
+	 *
+	 * @return array{dir: string, file: string}|null
+	 */
+	private function create_auth_file(Wmi_Request $request): ?array {
+		$base = $this->temp_dir ?? sys_get_temp_dir();
+		$dir  = rtrim($base, '/') . '/wmi-' . bin2hex(random_bytes(8));
+
+		if (!is_dir($base) || !is_writable($base) || !@mkdir($dir, 0700)) {
+			cacti_log('WARNING: Unable to create a private directory for the wmic credentials; passing them as arguments', false, 'WMI');
+
+			return null;
+		}
+
+		$file    = $dir . '/' . bin2hex(random_bytes(8));
+		$handle  = $this->open_new_file($file);
+		$written = false;
+
+		if ($handle !== false) {
+			$content = $this->auth_file_content($request);
+			$written = fwrite($handle, $content) === strlen($content);
+
+			fclose($handle);
+		}
+
+		if (!$written || !@chmod($file, 0600)) {
+			if (is_file($file)) {
+				unlink($file);
+			}
+
+			rmdir($dir);
+
+			cacti_log('WARNING: Unable to write the wmic credentials file; passing the credentials as arguments', false, 'WMI');
+
+			return null;
+		}
+
+		return ['dir' => $dir, 'file' => $file];
+	}
+
+	/**
+	 * Create a file that must not exist yet, readable only by this user.
+	 *
+	 * @return resource|false
+	 */
+	protected function open_new_file(string $file) {
+		$old    = umask(0077);
+		$handle = @fopen($file, 'x');
+
+		umask($old);
+
+		return $handle;
+	}
+
+	/**
+	 * Start a process with its stdout and stderr as pipes.
+	 *
+	 * @param array<int, resource> $pipes
+	 *
+	 * @return resource|false
+	 */
+	protected function start_process(string $command, ?array &$pipes) {
+		return proc_open($command, [0 => ['file', '/dev/null', 'r'], 1 => ['pipe', 'w'], 2 => ['pipe', 'w']], $pipes);
+	}
+
+	/**
+	 * The samba credentials file format. A DOMAIN\user or DOMAIN/user name is
+	 * split the way wmic splits --user.
+	 */
+	private function auth_file_content(Wmi_Request $request): string {
+		$content = '';
+		$user    = $request->username;
+
+		if (preg_match('#^([^\\\\/]+)[\\\\/](.+)$#', $user, $match)) {
+			$content = 'domain=' . $match[1] . "\n";
+			$user    = $match[2];
+		}
+
+		return 'username=' . $user . "\n" . 'password=' . $request->password . "\n" . $content;
+	}
+
+	/**
+	 * Run a command with stdout and stderr read separately, stopping it when
+	 * it takes longer than the timeout.
+	 *
+	 * @return array{status: int, lines: array<int, string>, stderr: string, timed_out: bool}|null
+	 */
+	private function run(string $command): ?array {
+		$process = $this->start_process($command, $pipes);
+
+		if (!is_resource($process)) {
+			return null;
+		}
+
+		$open     = [1 => $pipes[1], 2 => $pipes[2]];
+		$buffer   = [1 => '', 2 => ''];
+		$deadline = microtime(true) + $this->timeout;
+		$expired  = false;
+
+		foreach ($open as $stream) {
+			stream_set_blocking($stream, false);
+		}
+
+		while ($open !== []) {
+			$left = $deadline - microtime(true);
+
+			if ($left <= 0) {
+				$expired = true;
+
+				break;
+			}
+
+			$read   = $open;
+			$write  = null;
+			$except = null;
+
+			@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
+
+			foreach ($read as $key => $stream) {
+				$chunk = fread($stream, 8192);
+
+				if ($chunk === false || ($chunk === '' && feof($stream))) {
+					unset($open[$key]);
+				} else {
+					$buffer[$key] .= $chunk;
+				}
+			}
+		}
+
+		if ($expired) {
+			proc_terminate($process, 9);
+		}
+
+		fclose($pipes[1]);
+		fclose($pipes[2]);
+
+		$status = proc_close($process);
+
+		if (substr($buffer[1], -1) === "\n") {
+			$buffer[1] = substr($buffer[1], 0, -1);
+		}
+
+		return [
+			'status'    => $expired ? -1 : $status,
+			'lines'     => $buffer[1] === '' ? [] : array_map('rtrim', explode("\n", $buffer[1])),
+			'stderr'    => substr(trim($buffer[2]), 0, 2000),
+			'timed_out' => $expired,
+		];
+	}
+
+	private function with_stderr(string $message, string $stderr): string {
+		return $stderr === '' ? $message : ($message === 'ERROR: ' ? 'ERROR: ' : $message . "\n") . $stderr;
 	}
 
 	/**

@@ -24,6 +24,7 @@
 
 chdir('../../');
 require('./include/auth.php');
+require_once($config['base_path'] . '/plugins/wmi/includes/functions.php');
 require_once('./lib/snmp.php');
 require_once('./lib/utility.php');
 
@@ -31,7 +32,16 @@ set_default_action();
 
 process_request_vars();
 
-switch (get_request_var('action')) {
+$action = get_request_var('action');
+
+// The query action sends credentials to a host. Run it only for a POST, where
+// the CSRF token applies and nothing travels in the URL, a log or the history;
+// any other method gets the empty form.
+if ($action == 'query' && ($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+	$action = '';
+}
+
+switch ($action) {
 	case 'query':
 		walk_host();
 
@@ -68,11 +78,6 @@ function process_request_vars() {
 			'pageset' => true,
 			'default' => '',
 			'options' => ['options' => 'sanitize_search_string']
-		],
-		'password' => [
-			'filter'  => FILTER_DEFAULT,
-			'pageset' => true,
-			'default' => '',
 		],
 		'namespace' => [
 			'filter'  => FILTER_CALLBACK,
@@ -395,7 +400,7 @@ function show_tools() {
 	print "<td><input type='text' size='30' id='username' value='" . html_escape_request_var('username') . "'></td>";
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Password', 'wmi') . '</td>';
-	print "<td><input type='password' size='30' id='password' value='" . html_escape_request_var('password') . "'></td>";
+	print "<td><input type='password' size='30' id='password' value='' autocomplete='off'></td>";
 	print '</tr><tr>';
 	print "<td class='nowrap'>" . __('Namespace', 'wmi') . '</td>';
 	print "<td><input type='text' size='30' id='namespace' value='" . html_escape_request_var('namespace') . "'></td>";
@@ -589,12 +594,21 @@ function walk_host() {
 		$command = get_nfilter_request_var('command');
 	}
 
-	$host = strtolower($host);
+	$host = strtolower(trim($host));
 
 	if ($username == '' || $password == '' || $host == '') {
 		print __('ERROR: You must provide a host, username, password and query', 'wmi');
 		exit;
 	}
+
+	$valid = wmi_valid_host($host);
+
+	if ($valid === false) {
+		print 'ERROR: The host must be an IPv4 or IPv6 address or a host name';
+		exit;
+	}
+
+	$host = $valid;
 
 	// Linux_WMI self-selects the PowerShell/CIM transport on a Windows
 	// Cacti server and the wmic shell transport otherwise, so the same
@@ -675,23 +689,4 @@ function walk_host() {
 	} else {
 		print nl2br(html_escape($wmi->error));
 	}
-}
-
-/**
- * Validates that a string looks like a syntactically plausible hostname
- * or IPv4 address (format only; does not perform DNS/network
- * verification). Currently unused/dead code: not called from anywhere
- * else in this file.
- *
- * @param string $host The candidate hostname or IP address.
- *
- * @return bool True when $host matches the expected hostname/IPv4
- *              pattern.
- */
-function is_valid_host($host) {
-	if (preg_match('/^((([0-9]{1,3}\.){3}[0-9]{1,3})|([0-9a-z-.]{0,61})?\.[a-z]{2,4})$/i', $host)) {
-		return true;
-	}
-
-	return false;
 }
