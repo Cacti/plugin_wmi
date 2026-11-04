@@ -647,6 +647,14 @@ msgstr "设备的WMI查询结果：%s，类：%s，列：%s，行：%s"
 msgid "Showing columns and first one or two rows of data."
 msgstr "显示列和前一或两行数据。"
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "WMI工具"
