@@ -655,6 +655,14 @@ msgstr "WMI Abfrageergebnisse für Gerät: %s, Klasse: %s, Spalten: %s, Zeilen: 
 msgid "Showing columns and first one or two rows of data."
 msgstr "Zeigt Spalten und eine oder zwei Datenzeilen an."
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "WMI Tools"
