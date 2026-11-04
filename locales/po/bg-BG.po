@@ -660,6 +660,14 @@ msgstr "WMI резултати от заявки за устройство: %s, 
 msgid "Showing columns and first one or two rows of data."
 msgstr "Показват се колони и първи или два реда данни."
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "WMI Инструменти"
