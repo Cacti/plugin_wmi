@@ -658,6 +658,14 @@ msgstr "Kết quả truy vấn WMI cho thiết bị: %s, Class: %s, Cột: %s, H
 msgid "Showing columns and first one or two rows of data."
 msgstr "Hiển thị các cột và một hoặc hai hàng dữ liệu đầu tiên."
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "Công cụ WMI"
