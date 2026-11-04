@@ -24,7 +24,7 @@
 * issue: Index cached WMI rows by every column of a comma separated primary key so multi-row results are no longer overwritten
 * issue: Purge WMI cache rows the device stopped returning, and keep the existing rows when a query fails
 * issue: Expire stale wmi_processes lock rows and stop the master poller waiting indefinitely for collectors that died
-||||||| parent of 7c3e181 (fix(tools): validate the host as an IP address or an RFC 1123 name)
+* docs: Rewrite the README so each statement matches the code: requirements, install, upgrade and uninstall, transports, pages, settings, poller options, tables, script server template, translations and development commands; move the 1.1 and 1.0 entries from the README to this file
 * security: Replace the confirmation pages' inline `onClick='cactiReturnTo()'` Cancel buttons with the CSP-safe `cactiReturnTo` class so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * security: Move the WMI Accounts and Queries filter rows selects' inline onChange handlers into the ready block so the pages no longer trip Cacti's Content-Security-Policy script-src-attr directive
 * dev: Measure CI coverage with xdebug instead of pcov so the plugin's own sources are instrumented (pcov auto-scopes to the Composer root and skipped cacti/plugins/, leaving the patch-coverage gate with nothing to measure)
@@ -41,3 +41,12 @@
 * security: Escape the wmic hostname and namespace before exec so a device-supplied address cannot inject a shell command (issue#5)
 * security: Quote the wmic delimiter so exec() no longer splits the command into a shell pipeline (issue#5)
 * security: Restrict decode() unserialize with allowed_classes to block PHP object injection (issue#5)
+
+--- 1.1 ---
+
+* issue#1: PHP and SQL backtrace when deleting stored WMI queries or credentials
+* issue#2: Issues with passwords containing unescaped special chars
+
+--- 1.0 ---
+
+* feature: Initial Support for Cacti 1.0
