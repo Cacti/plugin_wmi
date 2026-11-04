@@ -568,6 +568,14 @@ msgstr "WMI vaicājuma rezultāti Ierīcei: %s, Klase: %s, Kolonnas: %s, Rindas:
 msgid "Showing columns and first one or two rows of data."
 msgstr "Rāda datu kolonnas un pirmo vai divas pirmās datu rindas."
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #~ msgid "WMI Tools"
 #~ msgstr "WMI rīki"
 
