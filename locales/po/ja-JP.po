@@ -657,6 +657,14 @@ msgstr "デバイスのWMIクエリ結果：％s、クラス：％s、列：％s
 msgid "Showing columns and first one or two rows of data."
 msgstr "列と最初の1行または2行のデータを表示します。"
 
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
+
 #, fuzzy
 #~ msgid "WMI Tools"
 #~ msgstr "WMIツール"
