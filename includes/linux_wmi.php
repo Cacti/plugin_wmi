@@ -407,7 +407,8 @@ class PowerShellCim_Transport implements Wmi_Transport {
 	 */
 	public function __construct(
 		public string $binary = 'pwsh',
-		?callable $runner = null
+		?callable $runner = null,
+		private int $timeout = 120
 	) {
 		$this->runner = $runner ?? $this->default_runner();
 	}
@@ -478,14 +479,57 @@ class PowerShellCim_Transport implements Wmi_Transport {
 			fwrite($pipes[0], $stdin);
 			fclose($pipes[0]);
 
-			$stdout = stream_get_contents($pipes[1]);
-			$stderr = stream_get_contents($pipes[2]);
+			$open     = [1 => $pipes[1], 2 => $pipes[2]];
+			$buffer   = [1 => '', 2 => ''];
+			$deadline = microtime(true) + $this->timeout;
+			$expired  = false;
+
+			foreach ($open as $stream) {
+				stream_set_blocking($stream, false);
+			}
+
+			while ($open !== []) {
+				$left = $deadline - microtime(true);
+
+				if ($left <= 0) {
+					$expired = true;
+
+					break;
+				}
+
+				$read   = $open;
+				$write  = null;
+				$except = null;
+
+				@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
+
+				foreach ($read as $key => $stream) {
+					$chunk = fread($stream, 8192);
+
+					if ($chunk === false || ($chunk === '' && feof($stream))) {
+						unset($open[$key]);
+					} else {
+						$buffer[$key] .= $chunk;
+					}
+				}
+			}
+
+			if ($expired) {
+				proc_terminate($process, 9);
+			}
+
 			fclose($pipes[1]);
 			fclose($pipes[2]);
 
 			$exit = proc_close($process);
 
-			$stdout = str_replace("\r\n", "\n", rtrim($stdout, "\r\n"));
+			$stdout = str_replace("\r\n", "\n", rtrim($buffer[1], "\r\n"));
+			$stderr = substr(trim($buffer[2]), 0, 2000);
+
+			if ($expired) {
+				$exit   = -1;
+				$stderr = 'PowerShell did not finish within ' . $this->timeout . ' seconds' . ($stderr === '' ? '' : "\n" . $stderr);
+			}
 
 			return [
 				'exit'   => $exit,

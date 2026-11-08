@@ -90,6 +90,46 @@ describe('PowerShellCim_Transport', function () {
 		expect(str_contains((string) $t->error(), 'Access denied'))->toBeTrue();
 	});
 
+	it('returns standard output from the default process runner', function () use ($secret) {
+		$dir    = sys_get_temp_dir() . '/wmi-powershell-' . bin2hex(random_bytes(6));
+		$binary = $dir . '/powershell';
+
+		mkdir($dir, 0700);
+		file_put_contents($binary, "#!/bin/sh\nprintf 'Win32_Service\\nName|+|State\\nSpooler|+|Running\\n'\nprintf 'warning on stderr\\n' >&2\n");
+		chmod($binary, 0700);
+
+		try {
+			$t = new PowerShellCim_Transport($binary, null, 1);
+
+			expect($t->query(wmi_test_request($secret)))->toBe(['Win32_Service', 'Name|+|State', 'Spooler|+|Running']);
+			expect($t->error())->toBeNull();
+		} finally {
+			unlink($binary);
+			rmdir($dir);
+		}
+	});
+
+	it('drains both output streams and stops a stalled PowerShell process', function () use ($secret) {
+		$dir    = sys_get_temp_dir() . '/wmi-powershell-' . bin2hex(random_bytes(6));
+		$binary = $dir . '/powershell';
+
+		mkdir($dir, 0700);
+		file_put_contents($binary, "#!/bin/sh\nhead -c 65536 /dev/zero >&2\nexec sleep 10\n");
+		chmod($binary, 0700);
+
+		try {
+			$t     = new PowerShellCim_Transport($binary, null, 1);
+			$began = microtime(true);
+
+			expect($t->query(wmi_test_request($secret)))->toBeFalse();
+			expect(microtime(true) - $began)->toBeLessThan(6.0);
+			expect($t->error())->toContain('did not finish within 1 seconds');
+		} finally {
+			unlink($binary);
+			rmdir($dir);
+		}
+	});
+
 	it('follows the Cacti server OS for transport auto-selection', function () {
 		$GLOBALS['config']['cacti_server_os'] = 'win32';
 		expect((new Linux_WMI())->getcommand())->toBeFalse();

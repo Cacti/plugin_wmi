@@ -2,6 +2,7 @@
 
 --- develop ---
 
+* issue: Keep composite WMI cache indexes distinct, bound stalled PowerShell collectors, and document supported Windows transport requirements
 * dev: Run the CI poller with the shared runner group so RRD files and structured directories pass permission verification
 * dev: Extend the end-to-end fake wmic with --authentication-file and a stderr line, and cover host validation, the credentials file and the script-server scripts end to end
 * issue: Point the script-server resource and its scripts at the files that exist, load Cacti from where it is, and register the wmic path as the path_wmi setting (default /usr/bin/wmic)

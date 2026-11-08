@@ -98,26 +98,27 @@ server's operating system.  Code that constructs `Linux_WMI` directly can pass
 an explicit transport instead.
 
 - **wmic** (default on a Linux server).  Uses the Linux `wmic` client to reach
-  Windows hosts over DCOM.  The client does not appear in the Debian 12 or Ubuntu
-  18.04 package lists, so install it from your own package source or build
-  it.  The Query Tool and the poller take the binary from the `path_wmi`
-  setting and use `/usr/bin/wmic` when it is empty; `path_wmi` has no field on
-  the Settings page yet.  `wmi_script.php` always uses `/usr/bin/wmic`, and `script/wmi-script.php`
-  looks for a `wmic` inside the plugin directory, which is not shipped.  The
-  user name and password are passed to `wmic` as `--user` and `--password`
-  arguments, so a local user can read them in the process list while a query
-  runs.  This client predates current Windows hardening.  Hosts that disable
-  NTLMv1 or enforce the DCOM packet-integrity level (KB5004442, enforced
-  without an opt-out since March 2023) may reject it.  There is currently no
-  console setting to switch a Linux Cacti server to the PowerShell transport;
-  it is only available to code that constructs `Linux_WMI` directly and
-  passes an explicit transport.
+  Windows hosts over DCOM.  Windows 11 24H2 and later no longer include the
+  Windows WMIC utility, but WMI itself remains supported.  The utility's
+  removal does not remove the remote WMI service used by this Linux-side
+  client ([Microsoft's WMIC and WMI notes](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmic)).
+  Hosts that enforce current DCOM authentication hardening may still reject
+  this legacy transport.  The client does not appear in the Debian 12 or
+  Ubuntu 18.04 package lists, so install it from your own package source or
+  build it.  The Query Tool and poller use `path_wmi`, defaulting to
+  `/usr/bin/wmic`; there is no Settings page field for this path yet.
+  Credentials normally go in a private temporary authentication file.  If the
+  plugin cannot create that file, it warns and falls back to `--user` and
+  `--password` arguments, which local users may see in the process list.
 - **PowerShell / CIM** (default on a Windows server).  Runs `powershell.exe`
-  and uses `Get-CimInstance`, so it works when Cacti runs on Windows and
-  against a remote host over WinRM/CIM.  Needs PowerShell on the Cacti server
-  and, for a remote host, WinRM enabled on the target.  Credentials and every
-  device-supplied value are passed through the child process environment and a
-  fixed script on standard input, never on the command line.
+  and uses `Get-CimInstance`.  This transport requires the Cacti server to run
+  Windows.  Microsoft's [Get-CimInstance platform requirements](https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5)
+  document the CIM cmdlets as Windows-only.  Remote Windows targets need WinRM
+  configured and reachable.  Use Kerberos with domain hostnames where
+  available.  For connections without Kerberos, configure WinRM HTTPS or a
+  narrowly scoped TrustedHosts entry ([PowerShell remoting guidance](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.5)).
+  Credentials and device-supplied values pass through the child process
+  environment and a fixed script on standard input, never on the command line.
 
 ## Usage
 

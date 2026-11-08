@@ -100,6 +100,17 @@ it('indexes a row by every column of a comma separated primary key', function ()
 	expect(wmi_row_index(array('C:', 'D1', 'x'), array('Drive', 'Disk', 'Size'), 'Drive, Disk'))->toBe('C:,D1');
 });
 
+it('keeps composite indexes distinct when a key value contains a comma', function () {
+	$headers = array('First', 'Second');
+	$first   = wmi_row_index(array('a,b', 'c'), $headers, 'First,Second');
+	$second  = wmi_row_index(array('a', 'b,c'), $headers, 'First,Second');
+
+	expect($first)->toBe('a\\,b,c');
+	expect($second)->toBe('a,b\\,c');
+	expect($first)->not->toBe($second);
+	expect(wmi_row_index(array('a\\,b', 'c'), $headers, 'First,Second'))->toBe('a' . str_repeat('\\', 3) . ',b,c');
+});
+
 it('uses the shared index when the key is None or missing from the header', function () {
 	$header = array('Name', 'State');
 
@@ -127,6 +138,32 @@ it('caches every row of a result whose primary key spans two columns', function 
 
 	expect($insert)->toContain("'Spooler,Running'");
 	expect($insert)->toContain("'Spooler,Stopped'");
+});
+
+it('stores rows with distinct composite keys when key values contain commas', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_wql_queries']['primary_key'] = 'Name,State';
+
+	$t = new Wmi_Test_Canned_Transport(array(
+		'Win32_Service',
+		'Name|+|State',
+		'a,b|+|c',
+		'a|+|b,c',
+	));
+
+	ob_start();
+	run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	$insert = '';
+
+	foreach (wmi_test_cache_statements() as $statement) {
+		if (strpos($statement, 'INSERT INTO') === 0) {
+			$insert = $statement;
+		}
+	}
+
+	expect($insert)->toContain("'a\\,b,c'");
+	expect($insert)->toContain("'a,b\\,c'");
 });
 
 it('logs why a query failed', function () {

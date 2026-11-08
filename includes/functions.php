@@ -584,7 +584,8 @@ function wmi_account_password_fits($encoded) {
 
 /**
  * Builds the host_wmi_cache index value for one result row from the query's
- * primary key. A comma separated key joins its columns' values with a comma.
+ * primary key. A comma separated key joins its columns' values with a comma;
+ * backslashes and commas inside values are escaped to keep tuples distinct.
  * 'None', an empty key, or a key column missing from the result header yields
  * 'N/A', which is the single shared index for queries that return one row.
  *
@@ -604,7 +605,7 @@ function wmi_row_index($row, $indexes, $primary_key) {
 			return 'N/A';
 		}
 
-		$values[] = $row[$position];
+		$values[] = str_replace(['\\', ','], ['\\\\', '\\,'], $row[$position]);
 	}
 
 	return implode(',', $values);
