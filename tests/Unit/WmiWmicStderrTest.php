@@ -104,6 +104,13 @@ it('caps a long stderr in the error text', function () {
 	expect(strlen($t->error()))->toBe(strlen("ERROR: x\n") + 2000);
 });
 
+it('stops wmic when its response exceeds the configured size limit', function () {
+	$t = new Wmic_Shell_Transport(120, null, 64);
+
+	expect($t->query(wmi_stderrtest_request(wmi_stderrtest_wmic([str_repeat('x', 1024)]))))->toBeFalse();
+	expect($t->error())->toContain('exceeded the 64 byte limit');
+});
+
 it('stops a wmic that does not finish within the timeout', function () {
 	$t     = new Wmic_Shell_Transport(1);
 	$began = microtime(true);

@@ -77,10 +77,13 @@ Linux.
 ## Upgrade
 
 Replace the plugin files.  Cacti does not call the plugin's
-`plugin_wmi_upgrade()` function (a search of Cacti 1.2.x and develop finds no
-caller), so nothing runs on upgrade.  Files that a newer release no longer
-ships (`functions.php` and `linux_wmi.php` in the plugin root, listed under
-`tombstones` in `manifest.json`) are not removed; delete them by hand.
+`plugin_wmi_upgrade()` function during ordinary page loads. Cacti runs it when
+the plugin version changes during its database audit/upgrade process. This
+release provisions the WinRM account and poll-health columns through the
+idempotent plugin schema setup. Run the Cacti database audit/upgrade after
+replacing the files. Files that a newer release no longer ships (`functions.php`
+and `linux_wmi.php` in the plugin root, listed under `tombstones` in
+`manifest.json`) are not removed; delete them by hand.
 
 ## Disable and uninstall
 
@@ -117,8 +120,78 @@ an explicit transport instead.
   configured and reachable.  Use Kerberos with domain hostnames where
   available.  For connections without Kerberos, configure WinRM HTTPS or a
   narrowly scoped TrustedHosts entry ([PowerShell remoting guidance](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.5)).
+  The Authentication account form can override SSL, port, and authentication
+  per credential account, or inherit the Settings > Misc defaults. Basic is
+  rejected unless HTTPS is selected; certificate validation remains enabled.
+  Leave the port blank to use the Windows default for the selected transport.
   Credentials and device-supplied values pass through the child process
   environment and a fixed script on standard input, never on the command line.
+
+### Windows performance counter collection
+
+For classic performance counter WMI classes, query the
+[`Win32_PerfFormattedData_*` classes](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-tasks--performance-monitoring)
+classes for provider-formatted values (for example, `Win32_PerfFormattedData_PerfOS_Processor`).
+Use a Cacti polling interval appropriate to the signal and avoid collecting
+high-cardinality instance data more frequently than needed. Microsoft notes
+that many raw performance counters require two timestamped samples and a
+counter-specific time base; this plugin runs independent WQL queries and does
+not keep PDH sample state, so it must not derive rates from raw values itself.
+If collecting monotonic raw totals, configure the Cacti data source as a
+`COUNTER` or `DERIVE` where appropriate so RRDtool computes a rate and handles
+counter behavior. Choose `COUNTER` only when its wrap assumptions match the
+counter; use `DERIVE` when negative deltas are meaningful. Neither data source
+can infer Windows counter metadata from an arbitrary WMI field. Use `GAUGE` for
+point-in-time and already formatted values.
+
+For process-level counters on Windows 11 and newer, Microsoft recommends the
+Process V2 counter set because its instance names include the process ID and
+avoid ambiguities when processes with the same name exit and start. Process V2
+is a PDH counter set and is not exposed by this plugin's current generic CIM
+WQL transport; use a native PDH/PerfMon collector for that data. Microsoft's
+Windows Server performance guidance also shows bounded `logman` counter logs
+with 15-second sampling for troubleshooting, while System Insights uses
+15-minute intervals for its retained server telemetry. Choose the sampling
+interval based on the operational need and Cacti poller load.
+
+To collect a native PDH counter, create a query with `PDH` as its namespace and
+one or more counter paths, one per line, in the Query field. The Windows-hosted
+PowerShell collector invokes `Get-Counter` remotely over WinRM, collects two
+samples one second apart, and returns the formatted value and timestamp from
+the second sample. For Windows 11 process monitoring, paths from the Process V2
+counter set include the process ID in the instance name; set the query's primary
+key to `Path,Instance` so the cache keeps each counter instance distinct. This mode requires
+PowerShell remoting enabled on the target and is available only when Cacti runs
+the collector on Windows. Do not use raw PDH counter paths with the WQL query
+mode.
+
+Suggested starting WQL inventory and counter queries include:
+
+- `SELECT Caption,Version,BuildNumber,OSArchitecture,LastBootUpTime FROM Win32_OperatingSystem`
+- `SELECT Name,PercentProcessorTime FROM Win32_PerfFormattedData_PerfOS_Processor`
+- `SELECT AvailableMBytes,CommittedBytes,CommitLimit FROM Win32_PerfFormattedData_PerfOS_Memory`
+- `SELECT Name,PercentDiskTime,AvgDiskQueueLength FROM Win32_PerfFormattedData_PerfDisk_LogicalDisk`
+
+These are starting points. Confirm that a class and property exists on the
+target Windows version and avoid broad process or interface queries unless the
+result cardinality and output size are needed. Each transport stops a query
+whose response exceeds 16 MiB.
+
+The WMI Queries list reports the number of devices with poll history, most recent poll,
+currently failing devices, and cumulative timeout count. Query failures retain
+the previous cached values and record a bounded error summary. Consecutive
+failure counts reset after the next successful poll.
+
+### Windows validation matrix
+
+Before releasing changes to the Windows transport, run the collector from a
+Windows Server Cacti host against a current Windows 11 target and Windows
+Server 2025 target. Verify WQL collection over HTTP/Negotiate and HTTPS/Kerberos,
+Basic over HTTPS, a rejected Basic-over-HTTP configuration, alternate ports,
+invalid credentials, denied counter paths, empty results, response-size limits,
+timeouts, and Process V2 paths with `Path,Instance` as the primary key. This is
+a manual lab matrix; the plugin's current CI does not run on Windows and these
+target combinations are not claimed as tested here.
 
 ## Usage
 
@@ -144,9 +217,13 @@ WMI Queries that are specific to Windows SQL Server there.
 The plugin registers a WMI Management realm covering account management, query
 definition, and the query tool.  The Template Editor role is additionally
 granted the query-definition page only; credential management and the live query
-tool stay behind the WMI Management realm.  The poller needs the host password
-in cleartext, so accounts are stored reversibly (base64 of a serialized array),
-not hashed or encrypted; protect the database accordingly.
+tool stay behind the WMI Management realm. The poller needs the host password
+in cleartext, so account passwords are stored reversibly (base64 of a serialized
+array), not encrypted at rest. No cross-version Cacti secret-storage API is
+available to this plugin. Restrict database access to the Cacti service
+accounts, keep database traffic on a protected network, encrypt database
+backups, and protect `config.php` and its database credentials with filesystem
+permissions. A database dump includes the reversible WMI credentials.
 
 ## Settings
 

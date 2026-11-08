@@ -51,9 +51,7 @@ function plugin_wmi_csp_nonce(): string {
  * @return void
  */
 function plugin_wmi_install() {
-	global $config;
-
-	require_once($config['base_path'] . '/plugins/wmi/includes/database.php');
+	require_once(__DIR__ . '/includes/database.php');
 
 	api_plugin_register_hook('wmi', 'config_arrays',        'wmi_config_arrays',        'setup.php');
 	api_plugin_register_hook('wmi', 'config_form',          'wmi_config_form',          'setup.php');
@@ -155,13 +153,16 @@ function plugin_wmi_check_config() {
 
 /**
  * Performs any schema/data migrations needed when upgrading to a newer
- * version of this plugin; currently a no-op placeholder. Invoked by
+ * version of this plugin. Invoked by
  * Cacti's plugin architecture when an installed plugin's version
- * increases.
+ * increases. It provisions any new plugin schema columns before pruning
+ * files from earlier releases.
  *
- * @return bool Always returns true.
+ * @return bool True after schema provisioning and file pruning complete.
  */
 function plugin_wmi_upgrade() {
+	require_once(__DIR__ . '/includes/database.php');
+	plugin_wmi_setup_tables();
 	wmi_prune_files();
 
 	return true;
@@ -518,6 +519,30 @@ function wmi_config_settings() {
 			'description'   => __('If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created.', 'wmi'),
 			'method'        => 'checkbox',
 			'default'       => 'on'
+		],
+		'wmi_winrm_ssl' => [
+			'friendly_name' => __('Use WinRM over HTTPS', 'wmi'),
+			'description'   => __('Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled.', 'wmi'),
+			'method'        => 'checkbox',
+			'default'       => ''
+		],
+		'wmi_winrm_port' => [
+			'friendly_name' => __('WinRM Port Override', 'wmi'),
+			'description'   => __('Default port override for accounts that inherit server settings. Leave blank for the Windows default.', 'wmi'),
+			'method'        => 'textbox',
+			'max_length'    => '5',
+			'default'       => ''
+		],
+		'wmi_winrm_auth' => [
+			'friendly_name' => __('WinRM Authentication', 'wmi'),
+			'description'   => __('Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS.', 'wmi'),
+			'method'        => 'drop_array',
+			'default'       => 'Negotiate',
+			'array'         => [
+				'Negotiate' => __('Negotiate', 'wmi'),
+				'Kerberos'  => __('Kerberos', 'wmi'),
+				'Basic'     => __('Basic (HTTPS only)', 'wmi')
+			]
 		]
 	];
 

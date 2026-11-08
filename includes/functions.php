@@ -393,8 +393,10 @@ function plugin_wmi_create_resource_xml($id) {
  * @global array $config Cacti global configuration array; used to load
  *                        this plugin's linux_wmi.php client.
  */
-function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
+function run_store_wmi_query($host_id, $wmi_query_id, $transport = null, &$error = null) {
 	global $config;
+
+	$error = null;
 
 	$host_info = db_fetch_row_prepared('SELECT *
 		FROM host
@@ -419,10 +421,14 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 		$wmi_query = is_array($wmi_query) ? $wmi_query : [];
 
 		if (!cacti_sizeof($auth_info)) {
+			$error = 'WMI account not found';
+
 			return false;
 		}
 
 		if (!cacti_sizeof($wmi_query)) {
+			$error = 'WMI query not found';
+
 			return false;
 		}
 
@@ -446,6 +452,16 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 		$wmi->hostname    = $host;
 		$wmi->username    = $username;
 		$wmi->password    = $wmi->decode($password);
+		$wmi->counter_mode = strtoupper(trim($namespace)) === 'PDH';
+		if (in_array($auth_info['winrm_ssl'] ?? '', ['on', 'off'], true)) {
+			$wmi->winrm_ssl = $auth_info['winrm_ssl'] === 'on';
+		}
+		if (($auth_info['winrm_port'] ?? '') !== '') {
+			$wmi->winrm_port = ctype_digit((string) $auth_info['winrm_port']) ? (int) $auth_info['winrm_port'] : 0;
+		}
+		if (in_array($auth_info['winrm_auth'] ?? '', ['Negotiate', 'Kerberos', 'Basic'], true)) {
+			$wmi->winrm_authentication = $auth_info['winrm_auth'];
+		}
 		$wmi->querynspace = $namespace;
 		$wmi->command     = $command;
 		$wmi->binary      = read_config_option('path_wmi');
@@ -458,7 +474,9 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 			$wmi->querynspace = 'root\\\\CIMV2';
 		}
 
-		if ($wmi->fetch() !== false) {
+		$fetch_result = $wmi->fetch();
+
+		if ($fetch_result !== false) {
 			$indexes = $wmi->fetch_indexes();
 			$data    = $wmi->fetch_data();
 		} else {
@@ -467,6 +485,17 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 		}
 
 		$indexes = is_array($indexes) ? $indexes : [];
+
+		if ($fetch_result !== false && $data === []) {
+			// A successful empty result is authoritative. A failed transport keeps
+			// the cached values intact, while an empty response removes stale data.
+			db_execute_prepared('DELETE FROM host_wmi_cache
+				WHERE host_id = ?
+				AND wmi_query_id = ?',
+				[$host_id, $wmi_query_id]);
+
+			return true;
+		}
 
 		if (cacti_sizeof($data)) {
 			$sql = [];
@@ -532,6 +561,7 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null) {
 			return true;
 		} else {
 			$reason = is_string($wmi->error) ? $wmi->error : 'WMI returned no rows';
+			$error  = $reason;
 
 			cacti_log('WARNING: WMI Query[' . $wmi_query_id . '] for Device[' . $host_id . '] failed: ' . $reason, false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 
@@ -567,6 +597,23 @@ function wmi_account_input_valid($name, $username, $password, $confirm, $id) {
 	}
 
 	return $password !== '' || $id > 0;
+}
+
+/**
+ * Validates per-account WinRM settings before they are written to the account
+ * record. Basic authentication must be explicitly paired with HTTPS.
+ */
+function wmi_account_winrm_input_valid($ssl, $port, $authentication) {
+	if (!in_array($ssl, ['inherit', 'off', 'on'], true) ||
+		!in_array($authentication, ['inherit', 'Negotiate', 'Kerberos', 'Basic'], true)) {
+		return false;
+	}
+
+	if ($port !== '' && (!ctype_digit($port) || (int) $port < 1 || (int) $port > 65535)) {
+		return false;
+	}
+
+	return $authentication !== 'Basic' || $ssl === 'on';
 }
 
 /**

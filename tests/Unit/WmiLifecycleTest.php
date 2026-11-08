@@ -40,7 +40,7 @@ it('reports the config as always valid', function () {
 	expect(plugin_wmi_check_config())->toBeTrue();
 });
 
-it('reports the upgrade as always successful', function () {
+it('runs idempotent schema provisioning during upgrade', function () {
 	// Sandbox base_path so the upgrade-time prune (wmi_prune_files)
 	// runs against an empty temp tree, never the real checkout.
 	$restore = $GLOBALS['config']['base_path'];
@@ -48,6 +48,7 @@ it('reports the upgrade as always successful', function () {
 
 	try {
 		expect(plugin_wmi_upgrade())->toBeTrue();
+		expect($GLOBALS['__test_add_column_calls'])->toHaveCount(8);
 	} finally {
 		$GLOBALS['config']['base_path'] = $restore;
 	}
@@ -56,7 +57,7 @@ it('reports the upgrade as always successful', function () {
 it('adds the wmi_account column and creates every table', function () {
 	plugin_wmi_setup_tables();
 
-	expect($GLOBALS['__test_add_column_calls'])->toHaveCount(1);
+	expect($GLOBALS['__test_add_column_calls'])->toHaveCount(8);
 	expect($GLOBALS['__test_add_column_calls'][0]['plugin'])->toBe('wmi');
 	expect($GLOBALS['__test_add_column_calls'][0]['table'])->toBe('host');
 	expect($GLOBALS['__test_add_column_calls'][0]['data']['name'])->toBe('wmi_account');
@@ -66,6 +67,10 @@ it('adds the wmi_account column and creates every table', function () {
 	});
 
 	expect($creates)->toHaveCount(7);
+	$schema = implode("\n", array_column($creates, 'sql'));
+	expect($schema)->toContain('`winrm_ssl` varchar(8)');
+	expect($schema)->toContain('`last_success` timestamp NULL');
+	expect($schema)->toContain('`consecutive_failures` int(10) unsigned');
 });
 
 it('seeds both WMI data_input rows when they are not already present', function () {

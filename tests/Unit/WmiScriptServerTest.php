@@ -68,6 +68,19 @@ it('registers the wmic path as a setting with a default', function () {
 	expect($settings['path']['path_wmi']['method'])->toBe('filepath');
 });
 
+it('registers explicit CIM and WinRM transport settings', function () {
+	global $settings, $tabs;
+
+	$settings = array();
+	$tabs     = array();
+
+	wmi_config_settings();
+
+	expect($settings['misc']['wmi_winrm_ssl']['method'])->toBe('checkbox');
+	expect($settings['misc']['wmi_winrm_port']['max_length'])->toBe('5');
+	expect(array_keys($settings['misc']['wmi_winrm_auth']['array']))->toBe(['Negotiate', 'Kerberos', 'Basic']);
+});
+
 it('keeps the settings that are already on the path tab', function () {
 	global $settings, $tabs;
 

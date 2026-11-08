@@ -621,6 +621,7 @@ function walk_host() {
 	$wmi->password    = $password;
 	$wmi->querynspace = $namespace;
 	$wmi->command     = $command;
+	$wmi->counter_mode = strtoupper(trim($namespace)) === 'PDH';
 	$wmi->binary      = read_config_option('path_wmi');
 
 	if ($wmi->binary == '') {

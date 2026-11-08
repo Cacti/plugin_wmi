@@ -177,6 +177,10 @@ describe('poller master and child against a real Cacti', function () {
 		expect($o['state']['cache']['900003'])->toBe(['svc' => [], 'prc' => $polled['prc']]);
 		expect($o['last_failed'])->not->toBe('0000-00-00 00:00:00');
 		expect($o['last_failed_ok'])->toBe('0000-00-00 00:00:00');
+		expect($o['last_success_failed'])->toBeNull();
+		expect($o['last_success_ok'])->not->toBeNull();
+		expect($o['last_error'])->not->toBe('');
+		expect((int) $o['consecutive_failures'])->toBe(1);
 	});
 
 	it('finds nothing due right after a run', function () {

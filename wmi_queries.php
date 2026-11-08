@@ -68,14 +68,14 @@ $query_edit = [
 	'namespace' => [
 		'method'        => 'textbox',
 		'friendly_name' => __('Namespace', 'wmi'),
-		'description'   => __('The Namespace for this Query.', 'wmi'),
+		'description'   => __('Use a WMI namespace, or enter PDH for native performance counter paths.', 'wmi'),
 		'value'         => '|arg1:namespace|',
 		'max_length'    => '64',
 	],
 	'query' => [
 		'method'        => 'textarea',
 		'friendly_name' => __('Query', 'wmi'),
-		'description'   => __('The Query to execute for gathering WMI data from the device.', 'wmi'),
+		'description'   => __('Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB.', 'wmi'),
 		'value'         => '|arg1:query|',
 		'textarea_rows' => '4',
 		'textarea_cols' => '80',
@@ -495,10 +495,30 @@ function show_queries() {
 
 	query_filter();
 
-	$queries = db_fetch_assoc("SELECT *
-		FROM wmi_wql_queries
+	$queries = db_fetch_assoc("SELECT wwq.*,
+		COALESCE(health.device_count, 0) AS device_count,
+		health.last_started,
+		COALESCE(health.failing_devices, 0) AS failing_devices,
+		COALESCE(health.timeout_count, 0) AS timeout_count,
+		(SELECT SUBSTRING(recent_error.last_error, 1, 160)
+			FROM host_wmi_query AS recent_error
+			WHERE recent_error.wmi_query_id = wwq.id
+			AND recent_error.last_error != ''
+			ORDER BY recent_error.last_started DESC
+			LIMIT 1) AS last_error
+		FROM wmi_wql_queries AS wwq
+		LEFT JOIN (
+			SELECT wmi_query_id,
+				COUNT(DISTINCT host_id) AS device_count,
+				MAX(last_started) AS last_started,
+				SUM(CASE WHEN consecutive_failures > 0 THEN 1 ELSE 0 END) AS failing_devices,
+				SUM(timeout_count) AS timeout_count
+			FROM host_wmi_query
+			GROUP BY wmi_query_id
+		) AS health
+		ON health.wmi_query_id = wwq.id
 		$sql_where
-		ORDER BY name
+		ORDER BY wwq.name
 		LIMIT " . ($rows * (get_request_var('page') - 1)) . ', ' . $rows);
 
 	$total_rows = db_fetch_cell("SELECT COUNT(*)
@@ -544,6 +564,31 @@ function show_queries() {
 				'display' => __('Primary Key', 'wmi'),
 				'align'   => 'left',
 				'sort'    => 'ASC'
+			],
+			'device_count' => [
+				'display' => __('Polled Devices', 'wmi'),
+				'align'   => 'right',
+				'sort'    => 'DESC'
+			],
+			'last_started' => [
+				'display' => __('Last Poll', 'wmi'),
+				'align'   => 'left',
+				'sort'    => 'DESC'
+			],
+			'failing_devices' => [
+				'display' => __('Failing Devices', 'wmi'),
+				'align'   => 'right',
+				'sort'    => 'DESC'
+			],
+			'timeout_count' => [
+				'display' => __('Timeouts', 'wmi'),
+				'align'   => 'right',
+				'sort'    => 'DESC'
+			],
+			'last_error' => [
+				'display' => __('Most Recent Error', 'wmi'),
+				'align'   => 'left',
+				'sort'    => 'DESC'
 			]
 		]
 	);
@@ -557,6 +602,11 @@ function show_queries() {
 			form_selectable_cell(html_escape($row['namespace']), $row['id']);
 			form_selectable_cell(html_escape($row['query']), $row['id']);
 			form_selectable_cell(html_escape($row['primary_key']), $row['id']);
+			form_selectable_cell($row['device_count'], $row['id'], '', 'right');
+			form_selectable_cell(html_escape((string) ($row['last_started'] ?? 'Never')), $row['id']);
+			form_selectable_cell($row['failing_devices'], $row['id'], '', 'right');
+			form_selectable_cell($row['timeout_count'], $row['id'], '', 'right');
+			form_selectable_cell(html_escape($row['last_error'] ?? '-'), $row['id']);
 			form_checkbox_cell($row['name'], $row['id']);
 			form_end_row();
 		}
