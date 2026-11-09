@@ -70,6 +70,79 @@ interface Wmi_Transport {
 }
 
 /**
+ * Read a started process's stdout and stderr until both close, killing it
+ * once it runs past the timeout or its stdout grows past the byte limit.
+ * stderr is capped at 2000 bytes because it only ever feeds an error message.
+ *
+ * @param resource             $process
+ * @param array<int, resource> $pipes
+ *
+ * @return array{status: int, stdout: string, stderr: string, timed_out: bool, output_too_large: bool}
+ */
+function wmi_drain_process($process, array $pipes, int $timeout, int $max_output_bytes): array {
+	$open      = [1 => $pipes[1], 2 => $pipes[2]];
+	$buffer    = [1 => '', 2 => ''];
+	$deadline  = microtime(true) + $timeout;
+	$expired   = false;
+	$too_large = false;
+
+	foreach ($open as $stream) {
+		stream_set_blocking($stream, false);
+	}
+
+	while ($open !== []) {
+		$left = $deadline - microtime(true);
+
+		if ($left <= 0) {
+			$expired = true;
+
+			break;
+		}
+
+		$read   = $open;
+		$write  = null;
+		$except = null;
+
+		@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
+
+		foreach ($read as $key => $stream) {
+			$chunk = fread($stream, 8192);
+
+			if ($chunk === false || ($chunk === '' && feof($stream))) {
+				unset($open[$key]);
+			} elseif ($key === 2) {
+				$buffer[2] .= substr($chunk, 0, max(0, 2000 - strlen($buffer[2])));
+			} else {
+				$buffer[$key] .= $chunk;
+
+				if ($key === 1 && strlen($buffer[1]) > $max_output_bytes) {
+					$too_large = true;
+
+					break 2;
+				}
+			}
+		}
+	}
+
+	if ($expired || $too_large) {
+		proc_terminate($process, 9);
+	}
+
+	fclose($pipes[1]);
+	fclose($pipes[2]);
+
+	$status = proc_close($process);
+
+	return [
+		'status'           => ($expired || $too_large) ? -1 : $status,
+		'stdout'           => $buffer[1],
+		'stderr'           => substr(trim($buffer[2]), 0, 2000),
+		'timed_out'        => $expired,
+		'output_too_large' => $too_large,
+	];
+}
+
+/**
  * Default transport: the Linux `wmic` client.
  *
  * The credentials go to wmic in a private authentication file (-A) so they
@@ -290,68 +363,20 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 			return null;
 		}
 
-		$open     = [1 => $pipes[1], 2 => $pipes[2]];
-		$buffer   = [1 => '', 2 => ''];
-		$deadline  = microtime(true) + $this->timeout;
-		$expired   = false;
-		$too_large = false;
+		$result = wmi_drain_process($process, $pipes, $this->timeout, $this->max_output_bytes);
 
-		foreach ($open as $stream) {
-			stream_set_blocking($stream, false);
-		}
+		$stdout = $result['stdout'];
 
-		while ($open !== []) {
-			$left = $deadline - microtime(true);
-
-			if ($left <= 0) {
-				$expired = true;
-
-				break;
-			}
-
-			$read   = $open;
-			$write  = null;
-			$except = null;
-
-			@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
-
-			foreach ($read as $key => $stream) {
-				$chunk = fread($stream, 8192);
-
-				if ($chunk === false || ($chunk === '' && feof($stream))) {
-					unset($open[$key]);
-				} elseif ($key === 2) {
-					$buffer[2] .= substr($chunk, 0, max(0, 2000 - strlen($buffer[2])));
-				} else {
-					$buffer[$key] .= $chunk;
-					if ($key === 1 && strlen($buffer[1]) > $this->max_output_bytes) {
-						$too_large = true;
-
-						break 2;
-					}
-				}
-			}
-		}
-
-		if ($expired || $too_large) {
-			proc_terminate($process, 9);
-		}
-
-		fclose($pipes[1]);
-		fclose($pipes[2]);
-
-		$status = proc_close($process);
-
-		if (substr($buffer[1], -1) === "\n") {
-			$buffer[1] = substr($buffer[1], 0, -1);
+		if (substr($stdout, -1) === "\n") {
+			$stdout = substr($stdout, 0, -1);
 		}
 
 		return [
-			'status'    => ($expired || $too_large) ? -1 : $status,
-			'lines'     => $buffer[1] === '' ? [] : array_map('rtrim', explode("\n", $buffer[1])),
-			'stderr'    => substr(trim($buffer[2]), 0, 2000),
-			'timed_out' => $expired,
-			'output_too_large' => $too_large,
+			'status'           => $result['status'],
+			'lines'            => $stdout === '' ? [] : array_map('rtrim', explode("\n", $stdout)),
+			'stderr'           => $result['stderr'],
+			'timed_out'        => $result['timed_out'],
+			'output_too_large' => $result['output_too_large'],
 		];
 	}
 
@@ -564,66 +589,14 @@ class PowerShellCim_Transport implements Wmi_Transport {
 			fwrite($pipes[0], $stdin);
 			fclose($pipes[0]);
 
-			$open     = [1 => $pipes[1], 2 => $pipes[2]];
-			$buffer   = [1 => '', 2 => ''];
-			$deadline  = microtime(true) + $this->timeout;
-			$expired   = false;
-			$too_large = false;
+			$result = wmi_drain_process($process, $pipes, $this->timeout, $this->max_output_bytes);
+			$exit   = $result['status'];
+			$stdout = str_replace("\r\n", "\n", rtrim($result['stdout'], "\r\n"));
+			$stderr = $result['stderr'];
 
-			foreach ($open as $stream) {
-				stream_set_blocking($stream, false);
-			}
-
-			while ($open !== []) {
-				$left = $deadline - microtime(true);
-
-				if ($left <= 0) {
-					$expired = true;
-
-					break;
-				}
-
-				$read   = $open;
-				$write  = null;
-				$except = null;
-
-				@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
-
-				foreach ($read as $key => $stream) {
-					$chunk = fread($stream, 8192);
-
-					if ($chunk === false || ($chunk === '' && feof($stream))) {
-						unset($open[$key]);
-					} elseif ($key === 2) {
-						$buffer[2] .= substr($chunk, 0, max(0, 2000 - strlen($buffer[2])));
-					} else {
-						$buffer[$key] .= $chunk;
-						if ($key === 1 && strlen($buffer[1]) > $this->max_output_bytes) {
-							$too_large = true;
-
-							break 2;
-						}
-					}
-				}
-			}
-
-			if ($expired || $too_large) {
-				proc_terminate($process, 9);
-			}
-
-			fclose($pipes[1]);
-			fclose($pipes[2]);
-
-			$exit = proc_close($process);
-
-			$stdout = str_replace("\r\n", "\n", rtrim($buffer[1], "\r\n"));
-			$stderr = substr(trim($buffer[2]), 0, 2000);
-
-			if ($expired) {
-				$exit   = -1;
+			if ($result['timed_out']) {
 				$stderr = 'PowerShell did not finish within ' . $this->timeout . ' seconds' . ($stderr === '' ? '' : "\n" . $stderr);
-			} elseif ($too_large) {
-				$exit   = -1;
+			} elseif ($result['output_too_large']) {
 				$stderr = 'PowerShell response exceeded the ' . $this->max_output_bytes . ' byte limit';
 			}
 
