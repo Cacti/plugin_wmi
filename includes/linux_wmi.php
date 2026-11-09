@@ -622,7 +622,6 @@ class Linux_WMI {
 	public string $keys        = '';   // Comma separated keys
 	public string $queryclass  = '';   // Class name to pull
 	public string $querynspace = '';  // Namespace to pull
-	public bool $counter_mode = false;
 	public ?bool $winrm_ssl = null;
 	public ?int $winrm_port = null;
 	public ?string $winrm_authentication = null;
@@ -903,7 +902,8 @@ class Linux_WMI {
 			$ssl,
 			$port,
 			$authentication,
-			$this->counter_mode
+			// PDH in the namespace field marks a list of performance counter paths.
+			strtoupper(trim($this->querynspace)) === 'PDH'
 		);
 	}
 

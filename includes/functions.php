@@ -452,7 +452,6 @@ function run_store_wmi_query($host_id, $wmi_query_id, $transport = null, &$error
 		$wmi->hostname    = $host;
 		$wmi->username    = $username;
 		$wmi->password    = $wmi->decode($password);
-		$wmi->counter_mode = strtoupper(trim($namespace)) === 'PDH';
 		if (in_array($auth_info['winrm_ssl'] ?? '', ['on', 'off'], true)) {
 			$wmi->winrm_ssl = $auth_info['winrm_ssl'] === 'on';
 		}

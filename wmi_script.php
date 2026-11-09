@@ -86,7 +86,6 @@ function wmi_script($hostname, $host_id, $wmiquery, $cmd = '', $arg1 = '', $arg2
 	$wmi->indexkey    = $wmiinfo['primary_key'];
 	$wmi->command     = $wmiinfo['query'];
 	$wmi->querynspace = $wmiinfo['namespace'];
-	$wmi->counter_mode = strtoupper(trim($wmiinfo['namespace'])) === 'PDH';
 
 	if ($cmd == 'index') {
 		$results = $wmi->fetch();

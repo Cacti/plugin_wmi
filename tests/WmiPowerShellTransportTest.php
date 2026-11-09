@@ -35,6 +35,18 @@ function wmi_test_request(string $secret): Wmi_Request {
 	return new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name,State FROM Win32_Service', '|+|', 'pwsh');
 }
 
+/** A Linux_WMI client for winsrv that sends its queries through $transport. */
+function wmi_test_client(Wmi_Transport $transport, string $secret, string $namespace, string $command): Linux_WMI {
+	$w              = new Linux_WMI('', $transport);
+	$w->hostname    = 'winsrv';
+	$w->username    = 'dom\\adm';
+	$w->password    = $secret;
+	$w->querynspace = $namespace;
+	$w->command     = $command;
+
+	return $w;
+}
+
 describe('PowerShellCim_Transport', function () {
 	$secret = 'P@ss w0rd!&|';
 
@@ -114,19 +126,26 @@ describe('PowerShellCim_Transport', function () {
 			'wmi_winrm_auth' => 'Kerberos',
 		];
 		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, ['Win32_Service', 'Name', 'Spooler']));
-		$w = new Linux_WMI('', $t);
-		$w->hostname = 'winsrv';
-		$w->username = 'dom\\adm';
-		$w->password = $secret;
-		$w->querynspace = 'root\\CIMV2';
-		$w->command = 'SELECT Name FROM Win32_Service';
-		$w->fetch();
+		wmi_test_client($t, $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service')->fetch();
 		$GLOBALS['__test_config'] = [];
 
 		expect($seen['env']['WMI_SSL'])->toBe('1');
 		expect($seen['env']['WMI_PORT'])->toBe('5987');
 		expect($seen['env']['WMI_AUTH'])->toBe('Kerberos');
 	});
+
+	it('switches Linux_WMI to counter mode only for the PDH namespace', function (string $namespace, string $counter) use ($secret) {
+		$seen = [];
+		$t    = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, ['WindowsPerformanceCounters', 'Path']));
+
+		wmi_test_client($t, $secret, $namespace, '\\Processor(_Total)\\% Processor Time')->fetch();
+
+		expect($seen['env']['WMI_COUNTER'])->toBe($counter);
+	})->with([
+		'PDH'               => ['PDH', '1'],
+		'padded lower case' => [' pdh ', '1'],
+		'WMI namespace'     => ['root\\CIMV2', '0'],
+	]);
 
 	it('rejects Basic authentication without HTTPS before starting PowerShell', function () use ($secret) {
 		$seen = [];
