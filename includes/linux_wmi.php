@@ -113,9 +113,9 @@ function wmi_drain_process($process, array $pipes, int $timeout, int $max_output
 			} elseif ($key === 2) {
 				$buffer[2] .= substr($chunk, 0, max(0, 2000 - strlen($buffer[2])));
 			} else {
-				$buffer[$key] .= $chunk;
+				$buffer[1] .= $chunk;
 
-				if ($key === 1 && strlen($buffer[1]) > $max_output_bytes) {
+				if (strlen($buffer[1]) > $max_output_bytes) {
 					$too_large = true;
 
 					break 2;
