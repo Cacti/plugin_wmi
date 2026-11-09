@@ -533,6 +533,19 @@ function show_queries() {
 
 	html_start_box(__('WMI Queries', 'wmi'), '100%', false, 3, 'center', 'wmi_queries.php?action=edit');
 
+	// The poll health columns rank the busiest or most broken queries first.
+	$health_columns = [];
+
+	foreach ([
+		'device_count'    => [__('Polled Devices', 'wmi'), 'right'],
+		'last_started'    => [__('Last Poll', 'wmi'), 'left'],
+		'failing_devices' => [__('Failing Devices', 'wmi'), 'right'],
+		'timeout_count'   => [__('Timeouts', 'wmi'), 'right'],
+		'last_error'      => [__('Most Recent Error', 'wmi'), 'left'],
+	] as $column => [$display, $align]) {
+		$health_columns[$column] = ['display' => $display, 'align' => $align, 'sort' => 'DESC'];
+	}
+
 	html_header_checkbox(
 		[
 			'name' => [
@@ -564,33 +577,8 @@ function show_queries() {
 				'display' => __('Primary Key', 'wmi'),
 				'align'   => 'left',
 				'sort'    => 'ASC'
-			],
-			'device_count' => [
-				'display' => __('Polled Devices', 'wmi'),
-				'align'   => 'right',
-				'sort'    => 'DESC'
-			],
-			'last_started' => [
-				'display' => __('Last Poll', 'wmi'),
-				'align'   => 'left',
-				'sort'    => 'DESC'
-			],
-			'failing_devices' => [
-				'display' => __('Failing Devices', 'wmi'),
-				'align'   => 'right',
-				'sort'    => 'DESC'
-			],
-			'timeout_count' => [
-				'display' => __('Timeouts', 'wmi'),
-				'align'   => 'right',
-				'sort'    => 'DESC'
-			],
-			'last_error' => [
-				'display' => __('Most Recent Error', 'wmi'),
-				'align'   => 'left',
-				'sort'    => 'DESC'
 			]
-		]
+		] + $health_columns
 	);
 
 	if (!empty($queries)) {
