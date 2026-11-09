@@ -147,56 +147,21 @@ describe('PowerShellCim_Transport', function () {
 		'WMI namespace'     => ['root\\CIMV2', '0'],
 	]);
 
-	it('rejects Basic authentication without HTTPS before starting PowerShell', function () use ($secret) {
-		$seen = [];
-		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
-		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service', '|+|', 'pwsh', false, null, 'Basic');
+	it('rejects an invalid request before starting PowerShell', function (string $namespace, string $query, bool $ssl, ?int $port, string $auth, bool $counter, string $error) use ($secret) {
+		$seen    = [];
+		$t       = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
+		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, $namespace, $query, '|+|', 'pwsh', $ssl, $port, $auth, $counter);
 
 		expect($t->query($request))->toBeFalse();
-		expect($t->error())->toContain('requires HTTPS');
+		expect($t->error())->toContain($error);
 		expect($seen)->toBe([]);
-	});
-
-	it('rejects unsupported authentication methods before starting PowerShell', function () use ($secret) {
-		$seen = [];
-		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
-		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service', '|+|', 'pwsh', false, null, 'NTLM');
-
-		expect($t->query($request))->toBeFalse();
-		expect($t->error())->toContain('Invalid WinRM authentication method');
-		expect($seen)->toBe([]);
-	});
-
-	it('rejects an out-of-range WinRM port before starting PowerShell', function () use ($secret) {
-		$seen = [];
-		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
-		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service', '|+|', 'pwsh', false, 65536, 'Negotiate');
-
-		expect($t->query($request))->toBeFalse();
-		expect($t->error())->toContain('Invalid WinRM port');
-		expect($seen)->toBe([]);
-	});
-
-	it('rejects an empty PDH query before starting PowerShell', function () use ($secret) {
-		$seen = [];
-		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
-		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'PDH', " \n ", '|+|', 'pwsh', false, null, 'Negotiate', true);
-
-		expect($t->query($request))->toBeFalse();
-		expect($t->error())->toContain('counter path is required');
-		expect($seen)->toBe([]);
-	});
-
-	it('rejects more than 64 PDH paths before starting PowerShell', function () use ($secret) {
-		$seen = [];
-		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
-		$paths = implode("\n", array_fill(0, 65, '\\Processor(_Total)\\% Processor Time'));
-		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'PDH', $paths, '|+|', 'pwsh', false, null, 'Negotiate', true);
-
-		expect($t->query($request))->toBeFalse();
-		expect($t->error())->toContain('at most 64 counter paths');
-		expect($seen)->toBe([]);
-	});
+	})->with([
+		'Basic authentication without HTTPS' => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, null, 'Basic', false, 'requires HTTPS'],
+		'unsupported authentication method'  => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, null, 'NTLM', false, 'Invalid WinRM authentication method'],
+		'out-of-range WinRM port'            => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, 65536, 'Negotiate', false, 'Invalid WinRM port'],
+		'empty PDH query'                    => ['PDH', " \n ", false, null, 'Negotiate', true, 'counter path is required'],
+		'more than 64 PDH paths'             => ['PDH', implode("\n", array_fill(0, 65, '\\Processor(_Total)\\% Processor Time')), false, null, 'Negotiate', true, 'at most 64 counter paths'],
+	]);
 
 	it('surfaces stderr on a non-zero exit', function () use ($secret) {
 		$request = wmi_test_request($secret);
