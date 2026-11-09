@@ -436,7 +436,7 @@ function process_device($host_id) {
 				$failure_count++;
 				$wmi_errors++;
 
-				if (preg_match('/timed? ?out|timeout|did not finish within/i', (string) $query_error)) {
+				if (preg_match('/timed? ?out|did not finish within/i', (string) $query_error)) {
 					$timeout_count++;
 				}
 
