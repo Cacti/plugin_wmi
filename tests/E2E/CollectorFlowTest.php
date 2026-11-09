@@ -89,7 +89,16 @@ describe('cache refresh against a real Cacti', function () {
 		expect($o['indexes'])->toBe(['A', 'B']);
 		expect($o['rows'])->toBe(4);
 		expect($o['present0'])->toBe(0);
-	})->with(['midway', 'empty_output', 'silent_failure', 'header_only']);
+	})->with(['midway', 'empty_output', 'silent_failure']);
+
+	it('clears the cache after a successful header-only result', function () {
+		$o = wmi_e2e_collector()['header_only'];
+
+		expect($o['result'])->toBeTrue();
+		expect($o['indexes'])->toBe([]);
+		expect($o['rows'])->toBe(0);
+		expect($o['present0'])->toBe(0);
+	});
 
 	it('indexes rows by the primary key shape', function (string $case, array $indexes, int $rows) {
 		$o = wmi_e2e_collector()['key_' . $case];
@@ -140,7 +149,6 @@ describe('cache refresh against a real Cacti', function () {
 
 		expect($log)->toContain('WMI Query[900001] for Device[900001] failed: ERROR: WMI Returned no Data');
 		expect($log)->toContain('failed: ERROR: ');
-		expect($log)->toContain('failed: WMI returned no rows');
 	});
 });
 
