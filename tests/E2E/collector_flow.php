@@ -242,6 +242,10 @@ db_execute('INSERT INTO wmi_processes (pid, taskid, started) VALUES (1, 1, DATE_
 $out['stale_lock'] = $poller('-M') + ['state' => $poll_state()];
 $out['stale_lock']['last_failed'] = db_fetch_cell_prepared('SELECT last_failed FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_C, QUERY_SVC]);
 $out['stale_lock']['last_failed_ok'] = db_fetch_cell_prepared('SELECT last_failed FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_A, QUERY_SVC]);
+$out['stale_lock']['last_success_failed'] = db_fetch_cell_prepared('SELECT last_success FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_C, QUERY_SVC]);
+$out['stale_lock']['last_success_ok'] = db_fetch_cell_prepared('SELECT last_success FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_A, QUERY_SVC]);
+$out['stale_lock']['last_error'] = db_fetch_cell_prepared('SELECT last_error FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_C, QUERY_SVC]);
+$out['stale_lock']['consecutive_failures'] = db_fetch_cell_prepared('SELECT consecutive_failures FROM host_wmi_query WHERE host_id = ? AND wmi_query_id = ?', [HOST_C, QUERY_SVC]);
 
 // A second run right away finds nothing due.
 $out['not_due'] = $poller('-M');

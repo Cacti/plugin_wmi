@@ -99,3 +99,11 @@ it('refuses to run without credentials', function () {
 	expect($w->fetch())->toBeFalse();
 	expect($w->error)->toBe('ERROR: Username or Password not set!');
 });
+
+it('refuses native counter queries because wmic cannot collect PDH data', function () {
+	$request = new Wmi_Request('host', 'u', 'p', 'PDH', '\\Processor(_Total)\\% Processor Time', '|+|', '/usr/bin/wmic', false, null, 'Negotiate', true);
+	$transport = new Wmic_Shell_Transport();
+
+	expect($transport->query($request))->toBeFalse();
+	expect($transport->error())->toContain('require PowerShell');
+});

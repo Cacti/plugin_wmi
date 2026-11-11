@@ -36,3 +36,14 @@ it('accepts an encoded password that fits the column and rejects one that does n
 	expect(wmi_account_password_fits(str_repeat('x', 256)))->toBeTrue();
 	expect(wmi_account_password_fits(str_repeat('x', 257)))->toBeFalse();
 });
+
+it('validates WinRM port, authentication, and HTTPS requirements per account', function () {
+	expect(wmi_account_winrm_input_valid('inherit', '', 'inherit'))->toBeTrue();
+	expect(wmi_account_winrm_input_valid('on', '5986', 'Basic'))->toBeTrue();
+	expect(wmi_account_winrm_input_valid('off', '', 'Basic'))->toBeFalse();
+	expect(wmi_account_winrm_input_valid('on', '0', 'Kerberos'))->toBeFalse();
+	expect(wmi_account_winrm_input_valid('on', '65536', 'Kerberos'))->toBeFalse();
+	expect(wmi_account_winrm_input_valid('on', 'not-a-port', 'Negotiate'))->toBeFalse();
+	expect(wmi_account_winrm_input_valid('invalid', '', 'Negotiate'))->toBeFalse();
+	expect(wmi_account_winrm_input_valid('on', '', 'CredSSP'))->toBeFalse();
+});

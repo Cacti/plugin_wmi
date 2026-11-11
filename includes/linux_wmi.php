@@ -44,7 +44,11 @@ class Wmi_Request {
 		public string $namespace,
 		public string $query,
 		public string $separator,
-		public string $binary
+		public string $binary,
+		public bool $use_ssl = false,
+		public ?int $port = null,
+		public string $authentication = 'Negotiate',
+		public bool $counter_mode = false
 	) {
 	}
 }
@@ -66,6 +70,79 @@ interface Wmi_Transport {
 }
 
 /**
+ * Read a started process's stdout and stderr until both close, killing it
+ * once it runs past the timeout or its stdout grows past the byte limit.
+ * stderr is capped at 2000 bytes because it only ever feeds an error message.
+ *
+ * @param resource             $process
+ * @param array<int, resource> $pipes
+ *
+ * @return array{status: int, stdout: string, stderr: string, timed_out: bool, output_too_large: bool}
+ */
+function wmi_drain_process($process, array $pipes, int $timeout, int $max_output_bytes): array {
+	$open      = [1 => $pipes[1], 2 => $pipes[2]];
+	$buffer    = [1 => '', 2 => ''];
+	$deadline  = microtime(true) + $timeout;
+	$expired   = false;
+	$too_large = false;
+
+	foreach ($open as $stream) {
+		stream_set_blocking($stream, false);
+	}
+
+	while ($open !== []) {
+		$left = $deadline - microtime(true);
+
+		if ($left <= 0) {
+			$expired = true;
+
+			break;
+		}
+
+		$read   = $open;
+		$write  = null;
+		$except = null;
+
+		@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
+
+		foreach ($read as $key => $stream) {
+			$chunk = fread($stream, 8192);
+
+			if ($chunk === false || ($chunk === '' && feof($stream))) {
+				unset($open[$key]);
+			} elseif ($key === 2) {
+				$buffer[2] .= substr($chunk, 0, max(0, 2000 - strlen($buffer[2])));
+			} else {
+				$buffer[1] .= $chunk;
+
+				if (strlen($buffer[1]) > $max_output_bytes) {
+					$too_large = true;
+
+					break 2;
+				}
+			}
+		}
+	}
+
+	if ($expired || $too_large) {
+		proc_terminate($process, 9);
+	}
+
+	fclose($pipes[1]);
+	fclose($pipes[2]);
+
+	$status = proc_close($process);
+
+	return [
+		'status'           => ($expired || $too_large) ? -1 : $status,
+		'stdout'           => $buffer[1],
+		'stderr'           => substr(trim($buffer[2]), 0, 2000),
+		'timed_out'        => $expired,
+		'output_too_large' => $too_large,
+	];
+}
+
+/**
  * Default transport: the Linux `wmic` client.
  *
  * The credentials go to wmic in a private authentication file (-A) so they
@@ -82,12 +159,18 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 */
 	public function __construct(
 		private int $timeout = 120,
-		private ?string $temp_dir = null
+		private ?string $temp_dir = null,
+		private int $max_output_bytes = 16777216
 	) {
 	}
 
 	public function query(Wmi_Request $request): array|false {
 		$this->error = null;
+		if ($request->counter_mode) {
+			$this->error = 'ERROR: Performance counter queries require PowerShell on a Windows Cacti server';
+
+			return false;
+		}
 
 		if (preg_match('/[\r\n\0]/', $request->username . $request->password)) {
 			$this->error = 'ERROR: WMI credentials must not contain line breaks';
@@ -116,6 +199,12 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 
 		if ($result['timed_out']) {
 			$this->error = $this->with_stderr('ERROR: wmic did not finish within ' . $this->timeout . ' seconds', $result['stderr']);
+
+			return false;
+		}
+
+		if ($result['output_too_large']) {
+			$this->error = 'ERROR: WMI response exceeded the ' . $this->max_output_bytes . ' byte limit';
 
 			return false;
 		}
@@ -265,7 +354,7 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 	 * Run a command with stdout and stderr read separately, stopping it when
 	 * it takes longer than the timeout.
 	 *
-	 * @return array{status: int, lines: array<int, string>, stderr: string, timed_out: bool}|null
+	 * @return array{status: int, lines: array<int, string>, stderr: string, timed_out: bool, output_too_large: bool}|null
 	 */
 	private function run(string $command): ?array {
 		$process = $this->start_process($command, $pipes);
@@ -274,59 +363,20 @@ class Wmic_Shell_Transport implements Wmi_Transport {
 			return null;
 		}
 
-		$open     = [1 => $pipes[1], 2 => $pipes[2]];
-		$buffer   = [1 => '', 2 => ''];
-		$deadline = microtime(true) + $this->timeout;
-		$expired  = false;
+		$result = wmi_drain_process($process, $pipes, $this->timeout, $this->max_output_bytes);
 
-		foreach ($open as $stream) {
-			stream_set_blocking($stream, false);
-		}
+		$stdout = $result['stdout'];
 
-		while ($open !== []) {
-			$left = $deadline - microtime(true);
-
-			if ($left <= 0) {
-				$expired = true;
-
-				break;
-			}
-
-			$read   = $open;
-			$write  = null;
-			$except = null;
-
-			@stream_select($read, $write, $except, 0, (int) min(200000, $left * 1000000));
-
-			foreach ($read as $key => $stream) {
-				$chunk = fread($stream, 8192);
-
-				if ($chunk === false || ($chunk === '' && feof($stream))) {
-					unset($open[$key]);
-				} else {
-					$buffer[$key] .= $chunk;
-				}
-			}
-		}
-
-		if ($expired) {
-			proc_terminate($process, 9);
-		}
-
-		fclose($pipes[1]);
-		fclose($pipes[2]);
-
-		$status = proc_close($process);
-
-		if (substr($buffer[1], -1) === "\n") {
-			$buffer[1] = substr($buffer[1], 0, -1);
+		if (substr($stdout, -1) === "\n") {
+			$stdout = substr($stdout, 0, -1);
 		}
 
 		return [
-			'status'    => $expired ? -1 : $status,
-			'lines'     => $buffer[1] === '' ? [] : array_map('rtrim', explode("\n", $buffer[1])),
-			'stderr'    => substr(trim($buffer[2]), 0, 2000),
-			'timed_out' => $expired,
+			'status'           => $result['status'],
+			'lines'            => $stdout === '' ? [] : array_map('rtrim', explode("\n", $stdout)),
+			'stderr'           => $result['stderr'],
+			'timed_out'        => $result['timed_out'],
+			'output_too_large' => $result['output_too_large'],
 		];
 	}
 
@@ -378,7 +428,36 @@ class PowerShellCim_Transport implements Wmi_Transport {
 		if (![string]::IsNullOrEmpty($env:WMI_HOST)) {
 		    $secure = ConvertTo-SecureString $env:WMI_PASS -AsPlainText -Force
 		    $cred = New-Object System.Management.Automation.PSCredential($env:WMI_USER, $secure)
-		    $session = New-CimSession -ComputerName $env:WMI_HOST -Credential $cred
+		    if ($env:WMI_COUNTER -eq '1') {
+		        $paths = @($env:WMI_QUERY -split "`n" | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne '' })
+		        if ($paths.Count -eq 0) { throw 'No performance counter paths were provided' }
+		        if ($paths.Count -gt 64) { throw 'A PDH query can contain at most 64 counter paths' }
+		        $invoke = @{ ComputerName = $env:WMI_HOST; Credential = $cred; Authentication = $env:WMI_AUTH; ErrorAction = 'Stop' }
+		        if ($env:WMI_SSL -eq '1') { $invoke['UseSSL'] = $true }
+		        if (![string]::IsNullOrEmpty($env:WMI_PORT)) { $invoke['Port'] = [uint32]$env:WMI_PORT }
+		        $counterSamples = Invoke-Command @invoke -ScriptBlock {
+		            param([string[]]$CounterPaths)
+		            $samples = Get-Counter -Counter $CounterPaths -MaxSamples 2 -SampleInterval 1 -ErrorAction Stop
+		            $samples[-1].CounterSamples | ForEach-Object {
+					[pscustomobject]@{ Path = $_.Path; Instance = $_.InstanceName; Timestamp = $_.TimeStamp; CookedValue = [string]::Format([cultureinfo]::InvariantCulture, '{0:R}', [double]$_.CookedValue) }
+		            }
+		        } -ArgumentList (,$paths)
+		        Write-Output 'WindowsPerformanceCounters'
+		        Write-Output ('Path' + $sep + 'Instance' + $sep + 'Timestamp' + $sep + 'CookedValue')
+		        foreach ($sample in $counterSamples) {
+		            Write-Output ([string]$sample.Path + $sep + [string]$sample.Instance + $sep + [string]$sample.Timestamp + $sep + [string]$sample.CookedValue)
+		        }
+		        exit 0
+		    }
+		$options = New-CimSessionOption -Protocol Wsman
+		if ($env:WMI_SSL -eq '1') {
+		    $options = New-CimSessionOption -Protocol Wsman -UseSsl
+		}
+		$sessionParams = @{ ComputerName = $env:WMI_HOST; Credential = $cred; Authentication = $env:WMI_AUTH; SessionOption = $options }
+		if (![string]::IsNullOrEmpty($env:WMI_PORT)) {
+		    $sessionParams['Port'] = [uint32]$env:WMI_PORT
+		}
+		$session = New-CimSession @sessionParams
 		    $params['CimSession'] = $session
 		}
 		try {
@@ -407,13 +486,43 @@ class PowerShellCim_Transport implements Wmi_Transport {
 	 */
 	public function __construct(
 		public string $binary = 'pwsh',
-		?callable $runner = null
+		?callable $runner = null,
+		private int $timeout = 120,
+		private int $max_output_bytes = 16777216
 	) {
 		$this->runner = $runner ?? $this->default_runner();
 	}
 
 	public function query(Wmi_Request $request): array|false {
 		$this->error = null;
+		if ($request->counter_mode && trim($request->query) === '') {
+			$this->error = __('ERROR: At least one performance counter path is required', 'wmi');
+
+			return false;
+		}
+
+		if ($request->counter_mode && count(preg_split('/\R/', trim($request->query), -1, PREG_SPLIT_NO_EMPTY) ?: []) > 64) {
+			$this->error = __('ERROR: A PDH query can contain at most 64 counter paths', 'wmi');
+
+			return false;
+		}
+		if ($request->port !== null && ($request->port < 1 || $request->port > 65535)) {
+			$this->error = __('ERROR: Invalid WinRM port', 'wmi');
+
+			return false;
+		}
+
+		if (!in_array($request->authentication, ['Negotiate', 'Kerberos', 'Basic'], true)) {
+			$this->error = __('ERROR: Invalid WinRM authentication method', 'wmi');
+
+			return false;
+		}
+
+		if ($request->authentication === 'Basic' && !$request->use_ssl) {
+			$this->error = __('ERROR: Basic WinRM authentication requires HTTPS', 'wmi');
+
+			return false;
+		}
 
 		$env = [
 			'WMI_HOST'  => trim($request->hostname),
@@ -422,6 +531,10 @@ class PowerShellCim_Transport implements Wmi_Transport {
 			'WMI_NS'    => $request->namespace,
 			'WMI_QUERY' => $request->query,
 			'WMI_SEP'   => $request->separator,
+			'WMI_SSL'   => $request->use_ssl ? '1' : '0',
+			'WMI_PORT'  => $request->port === null ? '' : (string) $request->port,
+			'WMI_AUTH'  => $request->authentication,
+			'WMI_COUNTER' => $request->counter_mode ? '1' : '0',
 		];
 
 		$result = ($this->runner)(
@@ -439,9 +552,7 @@ class PowerShellCim_Transport implements Wmi_Transport {
 		}
 
 		if (count($result['stdout']) === 0) {
-			$this->error = __('ERROR: WMI Returned no Data', 'wmi');
-
-			return false;
+			return [];
 		}
 
 		return $result['stdout'];
@@ -478,14 +589,16 @@ class PowerShellCim_Transport implements Wmi_Transport {
 			fwrite($pipes[0], $stdin);
 			fclose($pipes[0]);
 
-			$stdout = stream_get_contents($pipes[1]);
-			$stderr = stream_get_contents($pipes[2]);
-			fclose($pipes[1]);
-			fclose($pipes[2]);
+			$result = wmi_drain_process($process, $pipes, $this->timeout, $this->max_output_bytes);
+			$exit   = $result['status'];
+			$stdout = str_replace("\r\n", "\n", rtrim($result['stdout'], "\r\n"));
+			$stderr = $result['stderr'];
 
-			$exit = proc_close($process);
-
-			$stdout = str_replace("\r\n", "\n", rtrim($stdout, "\r\n"));
+			if ($result['timed_out']) {
+				$stderr = 'PowerShell did not finish within ' . $this->timeout . ' seconds' . ($stderr === '' ? '' : "\n" . $stderr);
+			} elseif ($result['output_too_large']) {
+				$stderr = 'PowerShell response exceeded the ' . $this->max_output_bytes . ' byte limit';
+			}
 
 			return [
 				'exit'   => $exit,
@@ -509,6 +622,9 @@ class Linux_WMI {
 	public string $keys        = '';   // Comma separated keys
 	public string $queryclass  = '';   // Class name to pull
 	public string $querynspace = '';  // Namespace to pull
+	public ?bool $winrm_ssl = null;
+	public ?int $winrm_port = null;
+	public ?string $winrm_authentication = null;
 
 	/** @var array<int, array<int, string>> Parsed rows from the last fetch(). */
 	public array $results = [];
@@ -728,6 +844,15 @@ class Linux_WMI {
 
 		$this->username = $info['username'];
 		$this->password = $this->decode($info['password']);
+		if (in_array($info['winrm_ssl'] ?? '', ['on', 'off'], true)) {
+			$this->winrm_ssl = $info['winrm_ssl'] === 'on';
+		}
+		if (($info['winrm_port'] ?? '') !== '') {
+			$this->winrm_port = ctype_digit((string) $info['winrm_port']) ? (int) $info['winrm_port'] : 0;
+		}
+		if (in_array($info['winrm_auth'] ?? '', ['Negotiate', 'Kerberos', 'Basic'], true)) {
+			$this->winrm_authentication = $info['winrm_auth'];
+		}
 
 		return true;
 	}
@@ -758,6 +883,14 @@ class Linux_WMI {
 	}
 
 	private function request(): Wmi_Request {
+		$ssl = $this->winrm_ssl ?? (function_exists('read_config_option') && read_config_option('wmi_winrm_ssl') === 'on');
+		$port = function_exists('read_config_option') ? trim((string) read_config_option('wmi_winrm_port')) : '';
+		$port = $this->winrm_port ?? ($port === '' ? null : (ctype_digit($port) ? (int) $port : 0));
+		$authentication = $this->winrm_authentication ?? (function_exists('read_config_option') ? (string) read_config_option('wmi_winrm_auth') : 'Negotiate');
+		if (!in_array($authentication, ['Negotiate', 'Kerberos', 'Basic'], true)) {
+			$authentication = 'Negotiate';
+		}
+
 		return new Wmi_Request(
 			$this->hostname,
 			$this->username,
@@ -765,7 +898,12 @@ class Linux_WMI {
 			$this->querynspace,
 			$this->command,
 			$this->effective_separator(),
-			$this->binary
+			$this->binary,
+			$ssl,
+			$port,
+			$authentication,
+			// PDH in the namespace field marks a list of performance counter paths.
+			strtoupper(trim($this->querynspace)) === 'PDH'
 		);
 	}
 

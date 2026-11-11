@@ -35,6 +35,18 @@ function wmi_test_request(string $secret): Wmi_Request {
 	return new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name,State FROM Win32_Service', '|+|', 'pwsh');
 }
 
+/** A Linux_WMI client for winsrv that sends its queries through $transport. */
+function wmi_test_client(Wmi_Transport $transport, string $secret, string $namespace, string $command): Linux_WMI {
+	$w              = new Linux_WMI('', $transport);
+	$w->hostname    = 'winsrv';
+	$w->username    = 'dom\\adm';
+	$w->password    = $secret;
+	$w->querynspace = $namespace;
+	$w->command     = $command;
+
+	return $w;
+}
+
 describe('PowerShellCim_Transport', function () {
 	$secret = 'P@ss w0rd!&|';
 
@@ -70,15 +82,86 @@ describe('PowerShellCim_Transport', function () {
 		expect($w->fetch_value('State', 'W32Time'))->toBe('Stopped');
 	});
 
-	it('surfaces an empty result as an error', function () use ($secret) {
+	it('returns a successful empty result without manufacturing a transport error', function () use ($secret) {
 		$request = wmi_test_request($secret);
 
 		$seen = [];
 		$t    = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
 
-		expect($t->query($request))->toBeFalse();
-		expect(str_contains((string) $t->error(), 'no Data'))->toBeTrue();
+		expect($t->query($request))->toBe([]);
+		expect($t->error())->toBeNull();
 	});
+
+	it('passes configured WinRM settings to the CIM session', function () use ($secret) {
+		$seen = [];
+		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
+		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service', '|+|', 'pwsh', true, 5987, 'Kerberos');
+
+		expect($t->query($request))->toBe([]);
+		expect($seen['env']['WMI_SSL'])->toBe('1');
+		expect($seen['env']['WMI_PORT'])->toBe('5987');
+		expect($seen['env']['WMI_AUTH'])->toBe('Kerberos');
+		expect($seen['stdin'])->toContain('New-CimSessionOption -Protocol Wsman -UseSsl');
+		expect($seen['stdin'])->toContain("\$sessionParams['Port']");
+	});
+
+	it('collects native PDH values over WinRM and returns formatted samples', function () use ($secret) {
+		$seen = [];
+		$lines = ['WindowsPerformanceCounters', 'Path|+|Instance|+|Timestamp|+|CookedValue', '\\Process V2(windows pid 42)\\% Processor Time|+|windows pid 42|+|2026-11-08T10:00:00|+|12.5'];
+		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, $lines));
+		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, 'PDH', "\\Process V2(*)\\% Processor Time", '|+|', 'pwsh', true, 5986, 'Kerberos', true);
+
+		expect($t->query($request))->toBe($lines);
+		expect($seen['env']['WMI_COUNTER'])->toBe('1');
+		expect($seen['stdin'])->toContain('Get-Counter -Counter $CounterPaths -MaxSamples 2 -SampleInterval 1');
+		expect($seen['stdin'])->toContain("[cultureinfo]::InvariantCulture");
+		expect($seen['stdin'])->toContain('Invoke-Command @invoke');
+	});
+
+	it('reads the WinRM settings when Linux_WMI builds a production request', function () use ($secret) {
+		$seen = [];
+		$GLOBALS['__test_config'] = [
+			'wmi_winrm_ssl'  => 'on',
+			'wmi_winrm_port' => '5987',
+			'wmi_winrm_auth' => 'Kerberos',
+		];
+		$t = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, ['Win32_Service', 'Name', 'Spooler']));
+		wmi_test_client($t, $secret, 'root\\CIMV2', 'SELECT Name FROM Win32_Service')->fetch();
+		$GLOBALS['__test_config'] = [];
+
+		expect($seen['env']['WMI_SSL'])->toBe('1');
+		expect($seen['env']['WMI_PORT'])->toBe('5987');
+		expect($seen['env']['WMI_AUTH'])->toBe('Kerberos');
+	});
+
+	it('switches Linux_WMI to counter mode only for the PDH namespace', function (string $namespace, string $counter) use ($secret) {
+		$seen = [];
+		$t    = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, ['WindowsPerformanceCounters', 'Path']));
+
+		wmi_test_client($t, $secret, $namespace, '\\Processor(_Total)\\% Processor Time')->fetch();
+
+		expect($seen['env']['WMI_COUNTER'])->toBe($counter);
+	})->with([
+		'PDH'               => ['PDH', '1'],
+		'padded lower case' => [' pdh ', '1'],
+		'WMI namespace'     => ['root\\CIMV2', '0'],
+	]);
+
+	it('rejects an invalid request before starting PowerShell', function (string $namespace, string $query, bool $ssl, ?int $port, string $auth, bool $counter, string $error) use ($secret) {
+		$seen    = [];
+		$t       = new PowerShellCim_Transport('pwsh', wmi_test_recording_runner($seen, []));
+		$request = new Wmi_Request('winsrv', 'dom\\adm', $secret, $namespace, $query, '|+|', 'pwsh', $ssl, $port, $auth, $counter);
+
+		expect($t->query($request))->toBeFalse();
+		expect($t->error())->toContain($error);
+		expect($seen)->toBe([]);
+	})->with([
+		'Basic authentication without HTTPS' => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, null, 'Basic', false, 'requires HTTPS'],
+		'unsupported authentication method'  => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, null, 'NTLM', false, 'Invalid WinRM authentication method'],
+		'out-of-range WinRM port'            => ['root\\CIMV2', 'SELECT Name FROM Win32_Service', false, 65536, 'Negotiate', false, 'Invalid WinRM port'],
+		'empty PDH query'                    => ['PDH', " \n ", false, null, 'Negotiate', true, 'counter path is required'],
+		'more than 64 PDH paths'             => ['PDH', implode("\n", array_fill(0, 65, '\\Processor(_Total)\\% Processor Time')), false, null, 'Negotiate', true, 'at most 64 counter paths'],
+	]);
 
 	it('surfaces stderr on a non-zero exit', function () use ($secret) {
 		$request = wmi_test_request($secret);
@@ -88,6 +171,65 @@ describe('PowerShellCim_Transport', function () {
 
 		expect($t->query($request))->toBeFalse();
 		expect(str_contains((string) $t->error(), 'Access denied'))->toBeTrue();
+	});
+
+	it('returns standard output from the default process runner', function () use ($secret) {
+		$dir    = sys_get_temp_dir() . '/wmi-powershell-' . bin2hex(random_bytes(6));
+		$binary = $dir . '/powershell';
+
+		mkdir($dir, 0700);
+		file_put_contents($binary, "#!/bin/sh\nprintf 'Win32_Service\\nName|+|State\\nSpooler|+|Running\\n'\nprintf 'warning on stderr\\n' >&2\n");
+		chmod($binary, 0700);
+
+		try {
+			$t = new PowerShellCim_Transport($binary, null, 1);
+
+			expect($t->query(wmi_test_request($secret)))->toBe(['Win32_Service', 'Name|+|State', 'Spooler|+|Running']);
+			expect($t->error())->toBeNull();
+		} finally {
+			unlink($binary);
+			rmdir($dir);
+		}
+	});
+
+	it('drains both output streams and stops a stalled PowerShell process', function () use ($secret) {
+		$dir    = sys_get_temp_dir() . '/wmi-powershell-' . bin2hex(random_bytes(6));
+		$binary = $dir . '/powershell';
+
+		mkdir($dir, 0700);
+		file_put_contents($binary, "#!/bin/sh\nhead -c 65536 /dev/zero >&2\nexec sleep 10\n");
+		chmod($binary, 0700);
+
+		try {
+			$t     = new PowerShellCim_Transport($binary, null, 1);
+			$began = microtime(true);
+
+			expect($t->query(wmi_test_request($secret)))->toBeFalse();
+			expect(microtime(true) - $began)->toBeLessThan(6.0);
+			expect($t->error())->toContain('did not finish within 1 seconds');
+		} finally {
+			unlink($binary);
+			rmdir($dir);
+		}
+	});
+
+	it('stops PowerShell when its response exceeds the configured size limit', function () use ($secret) {
+		$dir = sys_get_temp_dir() . '/wmi-powershell-' . bin2hex(random_bytes(6));
+		$binary = $dir . '/powershell';
+
+		mkdir($dir, 0700);
+		file_put_contents($binary, "#!/bin/sh\nprintf '12345678901234567890123456789012\\n'\n");
+		chmod($binary, 0700);
+
+		try {
+			$t = new PowerShellCim_Transport($binary, null, 1, 16);
+
+			expect($t->query(wmi_test_request($secret)))->toBeFalse();
+			expect($t->error())->toContain('exceeded the 16 byte limit');
+		} finally {
+			unlink($binary);
+			rmdir($dir);
+		}
 	});
 
 	it('follows the Cacti server OS for transport auto-selection', function () {

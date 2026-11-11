@@ -29,7 +29,8 @@
  * host_wmi_cache, wmi_processes), and registers this plugin's two Data
  * Input Methods ('Get WMI Data' and 'Get WMI Data (Indexed)') along with
  * their input/output fields, if not already present. Called from
- * plugin_wmi_install() during plugin installation.
+ * plugin_wmi_install() during installation and plugin_wmi_upgrade() during
+ * upgrades.
  *
  * @return void
  */
@@ -50,6 +51,9 @@ function plugin_wmi_setup_tables() {
 		`name` varchar(64) NOT NULL,
 		`username` varchar(64) NOT NULL,
 		`password` varchar(256) NOT NULL,
+		`winrm_ssl` varchar(8) NOT NULL DEFAULT 'inherit',
+		`winrm_port` varchar(5) NOT NULL DEFAULT '',
+		`winrm_auth` varchar(16) NOT NULL DEFAULT 'inherit',
 		PRIMARY KEY (`id`))
 		ENGINE=InnoDB
 		COMMENT='Holds Account Information for WMI Queries'");
@@ -75,9 +79,30 @@ function plugin_wmi_setup_tables() {
 		`last_started` timestamp NOT NULL DEFAULT '0000-00-00',
 		`last_runtime` double NOT NULL DEFAULT '0.00',
 		`last_failed` timestamp NOT NULL DEFAULT '0000-00-00',
+		`last_success` timestamp NULL DEFAULT NULL,
+		`last_error` varchar(1024) NOT NULL DEFAULT '',
+		`consecutive_failures` int(10) unsigned NOT NULL DEFAULT '0',
+		`timeout_count` int(10) unsigned NOT NULL DEFAULT '0',
 		PRIMARY KEY (`host_id`,`wmi_query_id`))
 		ENGINE=InnoDB
 		COMMENT='Holds WMI Data Queries'");
+
+	foreach ([
+		['table' => 'wmi_user_accounts', 'column' => 'winrm_ssl', 'type' => 'varchar(8)', 'default' => 'inherit'],
+		['table' => 'wmi_user_accounts', 'column' => 'winrm_port', 'type' => 'varchar(5)', 'default' => ''],
+		['table' => 'wmi_user_accounts', 'column' => 'winrm_auth', 'type' => 'varchar(16)', 'default' => 'inherit'],
+		['table' => 'host_wmi_query', 'column' => 'last_success', 'type' => 'timestamp', 'NULL' => true, 'default' => null],
+		['table' => 'host_wmi_query', 'column' => 'last_error', 'type' => 'varchar(1024)', 'default' => ''],
+		['table' => 'host_wmi_query', 'column' => 'consecutive_failures', 'type' => 'int(10)', 'unsigned' => true, 'default' => '0'],
+		['table' => 'host_wmi_query', 'column' => 'timeout_count', 'type' => 'int(10)', 'unsigned' => true, 'default' => '0'],
+	] as $column) {
+		$table = $column['table'];
+		unset($column['table']);
+		$name = $column['column'];
+		unset($column['column']);
+
+		api_plugin_db_add_column('wmi', $table, array_merge(['name' => $name], $column));
+	}
 
 	db_execute("CREATE TABLE IF NOT EXISTS `host_template_wmi_query` (
 		`host_template_id` mediumint(8) unsigned NOT NULL DEFAULT '0',

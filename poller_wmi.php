@@ -405,17 +405,6 @@ function process_device($host_id) {
 
 			cacti_log('NOTE: Executing WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id].", false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 
-			$account = db_fetch_row_prepared('SELECT *
-				FROM wmi_user_accounts
-				WHERE id = ?',
-				[$q['wmi_account']]);
-
-			if (!cacti_sizeof($account)) {
-				cacti_log('WARNING: WMI Account ID ' . $q['wmi_account'] . " not found for WMI Device[$host_id].", false, 'WMI');
-
-				break;
-			}
-
 			$run_before = db_fetch_row_prepared('SELECT *
 				FROM host_wmi_query
 				WHERE host_id = ?
@@ -426,27 +415,44 @@ function process_device($host_id) {
 
 			if (!cacti_sizeof($run_before)) {
 				$last_failed = '0000-00-00 00:00:00';
+				$last_success = null;
+				$failure_count = 0;
+				$timeout_count = 0;
 			} else {
-				$last_failed = $run_before['last_failed'];
+				$last_failed   = $run_before['last_failed'];
+				$last_success  = $run_before['last_success'] ?? null;
+				$failure_count = (int) ($run_before['consecutive_failures'] ?? 0);
+				$timeout_count = (int) ($run_before['timeout_count'] ?? 0);
 			}
 
 			// Run the query and store the data
-			$status = run_store_wmi_query($host_id, $q['wmi_query_id']) ? 0 : 1;
+			$query_error = null;
+			$status = run_store_wmi_query($host_id, $q['wmi_query_id'], null, $query_error) ? 0 : 1;
 
 			$qmend = microtime(true);
 
 			if ($status != 0) {
-				$last_failed = date('Y-m-d H:i:s');
+				$last_failed = $qstart;
+				$failure_count++;
+				$wmi_errors++;
+
+				if (preg_match('/timed? ?out|did not finish within/i', (string) $query_error)) {
+					$timeout_count++;
+				}
 
 				cacti_log('WARNING: Errored WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend - $qmstart, 2) . ' seconds.', false, 'WMI');
 			} else {
+				$last_success = $qstart;
+				$failure_count = 0;
+				$query_error = '';
+
 				cacti_log('NOTE: Finished WMI Query[' . $q['wmi_query_id'] . "] for Device [$host_id] in " . round($qmend - $qmstart, 2) . ' seconds.', false, 'WMI', POLLER_VERBOSITY_MEDIUM);
 			}
 
 			db_execute_prepared('REPLACE INTO host_wmi_query
-				(host_id, wmi_query_id, sort_field, title_format, last_started, last_runtime, last_failed)
-				VALUES (?, ?, ?, ?, ?, ?, ?)',
-				[$host_id, $q['wmi_query_id'], '', '', $qstart, ($qmend - $qmstart), $last_failed]
+				(host_id, wmi_query_id, sort_field, title_format, last_started, last_runtime, last_failed, last_success, last_error, consecutive_failures, timeout_count)
+				VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+				[$host_id, $q['wmi_query_id'], '', '', $qstart, ($qmend - $qmstart), $last_failed, $last_success, substr((string) $query_error, 0, 1024), $failure_count, $timeout_count]
 			);
 		}
 	} else {

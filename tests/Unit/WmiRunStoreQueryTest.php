@@ -81,6 +81,80 @@ it('leaves the cache untouched when the query fails', function () {
 	expect(wmi_test_cache_statements())->toBe(array());
 });
 
+it('reports a missing WMI account to the poller caller', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_user_accounts'] = array();
+	$error = null;
+
+	$ok = run_store_wmi_query(5, 9, null, $error);
+
+	expect($ok)->toBeFalse();
+	expect($error)->toBe('WMI account not found');
+	expect(wmi_test_cache_statements())->toBe(array());
+});
+
+it('reports a missing WMI query to the poller caller', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_wql_queries'] = array();
+	$error = null;
+
+	$ok = run_store_wmi_query(5, 9, null, $error);
+
+	expect($ok)->toBeFalse();
+	expect($error)->toBe('WMI query not found');
+	expect(wmi_test_cache_statements())->toBe(array());
+});
+
+it('clears cached rows when the transport successfully returns no instances', function () {
+	$t = new Wmi_Test_Canned_Transport(array('Win32_Service', 'Name|+|State'));
+
+	ob_start();
+	$ok = run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	$statements = wmi_test_cache_statements();
+
+	expect($ok)->toBeTrue();
+	expect($statements)->toHaveCount(1);
+	expect($statements[0])->toContain('DELETE FROM host_wmi_cache WHERE host_id = ? AND wmi_query_id = ?');
+});
+
+it('applies the selected account WinRM settings to its collector request', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_user_accounts']['winrm_ssl'] = 'on';
+	$GLOBALS['__test_fetch_row_map']['wmi_user_accounts']['winrm_port'] = '5986';
+	$GLOBALS['__test_fetch_row_map']['wmi_user_accounts']['winrm_auth'] = 'Kerberos';
+	$seen = [];
+	$transport = new PowerShellCim_Transport('pwsh', function ($binary, $args, $script, $env) use (&$seen) {
+		$seen = $env;
+
+		return ['exit' => 0, 'stdout' => ['Win32_Service', 'Name|+|State', 'Spooler|+|Running'], 'stderr' => ''];
+	});
+
+	ob_start();
+	$ok = run_store_wmi_query(5, 9, $transport);
+	ob_end_clean();
+
+	expect($ok)->toBeTrue();
+	expect($seen['WMI_SSL'])->toBe('1');
+	expect($seen['WMI_PORT'])->toBe('5986');
+	expect($seen['WMI_AUTH'])->toBe('Kerberos');
+});
+
+it('loads per-account WinRM overrides when retrieving the host account', function () {
+	$w = new Linux_WMI();
+	$w->hostid = '5';
+	$GLOBALS['__test_fetch_row_map']['wmi_user_accounts'] = array(
+		'username' => 'u',
+		'password' => $w->encode('pw'),
+		'winrm_ssl' => 'on',
+		'winrm_port' => '5986',
+		'winrm_auth' => 'Kerberos',
+	);
+
+	expect($w->retrieve_account())->toBeTrue();
+	expect($w->winrm_ssl)->toBeTrue();
+	expect($w->winrm_port)->toBe(5986);
+	expect($w->winrm_authentication)->toBe('Kerberos');
+});
+
 it('drops the cached rows of a device that no longer exists', function () {
 	$GLOBALS['__test_fetch_row_map'] = array();
 
@@ -98,6 +172,17 @@ it('indexes a row by a single primary key column', function () {
 
 it('indexes a row by every column of a comma separated primary key', function () {
 	expect(wmi_row_index(array('C:', 'D1', 'x'), array('Drive', 'Disk', 'Size'), 'Drive, Disk'))->toBe('C:,D1');
+});
+
+it('keeps composite indexes distinct when a key value contains a comma', function () {
+	$headers = array('First', 'Second');
+	$first   = wmi_row_index(array('a,b', 'c'), $headers, 'First,Second');
+	$second  = wmi_row_index(array('a', 'b,c'), $headers, 'First,Second');
+
+	expect($first)->toBe('a\\,b,c');
+	expect($second)->toBe('a,b\\,c');
+	expect($first)->not->toBe($second);
+	expect(wmi_row_index(array('a\\,b', 'c'), $headers, 'First,Second'))->toBe('a' . str_repeat('\\', 3) . ',b,c');
 });
 
 it('uses the shared index when the key is None or missing from the header', function () {
@@ -129,6 +214,32 @@ it('caches every row of a result whose primary key spans two columns', function 
 	expect($insert)->toContain("'Spooler,Stopped'");
 });
 
+it('stores rows with distinct composite keys when key values contain commas', function () {
+	$GLOBALS['__test_fetch_row_map']['wmi_wql_queries']['primary_key'] = 'Name,State';
+
+	$t = new Wmi_Test_Canned_Transport(array(
+		'Win32_Service',
+		'Name|+|State',
+		'a,b|+|c',
+		'a|+|b,c',
+	));
+
+	ob_start();
+	run_store_wmi_query(5, 9, $t);
+	ob_end_clean();
+
+	$insert = '';
+
+	foreach (wmi_test_cache_statements() as $statement) {
+		if (strpos($statement, 'INSERT INTO') === 0) {
+			$insert = $statement;
+		}
+	}
+
+	expect($insert)->toContain("'a\\\\,b,c'");
+	expect($insert)->toContain("'a,b\\\\,c'");
+});
+
 it('logs why a query failed', function () {
 	$t = new Wmi_Test_Canned_Transport(false, 'ERROR: access denied');
 
@@ -140,13 +251,15 @@ it('logs why a query failed', function () {
 	expect($GLOBALS['__test_cacti_log'][0])->toContain('WMI Query[9] for Device[5] failed: ERROR: access denied');
 });
 
-it('logs a plain reason when a query succeeds with no rows', function () {
+it('treats a successful empty result as authoritative without logging an error', function () {
 	$t = new Wmi_Test_Canned_Transport(array('Win32_Service', 'Name|+|State'));
 
 	ob_start();
 	$ok = run_store_wmi_query(5, 9, $t);
 	ob_end_clean();
 
-	expect($ok)->toBeFalse();
-	expect($GLOBALS['__test_cacti_log'][0])->toContain('failed: WMI returned no rows');
+	expect($ok)->toBeTrue();
+	expect($GLOBALS['__test_cacti_log'])->toBe([]);
+	expect(wmi_test_cache_statements())->toHaveCount(1);
+	expect(wmi_test_cache_statements()[0])->toContain('DELETE FROM host_wmi_cache');
 });

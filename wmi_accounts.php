@@ -65,6 +65,39 @@ $account_edit = [
 		'max_length'    => '64',
 		'size'          => '30'
 		],
+	'winrm_ssl' => [
+		'method'        => 'drop_array',
+		'friendly_name' => __('WinRM Transport', 'wmi'),
+		'description'   => __('Choose whether this account inherits the server setting or uses HTTP or HTTPS.', 'wmi'),
+		'value'         => '|arg1:winrm_ssl|',
+		'default'       => 'inherit',
+		'array'         => [
+			'inherit' => __('Use Server Default', 'wmi'),
+			'off'     => __('HTTP', 'wmi'),
+			'on'      => __('HTTPS', 'wmi'),
+		]
+		],
+	'winrm_port' => [
+		'method'        => 'textbox',
+		'friendly_name' => __('WinRM Port Override', 'wmi'),
+		'description'   => __('Leave blank to inherit the server setting and Windows WinRM default.', 'wmi'),
+		'value'         => '|arg1:winrm_port|',
+		'max_length'    => '5',
+		'default'       => '',
+		],
+	'winrm_auth' => [
+		'method'        => 'drop_array',
+		'friendly_name' => __('WinRM Authentication', 'wmi'),
+		'description'   => __('Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS.', 'wmi'),
+		'value'         => '|arg1:winrm_auth|',
+		'default'       => 'inherit',
+		'array'         => [
+			'inherit'   => __('Use Server Default', 'wmi'),
+			'Negotiate' => __('Negotiate', 'wmi'),
+			'Kerberos'  => __('Kerberos', 'wmi'),
+			'Basic'     => __('Basic (HTTPS only)', 'wmi'),
+		]
+		],
 	'id' => [
 		'method' => 'hidden_zero',
 		'value'  => '|arg1:id|'
@@ -214,9 +247,13 @@ function save_accounts() {
 	$save['id']       = get_filter_request_var('id');
 	$save['name']     = get_nfilter_request_var('name');
 	$save['username'] = get_nfilter_request_var('username');
+	$save['winrm_ssl'] = isset_request_var('winrm_ssl') ? get_nfilter_request_var('winrm_ssl') : 'inherit';
+	$save['winrm_port'] = isset_request_var('winrm_port') ? trim(get_nfilter_request_var('winrm_port')) : '';
+	$save['winrm_auth'] = isset_request_var('winrm_auth') ? get_nfilter_request_var('winrm_auth') : 'inherit';
 
 	$password = get_nfilter_request_var('password');
-	$valid    = wmi_account_input_valid($save['name'], $save['username'], $password, get_nfilter_request_var('password_confirm'), (int) $save['id']);
+	$valid    = wmi_account_input_valid($save['name'], $save['username'], $password, get_nfilter_request_var('password_confirm'), (int) $save['id']) &&
+		wmi_account_winrm_input_valid($save['winrm_ssl'], $save['winrm_port'], $save['winrm_auth']);
 
 	if ($valid && $password !== '') {
 		$wmi = new Linux_WMI();
