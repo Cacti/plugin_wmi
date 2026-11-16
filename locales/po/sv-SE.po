@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2026-11-09 22:18+0000\n"
-"Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
-"Language-Team: Swedish <https://translate.cacti.net/projects/cacti/wmi/sv/>\n"
-"Language: sv-SE\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-16 08:18+0000\nLast-Translator: Daniel Nylander <daniel@danielnylander.se>\nLanguage-Team: Swedish <https://translate.cacti.net/projects/cacti/wmi/sv/>\nLanguage: sv-SE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
@@ -578,137 +566,131 @@ msgstr "Sökvägen till den binära filen wmic som används för att fråga Wind
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM port"
-msgstr ""
+msgstr "FEL: Ogiltig WinRM-port"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
+msgstr "FEL: Ogiltig WinRM-autentiseringsmetod"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
+msgstr "FEL: Basic-autentisering för WinRM kräver HTTPS"
 
 #: setup.php
 msgid "Use WinRM over HTTPS"
-msgstr ""
+msgstr "Använd WinRM över HTTPS"
 
 #: setup.php
 msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
+msgstr "Använd TLS för CIM-/WinRM-anslutningar. Konfigurera och betrakta målets certifikat som betrott. Certifikatkontroller är inte inaktiverade."
 
 #: setup.php
 msgid "WinRM Port Override"
-msgstr ""
+msgstr "Åsidosätt WinRM-port"
 
 #: setup.php
 msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
+msgstr "Valfri åsidosättning av port. Lämna tomt för Windows standardport för WinRM."
 
 #: setup.php
 msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
+msgstr "Negotiate är standard. Använd Kerberos för domänvärdar där det är möjligt. Basic-autentisering godtas endast när HTTPS är aktiverat."
 
 #: setup.php
 msgid "Negotiate"
-msgstr ""
+msgstr "Negotiate"
 
 #: setup.php
 msgid "Kerberos"
-msgstr ""
+msgstr "Kerberos"
 
 #: setup.php
 msgid "Basic (HTTPS only)"
-msgstr ""
+msgstr "Basic, endast HTTPS"
 
 #: includes/linux_wmi.php
 msgid "ERROR: At least one performance counter path is required"
-msgstr ""
+msgstr "FEL: Minst en sökväg till en prestandaräknare krävs"
 
 #: includes/linux_wmi.php
 msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
+msgstr "FEL: En PDH-fråga kan innehålla högst 64 räknarsökvägar"
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
+msgstr "Standard för konton som ärver serverinställningarna. Konfigurera och betrakta målets certifikat som betrott. Certifikatkontroller är inte inaktiverade."
 
 #: setup.php
 msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
+msgstr "Standardåsidosättning av port för konton som ärver serverinställningarna. Lämna tomt för Windows standardport."
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
+msgstr "Standard för konton som ärver serverinställningarna. Använd Kerberos för domänvärdar där det är möjligt. Basic-autentisering kräver HTTPS."
 
 #: wmi_accounts.php
-#, fuzzy
-#| msgid "WMI Authentication"
 msgid "WinRM Authentication"
-msgstr "WMI-autentisering"
+msgstr "WinRM-autentisering"
 
 #: wmi_accounts.php
 msgid "WinRM Transport"
-msgstr ""
+msgstr "WinRM-transport"
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
+msgstr "Välj om kontot ärver serverinställningen eller använder HTTP eller HTTPS."
 
 #: wmi_accounts.php
 msgid "Use Server Default"
-msgstr ""
+msgstr "Använd serverns standardvärde"
 
 #: wmi_accounts.php
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: wmi_accounts.php
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 #: wmi_accounts.php
 msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
+msgstr "Lämna tomt för att ärva serverinställningen och Windows standard för WinRM."
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
+msgstr "Välj om kontot ärver serverinställningen eller använder en särskild autentiseringsmetod. Basic-autentisering kräver HTTPS."
 
 #: wmi_queries.php
 msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
+msgstr "Använd en WMI-namnrymd eller ange PDH för inbyggda prestandaräknarsökvägar."
 
 #: wmi_queries.php
 msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
+msgstr "Ange WQL eller, för PDH, en Windows-sökväg till en prestandaräknare per rad."
 
 #: wmi_queries.php
 msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
+msgstr "Ange WQL eller, för PDH, en Windows-sökväg till en prestandaräknare per rad. Breda frågor kan returnera många rader. Svaren begränsas till 16 MiB."
 
 #: wmi_queries.php
 msgid "Last Poll"
-msgstr ""
+msgstr "Senaste avläsning"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Failing Devices"
-msgstr "Enheter"
+msgstr "Enheter med fel"
 
 #: wmi_queries.php
 msgid "Timeouts"
-msgstr ""
+msgstr "Tidsgränser"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Polled Devices"
-msgstr "Enheter"
+msgstr "Avlästa enheter"
 
 #: wmi_queries.php
 msgid "Most Recent Error"
-msgstr ""
+msgstr "Senaste fel"
 
 #, fuzzy
 #~ msgid "WMI Tools"
