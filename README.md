@@ -10,6 +10,23 @@ from the Cacti server's operating system (see Transports below).
 This plugin is NOT fully functional.  It should not be used on production
 systems.  Use at your own risk!
 
+## Versions and compatibility
+
+This README describes the `develop` source branch.
+
+| Code | Plugin version | Minimum Cacti declared in `INFO` |
+| --- | --- | --- |
+| [Source branch](INFO) | 1.1 | 1.1.4 |
+
+No GitHub release is published for this repository. The source version above
+is not a published-release designation. Follow the development caveats and
+requirements in this README before deployment.
+
+Install this plugin in **`<cacti-root>/plugins/wmi`**, using the directory
+name `wmi` rather than `plugin_wmi`.
+
+See [CHANGELOG.md](CHANGELOG.md) for the version history.
+
 ## Requirements
 
 - PHP 8.0 or newer.  The code uses union types and constructor property
@@ -26,15 +43,14 @@ systems.  Use at your own risk!
   releases.  CI runs against the 1.2.x branch.
 - The MariaDB or MySQL server Cacti already uses.  One of the plugin's tables,
   `wmi_processes`, uses the MEMORY engine.
-- For a Linux Cacti server, a `wmic` client at `/usr/bin/wmic` (see
-  Transports).  For a Windows Cacti server, PowerShell.
+- For a Linux Cacti server, a `wmic` client at the configured `path_wmi` path
+  (default `/usr/bin/wmic`; see Transports).  For a Windows Cacti server, PowerShell.
 
 ## Known issues
 
-- The breadcrumb of the Edit WMI Account page names a parent that does not
-  exist.  On Cacti develop the page fails with a PHP error
-  (`resolve_navigation_variables()` receives null); on the 1.2 releases it
-  loads with a shortened title and logs warnings.
+The account-edit and Query Tool breadcrumb mappings have been corrected in this
+branch. The development warning above remains in effect. Review the transport
+requirements and limitations below before testing against Windows targets.
 
 ## Cacti compatibility
 
