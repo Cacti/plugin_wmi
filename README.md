@@ -31,8 +31,8 @@ See [CHANGELOG.md](CHANGELOG.md) for the version history.
 
 - PHP 8.0 or newer.  The code uses union types and constructor property
   promotion, so it parses on PHP 8.0 and does not parse on 7.4.  The CI matrix
-  runs PHP 8.2, 8.3 and 8.4, and an earlier version of this file said 8.2; use
-  one of those unless you have tested another.  Cacti's own requirement can be
+  runs PHP 8.2 through 8.5, with a non-blocking PHP 8.6 experimental job.
+  Cacti's own requirement can be
   higher: 1.2.31 needs PHP 8.0, the current 1.2.x branch needs 8.2, and Cacti
   develop needs 8.3.
 - Cacti 1.2.  Every Cacti core function the plugin calls exists in the 1.2.0
