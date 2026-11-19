@@ -1,5 +1,8 @@
 ## ChangeLog
 
+Documentation update (unreleased): Refresh README release/source compatibility,
+installation guidance and source-checked behavior.
+
 --- develop ---
 
 * feature: Add per-account WinRM overrides, native PDH collection, poll health summaries, and bounded WMI response sizes

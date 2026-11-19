@@ -10,31 +10,48 @@ from the Cacti server's operating system (see Transports below).
 This plugin is NOT fully functional.  It should not be used on production
 systems.  Use at your own risk!
 
+## Versions and compatibility
+
+This README describes the `develop` source branch.
+
+| Code | Plugin version | Minimum Cacti declared in `INFO` |
+| --- | --- | --- |
+| [Source branch](https://github.com/Cacti/plugin_wmi/blob/develop/INFO) | 1.1 | 1.1.4 |
+
+No GitHub release is published for this repository. The source version above
+is not a published-release designation. Follow the development caveats and
+requirements in this README before deployment.
+
+Install this plugin in **`<cacti-root>/plugins/wmi`**, using the directory
+name `wmi` rather than `plugin_wmi`.
+
+See [CHANGELOG.md](https://github.com/Cacti/plugin_wmi/blob/develop/CHANGELOG.md) for the version history.
+
 ## Requirements
 
 - PHP 8.0 or newer.  The code uses union types and constructor property
   promotion, so it parses on PHP 8.0 and does not parse on 7.4.  The CI matrix
-  runs PHP 8.2, 8.3 and 8.4, and an earlier version of this file said 8.2; use
-  one of those unless you have tested another.  Cacti's own requirement can be
+  runs PHP 8.2 through 8.5, with a non-blocking PHP 8.6 experimental job.
+  Cacti's own requirement can be
   higher: 1.2.31 needs PHP 8.0, the current 1.2.x branch needs 8.2, and Cacti
   develop needs 8.3.
-- Cacti 1.2.  Every Cacti core function the plugin calls exists in the 1.2.0
-  release, except `auth_augment_roles()`, which the plugin calls only when it
+- Cacti 1.2, although `INFO` declares 1.1.4 as the minimum.  Every Cacti core
+  function the plugin calls exists in the 1.2.0 release, except
+  `auth_augment_roles()`, which the plugin calls only when it
   exists.  Installing, enabling, disabling and uninstalling the plugin, and
   opening its pages, were run on Cacti 1.2.20 (on PHP 8.1), 1.2.31, the 1.2.x
   branch (1.2.32) and Cacti develop (1.3.0).  Nothing was run on other
   releases.  CI runs against the 1.2.x branch.
 - The MariaDB or MySQL server Cacti already uses.  One of the plugin's tables,
   `wmi_processes`, uses the MEMORY engine.
-- For a Linux Cacti server, a `wmic` client at `/usr/bin/wmic` (see
-  Transports).  For a Windows Cacti server, PowerShell.
+- For a Linux Cacti server, a `wmic` client at the configured `path_wmi` path
+  (default `/usr/bin/wmic`; see Transports).  For a Windows Cacti server, PowerShell.
 
 ## Known issues
 
-- The breadcrumb of the Edit WMI Account page names a parent that does not
-  exist.  On Cacti develop the page fails with a PHP error
-  (`resolve_navigation_variables()` receives null); on the 1.2 releases it
-  loads with a shortened title and logs warnings.
+The account-edit and Query Tool breadcrumb mappings have been corrected in this
+branch. The development warning above remains in effect. Review the transport
+requirements and limitations below before testing against Windows targets.
 
 ## Cacti compatibility
 
@@ -109,7 +126,8 @@ an explicit transport instead.
   this legacy transport.  The client does not appear in the Debian 12 or
   Ubuntu 18.04 package lists, so install it from your own package source or
   build it.  The Query Tool and poller use `path_wmi`, defaulting to
-  `/usr/bin/wmic`; there is no Settings page field for this path yet.
+  `/usr/bin/wmic`; set it in the **WMI Client (wmic) Path** field on the Paths tab
+  of Settings.
   Credentials normally go in a private temporary authentication file.  If the
   plugin cannot create that file, it warns and falls back to `--user` and
   `--password` arguments, which local users may see in the process list.
@@ -227,17 +245,21 @@ permissions. A database dump includes the reversible WMI credentials.
 
 ## Settings
 
-The plugin adds three settings to the Misc tab of Settings:
+The plugin adds six settings to the Misc tab of Settings:
 
 | Setting | Name | Default | Effect |
 |---------|------|---------|--------|
 | Enable WMI Data Collection | `wmi_enabled` | on | Not read by any code yet. |
 | Concurrent Processes | `wmi_processes` | 10 | Most collector processes that run at once (1 to 10, then steps of 5 up to 50). |
 | Auto Create WMI Queries | `wmi_autocreate` | on | Read by a hook that does nothing yet, so queries are not created automatically. |
+| Use WinRM over HTTPS | `wmi_winrm_ssl` | off | Default for accounts that inherit server settings. |
+| WinRM Port Override | `wmi_winrm_port` | blank | Default port override for accounts that inherit server settings; blank uses the Windows default. |
+| WinRM Authentication | `wmi_winrm_auth` | Negotiate | Default for accounts that inherit server settings: Negotiate, Kerberos or Basic (HTTPS only). |
 
 The poller also reads `wmi_autopurge` (when `on`, it deletes cache rows of
-devices that no longer exist), and the Query Tool and poller read `path_wmi`.
-Neither has a field on the Settings page.
+devices that no longer exist), which has no field on the Settings page.  The
+Query Tool and poller read `path_wmi`, which is the **WMI Client (wmic) Path**
+field on the Paths tab.
 
 ## Data collection
 
@@ -288,10 +310,12 @@ DELETE FROM wmi_processes;
 Server query for Exchange mail stores.  Nothing in the plugin copies or
 imports it.  Its `arg_prepend` names a WMI query called `exchangemessages`, so
 a query with that name must exist.  Its `script_path` is
-`|path_cacti|/scripts/wmi-script.php`, which does not exist; the plugin ships
-`script/wmi-script.php`.  The two functions that generate such XML from a saved
-query, `plugin_wmi_create_dataquery_xml()` and
-`plugin_wmi_create_resource_xml()`, are not called from anywhere.
+`|path_cacti|/plugins/wmi/script/wmi-script.php`, which exists in the plugin.
+The plugin root also has `wmi_script.php`, a near-identical script-server
+entry point that runs a named saved WMI query from the script server or the
+command line.  The two functions that generate such XML from a saved query,
+`plugin_wmi_create_dataquery_xml()` and `plugin_wmi_create_resource_xml()`, are
+not called from anywhere.
 
 ## Translations
 
