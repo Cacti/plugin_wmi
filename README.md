@@ -16,7 +16,7 @@ This README describes the `develop` source branch.
 
 | Code | Plugin version | Minimum Cacti declared in `INFO` |
 | --- | --- | --- |
-| [Source branch](INFO) | 1.1 | 1.1.4 |
+| [Source branch](https://github.com/Cacti/plugin_wmi/blob/develop/INFO) | 1.1 | 1.1.4 |
 
 No GitHub release is published for this repository. The source version above
 is not a published-release designation. Follow the development caveats and
@@ -25,7 +25,7 @@ requirements in this README before deployment.
 Install this plugin in **`<cacti-root>/plugins/wmi`**, using the directory
 name `wmi` rather than `plugin_wmi`.
 
-See [CHANGELOG.md](CHANGELOG.md) for the version history.
+See [CHANGELOG.md](https://github.com/Cacti/plugin_wmi/blob/develop/CHANGELOG.md) for the version history.
 
 ## Requirements
 
