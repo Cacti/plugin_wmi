@@ -5,7 +5,7 @@ installation guidance and source-checked behavior.
 
 --- develop ---
 
-* issue#54: Refresh `locales/po/cacti.pot` to match current PHP source strings (add `ERROR:` from `includes/linux_wmi.php` and drop six removed WinRM/WQL help strings)
+* issue#54: Refresh `locales/po/cacti.pot` to match current PHP source strings (add `ERROR:` from `includes/linux_wmi.php` and drop six removed WinRM/WQL help strings), and remove orphan `locales/LC_MESSAGES/ka.mo`
 * feature: Add per-account WinRM overrides, native PDH collection, poll health summaries, and bounded WMI response sizes
 * issue: Configure CIM/WinRM defaults and clear stale cache values after successful empty results
 * issue: Keep composite WMI cache indexes distinct, bound stalled PowerShell collectors, and document supported Windows transport requirements
