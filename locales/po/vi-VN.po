@@ -4,40 +4,49 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2020-12-14 20:06-0500\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: vi_VN\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-25 10:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Vietnamese <https://translate.cacti.net/projects/cacti/wmi/vi/>\nLanguage: vi-VN\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
-msgstr "Truy vấn"
+msgstr "Truy vấn dữ liệu"
 
 #: includes/functions.php
 msgid "Authentication"
 msgstr "Xác thực"
 
+#: includes/linux_wmi.php
+msgid "ERROR: At least one performance counter path is required"
+msgstr "LỖI: Cần ít nhất một đường dẫn bộ đếm hiệu năng"
+
+#: includes/linux_wmi.php
+msgid "ERROR: A PDH query can contain at most 64 counter paths"
+msgstr "LỖI: Truy vấn PDH chỉ có thể chứa tối đa 64 đường dẫn bộ đếm"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM port"
+msgstr "LỖI: Cổng WinRM không hợp lệ"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM authentication method"
+msgstr "LỖI: Phương thức xác thực WinRM không hợp lệ"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Basic WinRM authentication requires HTTPS"
+msgstr "LỖI: Xác thực WinRM cơ bản yêu cầu HTTPS"
+
+#: includes/linux_wmi.php
+msgid "ERROR:"
+msgstr "Lỗi:"
+
 #: setup.php
-#, fuzzy
 msgid "WMI Management"
 msgstr "Quản lý WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data"
 msgstr "Dữ liệu WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data Query"
 msgstr "Truy vấn dữ liệu WMI"
 
@@ -52,26 +61,25 @@ msgid "%d Minutes"
 msgstr "%d phút"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hour"
 msgstr "%d giờ"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
 msgstr "%d giờ"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "% d ngày"
+msgstr "%d Ngày"
 
 #: setup.php
 msgid "Utilities"
 msgstr "Tiện Ích"
 
 #: setup.php wmi_tools.php
-#, fuzzy
 msgid "WMI Query Tool"
 msgstr "Công cụ truy vấn WMI"
 
@@ -80,97 +88,125 @@ msgid "Data Collection"
 msgstr "Thu thập dữ liệu"
 
 #: setup.php wmi_queries.php
-#, fuzzy
 msgid "WMI Queries"
 msgstr "Truy vấn WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Template Editor"
 msgstr "Trình chỉnh sửa mẫu"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication"
-msgstr "Tự động hóa WMI"
+msgstr "Xác thực WMI"
 
 #: setup.php
 msgid "(Edit)"
-msgstr ""
+msgstr "(Sửa)"
 
 #: setup.php
-#, fuzzy
 msgid "(Query)"
-msgstr "Truy vấn"
+msgstr "(Truy vấn)"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Account Options"
 msgstr "Tùy chọn tài khoản WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication Account"
 msgstr "Tài khoản xác thực WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr "Chọn một tài khoản để sử dụng khi Xác thực qua WMI"
+msgstr "Chọn một tài khoản để sử dụng khi xác thực qua WMI"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "1 quy trình"
+msgstr "1 quá trình"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Processes"
-msgstr "Nhận quy trình hệ thống"
+msgstr "%d Tiến trình"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Settings"
 msgstr "Cài đặt WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr "Thu thập dữ liệu"
+msgstr "Bật thu thập dữ liệu WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "Chọn hộp này nếu bạn muốn Plugin WMI truy vấn thiết bị Windows."
+msgstr "Chọn hộp này nếu bạn muốn Plugin WMI truy vấn các thiết bị Windows."
 
 #: setup.php
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Nhận quy trình hệ thống"
+msgstr "Quy trình đồng thời"
 
 #: setup.php
-#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
 msgstr "Bạn muốn hệ thống chạy bao nhiêu truy vấn WMI đồng thời?"
 
 #: setup.php
-#, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Tự động tạo truy vấn WMI"
 
 #: setup.php
-#, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "Nếu được chọn, khi chạy tự động hóa hoặc khi tạo / lưu Thiết bị, tất cả các Truy vấn WMI được liên kết với Mẫu thiết bị sẽ được tạo."
+msgstr "Nếu được chọn, khi chạy tự động hóa hoặc khi tạo/lưu thiết bị, tất cả các truy vấn WMI được liên kết với Mẫu thiết bị sẽ được tạo."
+
+#: setup.php
+msgid "Use WinRM over HTTPS"
+msgstr "Sử dụng WinRM qua HTTPS"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
+msgstr "Mặc định cho các tài khoản kế thừa cài đặt máy chủ. Cấu hình và tin cậy chứng chỉ đích; việc kiểm tra chứng chỉ không bị tắt."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Port Override"
+msgstr "Ghi đè cổng WinRM"
+
+#: setup.php
+msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
+msgstr "Cổng ghi đè mặc định cho các tài khoản kế thừa cài đặt máy chủ. Để trống để dùng mặc định của Windows."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Authentication"
+msgstr "Xác thực WinRM"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
+msgstr "Mặc định cho các tài khoản kế thừa cài đặt máy chủ. Dùng Kerberos cho các máy chủ thuộc tên miền khi khả dụng. Xác thực Basic yêu cầu HTTPS."
+
+#: setup.php wmi_accounts.php
+msgid "Negotiate"
+msgstr "Đàm phán (Negotiate)"
+
+#: setup.php wmi_accounts.php
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: setup.php wmi_accounts.php
+msgid "Basic (HTTPS only)"
+msgstr "Cơ bản (chỉ HTTPS)"
 
 #: setup.php
 msgid "Misc"
 msgstr "Linh tinh"
 
 #: setup.php
-#, fuzzy
+msgid "WMI Client (wmic) Path"
+msgstr "Đường dẫn WMI Client (wmic)"
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr "Đường dẫn tới tệp thực thi wmic dùng để truy vấn các thiết bị Windows từ máy chủ Cacti chạy Linux."
+
+#: setup.php
 msgid "Associated WMI Queries"
-msgstr "Truy vấn WMI liên kết"
+msgstr "Truy vấn WMI đã liên kết"
 
 #: setup.php wmi_accounts.php wmi_queries.php wmi_tools.php
 msgid "Name"
@@ -181,26 +217,22 @@ msgid "Status"
 msgstr "Trạng thái"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Exists"
-msgstr "Truy vấn WMI tồn tại"
+msgstr "Truy vấn WMI đã tồn tại"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "Truy vấn WMI không tồn tại"
 
 #: setup.php
-#, fuzzy
 msgid "No Associated WMI Queries."
-msgstr "Không có truy vấn WMI liên quan."
+msgstr "Không có truy vấn WMI liên kết nào."
 
 #: setup.php wmi_accounts.php wmi_queries.php
 msgid "Delete"
 msgstr "Xóa"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query"
 msgstr "Thêm truy vấn WMI"
 
@@ -209,17 +241,15 @@ msgid "Add"
 msgstr "Thêm"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "Thêm truy vấn WMI vào mẫu thiết bị"
 
 #: setup.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr "Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau sẽ được tách ra khỏi Mẫu thiết bị."
+msgstr "Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau sẽ bị hủy liên kết khỏi Mẫu thiết bị."
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Name: %s"
 msgstr "Tên truy vấn WMI: %s"
 
@@ -232,55 +262,75 @@ msgid "Continue"
 msgstr "Tiếp tục"
 
 #: setup.php
-#, fuzzy
 msgid "Remove WMI Query"
 msgstr "Xóa truy vấn WMI"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr "Đặt cho tài khoản này một tên có ý nghĩa sẽ được hiển thị."
+msgstr "Đặt cho tài khoản này một tên có ý nghĩa để hiển thị."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Username"
 msgstr "Tên đăng nhập"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr "Tên người dùng sẽ được sử dụng để xác thực. Vui lòng bao gồm tên miền nếu cần thiết."
+msgstr "Tên người dùng sẽ được sử dụng để xác thực. Vui lòng bao gồm cả tên miền nếu cần thiết."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Password"
 msgstr "Mật khẩu"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The password used for authentication."
 msgstr "Mật khẩu được sử dụng để xác thực."
 
 #: wmi_accounts.php
-#, fuzzy
+msgid "WinRM Transport"
+msgstr "Giao thức truyền tải WinRM"
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
+msgstr "Chọn xem tài khoản này kế thừa cấu hình máy chủ hay sử dụng HTTP hoặc HTTPS."
+
+#: wmi_accounts.php
+msgid "Use Server Default"
+msgstr "Sử dụng mặc định của máy chủ"
+
+#: wmi_accounts.php
+msgid "HTTP"
+msgstr "HTTP"
+
+#: wmi_accounts.php
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: wmi_accounts.php
+msgid "Leave blank to inherit the server setting and Windows WinRM default."
+msgstr "Để trống để kế thừa thiết lập máy chủ và mặc định Windows WinRM."
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
+msgstr "Chọn xem tài khoản này kế thừa cấu hình máy chủ hay sử dụng phương thức xác thực cụ thể. Xác thực Basic yêu cầu HTTPS."
+
+#: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "Nhấn 'Tiếp tục' để xóa các tài khoản sau."
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "You must select at least one account."
 msgstr "Bạn phải chọn ít nhất một tài khoản."
 
 #: wmi_accounts.php
-#, fuzzy, php-format
+#, php-format
 msgid "Account [edit: %s]"
 msgstr "Tài khoản [chỉnh sửa: %s]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Account [new]"
 msgstr "Tài khoản [mới]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "WMI Accounts"
 msgstr "Tài khoản WMI"
 
@@ -315,96 +365,101 @@ msgid "Devices"
 msgstr "Thiết bị"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "No Accounts Found"
-msgstr "Không tìm thấy tài khoản"
+msgstr "Không tìm thấy tài khoản nào"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr "Đặt cho truy vấn này một tên có ý nghĩa sẽ được hiển thị."
+msgstr "Đặt cho truy vấn này một tên có ý nghĩa để hiển thị."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Collection Frequency"
 msgstr "Tần suất thu thập"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "Khi Truy vấn WMI này được thêm vào Thiết bị, đây là Tần suất Thu thập Dữ liệu sẽ được sử dụng."
+msgstr "Khi truy vấn WMI này được thêm vào một thiết bị, đây là tần suất thu thập dữ liệu sẽ được sử dụng."
 
 #: wmi_queries.php
 msgid "Enabled"
 msgstr "Bật"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Should this Query be enabled on hosts using it"
-msgstr "Nếu truy vấn này được kích hoạt trên máy chủ sử dụng nó"
+msgstr "Có bật truy vấn này trên các máy chủ đang sử dụng nó không"
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Namespace"
-msgstr "Không gian tên"
+msgstr "Không gian tên (Namespace)"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Namespace for this Query."
-msgstr "Không gian tên cho truy vấn này."
+msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
+msgstr "Sử dụng không gian tên WMI, hoặc nhập PDH cho đường dẫn bộ đếm hiệu năng gốc."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
 msgstr "Truy vấn"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Query to execute for gathering WMI data from the device."
-msgstr "Truy vấn để thực hiện để thu thập dữ liệu WMI từ thiết bị."
+msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
+msgstr "Nhập WQL, hoặc đối với PDH hãy nhập một đường dẫn bộ đếm hiệu năng Windows trên mỗi dòng. Các truy vấn rộng có thể trả về nhiều hàng; phản hồi được giới hạn ở 16 MiB."
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Primary Key"
 msgstr "Khóa chính"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "Khi Truy vấn WMI trả về nhiều hàng, Tên khóa nào sẽ là khóa chính hoặc chỉ mục? Nếu Khóa chính bao gồm nhiều cột, hãy phân tách chúng bằng dấu phẩy."
+msgstr "Khi một truy vấn WMI trả về nhiều hàng, Keyname nào sẽ là khóa chính hoặc chỉ mục? Nếu Khóa chính bao gồm nhiều cột, hãy phân tách chúng bằng dấu phẩy."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr "Nhấp vào 'Tiếp tục' để xóa các truy vấn WMI sau."
+msgstr "Nhấp vào 'Tiếp tục' để xóa các Truy vấn WMI sau."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "You must select at least one WMI Query."
-msgstr "Bạn phải chọn ít nhất một Truy vấn WMI."
+msgstr "Bạn phải chọn ít nhất một truy vấn WMI."
 
 #: wmi_queries.php
 msgid "Return"
-msgstr "Trở về trang cài đặt bắt buộc Plugins"
+msgstr "Quay lại"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Delete WMI Query"
 msgstr "Xóa truy vấn WMI"
 
 #: wmi_queries.php
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
 msgstr "Truy vấn [chỉnh sửa: %s]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Query [new]"
 msgstr "Truy vấn [mới]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Has Graphs"
 msgstr "Có đồ thị"
+
+#: wmi_queries.php
+msgid "Polled Devices"
+msgstr "Thiết bị được thăm dò"
+
+#: wmi_queries.php
+msgid "Last Poll"
+msgstr "Lần thăm dò gần nhất"
+
+#: wmi_queries.php
+msgid "Failing Devices"
+msgstr "Thiết bị đang lỗi"
+
+#: wmi_queries.php
+msgid "Timeouts"
+msgstr "Hết thời gian chờ"
+
+#: wmi_queries.php
+msgid "Most Recent Error"
+msgstr "Lỗi gần đây nhất"
 
 #: wmi_queries.php
 msgid "ID"
@@ -415,168 +470,138 @@ msgid "Frequency"
 msgstr "Tần số"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "WQL Query"
 msgstr "Truy vấn WQL"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Information"
-msgstr "Nhận thông tin máy tính"
+msgstr "Lấy thông tin máy tính"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Processes"
-msgstr "Nhận quy trình hệ thống"
+msgstr "Lấy danh sách tiến trình hệ thống"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Installed Software"
-msgstr "Nhận cài đặt phần mềm"
+msgstr "Lấy danh sách phần mềm đã cài đặt"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Operating System Information"
-msgstr "Nhận thông tin hệ điều hành"
+msgstr "Lấy thông tin hệ điều hành"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get OD Service Information"
-msgstr "Nhận thông tin dịch vụ OD"
+msgstr "Lấy thông tin dịch vụ OD"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Enclosure Information"
-msgstr "Nhận thông tin bao vây hệ thống"
+msgstr "Lấy thông tin khung vỏ hệ thống"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Physical Memory Information"
-msgstr "Nhận thông tin bộ nhớ vật lý hệ thống"
+msgstr "Lấy thông tin bộ nhớ vật lý hệ thống"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Memory Device Details"
-msgstr "Nhận thông tin chi tiết về thiết bị bộ nhớ"
+msgstr "Lấy thông tin chi tiết thiết bị bộ nhớ"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System BIOS Information"
-msgstr "Nhận thông tin BIOS hệ thống"
+msgstr "Lấy thông tin BIOS hệ thống"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr "Nhận thông tin bảng hệ thống"
+msgstr "Lấy thông tin bo mạch chủ hệ thống"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Processor Information"
-msgstr "Nhận thông tin bộ xử lý"
+msgstr "Lấy thông tin bộ xử lý"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Ping a Known Address from Computer"
 msgstr "Ping một địa chỉ đã biết từ máy tính"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr "Nhận dữ liệu hiệu năng hệ điều hành hàng"
+msgstr "Lấy dữ liệu hiệu suất hệ điều hành hệ thống thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "Nhận định dạng dữ liệu hiệu năng hệ điều hành hệ thống"
+msgstr "Lấy dữ liệu hiệu suất hệ điều hành hệ thống đã định dạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "Nhận định dạng dữ liệu hiệu suất đĩa Phsycal"
+msgstr "Lấy dữ liệu hiệu suất đĩa vật lý đã định dạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "Nhận dữ liệu hiệu suất đĩa thô Phsycal"
+msgstr "Lấy dữ liệu hiệu suất đĩa vật lý thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Logical Disk Information"
-msgstr "Nhận thông tin đĩa logic"
+msgstr "Lấy thông tin đĩa logic"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr "Nhận định dạng dữ liệu hiệu suất đĩa hợp lý"
+msgstr "Lấy dữ liệu hiệu suất đĩa logic đã định dạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr "Nhận dữ liệu hiệu suất đĩa thô"
+msgstr "Lấy dữ liệu hiệu suất đĩa logic thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted CPU Performance Data"
-msgstr "Nhận dữ liệu hiệu suất CPU được định dạng"
+msgstr "Lấy dữ liệu hiệu suất CPU đã định dạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr "Nhận dữ liệu hiệu suất CPU thô"
+msgstr "Lấy dữ liệu hiệu suất CPU thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Memory Performance Data"
-msgstr "Nhận dữ liệu hiệu suất bộ nhớ thô"
+msgstr "Lấy dữ liệu hiệu suất bộ nhớ thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Network Performance Data"
-msgstr "Nhận dữ liệu hiệu suất mạng được định dạng"
+msgstr "Lấy dữ liệu hiệu suất mạng đã định dạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr "Nhận dữ liệu hiệu suất mạng thô"
+msgstr "Lấy dữ liệu hiệu suất mạng thô"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Network Adapter Information"
-msgstr "Nhận thông tin bộ điều hợp mạng"
+msgstr "Lấy thông tin bộ điều hợp mạng"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Asset Information"
-msgstr "Nhận thông tin tài sản máy tính"
+msgstr "Lấy thông tin tài sản máy tính"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Name Space"
-msgstr "Tên không gian"
+msgstr "Không gian tên"
 
 #: wmi_tools.php
 msgid "Close"
 msgstr "Đóng"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr "Nếu bạn cần hỗ trợ về mã lỗi, hãy sử dụng google hoặc tại đây, sử dụng Liên kết %s sau đây."
+msgstr "Nếu bạn cần hỗ trợ về mã lỗi, hãy tìm trên Google hoặc sử dụng liên kết sau: %s."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr "Lỗi thường gặp của Microsoft"
+msgstr "Lỗi WBEM phổ biến của Microsoft"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Distributed COM Setup"
-msgstr "Cài đặt COM phân tán"
+msgstr "Thiết lập COM phân tán"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "Để WMI hoạt động, tài khoản người dùng bạn đang sử dụng phải được cấp quyền COM phân tán và Tường lửa Windows phải được cấu hình để cho phép truyền thông COM phân tán. Bạn có thể tìm thấy một tài liệu thực sự tốt về quy trình này tại Liên kết %s sau đây."
+msgstr "Để WMI hoạt động, tài khoản người dùng bạn đang sử dụng phải được cấp quyền Distributed COM và Tường lửa Windows phải được cấu hình để cho phép giao tiếp Distributed COM. Bạn có thể tìm thấy tài liệu hướng dẫn chi tiết về quy trình này tại liên kết %s."
 
 #: wmi_tools.php
 msgid "Host"
@@ -587,217 +612,73 @@ msgid "Command"
 msgstr "Lệnh"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "More Class Information @Microsoft"
-msgstr "Thông tin thêm về lớp học @Microsoft"
+msgstr "Thông tin thêm về Class @Microsoft"
 
 #: wmi_tools.php
 msgid "Run"
 msgstr "Chạy"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Run the WMI Query against the Device"
-msgstr "Chạy truy vấn WMI đối với thiết bị"
+msgstr "Chạy truy vấn WMI trên thiết bị"
 
 #: wmi_tools.php
 msgid "Clear"
 msgstr "Xóa"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Clear the results panel."
-msgstr "Xóa bảng kết quả."
+msgstr "Làm trống bảng kết quả."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Pick from a list of common queries."
-msgstr "Chọn từ một danh sách các truy vấn phổ biến."
+msgstr "Chọn từ danh sách các truy vấn phổ biến."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr "Nhận một số trợ giúp về việc thiết lập WMI"
+msgstr "Xem hướng dẫn thiết lập WMI"
 
 #: wmi_tools.php
 msgid "Help"
 msgstr "Trợ giúp"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
 msgstr "Tạo Truy vấn WMI mới từ Truy vấn hiện có."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Query Results"
 msgstr "Kết quả truy vấn"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Common Queries (Click to Select)"
-msgstr "Truy vấn thường gặp (Bấm để chọn)"
+msgstr "Truy vấn phổ biến (Nhấp để chọn)"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "Hỗ trợ thiết lập WMI"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr "LRI: Bạn phải cung cấp máy chủ, tên người dùng, mật khẩu và truy vấn"
+msgstr "LỖI: Bạn phải cung cấp máy chủ, tên người dùng, mật khẩu và truy vấn"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "Kết quả truy vấn WMI cho thiết bị: %s, Class: %s, Cột: %s, Hàng: %s"
+msgstr "Kết quả truy vấn WMI cho Thiết bị: %s, Lớp: %s, Cột: %s, Hàng: %s"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "Hiển thị các cột và một hoặc hai hàng dữ liệu đầu tiên."
+msgstr "Đang hiển thị các cột và một hoặc hai hàng dữ liệu đầu tiên."
 
-#: setup.php
-msgid "WMI Client (wmic) Path"
-msgstr ""
-
-#: setup.php
-msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM port"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use WinRM over HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "WinRM Port Override"
-msgstr ""
-
-#: setup.php
-msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate"
-msgstr ""
-
-#: setup.php
-msgid "Kerberos"
-msgstr ""
-
-#: setup.php
-msgid "Basic (HTTPS only)"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: At least one performance counter path is required"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
 #, fuzzy
-msgid "WinRM Authentication"
-msgstr "Tự động hóa WMI"
+#~ msgid "The Namespace for this Query."
+#~ msgstr "Không gian tên cho truy vấn này."
 
-#: wmi_accounts.php
-msgid "WinRM Transport"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Use Server Default"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTP"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTPS"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Last Poll"
-msgstr ""
-
-#: wmi_queries.php
 #, fuzzy
-#| msgid "Devices"
-msgid "Failing Devices"
-msgstr "Thiết bị"
-
-#: wmi_queries.php
-msgid "Timeouts"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Polled Devices"
-msgstr "Thiết bị"
-
-#: wmi_queries.php
-msgid "Most Recent Error"
-msgstr ""
+#~ msgid "The Query to execute for gathering WMI data from the device."
+#~ msgstr "Truy vấn để thực hiện để thu thập dữ liệu WMI từ thiết bị."
 
 #, fuzzy
 #~ msgid "WMI Tools"
