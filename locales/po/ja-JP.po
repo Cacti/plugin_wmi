@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2024-11-22 02:12+0000\n"
-"Last-Translator: Nakayama Kito <nakayamakito@icloud.com>\n"
-"Language-Team: Japanese <http://translate.cacti.net/projects/cacti/wmi/ja/>\n"
-"Language: ja-JP\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-25 10:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Japanese <https://translate.cacti.net/projects/cacti/wmi/ja/>\nLanguage: ja-JP\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
@@ -26,52 +14,72 @@ msgstr "クエリ"
 msgid "Authentication"
 msgstr "認証"
 
+#: includes/linux_wmi.php
+msgid "ERROR: At least one performance counter path is required"
+msgstr "エラー: パフォーマンスカウンターパスを少なくとも 1 つ指定する必要があります"
+
+#: includes/linux_wmi.php
+msgid "ERROR: A PDH query can contain at most 64 counter paths"
+msgstr "エラー: PDH クエリに含められるカウンターパスは最大 64 個です"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM port"
+msgstr "エラー: 無効な WinRM ポートです"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM authentication method"
+msgstr "エラー: 無効な WinRM 認証方式です"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Basic WinRM authentication requires HTTPS"
+msgstr "エラー: WinRM の Basic 認証には HTTPS が必要です"
+
+#: includes/linux_wmi.php
+msgid "ERROR:"
+msgstr "エラー:"
+
 #: setup.php
-#, fuzzy
 msgid "WMI Management"
 msgstr "WMI管理"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data"
 msgstr "WMIデータ"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data Query"
 msgstr "WMIデータクエリ"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minute"
 msgstr "%d分"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
 msgstr "%d 分"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hour"
 msgstr "%d 時間"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
 msgstr "%d 時間"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "％d日"
+msgstr "%d 日間"
 
 #: setup.php
 msgid "Utilities"
 msgstr "ユーティリティ"
 
 #: setup.php wmi_tools.php
-#, fuzzy
 msgid "WMI Query Tool"
 msgstr "WMIクエリツール"
 
@@ -80,46 +88,38 @@ msgid "Data Collection"
 msgstr "サーベイ"
 
 #: setup.php wmi_queries.php
-#, fuzzy
 msgid "WMI Queries"
 msgstr "WMIクエリ"
 
 #: setup.php
-#, fuzzy
 msgid "Template Editor"
 msgstr "テンプレートエディタ"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication"
-msgstr "WMIオーネーション"
+msgstr "WMI認証"
 
 #: setup.php
 msgid "(Edit)"
-msgstr ""
+msgstr "(編集)"
 
 #: setup.php
-#, fuzzy
 msgid "(Query)"
-msgstr "クエリ"
+msgstr "(クエリ)"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Account Options"
 msgstr "WMIアカウントオプション"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication Account"
 msgstr "WMI認証アカウント"
 
 #: setup.php
-#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr "WMIによる認証時に使用するアカウントを選択してください"
+msgstr "WMI での認証時に使用するアカウントを選択してください"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
 msgstr "1プロセス"
 
@@ -129,48 +129,84 @@ msgid "%d Processes"
 msgstr "%d プロセス"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Settings"
 msgstr "WMI設定"
 
 #: setup.php
-#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr "データ収集"
+msgstr "WMIデータ収集を有効にする"
 
 #: setup.php
-#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "WMIプラグインでWindowsデバイスにクエリを実行する場合は、このチェックボックスをオンにします。"
+msgstr "WMI プラグインで Windows デバイスにクエリを実行する場合は、このチェックボックスをオンにします。"
 
 #: setup.php
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "システムプロセスを取得する"
+msgstr "並行プロセス"
 
 #: setup.php
-#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr "システムで同時に実行するWMIクエリはいくつありますか？"
+msgstr "システムで同時に実行する WMI クエリ数を指定してください。"
 
 #: setup.php
-#, fuzzy
 msgid "Auto Create WMI Queries"
-msgstr "WMIクエリを自動作成する"
+msgstr "WMI クエリの自動作成"
 
 #: setup.php
-#, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "選択した場合、自動化を実行するとき、またはデバイスを作成または保存するときに、デバイステンプレートに関連付けられているすべてのWMIクエリが作成されます。"
+msgstr "選択すると、自動化の実行時、またはデバイスの作成/保存時に、デバイステンプレートに関連付けられたすべての WMI クエリが作成されます。"
+
+#: setup.php
+msgid "Use WinRM over HTTPS"
+msgstr "HTTPS 経由の WinRM を使用"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
+msgstr "サーバー設定を継承するアカウントのデフォルト値。対象の証明書を設定して信頼してください。証明書チェックは無効化されません。"
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Port Override"
+msgstr "WinRM ポートの上書き"
+
+#: setup.php
+msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
+msgstr "サーバー設定を継承するアカウントのデフォルトポートの上書き。Windows のデフォルトを使用する場合は空欄にしてください。"
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Authentication"
+msgstr "WinRM 認証"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
+msgstr "サーバー設定を継承するアカウントのデフォルト値。ドメインホストでは利用可能な場合 Kerberos を使用してください。Basic 認証には HTTPS が必要です。"
+
+#: setup.php wmi_accounts.php
+msgid "Negotiate"
+msgstr "ネゴシエート"
+
+#: setup.php wmi_accounts.php
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: setup.php wmi_accounts.php
+msgid "Basic (HTTPS only)"
+msgstr "Basic（HTTPS のみ）"
 
 #: setup.php
 msgid "Misc"
 msgstr "その他"
 
 #: setup.php
-#, fuzzy
+msgid "WMI Client (wmic) Path"
+msgstr "WMI クライアント (wmic) パス"
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr "Linux Cacti サーバーから Windows デバイスにクエリを実行するために使用する wmic バイナリへのパスです。"
+
+#: setup.php
 msgid "Associated WMI Queries"
-msgstr "関連付けられているWMIクエリ"
+msgstr "関連付けられた WMI クエリ"
 
 #: setup.php wmi_accounts.php wmi_queries.php wmi_tools.php
 msgid "Name"
@@ -181,47 +217,41 @@ msgid "Status"
 msgstr "状態"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Exists"
 msgstr "WMIクエリが存在します"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "WMIクエリが存在しません"
 
 #: setup.php
-#, fuzzy
 msgid "No Associated WMI Queries."
-msgstr "関連付けられているWMIクエリはありません。"
+msgstr "関連付けられた WMI クエリはありません。"
 
 #: setup.php wmi_accounts.php wmi_queries.php
 msgid "Delete"
 msgstr "削除"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query"
-msgstr "WMIクエリを追加する"
+msgstr "WMI クエリを追加"
 
 #: setup.php wmi_tools.php
 msgid "Add"
 msgstr "追加"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query to Device Template"
-msgstr "デバイステンプレートにWMIクエリを追加する"
+msgstr "デバイステンプレートに WMI クエリを追加"
 
 #: setup.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr "次のWMIクエリを削除するには、[続行]をクリックします。クエリがデバイステンプレートから関連付け解除されます。"
+msgstr "「続行」をクリックすると、次の WMI クエリが削除され、デバイステンプレートから関連付けが解除されます。"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Name: %s"
-msgstr "WMIクエリ名：％s"
+msgstr "WMI クエリ名: %s"
 
 #: setup.php wmi_accounts.php wmi_queries.php
 msgid "Cancel"
@@ -232,21 +262,18 @@ msgid "Continue"
 msgstr "続ける"
 
 #: setup.php
-#, fuzzy
 msgid "Remove WMI Query"
-msgstr "WMIクエリを削除する"
+msgstr "WMI クエリを削除"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr "このアカウントに、表示されるわかりやすい名前を付けます。"
+msgstr "表示されるわかりやすい名前をこのアカウントに付けます。"
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Username"
 msgstr "ユーザー名"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "認証に使用されるユーザー名。必要に応じてドメインも含めてください。"
 
@@ -255,32 +282,55 @@ msgid "Password"
 msgstr "パスワード"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The password used for authentication."
 msgstr "認証に使用されるパスワード。"
 
 #: wmi_accounts.php
-#, fuzzy
-msgid "Press 'Continue' to delete the following accounts."
-msgstr "次のアカウントを削除するには、[続行]をクリックしてください。"
+msgid "WinRM Transport"
+msgstr "WinRM トランスポート"
 
 #: wmi_accounts.php
-#, fuzzy
+msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
+msgstr "このアカウントがサーバー設定を継承するか、HTTP または HTTPS を使用するかを選択してください。"
+
+#: wmi_accounts.php
+msgid "Use Server Default"
+msgstr "サーバーのデフォルトを使用"
+
+#: wmi_accounts.php
+msgid "HTTP"
+msgstr "HTTP"
+
+#: wmi_accounts.php
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: wmi_accounts.php
+msgid "Leave blank to inherit the server setting and Windows WinRM default."
+msgstr "空欄のままにすると、サーバー設定および Windows WinRM のデフォルトを継承します。"
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
+msgstr "このアカウントがサーバー設定を継承するか、特定の認証方式を使用するかを選択してください。Basic 認証には HTTPS が必要です。"
+
+#: wmi_accounts.php
+msgid "Press 'Continue' to delete the following accounts."
+msgstr "次のアカウントを削除するには、「続行」を押してください。"
+
+#: wmi_accounts.php
 msgid "You must select at least one account."
 msgstr "少なくとも1つのアカウントを選択する必要があります。"
 
 #: wmi_accounts.php
-#, fuzzy, php-format
+#, php-format
 msgid "Account [edit: %s]"
-msgstr "アカウント[編集：％s]"
+msgstr "アカウント [編集: %s]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Account [new]"
-msgstr "アカウント[新規]"
+msgstr "アカウント [新規]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "WMI Accounts"
 msgstr "WMIアカウント"
 
@@ -315,95 +365,101 @@ msgid "Devices"
 msgstr "デバイス"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "No Accounts Found"
 msgstr "アカウントが見つかりません"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr "このクエリに表示される意味のある名前を付けます。"
+msgstr "表示されるわかりやすい名前をこのクエリに付けます。"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Collection Frequency"
 msgstr "収集頻度"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "このWMIクエリがデバイスに追加されると、これが使用されるデータ収集の頻度です。"
+msgstr "この WMI クエリをデバイスに追加した際に使用されるデータ収集頻度です。"
 
 #: wmi_queries.php
 msgid "Enabled"
 msgstr "有効"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Should this Query be enabled on hosts using it"
-msgstr "このクエリを使用しているホストでこのクエリを有効にする必要があります"
+msgstr "このクエリを使用しているホストで有効にしますか"
 
 #: wmi_queries.php wmi_tools.php
 msgid "Namespace"
 msgstr "ネームスペース"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Namespace for this Query."
-msgstr "このクエリのネームスペース。"
+msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
+msgstr "WMI 名前空間を使用するか、ネイティブのパフォーマンスカウンターパスとして PDH を入力してください。"
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
 msgstr "クエリ"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Query to execute for gathering WMI data from the device."
-msgstr "デバイスからWMIデータを収集するために実行するクエリ。"
+msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
+msgstr "WQL を入力するか、PDH の場合は 1 行につき 1 つの Windows パフォーマンスカウンターパスを入力してください。広範なクエリは多くの行を返すことがあります。応答の上限は 16 MiB です。"
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Primary Key"
 msgstr "主キー"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "WMIクエリが複数の行を返す場合、どのキー名が主キーまたはインデックスになりますか。主キーに複数の列が含まれている場合は、それらをコンマで区切ります。"
+msgstr "WMI クエリが複数行を返す場合、どのキー名を主キーまたはインデックスにしますか？主キーに複数の列が含まれる場合は、カンマで区切ってください。"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr "次のWMIクエリを削除するには、[続行]をクリックします。"
+msgstr "「続行」をクリックして、次の WMI クエリを削除します。"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "You must select at least one WMI Query."
-msgstr "少なくとも1つのWMIクエリを選択する必要があります。"
+msgstr "少なくとも1つの WMI クエリを選択する必要があります。"
 
 #: wmi_queries.php
 msgid "Return"
 msgstr "帰還"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Delete WMI Query"
-msgstr "WMIクエリを削除する"
+msgstr "WMI クエリの削除"
 
 #: wmi_queries.php
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
-msgstr "クエリ[編集：％s]"
+msgstr "クエリ [編集: %s]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Query [new]"
-msgstr "クエリ[新規]"
+msgstr "クエリ [新規]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Has Graphs"
 msgstr "グラフあり"
+
+#: wmi_queries.php
+msgid "Polled Devices"
+msgstr "ポーリング対象デバイス"
+
+#: wmi_queries.php
+msgid "Last Poll"
+msgstr "最終ポーリング"
+
+#: wmi_queries.php
+msgid "Failing Devices"
+msgstr "失敗しているデバイス"
+
+#: wmi_queries.php
+msgid "Timeouts"
+msgstr "タイムアウト"
+
+#: wmi_queries.php
+msgid "Most Recent Error"
+msgstr "最新のエラー"
 
 #: wmi_queries.php
 msgid "ID"
@@ -414,168 +470,138 @@ msgid "Frequency"
 msgstr "回数"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "WQL Query"
 msgstr "WQLクエリ"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Information"
-msgstr "コンピュータ情報を入手する"
+msgstr "コンピューター情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Processes"
-msgstr "システムプロセスを取得する"
+msgstr "システムプロセスを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Installed Software"
-msgstr "インストール済みソフトウェアを入手する"
+msgstr "インストール済みソフトウェアを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Operating System Information"
-msgstr "オペレーティングシステム情報を入手する"
+msgstr "オペレーティングシステム情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get OD Service Information"
-msgstr "ODサービス情報を入手する"
+msgstr "ODサービス情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Enclosure Information"
-msgstr "システムエンクロージャー情報を取得する"
+msgstr "システムエンクロージャー情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Physical Memory Information"
-msgstr "システムの物理メモリ情報を取得する"
+msgstr "システム物理メモリ情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Memory Device Details"
 msgstr "メモリデバイスの詳細を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System BIOS Information"
-msgstr "システムBIOS情報を入手する"
+msgstr "システムBIOS情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr "システムベースボード情報を取得する"
+msgstr "システムベースボード情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Processor Information"
-msgstr "プロセッサ情報を入手する"
+msgstr "プロセッサ情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Ping a Known Address from Computer"
-msgstr "コンピュータから既知のアドレスをpingする"
+msgstr "コンピューターから既知のアドレスへPingを実行"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr "Row System OSのパフォーマンスデータを取得する"
+msgstr "生のシステムOSパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "フォーマットされたシステムOSパフォーマンスデータを取得する"
+msgstr "フォーマット済みシステムOSパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "フォーマット済みPhsycalディスクパフォーマンスデータを取得する"
+msgstr "フォーマット済み物理ディスクパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "生のPhsycalディスクパフォーマンスデータを取得する"
+msgstr "生の物理ディスクパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Logical Disk Information"
-msgstr "論理ディスク情報を取得する"
+msgstr "論理ディスク情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr "フォーマット済み論理ディスクのパフォーマンスデータを取得する"
+msgstr "フォーマット済み論理ディスクパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr "生の論理ディスクパフォーマンスデータを取得する"
+msgstr "生の論理ディスクパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted CPU Performance Data"
-msgstr "フォーマットされたCPUパフォーマンスデータを取得する"
+msgstr "フォーマット済みCPUパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr "生のCPUパフォーマンスデータを取得する"
+msgstr "生のCPUパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Memory Performance Data"
-msgstr "生のメモリパフォーマンスデータを取得する"
+msgstr "生のメモリパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Network Performance Data"
-msgstr "フォーマットされたネットワークパフォーマンスデータを取得する"
+msgstr "フォーマット済みネットワークパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr "生のネットワークパフォーマンスデータを取得する"
+msgstr "生のネットワークパフォーマンスデータを取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Network Adapter Information"
-msgstr "ネットワークアダプタ情報を取得する"
+msgstr "ネットワークアダプター情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Asset Information"
-msgstr "コンピュータ資産情報を入手する"
+msgstr "コンピューターの資産情報を取得"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Name Space"
-msgstr "ネームスペース"
+msgstr "名前空間"
 
 #: wmi_tools.php
 msgid "Close"
 msgstr "閉じる"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr "エラーコードについてサポートが必要な場合は、Googleを使用するか、こちらのリンク％sを使用してください。"
+msgstr "エラーコードに関するサポートが必要な場合は、Google で検索するか、次のリンク %s を使用してください。"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr "MicrosoftよくあるWBEMエラー"
+msgstr "Microsoft 一般的な WBEM エラー"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Distributed COM Setup"
 msgstr "分散COMセットアップ"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "WMIが機能するには、使用しているユーザーアカウントにDistributed COMアクセス許可が付与されている必要があります。また、WindowsファイアウォールがDistributed COM通信を許可するように構成されている必要があります。次のリンク％sでこの手順に関する本当に良い文書を見つけることができます。"
+msgstr "WMIを機能させるには、使用するユーザーアカウントにDistributed COMのアクセス許可を付与し、WindowsファイアウォールでDistributed COM通信を許可するように構成する必要があります。この手順に関する詳しいドキュメントは、次のリンク %s を参照してください。"
 
 #: wmi_tools.php
 msgid "Host"
@@ -586,217 +612,73 @@ msgid "Command"
 msgstr "コマンド"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "More Class Information @Microsoft"
-msgstr "その他のクラス情報@Microsoft"
+msgstr "詳細なクラス情報 @Microsoft"
 
 #: wmi_tools.php
 msgid "Run"
 msgstr "実行"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Run the WMI Query against the Device"
-msgstr "デバイスに対してWMIクエリを実行する"
+msgstr "デバイスに対して WMI クエリを実行"
 
 #: wmi_tools.php
 msgid "Clear"
 msgstr "クリア"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Clear the results panel."
-msgstr "結果パネルを消去します。"
+msgstr "結果パネルをクリアします。"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Pick from a list of common queries."
-msgstr "一般的なクエリのリストから選択してください。"
+msgstr "一般的なクエリの一覧から選択します。"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr "WMIの設定に関するいくつかの助けを得る"
+msgstr "WMIの設定に関するヘルプを表示"
 
 #: wmi_tools.php
 msgid "Help"
 msgstr "ヘルプ"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
-msgstr "既存のクエリから新しいWMIクエリを作成します。"
+msgstr "既存のクエリから新しい WMI クエリを作成します。"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Query Results"
 msgstr "クエリ結果"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Common Queries (Click to Select)"
-msgstr "一般的なクエリ（クリックして選択）"
+msgstr "一般的なクエリ (クリックして選択)"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "WMI Setup Assistance"
-msgstr "WMI設定支援"
+msgstr "WMIセットアップ支援"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr "エラー：あなたはホスト、ユーザー名、パスワード、そしてクエリを提供しなければなりません"
+msgstr "エラー: ホスト、ユーザー名、パスワード、およびクエリを指定する必要があります"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "デバイスのWMIクエリ結果：％s、クラス：％s、列：％s、行：％s"
+msgstr "デバイスの WMI クエリ結果: %s、クラス: %s、列: %s、行: %s"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "列と最初の1行または2行のデータを表示します。"
+msgstr "列と最初の1〜2行のデータを表示しています。"
 
-#: setup.php
-msgid "WMI Client (wmic) Path"
-msgstr ""
-
-#: setup.php
-msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM port"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use WinRM over HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "WinRM Port Override"
-msgstr ""
-
-#: setup.php
-msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate"
-msgstr ""
-
-#: setup.php
-msgid "Kerberos"
-msgstr ""
-
-#: setup.php
-msgid "Basic (HTTPS only)"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: At least one performance counter path is required"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
 #, fuzzy
-msgid "WinRM Authentication"
-msgstr "WMIオーネーション"
+#~ msgid "The Namespace for this Query."
+#~ msgstr "このクエリのネームスペース。"
 
-#: wmi_accounts.php
-msgid "WinRM Transport"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Use Server Default"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTP"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTPS"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Last Poll"
-msgstr ""
-
-#: wmi_queries.php
 #, fuzzy
-#| msgid "Devices"
-msgid "Failing Devices"
-msgstr "デバイス"
-
-#: wmi_queries.php
-msgid "Timeouts"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Polled Devices"
-msgstr "デバイス"
-
-#: wmi_queries.php
-msgid "Most Recent Error"
-msgstr ""
+#~ msgid "The Query to execute for gathering WMI data from the device."
+#~ msgstr "デバイスからWMIデータを収集するために実行するクエリ。"
 
 #, fuzzy
 #~ msgid "WMI Tools"
