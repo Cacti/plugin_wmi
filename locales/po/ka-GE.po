@@ -26,6 +26,30 @@ msgstr "მოთხოვნები"
 msgid "Authentication"
 msgstr "ავთენტიკაცია"
 
+#: includes/linux_wmi.php
+msgid "ERROR: At least one performance counter path is required"
+msgstr ""
+
+#: includes/linux_wmi.php
+msgid "ERROR: A PDH query can contain at most 64 counter paths"
+msgstr ""
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM port"
+msgstr ""
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM authentication method"
+msgstr ""
+
+#: includes/linux_wmi.php
+msgid "ERROR: Basic WinRM authentication requires HTTPS"
+msgstr ""
+
+#: includes/linux_wmi.php
+msgid "ERROR:"
+msgstr ""
+
 #: setup.php
 msgid "WMI Management"
 msgstr "WMI-ის მართვა"
@@ -145,8 +169,54 @@ msgid "If selected, when running either automation, or when creating/saving a De
 msgstr ""
 
 #: setup.php
+msgid "Use WinRM over HTTPS"
+msgstr ""
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
+msgstr ""
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Port Override"
+msgstr ""
+
+#: setup.php
+msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
+msgstr ""
+
+#: setup.php wmi_accounts.php
+#, fuzzy
+#| msgid "WMI Authentication"
+msgid "WinRM Authentication"
+msgstr "WMI ავთენტიკაცია"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
+msgstr ""
+
+#: setup.php wmi_accounts.php
+msgid "Negotiate"
+msgstr ""
+
+#: setup.php wmi_accounts.php
+msgid "Kerberos"
+msgstr ""
+
+#: setup.php wmi_accounts.php
+msgid "Basic (HTTPS only)"
+msgstr ""
+
+#: setup.php
 msgid "Misc"
 msgstr "სხვადსხვა"
+
+#: setup.php
+msgid "WMI Client (wmic) Path"
+msgstr ""
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr ""
 
 #: setup.php
 msgid "Associated WMI Queries"
@@ -230,6 +300,34 @@ msgid "The password used for authentication."
 msgstr "პაროლი ავთენტიკაციისთვის."
 
 #: wmi_accounts.php
+msgid "WinRM Transport"
+msgstr ""
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
+msgstr ""
+
+#: wmi_accounts.php
+msgid "Use Server Default"
+msgstr ""
+
+#: wmi_accounts.php
+msgid "HTTP"
+msgstr ""
+
+#: wmi_accounts.php
+msgid "HTTPS"
+msgstr ""
+
+#: wmi_accounts.php
+msgid "Leave blank to inherit the server setting and Windows WinRM default."
+msgstr ""
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
+msgstr ""
+
+#: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
 msgstr ""
 
@@ -309,15 +407,15 @@ msgid "Namespace"
 msgstr "სახელების სივრცე"
 
 #: wmi_queries.php
-msgid "The Namespace for this Query."
-msgstr "სახელების სივრცე ამ მოთხოვნისთვის."
+msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
+msgstr ""
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
 msgstr "მოთხოვნა"
 
 #: wmi_queries.php
-msgid "The Query to execute for gathering WMI data from the device."
+msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
 msgstr ""
 
 #: wmi_queries.php wmi_tools.php
@@ -356,6 +454,30 @@ msgstr "მოთხოვნა [ახალი]"
 #: wmi_queries.php
 msgid "Has Graphs"
 msgstr "აქვს გრაფიკები"
+
+#: wmi_queries.php
+#, fuzzy
+#| msgid "Devices"
+msgid "Polled Devices"
+msgstr "მოწყობილობები"
+
+#: wmi_queries.php
+msgid "Last Poll"
+msgstr ""
+
+#: wmi_queries.php
+#, fuzzy
+#| msgid "Devices"
+msgid "Failing Devices"
+msgstr "მოწყობილობები"
+
+#: wmi_queries.php
+msgid "Timeouts"
+msgstr ""
+
+#: wmi_queries.php
+msgid "Most Recent Error"
+msgstr ""
 
 #: wmi_queries.php
 msgid "ID"
@@ -568,144 +690,5 @@ msgstr ""
 msgid "Showing columns and first one or two rows of data."
 msgstr ""
 
-#: setup.php
-msgid "WMI Client (wmic) Path"
-msgstr ""
-
-#: setup.php
-msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM port"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use WinRM over HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "WinRM Port Override"
-msgstr ""
-
-#: setup.php
-msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate"
-msgstr ""
-
-#: setup.php
-msgid "Kerberos"
-msgstr ""
-
-#: setup.php
-msgid "Basic (HTTPS only)"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: At least one performance counter path is required"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-#, fuzzy
-#| msgid "WMI Authentication"
-msgid "WinRM Authentication"
-msgstr "WMI ავთენტიკაცია"
-
-#: wmi_accounts.php
-msgid "WinRM Transport"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Use Server Default"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTP"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTPS"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Last Poll"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Failing Devices"
-msgstr "მოწყობილობები"
-
-#: wmi_queries.php
-msgid "Timeouts"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Polled Devices"
-msgstr "მოწყობილობები"
-
-#: wmi_queries.php
-msgid "Most Recent Error"
-msgstr ""
+#~ msgid "The Namespace for this Query."
+#~ msgstr "სახელების სივრცე ამ მოთხოვნისთვის."
