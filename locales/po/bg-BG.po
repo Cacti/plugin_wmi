@@ -4,22 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2020-12-14 20:01-0500\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: bg_BG\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-25 10:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Bulgarian <https://translate.cacti.net/projects/cacti/wmi/bg/>\nLanguage: bg-BG\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Queries"
 msgstr "Заявки"
 
@@ -27,20 +14,41 @@ msgstr "Заявки"
 msgid "Authentication"
 msgstr "Идентификация"
 
-#: setup.php
-#, fuzzy
-msgid "WMI Management"
-msgstr "WMI управление"
+#: includes/linux_wmi.php
+msgid "ERROR: At least one performance counter path is required"
+msgstr "ГРЕШКА: Изисква се поне един път на брояч на производителността"
+
+#: includes/linux_wmi.php
+msgid "ERROR: A PDH query can contain at most 64 counter paths"
+msgstr "ГРЕШКА: PDH заявка може да съдържа най-много 64 пътя на броячи"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM port"
+msgstr "ГРЕШКА: Невалиден WinRM порт"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM authentication method"
+msgstr "ГРЕШКА: Невалиден метод за WinRM автентикация"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Basic WinRM authentication requires HTTPS"
+msgstr "ГРЕШКА: Основната (Basic) WinRM автентикация изисква HTTPS"
+
+#: includes/linux_wmi.php
+msgid "ERROR:"
+msgstr "Грешка: Файлът не може да бъде изтрит:"
 
 #: setup.php
-#, fuzzy
+msgid "WMI Management"
+msgstr "Управление на WMI"
+
+#: setup.php
 msgid "WMI Data"
 msgstr "WMI данни"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data Query"
-msgstr "WMI Data Query"
+msgstr "WMI заявка за данни"
 
 #: setup.php
 #, php-format
@@ -63,114 +71,140 @@ msgid "%d Hours"
 msgstr "%d часа"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "% d ден"
+msgstr "%d ден"
 
 #: setup.php
 msgid "Utilities"
 msgstr "Приложения"
 
 #: setup.php wmi_tools.php
-#, fuzzy
 msgid "WMI Query Tool"
-msgstr "WMI инструмент за заявки"
+msgstr "Инструмент за WMI заявки"
 
 #: setup.php
-#, fuzzy
 msgid "Data Collection"
 msgstr "Събиране на данни"
 
 #: setup.php wmi_queries.php
-#, fuzzy
 msgid "WMI Queries"
 msgstr "WMI заявки"
 
 #: setup.php
-#, fuzzy
 msgid "Template Editor"
 msgstr "Редактор на шаблони"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication"
-msgstr "WMI Authentication"
+msgstr "WMI удостоверяване"
 
 #: setup.php
 msgid "(Edit)"
-msgstr ""
+msgstr "(Редактирай)"
 
 #: setup.php
-#, fuzzy
 msgid "(Query)"
-msgstr "Query (заявка/запитване)"
+msgstr "(Заявка)"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Account Options"
-msgstr "Опции за сметка на WMI"
+msgstr "Опции на WMI акаунт"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication Account"
-msgstr "Проверка на автентичността на WMI"
+msgstr "Акаунт за WMI удостоверяване"
 
 #: setup.php
-#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
-msgstr "Изберете акаунт, който да използвате при удостоверяване чрез WMI"
+msgstr "Изберете акаунт, който да се използва при удостоверяване чрез WMI"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
 msgstr "1 Процес"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Processes"
-msgstr "Получаване на системни процеси"
+msgstr "%d процеса"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Settings"
 msgstr "WMI настройки"
 
 #: setup.php
-#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr "Събиране на данни"
+msgstr "Активиране на събирането на WMI данни"
 
 #: setup.php
-#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "Поставете отметка в това квадратче, ако искате приставката WMI да прави заявки за устройства с Windows."
+msgstr "Отметнете това поле, ако искате приставката WMI да прави заявки към устройства с Windows."
 
 #: setup.php
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "Получаване на системни процеси"
+msgstr "Съвместни процеси"
 
 #: setup.php
-#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr "Колко едновременни WMI заявки искате да работи системата?"
+msgstr "Колко едновременни WMI заявки желаете да изпълнява системата?"
 
 #: setup.php
-#, fuzzy
 msgid "Auto Create WMI Queries"
 msgstr "Автоматично създаване на WMI заявки"
 
 #: setup.php
-#, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "Ако е избрано, когато се изпълнява или автоматизация, или при създаване / запазване на устройство, ще бъдат създадени всички WMI заявки, свързани с шаблона на устройството."
+msgstr "Ако е избрано, при изпълнение на автоматизация или при създаване/запазване на устройство ще бъдат създадени всички WMI заявки, свързани с шаблона на устройството."
+
+#: setup.php
+msgid "Use WinRM over HTTPS"
+msgstr "Използване на WinRM през HTTPS"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
+msgstr "По подразбиране за акаунти, които наследяват настройките на сървъра. Конфигурирайте и се доверете на целевия сертификат; проверките на сертификати не са деактивирани."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Port Override"
+msgstr "Заместване на WinRM порта"
+
+#: setup.php
+msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
+msgstr "Замяна на порта по подразбиране за акаунти, които наследяват настройките на сървъра. Оставете празно за стойността по подразбиране за Windows."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Authentication"
+msgstr "WinRM удостоверяване"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
+msgstr "По подразбиране за акаунти, които наследяват настройките на сървъра. Използвайте Kerberos за домейн хостове, когато е наличен. Basic изисква HTTPS."
+
+#: setup.php wmi_accounts.php
+msgid "Negotiate"
+msgstr "Договаряне (Negotiate)"
+
+#: setup.php wmi_accounts.php
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: setup.php wmi_accounts.php
+msgid "Basic (HTTPS only)"
+msgstr "Основно (само HTTPS)"
 
 #: setup.php
 msgid "Misc"
 msgstr "Разни"
 
 #: setup.php
-#, fuzzy
+msgid "WMI Client (wmic) Path"
+msgstr "Път до WMI клиента (wmic)"
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr "Пътят до изпълнимия файл wmic, използван за заявки към Windows устройства от Linux Cacti сървър."
+
+#: setup.php
 msgid "Associated WMI Queries"
 msgstr "Свързани WMI заявки"
 
@@ -183,17 +217,14 @@ msgid "Status"
 msgstr "Статус"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Exists"
-msgstr "Съществува WMI заявка"
+msgstr "WMI заявката съществува"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Does Not Exist"
-msgstr "WMI не съществува"
+msgstr "WMI заявката не съществува"
 
 #: setup.php
-#, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "Няма свързани WMI заявки."
 
@@ -202,7 +233,6 @@ msgid "Delete"
 msgstr "Изтрий"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query"
 msgstr "Добавяне на WMI заявка"
 
@@ -211,19 +241,17 @@ msgid "Add"
 msgstr "Добави"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query to Device Template"
-msgstr "Добавете WMI заявка към Шаблон на устройството"
+msgstr "Добавяне на WMI заявка към шаблон на устройство"
 
 #: setup.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr "Кликнете върху „Напред“, за да изтриете следните WMI заявки, които няма да бъдат свързани с шаблона на устройството."
+msgstr "Щракнете върху „Продължи“, за да изтриете следните WMI заявки; връзката им с шаблона на устройството ще бъде премахната."
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Name: %s"
-msgstr "Име на заявката за WMI: %s"
+msgstr "Име на WMI заявка: %s"
 
 #: setup.php wmi_accounts.php wmi_queries.php
 msgid "Cancel"
@@ -234,57 +262,77 @@ msgid "Continue"
 msgstr "Продължи"
 
 #: setup.php
-#, fuzzy
 msgid "Remove WMI Query"
 msgstr "Премахване на WMI заявка"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr "Дайте на този акаунт смислено име, което ще се покаже."
+msgstr "Задайте смислено име на този акаунт, което ще се показва."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Username"
 msgstr "Потребител"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr "Потребителското име, което ще се използва за удостоверяване. Моля, включете домейна, ако е необходимо."
+msgstr "Потребителското име, което ще се използва за удостоверяване. Моля, включете и домейна, ако е необходимо."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Password"
 msgstr "Парола"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The password used for authentication."
 msgstr "Паролата, използвана за удостоверяване."
 
 #: wmi_accounts.php
-#, fuzzy
+msgid "WinRM Transport"
+msgstr "WinRM транспорт"
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
+msgstr "Изберете дали този акаунт наследява настройката на сървъра или използва HTTP или HTTPS."
+
+#: wmi_accounts.php
+msgid "Use Server Default"
+msgstr "Използване на настройката по подразбиране на сървъра"
+
+#: wmi_accounts.php
+msgid "HTTP"
+msgstr "HTTP"
+
+#: wmi_accounts.php
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: wmi_accounts.php
+msgid "Leave blank to inherit the server setting and Windows WinRM default."
+msgstr "Оставете празно, за да наследите настройката на сървъра и стойността по подразбиране за Windows WinRM."
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
+msgstr "Изберете дали този акаунт наследява настройката на сървъра или използва конкретен метод за удостоверяване. Basic изисква HTTPS."
+
+#: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
-msgstr "Натиснете „Напред“, за да изтриете следните профили."
+msgstr "Натиснете „Продължи“, за да изтриете следните акаунти."
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "You must select at least one account."
-msgstr "Трябва да изберете поне един профил."
+msgstr "Трябва да изберете поне един акаунт."
 
 #: wmi_accounts.php
-#, fuzzy, php-format
+#, php-format
 msgid "Account [edit: %s]"
-msgstr "Профил [редактиране: %s]"
+msgstr "Акаунт [редактиране: %s]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Account [new]"
-msgstr "Профил [нов]"
+msgstr "Акаунт [нов]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "WMI Accounts"
-msgstr "WMI сметки"
+msgstr "WMI акаунти"
 
 #: wmi_accounts.php wmi_queries.php
 msgid "Search"
@@ -317,70 +365,58 @@ msgid "Devices"
 msgstr "Устройства"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "No Accounts Found"
-msgstr "Няма намерени профили"
+msgstr "Няма намерени акаунти"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr "Дайте на тази заявка значимо име, което ще се покаже."
+msgstr "Задайте смислено име на тази заявка, което ще се показва."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Collection Frequency"
 msgstr "Честота на събиране"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "Когато тази WMI заявка е добавена към устройство, това е честотата на събиране на данни, която ще се използва."
+msgstr "Когато тази WMI заявка бъде добавена към устройство, това е честотата на събиране на данни, която ще се използва."
 
 #: wmi_queries.php
 msgid "Enabled"
 msgstr "Разрешен"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Should this Query be enabled on hosts using it"
-msgstr "Ако тази заявка бъде активирана за хостове, които я използват"
+msgstr "Дали тази заявка да бъде активирана за хостовете, които я използват"
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Namespace"
-msgstr "Именно пространство"
+msgstr "Пространство от имена"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Namespace for this Query."
-msgstr "Пространството от имена за тази заявка."
+msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
+msgstr "Използвайте WMI пространство от имена или въведете PDH за пътища към системни броячи на производителността."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
-msgstr "Query (заявка/запитване)"
+msgstr "Заявка"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Query to execute for gathering WMI data from the device."
-msgstr "Заявката за изпълнение за събиране на WMI данни от устройството."
+msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
+msgstr "Въведете WQL или за PDH въведете по един път на брояч на производителността на Windows на ред. Широките заявки могат да върнат много редове; отговорите са ограничени до 16 MiB."
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Primary Key"
 msgstr "Първичен ключ"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "Когато WMI Query върне няколко реда, кой Keyname ще бъде първичен ключ или индекс? Ако първичният ключ включва няколко колони, отделете ги със запетая."
+msgstr "Когато WMI заявка върне множество редове, кое име на ключ (Keyname) ще бъде първичният ключ или индекс? Ако първичният ключ включва множество колони, разделете ги със запетая."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr "Кликнете върху „Напред“, за да изтриете следните WMI заявки."
+msgstr "Щракнете върху „Продължи“, за да изтриете следните WMI заявки."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "Трябва да изберете поне една WMI заявка."
 
@@ -389,24 +425,41 @@ msgid "Return"
 msgstr "Връщане"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Delete WMI Query"
-msgstr "Изтриване на заявката за WMI"
+msgstr "Изтриване на WMI заявка"
 
 #: wmi_queries.php
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
 msgstr "Заявка [редактиране: %s]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Query [new]"
 msgstr "Заявка [нова]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Has Graphs"
 msgstr "Има графики"
+
+#: wmi_queries.php
+msgid "Polled Devices"
+msgstr "Анкетирани устройства"
+
+#: wmi_queries.php
+msgid "Last Poll"
+msgstr "Последно запитване"
+
+#: wmi_queries.php
+msgid "Failing Devices"
+msgstr "Устройства с грешки"
+
+#: wmi_queries.php
+msgid "Timeouts"
+msgstr "Изтекли времена на изчакване"
+
+#: wmi_queries.php
+msgid "Most Recent Error"
+msgstr "Последна грешка"
 
 #: wmi_queries.php
 msgid "ID"
@@ -417,168 +470,138 @@ msgid "Frequency"
 msgstr "Честота"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "WQL Query"
-msgstr "WQL Query"
+msgstr "WQL заявка"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Information"
-msgstr "Получете информация за компютъра"
+msgstr "Получаване на информация за компютъра"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Processes"
-msgstr "Получаване на системни процеси"
+msgstr "Получаване на системните процеси"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Installed Software"
-msgstr "Изтеглете инсталиран софтуер"
+msgstr "Получаване на инсталирания софтуер"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Operating System Information"
-msgstr "Получете информация за операционната система"
+msgstr "Получаване на информация за операционната система"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get OD Service Information"
-msgstr "Получете информация за услугата OD"
+msgstr "Получаване на информация за OD услугата"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Enclosure Information"
-msgstr "Получете информация за системното приложение"
+msgstr "Получаване на информация за системния корпус"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Physical Memory Information"
-msgstr "Получете информация за физическата памет на системата"
+msgstr "Получаване на информация за физическата памет на системата"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Memory Device Details"
-msgstr "Получете подробности за устройството с памет"
+msgstr "Получаване на подробности за устройството с памет"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System BIOS Information"
-msgstr "Получете информация за системния BIOS"
+msgstr "Получаване на информация за системния BIOS"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr "Получете информация за системната платка"
+msgstr "Получаване на информация за системната дънна платка"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Processor Information"
 msgstr "Получаване на информация за процесора"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Ping a Known Address from Computer"
-msgstr "Пинг на известен адрес от компютъра"
+msgstr "Ping до известен адрес от компютъра"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr "Получете данни за производителността на операционната система"
+msgstr "Получаване на необработени данни за производителността на системната ОС"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "Получете форматирани данни за производителността на операционната система"
+msgstr "Получаване на форматирани данни за производителността на системната ОС"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "Получете форматирани данни за производителност на Phsycal диск"
+msgstr "Получаване на форматирани данни за производителността на физически диск"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "Получаване на Raw Phsycal данни за производителността на диска"
+msgstr "Получаване на необработени данни за производителността на физически диск"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Logical Disk Information"
-msgstr "Получаване на логическа информация за диска"
+msgstr "Получаване на информация за логически диск"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr "Получете форматирани логически данни за производителността на диска"
+msgstr "Получаване на форматирани данни за производителността на логически диск"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr "Получете сурови логически данни за производителността на диска"
+msgstr "Получаване на необработени данни за производителността на логически диск"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted CPU Performance Data"
-msgstr "Получете форматирани данни за производителността на процесора"
+msgstr "Получаване на форматирани данни за производителността на процесора"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr "Получете сурови данни за производителността на процесора"
+msgstr "Получаване на необработени данни за производителността на процесора"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Memory Performance Data"
-msgstr "Получаване на данни за производителността на необработени данни"
+msgstr "Получаване на необработени данни за производителността на паметта"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Network Performance Data"
-msgstr "Получете форматирани данни за производителността на мрежата"
+msgstr "Получаване на форматирани данни за производителността на мрежата"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr "Получаване на данни за производителността на мрежата"
+msgstr "Получаване на необработени данни за производителността на мрежата"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Network Adapter Information"
-msgstr "Получете информация за мрежовия адаптер"
+msgstr "Получаване на информация за мрежовия адаптер"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Asset Information"
 msgstr "Получаване на информация за компютърни активи"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Name Space"
-msgstr "Име пространство"
+msgstr "Пространство от имена"
 
 #: wmi_tools.php
 msgid "Close"
 msgstr "Затвори"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr "Ако имате нужда от помощ за кодове за грешки, използвайте google или тук използвайте следната връзка %s."
+msgstr "Ако имате нужда от помощ относно кодовете за грешки, използвайте Google или използвайте следната връзка тук: %s."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr "Общи грешки на WBEM"
+msgstr "Чести грешки на Microsoft WBEM"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Distributed COM Setup"
-msgstr "Разпределена COM настройка"
+msgstr "Настройка на Distributed COM"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "За да може WMI да работи с потребителския акаунт, който използвате, трябва да бъдат предоставени разрешения за дистрибутиран COM, а защитната стена на Windows трябва да е конфигурирана така, че да позволява разпределени COM комуникации. Можете да намерите истински добър документ за тази процедура на следната връзка %s."
+msgstr "За да работи WMI, на използвания от вас потребителски акаунт трябва да бъдат предоставени права за Distributed COM, а защитната стена на Windows трябва да бъде конфигурирана да разрешава Distributed COM комуникация. Можете да намерите много добро ръководство за тази процедура на следната връзка %s."
 
 #: wmi_tools.php
 msgid "Host"
@@ -589,217 +612,73 @@ msgid "Command"
 msgstr "Команда"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "More Class Information @Microsoft"
-msgstr "Още информация за класа @Microsoft"
+msgstr "Повече информация за класа @Microsoft"
 
 #: wmi_tools.php
 msgid "Run"
 msgstr "Изпълни"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Run the WMI Query against the Device"
-msgstr "Стартирайте WMI заявката срещу устройството"
+msgstr "Изпълнение на WMI заявката към устройството"
 
 #: wmi_tools.php
 msgid "Clear"
 msgstr "Изчисти"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Clear the results panel."
-msgstr "Изчистете панела с резултати."
+msgstr "Изчистване на панела с резултати."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Pick from a list of common queries."
-msgstr "Изберете от списък с често задавани заявки."
+msgstr "Изберете от списък с често използвани заявки."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr "Потърсете помощ при настройката на WMI"
+msgstr "Помощ при настройването на WMI"
 
 #: wmi_tools.php
 msgid "Help"
 msgstr "Помощ"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
-msgstr "Създайте нова WMI заявка от съществуващата заявка."
+msgstr "Създаване на нова WMI заявка от съществуващата заявка."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Query Results"
-msgstr "Резултати от заявките"
+msgstr "Резултати от заявката"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Common Queries (Click to Select)"
-msgstr "Общи заявки (Кликнете, за да изберете)"
+msgstr "Чести заявки (щракнете за избор)"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "WMI Setup Assistance"
-msgstr "Помощ за инсталиране на WMI"
+msgstr "Помощ при настройка на WMI"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "ГРЕШКА: Трябва да предоставите хост, потребителско име, парола и заявка"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "WMI резултати от заявки за устройство: %s, клас: %s, колони: %s, редове: %s"
+msgstr "Резултати от WMI заявка за устройство: %s, клас: %s, колони: %s, редове: %s"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "Показват се колони и първи или два реда данни."
+msgstr "Показване на колоните и първите един или два реда данни."
 
-#: setup.php
-msgid "WMI Client (wmic) Path"
-msgstr ""
-
-#: setup.php
-msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM port"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use WinRM over HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "WinRM Port Override"
-msgstr ""
-
-#: setup.php
-msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate"
-msgstr ""
-
-#: setup.php
-msgid "Kerberos"
-msgstr ""
-
-#: setup.php
-msgid "Basic (HTTPS only)"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: At least one performance counter path is required"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
 #, fuzzy
-msgid "WinRM Authentication"
-msgstr "WMI Authentication"
+#~ msgid "The Namespace for this Query."
+#~ msgstr "Пространството от имена за тази заявка."
 
-#: wmi_accounts.php
-msgid "WinRM Transport"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Use Server Default"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTP"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTPS"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Last Poll"
-msgstr ""
-
-#: wmi_queries.php
 #, fuzzy
-#| msgid "Devices"
-msgid "Failing Devices"
-msgstr "Устройства"
-
-#: wmi_queries.php
-msgid "Timeouts"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Polled Devices"
-msgstr "Устройства"
-
-#: wmi_queries.php
-msgid "Most Recent Error"
-msgstr ""
+#~ msgid "The Query to execute for gathering WMI data from the device."
+#~ msgstr "Заявката за изпълнение за събиране на WMI данни от устройството."
 
 #, fuzzy
 #~ msgid "WMI Tools"
