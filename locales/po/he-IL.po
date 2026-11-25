@@ -4,43 +4,51 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2020-12-14 20:02-0500\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: he_IL\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
+msgstr "Project-Id-Version: \nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-25 10:18+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Hebrew (Israel) <https://translate.cacti.net/projects/cacti/wmi/he_IL/>\nLanguage: he-IL\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3));\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Queries"
-msgstr "שאילתות"
+msgstr "שאילתות נתונים"
 
 #: includes/functions.php
 msgid "Authentication"
-msgstr "שיטת האימות לא חוקי"
+msgstr "אימות"
+
+#: includes/linux_wmi.php
+msgid "ERROR: At least one performance counter path is required"
+msgstr "שגיאה: נדרש לפחות נתיב מונה ביצועים אחד"
+
+#: includes/linux_wmi.php
+msgid "ERROR: A PDH query can contain at most 64 counter paths"
+msgstr "שגיאה: שאילתת PDH יכולה להכיל לכל היותר 64 נתיבי מונים"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM port"
+msgstr "שגיאה: יציאת WinRM לא חוקית"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Invalid WinRM authentication method"
+msgstr "שגיאה: שיטת אימות WinRM לא חוקית"
+
+#: includes/linux_wmi.php
+msgid "ERROR: Basic WinRM authentication requires HTTPS"
+msgstr "שגיאה: אימות WinRM בסיסי מחייב HTTPS"
+
+#: includes/linux_wmi.php
+msgid "ERROR:"
+msgstr "שגיאה:"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Management"
 msgstr "ניהול WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data"
-msgstr "WMI נתונים"
+msgstr "נתוני WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Data Query"
-msgstr "שאילתת נתונים WMI"
+msgstr "שאילתת נתוני WMI"
 
 #: setup.php
 #, php-format
@@ -48,7 +56,7 @@ msgid "%d Minute"
 msgstr "‫%d דקה"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Minutes"
 msgstr "דקות %d"
 
@@ -58,121 +66,147 @@ msgid "%d Hour"
 msgstr "‫%d שעה"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Hours"
-msgstr "%d לפני מספר ימים"
+msgstr "%d שעות"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Day"
-msgstr "% d יום"
+msgstr "%d יום"
 
 #: setup.php
 msgid "Utilities"
-msgstr "Comment"
+msgstr "כלי עזר"
 
 #: setup.php wmi_tools.php
-#, fuzzy
 msgid "WMI Query Tool"
-msgstr "כלי שאילתה WMI"
+msgstr "כלי שאילתות WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Data Collection"
 msgstr "איסוף נתונים"
 
 #: setup.php wmi_queries.php
-#, fuzzy
 msgid "WMI Queries"
 msgstr "שאילתות WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Template Editor"
-msgstr "עורך תבניות"
+msgstr "עורך תבנית"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication"
-msgstr "WMI"
+msgstr "אימות WMI"
 
 #: setup.php
 msgid "(Edit)"
-msgstr ""
+msgstr "(עריכה)"
 
 #: setup.php
-#, fuzzy
 msgid "(Query)"
-msgstr "שאילתא"
+msgstr "(שאילתה)"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Account Options"
 msgstr "אפשרויות חשבון WMI"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Authentication Account"
 msgstr "חשבון אימות WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Choose an account to use when Authenticating via WMI"
 msgstr "בחר חשבון לשימוש בעת אימות באמצעות WMI"
 
 #: setup.php
-#, fuzzy
 msgid "1 Process"
-msgstr "1 תהליך"
+msgstr "תהליך"
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "%d Processes"
-msgstr "קבל תהליכי מערכת"
+msgstr "%d תהליכים"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Settings"
 msgstr "הגדרות WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Enable WMI Data Collection"
-msgstr "איסוף נתונים"
+msgstr "הפעל איסוף נתוני WMI"
 
 #: setup.php
-#, fuzzy
 msgid "Check this box, if you want the WMI Plugin to query Windows devices."
-msgstr "סמן תיבה זו, אם ברצונך שתוסף ה- WMI ישאיל על מכשירי Windows."
+msgstr "סמן תיבה זו אם ברצונך שתוסף ה-WMI יתשאל התקני Windows."
 
 #: setup.php
-#, fuzzy
 msgid "Concurrent Processes"
-msgstr "קבל תהליכי מערכת"
+msgstr "תהליכים מקבילים"
 
 #: setup.php
-#, fuzzy
 msgid "How many concurrent WMI queries do you want the system to run?"
-msgstr "כמה שאילתות WMI במקביל אתה רוצה שהמערכת תפעל?"
+msgstr "כמה שאילתות WMI במקביל ברצונך שהמערכת תריץ?"
 
 #: setup.php
-#, fuzzy
 msgid "Auto Create WMI Queries"
-msgstr "יצירת שאילתות"
+msgstr "צור שאילתות WMI אוטומטית"
 
 #: setup.php
-#, fuzzy
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr "אם נבחר, בעת הפעלת אוטומציה או בעת יצירת / שמירה של התקן, כל השאילתות של WMI המשויכות לתבנית ההתקן ייווצרו."
+msgstr "אם נבחר, בעת הפעלת אוטומציה או בעת יצירה/שמירה של התקן, ייווצרו כל שאילתות ה-WMI המשויכות לתבנית ההתקן."
+
+#: setup.php
+msgid "Use WinRM over HTTPS"
+msgstr "השתמש ב-WinRM מעל HTTPS"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
+msgstr "ברירת מחדל עבור חשבונות היורשים את הגדרות השרת. הגדר ותן אמון באישור היעד; בדיקות אישורים אינן מושבתות."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Port Override"
+msgstr "עקיפת יציאת WinRM"
+
+#: setup.php
+msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
+msgstr "עקיפת פורט ברירת מחדל עבור חשבונות היורשים את הגדרות השרת. השאר ריק עבור ברירת המחדל של Windows."
+
+#: setup.php wmi_accounts.php
+msgid "WinRM Authentication"
+msgstr "אימות WinRM"
+
+#: setup.php
+msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
+msgstr "ברירת מחדל עבור חשבונות היורשים את הגדרות השרת. השתמש ב-Kerberos עבור מארחי דומיין היכן שזמין. אימות Basic מחייב HTTPS."
+
+#: setup.php wmi_accounts.php
+msgid "Negotiate"
+msgstr "משא ומתן (Negotiate)"
+
+#: setup.php wmi_accounts.php
+msgid "Kerberos"
+msgstr "Kerberos"
+
+#: setup.php wmi_accounts.php
+msgid "Basic (HTTPS only)"
+msgstr "בסיסי (HTTPS בלבד)"
 
 #: setup.php
 msgid "Misc"
 msgstr "שונות"
 
 #: setup.php
-#, fuzzy
+msgid "WMI Client (wmic) Path"
+msgstr "נתיב לקוח WMI (wmic)"
+
+#: setup.php
+msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
+msgstr "הנתיב לקובץ הבינארי wmic המשמש לתשאול התקני Windows משרת Cacti מבוסס Linux."
+
+#: setup.php
 msgid "Associated WMI Queries"
-msgstr "שאילתות משויכות"
+msgstr "שאילתות WMI משויכות"
 
 #: setup.php wmi_accounts.php wmi_queries.php wmi_tools.php
 msgid "Name"
@@ -183,17 +217,14 @@ msgid "Status"
 msgstr "סטטוס"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Exists"
 msgstr "שאילתת WMI קיימת"
 
 #: setup.php
-#, fuzzy
 msgid "WMI Query Does Not Exist"
 msgstr "שאילתת WMI אינה קיימת"
 
 #: setup.php
-#, fuzzy
 msgid "No Associated WMI Queries."
 msgstr "אין שאילתות WMI משויכות."
 
@@ -202,7 +233,6 @@ msgid "Delete"
 msgstr "מחק"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query"
 msgstr "הוסף שאילתת WMI"
 
@@ -211,19 +241,17 @@ msgid "Add"
 msgstr "הוסף"
 
 #: setup.php
-#, fuzzy
 msgid "Add WMI Query to Device Template"
 msgstr "הוסף שאילתת WMI לתבנית התקן"
 
 #: setup.php
-#, fuzzy
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות ינותקו מתבנית ההתקן."
+msgstr "לחץ על 'המשך' כדי למחוק את שאילתות ה-WMI הבאות, והן ינותקו מתבנית ההתקן."
 
 #: setup.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Name: %s"
-msgstr "שם שאילתה של WMI: %s"
+msgstr "שם שאילתת WMI: %s"
 
 #: setup.php wmi_accounts.php wmi_queries.php
 msgid "Cancel"
@@ -234,21 +262,18 @@ msgid "Continue"
 msgstr "המשך"
 
 #: setup.php
-#, fuzzy
 msgid "Remove WMI Query"
 msgstr "הסר שאילתת WMI"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Give this account a meaningful name that will be displayed."
-msgstr "תן לחשבון הזה שם בעל משמעות שיוצג."
+msgstr "תן לחשבון זה שם בעל משמעות שיוצג."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Username"
 msgstr "שם משתמש"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
 msgstr "שם המשתמש שישמש לאימות. נא לכלול גם את הדומיין במידת הצורך."
 
@@ -257,34 +282,57 @@ msgid "Password"
 msgstr "סיסמה"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "The password used for authentication."
 msgstr "הסיסמה המשמשת לאימות."
 
 #: wmi_accounts.php
-#, fuzzy
+msgid "WinRM Transport"
+msgstr "תעבורת WinRM"
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
+msgstr "בחר אם חשבון זה יורש את הגדרת השרת או משתמש ב-HTTP או ב-HTTPS."
+
+#: wmi_accounts.php
+msgid "Use Server Default"
+msgstr "השתמש בברירת המחדל של השרת"
+
+#: wmi_accounts.php
+msgid "HTTP"
+msgstr "HTTP"
+
+#: wmi_accounts.php
+msgid "HTTPS"
+msgstr "HTTPS"
+
+#: wmi_accounts.php
+msgid "Leave blank to inherit the server setting and Windows WinRM default."
+msgstr "השאר ריק כדי לרשת את הגדרת השרת ואת ברירת המחדל של Windows WinRM."
+
+#: wmi_accounts.php
+msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
+msgstr "בחר אם חשבון זה יורש את הגדרת השרת או משתמש בשיטת אימות מסוימת. אימות Basic מחייב HTTPS."
+
+#: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
 msgstr "לחץ על 'המשך' כדי למחוק את החשבונות הבאים."
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "You must select at least one account."
 msgstr "עליך לבחור לפחות חשבון אחד."
 
 #: wmi_accounts.php
-#, fuzzy, php-format
+#, php-format
 msgid "Account [edit: %s]"
 msgstr "חשבון [עריכה: %s]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "Account [new]"
 msgstr "חשבון [חדש]"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "WMI Accounts"
-msgstr "חשבונות"
+msgstr "חשבונות WMI"
 
 #: wmi_accounts.php wmi_queries.php
 msgid "Search"
@@ -314,99 +362,104 @@ msgstr "תיאור"
 
 #: wmi_accounts.php
 msgid "Devices"
-msgstr "ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה על כפתור התנתקות מכל ההתקנים האחרים."
+msgstr "התקנים"
 
 #: wmi_accounts.php
-#, fuzzy
 msgid "No Accounts Found"
 msgstr "לא נמצאו חשבונות"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Give this query a meaningful name that will be displayed."
-msgstr "תן לשאילתה שם בעל משמעות שיוצג."
+msgstr "תן לשאילתה זו שם בעל משמעות שיוצג."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Collection Frequency"
 msgstr "תדירות איסוף"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr "כאשר שאילתת WMI זו מתווספת להתקן, זהו תדירות איסוף הנתונים שישמש."
+msgstr "כאשר שאילתת WMI זו מתווספת להתקן, זוהי תדירות איסוף הנתונים שבה ייעשה שימוש."
 
 #: wmi_queries.php
 msgid "Enabled"
 msgstr "מאופשר"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Should this Query be enabled on hosts using it"
-msgstr "אם שאילתת שאילתה זו מופעלת במארחים המשתמשים בה"
+msgstr "האם להפעיל שאילתה זו במארחים המשתמשים בה"
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Namespace"
 msgstr "מרחב שמות"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Namespace for this Query."
-msgstr "מרחב השם עבור שאילתה זו."
+msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
+msgstr "השתמש במרחב שמות WMI, או הזן PDH עבור נתיבי מוני ביצועים מקוריים."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
-msgstr "שאילתא"
+msgstr "שאילתה"
 
 #: wmi_queries.php
-#, fuzzy
-msgid "The Query to execute for gathering WMI data from the device."
-msgstr "שאילתה לבצע עבור איסוף נתונים WMI מהמכשיר."
+msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
+msgstr "הזן WQL, או עבור PDH הזן נתיב מונה ביצועים אחד של Windows בכל שורה. שאילתות רחבות עלולות להחזיר שורות רבות; התגובות מוגבלות ל-16 MiB."
 
 #: wmi_queries.php wmi_tools.php
-#, fuzzy
 msgid "Primary Key"
 msgstr "מפתח ראשי"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr "כאשר שאילתת WMI מחזירה מספר שורות, אילו Keyname יהיה המפתח הראשי או האינדקס? אם המפתח הראשי כולל עמודות מרובות, הפרד ביניהם בפסיק."
+msgstr "כאשר שאילתת WMI מחזירה מספר שורות, איזה שם מפתח (Keyname) ישמש כמפתח הראשי או האינדקס? אם המפתח הראשי כולל מספר עמודות, יש להפריד ביניהן בפסיק."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr "לחץ על 'המשך' כדי למחוק את שאילתות WMI הבאות."
+msgstr "לחץ על 'המשך' כדי למחוק את שאילתות ה-WMI הבאות."
 
 #: wmi_queries.php
-#, fuzzy
 msgid "You must select at least one WMI Query."
 msgstr "עליך לבחור לפחות שאילתת WMI אחת."
 
 #: wmi_queries.php
 msgid "Return"
-msgstr "חזרה אל עריכת פוסט"
+msgstr "חזרה"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Delete WMI Query"
 msgstr "מחק שאילתת WMI"
 
 #: wmi_queries.php
-#, fuzzy, php-format
+#, php-format
 msgid "Query [edit: %s]"
 msgstr "שאילתה [עריכה: %s]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Query [new]"
 msgstr "שאילתה [חדש]"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "Has Graphs"
 msgstr "יש גרפים"
+
+#: wmi_queries.php
+msgid "Polled Devices"
+msgstr "התקנים נדגמים"
+
+#: wmi_queries.php
+msgid "Last Poll"
+msgstr "דגימה אחרונה"
+
+#: wmi_queries.php
+msgid "Failing Devices"
+msgstr "התקנים כושלים"
+
+#: wmi_queries.php
+msgid "Timeouts"
+msgstr "זמנים קצובים"
+
+#: wmi_queries.php
+msgid "Most Recent Error"
+msgstr "השגיאה האחרונה"
 
 #: wmi_queries.php
 msgid "ID"
@@ -417,168 +470,138 @@ msgid "Frequency"
 msgstr "תדירות"
 
 #: wmi_queries.php
-#, fuzzy
 msgid "WQL Query"
 msgstr "שאילתת WQL"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Information"
 msgstr "קבל מידע על המחשב"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Processes"
 msgstr "קבל תהליכי מערכת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Installed Software"
-msgstr "קבל תוכנה מותקנת"
+msgstr "קבל תוכנות מותקנות"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Operating System Information"
 msgstr "קבל מידע על מערכת ההפעלה"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get OD Service Information"
 msgstr "קבל מידע על שירות OD"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Enclosure Information"
 msgstr "קבל מידע על מארז המערכת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Physical Memory Information"
-msgstr "קבל מידע על זיכרון פיזי של המערכת"
+msgstr "קבל מידע על הזיכרון הפיזי של המערכת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Memory Device Details"
 msgstr "קבל פרטי התקן זיכרון"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System BIOS Information"
 msgstr "קבל מידע על BIOS המערכת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get System Baseboard Information"
-msgstr "קבל מידע על מערכת בסיס"
+msgstr "קבל מידע על לוח האם של המערכת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Processor Information"
 msgstr "קבל מידע על המעבד"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Ping a Known Address from Computer"
-msgstr "Ping כתובת ידועה מהמחשב"
+msgstr "בצע Ping לכתובת ידועה מהמחשב"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Row System OS Performance Data"
-msgstr "קבל נתוני ביצועים של מערכת ההפעלה של שורה"
+msgstr "קבל נתוני ביצועי מערכת הפעלה גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted System OS Performance Data"
-msgstr "קבל נתונים מעוצבים מערכת ההפעלה ביצועי המערכת"
+msgstr "קבל נתוני ביצועי מערכת הפעלה מעוצבים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr "קבל נתונים מעוצבים Phsycal דיסק ביצועי"
+msgstr "קבל נתוני ביצועי דיסק פיזי מעוצבים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr "קבל Raw Phsycal דיסק ביצועים נתונים"
+msgstr "קבל נתוני ביצועי דיסק פיזי גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Logical Disk Information"
-msgstr "קבל מידע דיסק לוגי"
+msgstr "קבל מידע על דיסק לוגי"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr "קבל נתונים מעוצב ביצועי דיסק לוגי"
+msgstr "קבל נתוני ביצועי דיסק לוגי מעוצבים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Logical Disk Performance Data"
-msgstr "קבל נתוני ביצועים לוגיים של דיסק לוגי"
+msgstr "קבל נתוני ביצועי דיסק לוגי גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted CPU Performance Data"
-msgstr "קבל נתונים מעוצבים של ביצועי CPU"
+msgstr "קבל נתוני ביצועי מעבד (CPU) מעוצבים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw CPU Performance Data"
-msgstr "קבל נתוני ביצועים של CPU CPU"
+msgstr "קבל נתוני ביצועי CPU גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Memory Performance Data"
-msgstr "קבל נתוני ביצועים של זיכרון גולמי"
+msgstr "קבל נתוני ביצועי זיכרון גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Formatted Network Performance Data"
 msgstr "קבל נתוני ביצועי רשת מעוצבים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Raw Network Performance Data"
-msgstr "קבל נתוני ביצועים של רשת גולמית"
+msgstr "קבל נתוני ביצועי רשת גולמיים"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Network Adapter Information"
 msgstr "קבל מידע על מתאם הרשת"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get Computer Asset Information"
 msgstr "קבל מידע על נכסי המחשב"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Name Space"
-msgstr "שם החלל"
+msgstr "מרחב שמות"
 
 #: wmi_tools.php
 msgid "Close"
 msgstr "סגור"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr "אם אתה זקוק לסיוע בקודי שגיאה, השתמש ב- Google, או השתמש בקישור הבא s."
+msgstr "אם אתה זקוק לסיוע בקודי שגיאה, השתמש ב-Google או בקישור הבא %s."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Microsoft Common WBEM Errors"
-msgstr "שגיאות נפוצות של Microsoft WBEM"
+msgstr "שגיאות WBEM נפוצות של Microsoft"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Distributed COM Setup"
-msgstr "הגדרת COM מבוזרת"
+msgstr "הגדרת COM מבוזר"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr "כדי ש- WMI תעבוד, יש להעניק לחשבון המשתמש שבו אתה משתמש הרשאות COM מבוזרות, ויש להגדיר את חומת האש של Windows כדי לאפשר תקשורת COM מבוזרת. אתה יכול למצוא מסמך טוב אמיתי על הליך זה הקישור הבא %s."
+msgstr "כדי ש-WMI יעבוד, יש להעניק לחשבון המשתמש שבו אתה משתמש הרשאות Distributed COM, ויש להגדיר את חומת האש של Windows כך שתאפשר תקשורת Distributed COM. ניתן למצוא מסמך מועיל על הליך זה בקישור הבא: %s."
 
 #: wmi_tools.php
 msgid "Host"
@@ -586,220 +609,76 @@ msgstr "שרת מארח"
 
 #: wmi_tools.php
 msgid "Command"
-msgstr "& פקודה@ info: whatsthis"
+msgstr "פקודה"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "More Class Information @Microsoft"
-msgstr "עוד מידע בכיתה @ Microsoft"
+msgstr "מידע נוסף על מחלקות @Microsoft"
 
 #: wmi_tools.php
 msgid "Run"
 msgstr "הפעל"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Run the WMI Query against the Device"
-msgstr "הפעל את שאילתת WMI נגד ההתקן"
+msgstr "הפעל את שאילתת ה-WMI מול ההתקן"
 
 #: wmi_tools.php
 msgid "Clear"
 msgstr "נקה"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Clear the results panel."
-msgstr "נקה את החלונית 'תוצאות'."
+msgstr "נקה את חלונית התוצאות."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Pick from a list of common queries."
-msgstr "בחר מתוך רשימה של שאילתות נפוצות."
+msgstr "בחר מתוך רשימת שאילתות נפוצות."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Get some help on setting up WMI"
-msgstr "קבל קצת עזרה על הגדרת WMI"
+msgstr "קבל עזרה בהגדרת WMI"
 
 #: wmi_tools.php
 msgid "Help"
 msgstr "עזרה"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Create a new WMI Query from the existing Query."
-msgstr "צור שאילתת WMI חדשה משאילתה קיימת."
+msgstr "צור שאילתת WMI חדשה מהשאילתה הקיימת."
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Query Results"
 msgstr "תוצאות שאילתה"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Common Queries (Click to Select)"
 msgstr "שאילתות נפוצות (לחץ לבחירה)"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "WMI Setup Assistance"
 msgstr "סיוע בהגדרת WMI"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "ERROR: You must provide a host, username, password and query"
 msgstr "שגיאה: עליך לספק מארח, שם משתמש, סיסמה ושאילתה"
 
 #: wmi_tools.php
-#, fuzzy, php-format
+#, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr "תוצאות שאילתת WMI עבור ההתקן: %s, מחלקה: %s, עמודות: %s, שורות: %s"
+msgstr "תוצאות שאילתת WMI עבור התקן: %s, מחלקה: %s, עמודות: %s, שורות: %s"
 
 #: wmi_tools.php
-#, fuzzy
 msgid "Showing columns and first one or two rows of data."
-msgstr "מציג עמודות והשורה הראשונה או שתיים של נתונים."
+msgstr "מציג עמודות ואת השורה הראשונה או שתי השורות הראשונות של הנתונים."
 
-#: setup.php
-msgid "WMI Client (wmic) Path"
-msgstr ""
-
-#: setup.php
-msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM port"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use WinRM over HTTPS"
-msgstr ""
-
-#: setup.php
-msgid "Use TLS for CIM/WinRM connections. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "WinRM Port Override"
-msgstr ""
-
-#: setup.php
-msgid "Optional port override. Leave blank for the Windows WinRM default port."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate is the default. Use Kerberos for domain hosts where available. Basic authentication is accepted only when HTTPS is enabled."
-msgstr ""
-
-#: setup.php
-msgid "Negotiate"
-msgstr ""
-
-#: setup.php
-msgid "Kerberos"
-msgstr ""
-
-#: setup.php
-msgid "Basic (HTTPS only)"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: At least one performance counter path is required"
-msgstr ""
-
-#: includes/linux_wmi.php
-msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
-
-#: setup.php
-msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
-
-#: setup.php
-msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
 #, fuzzy
-msgid "WinRM Authentication"
-msgstr "WMI"
+#~ msgid "The Namespace for this Query."
+#~ msgstr "מרחב השם עבור שאילתה זו."
 
-#: wmi_accounts.php
-msgid "WinRM Transport"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Use Server Default"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTP"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "HTTPS"
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
-
-#: wmi_accounts.php
-msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
-
-#: wmi_queries.php
-msgid "Last Poll"
-msgstr ""
-
-#: wmi_queries.php
 #, fuzzy
-#| msgid "Devices"
-msgid "Failing Devices"
-msgstr "ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה על כפתור התנתקות מכל ההתקנים האחרים."
-
-#: wmi_queries.php
-msgid "Timeouts"
-msgstr ""
-
-#: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
-msgid "Polled Devices"
-msgstr "ניתן להתנתק מכל ההתקנים האחרים, כגון טלפון נייד או מחשב ציבורי, על ידי לחיצה על כפתור התנתקות מכל ההתקנים האחרים."
-
-#: wmi_queries.php
-msgid "Most Recent Error"
-msgstr ""
+#~ msgid "The Query to execute for gathering WMI data from the device."
+#~ msgstr "שאילתה לבצע עבור איסוף נתונים WMI מהמכשיר."
 
 #, fuzzy
 #~ msgid "WMI Tools"
