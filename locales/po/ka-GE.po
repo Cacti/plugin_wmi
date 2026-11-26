@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2026-08-04 05:18+0000\n"
-"Last-Translator: Ekaterine papava <papava.e@gtu.ge>\n"
-"Language-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\n"
-"Language: ka-GE\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-26 05:53+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Georgian <https://translate.cacti.net/projects/cacti/wmi/ka/>\nLanguage: ka-GE\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=2; plural=n != 1;\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
@@ -28,27 +16,27 @@ msgstr "ავთენტიკაცია"
 
 #: includes/linux_wmi.php
 msgid "ERROR: At least one performance counter path is required"
-msgstr ""
+msgstr "შეცდომა: საჭიროა წარმადობის მრიცხველის სულ მცირე ერთი გზა"
 
 #: includes/linux_wmi.php
 msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
+msgstr "შეცდომა: PDH მოთხოვნა შეიძლება შეიცავდეს მაქსიმუმ 64 მრიცხველის გზას"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM port"
-msgstr ""
+msgstr "შეცდომა: არასწორი WinRM პორტი"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
+msgstr "შეცდომა: WinRM ავთენტიკაციის არასწორი მეთოდი"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
+msgstr "შეცდომა: Basic WinRM ავთენტიკაცია მოითხოვს HTTPS-ს"
 
 #: includes/linux_wmi.php
 msgid "ERROR:"
-msgstr ""
+msgstr "შეცდომა:"
 
 #: setup.php
 msgid "WMI Management"
@@ -166,45 +154,43 @@ msgstr "WMI მოთხოვნების ავტომატური შ
 
 #: setup.php
 msgid "If selected, when running either automation, or when creating/saving a Device, all WMI Queries associated with the Device Template will be created."
-msgstr ""
+msgstr "თუ მონიშნულია, ავტომატიზაციის გაშვებისას ან მოწყობილობის შექმნისას/შენახვისას, შეიქმნება მოწყობილობის შაბლონთან დაკავშირებული ყველა WMI მოთხოვნა."
 
 #: setup.php
 msgid "Use WinRM over HTTPS"
-msgstr ""
+msgstr "WinRM-ის გამოყენება HTTPS-ით"
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
+msgstr "ნაგულისხმევი მნიშვნელობა ანგარიშებისთვის, რომლებიც მემკვიდრეობით იღებენ სერვერის პარამეტრებს. დააკონფიგურირეთ და ენდეთ სამიზნე სერტიფიკატს; სერტიფიკატის შემოწმება გამორთული არ არის."
 
 #: setup.php wmi_accounts.php
 msgid "WinRM Port Override"
-msgstr ""
+msgstr "WinRM პორტის გადაფარვა"
 
 #: setup.php
 msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
+msgstr "ნაგულისხმევი პორტის გადაფარვა ანგარიშებისთვის, რომლებიც მემკვიდრეობით იღებენ სერვერის პარამეტრებს. დატოვეთ ცარიელი Windows-ის ნაგულისხმევი პორტისთვის."
 
 #: setup.php wmi_accounts.php
-#, fuzzy
-#| msgid "WMI Authentication"
 msgid "WinRM Authentication"
-msgstr "WMI ავთენტიკაცია"
+msgstr "WinRM ავთენტიკაცია"
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
+msgstr "ნაგულისხმევი მნიშვნელობა ანგარიშებისთვის, რომლებიც მემკვიდრეობით იღებენ სერვერის პარამეტრებს. დომენის ჰოსტებისთვის გამოიყენეთ Kerberos, სადაც ხელმისაწვდომია. Basic მოითხოვს HTTPS-ს."
 
 #: setup.php wmi_accounts.php
 msgid "Negotiate"
-msgstr ""
+msgstr "Negotiate"
 
 #: setup.php wmi_accounts.php
 msgid "Kerberos"
-msgstr ""
+msgstr "Kerberos"
 
 #: setup.php wmi_accounts.php
 msgid "Basic (HTTPS only)"
-msgstr ""
+msgstr "Basic (მხოლოდ HTTPS)"
 
 #: setup.php
 msgid "Misc"
@@ -212,11 +198,11 @@ msgstr "სხვადსხვა"
 
 #: setup.php
 msgid "WMI Client (wmic) Path"
-msgstr ""
+msgstr "WMI კლიენტის (wmic) გზა"
 
 #: setup.php
 msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
+msgstr "გზა wmic ბინარულ ფაილამდე, რომელიც გამოიყენება Linux Cacti სერვერიდან Windows მოწყობილობების გამოსაკითხად."
 
 #: setup.php
 msgid "Associated WMI Queries"
@@ -260,7 +246,7 @@ msgstr "WMI მოთხოვნის დამატება მოწყო
 
 #: setup.php
 msgid "Click 'Continue' to delete the following WMI Queries will be disassociated from the Device Template."
-msgstr ""
+msgstr "დააწკაპუნეთ ღილაკზე 'გაგრძელება', რათა წაშალოთ შემდეგი WMI მოთხოვნები, რომლებიც გათიშული იქნება მოწყობილობის შაბლონიდან."
 
 #: setup.php
 #, php-format
@@ -281,7 +267,7 @@ msgstr "WMI მოთხოვნის მოცილება"
 
 #: wmi_accounts.php
 msgid "Give this account a meaningful name that will be displayed."
-msgstr ""
+msgstr "მიანიჭეთ ამ ანგარიშს აზრიანი სახელი, რომელიც ეკრანზე გამოჩნდება."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Username"
@@ -289,7 +275,7 @@ msgstr "მომხმარებლის სახელი"
 
 #: wmi_accounts.php
 msgid "The username that will be used for authentication.  Please also include the domain if necessary."
-msgstr ""
+msgstr "მომხმარებლის სახელი, რომელიც გამოიყენება ავთენტიკაციისთვის. საჭიროების შემთხვევაში, მიუთითეთ დომენიც."
 
 #: wmi_accounts.php wmi_tools.php
 msgid "Password"
@@ -301,39 +287,39 @@ msgstr "პაროლი ავთენტიკაციისთვის."
 
 #: wmi_accounts.php
 msgid "WinRM Transport"
-msgstr ""
+msgstr "WinRM ტრანსპორტი"
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
+msgstr "აირჩიეთ, იღებს თუ არა ეს ანგარიში სერვერის პარამეტრს მემკვიდრეობით, თუ იყენებს HTTP-ს ან HTTPS-ს."
 
 #: wmi_accounts.php
 msgid "Use Server Default"
-msgstr ""
+msgstr "სერვერის ნაგულისხმევის გამოყენება"
 
 #: wmi_accounts.php
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: wmi_accounts.php
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 #: wmi_accounts.php
 msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
+msgstr "დატოვეთ ცარიელი სერვერის პარამეტრისა და Windows WinRM ნაგულისხმევის მემკვიდრეობით მისაღებად."
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
+msgstr "აირჩიეთ, იღებს თუ არა ეს ანგარიში სერვერის პარამეტრს მემკვიდრეობით, თუ იყენებს ავთენტიკაციის კონკრეტულ მეთოდს. Basic მოითხოვს HTTPS-ს."
 
 #: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
-msgstr ""
+msgstr "დააჭირეთ ღილაკს 'გაგრძელება' შემდეგი ანგარიშების წასაშლელად."
 
 #: wmi_accounts.php
 msgid "You must select at least one account."
-msgstr ""
+msgstr "უნდა აირჩიოთ სულ მცირე ერთი ანგარიში."
 
 #: wmi_accounts.php
 #, php-format
@@ -384,7 +370,7 @@ msgstr "ანგარიშები აღმოჩენილი არა�
 
 #: wmi_queries.php
 msgid "Give this query a meaningful name that will be displayed."
-msgstr ""
+msgstr "მიანიჭეთ ამ მოთხოვნას გასაგები სახელი, რომელიც გამოჩნდება ეკრანზე."
 
 #: wmi_queries.php
 msgid "Collection Frequency"
@@ -392,7 +378,7 @@ msgstr "მოგროვების სიხშირე"
 
 #: wmi_queries.php
 msgid "When this WMI Query is added to a Device, this is the Frequency of Data Collection that will be used."
-msgstr ""
+msgstr "როდესაც ეს WMI მოთხოვნა დაემატება მოწყობილობას, გამოიყენება მონაცემთა შეგროვების ეს სიხშირე."
 
 #: wmi_queries.php
 msgid "Enabled"
@@ -400,7 +386,7 @@ msgstr "ჩართულია"
 
 #: wmi_queries.php
 msgid "Should this Query be enabled on hosts using it"
-msgstr ""
+msgstr "უნდა იყოს თუ არა ეს მოთხოვნა ჩართული მის გამომყენებელ ჰოსტებზე"
 
 #: wmi_queries.php wmi_tools.php
 msgid "Namespace"
@@ -408,7 +394,7 @@ msgstr "სახელების სივრცე"
 
 #: wmi_queries.php
 msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
+msgstr "გამოიყენეთ WMI სახელთა სივრცე, ან შეიყვანეთ PDH წარმადობის მრიცხველის სისტემური გზებისთვის."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
@@ -416,7 +402,7 @@ msgstr "მოთხოვნა"
 
 #: wmi_queries.php
 msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
+msgstr "შეიყვანეთ WQL, ხოლო PDH-სთვის — თითო Windows წარმადობის მრიცხველის გზა თითო ხაზზე. ფართო მოთხოვნებმა შეიძლება დააბრუნოს ბევრი მწკრივი; პასუხები შეზღუდულია 16 MiB-ით."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Primary Key"
@@ -424,15 +410,15 @@ msgstr "ძირითადი გასაღები"
 
 #: wmi_queries.php
 msgid "When a WMI Query returns multiple rows, which Keyname will be the primary key or index?  If the Primary Key includes multiple columns, separate them with a comma."
-msgstr ""
+msgstr "როდესაც WMI მოთხოვნა აბრუნებს რამდენიმე მწკრივს, რომელი გასაღების სახელი იქნება პირველადი გასაღები ან ინდექსი? თუ პირველადი გასაღები მოიცავს რამდენიმე სვეტს, გამოყავით ისინი მძიმით."
 
 #: wmi_queries.php
 msgid "Click 'Continue' to Delete the following WMI Queries."
-msgstr ""
+msgstr "დააწკაპუნეთ ღილაკზე 'გაგრძელება' შემდეგი WMI მოთხოვნების წასაშლელად."
 
 #: wmi_queries.php
 msgid "You must select at least one WMI Query."
-msgstr ""
+msgstr "უნდა აირჩიოთ სულ მცირე ერთი WMI მოთხოვნა."
 
 #: wmi_queries.php
 msgid "Return"
@@ -456,28 +442,24 @@ msgid "Has Graphs"
 msgstr "აქვს გრაფიკები"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Polled Devices"
-msgstr "მოწყობილობები"
+msgstr "გამოკითხული მოწყობილობები"
 
 #: wmi_queries.php
 msgid "Last Poll"
-msgstr ""
+msgstr "ბოლო გამოკითხვა"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Failing Devices"
-msgstr "მოწყობილობები"
+msgstr "წარუმატებელი მოწყობილობები"
 
 #: wmi_queries.php
 msgid "Timeouts"
-msgstr ""
+msgstr "დროის ამოწურვები"
 
 #: wmi_queries.php
 msgid "Most Recent Error"
-msgstr ""
+msgstr "ბოლო შეცდომა"
 
 #: wmi_queries.php
 msgid "ID"
@@ -541,19 +523,19 @@ msgstr "ცნობილი მისამართის დაპინგ�
 
 #: wmi_tools.php
 msgid "Get Row System OS Performance Data"
-msgstr ""
+msgstr "სისტემის OS წარმადობის დაუმუშავებელი მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Formatted System OS Performance Data"
-msgstr ""
+msgstr "სისტემის OS წარმადობის ფორმატირებული მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Formatted Phsycal Disk Performance Data"
-msgstr ""
+msgstr "ფიზიკური დისკის წარმადობის ფორმატირებული მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Raw Phsycal Disk Performance Data"
-msgstr ""
+msgstr "ფიზიკური დისკის წარმადობის დაუმუშავებელი მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Logical Disk Information"
@@ -561,11 +543,11 @@ msgstr "ლოგიკური დისკის შესახებ ინ
 
 #: wmi_tools.php
 msgid "Get Formatted Logical Disk Performance Data"
-msgstr ""
+msgstr "ლოგიკური დისკის წარმადობის ფორმატირებული მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Raw Logical Disk Performance Data"
-msgstr ""
+msgstr "ლოგიკური დისკის წარმადობის დაუმუშავებელი მონაცემების მიღება"
 
 #: wmi_tools.php
 msgid "Get Formatted CPU Performance Data"
@@ -606,7 +588,7 @@ msgstr "დახურვა"
 #: wmi_tools.php
 #, php-format
 msgid "If you need assistance on error codes, use google, or here use the following Link %s."
-msgstr ""
+msgstr "თუ შეცდომის კოდებთან დაკავშირებით დახმარება გჭირდებათ, გამოიყენეთ Google ან გადადით შემდეგ ბმულზე %s."
 
 #: wmi_tools.php
 msgid "Microsoft Common WBEM Errors"
@@ -619,7 +601,7 @@ msgstr "განაწილებული COM-ის მორგება"
 #: wmi_tools.php
 #, php-format
 msgid "For WMI to work the user account you are using must be granted Distributed COM permissions, and the Windows Firewall must be configured to allow Distributed COM communications.  You can find a real good document on this procedure at the following Link %s."
-msgstr ""
+msgstr "WMI-ის სამუშაოდ მომხმარებლის ანგარიშს, რომელსაც იყენებთ, უნდა ჰქონდეს Distributed COM ნებართვები, ხოლო Windows Firewall კონფიგურირებული უნდა იყოს Distributed COM კომუნიკაციის დასაშვებად. ამ პროცედურის შესახებ ძალიან კარგ დოკუმენტს იხილავთ შემდეგ ბმულზე %s."
 
 #: wmi_tools.php
 msgid "Host"
@@ -639,7 +621,7 @@ msgstr "გაშვება"
 
 #: wmi_tools.php
 msgid "Run the WMI Query against the Device"
-msgstr ""
+msgstr "WMI მოთხოვნის გაშვება მოწყობილობაზე"
 
 #: wmi_tools.php
 msgid "Clear"
@@ -651,11 +633,11 @@ msgstr "შედეგების პანელის გასუფთა�
 
 #: wmi_tools.php
 msgid "Pick from a list of common queries."
-msgstr ""
+msgstr "აირჩიეთ გავრცელებული მოთხოვნების სიიდან."
 
 #: wmi_tools.php
 msgid "Get some help on setting up WMI"
-msgstr ""
+msgstr "მიიღეთ დახმარება WMI-ის დაყენებაში"
 
 #: wmi_tools.php
 msgid "Help"
@@ -663,7 +645,7 @@ msgstr "დახმარება"
 
 #: wmi_tools.php
 msgid "Create a new WMI Query from the existing Query."
-msgstr ""
+msgstr "ახალი WMI მოთხოვნის შექმნა არსებული მოთხოვნიდან."
 
 #: wmi_tools.php
 msgid "Query Results"
@@ -679,16 +661,16 @@ msgstr "WMI-ის მორგების დახმარება"
 
 #: wmi_tools.php
 msgid "ERROR: You must provide a host, username, password and query"
-msgstr ""
+msgstr "შეცდომა: უნდა მიუთითოთ ჰოსტი, მომხმარებლის სახელი, პაროლი და მოთხოვნა"
 
 #: wmi_tools.php
 #, php-format
 msgid "WMI Query Results for Device: %s, Class: %s, Columns: %s, Rows: %s"
-msgstr ""
+msgstr "WMI მოთხოვნის შედეგები მოწყობილობისთვის: %s, კლასი: %s, სვეტები: %s, მწკრივები: %s"
 
 #: wmi_tools.php
 msgid "Showing columns and first one or two rows of data."
-msgstr ""
+msgstr "ნაჩვენებია მონაცემების სვეტები და პირველი ერთი ან ორი მწკრივი."
 
 #~ msgid "The Namespace for this Query."
 #~ msgstr "სახელების სივრცე ამ მოთხოვნისთვის."
