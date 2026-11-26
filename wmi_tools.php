@@ -457,7 +457,7 @@ function show_tools() {
 			$.get('wmi_tools.php?action=queries', function(data) {
 				$('body').append(data);
 				$('#common_queries').dialog({
-					title: '<?php print __('Common Queries (Click to Select)', 'wmi'); ?>',
+					title: <?php print json_encode(__('Common Queries (Click to Select)', 'wmi')); ?>,
 					width: '1024',
 				});
 
@@ -486,7 +486,7 @@ function show_tools() {
 			$.get('wmi_tools.php?action=assistance', function(data) {
 				$('body').append(data);
 				$('#assistance').dialog({
-					title: '<?php print __('WMI Setup Assistance', 'wmi'); ?>',
+					title: <?php print json_encode(__('WMI Setup Assistance', 'wmi')); ?>,
 					width: '1024',
 				});
 
