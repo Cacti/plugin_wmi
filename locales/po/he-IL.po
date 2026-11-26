@@ -53,7 +53,7 @@ msgstr "שאילתת נתוני WMI"
 #: setup.php
 #, php-format
 msgid "%d Minute"
-msgstr "‫%d דקה"
+msgstr "%d דקה"
 
 #: setup.php
 #, php-format
@@ -63,7 +63,7 @@ msgstr "דקות %d"
 #: setup.php
 #, php-format
 msgid "%d Hour"
-msgstr "‫%d שעה"
+msgstr "%d שעה"
 
 #: setup.php
 #, php-format
