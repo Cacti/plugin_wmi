@@ -4,19 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
-msgstr ""
-"Project-Id-Version: Cacti\n"
-"Report-Msgid-Bugs-To: developers@cacti.net\n"
-"POT-Creation-Date: 2026-10-07 16:15-0400\n"
-"PO-Revision-Date: 2022-10-25 04:08+0000\n"
-"Last-Translator: Coool (github.com/Coool) <coool@mail.lv>\n"
-"Language-Team: Latvian <http://translate.cacti.net/projects/cacti/wmi/lv/>\n"
-"Language: lv-LV\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\n"
-"X-Generator: Weblate 4.8.1\n"
+msgstr "Project-Id-Version: Cacti\nReport-Msgid-Bugs-To: developers@cacti.net\nPOT-Creation-Date: 2026-10-07 16:15-0400\nPO-Revision-Date: 2026-11-26 05:53+0000\nLast-Translator: Thomas Vincent <balder.infuser.6n@icloud.com>\nLanguage-Team: Latvian <https://translate.cacti.net/projects/cacti/wmi/lv/>\nLanguage: lv-LV\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n % 10 == 0 || n % 100 >= 11 && n % 100 <= 19) ? 0 : ((n % 10 == 1 && n % 100 != 11) ? 1 : 2);\nX-Generator: Weblate 5.11.4\n"
 
 #: includes/functions.php wmi_queries.php wmi_tools.php
 msgid "Queries"
@@ -28,27 +16,27 @@ msgstr "Autentifikācija"
 
 #: includes/linux_wmi.php
 msgid "ERROR: At least one performance counter path is required"
-msgstr ""
+msgstr "KĻŪDA: Nepieciešams vismaz viens veiktspējas skaitītāja ceļš"
 
 #: includes/linux_wmi.php
 msgid "ERROR: A PDH query can contain at most 64 counter paths"
-msgstr ""
+msgstr "KĻŪDA: PDH vaicājums drīkst saturēt ne vairāk kā 64 skaitītāju ceļus"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM port"
-msgstr ""
+msgstr "KĻŪDA: Nederīgs WinRM ports"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Invalid WinRM authentication method"
-msgstr ""
+msgstr "KĻŪDA: Nederīga WinRM autentifikācijas metode"
 
 #: includes/linux_wmi.php
 msgid "ERROR: Basic WinRM authentication requires HTTPS"
-msgstr ""
+msgstr "KĻŪDA: Basic WinRM autentifikācijai nepieciešams HTTPS"
 
 #: includes/linux_wmi.php
 msgid "ERROR:"
-msgstr ""
+msgstr "KĻŪDA:"
 
 #: setup.php
 msgid "WMI Management"
@@ -170,41 +158,39 @@ msgstr "Ja atķeksēts, palaižot automatizāciju vai izveidojot/saglabājot ier
 
 #: setup.php
 msgid "Use WinRM over HTTPS"
-msgstr ""
+msgstr "Izmantot WinRM caur HTTPS"
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Configure and trust the target certificate; certificate checks are not disabled."
-msgstr ""
+msgstr "Noklusējums kontiem, kas pārmanto servera iestatījumus. Konfigurējiet mērķa sertifikātu un iestatiet tam uzticēšanos; sertifikāta pārbaudes netiek atspējotas."
 
 #: setup.php wmi_accounts.php
 msgid "WinRM Port Override"
-msgstr ""
+msgstr "WinRM porta aizstāšana"
 
 #: setup.php
 msgid "Default port override for accounts that inherit server settings. Leave blank for the Windows default."
-msgstr ""
+msgstr "Noklusējuma porta aizstāšana kontiem, kas pārmanto servera iestatījumus. Atstājiet tukšu, lai izmantotu Windows noklusējumu."
 
 #: setup.php wmi_accounts.php
-#, fuzzy
-#| msgid "WMI Authentication"
 msgid "WinRM Authentication"
-msgstr "WMI autentifikācija"
+msgstr "WinRM autentifikācija"
 
 #: setup.php
 msgid "Default for accounts that inherit server settings. Use Kerberos for domain hosts where available. Basic requires HTTPS."
-msgstr ""
+msgstr "Noklusējums kontiem, kas pārmanto servera iestatījumus. Domēna resursdatoriem, kur tas pieejams, izmantojiet Kerberos. Basic metodei nepieciešams HTTPS."
 
 #: setup.php wmi_accounts.php
 msgid "Negotiate"
-msgstr ""
+msgstr "Negotiate"
 
 #: setup.php wmi_accounts.php
 msgid "Kerberos"
-msgstr ""
+msgstr "Kerberos"
 
 #: setup.php wmi_accounts.php
 msgid "Basic (HTTPS only)"
-msgstr ""
+msgstr "Basic (tikai HTTPS)"
 
 #: setup.php
 msgid "Misc"
@@ -212,11 +198,11 @@ msgstr "Dažādi"
 
 #: setup.php
 msgid "WMI Client (wmic) Path"
-msgstr ""
+msgstr "WMI klienta (wmic) ceļš"
 
 #: setup.php
 msgid "The path to the wmic binary used to query Windows devices from a Linux Cacti server."
-msgstr ""
+msgstr "Ceļš uz wmic izpildfailu, ko izmanto Windows ierīču vaicāšanai no Linux Cacti servera."
 
 #: setup.php
 msgid "Associated WMI Queries"
@@ -301,31 +287,31 @@ msgstr "Parole, kura tiks izmantota autentifikācijai."
 
 #: wmi_accounts.php
 msgid "WinRM Transport"
-msgstr ""
+msgstr "WinRM transports"
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses HTTP or HTTPS."
-msgstr ""
+msgstr "Izvēlieties, vai šis konts pārmanto servera iestatījumu vai izmanto HTTP vai HTTPS."
 
 #: wmi_accounts.php
 msgid "Use Server Default"
-msgstr ""
+msgstr "Izmantot servera noklusējumu"
 
 #: wmi_accounts.php
 msgid "HTTP"
-msgstr ""
+msgstr "HTTP"
 
 #: wmi_accounts.php
 msgid "HTTPS"
-msgstr ""
+msgstr "HTTPS"
 
 #: wmi_accounts.php
 msgid "Leave blank to inherit the server setting and Windows WinRM default."
-msgstr ""
+msgstr "Atstājiet tukšu, lai pārmantotu servera iestatījumu un Windows WinRM noklusējumu."
 
 #: wmi_accounts.php
 msgid "Choose whether this account inherits the server setting or uses a specific authentication method. Basic requires HTTPS."
-msgstr ""
+msgstr "Izvēlieties, vai šis konts pārmanto servera iestatījumu vai izmanto noteiktu autentifikācijas metodi. Basic metodei nepieciešams HTTPS."
 
 #: wmi_accounts.php
 msgid "Press 'Continue' to delete the following accounts."
@@ -408,7 +394,7 @@ msgstr "Nosaukumvieta"
 
 #: wmi_queries.php
 msgid "Use a WMI namespace, or enter PDH for native performance counter paths."
-msgstr ""
+msgstr "Izmantojiet WMI nosaukumvietu vai ievadiet PDH vietējiem veiktspējas skaitītāju ceļiem."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Query"
@@ -416,7 +402,7 @@ msgstr "Vaicājums"
 
 #: wmi_queries.php
 msgid "Enter WQL, or for PDH enter one Windows performance counter path per line. Broad queries can return many rows; responses are capped at 16 MiB."
-msgstr ""
+msgstr "Ievadiet WQL vaicājumu vai PDH gadījumā ievadiet vienu Windows veiktspējas skaitītāja ceļu katrā rindā. Plaši vaicājumi var atgriezt daudz rindu; atbildes ir ierobežotas līdz 16 MiB."
 
 #: wmi_queries.php wmi_tools.php
 msgid "Primary Key"
@@ -456,28 +442,24 @@ msgid "Has Graphs"
 msgstr "Satur grafikus"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Polled Devices"
-msgstr "Ierīces"
+msgstr "Aptaujātās ierīces"
 
 #: wmi_queries.php
 msgid "Last Poll"
-msgstr ""
+msgstr "Pēdējā aptauja"
 
 #: wmi_queries.php
-#, fuzzy
-#| msgid "Devices"
 msgid "Failing Devices"
-msgstr "Ierīces"
+msgstr "Ierīces ar kļūdām"
 
 #: wmi_queries.php
 msgid "Timeouts"
-msgstr ""
+msgstr "Noildzes"
 
 #: wmi_queries.php
 msgid "Most Recent Error"
-msgstr ""
+msgstr "Pēdējā kļūda"
 
 #: wmi_queries.php
 msgid "ID"
